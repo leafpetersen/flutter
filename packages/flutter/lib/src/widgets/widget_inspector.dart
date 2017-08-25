@@ -17,6 +17,16 @@ import 'binding.dart';
 import 'framework.dart';
 import 'gesture_detector.dart';
 
+void truncateLines(String txt, int lines) {
+  final List<String> parts = txt.split('\n');
+
+  for(String line in parts.take(lines)) {
+    print(line);
+  }
+  if (parts.length > lines)
+    print('...');
+}
+
 /// Signature for the builder callback used by
 /// [WidgetInspector.selectButtonBuilder].
 typedef Widget InspectorSelectButtonBuilder(BuildContext context, VoidCallback onPressed);
@@ -203,11 +213,64 @@ class _WidgetInspectorState extends State<WidgetInspector>
          /* selection.current?.markNeedsPaint();
           lastSelection?.markNeedsPaint();*/
         }
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print(' ');
+        print('===============================================================');
+        print('RenderObject Tree:');
         developer.inspect(selection.current);
-        print(selection.current.toStringDeep());
+        truncateLines(selection.current.toStringDeep(), 30);
         final Element creator = selection.current.debugCreator.element;
         if (creator != null) {
-          print(creator.toStringDeep());
+          print('-----------------------------------------------------------');
+          print('Widget Tree:');
+          truncateLines(creator.toStringDeep(), 10);
         }
         developer.inspect(creator);
       }
