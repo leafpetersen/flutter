@@ -194,11 +194,22 @@ class _WidgetInspectorState extends State<WidgetInspector>
     if (!isSelectMode)
       return;
     if (_lastPointerLocation != null) {
+      final RenderObject lastSelection = selection?.current;
       _inspectAt(_lastPointerLocation);
 
       if (selection != null) {
-        // Notify debuggers to open an inspector on the object.
+        if (lastSelection != selection.current) {
+          // Notify debuggers to open an inspector on the object.
+         /* selection.current?.markNeedsPaint();
+          lastSelection?.markNeedsPaint();*/
+        }
         developer.inspect(selection.current);
+        print(selection.current.toStringDeep());
+        final Element creator = selection.current.debugCreator.element;
+        if (creator != null) {
+          print(creator.toStringDeep());
+        }
+        developer.inspect(creator);
       }
     }
     setState(() {
@@ -362,6 +373,7 @@ class _InspectorOverlayRenderState {
     @required this.candidates,
     @required this.tooltip,
     @required this.textDirection,
+    @required this.selectedObject,
   });
 
   final Rect overlayRect;
@@ -369,6 +381,7 @@ class _InspectorOverlayRenderState {
   final List<_TransformedRect> candidates;
   final String tooltip;
   final TextDirection textDirection;
+  final RenderObject selectedObject;
 
   @override
   bool operator ==(dynamic other) {
@@ -451,6 +464,7 @@ class _InspectorOverlayLayer extends Layer {
       tooltip: selected.toString(),
       textDirection: TextDirection.ltr,
       candidates: candidates,
+      selectedObject: selected,
     );
 
     if (state != _lastState) {
@@ -478,10 +492,17 @@ class _InspectorOverlayLayer extends Layer {
     final Rect selectedPaintRect = state.selected.rect.deflate(0.5);
     canvas
       ..save()
-      ..transform(state.selected.transform.storage)
+      ..transform(state.selected.transform.storage);
+
+    canvas
       ..drawRect(selectedPaintRect, fillPaint)
-      ..drawRect(selectedPaintRect, borderPaint)
-      ..restore();
+      ..drawRect(selectedPaintRect, borderPaint);
+
+    final bool oldDebugPaintSizeEnabled = debugPaintSizeEnabled;
+    debugPaintSizeEnabled = true;
+    state.selectedObject?.debugPaint(canvas, const Offset(0.0, 0.0));
+    debugPaintSizeEnabled = oldDebugPaintSizeEnabled;
+    canvas.restore();
 
     // Show all other candidate possibly selected elements. This helps selecting
     // render objects by selecting the edge of the bounding box shows all
