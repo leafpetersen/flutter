@@ -196,11 +196,11 @@ class RenderPadding extends RenderShiftedBox {
   }
 
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
-    super.debugPaintSize(context, offset);
+  void debugPaintSize(Canvas canvas, Offset offset) {
+    super.debugPaintSize(canvas, offset);
     assert(() {
       final Rect outerRect = offset & size;
-      debugPaintPadding(context.canvas, outerRect, child != null ? _resolvedPadding.deflateRect(outerRect) : null);
+      debugPaintPadding(canvas, outerRect, child != null ? _resolvedPadding.deflateRect(outerRect) : null);
       return true;
     });
   }
@@ -368,8 +368,8 @@ class RenderPositionedBox extends RenderAligningShiftedBox {
   }
 
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
-    super.debugPaintSize(context, offset);
+  void debugPaintSize(Canvas canvas, Offset offset) {
+    super.debugPaintSize(canvas, offset);
     assert(() {
       Paint paint;
       if (child != null && !child.size.isEmpty) {
@@ -396,7 +396,7 @@ class RenderPositionedBox extends RenderAligningShiftedBox {
             ..relativeLineTo(-headSize, -headSize)
             ..relativeLineTo(-headSize, headSize)
             ..relativeLineTo(headSize, 0.0);
-          context.canvas.drawPath(path, paint);
+          canvas.drawPath(path, paint);
         }
         if (childParentData.offset.dx > 0.0) {
           // horizontal alignment arrows
@@ -414,12 +414,12 @@ class RenderPositionedBox extends RenderAligningShiftedBox {
             ..relativeLineTo(-headSize, -headSize)
             ..relativeLineTo(headSize, -headSize)
             ..relativeLineTo(0.0, headSize);
-          context.canvas.drawPath(path, paint);
+          canvas.drawPath(path, paint);
         }
       } else {
         paint = new Paint()
           ..color = const Color(0x90909090);
-        context.canvas.drawRect(offset & size, paint);
+        canvas.drawRect(offset & size, paint);
       }
       return true;
     });
