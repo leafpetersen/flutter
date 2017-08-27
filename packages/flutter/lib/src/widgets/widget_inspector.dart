@@ -9,6 +9,7 @@ import 'dart:ui' as ui show window, Picture, SceneBuilder, PictureRecorder;
 import 'dart:ui' show Offset;
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart'; // XXX cyclic dep.
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 
@@ -200,7 +201,7 @@ class _WidgetInspectorState extends State<WidgetInspector>
     }
   }
 
-  void _handleTap() {
+  void _handleTap(BuildContext context) {
     if (!isSelectMode)
       return;
     if (_lastPointerLocation != null) {
@@ -280,40 +281,62 @@ class _WidgetInspectorState extends State<WidgetInspector>
       if (widget.selectButtonBuilder != null)
         isSelectMode = false;
     });
+    Scaffold.of(context).showSnackBar(new SnackBar(
+        content: new Padding(
+          // Padding so we don't hide the inspect icon.
+          padding: new EdgeInsets.only(left: 35.0),
+          child: const Text('Exiting select mode.\nTap the inspect icon to enter.'),
+        ),
+        duration: const Duration(milliseconds: 2000),
+        backgroundColor: const Color.fromARGB(200, 0, 0, 0),
+    ));
   }
 
-  void _handleEnableSelect() {
+  void _handleEnableSelect(BuildContext context) {
     setState(() {
       isSelectMode = true;
     });
+    Scaffold.of(context).showSnackBar(const SnackBar(
+      content: const Text('Tap a widget to select it'),
+      backgroundColor: const Color.fromARGB(200, 0, 0, 0),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> children = <Widget>[];
-    children.add(new GestureDetector(
-      onTap: _handleTap,
-      onPanDown: _handlePanDown,
-      onPanEnd: _handlePanEnd,
-      onPanUpdate: _handlePanUpdate,
-      behavior: HitTestBehavior.opaque,
-      excludeFromSemantics: true,
-      child: new IgnorePointer(
-        ignoring: isSelectMode,
-        key: _ignorePointerKey,
-        ignoringSemantics: false,
-        child: widget.child,
+    return new MediaQuery(
+      data: new MediaQueryData.fromWindow(ui.window),
+      child: new Scaffold(
+        body: new Builder(
+          builder: (BuildContext context) {
+            final List<Widget> children = <Widget>[];
+            children.add(new GestureDetector(
+              onTap: () => _handleTap(context),
+              onPanDown: _handlePanDown,
+              onPanEnd: _handlePanEnd,
+              onPanUpdate: _handlePanUpdate,
+              behavior: HitTestBehavior.opaque,
+              excludeFromSemantics: true,
+              child: new IgnorePointer(
+                ignoring: isSelectMode,
+                key: _ignorePointerKey,
+                ignoringSemantics: false,
+                child: widget.child,
+              ),
+            ));
+            if (!isSelectMode && widget.selectButtonBuilder != null) {
+              children.add(new Positioned(
+                  left: _kInspectButtonMargin,
+                  bottom: _kInspectButtonMargin,
+                  child:  widget.selectButtonBuilder(context, () => _handleEnableSelect(context))
+              ));
+            }
+            children.add(new _InspectorOverlay(selection: selection));
+            return new Stack(children: children);
+          },
+        ),
       ),
-    ));
-    if (!isSelectMode && widget.selectButtonBuilder != null) {
-      children.add(new Positioned(
-        left: _kInspectButtonMargin,
-        bottom: _kInspectButtonMargin,
-        child:  widget.selectButtonBuilder(context, _handleEnableSelect)
-      ));
-    }
-    children.add(new _InspectorOverlay(selection: selection));
-    return new Stack(children: children);
+    );
   }
 }
 
@@ -462,10 +485,10 @@ class _InspectorOverlayRenderState {
   int get hashCode => hashValues(overlayRect, selected, hashList(candidates), tooltip);
 }
 
-final int _kMaxTooltipLines = 5;
-final Color _kTooltipBackgroundColor = const Color.fromARGB(230, 60, 60, 60);
-final Color _kHighlightedRenderObjectFillColor = const Color.fromARGB(128, 128, 128, 255);
-final Color _kHighlightedRenderObjectBorderColor = const Color.fromARGB(128, 64, 64, 128);
+const int _kMaxTooltipLines = 5;
+const Color _kTooltipBackgroundColor = const Color.fromARGB(230, 60, 60, 60);
+const Color _kHighlightedRenderObjectFillColor = const Color.fromARGB(128, 128, 128, 255);
+const Color _kHighlightedRenderObjectBorderColor = const Color.fromARGB(128, 64, 64, 128);
 
 /// A layer that outlines the selected [RenderObject] and candidate render
 /// objects that also match the last pointer location.
