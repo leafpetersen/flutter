@@ -16,6 +16,7 @@ import 'package:flutter/services.dart';
 import 'app.dart';
 import 'focus_manager.dart';
 import 'framework.dart';
+import 'widget_inspector.dart';
 
 export 'dart:ui' show AppLifecycleState, Locale;
 
@@ -230,6 +231,21 @@ abstract class WidgetsBinding extends BindingBase with GestureBinding, RendererB
           return _forceRebuild();
         }
     );
+    assert(() {
+      registerServiceExtension(
+          name: 'debugNavWidgetInspector',
+          callback: (Map<String, String> parameters) async {
+            if (parameters.containsKey('value')) {
+              if (!WidgetsApp.debugShowWidgetInspectorOverride || debugInspector == null)
+                return null;
+              debugInspector.callAction(parameters['value']);
+              // await reassembleApplication();
+            }
+            return <String, String>{};
+          }
+      );
+      return true;
+    });
   }
 
   Future<Null> _forceRebuild() {

@@ -28,6 +28,7 @@ import 'run_cold.dart';
 import 'run_hot.dart';
 import 'vmservice.dart';
 
+bool isInspect = false;
 class FlutterDevice {
   final Device device;
   List<Uri> observatoryUris;
@@ -176,6 +177,12 @@ class FlutterDevice {
     for (FlutterView view in views)
       await view.uiIsolate.flutterToggleWidgetInspector();
   }
+
+  Future<Null> navWidgetInspector(String action) async {
+    for (FlutterView view in views)
+      await view.uiIsolate.flutterNavWidgetInspector(action);
+  }
+  
 
   Future<String> togglePlatform({ String from }) async {
     String to;
@@ -484,6 +491,12 @@ abstract class ResidentRunner {
       await device.toggleWidgetInspector();
   }
 
+  Future<Null> _debugNavWidgetInspector(String action) async {
+    await refreshViews();
+    for (FlutterDevice device in flutterDevices)
+      await device.navWidgetInspector(action);
+  }
+
   Future<Null> _screenshot(FlutterDevice device) async {
     final Status status = logger.startProgress('Taking screenshot for ${device.device.name}...');
     final File outputFile = getUniqueFile(fs.currentDirectory, 'flutter', 'png');
@@ -614,7 +627,7 @@ abstract class ResidentRunner {
     final String lower = character.toLowerCase();
 
     printStatus(''); // the key the user tapped might be on this line
-
+    print("--> Pressed key: $lower <--");
     if (lower == 'h' || lower == '?') {
       // help
       printHelp(details: true);
@@ -655,7 +668,44 @@ abstract class ResidentRunner {
       }
     } else if (lower == 'i') {
       if (supportsServiceProtocol) {
+        isInspect = !isInspect;
+        if (isInspect) {
+          print("You can now inspect widgets on device.");
+          print("Press ‘i’ again when you need to stop the inspector.");
+        } else {
+          print("Exited widget inspector");
+        }
         await _debugToggleWidgetInspector();
+        return true;
+      }
+    } else if (lower == 'a') {
+      if (supportsServiceProtocol) {
+        await _debugNavWidgetInspector('up');
+        return true;
+      }
+    } else if (lower == 'z') {
+      if (supportsServiceProtocol) {
+        await _debugNavWidgetInspector('down');
+        return true;
+      }
+    } else if (lower == 'x') {
+      if (supportsServiceProtocol) {
+        await _debugNavWidgetInspector('parent');
+        return true;
+      }
+    } else if (lower == 'c') {
+      if (supportsServiceProtocol) {
+        await _debugNavWidgetInspector('inspect');
+        return true;
+      }
+    } else if (lower == 'm') {
+      if (supportsServiceProtocol) {
+        await _debugNavWidgetInspector('refresh');
+        return true;
+      }
+    } else if (lower == 'b') {
+      if (supportsServiceProtocol) {
+        await _debugNavWidgetInspector('back');
         return true;
       }
     } else if (character == 's') {

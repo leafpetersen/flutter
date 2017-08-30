@@ -21,11 +21,14 @@ import 'gesture_detector.dart';
 void truncateLines(String txt, int lines) {
   final List<String> parts = txt.split('\n');
 
-  for(String line in parts.take(lines)) {
-    print(line);
+  for (int i = 0; i < math.min(parts.length, lines); ++i) {
+    var line = parts[i];
+    if (i == lines - 1 && lines < parts.length) {
+      print('$line ...');
+    } else {
+      print(line);
+    }
   }
-  if (parts.length > lines)
-    print('...');
 }
 
 /// Signature for the builder callback used by
@@ -78,13 +81,61 @@ class WidgetInspector extends StatefulWidget {
   _WidgetInspectorState createState() => new _WidgetInspectorState();
 }
 
+_WidgetInspectorState debugInspector;
+
 class _WidgetInspectorState extends State<WidgetInspector>
     with WidgetsBindingObserver {
 
+  _WidgetInspectorState() : selection = new InspectorSelection() {
+    debugInspector = this; /// XXX hack.
+  }
+
   Offset _lastPointerLocation;
 
-  final InspectorSelection selection = new InspectorSelection();
+  final InspectorSelection selection;
 
+  void callAction(String action) {
+    if (selection.candidates == null)
+      return;
+    switch (action) {
+      case 'up':
+        setState(() {
+          selection.index = (selection.index + 1) % selection.candidates.length;
+        });
+        describeCurrent();
+        break;
+      case 'down':
+        setState(() {
+          selection.index =
+              (selection.index - 1 + selection.candidates.length) %
+                  selection.candidates.length;
+        });
+        describeCurrent();
+        break;
+      case 'parent':
+        setState(() {
+          if (selection.current == null || selection.current.parent == null) {
+            print("No parent.");
+            return;
+          }
+          selection.current = selection.current.parent;
+          describeCurrent();
+        });
+        break;
+      case 'back':
+        setState(() {
+          selection.pop();
+          describeCurrent();
+        });
+        break;
+      case 'inspect':
+        describeCurrent(10000);
+        break;
+      case 'refresh':
+        describeCurrent();
+        break;
+    }
+  }
   /// Whether the inspector is in select mode.
   ///
   /// In select mode, pointer interactions trigger widget selection instead of
@@ -158,9 +209,19 @@ class _WidgetInspectorState extends State<WidgetInspector>
       final Size size = object.semanticBounds?.size;
       return size == null ? double.MAX_FINITE : size.width * size.height;
     }
+    Set<RenderObject> regularHitsSet = new HashSet<RenderObject>();
+    regularHitsSet.addAll(regularHits);
     regularHits.sort((RenderObject a, RenderObject b) => _area(a).compareTo(_area(b)));
+    bool noChildrenHit(RenderObject object) {
+      bool hitChild = false;
+      object.visitChildren((RenderObject child) {
+        if (regularHitsSet.contains(child))
+          hitChild = true;
+      });
+      return !hitChild;
+    }
     final Set<RenderObject> hits = new LinkedHashSet<RenderObject>();
-    hits..addAll(edgeHits)..addAll(regularHits);
+    hits..addAll(edgeHits)..addAll(regularHits.where(noChildrenHit));
     return hits.toList();
   }
 
@@ -214,66 +275,7 @@ class _WidgetInspectorState extends State<WidgetInspector>
          /* selection.current?.markNeedsPaint();
           lastSelection?.markNeedsPaint();*/
         }
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print(' ');
-        print('===============================================================');
-        print('RenderObject Tree:');
-        developer.inspect(selection.current);
-        truncateLines(selection.current.toStringDeep(), 30);
-        final Element creator = selection.current.debugCreator.element;
-        if (creator != null) {
-          print('-----------------------------------------------------------');
-          print('Widget Tree:');
-          truncateLines(creator.toStringDeep(), 10);
-        }
-        developer.inspect(creator);
+        describeCurrent();
       }
     }
     setState(() {
@@ -290,6 +292,90 @@ class _WidgetInspectorState extends State<WidgetInspector>
         duration: const Duration(milliseconds: 2000),
         backgroundColor: const Color.fromARGB(200, 0, 0, 0),
     ));
+  }
+
+  void describeCurrent([int maxLength=27]) {
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print(' ');
+    print('${selection.index + 1} of ${selection.candidates.length}');
+//    print('===============================================================');
+    if (selection.current == null)
+      return;
+    if (maxLength > 30)
+      developer.inspect(selection.current);
+
+    print("===================== Render Object Tree ====================");
+    String debugRenderObjectParentChain(RenderObject node, int limit) {
+      List<String> chain = <String>[];
+      if (node != null) node = node.parent;
+      while (chain.length < limit && node != null) {
+        chain.add(node.toStringShort());
+        node = node.parent;
+      }
+      if (node != null)
+        chain.add('\u22EF');
+      chain = chain.reversed.toList();
+      if (chain.length > 0) chain.add(' ');
+      return chain.join(' \u2192 ');
+    }
+  print(debugRenderObjectParentChain(selection.current, maxLength~/6));
+    truncateLines(selection.current.toStringDeep(), maxLength);
+    final Element creator = selection.current.debugCreator.element;
+
+    if (creator != null) {
+      print('======================== Widget Tree ========================');
+      print(creator.debugGetCreatorChainR(maxLength~/6));
+      truncateLines(creator.toStringDeep(), maxLength ~/ 3);
+    }
+    if (maxLength > 30)
+      developer.inspect(creator);
   }
 
   void _handleEnableSelect(BuildContext context) {
@@ -347,18 +433,27 @@ class InspectorSelection {
   /// Tools may wish to iterate through the list of candidates.
   List<RenderObject> get candidates => _candidates;
   List<RenderObject> _candidates = <RenderObject>[];
+  List<RenderObject> undoStack = <RenderObject>[];
   set candidates(List<RenderObject> value) {
     _candidates = value;
-    index = 0;
+    _index = 0;
+    _calculateCurrent();
+    undoStack = <RenderObject>[];
   }
 
   /// Index within the list of candidates that is currently selected.
-  int index = 0;
+  int get index => _index;
+  void set index(int value) {
+    _index = value;
+    _calculateCurrent();
+  }
+  int _index = 0;
 
   /// Set the selection to empty.
   void clear() {
     _candidates = <RenderObject>[];
     index = 0;
+    _calculateCurrent();
   }
 
   /// Selected render object from the [candidates] list.
@@ -366,8 +461,23 @@ class InspectorSelection {
   /// Setting [candidates] or calling [clear] resets the selection.
   ///
   /// Returns null if the selection is invalid.
-  RenderObject get current {
-    return candidates != null && index < candidates.length ? candidates[index] : null;
+  RenderObject get current => _current;
+  RenderObject _current;
+  void set current(RenderObject v) {
+    if (_current != null) {
+      undoStack.add(_current);
+    }
+    _current = v;
+  }
+
+  void pop() {
+    if (undoStack.isEmpty) return;
+    _current = undoStack.removeLast();
+  }
+
+  void _calculateCurrent() {
+    _current = candidates != null && index < candidates.length ? candidates[index] : null;
+    undoStack = <RenderObject>[];
   }
 
   /// Whether the selected render object is attached to the tree or has gone
@@ -487,7 +597,7 @@ class _InspectorOverlayRenderState {
 
 const int _kMaxTooltipLines = 5;
 const Color _kTooltipBackgroundColor = const Color.fromARGB(230, 60, 60, 60);
-const Color _kHighlightedRenderObjectFillColor = const Color.fromARGB(128, 128, 128, 255);
+const Color _kHighlightedRenderObjectFillColor = const Color.fromARGB(64, 128, 128, 255);
 const Color _kHighlightedRenderObjectBorderColor = const Color.fromARGB(128, 64, 64, 128);
 
 /// A layer that outlines the selected [RenderObject] and candidate render

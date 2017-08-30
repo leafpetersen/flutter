@@ -3305,6 +3305,21 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
     return chain.join(' \u2190 ');
   }
 
+  String debugGetCreatorChainR(int limit) {
+    List<String> chain = <String>[];
+    Element node = this._parent;
+    while (chain.length < limit && node != null) {
+      chain.add(node.toStringShort());
+      node = node._parent;
+    }
+    if (node != null)
+      chain.add('\u22EF');
+    chain = chain.reversed.toList();
+    if (chain.length > 0) chain.add(' ');
+    return chain.join(' \u2192 ');
+  }
+
+
   /// A short, textual description of this element.
   @override String toStringShort() {
     return widget != null ? '${widget.toStringShort()}' : '[$runtimeType]';
@@ -4659,7 +4674,7 @@ class _DebugCreator {
   _DebugCreator(this.element);
   final RenderObjectElement element;
   @override
-  String toString() => element.debugGetCreatorChain(12);
+  String toString() => element.debugGetCreatorChain(2);
 }
 
 void _debugReportException(String context, dynamic exception, StackTrace stack, {
