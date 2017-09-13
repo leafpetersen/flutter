@@ -14,6 +14,7 @@ import 'floating_action_button.dart';
 import 'icons.dart';
 import 'material_localizations.dart';
 import 'page.dart';
+import 'quick_start_tooltip.dart';
 import 'theme.dart';
 
 const TextStyle _errorTextStyle = const TextStyle(
@@ -467,11 +468,15 @@ class _MaterialAppState extends State<MaterialApp> {
         checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
         showSemanticsDebugger: widget.showSemanticsDebugger,
         debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
-        inspectorSelectButtonBuilder: (BuildContext context, VoidCallback onPressed) {
-          return new FloatingActionButton(
-            child: const Icon(Icons.search),
-            onPressed: onPressed,
-            mini: true,
+        inspectorSelectButtonBuilder: (BuildContext context, String quickStartMessage, VoidCallback onPressed) {
+          return
+            new QuickStartTooltip(
+            message: quickStartMessage,
+            child: new FloatingActionButton(
+              child: const Icon(Icons.search),
+              onPressed: onPressed,
+              mini: true,
+            )
           );
         },
       )

@@ -28,6 +28,7 @@ void main() {
         textDirection: TextDirection.ltr,
         child: new WidgetInspector(
           selectButtonBuilder: null,
+          showQuickStart: null,
           child: new Stack(
             children: <Widget>[
               const Text('a', textDirection: TextDirection.ltr),
@@ -48,7 +49,8 @@ void main() {
     final GlobalKey inspectorKey = new GlobalKey();
     final GlobalKey topButtonKey = new GlobalKey();
 
-    Widget selectButtonBuilder(BuildContext context, VoidCallback onPressed) {
+    Widget selectButtonBuilder(BuildContext context, String quickStartMessage, VoidCallback onPressed) {
+      // TODO(jacobr): actually display quick start message.
       return new Material(child: new RaisedButton(onPressed: onPressed, key: selectButtonKey));
     }
     // State type is private, hence using dynamic.
@@ -61,6 +63,7 @@ void main() {
         child: new WidgetInspector(
           key: inspectorKey,
           selectButtonBuilder: selectButtonBuilder,
+          showQuickStart: null,
           child: new Material(
             child: new ListView(
               children: <Widget>[
@@ -120,7 +123,7 @@ void main() {
     final GlobalKey selectButtonKey = new GlobalKey();
     final GlobalKey inspectorKey = new GlobalKey();
 
-    Widget selectButtonBuilder(BuildContext context, VoidCallback onPressed) {
+    Widget selectButtonBuilder(BuildContext context, String message, VoidCallback onPressed) {
       return new Material(child: new RaisedButton(onPressed: onPressed, key: selectButtonKey));
     }
     // State type is private, hence using dynamic.
@@ -132,6 +135,7 @@ void main() {
         child: new WidgetInspector(
           key: inspectorKey,
           selectButtonBuilder: selectButtonBuilder,
+          showQuickStart: null,
           child: new ListView(
             children: <Widget>[
               new Container(
@@ -182,6 +186,7 @@ void main() {
         textDirection: TextDirection.ltr,
         child: new WidgetInspector(
           selectButtonBuilder: null,
+          showQuickStart: null,
           child: new GestureDetector(
             onLongPress: () {
               expect(didLongPress, isFalse);
@@ -222,6 +227,7 @@ void main() {
         child: new WidgetInspector(
           key: inspectorKey,
           selectButtonBuilder: null,
+          showQuickStart: null,
           child: new Overlay(
             initialEntries: <OverlayEntry>[
               new OverlayEntry(

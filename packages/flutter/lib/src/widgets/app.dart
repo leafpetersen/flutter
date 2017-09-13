@@ -431,6 +431,7 @@ class _WidgetsAppState extends State<WidgetsApp> implements WidgetsBindingObserv
         result = new WidgetInspector(
           child: result,
           selectButtonBuilder: widget.inspectorSelectButtonBuilder,
+          showQuickStart: () {}, // Showing the quickstart message requires the Material theme.
         );
       }
       if (widget.debugShowCheckedModeBanner && WidgetsApp.debugAllowBannerOverride) {

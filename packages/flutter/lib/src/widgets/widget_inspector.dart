@@ -18,11 +18,16 @@ import 'binding.dart';
 import 'framework.dart';
 import 'gesture_detector.dart';
 
+final String _quickStartMessage =
+  'Click the "magnifier" and then click anywhere on the screen.\n'
+  '\n'
+  'Hold and move to focus on a different widget.';
+
 void truncateLines(String txt, int lines) {
   final List<String> parts = txt.split('\n');
 
   for (int i = 0; i < math.min(parts.length, lines); ++i) {
-    var line = parts[i];
+    final String line = parts[i];
     if (i == lines - 1 && lines < parts.length) {
       print('$line ...');
     } else {
@@ -33,7 +38,7 @@ void truncateLines(String txt, int lines) {
 
 /// Signature for the builder callback used by
 /// [WidgetInspector.selectButtonBuilder].
-typedef Widget InspectorSelectButtonBuilder(BuildContext context, VoidCallback onPressed);
+typedef Widget InspectorSelectButtonBuilder(BuildContext context, String quickStartMessage, VoidCallback onPressed);
 
 /// A widget that enables inspecting the child widget's structure.
 ///
@@ -65,6 +70,7 @@ class WidgetInspector extends StatefulWidget {
     Key key,
     @required this.child,
     @required this.selectButtonBuilder,
+    @required this.showQuickStart,
   }) : assert(child != null),
        super(key: key);
 
@@ -76,6 +82,7 @@ class WidgetInspector extends StatefulWidget {
   /// The `onPressed` callback passed as an argument to the builder should be
   /// hooked up to the returned widget.
   final InspectorSelectButtonBuilder selectButtonBuilder;
+  final VoidCallback showQuickStart;
 
   @override
   _WidgetInspectorState createState() => new _WidgetInspectorState();
@@ -209,7 +216,7 @@ class _WidgetInspectorState extends State<WidgetInspector>
       final Size size = object.semanticBounds?.size;
       return size == null ? double.MAX_FINITE : size.width * size.height;
     }
-    Set<RenderObject> regularHitsSet = new HashSet<RenderObject>();
+    final Set<RenderObject> regularHitsSet = new HashSet<RenderObject>();
     regularHitsSet.addAll(regularHits);
     regularHits.sort((RenderObject a, RenderObject b) => _area(a).compareTo(_area(b)));
     bool noChildrenHit(RenderObject object) {
@@ -283,10 +290,10 @@ class _WidgetInspectorState extends State<WidgetInspector>
       if (widget.selectButtonBuilder != null)
         isSelectMode = false;
     });
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Padding(
+    Scaffold.of(context).showSnackBar(const SnackBar(
+        content: const Padding(
           // Padding so we don't hide the inspect icon.
-          padding: new EdgeInsets.only(left: 35.0),
+          padding: const EdgeInsets.only(left: 35.0),
           child: const Text('Exiting select mode.\nTap the inspect icon to enter.'),
         ),
         duration: const Duration(milliseconds: 2000),
@@ -354,7 +361,8 @@ class _WidgetInspectorState extends State<WidgetInspector>
     print("===================== Render Object Tree ====================");
     String debugRenderObjectParentChain(RenderObject node, int limit) {
       List<String> chain = <String>[];
-      if (node != null) node = node.parent;
+      if (node != null)
+        node = node.parent;
       while (chain.length < limit && node != null) {
         chain.add(node.toStringShort());
         node = node.parent;
@@ -362,17 +370,18 @@ class _WidgetInspectorState extends State<WidgetInspector>
       if (node != null)
         chain.add('\u22EF');
       chain = chain.reversed.toList();
-      if (chain.length > 0) chain.add(' ');
+      if (chain.isNotEmpty)
+        chain.add(' ');
       return chain.join(' \u2192 ');
     }
-  print(debugRenderObjectParentChain(selection.current, maxLength~/6));
-    truncateLines(selection.current.toStringDeep(), maxLength);
+  print(debugRenderObjectParentChain(selection.current, 2000));
+    truncateLines(selection.current.toStringDeep(minLevel: DiagnosticLevel.info), maxLength);
     final Element creator = selection.current.debugCreator.element;
 
     if (creator != null) {
       print('======================== Widget Tree ========================');
-      print(creator.debugGetCreatorChainR(maxLength~/6));
-      truncateLines(creator.toStringDeep(), maxLength ~/ 3);
+      print(creator.debugGetCreatorChainR(2000));
+      truncateLines(creator.toStringDeep(minLevel: DiagnosticLevel.info), maxLength ~/ 3);
     }
     if (maxLength > 30)
       developer.inspect(creator);
@@ -410,14 +419,22 @@ class _WidgetInspectorState extends State<WidgetInspector>
                 child: widget.child,
               ),
             ));
-            if (!isSelectMode && widget.selectButtonBuilder != null) {
-              children.add(new Positioned(
-                  left: _kInspectButtonMargin,
-                  bottom: _kInspectButtonMargin,
-                  child:  widget.selectButtonBuilder(context, () => _handleEnableSelect(context))
-              ));
-            }
+
             children.add(new _InspectorOverlay(selection: selection));
+            if (!isSelectMode && widget.selectButtonBuilder != null) {
+              final Path path = new Path();
+              path.addOval(new Rect.fromLTWH(0.0, 0.0, 50.0, 50.0));
+              children.add(
+                new Overlay(
+                  initialEntries: <OverlayEntry>[new OverlayEntry(builder: (BuildContext context) {
+                    return new Positioned(
+                      left: _kInspectButtonMargin,
+                      bottom: _kInspectButtonMargin,
+                      child: widget.selectButtonBuilder(context, _quickStartMessage, () => _handleEnableSelect(context)),
+                    );
+                  })],
+                ));
+            }
             return new Stack(children: children);
           },
         ),
@@ -443,7 +460,7 @@ class InspectorSelection {
 
   /// Index within the list of candidates that is currently selected.
   int get index => _index;
-  void set index(int value) {
+  set index(int value) {
     _index = value;
     _calculateCurrent();
   }
@@ -463,7 +480,7 @@ class InspectorSelection {
   /// Returns null if the selection is invalid.
   RenderObject get current => _current;
   RenderObject _current;
-  void set current(RenderObject v) {
+  set current(RenderObject v) {
     if (_current != null) {
       undoStack.add(_current);
     }
@@ -471,7 +488,8 @@ class InspectorSelection {
   }
 
   void pop() {
-    if (undoStack.isEmpty) return;
+    if (undoStack.isEmpty)
+      return;
     _current = undoStack.removeLast();
   }
 

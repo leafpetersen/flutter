@@ -1019,7 +1019,7 @@ abstract class _RenderCustomClip<T> extends RenderProxyBox {
   Paint _debugPaint;
   TextPainter _debugText;
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
+  void debugPaintSize(Canvas canvas, Offset offset) {
     assert(() {
       _debugPaint ??= new Paint()
         ..shader = new ui.Gradient.linear(
@@ -1085,12 +1085,12 @@ class RenderClipRect extends _RenderCustomClip<Rect> {
   }
 
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
+  void debugPaintSize(Canvas canvas, Offset offset) {
     assert(() {
       if (child != null) {
-        super.debugPaintSize(context, offset);
-        context.canvas.drawRect(_clip.shift(offset), _debugPaint);
-        _debugText.paint(context.canvas, offset + new Offset(_clip.width / 8.0, -_debugText.text.style.fontSize * 1.1));
+        super.debugPaintSize(canvas, offset);
+        canvas.drawRect(_clip.shift(offset), _debugPaint);
+        _debugText.paint(canvas, offset + new Offset(_clip.width / 8.0, -_debugText.text.style.fontSize * 1.1));
       }
       return true;
     });
@@ -1156,12 +1156,12 @@ class RenderClipRRect extends _RenderCustomClip<RRect> {
   }
 
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
+  void debugPaintSize(Canvas canvas, Offset offset) {
     assert(() {
       if (child != null) {
-        super.debugPaintSize(context, offset);
-        context.canvas.drawRRect(_clip.shift(offset), _debugPaint);
-        _debugText.paint(context.canvas, offset + new Offset(_clip.tlRadiusX, -_debugText.text.style.fontSize * 1.1));
+        super.debugPaintSize(canvas, offset);
+        canvas.drawRRect(_clip.shift(offset), _debugPaint);
+        _debugText.paint(canvas, offset + new Offset(_clip.tlRadiusX, -_debugText.text.style.fontSize * 1.1));
       }
       return true;
     });
@@ -1220,12 +1220,12 @@ class RenderClipOval extends _RenderCustomClip<Rect> {
   }
 
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
+  void debugPaintSize(Canvas canvas, Offset offset) {
     assert(() {
       if (child != null) {
-        super.debugPaintSize(context, offset);
-        context.canvas.drawPath(_getClipPath(_clip).shift(offset), _debugPaint);
-        _debugText.paint(context.canvas, offset + new Offset((_clip.width - _debugText.width) / 2.0, -_debugText.text.style.fontSize * 1.1));
+        super.debugPaintSize(canvas, offset);
+        canvas.drawPath(_getClipPath(_clip).shift(offset), _debugPaint);
+        _debugText.paint(canvas, offset + new Offset((_clip.width - _debugText.width) / 2.0, -_debugText.text.style.fontSize * 1.1));
       }
       return true;
     });
@@ -1278,12 +1278,12 @@ class RenderClipPath extends _RenderCustomClip<Path> {
   }
 
   @override
-  void debugPaintSize(PaintingContext context, Offset offset) {
+  void debugPaintSize(Canvas canvas, Offset offset) {
     assert(() {
       if (child != null) {
-        super.debugPaintSize(context, offset);
-        context.canvas.drawPath(_clip.shift(offset), _debugPaint);
-        _debugText.paint(context.canvas, offset);
+        super.debugPaintSize(canvas, offset);
+        canvas.drawPath(_clip.shift(offset), _debugPaint);
+        _debugText.paint(canvas, offset);
       }
       return true;
     });

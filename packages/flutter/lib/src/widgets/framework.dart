@@ -3307,7 +3307,7 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
 
   String debugGetCreatorChainR(int limit) {
     List<String> chain = <String>[];
-    Element node = this._parent;
+    Element node = _parent;
     while (chain.length < limit && node != null) {
       chain.add(node.toStringShort());
       node = node._parent;
@@ -3315,7 +3315,8 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
     if (node != null)
       chain.add('\u22EF');
     chain = chain.reversed.toList();
-    if (chain.length > 0) chain.add(' ');
+    if (chain.isNotEmpty)
+      chain.add(' ');
     return chain.join(' \u2192 ');
   }
 
