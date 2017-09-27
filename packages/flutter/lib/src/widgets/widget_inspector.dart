@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
+import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:math' as math;
 import 'dart:ui' as ui show window, Picture, SceneBuilder, PictureRecorder;
@@ -40,6 +41,105 @@ void truncateLines(String txt, int lines) {
 /// [WidgetInspector.selectButtonBuilder].
 typedef Widget InspectorSelectButtonBuilder(BuildContext context, String quickStartMessage, VoidCallback onPressed);
 
+/// Service used by GUI tools to query the the current Widget and Element trees.
+///
+/// Handles keeping alive references to
+class WidgetInspectorService {
+  // Globally specified selection.
+  static final InspectorSelection selection = new InspectorSelection();
+
+  /// The Observatory protocol does not keep alive object references so we need
+  /// to manually manange arenas of objects we do not care about.
+  static Map<String, Set<Object>> groups = <String, Set<Object>>{};
+
+  static void disposeGroup(String name) {
+    groups.remove(name);
+  }
+
+  static void dispose(Object o, String groupName) {
+    groups[groupName]?.remove(o);
+  }
+
+  static void clearAllGroups() {
+    groups.clear();
+  }
+
+  static T keepAlive<T>(T object, String groupName) {
+    final Set<Object> group = groups.putIfAbsent(groupName, () => new Set<Object>.identity());
+    group.add(object);
+    return object;
+  }
+
+  /// Returns json describing the fields
+  static String diagnosticsNodeToJson(DiagnosticsNode n, [String groupName]) {
+    return JSON.encode(n?.toJson());
+  }
+
+  static List<DiagnosticsPathNode> getElementParentChain(Element element, String groupName) {
+    return keepAlive(element?.debugGetDiagnosticChainR(), groupName) ?? const <DiagnosticsPathNode>[];
+  }
+
+  /// XXX document.
+  static bool maybeSetSelection(Object object, String groupName) {
+    if (object is Element) {
+      selection.currentElement = object;
+      return true;
+    }
+    if (object is RenderObject) {
+      selection.current = object;
+      return true;
+    }
+    return false;
+  }
+
+  static List<DiagnosticsPathNode> getRenderObjectParentChain(RenderObject renderObject, String groupName) {
+    if (renderObject == null)
+      return const <DiagnosticsPathNode>[];
+
+    final List<RenderObject> chain = <RenderObject>[];
+    while(renderObject != null) {
+      chain.add(renderObject);
+      renderObject = renderObject.parent;
+    }
+    return keepAlive(followDiagnosticableChain(chain.reversed.toList()), groupName);
+  }
+
+  static String diagnosticsPathToJson(List<DiagnosticsPathNode> path) {
+    return JSON.encode(path.map((DiagnosticsPathNode n) => n?.toJson()).toList());
+  }
+
+  /// Returns json describing the fields
+  static String diagnosticsNodesToJson(Iterable<DiagnosticsNode> nodes) {
+    return JSON.encode(nodes.map((DiagnosticsNode n) => n?.toJson()).toList());
+  }
+
+  static List<DiagnosticsNode> getProperties(DiagnosticsNode n, String groupName) {
+    return keepAlive(n.getProperties(), groupName);
+  }
+
+  static List<DiagnosticsNode> getChildren(DiagnosticsNode n, String groupName) {
+    return keepAlive(n.getChildren(), groupName);
+  }
+
+  static Object getValue(DiagnosticsNode n, String groupName) {
+    return keepAlive(n.value, groupName);
+  }
+
+  static DiagnosticsNode toDiagnosticsNode(Diagnosticable diagnosticable, String groupName) {
+    if (diagnosticable == null)
+      return null;
+    return keepAlive(diagnosticable.toDiagnosticsNode(), groupName);
+  }
+
+  static DiagnosticsNode getRootWidget(String groupName) {
+    return keepAlive(WidgetsBinding.instance.renderViewElement?.toDiagnosticsNode(), groupName);
+  }
+
+
+  static DiagnosticsNode getRootRenderObject(String groupName) {
+    return keepAlive(RendererBinding.instance?.renderView?.toDiagnosticsNode(), groupName);
+  }
+}
 /// A widget that enables inspecting the child widget's structure.
 ///
 /// Select a location on your device or emulator and view what widgets and
@@ -93,7 +193,7 @@ _WidgetInspectorState debugInspector;
 class _WidgetInspectorState extends State<WidgetInspector>
     with WidgetsBindingObserver {
 
-  _WidgetInspectorState() : selection = new InspectorSelection() {
+  _WidgetInspectorState() : selection = WidgetInspectorService.selection {
     debugInspector = this; /// XXX hack.
   }
 
@@ -301,7 +401,7 @@ class _WidgetInspectorState extends State<WidgetInspector>
     ));
   }
 
-  void describeCurrent([int maxLength=27]) {
+  void describeCurrent([int maxLength=25]) {
     print(' ');
     print(' ');
     print(' ');
@@ -355,8 +455,9 @@ class _WidgetInspectorState extends State<WidgetInspector>
 //    print('===============================================================');
     if (selection.current == null)
       return;
-    if (maxLength > 30)
-      developer.inspect(selection.current);
+
+    developer.inspect(selection.current);
+    developer.postEvent("inspectedObjectChanged", <String, Object>{'index': selection.index});
 
     print("===================== Render Object Tree ====================");
     String debugRenderObjectParentChain(RenderObject node, int limit) {
@@ -374,17 +475,16 @@ class _WidgetInspectorState extends State<WidgetInspector>
         chain.add(' ');
       return chain.join(' \u2192 ');
     }
-  print(debugRenderObjectParentChain(selection.current, 2000));
+    print('\u001b[32m${debugRenderObjectParentChain(selection.current, 5)}\u001B[0m');
     truncateLines(selection.current.toStringDeep(minLevel: DiagnosticLevel.info), maxLength);
     final Element creator = selection.current.debugCreator.element;
 
     if (creator != null) {
-      print('======================== Widget Tree ========================');
-      print(creator.debugGetCreatorChainR(2000));
+      print('======================== \u001B[1mWidget Tree\u001B[0m ========================');
+      print('\u001b[32m${creator.debugGetCreatorChainR(10)}\u001B[0m');
       truncateLines(creator.toStringDeep(minLevel: DiagnosticLevel.info), maxLength ~/ 3);
     }
-    if (maxLength > 30)
-      developer.inspect(creator);
+///    developer.inspect(creator);
   }
 
   void _handleEnableSelect(BuildContext context) {
@@ -443,6 +543,13 @@ class _WidgetInspectorState extends State<WidgetInspector>
   }
 }
 
+// XXX make private.
+class InspectorUndoEntry {
+  InspectorUndoEntry({this.element, this.renderObject});
+  final Element element;
+  final RenderObject renderObject;
+}
+
 /// Mutable selection state of the inspector.
 class InspectorSelection {
   /// Render objects that are candidates to be selected.
@@ -450,12 +557,13 @@ class InspectorSelection {
   /// Tools may wish to iterate through the list of candidates.
   List<RenderObject> get candidates => _candidates;
   List<RenderObject> _candidates = <RenderObject>[];
-  List<RenderObject> undoStack = <RenderObject>[];
+  List<InspectorUndoEntry> undoStack = <InspectorUndoEntry>[];
+
   set candidates(List<RenderObject> value) {
     _candidates = value;
     _index = 0;
     _calculateCurrent();
-    undoStack = <RenderObject>[];
+    undoStack = <InspectorUndoEntry>[];
   }
 
   /// Index within the list of candidates that is currently selected.
@@ -480,22 +588,41 @@ class InspectorSelection {
   /// Returns null if the selection is invalid.
   RenderObject get current => _current;
   RenderObject _current;
+
   set current(RenderObject v) {
-    if (_current != null) {
-      undoStack.add(_current);
+    if (_current != v) {
+      if (_current != null) {
+        _addUndoEntry();
+      }
+      _current = v;
+      _currentElement = v.debugCreator.element;
     }
-    _current = v;
+  }
+
+  void _addUndoEntry() {
+    undoStack.add(new InspectorUndoEntry(element: _currentElement, renderObject: _current));
+  }
+
+  Element get currentElement => _currentElement;
+  Element _currentElement;
+  set currentElement(Element element) {
+    if (currentElement != element) {
+      _currentElement = element;
+      _current = element.findRenderObject();
+    }
   }
 
   void pop() {
     if (undoStack.isEmpty)
       return;
-    _current = undoStack.removeLast();
+    final InspectorUndoEntry entry = undoStack.removeLast();
+    _current = entry.renderObject;
+    _currentElement = entry.element;
   }
 
   void _calculateCurrent() {
-    _current = candidates != null && index < candidates.length ? candidates[index] : null;
-    undoStack = <RenderObject>[];
+    current = candidates != null && index < candidates.length ? candidates[index] : null;
+    undoStack.clear();
   }
 
   /// Whether the selected render object is attached to the tree or has gone

@@ -744,6 +744,24 @@ abstract class DiagnosticsNode {
 
   String get _separator => showSeparator ? ':' : '';
 
+  /// XXX document.
+  @mustCallSuper
+  Map<String, Object> toJson() {
+    final Map<String, Object> data = <String, Object>{
+      'name': name,
+      'showSeparator': showSeparator,
+      'description': toDescription(),
+      'level': describeEnum(level),
+      'showName': showName,
+      'emptyBodyDescription': emptyBodyDescription,
+      'style': describeEnum(style),
+      'valueToString': value.toString(),
+      'type': runtimeType.toString(),
+      'hasChildren': getChildren().isNotEmpty,
+    };
+    return data;
+  }
+
   /// Returns a string representation of this diagnostic that is compatible with
   /// the style of the parent if the node is not the root.
   ///
@@ -1046,6 +1064,13 @@ class StringProperty extends DiagnosticsProperty<String> {
   final bool quoted;
 
   @override
+  Map<String, Object> toJson() {
+    final Map<String, Object> json = super.toJson();
+    json['quoted'] = quoted;
+    return json;
+  }
+
+  @override
   String valueToString({ TextTreeConfiguration parentConfiguration }) {
     String text = _description ?? value;
     if (parentConfiguration != null &&
@@ -1105,6 +1130,15 @@ abstract class _NumProperty<T extends num> extends DiagnosticsProperty<T> {
     level: level,
   );
 
+  @override
+  Map<String, Object> toJson() {
+    final Map<String, Object> json = super.toJson();
+    if (unit != null)
+      json['unit'] = unit;
+
+    json['numberToString'] = numberToString();
+    return json;
+  }
 
   /// Optional unit the [value] is measured in.
   ///
@@ -1318,6 +1352,17 @@ class FlagProperty extends DiagnosticsProperty<bool> {
     assert(ifTrue != null || ifFalse != null);
   }
 
+  @override
+  Map<String, Object> toJson() {
+    final Map<String, Object> json = super.toJson();
+    if (ifTrue != null)
+      json['ifTrue'] = ifTrue;
+    if (ifFalse != null)
+      json['ifFalse'] = ifFalse;
+
+    return json;
+  }
+
   /// Description to use if the property [value] is true.
   ///
   /// If not specified and [value] equals true the property's priority [level]
@@ -1434,6 +1479,15 @@ class IterableProperty<T> extends DiagnosticsProperty<Iterable<T>> {
     if (ifEmpty == null && value != null && value.isEmpty && super.level != DiagnosticLevel.hidden)
       return DiagnosticLevel.fine;
     return super.level;
+  }
+
+  @override
+  Map<String, Object> toJson() {
+    final Map<String, Object> json = super.toJson();
+    if (value != null) {
+      json['values'] = value.map<String>((T value) => value.toString()).toList();
+    }
+    return json;
   }
 }
 
@@ -1573,6 +1627,14 @@ class ObjectFlagProperty<T> extends DiagnosticsProperty<T> {
 
     return super.level;
   }
+
+  @override
+  Map<String, Object> toJson() {
+    final Map<String, Object> json = super.toJson();
+    if (ifPresent != null)
+      json['ifPresent'] = ifPresent;
+    return json;
+  }
 }
 
 /// Signature for computing the value of a property.
@@ -1675,7 +1737,29 @@ class DiagnosticsProperty<T> extends DiagnosticsNode {
 
   final String _description;
 
-  /// Returns a string representation of the property value.
+  @override
+  Map<String, Object> toJson() {
+    final Map<String, Object> json = super.toJson();
+    if (defaultValue != kNoDefaultValue)
+      json['defaultValue'] = defaultValue.toString();
+    if (ifEmpty != null)
+      json['ifEmpty'] = ifEmpty;
+    if (ifNull != null)
+      json['ifNull'] = ifNull;
+    if (tooltip != null)
+      json['tooltip'] = tooltip;
+    json['missingIfNull'] = missingIfNull;
+    if (exception != null)
+      json['exception'] = exception.toString();
+    json['propertyType'] = propertyType.toString();
+    json['valueToString'] = valueToString();
+    json['defaultLevel'] = describeEnum(_defaultLevel);
+    if (T is Diagnosticable)
+      json['isDiagnosticableValue'] = true;
+    return json;
+  }
+
+    /// Returns a string representation of the property value.
   ///
   /// Subclasses should override this method instead of [toDescription] to
   /// customize how property values are converted to strings.
@@ -2431,4 +2515,58 @@ abstract class DiagnosticableTreeMixin implements DiagnosticableTree {
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) { }
+}
+
+List<Map<String, Object>> diagnosticNodesToJson(List<DiagnosticsNode> nodes) {
+  if (nodes == null)
+    return null;
+  return nodes.map<Map<String, Object>>((DiagnosticsNode n) => n.toJson()).toList();
+}
+
+class DiagnosticsPathNode {
+  DiagnosticsPathNode({ this.node, this.children, this.childIndex });
+
+  final DiagnosticsNode node;
+  final List<DiagnosticsNode> children;
+  final int childIndex;
+
+  Map<String, Object> toJson() {
+    return <String, Object>{
+      'node': node.toJson(),
+      'children': diagnosticNodesToJson(children),
+      'childIndex': childIndex,
+    };
+  }
+}
+
+// XXX document.
+List<DiagnosticsPathNode> followDiagnosticableChain(List<Diagnosticable> chain, {
+  String name,
+  DiagnosticsTreeStyle style,
+}) {
+  final List<DiagnosticsPathNode> path = <DiagnosticsPathNode>[];
+  if (chain.isEmpty)
+    return path;
+  DiagnosticsNode diagnostic = chain.first.toDiagnosticsNode(name: name, style: style);
+  for (int i = 1; i < chain.length; ++i) {
+    final Diagnosticable target = chain[i];
+    bool foundMatch = false;
+    final List<DiagnosticsNode> children = diagnostic.getChildren();
+    for (int j = 0; j < children.length; ++j) {
+      final DiagnosticsNode child = children[j];
+      if (child.value == target) {
+        foundMatch = true;
+        path.add(new DiagnosticsPathNode(
+          node: diagnostic,
+          children: children,
+          childIndex: j,
+        ));
+        diagnostic = child;
+        break;
+      }
+    }
+    assert(foundMatch);
+  }
+  path.add(new DiagnosticsPathNode(node: diagnostic));
+  return path;
 }

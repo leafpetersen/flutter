@@ -672,6 +672,11 @@ abstract class ResidentRunner {
         if (isInspect) {
           print("You can now inspect widgets on device.");
           print("Press ‘i’ again when you need to stop the inspector.");
+          print("Press ‘x‘ to go the parent of the currently selection.");
+          print("Press ‘b‘ to go back to the previous selection.");
+          print("Press ‘c‘ to show more detailed information on the current selection");
+          print("Press ‘a‘ to cycle forwards through the list of objects matching the current location");
+          print("Press ‘z‘ to cycle backwards through the list of objects matching the current location");
         } else {
           print("Exited widget inspector");
         }

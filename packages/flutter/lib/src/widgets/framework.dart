@@ -3320,6 +3320,19 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
     return chain.join(' \u2192 ');
   }
 
+  /// XXX comment
+  List<DiagnosticsPathNode> debugGetDiagnosticChainR() {
+    List<Diagnosticable> chain = <Diagnosticable>[];
+    chain.add(this);
+    Element node = _parent;
+    while (node != null) {
+      chain.add(node);
+      node = node._parent;
+    }
+    chain = chain.reversed.toList();
+    return followDiagnosticableChain(chain);
+  }
+
 
   /// A short, textual description of this element.
   @override String toStringShort() {
