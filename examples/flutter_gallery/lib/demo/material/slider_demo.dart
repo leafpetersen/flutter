@@ -10,18 +10,20 @@ class SliderDemo extends StatefulWidget {
   static const String routeName = '/material/slider';
 
   @override
-  _SliderDemoState createState() => new _SliderDemoState();
+  _SliderDemoState createState() => _SliderDemoState();
 }
 
 Path _triangle(double size, Offset thumbCenter, {bool invert: false}) {
-  final Path thumbPath = new Path();
+  final Path thumbPath = Path();
   final double height = math.sqrt(3.0) / 2.0;
   final double halfSide = size / 2.0;
   final double centerHeight = size * height / 3.0;
   final double sign = invert ? -1.0 : 1.0;
-  thumbPath.moveTo(thumbCenter.dx - halfSide, thumbCenter.dy + sign * centerHeight);
+  thumbPath.moveTo(
+      thumbCenter.dx - halfSide, thumbCenter.dy + sign * centerHeight);
   thumbPath.lineTo(thumbCenter.dx, thumbCenter.dy - 2.0 * sign * centerHeight);
-  thumbPath.lineTo(thumbCenter.dx + halfSide, thumbCenter.dy + sign * centerHeight);
+  thumbPath.lineTo(
+      thumbCenter.dx + halfSide, thumbCenter.dy + sign * centerHeight);
   thumbPath.close();
   return thumbPath;
 }
@@ -32,10 +34,12 @@ class _CustomThumbShape extends SliderComponentShape {
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
-    return isEnabled ? const Size.fromRadius(_thumbSize) : const Size.fromRadius(_disabledThumbSize);
+    return isEnabled
+        ? const Size.fromRadius(_thumbSize)
+        : const Size.fromRadius(_disabledThumbSize);
   }
 
-  static final Tween<double> sizeTween = new Tween<double>(
+  static final Tween<double> sizeTween = Tween<double>(
     begin: _disabledThumbSize,
     end: _thumbSize,
   );
@@ -54,13 +58,14 @@ class _CustomThumbShape extends SliderComponentShape {
     double value,
   }) {
     final Canvas canvas = context.canvas;
-    final ColorTween colorTween = new ColorTween(
+    final ColorTween colorTween = ColorTween(
       begin: sliderTheme.disabledThumbColor,
       end: sliderTheme.thumbColor,
     );
     final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
     final Path thumbPath = _triangle(size, thumbCenter);
-    canvas.drawPath(thumbPath, new Paint()..color = colorTween.evaluate(enableAnimation));
+    canvas.drawPath(
+        thumbPath, Paint()..color = colorTween.evaluate(enableAnimation));
   }
 }
 
@@ -71,10 +76,10 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
-    return new Size.fromRadius(isEnabled ? _indicatorSize : _disabledIndicatorSize);
+    return Size.fromRadius(isEnabled ? _indicatorSize : _disabledIndicatorSize);
   }
 
-  static final Tween<double> sizeTween = new Tween<double>(
+  static final Tween<double> sizeTween = Tween<double>(
     begin: _disabledIndicatorSize,
     end: _indicatorSize,
   );
@@ -93,34 +98,41 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
     double value,
   }) {
     final Canvas canvas = context.canvas;
-    final ColorTween enableColor = new ColorTween(
+    final ColorTween enableColor = ColorTween(
       begin: sliderTheme.disabledThumbColor,
       end: sliderTheme.valueIndicatorColor,
     );
-    final Tween<double> slideUpTween = new Tween<double>(
+    final Tween<double> slideUpTween = Tween<double>(
       begin: 0.0,
       end: _slideUpHeight,
     );
     final double size = _indicatorSize * sizeTween.evaluate(enableAnimation);
-    final Offset slideUpOffset = new Offset(0.0, -slideUpTween.evaluate(activationAnimation));
+    final Offset slideUpOffset =
+        Offset(0.0, -slideUpTween.evaluate(activationAnimation));
     final Path thumbPath = _triangle(
       size,
       thumbCenter + slideUpOffset,
       invert: true,
     );
-    final Color paintColor = enableColor.evaluate(enableAnimation).withAlpha((255.0 * activationAnimation.value).round());
+    final Color paintColor = enableColor
+        .evaluate(enableAnimation)
+        .withAlpha((255.0 * activationAnimation.value).round());
     canvas.drawPath(
       thumbPath,
-      new Paint()..color = paintColor,
+      Paint()..color = paintColor,
     );
     canvas.drawLine(
         thumbCenter,
         thumbCenter + slideUpOffset,
-        new Paint()
+        Paint()
           ..color = paintColor
           ..style = PaintingStyle.stroke
           ..strokeWidth = 2.0);
-    labelPainter.paint(canvas, thumbCenter + slideUpOffset + new Offset(-labelPainter.width / 2.0, -labelPainter.height - 4.0));
+    labelPainter.paint(
+        canvas,
+        thumbCenter +
+            slideUpOffset +
+            Offset(-labelPainter.width / 2.0, -labelPainter.height - 4.0));
   }
 }
 
@@ -131,17 +143,17 @@ class _SliderDemoState extends State<SliderDemo> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return new Scaffold(
-      appBar: new AppBar(title: const Text('Sliders')),
-      body: new Padding(
+    return Scaffold(
+      appBar: AppBar(title: const Text('Sliders')),
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            new Column(
+            Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Slider(
+                Slider(
                   value: _value,
                   min: 0.0,
                   max: 100.0,
@@ -154,17 +166,17 @@ class _SliderDemoState extends State<SliderDemo> {
                 const Text('Continuous'),
               ],
             ),
-            new Column(
+            Column(
               mainAxisSize: MainAxisSize.min,
               children: const <Widget>[
-                const Slider(value: 0.25, onChanged: null),
-                const Text('Disabled'),
+                Slider(value: 0.25, onChanged: null),
+                Text('Disabled'),
               ],
             ),
-            new Column(
+            Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new Slider(
+                Slider(
                   value: _discreteValue,
                   min: 0.0,
                   max: 100.0,
@@ -179,10 +191,10 @@ class _SliderDemoState extends State<SliderDemo> {
                 const Text('Discrete'),
               ],
             ),
-            new Column(
+            Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new SliderTheme(
+                SliderTheme(
                   data: theme.sliderTheme.copyWith(
                     activeRailColor: Colors.deepPurple,
                     inactiveRailColor: Colors.black26,
@@ -191,11 +203,12 @@ class _SliderDemoState extends State<SliderDemo> {
                     overlayColor: Colors.black12,
                     thumbColor: Colors.deepPurple,
                     valueIndicatorColor: Colors.deepPurpleAccent,
-                    thumbShape: new _CustomThumbShape(),
-                    valueIndicatorShape: new _CustomValueIndicatorShape(),
-                    valueIndicatorTextStyle: theme.accentTextTheme.body2.copyWith(color: Colors.black87),
+                    thumbShape: _CustomThumbShape(),
+                    valueIndicatorShape: _CustomValueIndicatorShape(),
+                    valueIndicatorTextStyle: theme.accentTextTheme.body2
+                        .copyWith(color: Colors.black87),
                   ),
-                  child: new Slider(
+                  child: Slider(
                     value: _discreteValue,
                     min: 0.0,
                     max: 100.0,

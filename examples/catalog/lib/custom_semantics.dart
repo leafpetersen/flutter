@@ -36,30 +36,29 @@ class AdjustableDropdownListTile extends StatelessWidget {
     final bool canIncrease = indexOfValue < items.length - 1;
     final bool canDecrease = indexOfValue > 0;
 
-    return new Semantics(
-      container: true,
-      label: label,
-      value: value,
-      increasedValue: canIncrease ? _increasedValue : null,
-      decreasedValue: canDecrease ? _decreasedValue : null,
-      onIncrease: canIncrease ? _performIncrease : null,
-      onDecrease: canDecrease ? _performDecrease : null,
-      child: new ExcludeSemantics(
-        child: new ListTile(
-          title: new Text(label),
-          trailing: new DropdownButton<String>(
-            value: value,
-            onChanged: onChanged,
-            items: items.map((String item) {
-              return new DropdownMenuItem<String>(
-                value: item,
-                child: new Text(item),
-              );
-            }).toList(),
+    return Semantics(
+        container: true,
+        label: label,
+        value: value,
+        increasedValue: canIncrease ? _increasedValue : null,
+        decreasedValue: canDecrease ? _decreasedValue : null,
+        onIncrease: canIncrease ? _performIncrease : null,
+        onDecrease: canDecrease ? _performDecrease : null,
+        child: ExcludeSemantics(
+          child: ListTile(
+            title: Text(label),
+            trailing: DropdownButton<String>(
+              value: value,
+              onChanged: onChanged,
+              items: items.map((String item) {
+                return DropdownMenuItem<String>(
+                  value: item,
+                  child: Text(item),
+                );
+              }).toList(),
+            ),
           ),
-        ),
-      )
-    );
+        ));
   }
 
   String get _increasedValue {
@@ -81,11 +80,11 @@ class AdjustableDropdownListTile extends StatelessWidget {
 
 class AdjustableDropdownExample extends StatefulWidget {
   @override
-  AdjustableDropdownExampleState createState() => new AdjustableDropdownExampleState();
+  AdjustableDropdownExampleState createState() =>
+      AdjustableDropdownExampleState();
 }
 
 class AdjustableDropdownExampleState extends State<AdjustableDropdownExample> {
-
   final List<String> items = <String>[
     '1 second',
     '5 seconds',
@@ -97,14 +96,14 @@ class AdjustableDropdownExampleState extends State<AdjustableDropdownExample> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
-        appBar: new AppBar(
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
           title: const Text('Adjustable DropDown'),
         ),
-        body: new ListView(
+        body: ListView(
           children: <Widget>[
-            new AdjustableDropdownListTile(
+            AdjustableDropdownListTile(
               label: 'Timeout',
               value: timeout ?? items[2],
               items: items,
@@ -122,7 +121,7 @@ class AdjustableDropdownExampleState extends State<AdjustableDropdownExample> {
 }
 
 void main() {
-  runApp(new AdjustableDropdownExample());
+  runApp(AdjustableDropdownExample());
 }
 
 /*

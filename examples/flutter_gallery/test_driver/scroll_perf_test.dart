@@ -16,8 +16,7 @@ void main() {
     });
 
     tearDownAll(() async {
-      if (driver != null)
-        driver.close();
+      if (driver != null) driver.close();
     });
 
     test('measure', () async {
@@ -33,18 +32,20 @@ void main() {
         // https://github.com/flutter/flutter/issues/3316
         // Scroll down
         for (int i = 0; i < 5; i++) {
-          await driver.scroll(home, 0.0, -300.0, const Duration(milliseconds: 300));
-          await new Future<Null>.delayed(const Duration(milliseconds: 500));
+          await driver.scroll(
+              home, 0.0, -300.0, const Duration(milliseconds: 300));
+          await Future<Null>.delayed(const Duration(milliseconds: 500));
         }
 
         // Scroll up
         for (int i = 0; i < 5; i++) {
-          await driver.scroll(home, 0.0, 300.0, const Duration(milliseconds: 300));
-          await new Future<Null>.delayed(const Duration(milliseconds: 500));
+          await driver.scroll(
+              home, 0.0, 300.0, const Duration(milliseconds: 300));
+          await Future<Null>.delayed(const Duration(milliseconds: 500));
         }
       });
 
-      new TimelineSummary.summarize(timeline)
+      TimelineSummary.summarize(timeline)
         ..writeSummaryToFile('home_scroll_perf', pretty: true)
         ..writeTimelineToFile('home_scroll_perf', pretty: true);
     });

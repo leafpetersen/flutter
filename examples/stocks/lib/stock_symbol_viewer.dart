@@ -8,7 +8,7 @@ import 'stock_arrow.dart';
 import 'stock_data.dart';
 
 class _StockSymbolView extends StatelessWidget {
-  const _StockSymbolView({ this.stock, this.arrow });
+  const _StockSymbolView({this.stock, this.arrow});
 
   final Stock stock;
   final Widget arrow;
@@ -18,115 +18,100 @@ class _StockSymbolView extends StatelessWidget {
     assert(stock != null);
     final String lastSale = '\$${stock.lastSale.toStringAsFixed(2)}';
     String changeInPrice = '${stock.percentChange.toStringAsFixed(2)}%';
-    if (stock.percentChange > 0)
-      changeInPrice = '+' + changeInPrice;
+    if (stock.percentChange > 0) changeInPrice = '+' + changeInPrice;
 
     final TextStyle headings = Theme.of(context).textTheme.body2;
-    return new Container(
-      padding: const EdgeInsets.all(20.0),
-      child: new Column(
-        children: <Widget>[
-          new Row(
-            children: <Widget>[
-              new Text(
-                '${stock.symbol}',
-                style: Theme.of(context).textTheme.display2
-              ),
-              arrow,
-            ],
-            mainAxisAlignment: MainAxisAlignment.spaceBetween
-          ),
-          new Text('Last Sale', style: headings),
-          new Text('$lastSale ($changeInPrice)'),
-          new Container(
-            height: 8.0
-          ),
-          new Text('Market Cap', style: headings),
-          new Text('${stock.marketCap}'),
-          new Container(
-            height: 8.0
-          ),
-          new RichText(
-            text: new TextSpan(
-              style: DefaultTextStyle.of(context).style.merge(const TextStyle(fontSize: 8.0)),
-              text: 'Prices may be delayed by ',
-              children: const <TextSpan>[
-                const TextSpan(text: 'several', style: const TextStyle(fontStyle: FontStyle.italic)),
-                const TextSpan(text: ' years.'),
-              ]
-            )
-          ),
-        ],
-        mainAxisSize: MainAxisSize.min
-      )
-    );
+    return Container(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(children: <Widget>[
+          Row(children: <Widget>[
+            Text('${stock.symbol}',
+                style: Theme.of(context).textTheme.display2),
+            arrow,
+          ], mainAxisAlignment: MainAxisAlignment.spaceBetween),
+          Text('Last Sale', style: headings),
+          Text('$lastSale ($changeInPrice)'),
+          Container(height: 8.0),
+          Text('Market Cap', style: headings),
+          Text('${stock.marketCap}'),
+          Container(height: 8.0),
+          RichText(
+              text: TextSpan(
+                  style: DefaultTextStyle
+                      .of(context)
+                      .style
+                      .merge(const TextStyle(fontSize: 8.0)),
+                  text: 'Prices may be delayed by ',
+                  children: const <TextSpan>[
+                TextSpan(
+                    text: 'several',
+                    style: TextStyle(fontStyle: FontStyle.italic)),
+                TextSpan(text: ' years.'),
+              ])),
+        ], mainAxisSize: MainAxisSize.min));
   }
 }
 
 class StockSymbolPage extends StatelessWidget {
-  const StockSymbolPage({ this.symbol, this.stocks });
+  const StockSymbolPage({this.symbol, this.stocks});
 
   final String symbol;
   final StockData stocks;
 
   @override
   Widget build(BuildContext context) {
-    return new AnimatedBuilder(
+    return AnimatedBuilder(
       animation: stocks,
       builder: (BuildContext context, Widget child) {
         final Stock stock = stocks[symbol];
-        return new Scaffold(
-          appBar: new AppBar(
-            title: new Text(stock?.name ?? symbol)
-          ),
-          body: new SingleChildScrollView(
-            child: new Container(
-              margin: const EdgeInsets.all(20.0),
-              child: new Card(
-                child: new AnimatedCrossFade(
-                  duration: const Duration(milliseconds: 300),
-                  firstChild: const Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: const Center(child: const CircularProgressIndicator()),
-                  ),
-                  secondChild: stock != null
-                    ? new _StockSymbolView(
-                      stock: stock,
-                      arrow: new Hero(
-                        tag: stock,
-                        child: new StockArrow(percentChange: stock.percentChange),
+        return Scaffold(
+            appBar: AppBar(title: Text(stock?.name ?? symbol)),
+            body: SingleChildScrollView(
+                child: Container(
+                    margin: const EdgeInsets.all(20.0),
+                    child: Card(
+                      child: AnimatedCrossFade(
+                        duration: const Duration(milliseconds: 300),
+                        firstChild: const Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Center(child: CircularProgressIndicator()),
+                        ),
+                        secondChild: stock != null
+                            ? _StockSymbolView(
+                                stock: stock,
+                                arrow: Hero(
+                                  tag: stock,
+                                  child: StockArrow(
+                                      percentChange: stock.percentChange),
+                                ),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Center(child: Text('$symbol not found')),
+                              ),
+                        crossFadeState: stock == null && stocks.loading
+                            ? CrossFadeState.showFirst
+                            : CrossFadeState.showSecond,
                       ),
-                    ) : new Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: new Center(child: new Text('$symbol not found')),
-                    ),
-                  crossFadeState: stock == null && stocks.loading ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                ),
-              )
-            )
-          )
-        );
+                    ))));
       },
     );
   }
 }
 
 class StockSymbolBottomSheet extends StatelessWidget {
-  const StockSymbolBottomSheet({ this.stock });
+  const StockSymbolBottomSheet({this.stock});
 
   final Stock stock;
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      padding: const EdgeInsets.all(10.0),
-      decoration: const BoxDecoration(
-        border: const Border(top: const BorderSide(color: Colors.black26))
-      ),
-      child: new _StockSymbolView(
-        stock: stock,
-        arrow: new StockArrow(percentChange: stock.percentChange)
-      )
-   );
+    return Container(
+        padding: const EdgeInsets.all(10.0),
+        decoration: const BoxDecoration(
+            border: Border(top: BorderSide(color: Colors.black26))),
+        child: _StockSymbolView(
+            stock: stock,
+            arrow: StockArrow(percentChange: stock.percentChange)));
   }
 }

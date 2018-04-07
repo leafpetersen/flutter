@@ -8,7 +8,7 @@ class IconsDemo extends StatefulWidget {
   static const String routeName = '/material/icons';
 
   @override
-  IconsDemoState createState() => new IconsDemoState();
+  IconsDemoState createState() => IconsDemoState();
 }
 
 class IconsDemoState extends State<IconsDemo> {
@@ -46,21 +46,23 @@ class IconsDemoState extends State<IconsDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Icons')
-      ),
-      body: new IconTheme(
-        data: new IconThemeData(color: iconColor),
-        child: new SafeArea(
+    return Scaffold(
+      appBar: AppBar(title: const Text('Icons')),
+      body: IconTheme(
+        data: IconThemeData(color: iconColor),
+        child: SafeArea(
           top: false,
           bottom: false,
-          child: new ListView(
+          child: ListView(
             padding: const EdgeInsets.all(24.0),
             children: <Widget>[
-              new _IconsDemoCard(handleIconButtonPress, Icons.face), // direction-agnostic icon
+              _IconsDemoCard(
+                  handleIconButtonPress,
+                  Icons
+                      .face), // direction-agnostic icon // direction-agnostic icon
               const SizedBox(height: 24.0),
-              new _IconsDemoCard(handleIconButtonPress, Icons.battery_unknown), // direction-aware icon
+              _IconsDemoCard(handleIconButtonPress,
+                  Icons.battery_unknown), // direction-aware icon
             ],
           ),
         ),
@@ -76,24 +78,22 @@ class _IconsDemoCard extends StatelessWidget {
   final IconData icon;
 
   Widget _buildIconButton(double iconSize, IconData icon, bool enabled) {
-    return new IconButton(
-      icon: new Icon(icon),
-      iconSize: iconSize,
-      tooltip: "${enabled ? 'Enabled' : 'Disabled'} icon button",
-      onPressed: enabled ? handleIconButtonPress : null
-    );
+    return IconButton(
+        icon: Icon(icon),
+        iconSize: iconSize,
+        tooltip: "${enabled ? 'Enabled' : 'Disabled'} icon button",
+        onPressed: enabled ? handleIconButtonPress : null);
   }
 
-  Widget _centeredText(String label) =>
-    new Padding(
-      // Match the default padding of IconButton.
-      padding: const EdgeInsets.all(8.0),
-      child: new Text(label, textAlign: TextAlign.center),
-    );
+  Widget _centeredText(String label) => Padding(
+        // Match the default padding of IconButton.
+        padding: const EdgeInsets.all(8.0),
+        child: Text(label, textAlign: TextAlign.center),
+      );
 
   TableRow _buildIconRow(double size) {
-    return new TableRow(
-      children: <Widget> [
+    return TableRow(
+      children: <Widget>[
         _centeredText(size.floor().toString()),
         _buildIconButton(size, icon, true),
         _buildIconButton(size, icon, false),
@@ -104,22 +104,21 @@ class _IconsDemoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final TextStyle textStyle = theme.textTheme.subhead.copyWith(color: theme.textTheme.caption.color);
-    return new Card(
-      child: new DefaultTextStyle(
+    final TextStyle textStyle =
+        theme.textTheme.subhead.copyWith(color: theme.textTheme.caption.color);
+    return Card(
+      child: DefaultTextStyle(
         style: textStyle,
-        child: new Semantics(
+        child: Semantics(
           explicitChildNodes: true,
-          child: new Table(
+          child: Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            children: <TableRow> [
-              new TableRow(
-                children: <Widget> [
-                  _centeredText('Size'),
-                  _centeredText('Enabled'),
-                  _centeredText('Disabled'),
-                ]
-              ),
+            children: <TableRow>[
+              TableRow(children: <Widget>[
+                _centeredText('Size'),
+                _centeredText('Enabled'),
+                _centeredText('Disabled'),
+              ]),
               _buildIconRow(18.0),
               _buildIconRow(24.0),
               _buildIconRow(36.0),

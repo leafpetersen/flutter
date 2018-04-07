@@ -13,7 +13,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'theme.dart';
 
 class LinkTextSpan extends TextSpan {
-
   // Beware!
   //
   // This class is only safe because the TapGestureRecognizer is not
@@ -27,22 +26,23 @@ class LinkTextSpan extends TextSpan {
   // manage the recognizer from outside the TextSpan, e.g. in the State of a
   // stateful widget that then hands the recognizer to the TextSpan.
 
-  LinkTextSpan({ TextStyle style, String url, String text }) : super(
-    style: style,
-    text: text ?? url,
-    recognizer: new TapGestureRecognizer()..onTap = () {
-      launch(url);
-    }
-  );
+  LinkTextSpan({TextStyle style, String url, String text})
+      : super(
+            style: style,
+            text: text ?? url,
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                launch(url);
+              });
 }
 
 class GalleryDrawerHeader extends StatefulWidget {
-  const GalleryDrawerHeader({ Key key, this.light }) : super(key: key);
+  const GalleryDrawerHeader({Key key, this.light}) : super(key: key);
 
   final bool light;
 
   @override
-  _GalleryDrawerHeaderState createState() => new _GalleryDrawerHeaderState();
+  _GalleryDrawerHeaderState createState() => _GalleryDrawerHeaderState();
 }
 
 class _GalleryDrawerHeaderState extends State<GalleryDrawerHeader> {
@@ -54,53 +54,63 @@ class _GalleryDrawerHeaderState extends State<GalleryDrawerHeader> {
   Widget build(BuildContext context) {
     final double systemTopPadding = MediaQuery.of(context).padding.top;
 
-    return new Semantics(
+    return Semantics(
       label: 'Flutter',
-      child: new DrawerHeader(
-        decoration: new FlutterLogoDecoration(
-          margin: new EdgeInsets.fromLTRB(12.0, 12.0 + systemTopPadding, 12.0, 12.0),
-          style: _logoHasName ? _logoHorizontal ? FlutterLogoStyle.horizontal
-                                                : FlutterLogoStyle.stacked
-                                                : FlutterLogoStyle.markOnly,
+      child: DrawerHeader(
+        decoration: FlutterLogoDecoration(
+          margin:
+              EdgeInsets.fromLTRB(12.0, 12.0 + systemTopPadding, 12.0, 12.0),
+          style: _logoHasName
+              ? _logoHorizontal
+                  ? FlutterLogoStyle.horizontal
+                  : FlutterLogoStyle.stacked
+              : FlutterLogoStyle.markOnly,
           lightColor: _logoColor.shade400,
           darkColor: _logoColor.shade900,
-          textColor: widget.light ? const Color(0xFF616161) : const Color(0xFF9E9E9E),
+          textColor:
+              widget.light ? const Color(0xFF616161) : const Color(0xFF9E9E9E),
         ),
         duration: const Duration(milliseconds: 750),
-        child: new GestureDetector(
-          onLongPress: () {
-            setState(() {
-              _logoHorizontal = !_logoHorizontal;
-              if (!_logoHasName)
-                _logoHasName = true;
-            });
-          },
-          onTap: () {
-            setState(() {
-              _logoHasName = !_logoHasName;
-            });
-          },
-          onDoubleTap: () {
-            setState(() {
-              final List<MaterialColor> options = <MaterialColor>[];
-              if (_logoColor != Colors.blue)
-                options.addAll(<MaterialColor>[Colors.blue, Colors.blue, Colors.blue, Colors.blue, Colors.blue, Colors.blue, Colors.blue]);
-              if (_logoColor != Colors.amber)
-                options.addAll(<MaterialColor>[Colors.amber, Colors.amber, Colors.amber]);
-              if (_logoColor != Colors.red)
-                options.addAll(<MaterialColor>[Colors.red, Colors.red, Colors.red]);
-              if (_logoColor != Colors.indigo)
-                options.addAll(<MaterialColor>[Colors.indigo, Colors.indigo, Colors.indigo]);
-              if (_logoColor != Colors.pink)
-                options.addAll(<MaterialColor>[Colors.pink]);
-              if (_logoColor != Colors.purple)
-                options.addAll(<MaterialColor>[Colors.purple]);
-              if (_logoColor != Colors.cyan)
-                options.addAll(<MaterialColor>[Colors.cyan]);
-              _logoColor = options[new math.Random().nextInt(options.length)];
-            });
-          }
-        ),
+        child: GestureDetector(onLongPress: () {
+          setState(() {
+            _logoHorizontal = !_logoHorizontal;
+            if (!_logoHasName) _logoHasName = true;
+          });
+        }, onTap: () {
+          setState(() {
+            _logoHasName = !_logoHasName;
+          });
+        }, onDoubleTap: () {
+          setState(() {
+            final List<MaterialColor> options = <MaterialColor>[];
+            if (_logoColor != Colors.blue)
+              options.addAll(<MaterialColor>[
+                Colors.blue,
+                Colors.blue,
+                Colors.blue,
+                Colors.blue,
+                Colors.blue,
+                Colors.blue,
+                Colors.blue
+              ]);
+            if (_logoColor != Colors.amber)
+              options.addAll(
+                  <MaterialColor>[Colors.amber, Colors.amber, Colors.amber]);
+            if (_logoColor != Colors.red)
+              options
+                  .addAll(<MaterialColor>[Colors.red, Colors.red, Colors.red]);
+            if (_logoColor != Colors.indigo)
+              options.addAll(
+                  <MaterialColor>[Colors.indigo, Colors.indigo, Colors.indigo]);
+            if (_logoColor != Colors.pink)
+              options.addAll(<MaterialColor>[Colors.pink]);
+            if (_logoColor != Colors.purple)
+              options.addAll(<MaterialColor>[Colors.purple]);
+            if (_logoColor != Colors.cyan)
+              options.addAll(<MaterialColor>[Colors.cyan]);
+            _logoColor = options[math.Random().nextInt(options.length)];
+          });
+        }),
       ),
     );
   }
@@ -125,9 +135,9 @@ class GalleryDrawer extends StatelessWidget {
     this.overrideDirection: TextDirection.ltr,
     this.onOverrideDirectionChanged,
     this.onSendFeedback,
-  }) : assert(onThemeChanged != null),
-       assert(onTimeDilationChanged != null),
-       super(key: key);
+  })  : assert(onThemeChanged != null),
+        assert(onTimeDilationChanged != null),
+        super(key: key);
 
   final GalleryTheme galleryTheme;
   final ValueChanged<GalleryTheme> onThemeChanged;
@@ -158,12 +168,14 @@ class GalleryDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final TextStyle aboutTextStyle = themeData.textTheme.body2;
-    final TextStyle linkStyle = themeData.textTheme.body2.copyWith(color: themeData.accentColor);
+    final TextStyle linkStyle =
+        themeData.textTheme.body2.copyWith(color: themeData.accentColor);
 
-    final List<Widget> themeItems = kAllGalleryThemes.map<Widget>((GalleryTheme theme) {
-      return new RadioListTile<GalleryTheme>(
-        title: new Text(theme.name),
-        secondary: new Icon(theme.icon),
+    final List<Widget> themeItems =
+        kAllGalleryThemes.map<Widget>((GalleryTheme theme) {
+      return RadioListTile<GalleryTheme>(
+        title: Text(theme.name),
+        secondary: Icon(theme.icon),
         value: theme,
         groupValue: galleryTheme,
         onChanged: onThemeChanged,
@@ -171,20 +183,27 @@ class GalleryDrawer extends StatelessWidget {
       );
     }).toList();
 
-    final Widget mountainViewItem = new RadioListTile<TargetPlatform>(
+    final Widget mountainViewItem = RadioListTile<TargetPlatform>(
       // on iOS, we don't want to show an Android phone icon
-      secondary: new Icon(defaultTargetPlatform == TargetPlatform.iOS ? Icons.star : Icons.phone_android),
-      title: new Text(defaultTargetPlatform == TargetPlatform.iOS ? 'Mountain View' : 'Android'),
+      secondary: Icon(defaultTargetPlatform == TargetPlatform.iOS
+          ? Icons.star
+          : Icons.phone_android),
+      title: Text(defaultTargetPlatform == TargetPlatform.iOS
+          ? 'Mountain View'
+          : 'Android'),
       value: TargetPlatform.android,
       groupValue: Theme.of(context).platform,
       onChanged: onPlatformChanged,
       selected: Theme.of(context).platform == TargetPlatform.android,
     );
 
-    final Widget cupertinoItem = new RadioListTile<TargetPlatform>(
+    final Widget cupertinoItem = RadioListTile<TargetPlatform>(
       // on iOS, we don't want to show the iPhone icon
-      secondary: new Icon(defaultTargetPlatform == TargetPlatform.iOS ? Icons.star_border : Icons.phone_iphone),
-      title: new Text(defaultTargetPlatform == TargetPlatform.iOS ? 'Cupertino' : 'iOS'),
+      secondary: Icon(defaultTargetPlatform == TargetPlatform.iOS
+          ? Icons.star_border
+          : Icons.phone_iphone),
+      title: Text(
+          defaultTargetPlatform == TargetPlatform.iOS ? 'Cupertino' : 'iOS'),
       value: TargetPlatform.iOS,
       groupValue: Theme.of(context).platform,
       onChanged: onPlatformChanged,
@@ -200,9 +219,9 @@ class GalleryDrawer extends StatelessWidget {
       2.0: 'Huge',
     };
     for (double size in textSizes.keys) {
-      textSizeItems.add(new RadioListTile<double>(
+      textSizeItems.add(RadioListTile<double>(
         secondary: const Icon(Icons.text_fields),
-        title: new Text(textSizes[size]),
+        title: Text(textSizes[size]),
         value: size,
         groupValue: textScaleFactor,
         onChanged: onTextScaleFactorChanged,
@@ -210,7 +229,7 @@ class GalleryDrawer extends StatelessWidget {
       ));
     }
 
-    final Widget animateSlowlyItem = new CheckboxListTile(
+    final Widget animateSlowlyItem = CheckboxListTile(
       title: const Text('Animate Slowly'),
       value: timeDilation != 1.0,
       onChanged: (bool value) {
@@ -220,91 +239,81 @@ class GalleryDrawer extends StatelessWidget {
       selected: timeDilation != 1.0,
     );
 
-    final Widget overrideDirectionItem = new CheckboxListTile(
+    final Widget overrideDirectionItem = CheckboxListTile(
       title: const Text('Force RTL'),
       value: overrideDirection == TextDirection.rtl,
       onChanged: (bool value) {
-        onOverrideDirectionChanged(value ? TextDirection.rtl : TextDirection.ltr);
+        onOverrideDirectionChanged(
+            value ? TextDirection.rtl : TextDirection.ltr);
       },
       secondary: const Icon(Icons.format_textdirection_r_to_l),
       selected: overrideDirection == TextDirection.rtl,
     );
 
-    final Widget sendFeedbackItem = new ListTile(
+    final Widget sendFeedbackItem = ListTile(
       leading: const Icon(Icons.report),
       title: const Text('Send feedback'),
-      onTap: onSendFeedback ?? () {
-        launch('https://github.com/flutter/flutter/issues/new');
-      },
+      onTap: onSendFeedback ??
+          () {
+            launch('https://github.com/flutter/flutter/issues/new');
+          },
     );
 
-    final Widget aboutItem = new AboutListTile(
-      icon: const FlutterLogo(),
-      applicationVersion: 'April 2018 Preview',
-      applicationIcon: const FlutterLogo(),
-      applicationLegalese: '© 2017 The Chromium Authors',
-      aboutBoxChildren: <Widget>[
-        new Padding(
-          padding: const EdgeInsets.only(top: 24.0),
-          child: new RichText(
-            text: new TextSpan(
-              children: <TextSpan>[
-                new TextSpan(
-                  style: aboutTextStyle,
-                  text: 'Flutter is an early-stage, open-source project to help developers '
+    final Widget aboutItem = AboutListTile(
+        icon: const FlutterLogo(),
+        applicationVersion: 'April 2018 Preview',
+        applicationIcon: const FlutterLogo(),
+        applicationLegalese: '© 2017 The Chromium Authors',
+        aboutBoxChildren: <Widget>[
+          Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: RichText(
+                  text: TextSpan(children: <TextSpan>[
+                TextSpan(
+                    style: aboutTextStyle,
+                    text:
+                        'Flutter is an early-stage, open-source project to help developers '
                         'build high-performance, high-fidelity, mobile apps for '
                         '${defaultTargetPlatform == TargetPlatform.iOS ? 'multiple platforms' : 'iOS and Android'} '
                         'from a single codebase. This gallery is a preview of '
                         "Flutter's many widgets, behaviors, animations, layouts, "
-                        'and more. Learn more about Flutter at '
-                ),
-                new LinkTextSpan(
-                  style: linkStyle,
-                  url: 'https://flutter.io'
-                ),
-                new TextSpan(
-                  style: aboutTextStyle,
-                  text: '.\n\nTo see the source code for this app, please visit the '
-                ),
-                new LinkTextSpan(
-                  style: linkStyle,
-                  url: 'https://goo.gl/iv1p4G',
-                  text: 'flutter github repo'
-                ),
-                new TextSpan(
-                  style: aboutTextStyle,
-                  text: '.'
-                )
-              ]
-            )
-          )
-        )
-      ]
-    );
+                        'and more. Learn more about Flutter at '),
+                LinkTextSpan(style: linkStyle, url: 'https://flutter.io'),
+                TextSpan(
+                    style: aboutTextStyle,
+                    text:
+                        '.\n\nTo see the source code for this app, please visit the '),
+                LinkTextSpan(
+                    style: linkStyle,
+                    url: 'https://goo.gl/iv1p4G',
+                    text: 'flutter github repo'),
+                TextSpan(style: aboutTextStyle, text: '.')
+              ])))
+        ]);
 
     final List<Widget> allDrawerItems = <Widget>[
-      new GalleryDrawerHeader(
+      GalleryDrawerHeader(
         light: galleryTheme.theme.brightness == Brightness.light,
       ),
     ]
-    ..addAll(themeItems)
-    ..addAll(<Widget>[
-      const Divider(),
-      mountainViewItem,
-      cupertinoItem,
-      const Divider(),
-    ])
-    ..addAll(textSizeItems)
-    ..addAll(<Widget>[
-      overrideDirectionItem,
-      const Divider(),
-      animateSlowlyItem,
-      const Divider(),
-    ]);
+      ..addAll(themeItems)
+      ..addAll(<Widget>[
+        const Divider(),
+        mountainViewItem,
+        cupertinoItem,
+        const Divider(),
+      ])
+      ..addAll(textSizeItems)
+      ..addAll(<Widget>[
+        overrideDirectionItem,
+        const Divider(),
+        animateSlowlyItem,
+        const Divider(),
+      ]);
 
     bool addedOptionalItem = false;
     if (onCheckerboardOffscreenLayersChanged != null) {
-      allDrawerItems.add(new CheckboxListTile(
+      allDrawerItems.add(CheckboxListTile(
         title: const Text('Checkerboard Offscreen Layers'),
         value: checkerboardOffscreenLayers,
         onChanged: onCheckerboardOffscreenLayersChanged,
@@ -315,7 +324,7 @@ class GalleryDrawer extends StatelessWidget {
     }
 
     if (onCheckerboardRasterCacheImagesChanged != null) {
-      allDrawerItems.add(new CheckboxListTile(
+      allDrawerItems.add(CheckboxListTile(
         title: const Text('Checkerboard Raster Cache Images'),
         value: checkerboardRasterCacheImages,
         onChanged: onCheckerboardRasterCacheImagesChanged,
@@ -326,7 +335,7 @@ class GalleryDrawer extends StatelessWidget {
     }
 
     if (onShowPerformanceOverlayChanged != null) {
-      allDrawerItems.add(new CheckboxListTile(
+      allDrawerItems.add(CheckboxListTile(
         title: const Text('Performance Overlay'),
         value: showPerformanceOverlay,
         onChanged: onShowPerformanceOverlayChanged,
@@ -336,14 +345,13 @@ class GalleryDrawer extends StatelessWidget {
       addedOptionalItem = true;
     }
 
-    if (addedOptionalItem)
-      allDrawerItems.add(const Divider());
+    if (addedOptionalItem) allDrawerItems.add(const Divider());
 
     allDrawerItems.addAll(<Widget>[
       sendFeedbackItem,
       aboutItem,
     ]);
 
-    return new Drawer(child: new ListView(primary: false, children: allDrawerItems));
+    return Drawer(child: ListView(primary: false, children: allDrawerItems));
   }
 }

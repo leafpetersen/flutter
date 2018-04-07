@@ -13,6 +13,6 @@ void main() {
   });
 
   testWidgets('Sector Sixes', (WidgetTester tester) {
-    tester.pumpWidget(new SectorApp());
+    tester.pumpWidget(SectorApp());
   });
 }

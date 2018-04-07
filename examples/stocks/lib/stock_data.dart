@@ -13,7 +13,7 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-final math.Random _rng = new math.Random();
+final math.Random _rng = math.Random();
 
 class Stock {
   String symbol;
@@ -22,7 +22,8 @@ class Stock {
   String marketCap;
   double percentChange;
 
-  Stock(this.symbol, this.name, this.lastSale, this.marketCap, this.percentChange);
+  Stock(this.symbol, this.name, this.lastSale, this.marketCap,
+      this.percentChange);
 
   Stock.fromFields(List<String> fields) {
     // FIXME: This class should only have static data, not lastSale, etc.
@@ -41,7 +42,7 @@ class Stock {
 class StockData extends ChangeNotifier {
   StockData() {
     if (actuallyFetchData) {
-      _httpClient = new http.Client();
+      _httpClient = http.Client();
       _fetchNextChunk();
     }
   }
@@ -57,7 +58,7 @@ class StockData extends ChangeNotifier {
 
   void add(List<dynamic> data) {
     for (List<dynamic> fields in data) {
-      final Stock stock = new Stock.fromFields(fields.cast<String>());
+      final Stock stock = Stock.fromFields(fields.cast<String>());
       _symbols.add(stock.symbol);
       _stocks[stock.symbol] = stock;
     }
@@ -77,14 +78,16 @@ class StockData extends ChangeNotifier {
   static bool actuallyFetchData = true;
 
   void _fetchNextChunk() {
-    _httpClient.get(_urlToFetch(_nextChunk++)).then<Null>((http.Response response) {
+    _httpClient
+        .get(_urlToFetch(_nextChunk++))
+        .then<Null>((http.Response response) {
       final String json = response.body;
       if (json == null) {
         debugPrint('Failed to load stock data chunk ${_nextChunk - 1}');
         _end();
         return;
       }
-      const JsonDecoder decoder = const JsonDecoder();
+      const JsonDecoder decoder = JsonDecoder();
       add(decoder.convert(json));
       if (_nextChunk < _kChunkCount) {
         _fetchNextChunk();

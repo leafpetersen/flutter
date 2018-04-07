@@ -7,23 +7,23 @@ import 'package:flutter/material.dart';
 import '../../gallery/demo.dart';
 
 const String _checkboxText =
-  'Checkboxes allow the user to select multiple options from a set. '
-  'A normal checkbox\'s value is true or false and a tristate checkbox\'s '
-  'value can also be null.';
+    'Checkboxes allow the user to select multiple options from a set. '
+    'A normal checkbox\'s value is true or false and a tristate checkbox\'s '
+    'value can also be null.';
 
 const String _checkboxCode = 'selectioncontrols_checkbox';
 
 const String _radioText =
-  'Radio buttons allow the user to select one option from a set. Use radio '
-  'buttons for exclusive selection if you think that the user needs to see '
-  'all available options side-by-side.';
+    'Radio buttons allow the user to select one option from a set. Use radio '
+    'buttons for exclusive selection if you think that the user needs to see '
+    'all available options side-by-side.';
 
 const String _radioCode = 'selectioncontrols_radio';
 
 const String _switchText =
-  'On/off switches toggle the state of a single settings option. The option '
-  'that the switch controls, as well as the state it’s in, should be made '
-  'clear from the corresponding inline label.';
+    'On/off switches toggle the state of a single settings option. The option '
+    'that the switch controls, as well as the state it’s in, should be made '
+    'clear from the corresponding inline label.';
 
 const String _switchCode = 'selectioncontrols_switch';
 
@@ -31,37 +31,32 @@ class SelectionControlsDemo extends StatefulWidget {
   static const String routeName = '/material/selection-controls';
 
   @override
-  _SelectionControlsDemoState createState() => new _SelectionControlsDemoState();
+  _SelectionControlsDemoState createState() => _SelectionControlsDemoState();
 }
 
 class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
   @override
   Widget build(BuildContext context) {
     final List<ComponentDemoTabData> demos = <ComponentDemoTabData>[
-      new ComponentDemoTabData(
-        tabName: 'CHECKBOX',
-        description: _checkboxText,
-        demoWidget: buildCheckbox(),
-        exampleCodeTag: _checkboxCode
-      ),
-      new ComponentDemoTabData(
-        tabName: 'RADIO',
-        description: _radioText,
-        demoWidget: buildRadio(),
-        exampleCodeTag: _radioCode
-      ),
-      new ComponentDemoTabData(
-        tabName: 'SWITCH',
-        description: _switchText,
-        demoWidget: buildSwitch(),
-        exampleCodeTag: _switchCode
-      )
+      ComponentDemoTabData(
+          tabName: 'CHECKBOX',
+          description: _checkboxText,
+          demoWidget: buildCheckbox(),
+          exampleCodeTag: _checkboxCode),
+      ComponentDemoTabData(
+          tabName: 'RADIO',
+          description: _radioText,
+          demoWidget: buildRadio(),
+          exampleCodeTag: _radioCode),
+      ComponentDemoTabData(
+          tabName: 'SWITCH',
+          description: _switchText,
+          demoWidget: buildSwitch(),
+          exampleCodeTag: _switchCode)
     ];
 
-    return new TabbedComponentDemoScaffold(
-      title: 'Selection controls',
-      demos: demos
-    );
+    return TabbedComponentDemoScaffold(
+        title: 'Selection controls', demos: demos);
   }
 
   bool checkboxValueA = true;
@@ -77,15 +72,13 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
   }
 
   Widget buildCheckbox() {
-    return new Align(
-      alignment: const Alignment(0.0, -0.2),
-      child: new Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          new Row(
+    return Align(
+        alignment: const Alignment(0.0, -0.2),
+        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new Checkbox(
+              Checkbox(
                 value: checkboxValueA,
                 onChanged: (bool value) {
                   setState(() {
@@ -93,7 +86,7 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
                   });
                 },
               ),
-              new Checkbox(
+              Checkbox(
                 value: checkboxValueB,
                 onChanged: (bool value) {
                   setState(() {
@@ -101,7 +94,7 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
                   });
                 },
               ),
-              new Checkbox(
+              Checkbox(
                 value: checkboxValueC,
                 tristate: true,
                 onChanged: (bool value) {
@@ -112,86 +105,56 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
               ),
             ],
           ),
-          new Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const <Widget>[
-              // Disabled checkboxes
-              const Checkbox(value: true, onChanged: null),
-              const Checkbox(value: false, onChanged: null),
-              const Checkbox(value: null, tristate: true, onChanged: null),
-            ]
-          )
-        ]
-      )
-    );
+          Row(mainAxisSize: MainAxisSize.min, children: const <Widget>[
+            // Disabled checkboxes
+            Checkbox(value: true, onChanged: null),
+            Checkbox(value: false, onChanged: null),
+            Checkbox(value: null, tristate: true, onChanged: null),
+          ])
+        ]));
   }
 
   Widget buildRadio() {
-    return new Align(
-      alignment: const Alignment(0.0, -0.2),
-      child: new Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          new Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              new Radio<int>(
+    return Align(
+        alignment: const Alignment(0.0, -0.2),
+        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+            Radio<int>(
                 value: 0,
                 groupValue: radioValue,
-                onChanged: handleRadioValueChanged
-              ),
-              new Radio<int>(
+                onChanged: handleRadioValueChanged),
+            Radio<int>(
                 value: 1,
                 groupValue: radioValue,
-                onChanged: handleRadioValueChanged
-              ),
-              new Radio<int>(
+                onChanged: handleRadioValueChanged),
+            Radio<int>(
                 value: 2,
                 groupValue: radioValue,
-                onChanged: handleRadioValueChanged
-              )
-            ]
-          ),
+                onChanged: handleRadioValueChanged)
+          ]),
           // Disabled radio buttons
-          new Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const <Widget>[
-              const Radio<int>(
-                value: 0,
-                groupValue: 0,
-                onChanged: null
-              ),
-              const Radio<int>(
-                value: 1,
-                groupValue: 0,
-                onChanged: null
-              ),
-              const Radio<int>(
-                value: 2,
-                groupValue: 0,
-                onChanged: null
-              )
-            ]
-          )
-        ]
-      )
-    );
+          Row(mainAxisSize: MainAxisSize.min, children: const <Widget>[
+            Radio<int>(value: 0, groupValue: 0, onChanged: null),
+            Radio<int>(value: 1, groupValue: 0, onChanged: null),
+            Radio<int>(value: 2, groupValue: 0, onChanged: null)
+          ])
+        ]));
   }
 
   Widget buildSwitch() {
-    return new Align(
+    return Align(
       alignment: const Alignment(0.0, -0.2),
-      child: new Row(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          new Switch(
-            value: switchValue,
-            onChanged: (bool value) {
-              setState(() {
-                switchValue = value;
-              });
-            }
-          ),
+          Switch(
+              value: switchValue,
+              onChanged: (bool value) {
+                setState(() {
+                  switchValue = value;
+                });
+              }),
+          // Disabled switches
           // Disabled switches
           const Switch(value: true, onChanged: null),
           const Switch(value: false, onChanged: null)
