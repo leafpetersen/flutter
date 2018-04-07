@@ -10,18 +10,18 @@ import 'package:flutter/rendering.dart';
 import '../rendering/src/sector_layout.dart';
 
 RenderBox initCircle() {
-  return new RenderBoxToRenderSectorAdapter(
-      innerRadius: 25.0, child: new RenderSectorRing(padding: 0.0));
+  return RenderBoxToRenderSectorAdapter(
+      innerRadius: 25.0, child: RenderSectorRing(padding: 0.0));
 }
 
 class SectorApp extends StatefulWidget {
   @override
-  SectorAppState createState() => new SectorAppState();
+  SectorAppState createState() => SectorAppState();
 }
 
 class SectorAppState extends State<SectorApp> {
   final RenderBoxToRenderSectorAdapter sectors = initCircle();
-  final math.Random rand = new math.Random(1);
+  final math.Random rand = math.Random(1);
 
   List<double> wantedSectorSizes = <double>[];
   List<double> actualSectorSizes = <double>[];
@@ -60,22 +60,22 @@ class SectorAppState extends State<SectorApp> {
     }
     while (index < wantedSectorSizes.length) {
       final Color color =
-          new Color(((0xFF << 24) + rand.nextInt(0xFFFFFF)) | 0x808080);
-      ring.add(new RenderSolidColor(color,
-          desiredDeltaTheta: wantedSectorSizes[index]));
+          Color(((0xFF << 24) + rand.nextInt(0xFFFFFF)) | 0x808080);
+      ring.add(
+          RenderSolidColor(color, desiredDeltaTheta: wantedSectorSizes[index]));
       actualSectorSizes.add(wantedSectorSizes[index]);
       index += 1;
     }
   }
 
   static RenderBox initSector(Color color) {
-    final RenderSectorRing ring = new RenderSectorRing(padding: 1.0);
-    ring.add(new RenderSolidColor(const Color(0xFF909090),
+    final RenderSectorRing ring = RenderSectorRing(padding: 1.0);
+    ring.add(RenderSolidColor(const Color(0xFF909090),
         desiredDeltaTheta: kTwoPi * 0.15));
-    ring.add(new RenderSolidColor(const Color(0xFF909090),
+    ring.add(RenderSolidColor(const Color(0xFF909090),
         desiredDeltaTheta: kTwoPi * 0.15));
-    ring.add(new RenderSolidColor(color, desiredDeltaTheta: kTwoPi * 0.2));
-    return new RenderBoxToRenderSectorAdapter(innerRadius: 5.0, child: ring);
+    ring.add(RenderSolidColor(color, desiredDeltaTheta: kTwoPi * 0.2));
+    return RenderBoxToRenderSectorAdapter(innerRadius: 5.0, child: ring);
   }
 
   RenderBoxToRenderSectorAdapter sectorAddIcon =
@@ -93,55 +93,54 @@ class SectorAppState extends State<SectorApp> {
   }
 
   Widget buildBody() {
-    return new Column(children: <Widget>[
-      new Container(
+    return Column(children: <Widget>[
+      Container(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 25.0),
-          child: new Row(children: <Widget>[
-            new RaisedButton(
+          child: Row(children: <Widget>[
+            RaisedButton(
                 onPressed: _enabledAdd ? addSector : null,
-                child: new IntrinsicWidth(
-                    child: new Row(children: <Widget>[
-                  new Container(
+                child: IntrinsicWidth(
+                    child: Row(children: <Widget>[
+                  Container(
                       padding: const EdgeInsets.all(4.0),
                       margin: const EdgeInsets.only(right: 10.0),
-                      child: new WidgetToRenderBoxAdapter(
-                          renderBox: sectorAddIcon)),
+                      child:
+                          WidgetToRenderBoxAdapter(renderBox: sectorAddIcon)),
                   const Text('ADD SECTOR'),
                 ]))),
-            new RaisedButton(
+            RaisedButton(
                 onPressed: _enabledRemove ? removeSector : null,
-                child: new IntrinsicWidth(
-                    child: new Row(children: <Widget>[
-                  new Container(
+                child: IntrinsicWidth(
+                    child: Row(children: <Widget>[
+                  Container(
                       padding: const EdgeInsets.all(4.0),
                       margin: const EdgeInsets.only(right: 10.0),
-                      child: new WidgetToRenderBoxAdapter(
+                      child: WidgetToRenderBoxAdapter(
                           renderBox: sectorRemoveIcon)),
                   const Text('REMOVE SECTOR'),
                 ]))),
           ], mainAxisAlignment: MainAxisAlignment.spaceAround)),
-      new Expanded(
-          child: new Container(
+      Expanded(
+          child: Container(
               margin: const EdgeInsets.all(8.0),
-              decoration: new BoxDecoration(border: new Border.all()),
+              decoration: BoxDecoration(border: Border.all()),
               padding: const EdgeInsets.all(8.0),
-              child: new WidgetToRenderBoxAdapter(
+              child: WidgetToRenderBoxAdapter(
                   renderBox: sectors, onBuild: doUpdates))),
     ], mainAxisAlignment: MainAxisAlignment.spaceBetween);
   }
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-        theme: new ThemeData.light(),
+    return MaterialApp(
+        theme: ThemeData.light(),
         title: 'Sector Layout',
-        home: new Scaffold(
-            appBar:
-                new AppBar(title: const Text('Sector Layout in a Widget Tree')),
+        home: Scaffold(
+            appBar: AppBar(title: const Text('Sector Layout in a Widget Tree')),
             body: buildBody()));
   }
 }
 
 void main() {
-  runApp(new SectorApp());
+  runApp(SectorApp());
 }

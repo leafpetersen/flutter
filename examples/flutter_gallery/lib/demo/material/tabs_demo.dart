@@ -25,7 +25,7 @@ class _CardData {
 }
 
 final Map<_Page, List<_CardData>> _allPages = <_Page, List<_CardData>>{
-  new _Page(label: 'LEFT'): <_CardData>[
+  _Page(label: 'LEFT'): <_CardData>[
     const _CardData(
       title: 'Vintage Bluetooth Radio',
       imageAsset: 'shrine/products/radio.png',
@@ -72,7 +72,7 @@ final Map<_Page, List<_CardData>> _allPages = <_Page, List<_CardData>>{
       imageAssetPackage: _kGalleryAssetsPackage,
     ),
   ],
-  new _Page(label: 'RIGHT'): <_CardData>[
+  _Page(label: 'RIGHT'): <_CardData>[
     const _CardData(
       title: 'Beachball',
       imageAsset: 'shrine/products/beachball.png',
@@ -100,29 +100,29 @@ class _CardDataItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Card(
-      child: new Padding(
+    return Card(
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: new Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            new Align(
+            Align(
               alignment:
                   page.id == 'L' ? Alignment.centerLeft : Alignment.centerRight,
-              child: new CircleAvatar(child: new Text('${page.id}')),
+              child: CircleAvatar(child: Text('${page.id}')),
             ),
-            new SizedBox(
+            SizedBox(
               width: 144.0,
               height: 144.0,
-              child: new Image.asset(
+              child: Image.asset(
                 data.imageAsset,
                 package: data.imageAssetPackage,
                 fit: BoxFit.contain,
               ),
             ),
-            new Center(
-              child: new Text(
+            Center(
+              child: Text(
                 data.title,
                 style: Theme.of(context).textTheme.title,
               ),
@@ -139,24 +139,24 @@ class TabsDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new DefaultTabController(
+    return DefaultTabController(
       length: _allPages.length,
-      child: new Scaffold(
-        body: new NestedScrollView(
+      child: Scaffold(
+        body: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
-              new SliverOverlapAbsorber(
+              SliverOverlapAbsorber(
                 handle:
                     NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                child: new SliverAppBar(
+                child: SliverAppBar(
                   title: const Text('Tabs and scrolling'),
                   pinned: true,
                   expandedHeight: 150.0,
                   forceElevated: innerBoxIsScrolled,
-                  bottom: new TabBar(
+                  bottom: TabBar(
                     tabs: _allPages.keys
                         .map(
-                          (_Page page) => new Tab(text: page.label),
+                          (_Page page) => Tab(text: page.label),
                         )
                         .toList(),
                   ),
@@ -164,35 +164,35 @@ class TabsDemo extends StatelessWidget {
               ),
             ];
           },
-          body: new TabBarView(
+          body: TabBarView(
             children: _allPages.keys.map((_Page page) {
-              return new SafeArea(
+              return SafeArea(
                 top: false,
                 bottom: false,
-                child: new Builder(
+                child: Builder(
                   builder: (BuildContext context) {
-                    return new CustomScrollView(
-                      key: new PageStorageKey<_Page>(page),
+                    return CustomScrollView(
+                      key: PageStorageKey<_Page>(page),
                       slivers: <Widget>[
-                        new SliverOverlapInjector(
+                        SliverOverlapInjector(
                           handle: NestedScrollView
                               .sliverOverlapAbsorberHandleFor(context),
                         ),
-                        new SliverPadding(
+                        SliverPadding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 8.0,
                             horizontal: 16.0,
                           ),
-                          sliver: new SliverFixedExtentList(
+                          sliver: SliverFixedExtentList(
                             itemExtent: _CardDataItem.height,
-                            delegate: new SliverChildBuilderDelegate(
+                            delegate: SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
                                 final _CardData data = _allPages[page][index];
-                                return new Padding(
+                                return Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 8.0,
                                   ),
-                                  child: new _CardDataItem(
+                                  child: _CardDataItem(
                                     page: page,
                                     data: data,
                                   ),

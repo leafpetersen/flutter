@@ -16,9 +16,9 @@ void main() {
   testWidgets('Pesto appbar heroics', (WidgetTester tester) async {
     await tester.pumpWidget(
         // The bug only manifests itself when the screen's orientation is portrait
+        // The bug only manifests itself when the screen's orientation is portrait
         const Center(
-            child: const SizedBox(
-                width: 400.0, height: 800.0, child: const GalleryApp())));
+            child: SizedBox(width: 400.0, height: 800.0, child: GalleryApp())));
     await tester.pump(); // see https://github.com/flutter/flutter/issues/1865
     await tester.pump(); // triggers a frame
 

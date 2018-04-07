@@ -11,14 +11,14 @@ class AdaptedListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Row(children: <Widget>[
-      new Container(
+    return Row(children: <Widget>[
+      Container(
         width: 32.0,
         height: 32.0,
         margin: const EdgeInsets.all(8.0),
         color: Colors.lightBlueAccent.shade100,
       ),
-      new Text(name)
+      Text(name)
     ]);
   }
 }
@@ -30,17 +30,17 @@ class AdaptedGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Card(
-        child: new Column(children: <Widget>[
-      new Expanded(
-          child: new Container(
+    return Card(
+        child: Column(children: <Widget>[
+      Expanded(
+          child: Container(
         color: Colors.lightBlueAccent.shade100,
       )),
-      new Container(
+      Container(
           margin: const EdgeInsets.only(left: 8.0),
-          child: new Row(children: <Widget>[
-            new Expanded(child: new Text(name)),
-            const IconButton(icon: const Icon(Icons.more_vert), onPressed: null)
+          child: Row(children: <Widget>[
+            Expanded(child: Text(name)),
+            const IconButton(icon: Icon(Icons.more_vert), onPressed: null)
           ]))
     ]));
   }
@@ -58,18 +58,16 @@ class AdaptiveContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (MediaQuery.of(context).size.width < _kGridViewBreakpoint) {
-      return new ListView(
+      return ListView(
         itemExtent: _kListItemExtent,
-        children: names
-            .map((String name) => new AdaptedListItem(name: name))
-            .toList(),
+        children:
+            names.map((String name) => AdaptedListItem(name: name)).toList(),
       );
     } else {
-      return new GridView.extent(
+      return GridView.extent(
         maxCrossAxisExtent: _kMaxTileWidth,
-        children: names
-            .map((String name) => new AdaptedGridItem(name: name))
-            .toList(),
+        children:
+            names.map((String name) => AdaptedGridItem(name: name)).toList(),
       );
     }
   }
@@ -84,9 +82,9 @@ List<String> _initNames() {
 final List<String> _kNames = _initNames();
 
 void main() {
-  runApp(new MaterialApp(
+  runApp(MaterialApp(
       title: 'Media Query Example',
-      home: new Scaffold(
-          appBar: new AppBar(title: const Text('Media Query Example')),
-          body: new Material(child: new AdaptiveContainer(names: _kNames)))));
+      home: Scaffold(
+          appBar: AppBar(title: const Text('Media Query Example')),
+          body: Material(child: AdaptiveContainer(names: _kNames)))));
 }

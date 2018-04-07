@@ -31,32 +31,31 @@ class SelectionControlsDemo extends StatefulWidget {
   static const String routeName = '/material/selection-controls';
 
   @override
-  _SelectionControlsDemoState createState() =>
-      new _SelectionControlsDemoState();
+  _SelectionControlsDemoState createState() => _SelectionControlsDemoState();
 }
 
 class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
   @override
   Widget build(BuildContext context) {
     final List<ComponentDemoTabData> demos = <ComponentDemoTabData>[
-      new ComponentDemoTabData(
+      ComponentDemoTabData(
           tabName: 'CHECKBOX',
           description: _checkboxText,
           demoWidget: buildCheckbox(),
           exampleCodeTag: _checkboxCode),
-      new ComponentDemoTabData(
+      ComponentDemoTabData(
           tabName: 'RADIO',
           description: _radioText,
           demoWidget: buildRadio(),
           exampleCodeTag: _radioCode),
-      new ComponentDemoTabData(
+      ComponentDemoTabData(
           tabName: 'SWITCH',
           description: _switchText,
           demoWidget: buildSwitch(),
           exampleCodeTag: _switchCode)
     ];
 
-    return new TabbedComponentDemoScaffold(
+    return TabbedComponentDemoScaffold(
         title: 'Selection controls', demos: demos);
   }
 
@@ -73,13 +72,13 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
   }
 
   Widget buildCheckbox() {
-    return new Align(
+    return Align(
         alignment: const Alignment(0.0, -0.2),
-        child: new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-          new Row(
+        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new Checkbox(
+              Checkbox(
                 value: checkboxValueA,
                 onChanged: (bool value) {
                   setState(() {
@@ -87,7 +86,7 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
                   });
                 },
               ),
-              new Checkbox(
+              Checkbox(
                 value: checkboxValueB,
                 onChanged: (bool value) {
                   setState(() {
@@ -95,7 +94,7 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
                   });
                 },
               ),
-              new Checkbox(
+              Checkbox(
                 value: checkboxValueC,
                 tristate: true,
                 onChanged: (bool value) {
@@ -106,55 +105,56 @@ class _SelectionControlsDemoState extends State<SelectionControlsDemo> {
               ),
             ],
           ),
-          new Row(mainAxisSize: MainAxisSize.min, children: const <Widget>[
+          Row(mainAxisSize: MainAxisSize.min, children: const <Widget>[
             // Disabled checkboxes
-            const Checkbox(value: true, onChanged: null),
-            const Checkbox(value: false, onChanged: null),
-            const Checkbox(value: null, tristate: true, onChanged: null),
+            Checkbox(value: true, onChanged: null),
+            Checkbox(value: false, onChanged: null),
+            Checkbox(value: null, tristate: true, onChanged: null),
           ])
         ]));
   }
 
   Widget buildRadio() {
-    return new Align(
+    return Align(
         alignment: const Alignment(0.0, -0.2),
-        child: new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-          new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-            new Radio<int>(
+        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+            Radio<int>(
                 value: 0,
                 groupValue: radioValue,
                 onChanged: handleRadioValueChanged),
-            new Radio<int>(
+            Radio<int>(
                 value: 1,
                 groupValue: radioValue,
                 onChanged: handleRadioValueChanged),
-            new Radio<int>(
+            Radio<int>(
                 value: 2,
                 groupValue: radioValue,
                 onChanged: handleRadioValueChanged)
           ]),
           // Disabled radio buttons
-          new Row(mainAxisSize: MainAxisSize.min, children: const <Widget>[
-            const Radio<int>(value: 0, groupValue: 0, onChanged: null),
-            const Radio<int>(value: 1, groupValue: 0, onChanged: null),
-            const Radio<int>(value: 2, groupValue: 0, onChanged: null)
+          Row(mainAxisSize: MainAxisSize.min, children: const <Widget>[
+            Radio<int>(value: 0, groupValue: 0, onChanged: null),
+            Radio<int>(value: 1, groupValue: 0, onChanged: null),
+            Radio<int>(value: 2, groupValue: 0, onChanged: null)
           ])
         ]));
   }
 
   Widget buildSwitch() {
-    return new Align(
+    return Align(
       alignment: const Alignment(0.0, -0.2),
-      child: new Row(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          new Switch(
+          Switch(
               value: switchValue,
               onChanged: (bool value) {
                 setState(() {
                   switchValue = value;
                 });
               }),
+          // Disabled switches
           // Disabled switches
           const Switch(value: true, onChanged: null),
           const Switch(value: false, onChanged: null)

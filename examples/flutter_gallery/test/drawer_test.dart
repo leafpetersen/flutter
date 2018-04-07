@@ -19,7 +19,7 @@ void main() {
       hasFeedback = true;
     }
 
-    await tester.pumpWidget(new GalleryApp(onSendFeedback: mockOnSendFeedback));
+    await tester.pumpWidget(GalleryApp(onSendFeedback: mockOnSendFeedback));
     await tester.pump(); // see https://github.com/flutter/flutter/issues/1865
     await tester.pump(); // triggers a frame
 

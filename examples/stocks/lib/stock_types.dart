@@ -52,7 +52,7 @@ class StockConfiguration {
       bool debugShowRainbow,
       bool showPerformanceOverlay,
       bool showSemanticsDebugger}) {
-    return new StockConfiguration(
+    return StockConfiguration(
         stockMode: stockMode ?? this.stockMode,
         backupMode: backupMode ?? this.backupMode,
         debugShowGrid: debugShowGrid ?? this.debugShowGrid,

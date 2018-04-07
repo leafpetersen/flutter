@@ -11,7 +11,7 @@ typedef void StockRowActionCallback(Stock stock);
 
 class StockRow extends StatelessWidget {
   StockRow({this.stock, this.onPressed, this.onDoubleTap, this.onLongPressed})
-      : super(key: new ObjectKey(stock));
+      : super(key: ObjectKey(stock));
 
   final Stock stock;
   final StockRowActionCallback onPressed;
@@ -29,32 +29,28 @@ class StockRow extends StatelessWidget {
     final String lastSale = '\$${stock.lastSale.toStringAsFixed(2)}';
     String changeInPrice = '${stock.percentChange.toStringAsFixed(2)}%';
     if (stock.percentChange > 0) changeInPrice = '+' + changeInPrice;
-    return new InkWell(
+    return InkWell(
         onTap: _getHandler(onPressed),
         onDoubleTap: _getHandler(onDoubleTap),
         onLongPress: _getHandler(onLongPressed),
-        child: new Container(
+        child: Container(
             padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 20.0),
-            decoration: new BoxDecoration(
-                border: new Border(
-                    bottom:
-                        new BorderSide(color: Theme.of(context).dividerColor))),
-            child: new Row(children: <Widget>[
-              new Container(
+            decoration: BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(color: Theme.of(context).dividerColor))),
+            child: Row(children: <Widget>[
+              Container(
                   margin: const EdgeInsets.only(right: 5.0),
-                  child: new Hero(
+                  child: Hero(
                       tag: stock,
-                      child:
-                          new StockArrow(percentChange: stock.percentChange))),
-              new Expanded(
-                  child: new Row(
+                      child: StockArrow(percentChange: stock.percentChange))),
+              Expanded(
+                  child: Row(
                       children: <Widget>[
-                    new Expanded(flex: 2, child: new Text(stock.symbol)),
-                    new Expanded(
-                        child: new Text(lastSale, textAlign: TextAlign.right)),
-                    new Expanded(
-                        child: new Text(changeInPrice,
-                            textAlign: TextAlign.right)),
+                    Expanded(flex: 2, child: Text(stock.symbol)),
+                    Expanded(child: Text(lastSale, textAlign: TextAlign.right)),
+                    Expanded(
+                        child: Text(changeInPrice, textAlign: TextAlign.right)),
                   ],
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline:

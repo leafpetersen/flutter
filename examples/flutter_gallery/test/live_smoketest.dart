@@ -15,7 +15,7 @@ import 'package:flutter_gallery/gallery/item.dart';
 
 // Reports success or failure to the native code.
 const MethodChannel _kTestChannel =
-    const MethodChannel('io.flutter.demo.gallery/TestLifecycleListener');
+    MethodChannel('io.flutter.demo.gallery/TestLifecycleListener');
 
 // The titles for all of the Gallery demos.
 final List<String> _kAllDemos =
@@ -23,7 +23,7 @@ final List<String> _kAllDemos =
 
 // We don't want to wait for animations to complete before tapping the
 // back button in the demos with these titles.
-const List<String> _kUnsynchronizedDemos = const <String>[
+const List<String> _kUnsynchronizedDemos = <String>[
   'Progress indicators',
   'Activity Indicator',
   'Video',
@@ -31,7 +31,7 @@ const List<String> _kUnsynchronizedDemos = const <String>[
 
 // These demos can't be backed out of by tapping a button whose
 // tooltip is 'Back'.
-const List<String> _kSkippedDemos = const <String>[
+const List<String> _kSkippedDemos = <String>[
   'Backdrop',
   'Pull to refresh',
 ];
@@ -40,14 +40,14 @@ Future<Null> main() async {
   try {
     // Verify that _kUnsynchronizedDemos and _kSkippedDemos identify
     // demos that actually exist.
-    if (!new Set<String>.from(_kAllDemos).containsAll(_kUnsynchronizedDemos))
+    if (!Set<String>.from(_kAllDemos).containsAll(_kUnsynchronizedDemos))
       fail(
           'Unrecognized demo names in _kUnsynchronizedDemos: $_kUnsynchronizedDemos');
-    if (!new Set<String>.from(_kAllDemos).containsAll(_kSkippedDemos))
+    if (!Set<String>.from(_kAllDemos).containsAll(_kSkippedDemos))
       fail('Unrecognized demo names in _kSkippedDemos: $_kSkippedDemos');
 
     runApp(const GalleryApp());
-    final _LiveWidgetController controller = new _LiveWidgetController();
+    final _LiveWidgetController controller = _LiveWidgetController();
     for (String demo in _kAllDemos) {
       print('Testing "$demo" demo');
       final Finder menuItem = find.text(demo);
@@ -75,7 +75,7 @@ Future<Null> main() async {
 
 class _LiveWidgetController {
   final WidgetController _controller =
-      new WidgetController(WidgetsBinding.instance);
+      WidgetController(WidgetsBinding.instance);
 
   /// With [frameSync] enabled, Flutter Driver will wait to perform an action
   /// until there are no pending frames in the app under test.
@@ -83,7 +83,7 @@ class _LiveWidgetController {
 
   /// Waits until at the end of a frame the provided [condition] is [true].
   Future<Null> _waitUntilFrame(bool condition(), [Completer<Null> completer]) {
-    completer ??= new Completer<Null>();
+    completer ??= Completer<Null>();
     if (!condition()) {
       SchedulerBinding.instance.addPostFrameCallback((Duration timestamp) {
         _waitUntilFrame(condition, completer);

@@ -37,13 +37,13 @@ class _StocksLocalizationsDelegate extends LocalizationsDelegate<StockStrings> {
 
 class StocksApp extends StatefulWidget {
   @override
-  StocksAppState createState() => new StocksAppState();
+  StocksAppState createState() => StocksAppState();
 }
 
 class StocksAppState extends State<StocksApp> {
   StockData stocks;
 
-  StockConfiguration _configuration = new StockConfiguration(
+  StockConfiguration _configuration = StockConfiguration(
       stockMode: StockMode.optimistic,
       backupMode: BackupMode.enabled,
       debugShowGrid: false,
@@ -58,7 +58,7 @@ class StocksAppState extends State<StocksApp> {
   @override
   void initState() {
     super.initState();
-    stocks = new StockData();
+    stocks = StockData();
   }
 
   void configurationUpdater(StockConfiguration value) {
@@ -70,10 +70,10 @@ class StocksAppState extends State<StocksApp> {
   ThemeData get theme {
     switch (_configuration.stockMode) {
       case StockMode.optimistic:
-        return new ThemeData(
+        return ThemeData(
             brightness: Brightness.light, primarySwatch: Colors.purple);
       case StockMode.pessimistic:
-        return new ThemeData(
+        return ThemeData(
             brightness: Brightness.dark, accentColor: Colors.redAccent);
     }
     assert(_configuration.stockMode != null);
@@ -95,10 +95,10 @@ class StocksAppState extends State<StocksApp> {
       // Extract the symbol part of "stock:..." and return a route
       // for that symbol.
       final String symbol = path[1].substring(6);
-      return new MaterialPageRoute<void>(
+      return MaterialPageRoute<void>(
         settings: settings,
         builder: (BuildContext context) =>
-            new StockSymbolPage(symbol: symbol, stocks: stocks),
+            StockSymbolPage(symbol: symbol, stocks: stocks),
       );
     }
     // The other paths we support are in the routes table.
@@ -115,26 +115,26 @@ class StocksAppState extends State<StocksApp> {
       debugRepaintRainbowEnabled = _configuration.debugShowRainbow;
       return true;
     }());
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Stocks',
       theme: theme,
       localizationsDelegates: <LocalizationsDelegate<dynamic>>[
-        new _StocksLocalizationsDelegate(),
+        _StocksLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: const <Locale>[
-        const Locale('en', 'US'),
-        const Locale('es', 'ES'),
+        Locale('en', 'US'),
+        Locale('es', 'ES'),
       ],
       debugShowMaterialGrid: _configuration.debugShowGrid,
       showPerformanceOverlay: _configuration.showPerformanceOverlay,
       showSemanticsDebugger: _configuration.showSemanticsDebugger,
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) =>
-            new StockHome(stocks, _configuration, configurationUpdater),
+            StockHome(stocks, _configuration, configurationUpdater),
         '/settings': (BuildContext context) =>
-            new StockSettings(_configuration, configurationUpdater)
+            StockSettings(_configuration, configurationUpdater)
       },
       onGenerateRoute: _getRoute,
     );
@@ -142,5 +142,5 @@ class StocksAppState extends State<StocksApp> {
 }
 
 void main() {
-  runApp(new StocksApp());
+  runApp(StocksApp());
 }

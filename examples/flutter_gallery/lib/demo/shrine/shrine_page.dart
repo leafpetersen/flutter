@@ -29,7 +29,7 @@ class ShrinePage extends StatefulWidget {
   final Map<Product, Order> shoppingCart;
 
   @override
-  ShrinePageState createState() => new ShrinePageState();
+  ShrinePageState createState() => ShrinePageState();
 }
 
 /// Defines the Scaffold, AppBar, etc that the demo pages have in common.
@@ -53,16 +53,16 @@ class ShrinePageState extends State<ShrinePage> {
         builder: (BuildContext context) {
           if (widget.shoppingCart.isEmpty) {
             return const Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: const Text('The shopping cart is empty'));
+                padding: EdgeInsets.all(24.0),
+                child: Text('The shopping cart is empty'));
           }
-          return new ListView(
+          return ListView(
             padding: kMaterialListPadding,
             children: widget.shoppingCart.values.map((Order order) {
-              return new ListTile(
-                  title: new Text(order.product.name),
-                  leading: new Text('${order.quantity}'),
-                  subtitle: new Text(order.product.vendor.name));
+              return ListTile(
+                  title: Text(order.product.name),
+                  leading: Text('${order.quantity}'),
+                  subtitle: Text(order.product.vendor.name));
             }).toList(),
           );
         });
@@ -78,44 +78,44 @@ class ShrinePageState extends State<ShrinePage> {
 
   void _emptyCart() {
     widget.shoppingCart.clear();
-    widget.scaffoldKey.currentState.showSnackBar(
-        const SnackBar(content: const Text('Shopping cart is empty')));
+    widget.scaffoldKey.currentState
+        .showSnackBar(const SnackBar(content: Text('Shopping cart is empty')));
   }
 
   @override
   Widget build(BuildContext context) {
     final ShrineTheme theme = ShrineTheme.of(context);
-    return new Scaffold(
+    return Scaffold(
         key: widget.scaffoldKey,
-        appBar: new AppBar(
+        appBar: AppBar(
             elevation: _appBarElevation,
             backgroundColor: theme.appBarBackgroundColor,
             iconTheme: Theme.of(context).iconTheme,
             brightness: Brightness.light,
-            flexibleSpace: new Container(
-                decoration: new BoxDecoration(
-                    border: new Border(
-                        bottom: new BorderSide(color: theme.dividerColor)))),
-            title: new Text('SHRINE',
-                style: ShrineTheme.of(context).appBarTitleStyle),
+            flexibleSpace: Container(
+                decoration: BoxDecoration(
+                    border:
+                        Border(bottom: BorderSide(color: theme.dividerColor)))),
+            title:
+                Text('SHRINE', style: ShrineTheme.of(context).appBarTitleStyle),
             centerTitle: true,
             actions: <Widget>[
-              new IconButton(
+              IconButton(
                   icon: const Icon(Icons.shopping_cart),
                   tooltip: 'Shopping cart',
                   onPressed: _showShoppingCart),
-              new PopupMenuButton<ShrineAction>(
+              PopupMenuButton<ShrineAction>(
                   itemBuilder: (BuildContext context) =>
                       <PopupMenuItem<ShrineAction>>[
                         const PopupMenuItem<ShrineAction>(
                             value: ShrineAction.sortByPrice,
-                            child: const Text('Sort by price')),
+                            child: Text('Sort by price')),
                         const PopupMenuItem<ShrineAction>(
                             value: ShrineAction.sortByProduct,
-                            child: const Text('Sort by product')),
+                            child: Text('Sort by product')),
                         const PopupMenuItem<ShrineAction>(
                             value: ShrineAction.emptyCart,
-                            child: const Text('Empty shopping cart'))
+                            child: Text('Empty shopping cart'))
                       ],
                   onSelected: (ShrineAction action) {
                     switch (action) {
@@ -132,7 +132,7 @@ class ShrinePageState extends State<ShrinePage> {
                   })
             ]),
         floatingActionButton: widget.floatingActionButton,
-        body: new NotificationListener<ScrollNotification>(
+        body: NotificationListener<ScrollNotification>(
             onNotification: _handleScrollNotification, child: widget.body));
   }
 }

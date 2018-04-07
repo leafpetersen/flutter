@@ -11,7 +11,7 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 
-const FileSystem _fs = const LocalFileSystem();
+const FileSystem _fs = LocalFileSystem();
 
 // Demos for which timeline data will be collected using
 // FlutterDriver.traceAction().
@@ -23,7 +23,7 @@ const FileSystem _fs = const LocalFileSystem();
 //
 // These names must match GalleryItem titles from  kAllGalleryItems
 // in examples/flutter_gallery/lib/gallery.item.dart
-const List<String> kProfiledDemos = const <String>[
+const List<String> kProfiledDemos = <String>[
   'Shrine',
   'Contact profile',
   'Animation',
@@ -39,7 +39,7 @@ const List<String> kProfiledDemos = const <String>[
 //
 // These names must match GalleryItem titles from  kAllGalleryItems
 // in examples/flutter_gallery/lib/gallery.item.dart
-const List<String> kUnsynchronizedDemos = const <String>[
+const List<String> kUnsynchronizedDemos = <String>[
   'Progress indicators',
   'Activity Indicator',
   'Video',
@@ -84,7 +84,7 @@ Future<Null> saveDurationsHistogram(
   });
 
   if (unexpectedValueCounts.isNotEmpty) {
-    final StringBuffer error = new StringBuffer(
+    final StringBuffer error = StringBuffer(
         'Some routes recorded wrong number of values (expected 2 values/route):\n\n');
     unexpectedValueCounts.forEach((String routeName, int count) {
       error.writeln(' - $routeName recorded $count values.');
@@ -188,7 +188,7 @@ void main([List<String> args = const <String>[]]) {
       // Save the duration (in microseconds) of the first timeline Frame event
       // that follows a 'Start Transition' event. The Gallery app adds a
       // 'Start Transition' event when a demo is launched (see GalleryItem).
-      final TimelineSummary summary = new TimelineSummary.summarize(timeline);
+      final TimelineSummary summary = TimelineSummary.summarize(timeline);
       await summary.writeSummaryToFile('transitions', pretty: true);
       final String histogramPath =
           path.join(testOutputsDirectory, 'transition_durations.timeline.json');
@@ -200,9 +200,9 @@ void main([List<String> args = const <String>[]]) {
           dyScroll: 200.0, alignment: 0.0);
 
       // Execute the remaining tests.
-      final Set<String> unprofiledDemos = new Set<String>.from(_allDemos)
+      final Set<String> unprofiledDemos = Set<String>.from(_allDemos)
         ..removeAll(kProfiledDemos);
       await runDemos(unprofiledDemos.toList(), driver);
-    }, timeout: const Timeout(const Duration(minutes: 5)));
+    }, timeout: const Timeout(Duration(minutes: 5)));
   });
 }

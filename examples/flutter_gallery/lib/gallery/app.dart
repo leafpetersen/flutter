@@ -34,7 +34,7 @@ class GalleryApp extends StatefulWidget {
   final VoidCallback onSendFeedback;
 
   @override
-  GalleryAppState createState() => new GalleryAppState();
+  GalleryAppState createState() => GalleryAppState();
 }
 
 class GalleryAppState extends State<GalleryApp> {
@@ -65,8 +65,8 @@ class GalleryAppState extends State<GalleryApp> {
   }
 
   Widget _applyScaleFactor(Widget child) {
-    return new Builder(
-      builder: (BuildContext context) => new MediaQuery(
+    return Builder(
+      builder: (BuildContext context) => MediaQuery(
             data: MediaQuery.of(context).copyWith(
                   textScaleFactor: _textScaleFactor,
                 ),
@@ -77,7 +77,7 @@ class GalleryAppState extends State<GalleryApp> {
 
   @override
   Widget build(BuildContext context) {
-    Widget home = new GalleryHome(
+    Widget home = GalleryHome(
       galleryTheme: _galleryTheme,
       onThemeChanged: (GalleryTheme value) {
         setState(() {
@@ -124,8 +124,7 @@ class GalleryAppState extends State<GalleryApp> {
             // We delay the time dilation change long enough that the user can see
             // that the checkbox in the drawer has started reacting, then we slam
             // on the brakes so that they see that the time is in fact now dilated.
-            _timeDilationTimer =
-                new Timer(const Duration(milliseconds: 150), () {
+            _timeDilationTimer = Timer(const Duration(milliseconds: 150), () {
               timeDilation = _timeDilation;
             });
           } else {
@@ -149,7 +148,7 @@ class GalleryAppState extends State<GalleryApp> {
     );
 
     if (widget.updateUrlFetcher != null) {
-      home = new Updater(
+      home = Updater(
         updateUrlFetcher: widget.updateUrlFetcher,
         child: home,
       );
@@ -165,7 +164,7 @@ class GalleryAppState extends State<GalleryApp> {
       };
     }
 
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Gallery',
       color: Colors.grey,
       theme: _galleryTheme.theme
@@ -176,7 +175,7 @@ class GalleryAppState extends State<GalleryApp> {
       routes: _kRoutes,
       home: home,
       builder: (BuildContext context, Widget child) {
-        return new Directionality(
+        return Directionality(
           textDirection: _overrideDirection,
           child: _applyScaleFactor(child),
         );

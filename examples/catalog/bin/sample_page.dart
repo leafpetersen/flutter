@@ -39,19 +39,19 @@ void logError(String s) {
 }
 
 File inputFile(String dir, String name) {
-  return new File(dir + Platform.pathSeparator + name);
+  return File(dir + Platform.pathSeparator + name);
 }
 
 File outputFile(String name, [Directory directory]) {
-  return new File(
+  return File(
       (directory ?? outputDirectory).path + Platform.pathSeparator + name);
 }
 
 void initialize() {
-  outputDirectory = new Directory('.generated');
-  sampleDirectory = new Directory('lib');
-  testDirectory = new Directory('test');
-  driverDirectory = new Directory('test_driver');
+  outputDirectory = Directory('.generated');
+  sampleDirectory = Directory('lib');
+  testDirectory = Directory('test');
+  driverDirectory = Directory('test_driver');
   outputDirectory.createSync();
 }
 
@@ -59,10 +59,10 @@ void initialize() {
 // by values[foo].
 String expandTemplate(String template, Map<String, String> values) {
   // Matches @(foo), match[1] == 'foo'
-  final RegExp tokenRE = new RegExp(r'@\(([\w ]+)\)', multiLine: true);
+  final RegExp tokenRE = RegExp(r'@\(([\w ]+)\)', multiLine: true);
   return template.replaceAllMapped(tokenRE, (Match match) {
     if (match.groupCount != 1)
-      throw new SampleError('bad template keyword $match[0]');
+      throw SampleError('bad template keyword $match[0]');
     final String keyword = match[1];
     return values[keyword] ?? '';
   });
@@ -112,9 +112,8 @@ class SampleInfo {
   bool initialize() {
     final String contents = sourceFile.readAsStringSync();
 
-    final RegExp startRE =
-        new RegExp(r'^/\*\s+^Sample\s+Catalog', multiLine: true);
-    final RegExp endRE = new RegExp(r'^\*/', multiLine: true);
+    final RegExp startRE = RegExp(r'^/\*\s+^Sample\s+Catalog', multiLine: true);
+    final RegExp endRE = RegExp(r'^\*/', multiLine: true);
     final Match startMatch = startRE.firstMatch(contents);
     if (startMatch == null) return false;
 
@@ -127,13 +126,12 @@ class SampleInfo {
     sourceCode = contents.substring(0, startMatch.start) +
         contents.substring(startIndex + endMatch.end);
     if (sourceCode.trim().isEmpty)
-      throw new SampleError('did not find any source code in $sourceFile');
+      throw SampleError('did not find any source code in $sourceFile');
 
-    final RegExp keywordsRE =
-        new RegExp(sampleCatalogKeywords, multiLine: true);
+    final RegExp keywordsRE = RegExp(sampleCatalogKeywords, multiLine: true);
     final List<Match> keywordMatches = keywordsRE.allMatches(comment).toList();
     if (keywordMatches.isEmpty)
-      throw new SampleError(
+      throw SampleError(
           'did not find any keywords in the Sample Catalog comment in $sourceFile');
 
     commentValues = <String, String>{};
@@ -163,7 +161,7 @@ void generate(String commit) {
   final List<SampleInfo> samples = <SampleInfo>[];
   for (FileSystemEntity entity in sampleDirectory.listSync()) {
     if (entity is File && entity.path.endsWith('.dart')) {
-      final SampleInfo sample = new SampleInfo(entity, commit);
+      final SampleInfo sample = SampleInfo(entity, commit);
       if (sample
           .initialize()) // skip files that lack the Sample Catalog comment
         samples.add(sample);

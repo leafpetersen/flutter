@@ -14,7 +14,7 @@ class ButtonsDemo {
   void buttons() {
 // START buttons_raised
 // Create a raised button.
-    new RaisedButton(
+    RaisedButton(
         child: const Text('BUTTON TITLE'),
         onPressed: () {
           // Perform some action
@@ -23,11 +23,14 @@ class ButtonsDemo {
 // Create a disabled button.
 // Buttons are disabled when onPressed isn't
 // specified or is null.
-    const RaisedButton(child: const Text('BUTTON TITLE'), onPressed: null);
+// Create a disabled button.
+// Buttons are disabled when onPressed isn't
+// specified or is null.
+    const RaisedButton(child: Text('BUTTON TITLE'), onPressed: null);
 
 // Create a button with an icon and a
 // title.
-    new RaisedButton.icon(
+    RaisedButton.icon(
       icon: const Icon(Icons.add, size: 18.0),
       label: const Text('BUTTON TITLE'),
       onPressed: () {
@@ -38,7 +41,7 @@ class ButtonsDemo {
 
 // START buttons_outline
 // Create an outline button.
-    new OutlineButton(
+    OutlineButton(
         child: const Text('BUTTON TITLE'),
         onPressed: () {
           // Perform some action
@@ -47,11 +50,14 @@ class ButtonsDemo {
 // Create a disabled button.
 // Buttons are disabled when onPressed isn't
 // specified or is null.
-    const OutlineButton(child: const Text('BUTTON TITLE'), onPressed: null);
+// Create a disabled button.
+// Buttons are disabled when onPressed isn't
+// specified or is null.
+    const OutlineButton(child: Text('BUTTON TITLE'), onPressed: null);
 
 // Create a button with an icon and a
 // title.
-    new OutlineButton.icon(
+    OutlineButton.icon(
       icon: const Icon(Icons.add, size: 18.0),
       label: const Text('BUTTON TITLE'),
       onPressed: () {
@@ -62,7 +68,7 @@ class ButtonsDemo {
 
 // START buttons_flat
 // Create a flat button.
-    new FlatButton(
+    FlatButton(
         child: const Text('BUTTON TITLE'),
         onPressed: () {
           // Perform some action
@@ -71,7 +77,10 @@ class ButtonsDemo {
 // Create a disabled button.
 // Buttons are disabled when onPressed isn't
 // specified or is null.
-    const FlatButton(child: const Text('BUTTON TITLE'), onPressed: null);
+// Create a disabled button.
+// Buttons are disabled when onPressed isn't
+// specified or is null.
+    const FlatButton(child: Text('BUTTON TITLE'), onPressed: null);
 // END
 
 // START buttons_dropdown
@@ -79,7 +88,7 @@ class ButtonsDemo {
     String dropdownValue;
 
 // Dropdown button with string values.
-    new DropdownButton<String>(
+    DropdownButton<String>(
         value: dropdownValue,
         onChanged: (String newValue) {
           // null indicates the user didn't select a
@@ -89,8 +98,7 @@ class ButtonsDemo {
           });
         },
         items: <String>['One', 'Two', 'Free', 'Four'].map((String value) {
-          return new DropdownMenuItem<String>(
-              value: value, child: new Text(value));
+          return DropdownMenuItem<String>(value: value, child: Text(value));
         }).toList());
 // END
 
@@ -99,7 +107,7 @@ class ButtonsDemo {
     bool value;
 
 // Toggleable icon button.
-    new IconButton(
+    IconButton(
         icon: const Icon(Icons.thumb_up),
         onPressed: () {
           setState(() => value = !value);
@@ -109,10 +117,10 @@ class ButtonsDemo {
 
 // START buttons_action
 // Floating action button in Scaffold.
-    new Scaffold(
-        appBar: new AppBar(title: const Text('Demo')),
+    Scaffold(
+        appBar: AppBar(title: const Text('Demo')),
         floatingActionButton: const FloatingActionButton(
-            child: const Icon(Icons.add), onPressed: null));
+            child: Icon(Icons.add), onPressed: null));
 // END
   }
 }
@@ -126,7 +134,7 @@ class SelectionControls {
     bool checkboxValue = false;
 
 // Create a checkbox.
-    new Checkbox(
+    Checkbox(
       value: checkboxValue,
       onChanged: (bool value) {
         setState(() {
@@ -136,7 +144,7 @@ class SelectionControls {
     );
 
 // Create a tristate checkbox.
-    new Checkbox(
+    Checkbox(
       tristate: true,
       value: checkboxValue,
       onChanged: (bool value) {
@@ -146,6 +154,9 @@ class SelectionControls {
       },
     );
 
+// Create a disabled checkbox.
+// Checkboxes are disabled when onChanged isn't
+// specified or null.
 // Create a disabled checkbox.
 // Checkboxes are disabled when onChanged isn't
 // specified or null.
@@ -164,15 +175,16 @@ class SelectionControls {
     }
 
 // Creates a set of radio buttons.
-    new Row(children: <Widget>[
-      new Radio<int>(
+    Row(children: <Widget>[
+      Radio<int>(
           value: 0, groupValue: radioValue, onChanged: handleRadioValueChanged),
-      new Radio<int>(
+      Radio<int>(
           value: 1, groupValue: radioValue, onChanged: handleRadioValueChanged),
-      new Radio<int>(
+      Radio<int>(
           value: 2, groupValue: radioValue, onChanged: handleRadioValueChanged)
     ]);
 
+// Creates a disabled radio button.
 // Creates a disabled radio button.
     const Radio<int>(value: 0, groupValue: 0, onChanged: null);
 // END
@@ -182,7 +194,7 @@ class SelectionControls {
     bool switchValue = false;
 
 // Create a switch.
-    new Switch(
+    Switch(
         value: switchValue,
         onChanged: (bool value) {
           setState(() {
@@ -190,6 +202,9 @@ class SelectionControls {
           });
         });
 
+// Create a disabled switch.
+// Switches are disabled when onChanged isn't
+// specified or null.
 // Create a disabled switch.
 // Switches are disabled when onChanged isn't
 // specified or null.
@@ -203,7 +218,7 @@ class GridLists {
 // START gridlists
 // Creates a scrollable grid list with images
 // loaded from the web.
-    new GridView.count(
+    GridView.count(
       crossAxisCount: 3,
       childAspectRatio: 1.0,
       padding: const EdgeInsets.all(4.0),
@@ -216,9 +231,9 @@ class GridLists {
         '...',
         'https://example.com/image-n.jpg'
       ].map((String url) {
-        return new GridTile(
-            footer: new GridTileBar(title: new Text(url)),
-            child: new Image.network(url, fit: BoxFit.cover));
+        return GridTile(
+            footer: GridTileBar(title: Text(url)),
+            child: Image.network(url, fit: BoxFit.cover));
       }).toList(),
     );
 // END
@@ -228,7 +243,7 @@ class GridLists {
 class AnimatedImage {
   void animatedImage() {
 // START animated_image
-    new Image.network('https://example.com/animated-image.gif');
+    Image.network('https://example.com/animated-image.gif');
 // END
   }
 }

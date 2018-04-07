@@ -9,7 +9,7 @@ class CupertinoSliderDemo extends StatefulWidget {
   static const String routeName = '/cupertino/slider';
 
   @override
-  _CupertinoSliderDemoState createState() => new _CupertinoSliderDemoState();
+  _CupertinoSliderDemoState createState() => _CupertinoSliderDemoState();
 }
 
 class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
@@ -18,16 +18,16 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: const Text('Cupertino Sliders'),
       ),
-      body: new Center(
-        child: new Column(
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              new CupertinoSlider(
+            Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              CupertinoSlider(
                   value: _value,
                   min: 0.0,
                   max: 100.0,
@@ -36,10 +36,10 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
                       _value = value;
                     });
                   }),
-              new Text('Cupertino Continuous: ${_value.toStringAsFixed(1)}'),
+              Text('Cupertino Continuous: ${_value.toStringAsFixed(1)}'),
             ]),
-            new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              new CupertinoSlider(
+            Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              CupertinoSlider(
                   value: _discreteValue,
                   min: 0.0,
                   max: 100.0,
@@ -49,7 +49,7 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
                       _discreteValue = value;
                     });
                   }),
-              new Text('Cupertino Discrete: $_discreteValue'),
+              Text('Cupertino Discrete: $_discreteValue'),
             ]),
           ],
         ),

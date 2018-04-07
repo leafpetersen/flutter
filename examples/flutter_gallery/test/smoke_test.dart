@@ -14,7 +14,7 @@ import 'package:flutter_gallery/gallery/app.dart' show GalleryApp;
 
 const String kCaption = 'Flutter Gallery';
 
-final List<String> demoCategories = new LinkedHashSet<String>.from(
+final List<String> demoCategories = LinkedHashSet<String>.from(
     kAllGalleryItems.map<String>((GalleryItem item) => item.category)).toList();
 
 final List<String> routeNames =
@@ -139,7 +139,7 @@ Future<Null> runSmokeTest(WidgetTester tester) async {
     hasFeedback = true;
   }
 
-  await tester.pumpWidget(new GalleryApp(onSendFeedback: mockOnSendFeedback));
+  await tester.pumpWidget(GalleryApp(onSendFeedback: mockOnSendFeedback));
   await tester.pump(); // see https://github.com/flutter/flutter/issues/1865
   await tester.pump(); // triggers a frame
 

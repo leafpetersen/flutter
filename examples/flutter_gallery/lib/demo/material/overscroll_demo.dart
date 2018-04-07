@@ -14,13 +14,13 @@ class OverscrollDemo extends StatefulWidget {
   static const String routeName = '/material/overscroll';
 
   @override
-  OverscrollDemoState createState() => new OverscrollDemoState();
+  OverscrollDemoState createState() => OverscrollDemoState();
 }
 
 class OverscrollDemoState extends State<OverscrollDemo> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
+      GlobalKey<RefreshIndicatorState>();
   static final List<String> _items = <String>[
     'A',
     'B',
@@ -39,14 +39,14 @@ class OverscrollDemoState extends State<OverscrollDemo> {
   ];
 
   Future<Null> _handleRefresh() {
-    final Completer<Null> completer = new Completer<Null>();
-    new Timer(const Duration(seconds: 3), () {
+    final Completer<Null> completer = Completer<Null>();
+    Timer(const Duration(seconds: 3), () {
       completer.complete(null);
     });
     return completer.future.then((_) {
-      _scaffoldKey.currentState?.showSnackBar(new SnackBar(
+      _scaffoldKey.currentState?.showSnackBar(SnackBar(
           content: const Text('Refresh complete'),
-          action: new SnackBarAction(
+          action: SnackBarAction(
               label: 'RETRY',
               onPressed: () {
                 _refreshIndicatorKey.currentState.show();
@@ -56,29 +56,28 @@ class OverscrollDemoState extends State<OverscrollDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       key: _scaffoldKey,
-      appBar:
-          new AppBar(title: const Text('Pull to refresh'), actions: <Widget>[
-        new IconButton(
+      appBar: AppBar(title: const Text('Pull to refresh'), actions: <Widget>[
+        IconButton(
             icon: const Icon(Icons.refresh),
             tooltip: 'Refresh',
             onPressed: () {
               _refreshIndicatorKey.currentState.show();
             }),
       ]),
-      body: new RefreshIndicator(
+      body: RefreshIndicator(
         key: _refreshIndicatorKey,
         onRefresh: _handleRefresh,
-        child: new ListView.builder(
+        child: ListView.builder(
           padding: kMaterialListPadding,
           itemCount: _items.length,
           itemBuilder: (BuildContext context, int index) {
             final String item = _items[index];
-            return new ListTile(
+            return ListTile(
               isThreeLine: true,
-              leading: new CircleAvatar(child: new Text(item)),
-              title: new Text('This item represents $item.'),
+              leading: CircleAvatar(child: Text(item)),
+              title: Text('This item represents $item.'),
               subtitle: const Text(
                   'Even more additional list item information appears on line three.'),
             );

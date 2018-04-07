@@ -14,8 +14,8 @@ import 'stock_messages_es.dart' as messages_es;
 
 typedef Future<dynamic> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
-  'en': () => new Future.value(null),
-  'es': () => new Future.value(null),
+  'en': () => Future.value(null),
+  'es': () => Future.value(null),
 };
 
 MessageLookupByLibrary _findExact(localeName) {
@@ -35,13 +35,13 @@ Future<bool> initializeMessages(String localeName) async {
       localeName, (locale) => _deferredLibraries[locale] != null,
       onFailure: (_) => null);
   if (availableLocale == null) {
-    return new Future.value(false);
+    return Future.value(false);
   }
   var lib = _deferredLibraries[availableLocale];
-  await (lib == null ? new Future.value(false) : lib());
-  initializeInternalMessageLookup(() => new CompositeMessageLookup());
+  await (lib == null ? Future.value(false) : lib());
+  initializeInternalMessageLookup(() => CompositeMessageLookup());
   messageLookup.addLocale(availableLocale, _findGeneratedMessagesFor);
-  return new Future.value(true);
+  return Future.value(true);
 }
 
 bool _messagesExistFor(String locale) {

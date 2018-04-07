@@ -9,51 +9,51 @@ class BottomAppBarDemo extends StatefulWidget {
   static const String routeName = '/material/bottom_app_bar';
 
   @override
-  State createState() => new _BottomAppBarDemoState();
+  State createState() => _BottomAppBarDemoState();
 }
 
 class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
   // The key given to the Scaffold so that _showSnackbar can find it.
   static final GlobalKey<ScaffoldState> _scaffoldKey =
-      new GlobalKey<ScaffoldState>();
+      GlobalKey<ScaffoldState>();
 
   // The index of the currently-selected _FabLocationConfiguration.
   int fabLocationIndex = 1;
 
   static const List<_FabLocationConfiguration> _fabLocationConfigurations =
-      const <_FabLocationConfiguration>[
-    const _FabLocationConfiguration('End, undocked above the bottom app bar',
+      <_FabLocationConfiguration>[
+    _FabLocationConfiguration('End, undocked above the bottom app bar',
         _BabMode.END_FAB, FloatingActionButtonLocation.endFloat),
-    const _FabLocationConfiguration('End, docked to the bottom app bar',
+    _FabLocationConfiguration('End, docked to the bottom app bar',
         _BabMode.END_FAB, FloatingActionButtonLocation.endDocked),
-    const _FabLocationConfiguration('Center, docked to the bottom app bar',
+    _FabLocationConfiguration('Center, docked to the bottom app bar',
         _BabMode.CENTER_FAB, FloatingActionButtonLocation.centerDocked),
-    const _FabLocationConfiguration('Center, undocked above the bottom app bar',
+    _FabLocationConfiguration('Center, undocked above the bottom app bar',
         _BabMode.CENTER_FAB, FloatingActionButtonLocation.centerFloat),
     // This configuration uses a custom FloatingActionButtonLocation.
-    const _FabLocationConfiguration('Start, docked to the top app bar',
-        _BabMode.CENTER_FAB, const _StartTopFloatingActionButtonLocation()),
+    _FabLocationConfiguration('Start, docked to the top app bar',
+        _BabMode.CENTER_FAB, _StartTopFloatingActionButtonLocation()),
   ];
 
   // The index of the currently-selected _FabShapeConfiguration.
   int fabShapeIndex = 1;
 
   static const List<_FabShapeConfiguration> _fabShapeConfigurations =
-      const <_FabShapeConfiguration>[
-    const _FabShapeConfiguration('None', null),
-    const _FabShapeConfiguration(
+      <_FabShapeConfiguration>[
+    _FabShapeConfiguration('None', null),
+    _FabShapeConfiguration(
       'Circular',
-      const FloatingActionButton(
+      FloatingActionButton(
         onPressed: _showSnackbar,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
         backgroundColor: Colors.orange,
       ),
     ),
-    const _FabShapeConfiguration(
+    _FabShapeConfiguration(
       'Diamond',
-      const _DiamondFab(
+      _DiamondFab(
         onPressed: _showSnackbar,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     ),
   ];
@@ -69,7 +69,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
     Colors.green: 'Green',
     Colors.lightBlue: 'Light blue',
   };
-  static const List<Color> babColors = const <Color>[
+  static const List<Color> babColors = <Color>[
     null,
     Colors.orange,
     Colors.green,
@@ -82,23 +82,23 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       key: _scaffoldKey,
-      appBar: new AppBar(
+      appBar: AppBar(
         title: const Text('Bottom App Bar with FAB location'),
         // Add 48dp of space onto the bottom of the appbar.
         // This gives space for the top-start location to attach to without
         // blocking the 'back' button.
         bottom: const PreferredSize(
-          preferredSize: const Size.fromHeight(48.0),
-          child: const SizedBox(),
+          preferredSize: Size.fromHeight(48.0),
+          child: SizedBox(),
         ),
       ),
-      body: new SingleChildScrollView(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: buildControls(context),
       ),
-      bottomNavigationBar: new _DemoBottomAppBar(
+      bottomNavigationBar: _DemoBottomAppBar(
           _fabLocationConfigurations[fabLocationIndex].babMode,
           babColor,
           notchEnabled),
@@ -109,21 +109,21 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
   }
 
   Widget buildControls(BuildContext context) {
-    return new Column(
+    return Column(
       children: <Widget>[
-        new Text(
+        Text(
           'Floating action button',
           style: Theme.of(context).textTheme.title,
         ),
         buildFabShapePicker(),
         buildFabLocationPicker(),
         const Divider(),
-        new Text(
+        Text(
           'Bottom app bar options',
           style: Theme.of(context).textTheme.title,
         ),
         buildBabColorPicker(),
-        new CheckboxListTile(
+        CheckboxListTile(
           title: const Text('Enable notch'),
           value: notchEnabled,
           onChanged: (bool value) {
@@ -138,17 +138,17 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
   }
 
   Widget buildFabShapePicker() {
-    return new Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         const SizedBox(
           width: 96.0,
-          child: const Text('Shape: '),
+          child: Text('Shape: '),
         ),
-        new Expanded(
-          child: new Padding(
+        Expanded(
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: new RaisedButton(
+            child: RaisedButton(
               child: const Text('Change shape'),
               onPressed: () {
                 setState(() {
@@ -164,17 +164,17 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
   }
 
   Widget buildFabLocationPicker() {
-    return new Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         const SizedBox(
           width: 96.0,
-          child: const Text('Location: '),
+          child: Text('Location: '),
         ),
-        new Expanded(
-          child: new Padding(
+        Expanded(
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: new RaisedButton(
+            child: RaisedButton(
               child: const Text('Move'),
               onPressed: () {
                 setState(() {
@@ -195,11 +195,11 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
     ];
     for (Color color in babColors) {
       colors.add(
-        new Semantics(
+        Semantics(
           label: 'Set Bottom App Bar color to ${colorToName[color]}',
           container: true,
-          child: new Row(children: <Widget>[
-            new Radio<Color>(
+          child: Row(children: <Widget>[
+            Radio<Color>(
               value: color,
               groupValue: babColor,
               onChanged: (Color color) {
@@ -208,21 +208,21 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
                 });
               },
             ),
-            new Container(
-              decoration: new BoxDecoration(
+            Container(
+              decoration: BoxDecoration(
                 color: color,
-                border: new Border.all(width: 2.0, color: Colors.black),
+                border: Border.all(width: 2.0, color: Colors.black),
               ),
               child: const SizedBox(width: 20.0, height: 20.0),
             ),
-            const Padding(padding: const EdgeInsets.only(left: 12.0)),
+            const Padding(padding: EdgeInsets.only(left: 12.0)),
           ]),
         ),
       );
     }
-    return new SingleChildScrollView(
+    return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: new Row(
+      child: Row(
         children: colors,
         mainAxisAlignment: MainAxisAlignment.center,
       ),
@@ -231,7 +231,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
 
   static void _showSnackbar() {
     _scaffoldKey.currentState.showSnackBar(
-      const SnackBar(content: const Text(_explanatoryText)),
+      const SnackBar(content: Text(_explanatoryText)),
     );
   }
 }
@@ -289,12 +289,12 @@ class _DemoBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool showsFirst = babMode == _BabMode.END_FAB;
-    return new BottomAppBar(
+    return BottomAppBar(
       color: color,
       hasNotch: enableNotch,
-      child: new Row(
+      child: Row(
         children: <Widget>[
-          new IconButton(
+          IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {
               showModalBottomSheet<Null>(
@@ -302,8 +302,8 @@ class _DemoBottomAppBar extends StatelessWidget {
                   builder: (BuildContext context) => const _DemoDrawer());
             },
           ),
-          new Expanded(
-            child: new AnimatedCrossFade(
+          Expanded(
+            child: AnimatedCrossFade(
               duration: const Duration(milliseconds: 225),
               firstChild: buildBabContents(context, _BabMode.END_FAB),
               firstCurve: showsFirst ? fadeOutCurve : fadeInCurve,
@@ -323,34 +323,32 @@ class _DemoBottomAppBar extends StatelessWidget {
     final List<Widget> rowContents = <Widget>[];
     if (babMode == _BabMode.CENTER_FAB) {
       rowContents.add(
-        new Expanded(
-          child: new ConstrainedBox(
+        Expanded(
+          child: ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 0.0),
           ),
         ),
       );
     }
     rowContents.addAll(<Widget>[
-      new IconButton(
+      IconButton(
         icon: const Icon(Icons.search),
         onPressed: () {
           Scaffold.of(context).showSnackBar(
-                const SnackBar(
-                    content: const Text('This is a dummy search action.')),
+                const SnackBar(content: Text('This is a dummy search action.')),
               );
         },
       ),
-      new IconButton(
+      IconButton(
         icon: const Icon(Icons.more_vert),
         onPressed: () {
           Scaffold.of(context).showSnackBar(
-                const SnackBar(
-                    content: const Text('This is a dummy menu action.')),
+                const SnackBar(content: Text('This is a dummy menu action.')),
               );
         },
       ),
     ]);
-    return new Row(
+    return Row(
       children: rowContents,
     );
   }
@@ -362,16 +360,16 @@ class _DemoDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Drawer(
-      child: new Column(
+    return Drawer(
+      child: Column(
         children: const <Widget>[
-          const ListTile(
-            leading: const Icon(Icons.search),
-            title: const Text('Search'),
+          ListTile(
+            leading: Icon(Icons.search),
+            title: Text('Search'),
           ),
-          const ListTile(
-            leading: const Icon(Icons.threed_rotation),
-            title: const Text('3D'),
+          ListTile(
+            leading: Icon(Icons.threed_rotation),
+            title: Text('3D'),
           ),
         ],
       ),
@@ -392,7 +390,7 @@ class _DiamondFab extends StatefulWidget {
   final VoidCallback onPressed;
 
   @override
-  State createState() => new _DiamondFabState();
+  State createState() => _DiamondFabState();
 }
 
 class _DiamondFabState extends State<_DiamondFab> {
@@ -400,17 +398,16 @@ class _DiamondFabState extends State<_DiamondFab> {
 
   @override
   Widget build(BuildContext context) {
-    return new Material(
+    return Material(
       shape: const _DiamondBorder(),
       color: Colors.orange,
-      child: new InkWell(
+      child: InkWell(
         onTap: widget.onPressed,
-        child: new Container(
+        child: Container(
           width: 56.0,
           height: 56.0,
           child: IconTheme.merge(
-            data: new IconThemeData(
-                color: Theme.of(context).accentIconTheme.color),
+            data: IconThemeData(color: Theme.of(context).accentIconTheme.color),
             child: widget.child,
           ),
         ),
@@ -434,8 +431,7 @@ class _DiamondFabState extends State<_DiamondFab> {
 
   Path _computeNotch(Rect host, Rect guest, Offset start, Offset end) {
     final Rect marginedGuest = guest.inflate(widget.notchMargin);
-    if (!host.overlaps(marginedGuest))
-      return new Path()..lineTo(end.dx, end.dy);
+    if (!host.overlaps(marginedGuest)) return Path()..lineTo(end.dx, end.dy);
 
     final Rect intersection = marginedGuest.intersect(host);
     // We are computing a "V" shaped notch, as in this diagram:
@@ -454,7 +450,7 @@ class _DiamondFabState extends State<_DiamondFab> {
         (marginedGuest.height / 2.0) /
         (marginedGuest.width / 2.0);
 
-    return new Path()
+    return Path()
       ..lineTo(marginedGuest.center.dx - notchToCenter, host.top)
       ..lineTo(
           marginedGuest.left + marginedGuest.width / 2.0, marginedGuest.bottom)
@@ -478,7 +474,7 @@ class _DiamondBorder extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection textDirection}) {
-    return new Path()
+    return Path()
       ..moveTo(rect.left + rect.width / 2.0, rect.top)
       ..lineTo(rect.right, rect.top + rect.height / 2.0)
       ..lineTo(rect.left + rect.width / 2.0, rect.bottom)
@@ -553,6 +549,6 @@ class _StartTopFloatingActionButtonLocation
     // for left and right, so we place fabY in this one-liner.
     final double fabY = scaffoldGeometry.contentTop -
         (scaffoldGeometry.floatingActionButtonSize.height / 2.0);
-    return new Offset(fabX, fabY);
+    return Offset(fabX, fabY);
   }
 }

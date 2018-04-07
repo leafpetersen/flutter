@@ -28,12 +28,12 @@ class _GesturePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Offset center = size.center(Offset.zero) * zoom + offset;
     final double radius = size.width / 2.0 * zoom;
-    final Gradient gradient = new RadialGradient(
+    final Gradient gradient = RadialGradient(
         colors: forward
             ? <Color>[swatch.shade50, swatch.shade900]
             : <Color>[swatch.shade900, swatch.shade50]);
-    final Paint paint = new Paint()
-      ..shader = gradient.createShader(new Rect.fromCircle(
+    final Paint paint = Paint()
+      ..shader = gradient.createShader(Rect.fromCircle(
         center: center,
         radius: radius,
       ));
@@ -55,7 +55,7 @@ class _GesturePainter extends CustomPainter {
 
 class GestureDemo extends StatefulWidget {
   @override
-  GestureDemoState createState() => new GestureDemoState();
+  GestureDemoState createState() => GestureDemoState();
 }
 
 class GestureDemoState extends State<GestureDemo> {
@@ -67,7 +67,7 @@ class GestureDemoState extends State<GestureDemo> {
   double _previousZoom;
   double _zoom = 1.0;
 
-  static const List<MaterialColor> kSwatches = const <MaterialColor>[
+  static const List<MaterialColor> kSwatches = <MaterialColor>[
     Colors.red,
     Colors.pink,
     Colors.purple,
@@ -139,15 +139,15 @@ class GestureDemoState extends State<GestureDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return new Stack(fit: StackFit.expand, children: <Widget>[
-      new GestureDetector(
+    return Stack(fit: StackFit.expand, children: <Widget>[
+      GestureDetector(
           onScaleStart: _scaleEnabled ? _handleScaleStart : null,
           onScaleUpdate: _scaleEnabled ? _handleScaleUpdate : null,
           onTap: _tapEnabled ? _handleColorChange : null,
           onDoubleTap: _doubleTapEnabled ? _handleScaleReset : null,
           onLongPress: _longPressEnabled ? _handleDirectionChange : null,
-          child: new CustomPaint(
-              painter: new _GesturePainter(
+          child: CustomPaint(
+              painter: _GesturePainter(
                   zoom: _zoom,
                   offset: _offset,
                   swatch: swatch,
@@ -156,15 +156,15 @@ class GestureDemoState extends State<GestureDemo> {
                   tapEnabled: _tapEnabled,
                   doubleTapEnabled: _doubleTapEnabled,
                   longPressEnabled: _longPressEnabled))),
-      new Positioned(
+      Positioned(
           bottom: 0.0,
           left: 0.0,
-          child: new Card(
-              child: new Container(
+          child: Card(
+              child: Container(
                   padding: const EdgeInsets.all(4.0),
-                  child: new Column(children: <Widget>[
-                    new Row(children: <Widget>[
-                      new Checkbox(
+                  child: Column(children: <Widget>[
+                    Row(children: <Widget>[
+                      Checkbox(
                           value: _scaleEnabled,
                           onChanged: (bool value) {
                             setState(() {
@@ -173,8 +173,8 @@ class GestureDemoState extends State<GestureDemo> {
                           }),
                       const Text('Scale'),
                     ]),
-                    new Row(children: <Widget>[
-                      new Checkbox(
+                    Row(children: <Widget>[
+                      Checkbox(
                           value: _tapEnabled,
                           onChanged: (bool value) {
                             setState(() {
@@ -183,8 +183,8 @@ class GestureDemoState extends State<GestureDemo> {
                           }),
                       const Text('Tap'),
                     ]),
-                    new Row(children: <Widget>[
-                      new Checkbox(
+                    Row(children: <Widget>[
+                      Checkbox(
                           value: _doubleTapEnabled,
                           onChanged: (bool value) {
                             setState(() {
@@ -193,8 +193,8 @@ class GestureDemoState extends State<GestureDemo> {
                           }),
                       const Text('Double Tap'),
                     ]),
-                    new Row(children: <Widget>[
-                      new Checkbox(
+                    Row(children: <Widget>[
+                      Checkbox(
                           value: _longPressEnabled,
                           onChanged: (bool value) {
                             setState(() {
@@ -209,9 +209,9 @@ class GestureDemoState extends State<GestureDemo> {
 }
 
 void main() {
-  runApp(new MaterialApp(
-      theme: new ThemeData.dark(),
-      home: new Scaffold(
-          appBar: new AppBar(title: const Text('Gestures Demo')),
-          body: new GestureDemo())));
+  runApp(MaterialApp(
+      theme: ThemeData.dark(),
+      home: Scaffold(
+          appBar: AppBar(title: const Text('Gestures Demo')),
+          body: GestureDemo())));
 }
