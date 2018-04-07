@@ -4,8 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sample_catalog/expansion_tile_sample.dart'
-    as expansion_tile_sample;
+import 'package:sample_catalog/expansion_tile_sample.dart' as expansion_tile_sample;
 import 'package:sample_catalog/expansion_tile_sample.dart' show Entry;
 
 void main() {
@@ -24,8 +23,7 @@ void main() {
     }
 
     Future<Null> scrollUpOneEntry() async {
-      await tester.dragFrom(
-          const Offset(200.0, 200.0), const Offset(0.0, -88.00));
+      await tester.dragFrom(const Offset(200.0, 200.0), const Offset(0.0, -88.00));
       await tester.pumpAndSettle();
     }
 
@@ -51,8 +49,7 @@ void main() {
     }
 
     // - scroll to the top -
-    await tester.flingFrom(
-        const Offset(200.0, 200.0), const Offset(0.0, 100.0), 5000.0);
+    await tester.flingFrom(const Offset(200.0, 200.0), const Offset(0.0, 100.0), 5000.0);
     await tester.pumpAndSettle();
 
     // Expand the sections. Now Widgets for all three levels should be present.
@@ -88,5 +85,6 @@ void main() {
           expect(find.text(item.title), findsNothing);
       }
     }
+
   });
 }

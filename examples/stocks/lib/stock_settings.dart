@@ -13,19 +13,17 @@ class StockSettings extends StatefulWidget {
   final ValueChanged<StockConfiguration> updater;
 
   @override
-  StockSettingsState createState() => StockSettingsState();
+  StockSettingsState createState() => new StockSettingsState();
 }
 
 class StockSettingsState extends State<StockSettings> {
   void _handleOptimismChanged(bool value) {
     value ??= false;
-    sendUpdates(widget.configuration.copyWith(
-        stockMode: value ? StockMode.optimistic : StockMode.pessimistic));
+    sendUpdates(widget.configuration.copyWith(stockMode: value ? StockMode.optimistic : StockMode.pessimistic));
   }
 
   void _handleBackupChanged(bool value) {
-    sendUpdates(widget.configuration.copyWith(
-        backupMode: value ? BackupMode.enabled : BackupMode.disabled));
+    sendUpdates(widget.configuration.copyWith(backupMode: value ? BackupMode.enabled : BackupMode.disabled));
   }
 
   void _handleShowGridChanged(bool value) {
@@ -52,6 +50,7 @@ class StockSettingsState extends State<StockSettings> {
     sendUpdates(widget.configuration.copyWith(debugShowRainbow: value));
   }
 
+
   void _handleShowPerformanceOverlayChanged(bool value) {
     sendUpdates(widget.configuration.copyWith(showPerformanceOverlay: value));
   }
@@ -68,22 +67,23 @@ class StockSettingsState extends State<StockSettings> {
       case StockMode.pessimistic:
         showDialog<bool>(
           context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
+           builder: (BuildContext context) {
+            return new AlertDialog(
               title: const Text('Change mode?'),
-              content: const Text(
-                  'Optimistic mode means everything is awesome. Are you sure you can handle that?'),
+              content: const Text('Optimistic mode means everything is awesome. Are you sure you can handle that?'),
               actions: <Widget>[
-                FlatButton(
-                    child: const Text('NO THANKS'),
-                    onPressed: () {
-                      Navigator.pop(context, false);
-                    }),
-                FlatButton(
-                    child: const Text('AGREE'),
-                    onPressed: () {
-                      Navigator.pop(context, true);
-                    }),
+                new FlatButton(
+                  child: const Text('NO THANKS'),
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                  }
+                ),
+                new FlatButton(
+                  child: const Text('AGREE'),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  }
+                ),
               ],
             );
           },
@@ -93,56 +93,50 @@ class StockSettingsState extends State<StockSettings> {
   }
 
   void sendUpdates(StockConfiguration value) {
-    if (widget.updater != null) widget.updater(value);
+    if (widget.updater != null)
+      widget.updater(value);
   }
 
   Widget buildAppBar(BuildContext context) {
-    return AppBar(title: const Text('Settings'));
+    return new AppBar(
+      title: const Text('Settings')
+    );
   }
 
   Widget buildSettingsPane(BuildContext context) {
     final List<Widget> rows = <Widget>[
-      ListTile(
+      new ListTile(
         leading: const Icon(Icons.thumb_up),
         title: const Text('Everything is awesome'),
         onTap: _confirmOptimismChange,
-        trailing: Checkbox(
+        trailing: new Checkbox(
           value: widget.configuration.stockMode == StockMode.optimistic,
           onChanged: (bool value) => _confirmOptimismChange(),
         ),
       ),
-      ListTile(
+      new ListTile(
         leading: const Icon(Icons.backup),
         title: const Text('Back up stock list to the cloud'),
-        onTap: () {
-          _handleBackupChanged(
-              !(widget.configuration.backupMode == BackupMode.enabled));
-        },
-        trailing: Switch(
+        onTap: () { _handleBackupChanged(!(widget.configuration.backupMode == BackupMode.enabled)); },
+        trailing: new Switch(
           value: widget.configuration.backupMode == BackupMode.enabled,
           onChanged: _handleBackupChanged,
         ),
       ),
-      ListTile(
+      new ListTile(
         leading: const Icon(Icons.picture_in_picture),
         title: const Text('Show rendering performance overlay'),
-        onTap: () {
-          _handleShowPerformanceOverlayChanged(
-              !widget.configuration.showPerformanceOverlay);
-        },
-        trailing: Switch(
+        onTap: () { _handleShowPerformanceOverlayChanged(!widget.configuration.showPerformanceOverlay); },
+        trailing: new Switch(
           value: widget.configuration.showPerformanceOverlay,
           onChanged: _handleShowPerformanceOverlayChanged,
         ),
       ),
-      ListTile(
+      new ListTile(
         leading: const Icon(Icons.accessibility),
         title: const Text('Show semantics overlay'),
-        onTap: () {
-          _handleShowSemanticsDebuggerChanged(
-              !widget.configuration.showSemanticsDebugger);
-        },
-        trailing: Switch(
+        onTap: () { _handleShowSemanticsDebuggerChanged(!widget.configuration.showSemanticsDebugger); },
+        trailing: new Switch(
           value: widget.configuration.showSemanticsDebugger,
           onChanged: _handleShowSemanticsDebuggerChanged,
         ),
@@ -151,69 +145,56 @@ class StockSettingsState extends State<StockSettings> {
     assert(() {
       // material grid and size construction lines are only available in checked mode
       rows.addAll(<Widget>[
-        ListTile(
+        new ListTile(
           leading: const Icon(Icons.border_clear),
           title: const Text('Show material grid (for debugging)'),
-          onTap: () {
-            _handleShowGridChanged(!widget.configuration.debugShowGrid);
-          },
-          trailing: Switch(
+          onTap: () { _handleShowGridChanged(!widget.configuration.debugShowGrid); },
+          trailing: new Switch(
             value: widget.configuration.debugShowGrid,
             onChanged: _handleShowGridChanged,
           ),
         ),
-        ListTile(
+        new ListTile(
           leading: const Icon(Icons.border_all),
           title: const Text('Show construction lines (for debugging)'),
-          onTap: () {
-            _handleShowSizesChanged(!widget.configuration.debugShowSizes);
-          },
-          trailing: Switch(
+          onTap: () { _handleShowSizesChanged(!widget.configuration.debugShowSizes); },
+          trailing: new Switch(
             value: widget.configuration.debugShowSizes,
             onChanged: _handleShowSizesChanged,
           ),
         ),
-        ListTile(
+        new ListTile(
           leading: const Icon(Icons.format_color_text),
           title: const Text('Show baselines (for debugging)'),
-          onTap: () {
-            _handleShowBaselinesChanged(
-                !widget.configuration.debugShowBaselines);
-          },
-          trailing: Switch(
+          onTap: () { _handleShowBaselinesChanged(!widget.configuration.debugShowBaselines); },
+          trailing: new Switch(
             value: widget.configuration.debugShowBaselines,
             onChanged: _handleShowBaselinesChanged,
           ),
         ),
-        ListTile(
+        new ListTile(
           leading: const Icon(Icons.filter_none),
           title: const Text('Show layer boundaries (for debugging)'),
-          onTap: () {
-            _handleShowLayersChanged(!widget.configuration.debugShowLayers);
-          },
-          trailing: Switch(
+          onTap: () { _handleShowLayersChanged(!widget.configuration.debugShowLayers); },
+          trailing: new Switch(
             value: widget.configuration.debugShowLayers,
             onChanged: _handleShowLayersChanged,
           ),
         ),
-        ListTile(
+        new ListTile(
           leading: const Icon(Icons.mouse),
           title: const Text('Show pointer hit-testing (for debugging)'),
-          onTap: () {
-            _handleShowPointersChanged(!widget.configuration.debugShowPointers);
-          },
-          trailing: Switch(
+          onTap: () { _handleShowPointersChanged(!widget.configuration.debugShowPointers); },
+          trailing: new Switch(
             value: widget.configuration.debugShowPointers,
             onChanged: _handleShowPointersChanged,
           ),
         ),
-        ListTile(
+        new ListTile(
           leading: const Icon(Icons.gradient),
           title: const Text('Show repaint rainbow (for debugging)'),
-          onTap: () {
-            _handleShowRainbowChanged(!widget.configuration.debugShowRainbow);
-          },
-          trailing: Switch(
+          onTap: () { _handleShowRainbowChanged(!widget.configuration.debugShowRainbow); },
+          trailing: new Switch(
             value: widget.configuration.debugShowRainbow,
             onChanged: _handleShowRainbowChanged,
           ),
@@ -221,7 +202,7 @@ class StockSettingsState extends State<StockSettings> {
       ]);
       return true;
     }());
-    return ListView(
+    return new ListView(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       children: rows,
     );
@@ -229,7 +210,9 @@ class StockSettingsState extends State<StockSettings> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: buildAppBar(context), body: buildSettingsPane(context));
+    return new Scaffold(
+      appBar: buildAppBar(context),
+      body: buildSettingsPane(context)
+    );
   }
 }

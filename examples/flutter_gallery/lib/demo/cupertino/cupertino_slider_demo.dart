@@ -9,7 +9,7 @@ class CupertinoSliderDemo extends StatefulWidget {
   static const String routeName = '/cupertino/slider';
 
   @override
-  _CupertinoSliderDemoState createState() => _CupertinoSliderDemoState();
+  _CupertinoSliderDemoState createState() => new _CupertinoSliderDemoState();
 }
 
 class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
@@ -18,16 +18,18 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return new Scaffold(
+      appBar: new AppBar(
         title: const Text('Cupertino Sliders'),
       ),
-      body: Center(
-        child: Column(
+      body: new Center(
+        child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              CupertinoSlider(
+            new Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget> [
+                new CupertinoSlider(
                   value: _value,
                   min: 0.0,
                   max: 100.0,
@@ -35,11 +37,15 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
                     setState(() {
                       _value = value;
                     });
-                  }),
-              Text('Cupertino Continuous: ${_value.toStringAsFixed(1)}'),
-            ]),
-            Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              CupertinoSlider(
+                  }
+                ),
+                new Text('Cupertino Continuous: ${_value.toStringAsFixed(1)}'),
+              ]
+            ),
+            new Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget> [
+                new CupertinoSlider(
                   value: _discreteValue,
                   min: 0.0,
                   max: 100.0,
@@ -48,9 +54,11 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
                     setState(() {
                       _discreteValue = value;
                     });
-                  }),
-              Text('Cupertino Discrete: $_discreteValue'),
-            ]),
+                  }
+                ),
+                new Text('Cupertino Discrete: $_discreteValue'),
+              ]
+            ),
           ],
         ),
       ),

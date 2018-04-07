@@ -8,31 +8,31 @@ class ProgressIndicatorDemo extends StatefulWidget {
   static const String routeName = '/material/progress-indicator';
 
   @override
-  _ProgressIndicatorDemoState createState() => _ProgressIndicatorDemoState();
+  _ProgressIndicatorDemoState createState() => new _ProgressIndicatorDemoState();
 }
 
-class _ProgressIndicatorDemoState extends State<ProgressIndicatorDemo>
-    with SingleTickerProviderStateMixin {
+class _ProgressIndicatorDemoState extends State<ProgressIndicatorDemo> with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    _controller = new AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     )..forward();
 
-    _animation = CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.0, 0.9, curve: Curves.fastOutSlowIn),
-        reverseCurve: Curves.fastOutSlowIn)
-      ..addStatusListener((AnimationStatus status) {
-        if (status == AnimationStatus.dismissed)
-          _controller.forward();
-        else if (status == AnimationStatus.completed) _controller.reverse();
-      });
+    _animation = new CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.0, 0.9, curve: Curves.fastOutSlowIn),
+      reverseCurve: Curves.fastOutSlowIn
+    )..addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.dismissed)
+        _controller.forward();
+      else if (status == AnimationStatus.completed)
+        _controller.reverse();
+    });
   }
 
   @override
@@ -63,56 +63,59 @@ class _ProgressIndicatorDemoState extends State<ProgressIndicatorDemo>
 
   Widget _buildIndicators(BuildContext context, Widget child) {
     final List<Widget> indicators = <Widget>[
-      const SizedBox(width: 200.0, child: LinearProgressIndicator()),
+      const SizedBox(
+        width: 200.0,
+        child: const LinearProgressIndicator()
+      ),
       const LinearProgressIndicator(),
       const LinearProgressIndicator(),
-      LinearProgressIndicator(value: _animation.value),
-      Row(
+      new LinearProgressIndicator(value: _animation.value),
+      new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           const CircularProgressIndicator(),
-          SizedBox(
+          new SizedBox(
               width: 20.0,
               height: 20.0,
-              child: CircularProgressIndicator(value: _animation.value)),
-          SizedBox(
+              child: new CircularProgressIndicator(value: _animation.value)
+          ),
+          new SizedBox(
             width: 100.0,
             height: 20.0,
-            child: Text('${(_animation.value * 100.0).toStringAsFixed(1)}%',
-                textAlign: TextAlign.right),
+            child: new Text('${(_animation.value * 100.0).toStringAsFixed(1)}%',
+              textAlign: TextAlign.right
+            ),
           ),
         ],
       ),
     ];
-    return Column(
+    return new Column(
       children: indicators
-          .map((Widget c) => Container(
-              child: c,
-              margin:
-                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0)))
-          .toList(),
+        .map((Widget c) => new Container(child: c, margin: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0)))
+        .toList(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Progress indicators')),
-      body: Center(
-        child: SingleChildScrollView(
-          child: DefaultTextStyle(
+    return new Scaffold(
+      appBar: new AppBar(title: const Text('Progress indicators')),
+      body: new Center(
+        child: new SingleChildScrollView(
+          child: new DefaultTextStyle(
             style: Theme.of(context).textTheme.title,
-            child: GestureDetector(
+            child: new GestureDetector(
               onTap: _handleTap,
               behavior: HitTestBehavior.opaque,
-              child: SafeArea(
+              child: new SafeArea(
                 top: false,
                 bottom: false,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 12.0, horizontal: 8.0),
-                  child: AnimatedBuilder(
-                      animation: _animation, builder: _buildIndicators),
+                child: new Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
+                  child: new AnimatedBuilder(
+                    animation: _animation,
+                    builder: _buildIndicators
+                  ),
                 ),
               ),
             ),

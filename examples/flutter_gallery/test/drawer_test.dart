@@ -8,8 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_gallery/gallery/app.dart';
 
 void main() {
-  final TestWidgetsFlutterBinding binding =
-      TestWidgetsFlutterBinding.ensureInitialized();
+  final TestWidgetsFlutterBinding binding = TestWidgetsFlutterBinding.ensureInitialized();
   if (binding is LiveTestWidgetsFlutterBinding)
     binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
 
@@ -19,7 +18,7 @@ void main() {
       hasFeedback = true;
     }
 
-    await tester.pumpWidget(GalleryApp(onSendFeedback: mockOnSendFeedback));
+    await tester.pumpWidget(new GalleryApp(onSendFeedback: mockOnSendFeedback));
     await tester.pump(); // see https://github.com/flutter/flutter/issues/1865
     await tester.pump(); // triggers a frame
 

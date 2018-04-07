@@ -14,16 +14,14 @@ import 'package:flutter_gallery/gallery/app.dart';
 import 'package:flutter_gallery/gallery/item.dart';
 
 // Reports success or failure to the native code.
-const MethodChannel _kTestChannel =
-    MethodChannel('io.flutter.demo.gallery/TestLifecycleListener');
+const MethodChannel _kTestChannel = const MethodChannel('io.flutter.demo.gallery/TestLifecycleListener');
 
 // The titles for all of the Gallery demos.
-final List<String> _kAllDemos =
-    kAllGalleryItems.map((GalleryItem item) => item.title).toList();
+final List<String> _kAllDemos = kAllGalleryItems.map((GalleryItem item) => item.title).toList();
 
 // We don't want to wait for animations to complete before tapping the
 // back button in the demos with these titles.
-const List<String> _kUnsynchronizedDemos = <String>[
+const List<String> _kUnsynchronizedDemos = const <String>[
   'Progress indicators',
   'Activity Indicator',
   'Video',
@@ -31,7 +29,7 @@ const List<String> _kUnsynchronizedDemos = <String>[
 
 // These demos can't be backed out of by tapping a button whose
 // tooltip is 'Back'.
-const List<String> _kSkippedDemos = <String>[
+const List<String> _kSkippedDemos = const <String>[
   'Backdrop',
   'Pull to refresh',
 ];
@@ -40,14 +38,13 @@ Future<Null> main() async {
   try {
     // Verify that _kUnsynchronizedDemos and _kSkippedDemos identify
     // demos that actually exist.
-    if (!Set<String>.from(_kAllDemos).containsAll(_kUnsynchronizedDemos))
-      fail(
-          'Unrecognized demo names in _kUnsynchronizedDemos: $_kUnsynchronizedDemos');
-    if (!Set<String>.from(_kAllDemos).containsAll(_kSkippedDemos))
+    if (!new Set<String>.from(_kAllDemos).containsAll(_kUnsynchronizedDemos))
+      fail('Unrecognized demo names in _kUnsynchronizedDemos: $_kUnsynchronizedDemos');
+    if (!new Set<String>.from(_kAllDemos).containsAll(_kSkippedDemos))
       fail('Unrecognized demo names in _kSkippedDemos: $_kSkippedDemos');
 
     runApp(const GalleryApp());
-    final _LiveWidgetController controller = _LiveWidgetController();
+    final _LiveWidgetController controller = new _LiveWidgetController();
     for (String demo in _kAllDemos) {
       print('Testing "$demo" demo');
       final Finder menuItem = find.text(demo);
@@ -74,8 +71,8 @@ Future<Null> main() async {
 }
 
 class _LiveWidgetController {
-  final WidgetController _controller =
-      WidgetController(WidgetsBinding.instance);
+
+  final WidgetController _controller = new WidgetController(WidgetsBinding.instance);
 
   /// With [frameSync] enabled, Flutter Driver will wait to perform an action
   /// until there are no pending frames in the app under test.
@@ -83,7 +80,7 @@ class _LiveWidgetController {
 
   /// Waits until at the end of a frame the provided [condition] is [true].
   Future<Null> _waitUntilFrame(bool condition(), [Completer<Null> completer]) {
-    completer ??= Completer<Null>();
+    completer ??= new Completer<Null>();
     if (!condition()) {
       SchedulerBinding.instance.addPostFrameCallback((Duration timestamp) {
         _waitUntilFrame(condition, completer);
@@ -97,14 +94,12 @@ class _LiveWidgetController {
   /// Runs `finder` repeatedly until it finds one or more [Element]s.
   Future<Finder> _waitForElement(Finder finder) async {
     if (frameSync)
-      await _waitUntilFrame(
-          () => SchedulerBinding.instance.transientCallbackCount == 0);
+      await _waitUntilFrame(() => SchedulerBinding.instance.transientCallbackCount == 0);
 
     await _waitUntilFrame(() => finder.precache());
 
     if (frameSync)
-      await _waitUntilFrame(
-          () => SchedulerBinding.instance.transientCallbackCount == 0);
+      await _waitUntilFrame(() => SchedulerBinding.instance.transientCallbackCount == 0);
 
     return finder;
   }
@@ -115,7 +110,6 @@ class _LiveWidgetController {
 
   Future<Null> scrollIntoView(Finder finder, {double alignment}) async {
     final Finder target = await _waitForElement(finder);
-    await Scrollable.ensureVisible(target.evaluate().single,
-        duration: const Duration(milliseconds: 100), alignment: alignment);
+    await Scrollable.ensureVisible(target.evaluate().single, duration: const Duration(milliseconds: 100), alignment: alignment);
   }
 }

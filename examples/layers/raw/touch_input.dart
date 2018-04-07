@@ -14,19 +14,22 @@ ui.Picture paint(ui.Rect paintBounds) {
   // First we create a PictureRecorder to record the commands we're going to
   // feed in the canvas. The PictureRecorder will eventually produce a Picture,
   // which is an immutable record of those commands.
-  final ui.PictureRecorder recorder = ui.PictureRecorder();
+  final ui.PictureRecorder recorder = new ui.PictureRecorder();
 
   // Next, we create a canvas from the recorder. The canvas is an interface
   // which can receive drawing commands. The canvas interface is modeled after
   // the SkCanvas interface from Skia. The paintBounds establishes a "cull rect"
   // for the canvas, which lets the implementation discard any commands that
   // are entirely outside this rectangle.
-  final ui.Canvas canvas = ui.Canvas(recorder, paintBounds);
+  final ui.Canvas canvas = new ui.Canvas(recorder, paintBounds);
 
   // The commands draw a circle in the center of the screen.
   final ui.Size size = paintBounds.size;
-  canvas.drawCircle(size.center(ui.Offset.zero), size.shortestSide * 0.45,
-      ui.Paint()..color = color);
+  canvas.drawCircle(
+    size.center(ui.Offset.zero),
+    size.shortestSide * 0.45,
+    new ui.Paint()..color = color
+  );
 
   // When we're done issuing painting commands, we end the recording an receive
   // a Picture, which is an immutable record of the commands we've issued. You
@@ -43,7 +46,7 @@ ui.Scene composite(ui.Picture picture, ui.Rect paintBounds) {
   final double devicePixelRatio = ui.window.devicePixelRatio;
 
   // This transform scales the x and y coordinates by the devicePixelRatio.
-  final Float64List deviceTransform = Float64List(16)
+  final Float64List deviceTransform = new Float64List(16)
     ..[0] = devicePixelRatio
     ..[5] = devicePixelRatio
     ..[10] = 1.0
@@ -53,7 +56,7 @@ ui.Scene composite(ui.Picture picture, ui.Rect paintBounds) {
   // transform that scale its children by the device pixel ratio. This transform
   // lets us paint in "logical" pixels which are converted to device pixels by
   // this scaling operation.
-  final ui.SceneBuilder sceneBuilder = ui.SceneBuilder()
+  final ui.SceneBuilder sceneBuilder = new ui.SceneBuilder()
     ..pushTransform(deviceTransform)
     ..addPicture(ui.Offset.zero, picture)
     ..pop();
@@ -64,8 +67,7 @@ ui.Scene composite(ui.Picture picture, ui.Rect paintBounds) {
 }
 
 void beginFrame(Duration timeStamp) {
-  final ui.Rect paintBounds =
-      ui.Offset.zero & (ui.window.physicalSize / ui.window.devicePixelRatio);
+  final ui.Rect paintBounds = ui.Offset.zero & (ui.window.physicalSize / ui.window.devicePixelRatio);
   // First, record a picture with our painting commands.
   final ui.Picture picture = paint(paintBounds);
   // Second, include that picture in a scene graph.

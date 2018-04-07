@@ -11,7 +11,7 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 
-const FileSystem _fs = LocalFileSystem();
+const FileSystem _fs = const LocalFileSystem();
 
 // Demos for which timeline data will be collected using
 // FlutterDriver.traceAction().
@@ -23,7 +23,7 @@ const FileSystem _fs = LocalFileSystem();
 //
 // These names must match GalleryItem titles from  kAllGalleryItems
 // in examples/flutter_gallery/lib/gallery.item.dart
-const List<String> kProfiledDemos = <String>[
+const List<String> kProfiledDemos = const <String>[
   'Shrine',
   'Contact profile',
   'Animation',
@@ -39,7 +39,7 @@ const List<String> kProfiledDemos = <String>[
 //
 // These names must match GalleryItem titles from  kAllGalleryItems
 // in examples/flutter_gallery/lib/gallery.item.dart
-const List<String> kUnsynchronizedDemos = <String>[
+const List<String> kUnsynchronizedDemos = const <String>[
   'Progress indicators',
   'Activity Indicator',
   'Video',
@@ -54,8 +54,7 @@ List<String> _allDemos = <String>[];
 
 /// Extracts event data from [events] recorded by timeline, validates it, turns
 /// it into a histogram, and saves to a JSON file.
-Future<Null> saveDurationsHistogram(
-    List<Map<String, dynamic>> events, String outputPath) async {
+Future<Null> saveDurationsHistogram(List<Map<String, dynamic>> events, String outputPath) async {
   final Map<String, List<int>> durations = <String, List<int>>{};
   Map<String, dynamic> startEvent;
 
@@ -84,8 +83,7 @@ Future<Null> saveDurationsHistogram(
   });
 
   if (unexpectedValueCounts.isNotEmpty) {
-    final StringBuffer error = StringBuffer(
-        'Some routes recorded wrong number of values (expected 2 values/route):\n\n');
+    final StringBuffer error = new StringBuffer('Some routes recorded wrong number of values (expected 2 values/route):\n\n');
     unexpectedValueCounts.forEach((String routeName, int count) {
       error.writeln(' - $routeName recorded $count values.');
     });
@@ -96,11 +94,12 @@ Future<Null> saveDurationsHistogram(
     while (eventIter.moveNext()) {
       final String eventName = eventIter.current['name'];
 
-      if (!<String>['Start Transition', 'Frame'].contains(eventName)) continue;
+      if (!<String>['Start Transition', 'Frame'].contains(eventName))
+        continue;
 
       final String routeName = eventName == 'Start Transition'
-          ? eventIter.current['args']['to']
-          : '';
+        ? eventIter.current['args']['to']
+        : '';
 
       if (eventName == lastEventName && routeName == lastRouteName) {
         error.write('.');
@@ -116,8 +115,7 @@ Future<Null> saveDurationsHistogram(
 
   // Save the durations Map to a file.
   final File file = await _fs.file(outputPath).create(recursive: true);
-  await file
-      .writeAsString(const JsonEncoder.withIndent('  ').convert(durations));
+  await file.writeAsString(const JsonEncoder.withIndent('  ').convert(durations));
 }
 
 /// Scrolls each demo menu item into view, launches it, then returns to the
@@ -126,9 +124,7 @@ Future<Null> runDemos(List<String> demos, FlutterDriver driver) async {
   for (String demo in demos) {
     print('Testing "$demo" demo');
     final SerializableFinder menuItem = find.text(demo);
-    await driver.scrollUntilVisible(
-      find.byType('CustomScrollView'),
-      menuItem,
+    await driver.scrollUntilVisible(find.byType('CustomScrollView'), menuItem,
       dyScroll: -48.0,
       alignment: 0.5,
     );
@@ -164,13 +160,14 @@ void main([List<String> args = const <String>[]]) {
       }
 
       // See _handleMessages() in transitions_perf.dart.
-      _allDemos =
-          const JsonDecoder().convert(await driver.requestData('demoNames'));
-      if (_allDemos.isEmpty) throw 'no demo names found';
+      _allDemos = const JsonDecoder().convert(await driver.requestData('demoNames'));
+      if (_allDemos.isEmpty)
+        throw 'no demo names found';
     });
 
     tearDownAll(() async {
-      if (driver != null) await driver.close();
+      if (driver != null)
+        await driver.close();
     });
 
     test('all demos', () async {
@@ -188,21 +185,21 @@ void main([List<String> args = const <String>[]]) {
       // Save the duration (in microseconds) of the first timeline Frame event
       // that follows a 'Start Transition' event. The Gallery app adds a
       // 'Start Transition' event when a demo is launched (see GalleryItem).
-      final TimelineSummary summary = TimelineSummary.summarize(timeline);
+      final TimelineSummary summary = new TimelineSummary.summarize(timeline);
       await summary.writeSummaryToFile('transitions', pretty: true);
-      final String histogramPath =
-          path.join(testOutputsDirectory, 'transition_durations.timeline.json');
+      final String histogramPath = path.join(testOutputsDirectory, 'transition_durations.timeline.json');
       await saveDurationsHistogram(timeline.json['traceEvents'], histogramPath);
 
       // Scroll back to the top
-      await driver.scrollUntilVisible(
-          find.byType('CustomScrollView'), find.text(_allDemos[0]),
-          dyScroll: 200.0, alignment: 0.0);
+      await driver.scrollUntilVisible(find.byType('CustomScrollView'), find.text(_allDemos[0]),
+        dyScroll: 200.0,
+        alignment: 0.0
+      );
 
       // Execute the remaining tests.
-      final Set<String> unprofiledDemos = Set<String>.from(_allDemos)
-        ..removeAll(kProfiledDemos);
+      final Set<String> unprofiledDemos = new Set<String>.from(_allDemos)..removeAll(kProfiledDemos);
       await runDemos(unprofiledDemos.toList(), driver);
-    }, timeout: const Timeout(Duration(minutes: 5)));
+
+    }, timeout: const Timeout(const Duration(minutes: 5)));
   });
 }

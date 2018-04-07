@@ -10,12 +10,12 @@ class CupertinoProgressIndicatorDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return new Scaffold(
+      appBar: new AppBar(
         title: const Text('Cupertino Activity Indicator'),
       ),
       body: const Center(
-        child: CupertinoActivityIndicator(),
+        child: const CupertinoActivityIndicator(),
       ),
     );
   }

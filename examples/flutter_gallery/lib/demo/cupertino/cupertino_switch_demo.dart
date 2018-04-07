@@ -9,25 +9,26 @@ class CupertinoSwitchDemo extends StatefulWidget {
   static const String routeName = '/cupertino/switch';
 
   @override
-  _CupertinoSwitchDemoState createState() => _CupertinoSwitchDemoState();
+  _CupertinoSwitchDemoState createState() => new _CupertinoSwitchDemoState();
 }
 
 class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
+
   bool _switchValue = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return new Scaffold(
+      appBar: new AppBar(
         title: const Text('Cupertino Switch'),
       ),
-      body: Center(
-        child: Column(
+      body: new Center(
+        child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Column(
+            new Column(
               children: <Widget>[
-                CupertinoSwitch(
+                new CupertinoSwitch(
                   value: _switchValue,
                   onChanged: (bool value) {
                     setState(() {
@@ -35,25 +36,31 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
                     });
                   },
                 ),
-                const Text('Active'),
+                const Text(
+                  'Active'
+                ),
               ],
             ),
-            Column(
+            new Column(
               children: <Widget>[
-                CupertinoSwitch(
+                new CupertinoSwitch(
                   value: true,
                   onChanged: null,
                 ),
-                const Text('Disabled'),
+                const Text(
+                  'Disabled'
+                ),
               ],
             ),
-            Column(
+            new Column(
               children: <Widget>[
-                CupertinoSwitch(
+                new CupertinoSwitch(
                   value: false,
                   onChanged: null,
                 ),
-                const Text('Disabled'),
+                const Text(
+                  'Disabled'
+                ),
               ],
             ),
           ],

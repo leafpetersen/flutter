@@ -8,8 +8,12 @@ import 'example_code_parser.dart';
 import 'syntax_highlighter.dart';
 
 class ComponentDemoTabData {
-  ComponentDemoTabData(
-      {this.demoWidget, this.exampleCodeTag, this.description, this.tabName});
+  ComponentDemoTabData({
+    this.demoWidget,
+    this.exampleCodeTag,
+    this.description,
+    this.tabName
+  });
 
   final Widget demoWidget;
   final String exampleCodeTag;
@@ -17,11 +21,11 @@ class ComponentDemoTabData {
   final String tabName;
 
   @override
-  bool operator ==(Object other) {
-    if (other.runtimeType != runtimeType) return false;
+  bool operator==(Object other) {
+    if (other.runtimeType != runtimeType)
+      return false;
     final ComponentDemoTabData typedOther = other;
-    return typedOther.tabName == tabName &&
-        typedOther.description == description;
+    return typedOther.tabName == tabName && typedOther.description == description;
   }
 
   @override
@@ -40,59 +44,55 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
   final List<Widget> actions;
 
   void _showExampleCode(BuildContext context) {
-    final String tag =
-        demos[DefaultTabController.of(context).index].exampleCodeTag;
+    final String tag = demos[DefaultTabController.of(context).index].exampleCodeTag;
     if (tag != null) {
-      Navigator.push(
-          context,
-          MaterialPageRoute<FullScreenCodeDialog>(
-              builder: (BuildContext context) =>
-                  FullScreenCodeDialog(exampleCodeTag: tag)));
+      Navigator.push(context, new MaterialPageRoute<FullScreenCodeDialog>(
+        builder: (BuildContext context) => new FullScreenCodeDialog(exampleCodeTag: tag)
+      ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return new DefaultTabController(
       length: demos.length,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          actions: (actions ?? <Widget>[])
-            ..addAll(
-              <Widget>[
-                Builder(
-                  builder: (BuildContext context) {
-                    return IconButton(
-                      icon: const Icon(Icons.description),
-                      tooltip: 'Show example code',
-                      onPressed: () {
-                        _showExampleCode(context);
-                      },
-                    );
-                  },
-                )
-              ],
-            ),
-          bottom: TabBar(
+      child: new Scaffold(
+        appBar: new AppBar(
+          title: new Text(title),
+          actions: (actions ?? <Widget>[])..addAll(
+            <Widget>[
+              new Builder(
+                builder: (BuildContext context) {
+                  return new IconButton(
+                    icon: const Icon(Icons.description),
+                    tooltip: 'Show example code',
+                    onPressed: () {
+                      _showExampleCode(context);
+                    },
+                  );
+                },
+              )
+            ],
+          ),
+          bottom: new TabBar(
             isScrollable: true,
-            tabs: demos
-                .map((ComponentDemoTabData data) => Tab(text: data.tabName))
-                .toList(),
+            tabs: demos.map((ComponentDemoTabData data) => new Tab(text: data.tabName)).toList(),
           ),
         ),
-        body: TabBarView(
+        body: new TabBarView(
           children: demos.map((ComponentDemoTabData demo) {
-            return SafeArea(
+            return new SafeArea(
               top: false,
               bottom: false,
-              child: Column(
+              child: new Column(
                 children: <Widget>[
-                  Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(demo.description,
-                          style: Theme.of(context).textTheme.subhead)),
-                  Expanded(child: demo.demoWidget)
+                  new Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: new Text(demo.description,
+                      style: Theme.of(context).textTheme.subhead
+                    )
+                  ),
+                  new Expanded(child: demo.demoWidget)
                 ],
               ),
             );
@@ -104,21 +104,21 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
 }
 
 class FullScreenCodeDialog extends StatefulWidget {
-  const FullScreenCodeDialog({this.exampleCodeTag});
+  const FullScreenCodeDialog({ this.exampleCodeTag });
 
   final String exampleCodeTag;
 
   @override
-  FullScreenCodeDialogState createState() => FullScreenCodeDialogState();
+  FullScreenCodeDialogState createState() => new FullScreenCodeDialogState();
 }
 
 class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
+
   String _exampleCode;
 
   @override
   void didChangeDependencies() {
-    getExampleCode(widget.exampleCodeTag, DefaultAssetBundle.of(context))
-        .then<Null>((String code) {
+    getExampleCode(widget.exampleCodeTag, DefaultAssetBundle.of(context)).then<Null>((String code) {
       if (mounted) {
         setState(() {
           _exampleCode = code ?? 'Example code not found';
@@ -130,38 +130,43 @@ class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final SyntaxHighlighterStyle style =
-        Theme.of(context).brightness == Brightness.dark
-            ? SyntaxHighlighterStyle.darkThemeStyle()
-            : SyntaxHighlighterStyle.lightThemeStyle();
+    final SyntaxHighlighterStyle style = Theme.of(context).brightness == Brightness.dark
+      ? SyntaxHighlighterStyle.darkThemeStyle()
+      : SyntaxHighlighterStyle.lightThemeStyle();
 
     Widget body;
     if (_exampleCode == null) {
-      body = const Center(child: CircularProgressIndicator());
+      body = const Center(
+        child: const CircularProgressIndicator()
+      );
     } else {
-      body = SingleChildScrollView(
-          child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: RichText(
-                  text: TextSpan(
-                      style: const TextStyle(
-                          fontFamily: 'monospace', fontSize: 10.0),
-                      children: <TextSpan>[
-                    DartSyntaxHighlighter(style).format(_exampleCode)
-                  ]))));
+      body = new SingleChildScrollView(
+        child: new Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: new RichText(
+            text: new TextSpan(
+              style: const TextStyle(fontFamily: 'monospace', fontSize: 10.0),
+              children: <TextSpan>[
+                new DartSyntaxHighlighter(style).format(_exampleCode)
+              ]
+            )
+          )
+        )
+      );
     }
 
-    return Scaffold(
-        appBar: AppBar(
-            leading: IconButton(
-                icon: const Icon(
-                  Icons.clear,
-                  semanticLabel: 'Close',
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
-            title: const Text('Example code')),
-        body: body);
+    return new Scaffold(
+      appBar: new AppBar(
+        leading: new IconButton(
+          icon: const Icon(
+            Icons.clear,
+            semanticLabel: 'Close',
+          ),
+          onPressed: () { Navigator.pop(context); }
+        ),
+        title: const Text('Example code')
+      ),
+      body: body
+    );
   }
 }

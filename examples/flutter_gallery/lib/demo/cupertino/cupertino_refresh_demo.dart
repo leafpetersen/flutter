@@ -10,12 +10,10 @@ class CupertinoRefreshControlDemo extends StatefulWidget {
   static const String routeName = '/cupertino/refresh';
 
   @override
-  _CupertinoRefreshControlDemoState createState() =>
-      _CupertinoRefreshControlDemoState();
+  _CupertinoRefreshControlDemoState createState() => new _CupertinoRefreshControlDemoState();
 }
 
-class _CupertinoRefreshControlDemoState
-    extends State<CupertinoRefreshControlDemo> {
+class _CupertinoRefreshControlDemoState extends State<CupertinoRefreshControlDemo> {
   List<List<String>> randomizedContacts;
 
   @override
@@ -25,43 +23,46 @@ class _CupertinoRefreshControlDemoState
   }
 
   void repopulateList() {
-    final Random random = Random();
-    randomizedContacts = List<List<String>>.generate(100, (int index) {
-      return contacts[random.nextInt(contacts.length)]
-        // Randomly adds a telephone icon next to the contact or not.
-        ..add(random.nextBool().toString());
-    });
+    final Random random = new Random();
+    randomizedContacts = new List<List<String>>.generate(
+      100,
+      (int index) {
+        return contacts[random.nextInt(contacts.length)]
+            // Randomly adds a telephone icon next to the contact or not.
+            ..add(random.nextBool().toString());
+      }
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
+    return new DefaultTextStyle(
       style: const TextStyle(
         fontFamily: '.SF UI Text',
         inherit: false,
         fontSize: 17.0,
         color: CupertinoColors.black,
       ),
-      child: CupertinoPageScaffold(
-        child: DecoratedBox(
-          decoration: const BoxDecoration(color: Color(0xFFEFEFF4)),
-          child: CustomScrollView(
+      child: new CupertinoPageScaffold(
+        child: new DecoratedBox(
+          decoration: const BoxDecoration(color: const Color(0xFFEFEFF4)),
+          child: new CustomScrollView(
             slivers: <Widget>[
               const CupertinoSliverNavigationBar(
-                largeTitle: Text('Cupertino Refresh'),
+                largeTitle: const Text('Cupertino Refresh'),
               ),
-              CupertinoRefreshControl(
+              new CupertinoRefreshControl(
                 onRefresh: () {
-                  return Future<void>.delayed(const Duration(seconds: 2))
-                    ..then((_) => setState(() => repopulateList()));
+                  return new Future<void>.delayed(const Duration(seconds: 2))
+                      ..then((_) => setState(() => repopulateList()));
                 },
               ),
-              SliverSafeArea(
+              new SliverSafeArea(
                 top: false, // Top safe area is consumed by the navigation bar.
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
+                sliver: new SliverList(
+                  delegate: new SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return _ListItem(
+                      return new _ListItem(
                         name: randomizedContacts[index][0],
                         place: randomizedContacts[index][1],
                         date: randomizedContacts[index][2],
@@ -142,18 +143,18 @@ class _ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return new Container(
       color: CupertinoColors.white,
       height: 60.0,
       padding: const EdgeInsets.only(top: 9.0),
-      child: Row(
+      child: new Row(
         children: <Widget>[
-          Container(
+          new Container(
             width: 38.0,
             child: called
-                ? Align(
+                ? new Align(
                     alignment: Alignment.topCenter,
-                    child: Icon(
+                    child: new Icon(
                       CupertinoIcons.phone_solid,
                       color: CupertinoColors.inactiveGray,
                       size: 18.0,
@@ -161,23 +162,22 @@ class _ListItem extends StatelessWidget {
                   )
                 : null,
           ),
-          Expanded(
-            child: Container(
+        new Expanded(
+          child: new Container(
               decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: Color(0xFFBCBBC1), width: 0.0),
+                border: const Border(
+                  bottom: const BorderSide(color: const Color(0xFFBCBBC1), width: 0.0),
                 ),
               ),
-              padding:
-                  const EdgeInsets.only(left: 1.0, bottom: 9.0, right: 10.0),
-              child: Row(
+              padding: const EdgeInsets.only(left: 1.0, bottom: 9.0, right: 10.0),
+              child: new Row(
                 children: <Widget>[
-                  Expanded(
-                    child: Column(
+                  new Expanded(
+                    child: new Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
+                        new Text(
                           name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -186,7 +186,7 @@ class _ListItem extends StatelessWidget {
                             letterSpacing: -0.41,
                           ),
                         ),
-                        Text(
+                        new Text(
                           place,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -199,7 +199,7 @@ class _ListItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text(
+                  new Text(
                     date,
                     style: const TextStyle(
                       color: CupertinoColors.inactiveGray,
@@ -207,10 +207,12 @@ class _ListItem extends StatelessWidget {
                       letterSpacing: -0.41,
                     ),
                   ),
-                  Padding(
+                  new Padding(
                     padding: const EdgeInsets.only(left: 9.0),
-                    child: Icon(CupertinoIcons.info,
-                        color: CupertinoColors.activeBlue),
+                    child: new Icon(
+                      CupertinoIcons.info,
+                      color: CupertinoColors.activeBlue
+                    ),
                   ),
                 ],
               ),

@@ -16,7 +16,7 @@ import 'shrine_types.dart';
 
 const double unitSize = kToolbarHeight;
 
-final List<Product> _products = List<Product>.from(allProducts());
+final List<Product> _products = new List<Product>.from(allProducts());
 final Map<Product, Order> _shoppingCart = <Product, Order>{};
 
 const int _childrenPerBlock = 8;
@@ -24,29 +24,17 @@ const int _rowsPerBlock = 5;
 
 int _minIndexInRow(int rowIndex) {
   final int blockIndex = rowIndex ~/ _rowsPerBlock;
-  return const <int>[0, 2, 4, 6, 7][rowIndex % _rowsPerBlock] +
-      blockIndex * _childrenPerBlock;
+  return const <int>[0, 2, 4, 6, 7][rowIndex % _rowsPerBlock] + blockIndex * _childrenPerBlock;
 }
 
 int _maxIndexInRow(int rowIndex) {
   final int blockIndex = rowIndex ~/ _rowsPerBlock;
-  return const <int>[1, 3, 5, 6, 7][rowIndex % _rowsPerBlock] +
-      blockIndex * _childrenPerBlock;
+  return const <int>[1, 3, 5, 6, 7][rowIndex % _rowsPerBlock] + blockIndex * _childrenPerBlock;
 }
 
 int _rowAtIndex(int index) {
   final int blockCount = index ~/ _childrenPerBlock;
-  return const <int>[
-        0,
-        0,
-        1,
-        1,
-        2,
-        2,
-        3,
-        4
-      ][index - blockCount * _childrenPerBlock] +
-      blockCount * _rowsPerBlock;
+  return const <int>[0, 0, 1, 1, 2, 2, 3, 4][index - blockCount * _childrenPerBlock] + blockCount * _rowsPerBlock;
 }
 
 int _columnAtIndex(int index) {
@@ -87,7 +75,7 @@ class _ShrineGridLayout extends SliverGridLayout {
     final int row = _rowAtIndex(index);
     final int column = _columnAtIndex(index);
     final int columnSpan = _columnSpanAtIndex(index);
-    return SliverGridGeometry(
+    return new SliverGridGeometry(
       scrollOffset: row * rowStride,
       crossAxisOffset: column * columnStride,
       mainAxisExtent: tileHeight,
@@ -97,7 +85,8 @@ class _ShrineGridLayout extends SliverGridLayout {
 
   @override
   double computeMaxScrollOffset(int childCount) {
-    if (childCount == 0) return 0.0;
+    if (childCount == 0)
+      return 0.0;
     final int rowCount = _rowAtIndex(childCount - 1) + 1;
     final double rowSpacing = rowStride - tileHeight;
     return rowStride * rowCount - rowSpacing;
@@ -111,7 +100,7 @@ class _ShrineGridDelegate extends SliverGridDelegate {
   SliverGridLayout getLayout(SliverConstraints constraints) {
     final double tileWidth = (constraints.crossAxisExtent - _kSpacing) / 2.0;
     const double tileHeight = 40.0 + 144.0 + 40.0;
-    return _ShrineGridLayout(
+    return new _ShrineGridLayout(
       tileWidth: tileWidth,
       tileHeight: tileHeight,
       rowStride: tileHeight + _kSpacing,
@@ -125,23 +114,23 @@ class _ShrineGridDelegate extends SliverGridDelegate {
 
 // Displays the Vendor's name and avatar.
 class _VendorItem extends StatelessWidget {
-  const _VendorItem({Key key, @required this.vendor})
-      : assert(vendor != null),
-        super(key: key);
+  const _VendorItem({ Key key, @required this.vendor })
+    : assert(vendor != null),
+      super(key: key);
 
   final Vendor vendor;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return new SizedBox(
       height: 24.0,
-      child: Row(
+      child: new Row(
         children: <Widget>[
-          SizedBox(
+          new SizedBox(
             width: 24.0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12.0),
-              child: Image.asset(
+            child: new ClipRRect(
+              borderRadius: new BorderRadius.circular(12.0),
+              child: new Image.asset(
                 vendor.avatarAsset,
                 package: vendor.avatarAssetPackage,
                 fit: BoxFit.cover,
@@ -149,9 +138,8 @@ class _VendorItem extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8.0),
-          Expanded(
-            child: Text(vendor.name,
-                style: ShrineTheme.of(context).vendorItemStyle),
+          new Expanded(
+            child: new Text(vendor.name, style: ShrineTheme.of(context).vendorItemStyle),
           ),
         ],
       ),
@@ -162,7 +150,7 @@ class _VendorItem extends StatelessWidget {
 // Displays the product's price. If the product is in the shopping cart then the
 // background is highlighted.
 abstract class _PriceItem extends StatelessWidget {
-  const _PriceItem({Key key, @required this.product})
+  const _PriceItem({ Key key, @required this.product })
       : assert(product != null),
         super(key: key);
 
@@ -171,20 +159,18 @@ abstract class _PriceItem extends StatelessWidget {
   Widget buildItem(BuildContext context, TextStyle style, EdgeInsets padding) {
     BoxDecoration decoration;
     if (_shoppingCart[product] != null)
-      decoration =
-          BoxDecoration(color: ShrineTheme.of(context).priceHighlightColor);
+      decoration = new BoxDecoration(color: ShrineTheme.of(context).priceHighlightColor);
 
-    return Container(
+    return new Container(
       padding: padding,
       decoration: decoration,
-      child: Text(product.priceString, style: style),
+      child: new Text(product.priceString, style: style),
     );
   }
 }
 
 class _ProductPriceItem extends _PriceItem {
-  const _ProductPriceItem({Key key, Product product})
-      : super(key: key, product: product);
+  const _ProductPriceItem({ Key key, Product product }) : super(key: key, product: product);
 
   @override
   Widget build(BuildContext context) {
@@ -197,8 +183,7 @@ class _ProductPriceItem extends _PriceItem {
 }
 
 class _FeaturePriceItem extends _PriceItem {
-  const _FeaturePriceItem({Key key, Product product})
-      : super(key: key, product: product);
+  const _FeaturePriceItem({ Key key, Product product }) : super(key: key, product: product);
 
   @override
   Widget build(BuildContext context) {
@@ -221,35 +206,34 @@ class _HeadingLayout extends MultiChildLayoutDelegate {
 
   @override
   void performLayout(Size size) {
-    final Size priceSize = layoutChild(price, BoxConstraints.loose(size));
-    positionChild(price, Offset(size.width - priceSize.width, 0.0));
+    final Size priceSize = layoutChild(price, new BoxConstraints.loose(size));
+    positionChild(price, new Offset(size.width - priceSize.width, 0.0));
 
     final double halfWidth = size.width / 2.0;
     final double halfHeight = size.height / 2.0;
     const double halfUnit = unitSize / 2.0;
     const double margin = 16.0;
 
-    final Size imageSize = layoutChild(image, BoxConstraints.loose(size));
+    final Size imageSize = layoutChild(image, new BoxConstraints.loose(size));
     final double imageX = imageSize.width < halfWidth - halfUnit
-        ? halfWidth / 2.0 - imageSize.width / 2.0 - halfUnit
-        : halfWidth - imageSize.width;
-    positionChild(image, Offset(imageX, halfHeight - imageSize.height / 2.0));
+      ? halfWidth / 2.0 - imageSize.width / 2.0 - halfUnit
+      : halfWidth - imageSize.width;
+    positionChild(image, new Offset(imageX, halfHeight - imageSize.height / 2.0));
 
     final double maxTitleWidth = halfWidth + unitSize - margin;
-    final BoxConstraints titleBoxConstraints =
-        BoxConstraints(maxWidth: maxTitleWidth);
+    final BoxConstraints titleBoxConstraints = new BoxConstraints(maxWidth: maxTitleWidth);
     final Size titleSize = layoutChild(title, titleBoxConstraints);
     final double titleX = halfWidth - unitSize;
     final double titleY = halfHeight - titleSize.height;
-    positionChild(title, Offset(titleX, titleY));
+    positionChild(title, new Offset(titleX, titleY));
 
     final Size descriptionSize = layoutChild(description, titleBoxConstraints);
     final double descriptionY = titleY + titleSize.height + margin;
-    positionChild(description, Offset(titleX, descriptionY));
+    positionChild(description, new Offset(titleX, descriptionY));
 
     layoutChild(vendor, titleBoxConstraints);
     final double vendorY = descriptionY + descriptionSize.height + margin;
-    positionChild(vendor, Offset(titleX, vendorY));
+    positionChild(vendor, new Offset(titleX, vendorY));
   }
 
   @override
@@ -258,11 +242,11 @@ class _HeadingLayout extends MultiChildLayoutDelegate {
 
 // A card that highlights the "featured" catalog item.
 class _Heading extends StatelessWidget {
-  _Heading({Key key, @required this.product})
-      : assert(product != null),
-        assert(product.featureTitle != null),
-        assert(product.featureDescription != null),
-        super(key: key);
+  _Heading({ Key key, @required this.product })
+    : assert(product != null),
+      assert(product.featureTitle != null),
+      assert(product.featureDescription != null),
+      super(key: key);
 
   final Product product;
 
@@ -270,44 +254,42 @@ class _Heading extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     final ShrineTheme theme = ShrineTheme.of(context);
-    return MergeSemantics(
-      child: SizedBox(
+    return new MergeSemantics(
+      child: new SizedBox(
         height: screenSize.width > screenSize.height
-            ? (screenSize.height - kToolbarHeight) * 0.85
-            : (screenSize.height - kToolbarHeight) * 0.70,
-        child: Container(
-          decoration: BoxDecoration(
+          ? (screenSize.height - kToolbarHeight) * 0.85
+          : (screenSize.height - kToolbarHeight) * 0.70,
+        child: new Container(
+          decoration: new BoxDecoration(
             color: theme.cardBackgroundColor,
-            border: Border(bottom: BorderSide(color: theme.dividerColor)),
+            border: new Border(bottom: new BorderSide(color: theme.dividerColor)),
           ),
-          child: CustomMultiChildLayout(
-            delegate: _HeadingLayout(),
+          child: new CustomMultiChildLayout(
+            delegate: new _HeadingLayout(),
             children: <Widget>[
-              LayoutId(
+              new LayoutId(
                 id: _HeadingLayout.price,
-                child: _FeaturePriceItem(product: product),
+                child: new _FeaturePriceItem(product: product),
               ),
-              LayoutId(
+              new LayoutId(
                 id: _HeadingLayout.image,
-                child: Image.asset(
+                child: new Image.asset(
                   product.imageAsset,
                   package: product.imageAssetPackage,
                   fit: BoxFit.cover,
                 ),
               ),
-              LayoutId(
+              new LayoutId(
                 id: _HeadingLayout.title,
-                child:
-                    Text(product.featureTitle, style: theme.featureTitleStyle),
+                child: new Text(product.featureTitle, style: theme.featureTitleStyle),
               ),
-              LayoutId(
+              new LayoutId(
                 id: _HeadingLayout.description,
-                child:
-                    Text(product.featureDescription, style: theme.featureStyle),
+                child: new Text(product.featureDescription, style: theme.featureStyle),
               ),
-              LayoutId(
+              new LayoutId(
                 id: _HeadingLayout.vendor,
-                child: _VendorItem(vendor: product.vendor),
+                child: new _VendorItem(vendor: product.vendor),
               ),
             ],
           ),
@@ -320,47 +302,47 @@ class _Heading extends StatelessWidget {
 // A card that displays a product's image, price, and vendor. The _ProductItem
 // cards appear in a grid below the heading.
 class _ProductItem extends StatelessWidget {
-  const _ProductItem({Key key, @required this.product, this.onPressed})
-      : assert(product != null),
-        super(key: key);
+  const _ProductItem({ Key key, @required this.product, this.onPressed })
+    : assert(product != null),
+      super(key: key);
 
   final Product product;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return MergeSemantics(
-      child: Card(
-        child: Stack(
+    return new MergeSemantics(
+      child: new Card(
+        child: new Stack(
           children: <Widget>[
-            Column(
+            new Column(
               children: <Widget>[
-                Align(
+                new Align(
                   alignment: Alignment.centerRight,
-                  child: _ProductPriceItem(product: product),
+                  child: new _ProductPriceItem(product: product),
                 ),
-                Container(
+                new Container(
                   width: 144.0,
                   height: 144.0,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Hero(
-                    tag: product.tag,
-                    child: Image.asset(
-                      product.imageAsset,
-                      package: product.imageAssetPackage,
-                      fit: BoxFit.contain,
+                  child: new Hero(
+                      tag: product.tag,
+                      child: new Image.asset(
+                        product.imageAsset,
+                        package: product.imageAssetPackage,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
+                new Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: _VendorItem(vendor: product.vendor),
+                  child: new _VendorItem(vendor: product.vendor),
                 ),
               ],
             ),
-            Material(
+            new Material(
               type: MaterialType.transparency,
-              child: InkWell(onTap: onPressed),
+              child: new InkWell(onTap: onPressed),
             ),
           ],
         ),
@@ -373,27 +355,25 @@ class _ProductItem extends StatelessWidget {
 // of the product items.
 class ShrineHome extends StatefulWidget {
   @override
-  _ShrineHomeState createState() => _ShrineHomeState();
+  _ShrineHomeState createState() => new _ShrineHomeState();
 }
 
 class _ShrineHomeState extends State<ShrineHome> {
-  static final GlobalKey<ScaffoldState> _scaffoldKey =
-      GlobalKey<ScaffoldState>(debugLabel: 'Shrine Home');
-  static final _ShrineGridDelegate gridDelegate = _ShrineGridDelegate();
+  static final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>(debugLabel: 'Shrine Home');
+  static final _ShrineGridDelegate gridDelegate = new _ShrineGridDelegate();
 
   Future<Null> _showOrderPage(Product product) async {
-    final Order order = _shoppingCart[product] ?? Order(product: product);
-    final Order completedOrder = await Navigator.push(
-        context,
-        ShrineOrderRoute(
-            order: order,
-            builder: (BuildContext context) {
-              return OrderPage(
-                order: order,
-                products: _products,
-                shoppingCart: _shoppingCart,
-              );
-            }));
+    final Order order = _shoppingCart[product] ?? new Order(product: product);
+    final Order completedOrder = await Navigator.push(context, new ShrineOrderRoute(
+      order: order,
+      builder: (BuildContext context) {
+        return new OrderPage(
+          order: order,
+          products: _products,
+          shoppingCart: _shoppingCart,
+        );
+      }
+    ));
     assert(completedOrder.product != null);
     if (completedOrder.quantity == 0)
       _shoppingCart.remove(completedOrder.product);
@@ -401,27 +381,24 @@ class _ShrineHomeState extends State<ShrineHome> {
 
   @override
   Widget build(BuildContext context) {
-    final Product featured = _products
-        .firstWhere((Product product) => product.featureDescription != null);
-    return ShrinePage(
+    final Product featured = _products.firstWhere((Product product) => product.featureDescription != null);
+    return new ShrinePage(
       scaffoldKey: _scaffoldKey,
       products: _products,
       shoppingCart: _shoppingCart,
-      body: CustomScrollView(
+      body: new CustomScrollView(
         slivers: <Widget>[
-          SliverToBoxAdapter(child: _Heading(product: featured)),
-          SliverSafeArea(
+          new SliverToBoxAdapter(child: new _Heading(product: featured)),
+          new SliverSafeArea(
             top: false,
             minimum: const EdgeInsets.all(16.0),
-            sliver: SliverGrid(
+            sliver: new SliverGrid(
               gridDelegate: gridDelegate,
-              delegate: SliverChildListDelegate(
+              delegate: new SliverChildListDelegate(
                 _products.map((Product product) {
-                  return _ProductItem(
+                  return new _ProductItem(
                     product: product,
-                    onPressed: () {
-                      _showOrderPage(product);
-                    },
+                    onPressed: () { _showOrderPage(product); },
                   );
                 }).toList(),
               ),

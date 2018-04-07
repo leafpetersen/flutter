@@ -8,7 +8,7 @@ class ChipDemo extends StatefulWidget {
   static const String routeName = '/material/chip';
 
   @override
-  _ChipDemoState createState() => _ChipDemoState();
+  _ChipDemoState createState() => new _ChipDemoState();
 }
 
 class _ChipDemoState extends State<ChipDemo> {
@@ -23,22 +23,32 @@ class _ChipDemoState extends State<ChipDemo> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> chips = <Widget>[
-      const Chip(label: Text('Apple')),
       const Chip(
-        avatar: CircleAvatar(child: Text('B')),
-        label: Text('Blueberry'),
+        label: const Text('Apple')
+      ),
+      const Chip(
+        avatar: const CircleAvatar(child: const Text('B')),
+        label: const Text('Blueberry'),
       ),
     ];
 
     if (_showBananas) {
-      chips.add(Chip(label: const Text('Bananas'), onDeleted: _deleteBananas));
+      chips.add(new Chip(
+        label: const Text('Bananas'),
+        onDeleted: _deleteBananas
+      ));
     }
 
-    return Scaffold(
-        appBar: AppBar(title: const Text('Chips')),
-        body: ListView(
-            children: chips.map((Widget chip) {
-          return Container(height: 100.0, child: Center(child: chip));
-        }).toList()));
+    return new Scaffold(
+      appBar: new AppBar(title: const Text('Chips')),
+      body: new ListView(
+        children: chips.map((Widget chip) {
+          return new Container(
+            height: 100.0,
+            child: new Center(child: chip)
+          );
+        }).toList()
+      )
+    );
   }
 }

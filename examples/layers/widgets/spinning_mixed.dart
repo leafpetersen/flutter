@@ -8,9 +8,8 @@ import 'package:flutter/rendering.dart';
 import '../rendering/src/solid_color_box.dart';
 
 // Solid colour, RenderObject version
-void addFlexChildSolidColor(RenderFlex parent, Color backgroundColor,
-    {int flex: 0}) {
-  final RenderSolidColorBox child = RenderSolidColorBox(backgroundColor);
+void addFlexChildSolidColor(RenderFlex parent, Color backgroundColor, { int flex: 0 }) {
+  final RenderSolidColorBox child = new RenderSolidColorBox(backgroundColor);
   parent.add(child);
   final FlexParentData childParentData = child.parentData;
   childParentData.flex = flex;
@@ -18,43 +17,43 @@ void addFlexChildSolidColor(RenderFlex parent, Color backgroundColor,
 
 // Solid colour, Widget version
 class Rectangle extends StatelessWidget {
-  const Rectangle(this.color, {Key key}) : super(key: key);
+  const Rectangle(this.color, { Key key }) : super(key: key);
 
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Container(
-      color: color,
-    ));
+    return new Expanded(
+      child: new Container(
+        color: color,
+      )
+    );
   }
 }
 
 double value;
 RenderObjectToWidgetElement<RenderBox> element;
-BuildOwner owner = BuildOwner();
+BuildOwner owner = new BuildOwner();
 void attachWidgetTreeToRenderTree(RenderProxyBox container) {
-  element = RenderObjectToWidgetAdapter<RenderBox>(
+  element = new RenderObjectToWidgetAdapter<RenderBox>(
     container: container,
-    child: Directionality(
+    child: new Directionality(
       textDirection: TextDirection.ltr,
-      child: Container(
+      child: new Container(
         height: 300.0,
-        child: Column(
+        child: new Column(
           children: <Widget>[
-            const Rectangle(Color(0xFF00FFFF)),
-            Material(
-              child: Container(
+            const Rectangle(const Color(0xFF00FFFF)),
+            new Material(
+              child: new Container(
                 padding: const EdgeInsets.all(10.0),
                 margin: const EdgeInsets.all(10.0),
-                child: Row(
+                child: new Row(
                   children: <Widget>[
-                    RaisedButton(
-                      child: Row(
+                    new RaisedButton(
+                      child: new Row(
                         children: <Widget>[
-                          Image.network(
-                              'https://flutter.io/images/favicon.png'),
+                          new Image.network('https://flutter.io/images/favicon.png'),
                           const Text('PRESS ME'),
                         ],
                       ),
@@ -63,13 +62,13 @@ void attachWidgetTreeToRenderTree(RenderProxyBox container) {
                         attachWidgetTreeToRenderTree(container);
                       },
                     ),
-                    CircularProgressIndicator(value: value),
+                    new CircularProgressIndicator(value: value),
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                 ),
               ),
             ),
-            const Rectangle(Color(0xFFFFFF00)),
+            const Rectangle(const Color(0xFFFFFF00)),
           ],
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
         ),
@@ -83,8 +82,7 @@ RenderTransform transformBox;
 
 void rotate(Duration timeStamp) {
   timeBase ??= timeStamp;
-  final double delta = (timeStamp - timeBase).inMicroseconds.toDouble() /
-      Duration.microsecondsPerSecond; // radians
+  final double delta = (timeStamp - timeBase).inMicroseconds.toDouble() / Duration.microsecondsPerSecond; // radians
 
   transformBox.setIdentity();
   transformBox.rotateZ(delta);
@@ -94,20 +92,16 @@ void rotate(Duration timeStamp) {
 
 void main() {
   final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
-  final RenderProxyBox proxy = RenderProxyBox();
+  final RenderProxyBox proxy = new RenderProxyBox();
   attachWidgetTreeToRenderTree(proxy);
 
-  final RenderFlex flexRoot = RenderFlex(direction: Axis.vertical);
+  final RenderFlex flexRoot = new RenderFlex(direction: Axis.vertical);
   addFlexChildSolidColor(flexRoot, const Color(0xFFFF00FF), flex: 1);
   flexRoot.add(proxy);
   addFlexChildSolidColor(flexRoot, const Color(0xFF0000FF), flex: 1);
 
-  transformBox = RenderTransform(
-      child: flexRoot,
-      transform: Matrix4.identity(),
-      alignment: Alignment.center);
-  final RenderPadding root =
-      RenderPadding(padding: const EdgeInsets.all(80.0), child: transformBox);
+  transformBox = new RenderTransform(child: flexRoot, transform: new Matrix4.identity(), alignment: Alignment.center);
+  final RenderPadding root = new RenderPadding(padding: const EdgeInsets.all(80.0), child: transformBox);
 
   binding.renderView.child = root;
   binding.addPersistentFrameCallback(rotate);

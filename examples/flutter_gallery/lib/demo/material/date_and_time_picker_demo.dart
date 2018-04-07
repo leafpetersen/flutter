@@ -8,14 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class _InputDropdown extends StatelessWidget {
-  const _InputDropdown(
-      {Key key,
-      this.child,
-      this.labelText,
-      this.valueText,
-      this.valueStyle,
-      this.onPressed})
-      : super(key: key);
+  const _InputDropdown({
+    Key key,
+    this.child,
+    this.labelText,
+    this.valueText,
+    this.valueStyle,
+    this.onPressed }) : super(key: key);
 
   final String labelText;
   final String valueText;
@@ -25,22 +24,21 @@ class _InputDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return new InkWell(
       onTap: onPressed,
-      child: InputDecorator(
-        decoration: InputDecoration(
+      child: new InputDecorator(
+        decoration: new InputDecoration(
           labelText: labelText,
         ),
         baseStyle: valueStyle,
-        child: Row(
+        child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(valueText, style: valueStyle),
-            Icon(Icons.arrow_drop_down,
-                color: Theme.of(context).brightness == Brightness.light
-                    ? Colors.grey.shade700
-                    : Colors.white70),
+            new Text(valueText, style: valueStyle),
+            new Icon(Icons.arrow_drop_down,
+              color: Theme.of(context).brightness == Brightness.light ? Colors.grey.shade700 : Colors.white70
+            ),
           ],
         ),
       ),
@@ -49,14 +47,14 @@ class _InputDropdown extends StatelessWidget {
 }
 
 class _DateTimePicker extends StatelessWidget {
-  const _DateTimePicker(
-      {Key key,
-      this.labelText,
-      this.selectedDate,
-      this.selectedTime,
-      this.selectDate,
-      this.selectTime})
-      : super(key: key);
+  const _DateTimePicker({
+    Key key,
+    this.labelText,
+    this.selectedDate,
+    this.selectedTime,
+    this.selectDate,
+    this.selectTime
+  }) : super(key: key);
 
   final String labelText;
   final DateTime selectedDate;
@@ -66,45 +64,46 @@ class _DateTimePicker extends StatelessWidget {
 
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) selectDate(picked);
+      context: context,
+      initialDate: selectedDate,
+      firstDate: new DateTime(2015, 8),
+      lastDate: new DateTime(2101)
+    );
+    if (picked != null && picked != selectedDate)
+      selectDate(picked);
   }
 
   Future<Null> _selectTime(BuildContext context) async {
-    final TimeOfDay picked =
-        await showTimePicker(context: context, initialTime: selectedTime);
-    if (picked != null && picked != selectedTime) selectTime(picked);
+    final TimeOfDay picked = await showTimePicker(
+      context: context,
+      initialTime: selectedTime
+    );
+    if (picked != null && picked != selectedTime)
+      selectTime(picked);
   }
 
   @override
   Widget build(BuildContext context) {
     final TextStyle valueStyle = Theme.of(context).textTheme.title;
-    return Row(
+    return new Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        Expanded(
+        new Expanded(
           flex: 4,
-          child: _InputDropdown(
+          child: new _InputDropdown(
             labelText: labelText,
-            valueText: DateFormat.yMMMd().format(selectedDate),
+            valueText: new DateFormat.yMMMd().format(selectedDate),
             valueStyle: valueStyle,
-            onPressed: () {
-              _selectDate(context);
-            },
+            onPressed: () { _selectDate(context); },
           ),
         ),
         const SizedBox(width: 12.0),
-        Expanded(
+        new Expanded(
           flex: 3,
-          child: _InputDropdown(
+          child: new _InputDropdown(
             valueText: selectedTime.format(context),
             valueStyle: valueStyle,
-            onPressed: () {
-              _selectTime(context);
-            },
+            onPressed: () { _selectTime(context); },
           ),
         ),
       ],
@@ -116,52 +115,43 @@ class DateAndTimePickerDemo extends StatefulWidget {
   static const String routeName = '/material/date-and-time-pickers';
 
   @override
-  _DateAndTimePickerDemoState createState() => _DateAndTimePickerDemoState();
+  _DateAndTimePickerDemoState createState() => new _DateAndTimePickerDemoState();
 }
 
 class _DateAndTimePickerDemoState extends State<DateAndTimePickerDemo> {
-  DateTime _fromDate = DateTime.now();
+  DateTime _fromDate = new DateTime.now();
   TimeOfDay _fromTime = const TimeOfDay(hour: 7, minute: 28);
-  DateTime _toDate = DateTime.now();
+  DateTime _toDate = new DateTime.now();
   TimeOfDay _toTime = const TimeOfDay(hour: 7, minute: 28);
-  final List<String> _allActivities = <String>[
-    'hiking',
-    'swimming',
-    'boating',
-    'fishing'
-  ];
+  final List<String> _allActivities = <String>['hiking', 'swimming', 'boating', 'fishing'];
   String _activity = 'fishing';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Date and time pickers')),
-      body: DropdownButtonHideUnderline(
-        child: SafeArea(
+    return new Scaffold(
+      appBar: new AppBar(title: const Text('Date and time pickers')),
+      body: new DropdownButtonHideUnderline(
+        child: new SafeArea(
           top: false,
           bottom: false,
-          child: ListView(
+          child: new ListView(
             padding: const EdgeInsets.all(16.0),
             children: <Widget>[
-              TextField(
+              new TextField(
                 enabled: true,
                 decoration: const InputDecoration(
                   labelText: 'Event name',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                 ),
                 style: Theme.of(context).textTheme.display1,
               ),
-              TextField(
+              new TextField(
                 decoration: const InputDecoration(
                   labelText: 'Location',
                 ),
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .display1
-                    .copyWith(fontSize: 20.0),
+                style: Theme.of(context).textTheme.display1.copyWith(fontSize: 20.0),
               ),
-              _DateTimePicker(
+              new _DateTimePicker(
                 labelText: 'From',
                 selectedDate: _fromDate,
                 selectedTime: _fromTime,
@@ -176,7 +166,7 @@ class _DateAndTimePickerDemoState extends State<DateAndTimePickerDemo> {
                   });
                 },
               ),
-              _DateTimePicker(
+              new _DateTimePicker(
                 labelText: 'To',
                 selectedDate: _toDate,
                 selectedTime: _toTime,
@@ -191,13 +181,13 @@ class _DateAndTimePickerDemoState extends State<DateAndTimePickerDemo> {
                   });
                 },
               ),
-              InputDecorator(
+              new InputDecorator(
                 decoration: const InputDecoration(
                   labelText: 'Activity',
                   hintText: 'Choose an activity',
                 ),
                 isEmpty: _activity == null,
-                child: DropdownButton<String>(
+                child: new DropdownButton<String>(
                   value: _activity,
                   isDense: true,
                   onChanged: (String newValue) {
@@ -206,9 +196,9 @@ class _DateAndTimePickerDemoState extends State<DateAndTimePickerDemo> {
                     });
                   },
                   items: _allActivities.map((String value) {
-                    return DropdownMenuItem<String>(
+                    return new DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: new Text(value),
                     );
                   }).toList(),
                 ),

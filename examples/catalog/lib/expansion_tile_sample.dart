@@ -7,14 +7,13 @@ import 'package:flutter/material.dart';
 class ExpansionTileSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
+    return new MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
           title: const Text('ExpansionTile'),
         ),
-        body: ListView.builder(
-          itemBuilder: (BuildContext context, int index) =>
-              EntryItem(data[index]),
+        body: new ListView.builder(
+          itemBuilder: (BuildContext context, int index) => new EntryItem(data[index]),
           itemCount: data.length,
         ),
       ),
@@ -31,40 +30,35 @@ class Entry {
 
 // The entire multilevel list displayed by this app.
 final List<Entry> data = <Entry>[
-  Entry(
-    'Chapter A',
+  new Entry('Chapter A',
     <Entry>[
-      Entry(
-        'Section A0',
+      new Entry('Section A0',
         <Entry>[
-          Entry('Item A0.1'),
-          Entry('Item A0.2'),
-          Entry('Item A0.3'),
+          new Entry('Item A0.1'),
+          new Entry('Item A0.2'),
+          new Entry('Item A0.3'),
         ],
       ),
-      Entry('Section A1'),
-      Entry('Section A2'),
+      new Entry('Section A1'),
+      new Entry('Section A2'),
     ],
   ),
-  Entry(
-    'Chapter B',
+  new Entry('Chapter B',
     <Entry>[
-      Entry('Section B0'),
-      Entry('Section B1'),
+      new Entry('Section B0'),
+      new Entry('Section B1'),
     ],
   ),
-  Entry(
-    'Chapter C',
+  new Entry('Chapter C',
     <Entry>[
-      Entry('Section C0'),
-      Entry('Section C1'),
-      Entry(
-        'Section C2',
+      new Entry('Section C0'),
+      new Entry('Section C1'),
+      new Entry('Section C2',
         <Entry>[
-          Entry('Item C2.0'),
-          Entry('Item C2.1'),
-          Entry('Item C2.2'),
-          Entry('Item C2.3'),
+          new Entry('Item C2.0'),
+          new Entry('Item C2.1'),
+          new Entry('Item C2.2'),
+          new Entry('Item C2.3'),
         ],
       ),
     ],
@@ -79,10 +73,11 @@ class EntryItem extends StatelessWidget {
   final Entry entry;
 
   Widget _buildTiles(Entry root) {
-    if (root.children.isEmpty) return ListTile(title: Text(root.title));
-    return ExpansionTile(
-      key: PageStorageKey<Entry>(root),
-      title: Text(root.title),
+    if (root.children.isEmpty)
+      return new ListTile(title: new Text(root.title));
+    return new ExpansionTile(
+      key: new PageStorageKey<Entry>(root),
+      title: new Text(root.title),
       children: root.children.map(_buildTiles).toList(),
     );
   }
@@ -94,7 +89,7 @@ class EntryItem extends StatelessWidget {
 }
 
 void main() {
-  runApp(ExpansionTileSample());
+  runApp(new ExpansionTileSample());
 }
 
 /*

@@ -13,18 +13,14 @@ class DrawerDemo extends StatefulWidget {
   static const String routeName = '/material/drawer';
 
   @override
-  _DrawerDemoState createState() => _DrawerDemoState();
+  _DrawerDemoState createState() => new _DrawerDemoState();
 }
 
 class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  static const List<String> _drawerContents = <String>[
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
+  static const List<String> _drawerContents = const <String>[
+    'A', 'B', 'C', 'D', 'E',
   ];
 
   AnimationController _controller;
@@ -35,18 +31,18 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    _controller = new AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
-    _drawerContentsOpacity = CurvedAnimation(
-      parent: ReverseAnimation(_controller),
+    _drawerContentsOpacity = new CurvedAnimation(
+      parent: new ReverseAnimation(_controller),
       curve: Curves.fastOutSlowIn,
     );
-    _drawerDetailsPosition = Tween<Offset>(
+    _drawerDetailsPosition = new Tween<Offset>(
       begin: const Offset(0.0, -1.0),
       end: Offset.zero,
-    ).animate(CurvedAnimation(
+    ).animate(new CurvedAnimation(
       parent: _controller,
       curve: Curves.fastOutSlowIn,
     ));
@@ -72,17 +68,18 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
 
   void _showNotImplementedMessage() {
     Navigator.pop(context); // Dismiss the drawer.
-    _scaffoldKey.currentState.showSnackBar(
-        const SnackBar(content: Text("The drawer's items don't do anything")));
+    _scaffoldKey.currentState.showSnackBar(const SnackBar(
+      content: const Text("The drawer's items don't do anything")
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(_backIcon()),
+      appBar: new AppBar(
+        leading: new IconButton(
+          icon: new Icon(_backIcon()),
           alignment: Alignment.centerLeft,
           tooltip: 'Back',
           onPressed: () {
@@ -91,41 +88,41 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
         ),
         title: const Text('Navigation drawer'),
       ),
-      drawer: Drawer(
-        child: Column(
+      drawer: new Drawer(
+        child: new Column(
           children: <Widget>[
-            UserAccountsDrawerHeader(
+            new UserAccountsDrawerHeader(
               accountName: const Text('Zach Widget'),
               accountEmail: const Text('zach.widget@example.com'),
               currentAccountPicture: const CircleAvatar(
-                backgroundImage: AssetImage(
+                backgroundImage: const AssetImage(
                   _kAsset0,
                   package: _kGalleryAssetsPackage,
                 ),
               ),
               otherAccountsPictures: <Widget>[
-                GestureDetector(
+                new GestureDetector(
                   onTap: () {
                     _onOtherAccountsTap(context);
                   },
-                  child: Semantics(
+                  child: new Semantics(
                     label: 'Switch to Account B',
                     child: const CircleAvatar(
-                      backgroundImage: AssetImage(
+                      backgroundImage: const AssetImage(
                         _kAsset1,
                         package: _kGalleryAssetsPackage,
                       ),
                     ),
                   ),
                 ),
-                GestureDetector(
+                new GestureDetector(
                   onTap: () {
                     _onOtherAccountsTap(context);
                   },
-                  child: Semantics(
+                  child: new Semantics(
                     label: 'Switch to Account C',
                     child: const CircleAvatar(
-                      backgroundImage: AssetImage(
+                      backgroundImage: const AssetImage(
                         _kAsset2,
                         package: _kGalleryAssetsPackage,
                       ),
@@ -142,46 +139,46 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
                   _controller.forward();
               },
             ),
-            MediaQuery.removePadding(
+            new MediaQuery.removePadding(
               context: context,
               // DrawerHeader consumes top MediaQuery padding.
               removeTop: true,
-              child: Expanded(
-                child: ListView(
+              child: new Expanded(
+                child: new ListView(
                   padding: const EdgeInsets.only(top: 8.0),
                   children: <Widget>[
-                    Stack(
+                    new Stack(
                       children: <Widget>[
                         // The initial contents of the drawer.
-                        FadeTransition(
+                        new FadeTransition(
                           opacity: _drawerContentsOpacity,
-                          child: Column(
+                          child: new Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: _drawerContents.map((String id) {
-                              return ListTile(
-                                leading: CircleAvatar(child: Text(id)),
-                                title: Text('Drawer item $id'),
+                              return new ListTile(
+                                leading: new CircleAvatar(child: new Text(id)),
+                                title: new Text('Drawer item $id'),
                                 onTap: _showNotImplementedMessage,
                               );
                             }).toList(),
                           ),
                         ),
                         // The drawer's "details" view.
-                        SlideTransition(
+                        new SlideTransition(
                           position: _drawerDetailsPosition,
-                          child: FadeTransition(
-                            opacity: ReverseAnimation(_drawerContentsOpacity),
-                            child: Column(
+                          child: new FadeTransition(
+                            opacity: new ReverseAnimation(_drawerContentsOpacity),
+                            child: new Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: <Widget>[
-                                ListTile(
+                                new ListTile(
                                   leading: const Icon(Icons.add),
                                   title: const Text('Add account'),
                                   onTap: _showNotImplementedMessage,
                                 ),
-                                ListTile(
+                                new ListTile(
                                   leading: const Icon(Icons.settings),
                                   title: const Text('Manage accounts'),
                                   onTap: _showNotImplementedMessage,
@@ -199,31 +196,30 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
           ],
         ),
       ),
-      body: Center(
-        child: InkWell(
+      body: new Center(
+        child: new InkWell(
           onTap: () {
             _scaffoldKey.currentState.openDrawer();
           },
-          child: Column(
+          child: new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Container(
+              new Container(
                 width: 100.0,
                 height: 100.0,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(
+                  image: const DecorationImage(
+                    image: const AssetImage(
                       _kAsset0,
                       package: _kGalleryAssetsPackage,
                     ),
                   ),
                 ),
               ),
-              Padding(
+              new Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  'Tap here to open the drawer',
+                child: new Text('Tap here to open the drawer',
                   style: Theme.of(context).textTheme.subhead,
                 ),
               ),
@@ -238,10 +234,10 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return new AlertDialog(
           title: const Text('Account switching not implemented.'),
           actions: <Widget>[
-            FlatButton(
+            new FlatButton(
               child: const Text('OK'),
               onPressed: () {
                 Navigator.pop(context);

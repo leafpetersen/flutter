@@ -16,7 +16,8 @@ void main() {
     });
 
     tearDownAll(() async {
-      if (driver != null) driver.close();
+      if (driver != null)
+        driver.close();
     });
 
     test('measure', () async {
@@ -27,20 +28,18 @@ void main() {
 
         // Scroll down
         for (int i = 0; i < 5; i++) {
-          await driver.scroll(
-              stockList, 0.0, -300.0, const Duration(milliseconds: 300));
-          await Future<Null>.delayed(const Duration(milliseconds: 500));
+          await driver.scroll(stockList, 0.0, -300.0, const Duration(milliseconds: 300));
+          await new Future<Null>.delayed(const Duration(milliseconds: 500));
         }
 
         // Scroll up
         for (int i = 0; i < 5; i++) {
-          await driver.scroll(
-              stockList, 0.0, 300.0, const Duration(milliseconds: 300));
-          await Future<Null>.delayed(const Duration(milliseconds: 500));
+          await driver.scroll(stockList, 0.0, 300.0, const Duration(milliseconds: 300));
+          await new Future<Null>.delayed(const Duration(milliseconds: 500));
         }
       });
 
-      final TimelineSummary summary = TimelineSummary.summarize(timeline);
+      final TimelineSummary summary = new TimelineSummary.summarize(timeline);
       summary.writeSummaryToFile('stocks_scroll_perf', pretty: true);
       summary.writeTimelineToFile('stocks_scroll_perf', pretty: true);
     });

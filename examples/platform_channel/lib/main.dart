@@ -9,14 +9,14 @@ import 'package:flutter/services.dart';
 
 class PlatformChannel extends StatefulWidget {
   @override
-  _PlatformChannelState createState() => _PlatformChannelState();
+  _PlatformChannelState createState() => new _PlatformChannelState();
 }
 
 class _PlatformChannelState extends State<PlatformChannel> {
   static const MethodChannel methodChannel =
-      MethodChannel('samples.flutter.io/battery');
+      const MethodChannel('samples.flutter.io/battery');
   static const EventChannel eventChannel =
-      EventChannel('samples.flutter.io/charging');
+      const EventChannel('samples.flutter.io/charging');
 
   String _batteryLevel = 'Battery level: unknown.';
   String _chargingStatus = 'Battery status: unknown.';
@@ -55,24 +55,24 @@ class _PlatformChannelState extends State<PlatformChannel> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
+    return new Material(
+      child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Column(
+          new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(_batteryLevel, key: const Key('Battery level label')),
-              Padding(
+              new Text(_batteryLevel, key: const Key('Battery level label')),
+              new Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: RaisedButton(
+                child: new RaisedButton(
                   child: const Text('Refresh'),
                   onPressed: _getBatteryLevel,
                 ),
               ),
             ],
           ),
-          Text(_chargingStatus),
+          new Text(_chargingStatus),
         ],
       ),
     );
@@ -80,5 +80,5 @@ class _PlatformChannelState extends State<PlatformChannel> {
 }
 
 void main() {
-  runApp(MaterialApp(home: PlatformChannel()));
+  runApp(new MaterialApp(home: new PlatformChannel()));
 }

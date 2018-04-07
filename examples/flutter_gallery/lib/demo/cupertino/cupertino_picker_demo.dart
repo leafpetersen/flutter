@@ -13,38 +13,38 @@ class CupertinoPickerDemo extends StatefulWidget {
   static const String routeName = '/cupertino/picker';
 
   @override
-  _CupertinoPickerDemoState createState() => _CupertinoPickerDemoState();
+  _CupertinoPickerDemoState createState() => new _CupertinoPickerDemoState();
 }
 
 class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
   int _selectedItemIndex = 0;
 
   Widget _buildMenu() {
-    return Container(
+    return new Container(
       decoration: const BoxDecoration(
         color: CupertinoColors.white,
-        border: Border(
-          top: BorderSide(color: Color(0xFFBCBBC1), width: 0.0),
-          bottom: BorderSide(color: Color(0xFFBCBBC1), width: 0.0),
+        border: const Border(
+          top: const BorderSide(color: const Color(0xFFBCBBC1), width: 0.0),
+          bottom: const BorderSide(color: const Color(0xFFBCBBC1), width: 0.0),
         ),
       ),
       height: 44.0,
-      child: Padding(
+      child: new Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: SafeArea(
+        child: new SafeArea(
           top: false,
           bottom: false,
-          child: DefaultTextStyle(
+          child: new DefaultTextStyle(
             style: const TextStyle(
               letterSpacing: -0.24,
               fontSize: 17.0,
               color: CupertinoColors.black,
             ),
-            child: Row(
+            child: new Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 const Text('Favorite Color'),
-                Text(
+                new Text(
                   coolColorNames[_selectedItemIndex],
                   style: const TextStyle(color: CupertinoColors.inactiveGray),
                 ),
@@ -58,21 +58,21 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
 
   Widget _buildBottomPicker() {
     final FixedExtentScrollController scrollController =
-        FixedExtentScrollController(initialItem: _selectedItemIndex);
+        new FixedExtentScrollController(initialItem: _selectedItemIndex);
 
-    return Container(
+    return new Container(
       height: _kPickerSheetHeight,
       color: CupertinoColors.white,
-      child: DefaultTextStyle(
+      child: new DefaultTextStyle(
         style: const TextStyle(
           color: CupertinoColors.black,
           fontSize: 22.0,
         ),
-        child: GestureDetector(
+        child: new GestureDetector(
           // Blocks taps from propagating to the modal sheet and popping.
           onTap: () {},
-          child: SafeArea(
-            child: CupertinoPicker(
+          child: new SafeArea(
+            child: new CupertinoPicker(
               scrollController: scrollController,
               itemExtent: _kPickerItemHeight,
               backgroundColor: CupertinoColors.white,
@@ -81,10 +81,9 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
                   _selectedItemIndex = index;
                 });
               },
-              children:
-                  List<Widget>.generate(coolColorNames.length, (int index) {
-                return Center(
-                  child: Text(coolColorNames[index]),
+              children: new List<Widget>.generate(coolColorNames.length, (int index) {
+                return new Center(child:
+                  new Text(coolColorNames[index]),
                 );
               }),
             ),
@@ -96,22 +95,22 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return new Scaffold(
+      appBar: new AppBar(
         title: const Text('Cupertino Picker'),
       ),
-      body: DefaultTextStyle(
+      body: new DefaultTextStyle(
         style: const TextStyle(
           fontFamily: '.SF UI Text',
           fontSize: 17.0,
           color: CupertinoColors.black,
         ),
-        child: DecoratedBox(
-          decoration: const BoxDecoration(color: Color(0xFFEFEFF4)),
-          child: ListView(
+        child: new DecoratedBox(
+          decoration: const BoxDecoration(color: const Color(0xFFEFEFF4)),
+          child: new ListView(
             children: <Widget>[
-              const Padding(padding: EdgeInsets.only(top: 32.0)),
-              GestureDetector(
+              const Padding(padding: const EdgeInsets.only(top: 32.0)),
+              new GestureDetector(
                 onTap: () async {
                   await showModalBottomSheet<void>(
                     context: context,

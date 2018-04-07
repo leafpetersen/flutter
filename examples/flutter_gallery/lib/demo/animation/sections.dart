@@ -6,10 +6,10 @@
 
 import 'package:flutter/material.dart';
 
-const Color _mariner = Color(0xFF3B5F8F);
-const Color _mediumPurple = Color(0xFF8266D4);
-const Color _tomato = Color(0xFFF95B57);
-const Color _mySin = Color(0xFFF3A646);
+const Color _mariner = const Color(0xFF3B5F8F);
+const Color _mediumPurple = const Color(0xFF8266D4);
+const Color _tomato = const Color(0xFFF95B57);
+const Color _mySin = const Color(0xFFF3A646);
 
 const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 
@@ -43,8 +43,9 @@ class Section {
   final List<SectionDetail> details;
 
   @override
-  bool operator ==(Object other) {
-    if (other is! Section) return false;
+  bool operator==(Object other) {
+    if (other is! Section)
+      return false;
     final Section otherSection = other;
     return title == otherSection.title;
   }
@@ -57,50 +58,50 @@ class Section {
 // the const vars like _eyeglassesDetail and insert a variety of titles and
 // image SectionDetails in the allSections list.
 
-const SectionDetail _eyeglassesDetail = SectionDetail(
+const SectionDetail _eyeglassesDetail = const SectionDetail(
   imageAsset: 'shrine/products/sunnies.png',
   imageAssetPackage: _kGalleryAssetsPackage,
   title: 'Flutter enables interactive animation',
   subtitle: '3K views - 5 days',
 );
 
-const SectionDetail _eyeglassesImageDetail = SectionDetail(
+const SectionDetail _eyeglassesImageDetail = const SectionDetail(
   imageAsset: 'shrine/products/sunnies.png',
   imageAssetPackage: _kGalleryAssetsPackage,
 );
 
-const SectionDetail _seatingDetail = SectionDetail(
+const SectionDetail _seatingDetail = const SectionDetail(
   imageAsset: 'shrine/products/lawn_chair.png',
   imageAssetPackage: _kGalleryAssetsPackage,
   title: 'Flutter enables interactive animation',
   subtitle: '3K views - 5 days',
 );
 
-const SectionDetail _seatingImageDetail = SectionDetail(
+const SectionDetail _seatingImageDetail = const SectionDetail(
   imageAsset: 'shrine/products/lawn_chair.png',
   imageAssetPackage: _kGalleryAssetsPackage,
 );
 
-const SectionDetail _decorationDetail = SectionDetail(
+const SectionDetail _decorationDetail = const SectionDetail(
   imageAsset: 'shrine/products/lipstick.png',
   imageAssetPackage: _kGalleryAssetsPackage,
   title: 'Flutter enables interactive animation',
   subtitle: '3K views - 5 days',
 );
 
-const SectionDetail _decorationImageDetail = SectionDetail(
+const SectionDetail _decorationImageDetail = const SectionDetail(
   imageAsset: 'shrine/products/lipstick.png',
   imageAssetPackage: _kGalleryAssetsPackage,
 );
 
-const SectionDetail _protectionDetail = SectionDetail(
+const SectionDetail _protectionDetail = const SectionDetail(
   imageAsset: 'shrine/products/helmet.png',
   imageAssetPackage: _kGalleryAssetsPackage,
   title: 'Flutter enables interactive animation',
   subtitle: '3K views - 5 days',
 );
 
-const SectionDetail _protectionImageDetail = SectionDetail(
+const SectionDetail _protectionImageDetail = const SectionDetail(
   imageAsset: 'shrine/products/helmet.png',
   imageAssetPackage: _kGalleryAssetsPackage,
 );
@@ -112,7 +113,7 @@ final List<Section> allSections = <Section>[
     rightColor: _mariner,
     backgroundAsset: 'shrine/products/sunnies.png',
     backgroundAssetPackage: _kGalleryAssetsPackage,
-    details: <SectionDetail>[
+    details: const <SectionDetail>[
       _eyeglassesDetail,
       _eyeglassesImageDetail,
       _eyeglassesDetail,
@@ -127,7 +128,7 @@ final List<Section> allSections = <Section>[
     rightColor: _mediumPurple,
     backgroundAsset: 'shrine/products/lawn_chair.png',
     backgroundAssetPackage: _kGalleryAssetsPackage,
-    details: <SectionDetail>[
+    details: const <SectionDetail>[
       _seatingDetail,
       _seatingImageDetail,
       _seatingDetail,
@@ -142,7 +143,7 @@ final List<Section> allSections = <Section>[
     rightColor: _tomato,
     backgroundAsset: 'shrine/products/lipstick.png',
     backgroundAssetPackage: _kGalleryAssetsPackage,
-    details: <SectionDetail>[
+    details: const <SectionDetail>[
       _decorationDetail,
       _decorationImageDetail,
       _decorationDetail,
@@ -157,7 +158,7 @@ final List<Section> allSections = <Section>[
     rightColor: _tomato,
     backgroundAsset: 'shrine/products/helmet.png',
     backgroundAssetPackage: _kGalleryAssetsPackage,
-    details: <SectionDetail>[
+    details: const <SectionDetail>[
       _protectionDetail,
       _protectionImageDetail,
       _protectionDetail,

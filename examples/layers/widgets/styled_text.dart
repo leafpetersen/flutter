@@ -18,49 +18,63 @@ Dave: What are you talking about, HAL?
 HAL: This mission is too important for me to allow you to jeopardize it.''';
 
 // [["Dave", "Open the pod bay..."] ...]
-final List<List<String>> _kNameLines =
-    _kDialogText.split('\n').map((String line) => line.split(':')).toList();
+final List<List<String>> _kNameLines = _kDialogText
+  .split('\n')
+  .map((String line) => line.split(':'))
+  .toList();
 
-final TextStyle _kDaveStyle =
-    TextStyle(color: Colors.indigo.shade400, height: 1.8);
-final TextStyle _kHalStyle =
-    TextStyle(color: Colors.red.shade400, fontFamily: 'monospace');
-const TextStyle _kBold = TextStyle(fontWeight: FontWeight.bold);
-const TextStyle _kUnderline = TextStyle(
-    decoration: TextDecoration.underline,
-    decorationColor: Color(0xFF000000),
-    decorationStyle: TextDecorationStyle.wavy);
+final TextStyle _kDaveStyle = new TextStyle(color: Colors.indigo.shade400, height: 1.8);
+final TextStyle _kHalStyle = new TextStyle(color: Colors.red.shade400, fontFamily: 'monospace');
+const TextStyle _kBold = const TextStyle(fontWeight: FontWeight.bold);
+const TextStyle _kUnderline = const TextStyle(
+  decoration: TextDecoration.underline,
+  decorationColor: const Color(0xFF000000),
+  decorationStyle: TextDecorationStyle.wavy
+);
 
 Widget toStyledText(String name, String text) {
   final TextStyle lineStyle = (name == 'Dave') ? _kDaveStyle : _kHalStyle;
-  return RichText(
-      key: Key(text),
-      text: TextSpan(style: lineStyle, children: <TextSpan>[
-        TextSpan(style: _kBold, children: <TextSpan>[
-          TextSpan(style: _kUnderline, text: name),
-          const TextSpan(text: ':')
-        ]),
-        TextSpan(text: text)
-      ]));
+  return new RichText(
+    key: new Key(text),
+    text: new TextSpan(
+      style: lineStyle,
+      children: <TextSpan>[
+        new TextSpan(
+          style: _kBold,
+          children: <TextSpan>[
+            new TextSpan(
+              style: _kUnderline,
+              text: name
+            ),
+            const TextSpan(text: ':')
+          ]
+        ),
+        new TextSpan(text: text)
+      ]
+    )
+  );
 }
 
-Widget toPlainText(String name, String text) => Text(name + ':' + text);
+Widget toPlainText(String name, String text) => new Text(name + ':' + text);
 
 class SpeakerSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        constraints: const BoxConstraints.expand(height: 0.0),
-        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 64.0),
-        decoration: const BoxDecoration(
-            border: Border(
-                bottom: BorderSide(color: Color.fromARGB(24, 0, 0, 0)))));
+    return new Container(
+      constraints: const BoxConstraints.expand(height: 0.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 64.0),
+      decoration: const BoxDecoration(
+        border: const Border(
+          bottom: const BorderSide(color: const Color.fromARGB(24, 0, 0, 0))
+        )
+      )
+    );
   }
 }
 
 class StyledTextDemo extends StatefulWidget {
   @override
-  _StyledTextDemoState createState() => _StyledTextDemoState();
+  _StyledTextDemoState createState() => new _StyledTextDemoState();
 }
 
 class _StyledTextDemoState extends State<StyledTextDemo> {
@@ -81,32 +95,41 @@ class _StyledTextDemoState extends State<StyledTextDemo> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> lines = _kNameLines
-        .map<Widget>((List<String> nameAndText) =>
-            _toText(nameAndText[0], nameAndText[1]))
-        .toList();
+      .map<Widget>((List<String> nameAndText) => _toText(nameAndText[0], nameAndText[1]))
+      .toList();
 
     final List<Widget> children = <Widget>[];
     for (Widget line in lines) {
       children.add(line);
-      if (line != lines.last) children.add(SpeakerSeparator());
+      if (line != lines.last)
+        children.add(new SpeakerSeparator());
     }
 
-    return GestureDetector(
-        onTap: _handleTap,
-        child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-                children: children,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start)));
+    return new GestureDetector(
+      onTap: _handleTap,
+      child: new Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: new Column(
+          children: children,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start
+        )
+      )
+    );
   }
 }
 
 void main() {
-  runApp(MaterialApp(
-      theme: ThemeData.light(),
-      home: Scaffold(
-          appBar: AppBar(title: const Text('Hal and Dave')),
-          body:
-              Material(color: Colors.grey.shade50, child: StyledTextDemo()))));
+  runApp(new MaterialApp(
+    theme: new ThemeData.light(),
+    home: new Scaffold(
+      appBar: new AppBar(
+        title: const Text('Hal and Dave')
+      ),
+      body: new Material(
+        color: Colors.grey.shade50,
+        child: new StyledTextDemo()
+      )
+    )
+  ));
 }

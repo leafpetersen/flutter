@@ -3,25 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(FlutterView());
+  runApp(new FlutterView());
 }
 
 class FlutterView extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return new MaterialApp(
       title: 'Flutter View',
-      theme: ThemeData(
+      theme: new ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(),
+      home: new MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageState createState() => new _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -29,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String _pong = 'pong';
   static const String _emptyMessage = '';
   static const BasicMessageChannel<String> platform =
-      BasicMessageChannel<String>(_channel, StringCodec());
+      const BasicMessageChannel<String>(_channel, const StringCodec());
 
   int _counter = 0;
 
@@ -52,28 +53,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return new Scaffold(
+      body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-            child: Center(
-                child: Text(
-                    'Platform button tapped $_counter time${ _counter == 1 ? '' : 's' }.',
-                    style: const TextStyle(fontSize: 17.0))),
+          new Expanded(
+            child: new Center(
+              child: new Text(
+                'Platform button tapped $_counter time${ _counter == 1 ? '' : 's' }.',
+                style: const TextStyle(fontSize: 17.0))
+            ),
           ),
-          Container(
+          new Container(
             padding: const EdgeInsets.only(bottom: 15.0, left: 5.0),
-            child: Row(
+            child: new Row(
               children: <Widget>[
-                Image.asset('assets/flutter-mark-square-64.png', scale: 1.5),
-                const Text('Flutter', style: TextStyle(fontSize: 30.0)),
+                new Image.asset('assets/flutter-mark-square-64.png', scale: 1.5),
+                const Text('Flutter', style: const TextStyle(fontSize: 30.0)),
               ],
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: new FloatingActionButton(
         onPressed: _sendFlutterIncrement,
         child: const Icon(Icons.add),
       ),

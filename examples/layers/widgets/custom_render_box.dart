@@ -28,29 +28,30 @@ class RenderDots extends RenderConstrainedBox {
   @override
   void paint(PaintingContext context, Offset offset) {
     final Canvas canvas = context.canvas;
-    canvas.drawRect(offset & size, Paint()..color = const Color(0xFF0000FF));
+    canvas.drawRect(offset & size, new Paint()..color = const Color(0xFF0000FF));
 
-    final Paint paint = Paint()..color = const Color(0xFF00FF00);
-    for (Offset point in _dots.values) canvas.drawCircle(point, 50.0, paint);
+    final Paint paint = new Paint()..color = const Color(0xFF00FF00);
+    for (Offset point in _dots.values)
+      canvas.drawCircle(point, 50.0, paint);
 
     super.paint(context, offset);
   }
 }
 
 class Dots extends SingleChildRenderObjectWidget {
-  const Dots({Key key, Widget child}) : super(key: key, child: child);
+  const Dots({ Key key, Widget child }) : super(key: key, child: child);
 
   @override
-  RenderDots createRenderObject(BuildContext context) => RenderDots();
+  RenderDots createRenderObject(BuildContext context) => new RenderDots();
 }
 
 void main() {
   runApp(
     const Directionality(
       textDirection: TextDirection.ltr,
-      child: Dots(
-        child: Center(
-          child: Text('Touch me!'),
+      child: const Dots(
+        child: const Center(
+          child: const Text('Touch me!'),
         ),
       ),
     ),

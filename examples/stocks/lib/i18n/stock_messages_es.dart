@@ -6,7 +6,7 @@
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
-final messages = MessageLookup();
+final messages = new MessageLookup();
 
 // ignore: unused_element
 final _keepAnalysisHappy = Intl.defaultLocale;
@@ -18,9 +18,9 @@ class MessageLookup extends MessageLookupByLibrary {
   get localeName => 'es';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
-        "market": MessageLookupByLibrary.simpleMessage("MERCADO"),
-        "portfolio": MessageLookupByLibrary.simpleMessage("CARTERA"),
-        "title": MessageLookupByLibrary.simpleMessage("Acciones")
-      };
+  static _notInlinedMessages(_) => <String, Function> {
+    "market" : MessageLookupByLibrary.simpleMessage("MERCADO"),
+    "portfolio" : MessageLookupByLibrary.simpleMessage("CARTERA"),
+    "title" : MessageLookupByLibrary.simpleMessage("Acciones")
+  };
 }

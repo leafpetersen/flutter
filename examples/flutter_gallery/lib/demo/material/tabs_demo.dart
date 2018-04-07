@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 
 class _Page {
-  _Page({this.label});
+  _Page({ this.label });
   final String label;
   String get id => label[0];
   @override
@@ -18,14 +18,14 @@ class _Page {
 }
 
 class _CardData {
-  const _CardData({this.title, this.imageAsset, this.imageAssetPackage});
+  const _CardData({ this.title, this.imageAsset, this.imageAssetPackage });
   final String title;
   final String imageAsset;
   final String imageAssetPackage;
 }
 
 final Map<_Page, List<_CardData>> _allPages = <_Page, List<_CardData>>{
-  _Page(label: 'LEFT'): <_CardData>[
+  new _Page(label: 'LEFT'): <_CardData>[
     const _CardData(
       title: 'Vintage Bluetooth Radio',
       imageAsset: 'shrine/products/radio.png',
@@ -72,7 +72,7 @@ final Map<_Page, List<_CardData>> _allPages = <_Page, List<_CardData>>{
       imageAssetPackage: _kGalleryAssetsPackage,
     ),
   ],
-  _Page(label: 'RIGHT'): <_CardData>[
+  new _Page(label: 'RIGHT'): <_CardData>[
     const _CardData(
       title: 'Beachball',
       imageAsset: 'shrine/products/beachball.png',
@@ -92,7 +92,7 @@ final Map<_Page, List<_CardData>> _allPages = <_Page, List<_CardData>>{
 };
 
 class _CardDataItem extends StatelessWidget {
-  const _CardDataItem({this.page, this.data});
+  const _CardDataItem({ this.page, this.data });
 
   static const double height = 272.0;
   final _Page page;
@@ -100,29 +100,30 @@ class _CardDataItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
+    return new Card(
+      child: new Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: new Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Align(
-              alignment:
-                  page.id == 'L' ? Alignment.centerLeft : Alignment.centerRight,
-              child: CircleAvatar(child: Text('${page.id}')),
+            new Align(
+              alignment: page.id == 'L'
+                ? Alignment.centerLeft
+                : Alignment.centerRight,
+              child: new CircleAvatar(child: new Text('${page.id}')),
             ),
-            SizedBox(
+            new SizedBox(
               width: 144.0,
               height: 144.0,
-              child: Image.asset(
+              child: new Image.asset(
                 data.imageAsset,
                 package: data.imageAssetPackage,
                 fit: BoxFit.contain,
               ),
             ),
-            Center(
-              child: Text(
+            new Center(
+              child: new Text(
                 data.title,
                 style: Theme.of(context).textTheme.title,
               ),
@@ -139,60 +140,56 @@ class TabsDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return new DefaultTabController(
       length: _allPages.length,
-      child: Scaffold(
-        body: NestedScrollView(
+      child: new Scaffold(
+        body: new NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
-              SliverOverlapAbsorber(
-                handle:
-                    NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                child: SliverAppBar(
+              new SliverOverlapAbsorber(
+                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                child: new SliverAppBar(
                   title: const Text('Tabs and scrolling'),
                   pinned: true,
                   expandedHeight: 150.0,
                   forceElevated: innerBoxIsScrolled,
-                  bottom: TabBar(
-                    tabs: _allPages.keys
-                        .map(
-                          (_Page page) => Tab(text: page.label),
-                        )
-                        .toList(),
+                  bottom: new TabBar(
+                    tabs: _allPages.keys.map(
+                      (_Page page) => new Tab(text: page.label),
+                    ).toList(),
                   ),
                 ),
               ),
             ];
           },
-          body: TabBarView(
+          body: new TabBarView(
             children: _allPages.keys.map((_Page page) {
-              return SafeArea(
+              return new SafeArea(
                 top: false,
                 bottom: false,
-                child: Builder(
+                child: new Builder(
                   builder: (BuildContext context) {
-                    return CustomScrollView(
-                      key: PageStorageKey<_Page>(page),
+                    return new CustomScrollView(
+                      key: new PageStorageKey<_Page>(page),
                       slivers: <Widget>[
-                        SliverOverlapInjector(
-                          handle: NestedScrollView
-                              .sliverOverlapAbsorberHandleFor(context),
+                        new SliverOverlapInjector(
+                          handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                         ),
-                        SliverPadding(
+                        new SliverPadding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 8.0,
                             horizontal: 16.0,
                           ),
-                          sliver: SliverFixedExtentList(
+                          sliver: new SliverFixedExtentList(
                             itemExtent: _CardDataItem.height,
-                            delegate: SliverChildBuilderDelegate(
+                            delegate: new SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
                                 final _CardData data = _allPages[page][index];
-                                return Padding(
+                                return new Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 8.0,
                                   ),
-                                  child: _CardDataItem(
+                                  child: new _CardDataItem(
                                     page: page,
                                     data: data,
                                   ),

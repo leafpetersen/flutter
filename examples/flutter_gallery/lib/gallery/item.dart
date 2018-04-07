@@ -18,10 +18,10 @@ class GalleryItem extends StatelessWidget {
     @required this.category,
     @required this.routeName,
     @required this.buildRoute,
-  })  : assert(title != null),
-        assert(category != null),
-        assert(routeName != null),
-        assert(buildRoute != null);
+  }) : assert(title != null),
+       assert(category != null),
+       assert(routeName != null),
+       assert(buildRoute != null);
 
   final String title;
   final String subtitle;
@@ -31,16 +31,19 @@ class GalleryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-        title: Text(title),
-        subtitle: Text(subtitle),
-        onTap: () {
-          if (routeName != null) {
-            Timeline.instantSync('Start Transition',
-                arguments: <String, String>{'from': '/', 'to': routeName});
-            Navigator.pushNamed(context, routeName);
-          }
-        });
+    return new ListTile(
+      title: new Text(title),
+      subtitle: new Text(subtitle),
+      onTap: () {
+        if (routeName != null) {
+          Timeline.instantSync('Start Transition', arguments: <String, String>{
+            'from': '/',
+            'to': routeName
+          });
+          Navigator.pushNamed(context, routeName);
+        }
+      }
+    );
   }
 }
 
@@ -49,28 +52,28 @@ List<GalleryItem> _buildGalleryItems() {
   // the list in ../../test_driver/transitions_perf_test.dart
   final List<GalleryItem> galleryItems = <GalleryItem>[
     // Demos
-    GalleryItem(
+    new GalleryItem(
       title: 'Shrine',
       subtitle: 'Basic shopping app',
       category: 'Vignettes',
       routeName: ShrineDemo.routeName,
-      buildRoute: (BuildContext context) => ShrineDemo(),
+      buildRoute: (BuildContext context) => new ShrineDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Contact profile',
       subtitle: 'Address book entry with a flexible appbar',
       category: 'Vignettes',
       routeName: ContactsDemo.routeName,
-      buildRoute: (BuildContext context) => ContactsDemo(),
+      buildRoute: (BuildContext context) => new ContactsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Animation',
       subtitle: 'Section organizer',
       category: 'Vignettes',
       routeName: AnimationDemo.routeName,
       buildRoute: (BuildContext context) => const AnimationDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Video',
       subtitle: 'Video playback',
       category: 'Vignettes',
@@ -78,304 +81,303 @@ List<GalleryItem> _buildGalleryItems() {
       buildRoute: (BuildContext context) => const VideoDemo(),
     ),
     // Material Components
-    GalleryItem(
+    new GalleryItem(
       title: 'Backdrop',
       subtitle: 'Select a front layer from back layer',
       category: 'Material Components',
       routeName: BackdropDemo.routeName,
-      buildRoute: (BuildContext context) => BackdropDemo(),
+      buildRoute: (BuildContext context) => new BackdropDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Bottom app bar',
       subtitle: 'With repositionable floating action button',
       category: 'Material Components',
       routeName: BottomAppBarDemo.routeName,
-      buildRoute: (BuildContext context) => BottomAppBarDemo(),
+      buildRoute: (BuildContext context) => new BottomAppBarDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Bottom navigation',
       subtitle: 'Bottom navigation with cross-fading views',
       category: 'Material Components',
       routeName: BottomNavigationDemo.routeName,
-      buildRoute: (BuildContext context) => BottomNavigationDemo(),
+      buildRoute: (BuildContext context) => new BottomNavigationDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Buttons',
       subtitle: 'All kinds: flat, raised, dropdown, icon, etc',
       category: 'Material Components',
       routeName: ButtonsDemo.routeName,
-      buildRoute: (BuildContext context) => ButtonsDemo(),
+      buildRoute: (BuildContext context) => new ButtonsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Cards',
       subtitle: 'Material with rounded corners and a drop shadow',
       category: 'Material Components',
       routeName: CardsDemo.routeName,
-      buildRoute: (BuildContext context) => CardsDemo(),
+      buildRoute: (BuildContext context) => new CardsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Chips',
       subtitle: 'Label with an optional delete button and avatar',
       category: 'Material Components',
       routeName: ChipDemo.routeName,
-      buildRoute: (BuildContext context) => ChipDemo(),
+      buildRoute: (BuildContext context) => new ChipDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Data tables',
       subtitle: 'Rows and columns',
       category: 'Material Components',
       routeName: DataTableDemo.routeName,
-      buildRoute: (BuildContext context) => DataTableDemo(),
+      buildRoute: (BuildContext context) => new DataTableDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Date and time pickers',
       subtitle: 'Date and time selection widgets',
       category: 'Material Components',
       routeName: DateAndTimePickerDemo.routeName,
-      buildRoute: (BuildContext context) => DateAndTimePickerDemo(),
+      buildRoute: (BuildContext context) => new DateAndTimePickerDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Dialog',
       subtitle: 'All kinds: simple, alert, fullscreen, etc',
       category: 'Material Components',
       routeName: DialogDemo.routeName,
-      buildRoute: (BuildContext context) => DialogDemo(),
+      buildRoute: (BuildContext context) => new DialogDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Drawer',
       subtitle: 'Navigation drawer with a standard header',
       category: 'Material Components',
       routeName: DrawerDemo.routeName,
-      buildRoute: (BuildContext context) => DrawerDemo(),
+      buildRoute: (BuildContext context) => new DrawerDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Expand/collapse list control',
       subtitle: 'List with one level of sublists',
       category: 'Material Components',
       routeName: TwoLevelListDemo.routeName,
-      buildRoute: (BuildContext context) => TwoLevelListDemo(),
+      buildRoute: (BuildContext context) => new TwoLevelListDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Expansion panels',
       subtitle: 'List of expanding panels',
       category: 'Material Components',
       routeName: ExpansionPanelsDemo.routeName,
-      buildRoute: (BuildContext context) => ExpansionPanelsDemo(),
+      buildRoute: (BuildContext context) => new ExpansionPanelsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Floating action button',
       subtitle: 'Action buttons with transitions',
       category: 'Material Components',
       routeName: TabsFabDemo.routeName,
-      buildRoute: (BuildContext context) => TabsFabDemo(),
+      buildRoute: (BuildContext context) => new TabsFabDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Grid',
       subtitle: 'Row and column layout',
       category: 'Material Components',
       routeName: GridListDemo.routeName,
       buildRoute: (BuildContext context) => const GridListDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Icons',
       subtitle: 'Enabled and disabled icons with varying opacity',
       category: 'Material Components',
       routeName: IconsDemo.routeName,
-      buildRoute: (BuildContext context) => IconsDemo(),
+      buildRoute: (BuildContext context) => new IconsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Leave-behind list items',
       subtitle: 'List items with hidden actions',
       category: 'Material Components',
       routeName: LeaveBehindDemo.routeName,
       buildRoute: (BuildContext context) => const LeaveBehindDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'List',
       subtitle: 'Layout variations for scrollable lists',
       category: 'Material Components',
       routeName: ListDemo.routeName,
       buildRoute: (BuildContext context) => const ListDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Menus',
       subtitle: 'Menu buttons and simple menus',
       category: 'Material Components',
       routeName: MenuDemo.routeName,
       buildRoute: (BuildContext context) => const MenuDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Modal bottom sheet',
       subtitle: 'Modal sheet that slides up from the bottom',
       category: 'Material Components',
       routeName: ModalBottomSheetDemo.routeName,
-      buildRoute: (BuildContext context) => ModalBottomSheetDemo(),
+      buildRoute: (BuildContext context) => new ModalBottomSheetDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Page selector',
       subtitle: 'PageView with indicator',
       category: 'Material Components',
       routeName: PageSelectorDemo.routeName,
-      buildRoute: (BuildContext context) => PageSelectorDemo(),
+      buildRoute: (BuildContext context) => new PageSelectorDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Persistent bottom sheet',
       subtitle: 'Sheet that slides up from the bottom',
       category: 'Material Components',
       routeName: PersistentBottomSheetDemo.routeName,
-      buildRoute: (BuildContext context) => PersistentBottomSheetDemo(),
+      buildRoute: (BuildContext context) => new PersistentBottomSheetDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Progress indicators',
       subtitle: 'All kinds: linear, circular, indeterminate, etc',
       category: 'Material Components',
       routeName: ProgressIndicatorDemo.routeName,
-      buildRoute: (BuildContext context) => ProgressIndicatorDemo(),
+      buildRoute: (BuildContext context) => new ProgressIndicatorDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Pull to refresh',
       subtitle: 'Refresh indicators',
       category: 'Material Components',
       routeName: OverscrollDemo.routeName,
       buildRoute: (BuildContext context) => const OverscrollDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Scrollable tabs',
       subtitle: 'Tab bar that scrolls',
       category: 'Material Components',
       routeName: ScrollableTabsDemo.routeName,
-      buildRoute: (BuildContext context) => ScrollableTabsDemo(),
+      buildRoute: (BuildContext context) => new ScrollableTabsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Selection controls',
       subtitle: 'Checkboxes, radio buttons, and switches',
       category: 'Material Components',
       routeName: SelectionControlsDemo.routeName,
-      buildRoute: (BuildContext context) => SelectionControlsDemo(),
+      buildRoute: (BuildContext context) => new SelectionControlsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Sliders',
       subtitle: 'Widgets that select a value by dragging the slider thumb',
       category: 'Material Components',
       routeName: SliderDemo.routeName,
-      buildRoute: (BuildContext context) => SliderDemo(),
+      buildRoute: (BuildContext context) => new SliderDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Snackbar',
       subtitle: 'Temporary message that appears at the bottom',
       category: 'Material Components',
       routeName: SnackBarDemo.routeName,
       buildRoute: (BuildContext context) => const SnackBarDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Tabs',
       subtitle: 'Tabs with independently scrollable views',
       category: 'Material Components',
       routeName: TabsDemo.routeName,
-      buildRoute: (BuildContext context) => TabsDemo(),
+      buildRoute: (BuildContext context) => new TabsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Text fields',
       subtitle: 'Single line of editable text and numbers',
       category: 'Material Components',
       routeName: TextFormFieldDemo.routeName,
       buildRoute: (BuildContext context) => const TextFormFieldDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Tooltips',
       subtitle: 'Short message displayed after a long-press',
       category: 'Material Components',
       routeName: TooltipDemo.routeName,
-      buildRoute: (BuildContext context) => TooltipDemo(),
+      buildRoute: (BuildContext context) => new TooltipDemo(),
     ),
     // Cupertino Components
-    GalleryItem(
+    new GalleryItem(
       title: 'Activity Indicator',
       subtitle: 'Cupertino styled activity indicator',
       category: 'Cupertino Components',
       routeName: CupertinoProgressIndicatorDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoProgressIndicatorDemo(),
+      buildRoute: (BuildContext context) => new CupertinoProgressIndicatorDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Buttons',
       subtitle: 'Cupertino styled buttons',
       category: 'Cupertino Components',
       routeName: CupertinoButtonsDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoButtonsDemo(),
+      buildRoute: (BuildContext context) => new CupertinoButtonsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Dialogs',
       subtitle: 'Cupertino styled dialogs',
       category: 'Cupertino Components',
       routeName: CupertinoDialogDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoDialogDemo(),
+      buildRoute: (BuildContext context) => new CupertinoDialogDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Navigation',
       subtitle: 'Cupertino styled navigation patterns',
       category: 'Cupertino Components',
       routeName: CupertinoNavigationDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoNavigationDemo(),
+      buildRoute: (BuildContext context) => new CupertinoNavigationDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Pickers',
       subtitle: 'Cupertino styled pickers',
       category: 'Cupertino Components',
       routeName: CupertinoPickerDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoPickerDemo(),
+      buildRoute: (BuildContext context) => new CupertinoPickerDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Pull to refresh',
       subtitle: 'Cupertino styled refresh controls',
       category: 'Cupertino Components',
       routeName: CupertinoRefreshControlDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoRefreshControlDemo(),
+      buildRoute: (BuildContext context) => new CupertinoRefreshControlDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Sliders',
       subtitle: 'Cupertino styled sliders',
       category: 'Cupertino Components',
       routeName: CupertinoSliderDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoSliderDemo(),
+      buildRoute: (BuildContext context) => new CupertinoSliderDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Switches',
       subtitle: 'Cupertino styled switches',
       category: 'Cupertino Components',
       routeName: CupertinoSwitchDemo.routeName,
-      buildRoute: (BuildContext context) => CupertinoSwitchDemo(),
+      buildRoute: (BuildContext context) => new CupertinoSwitchDemo(),
     ),
     // Media
-    GalleryItem(
+    new GalleryItem(
       title: 'Animated images',
       subtitle: 'GIF and WebP animations',
       category: 'Media',
       routeName: ImagesDemo.routeName,
-      buildRoute: (BuildContext context) => ImagesDemo(),
+      buildRoute: (BuildContext context) => new ImagesDemo(),
     ),
     // Styles
-    GalleryItem(
+    new GalleryItem(
       title: 'Colors',
       subtitle: 'All of the predefined colors',
       category: 'Style',
       routeName: ColorsDemo.routeName,
-      buildRoute: (BuildContext context) => ColorsDemo(),
+      buildRoute: (BuildContext context) => new ColorsDemo(),
     ),
-    GalleryItem(
+    new GalleryItem(
       title: 'Typography',
       subtitle: 'All of the predefined text styles',
       category: 'Style',
       routeName: TypographyDemo.routeName,
-      buildRoute: (BuildContext context) => TypographyDemo(),
+      buildRoute: (BuildContext context) => new TypographyDemo(),
     )
   ];
 
   // Keep Pesto around for its regression test value. It is not included
   // in (release builds) the performance tests.
   assert(() {
-    galleryItems.insert(
-      0,
-      GalleryItem(
+    galleryItems.insert(0,
+      new GalleryItem(
         title: 'Pesto',
         subtitle: 'Simple recipe browser',
         category: 'Vignettes',

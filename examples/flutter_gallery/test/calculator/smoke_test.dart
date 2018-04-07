@@ -7,15 +7,14 @@ import 'package:flutter_gallery/demo/calculator_demo.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final TestWidgetsFlutterBinding binding =
-      TestWidgetsFlutterBinding.ensureInitialized();
+  final TestWidgetsFlutterBinding binding = TestWidgetsFlutterBinding.ensureInitialized();
   if (binding is LiveTestWidgetsFlutterBinding)
     binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
 
   // We press the "1" and the "2" buttons and check that the display
   // reads "12".
   testWidgets('Flutter calculator app smoke test', (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(home: const CalculatorDemo()));
+    await tester.pumpWidget(new MaterialApp(home: const CalculatorDemo()));
 
     final Finder oneButton = find.widgetWithText(InkResponse, '1');
     expect(oneButton, findsOneWidget);
@@ -27,8 +26,7 @@ void main() {
     await tester.pump();
     await tester.tap(twoButton);
     await tester.pump();
-    await tester
-        .pump(const Duration(seconds: 1)); // Wait until it has finished.
+    await tester.pump(const Duration(seconds: 1)); // Wait until it has finished.
 
     final Finder display = find.widgetWithText(Expanded, '12');
     expect(display, findsOneWidget);

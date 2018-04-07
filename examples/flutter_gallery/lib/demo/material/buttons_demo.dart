@@ -49,7 +49,7 @@ class ButtonsDemo extends StatefulWidget {
   static const String routeName = '/material//buttons';
 
   @override
-  _ButtonsDemoState createState() => _ButtonsDemoState();
+  _ButtonsDemoState createState() => new _ButtonsDemoState();
 }
 
 class _ButtonsDemoState extends State<ButtonsDemo> {
@@ -57,50 +57,51 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonThemeData buttonTheme =
-        ButtonTheme.of(context).copyWith(shape: _buttonShape);
+    final ButtonThemeData buttonTheme = ButtonTheme.of(context).copyWith(
+      shape: _buttonShape
+    );
 
     final List<ComponentDemoTabData> demos = <ComponentDemoTabData>[
-      ComponentDemoTabData(
+      new ComponentDemoTabData(
         tabName: 'RAISED',
         description: _raisedText,
-        demoWidget: ButtonTheme.fromButtonThemeData(
+        demoWidget: new ButtonTheme.fromButtonThemeData(
           data: buttonTheme,
           child: buildRaisedButton(),
         ),
         exampleCodeTag: _raisedCode,
       ),
-      ComponentDemoTabData(
+      new ComponentDemoTabData(
         tabName: 'FLAT',
         description: _flatText,
-        demoWidget: ButtonTheme.fromButtonThemeData(
+        demoWidget: new ButtonTheme.fromButtonThemeData(
           data: buttonTheme,
           child: buildFlatButton(),
         ),
         exampleCodeTag: _flatCode,
       ),
-      ComponentDemoTabData(
+      new ComponentDemoTabData(
         tabName: 'OUTLINE',
         description: _outlineText,
-        demoWidget: ButtonTheme.fromButtonThemeData(
+        demoWidget: new ButtonTheme.fromButtonThemeData(
           data: buttonTheme,
           child: buildOutlineButton(),
         ),
         exampleCodeTag: _outlineCode,
       ),
-      ComponentDemoTabData(
+      new ComponentDemoTabData(
         tabName: 'DROPDOWN',
         description: _dropdownText,
         demoWidget: buildDropdownButton(),
         exampleCodeTag: _dropdownCode,
       ),
-      ComponentDemoTabData(
+      new ComponentDemoTabData(
         tabName: 'ICON',
         description: _iconText,
         demoWidget: buildIconButton(),
         exampleCodeTag: _iconCode,
       ),
-      ComponentDemoTabData(
+      new ComponentDemoTabData(
         tabName: 'ACTION',
         description: _actionText,
         demoWidget: buildActionButton(),
@@ -108,16 +109,15 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
       ),
     ];
 
-    return TabbedComponentDemoScaffold(
+    return new TabbedComponentDemoScaffold(
       title: 'Buttons',
       demos: demos,
       actions: <Widget>[
-        IconButton(
+        new IconButton(
           icon: const Icon(Icons.sentiment_very_satisfied),
           onPressed: () {
             setState(() {
-              _buttonShape =
-                  _buttonShape == null ? const StadiumBorder() : null;
+              _buttonShape = _buttonShape == null ? const StadiumBorder() : null;
             });
           },
         ),
@@ -126,37 +126,37 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
   }
 
   Widget buildRaisedButton() {
-    return Align(
+    return new Align(
       alignment: const Alignment(0.0, -0.2),
-      child: Column(
+      child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          ButtonBar(
+          new ButtonBar(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              RaisedButton(
+              new RaisedButton(
                 child: const Text('RAISED BUTTON'),
                 onPressed: () {
                   // Perform some action
                 },
               ),
               const RaisedButton(
-                child: Text('DISABLED'),
+                child: const Text('DISABLED'),
                 onPressed: null,
               ),
             ],
           ),
-          ButtonBar(
+          new ButtonBar(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              RaisedButton.icon(
+              new RaisedButton.icon(
                 icon: const Icon(Icons.add, size: 18.0),
                 label: const Text('RAISED BUTTON'),
                 onPressed: () {
                   // Perform some action
                 },
               ),
-              RaisedButton.icon(
+              new RaisedButton.icon(
                 icon: const Icon(Icons.add, size: 18.0),
                 label: const Text('DISABLED'),
                 onPressed: null,
@@ -169,37 +169,37 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
   }
 
   Widget buildFlatButton() {
-    return Align(
+    return new Align(
       alignment: const Alignment(0.0, -0.2),
-      child: Column(
+      child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          ButtonBar(
+          new ButtonBar(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              FlatButton(
+              new FlatButton(
                 child: const Text('FLAT BUTTON'),
                 onPressed: () {
                   // Perform some action
                 },
               ),
               const FlatButton(
-                child: Text('DISABLED'),
+                child: const Text('DISABLED'),
                 onPressed: null,
               ),
             ],
           ),
-          ButtonBar(
+          new ButtonBar(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              FlatButton.icon(
+              new FlatButton.icon(
                 icon: const Icon(Icons.add_circle_outline, size: 18.0),
                 label: const Text('FLAT BUTTON'),
                 onPressed: () {
                   // Perform some action
                 },
               ),
-              FlatButton.icon(
+              new FlatButton.icon(
                 icon: const Icon(Icons.add_circle_outline, size: 18.0),
                 label: const Text('DISABLED'),
                 onPressed: null,
@@ -212,37 +212,37 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
   }
 
   Widget buildOutlineButton() {
-    return Align(
+    return new Align(
       alignment: const Alignment(0.0, -0.2),
-      child: Column(
+      child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          ButtonBar(
+          new ButtonBar(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              OutlineButton(
+              new OutlineButton(
                 child: const Text('OUTLINE BUTTON'),
                 onPressed: () {
                   // Perform some action
                 },
               ),
               const RaisedButton(
-                child: Text('DISABLED'),
+                child: const Text('DISABLED'),
                 onPressed: null,
               ),
             ],
           ),
-          ButtonBar(
+          new ButtonBar(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              OutlineButton.icon(
+              new OutlineButton.icon(
                 icon: const Icon(Icons.add, size: 18.0),
                 label: const Text('OUTLINE BUTTON'),
                 onPressed: () {
                   // Perform some action
                 },
               ),
-              OutlineButton.icon(
+              new OutlineButton.icon(
                 icon: const Icon(Icons.add, size: 18.0),
                 label: const Text('DISABLED'),
                 onPressed: null,
@@ -260,14 +260,14 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
   String dropdown3Value = 'Four';
 
   Widget buildDropdownButton() {
-    return Padding(
+    return new Padding(
       padding: const EdgeInsets.all(24.0),
-      child: Column(
+      child: new Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          ListTile(
+          new ListTile(
             title: const Text('Simple dropdown:'),
-            trailing: DropdownButton<String>(
+            trailing: new DropdownButton<String>(
               value: dropdown1Value,
               onChanged: (String newValue) {
                 setState(() {
@@ -275,9 +275,9 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
                 });
               },
               items: <String>['One', 'Two', 'Free', 'Four'].map((String value) {
-                return DropdownMenuItem<String>(
+                return new DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: new Text(value),
                 );
               }).toList(),
             ),
@@ -285,9 +285,9 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
           const SizedBox(
             height: 24.0,
           ),
-          ListTile(
+          new ListTile(
             title: const Text('Dropdown with a hint:'),
-            trailing: DropdownButton<String>(
+            trailing: new DropdownButton<String>(
               value: dropdown2Value,
               hint: const Text('Choose'),
               onChanged: (String newValue) {
@@ -296,9 +296,9 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
                 });
               },
               items: <String>['One', 'Two', 'Free', 'Four'].map((String value) {
-                return DropdownMenuItem<String>(
+                return new DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: new Text(value),
                 );
               }).toList(),
             ),
@@ -306,9 +306,9 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
           const SizedBox(
             height: 24.0,
           ),
-          ListTile(
+          new ListTile(
             title: const Text('Scrollable dropdown:'),
-            trailing: DropdownButton<String>(
+            trailing: new DropdownButton<String>(
               value: dropdown3Value,
               onChanged: (String newValue) {
                 setState(() {
@@ -316,30 +316,17 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
                 });
               },
               items: <String>[
-                'One',
-                'Two',
-                'Free',
-                'Four',
-                'Can',
-                'I',
-                'Have',
-                'A',
-                'Little',
-                'Bit',
-                'More',
-                'Five',
-                'Six',
-                'Seven',
-                'Eight',
-                'Nine',
-                'Ten'
-              ].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
+                  'One', 'Two', 'Free', 'Four', 'Can', 'I', 'Have', 'A', 'Little',
+                  'Bit', 'More', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
+                 ]
+                .map((String value) {
+                  return new DropdownMenuItem<String>(
+                    value: value,
+                    child: new Text(value),
+                  );
+                })
+                .toList(),
+             ),
           ),
         ],
       ),
@@ -349,12 +336,12 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
   bool iconButtonToggle = false;
 
   Widget buildIconButton() {
-    return Align(
+    return new Align(
       alignment: const Alignment(0.0, -0.2),
-      child: Row(
+      child: new Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          IconButton(
+          new IconButton(
             icon: const Icon(
               Icons.thumb_up,
               semanticLabel: 'Thumbs up',
@@ -365,24 +352,23 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
             color: iconButtonToggle ? Theme.of(context).primaryColor : null,
           ),
           const IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.thumb_up,
               semanticLabel: 'Thumbs up',
             ),
             onPressed: null,
           )
         ]
-            .map((Widget button) =>
-                SizedBox(width: 64.0, height: 64.0, child: button))
-            .toList(),
+        .map((Widget button) => new SizedBox(width: 64.0, height: 64.0, child: button))
+        .toList(),
       ),
     );
   }
 
   Widget buildActionButton() {
-    return Align(
+    return new Align(
       alignment: const Alignment(0.0, -0.2),
-      child: FloatingActionButton(
+      child: new FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           // Perform some action

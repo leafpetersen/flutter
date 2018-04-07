@@ -5,47 +5,49 @@
 import 'package:flutter/material.dart';
 
 class GalleryTheme {
-  const GalleryTheme({this.name, this.icon, this.theme});
+  const GalleryTheme({ this.name, this.icon, this.theme });
   final String name;
   final IconData icon;
   final ThemeData theme;
 }
 
 const int _kPurplePrimaryValue = 0xFF6200EE;
-const MaterialColor _kPurpleSwatch =
-    MaterialColor(_kPurplePrimaryValue, <int, Color>{
-  50: Color(0xFFF2E7FE),
-  100: Color(0xFFD7B7FD),
-  200: Color(0xFFBB86FC),
-  300: Color(0xFF9E55FC),
-  400: Color(0xFF7F22FD),
-  500: Color(_kPurplePrimaryValue),
-  700: Color(0xFF3700B3),
-  800: Color(0xFF270096),
-  900: Color(0xFF190078),
-});
+const MaterialColor _kPurpleSwatch = const MaterialColor(
+  _kPurplePrimaryValue,
+  const <int, Color> {
+    50: const Color(0xFFF2E7FE),
+    100: const Color(0xFFD7B7FD),
+    200: const Color(0xFFBB86FC),
+    300: const Color(0xFF9E55FC),
+    400: const Color(0xFF7F22FD),
+    500: const Color(_kPurplePrimaryValue),
+    700: const Color(0xFF3700B3),
+    800: const Color(0xFF270096),
+    900: const Color(0xFF190078),
+  }
+);
 
 final List<GalleryTheme> kAllGalleryThemes = <GalleryTheme>[
-  GalleryTheme(
+  new GalleryTheme(
     name: 'Light',
     icon: Icons.brightness_5,
-    theme: ThemeData(
+    theme: new ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
     ),
   ),
-  GalleryTheme(
+  new GalleryTheme(
     name: 'Dark',
     icon: Icons.brightness_7,
-    theme: ThemeData(
+    theme: new ThemeData(
       brightness: Brightness.dark,
       primarySwatch: Colors.blue,
     ),
   ),
-  GalleryTheme(
+  new GalleryTheme(
     name: 'Purple',
     icon: Icons.brightness_6,
-    theme: ThemeData(
+    theme: new ThemeData(
       brightness: Brightness.light,
       primarySwatch: _kPurpleSwatch,
       buttonColor: _kPurpleSwatch[500],
