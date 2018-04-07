@@ -26,10 +26,8 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget> [
-                new CupertinoSlider(
+            new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              new CupertinoSlider(
                   value: _value,
                   min: 0.0,
                   max: 100.0,
@@ -37,15 +35,11 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
                     setState(() {
                       _value = value;
                     });
-                  }
-                ),
-                new Text('Cupertino Continuous: ${_value.toStringAsFixed(1)}'),
-              ]
-            ),
-            new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget> [
-                new CupertinoSlider(
+                  }),
+              new Text('Cupertino Continuous: ${_value.toStringAsFixed(1)}'),
+            ]),
+            new Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              new CupertinoSlider(
                   value: _discreteValue,
                   min: 0.0,
                   max: 100.0,
@@ -54,11 +48,9 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo> {
                     setState(() {
                       _discreteValue = value;
                     });
-                  }
-                ),
-                new Text('Cupertino Discrete: $_discreteValue'),
-              ]
-            ),
+                  }),
+              new Text('Cupertino Discrete: $_discreteValue'),
+            ]),
           ],
         ),
       ),

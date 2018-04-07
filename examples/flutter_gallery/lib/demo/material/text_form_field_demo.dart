@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class TextFormFieldDemo extends StatefulWidget {
-  const TextFormFieldDemo({ Key key }) : super(key: key);
+  const TextFormFieldDemo({Key key}) : super(key: key);
 
   static const String routeName = '/material/text-form-field';
 
@@ -70,7 +70,8 @@ class _PasswordFieldState extends State<PasswordField> {
               _obscureText = !_obscureText;
             });
           },
-          child: new Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+          child:
+              new Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
         ),
       ),
     );
@@ -83,17 +84,18 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
   PersonData person = new PersonData();
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
-      content: new Text(value)
-    ));
+    _scaffoldKey.currentState
+        .showSnackBar(new SnackBar(content: new Text(value)));
   }
 
   bool _autovalidate = false;
   bool _formWasEdited = false;
 
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  final GlobalKey<FormFieldState<String>> _passwordFieldKey = new GlobalKey<FormFieldState<String>>();
-  final _UsNumberTextInputFormatter _phoneNumberFormatter = new _UsNumberTextInputFormatter();
+  final GlobalKey<FormFieldState<String>> _passwordFieldKey =
+      new GlobalKey<FormFieldState<String>>();
+  final _UsNumberTextInputFormatter _phoneNumberFormatter =
+      new _UsNumberTextInputFormatter();
   void _handleSubmitted() {
     final FormState form = _formKey.currentState;
     if (!form.validate()) {
@@ -107,8 +109,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
 
   String _validateName(String value) {
     _formWasEdited = true;
-    if (value.isEmpty)
-      return 'Name is required.';
+    if (value.isEmpty) return 'Name is required.';
     final RegExp nameExp = new RegExp(r'^[A-Za-z ]+$');
     if (!nameExp.hasMatch(value))
       return 'Please enter only alphabetical characters.';
@@ -128,35 +129,38 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
     final FormFieldState<String> passwordField = _passwordFieldKey.currentState;
     if (passwordField.value == null || passwordField.value.isEmpty)
       return 'Please enter a password.';
-    if (passwordField.value != value)
-      return 'The passwords don\'t match';
+    if (passwordField.value != value) return 'The passwords don\'t match';
     return null;
   }
 
   Future<bool> _warnUserAboutInvalidData() async {
     final FormState form = _formKey.currentState;
-    if (form == null || !_formWasEdited || form.validate())
-      return true;
+    if (form == null || !_formWasEdited || form.validate()) return true;
 
     return await showDialog<bool>(
-      context: context,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: const Text('This form has errors'),
-          content: const Text('Really leave this form?'),
-          actions: <Widget> [
-            new FlatButton(
-              child: const Text('YES'),
-              onPressed: () { Navigator.of(context).pop(true); },
-            ),
-            new FlatButton(
-              child: const Text('NO'),
-              onPressed: () { Navigator.of(context).pop(false); },
-            ),
-          ],
-        );
-      },
-    ) ?? false;
+          context: context,
+          builder: (BuildContext context) {
+            return new AlertDialog(
+              title: const Text('This form has errors'),
+              content: const Text('Really leave this form?'),
+              actions: <Widget>[
+                new FlatButton(
+                  child: const Text('YES'),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                ),
+                new FlatButton(
+                  child: const Text('NO'),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
   }
 
   @override
@@ -187,7 +191,9 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                     hintText: 'What do people call you?',
                     labelText: 'Name *',
                   ),
-                  onSaved: (String value) { person.name = value; },
+                  onSaved: (String value) {
+                    person.name = value;
+                  },
                   validator: _validateName,
                 ),
                 const SizedBox(height: 24.0),
@@ -201,10 +207,12 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                     prefixText: '+1',
                   ),
                   keyboardType: TextInputType.phone,
-                  onSaved: (String value) { person.phoneNumber = value; },
+                  onSaved: (String value) {
+                    person.phoneNumber = value;
+                  },
                   validator: _validatePhoneNumber,
                   // TextInputFormatters are applied in sequence.
-                  inputFormatters: <TextInputFormatter> [
+                  inputFormatters: <TextInputFormatter>[
                     WhitelistingTextInputFormatter.digitsOnly,
                     // Fit the validating format.
                     _phoneNumberFormatter,
@@ -220,7 +228,9 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                     labelText: 'E-mail',
                   ),
                   keyboardType: TextInputType.emailAddress,
-                  onSaved: (String value) { person.email = value; },
+                  onSaved: (String value) {
+                    person.email = value;
+                  },
                 ),
                 const SizedBox(height: 24.0),
                 new TextFormField(
@@ -236,12 +246,11 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                 new TextFormField(
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: 'Salary',
-                    prefixText: '\$',
-                    suffixText: 'USD',
-                    suffixStyle: const TextStyle(color: Colors.green)
-                  ),
+                      border: const OutlineInputBorder(),
+                      labelText: 'Salary',
+                      prefixText: '\$',
+                      suffixText: 'USD',
+                      suffixStyle: const TextStyle(color: Colors.green)),
                   maxLines: 1,
                 ),
                 const SizedBox(height: 24.0),
@@ -257,7 +266,8 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                 ),
                 const SizedBox(height: 24.0),
                 new TextFormField(
-                  enabled: person.password != null && person.password.isNotEmpty,
+                  enabled:
+                      person.password != null && person.password.isNotEmpty,
                   decoration: const InputDecoration(
                     border: const UnderlineInputBorder(),
                     filled: true,
@@ -275,10 +285,8 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                   ),
                 ),
                 const SizedBox(height: 24.0),
-                new Text(
-                  '* indicates required field',
-                  style: Theme.of(context).textTheme.caption
-                ),
+                new Text('* indicates required field',
+                    style: Theme.of(context).textTheme.caption),
                 const SizedBox(height: 24.0),
               ],
             ),
@@ -293,32 +301,26 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
 class _UsNumberTextInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue
-  ) {
+      TextEditingValue oldValue, TextEditingValue newValue) {
     final int newTextLength = newValue.text.length;
     int selectionIndex = newValue.selection.end;
     int usedSubstringIndex = 0;
     final StringBuffer newText = new StringBuffer();
     if (newTextLength >= 1) {
       newText.write('(');
-      if (newValue.selection.end >= 1)
-        selectionIndex++;
+      if (newValue.selection.end >= 1) selectionIndex++;
     }
     if (newTextLength >= 4) {
       newText.write(newValue.text.substring(0, usedSubstringIndex = 3) + ') ');
-      if (newValue.selection.end >= 3)
-        selectionIndex += 2;
+      if (newValue.selection.end >= 3) selectionIndex += 2;
     }
     if (newTextLength >= 7) {
       newText.write(newValue.text.substring(3, usedSubstringIndex = 6) + '-');
-      if (newValue.selection.end >= 6)
-        selectionIndex++;
+      if (newValue.selection.end >= 6) selectionIndex++;
     }
     if (newTextLength >= 11) {
       newText.write(newValue.text.substring(6, usedSubstringIndex = 10) + ' ');
-      if (newValue.selection.end >= 10)
-        selectionIndex++;
+      if (newValue.selection.end >= 10) selectionIndex++;
     }
     // Dump the rest.
     if (newTextLength >= usedSubstringIndex)

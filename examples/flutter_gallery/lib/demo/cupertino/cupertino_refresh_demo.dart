@@ -10,10 +10,12 @@ class CupertinoRefreshControlDemo extends StatefulWidget {
   static const String routeName = '/cupertino/refresh';
 
   @override
-  _CupertinoRefreshControlDemoState createState() => new _CupertinoRefreshControlDemoState();
+  _CupertinoRefreshControlDemoState createState() =>
+      new _CupertinoRefreshControlDemoState();
 }
 
-class _CupertinoRefreshControlDemoState extends State<CupertinoRefreshControlDemo> {
+class _CupertinoRefreshControlDemoState
+    extends State<CupertinoRefreshControlDemo> {
   List<List<String>> randomizedContacts;
 
   @override
@@ -24,14 +26,11 @@ class _CupertinoRefreshControlDemoState extends State<CupertinoRefreshControlDem
 
   void repopulateList() {
     final Random random = new Random();
-    randomizedContacts = new List<List<String>>.generate(
-      100,
-      (int index) {
-        return contacts[random.nextInt(contacts.length)]
-            // Randomly adds a telephone icon next to the contact or not.
-            ..add(random.nextBool().toString());
-      }
-    );
+    randomizedContacts = new List<List<String>>.generate(100, (int index) {
+      return contacts[random.nextInt(contacts.length)]
+        // Randomly adds a telephone icon next to the contact or not.
+        ..add(random.nextBool().toString());
+    });
   }
 
   @override
@@ -54,7 +53,7 @@ class _CupertinoRefreshControlDemoState extends State<CupertinoRefreshControlDem
               new CupertinoRefreshControl(
                 onRefresh: () {
                   return new Future<void>.delayed(const Duration(seconds: 2))
-                      ..then((_) => setState(() => repopulateList()));
+                    ..then((_) => setState(() => repopulateList()));
                 },
               ),
               new SliverSafeArea(
@@ -162,14 +161,16 @@ class _ListItem extends StatelessWidget {
                   )
                 : null,
           ),
-        new Expanded(
-          child: new Container(
+          new Expanded(
+            child: new Container(
               decoration: const BoxDecoration(
                 border: const Border(
-                  bottom: const BorderSide(color: const Color(0xFFBCBBC1), width: 0.0),
+                  bottom: const BorderSide(
+                      color: const Color(0xFFBCBBC1), width: 0.0),
                 ),
               ),
-              padding: const EdgeInsets.only(left: 1.0, bottom: 9.0, right: 10.0),
+              padding:
+                  const EdgeInsets.only(left: 1.0, bottom: 9.0, right: 10.0),
               child: new Row(
                 children: <Widget>[
                   new Expanded(
@@ -209,10 +210,8 @@ class _ListItem extends StatelessWidget {
                   ),
                   new Padding(
                     padding: const EdgeInsets.only(left: 9.0),
-                    child: new Icon(
-                      CupertinoIcons.info,
-                      color: CupertinoColors.activeBlue
-                    ),
+                    child: new Icon(CupertinoIcons.info,
+                        color: CupertinoColors.activeBlue),
                   ),
                 ],
               ),

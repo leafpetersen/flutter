@@ -20,7 +20,7 @@ List<Color> _kColors = <Color>[
 
 /// A simple model object for a dot that reacts to pointer pressure.
 class Dot {
-  Dot({ Color color }) : _paint = new Paint()..color = color;
+  Dot({Color color}) : _paint = new Paint()..color = color;
 
   final Paint _paint;
   Offset position = Offset.zero;
@@ -91,11 +91,11 @@ class RenderDots extends RenderBox {
     // Passing offset during the render tree's paint walk is an optimization to
     // avoid having to change the origin of the canvas's coordinate system too
     // often.
-    canvas.drawRect(offset & size, new Paint()..color = const Color(0xFFFFFFFF));
+    canvas.drawRect(
+        offset & size, new Paint()..color = const Color(0xFFFFFFFF));
 
     // We iterate through our model and paint each dot.
-    for (Dot dot in _dots.values)
-      dot.paint(canvas, offset);
+    for (Dot dot in _dots.values) dot.paint(canvas, offset);
   }
 }
 

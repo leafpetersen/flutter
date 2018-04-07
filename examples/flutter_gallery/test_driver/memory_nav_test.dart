@@ -9,13 +9,14 @@ void main() {
     });
 
     tearDownAll(() async {
-      if (driver != null)
-        await driver.close();
+      if (driver != null) await driver.close();
     });
 
     test('navigation', () async {
       final SerializableFinder menuItem = find.text('Text fields');
-      await driver.scrollUntilVisible(find.byType('CustomScrollView'), menuItem,
+      await driver.scrollUntilVisible(
+        find.byType('CustomScrollView'),
+        menuItem,
         dyScroll: -300.0,
         alignment: 0.5,
         timeout: const Duration(minutes: 1),

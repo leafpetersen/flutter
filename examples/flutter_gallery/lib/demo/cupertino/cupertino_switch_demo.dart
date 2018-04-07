@@ -13,7 +13,6 @@ class CupertinoSwitchDemo extends StatefulWidget {
 }
 
 class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
-
   bool _switchValue = false;
 
   @override
@@ -36,9 +35,7 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
                     });
                   },
                 ),
-                const Text(
-                  'Active'
-                ),
+                const Text('Active'),
               ],
             ),
             new Column(
@@ -47,9 +44,7 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
                   value: true,
                   onChanged: null,
                 ),
-                const Text(
-                  'Disabled'
-                ),
+                const Text('Disabled'),
               ],
             ),
             new Column(
@@ -58,9 +53,7 @@ class _CupertinoSwitchDemoState extends State<CupertinoSwitchDemo> {
                   value: false,
                   onChanged: null,
                 ),
-                const Text(
-                  'Disabled'
-                ),
+                const Text('Disabled'),
               ],
             ),
           ],

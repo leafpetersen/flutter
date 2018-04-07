@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class PestoDemo extends StatelessWidget {
-  const PestoDemo({ Key key }) : super(key: key);
+  const PestoDemo({Key key}) : super(key: key);
 
   static const String routeName = '/pesto';
 
@@ -14,11 +14,11 @@ class PestoDemo extends StatelessWidget {
   Widget build(BuildContext context) => new PestoHome();
 }
 
-
 const String _kSmallLogoImage = 'pesto/logo_small.png';
 const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 const double _kAppBarHeight = 128.0;
-const double _kFabHalfSize = 28.0; // TODO(mpcomplete): needs to adapt to screen size
+const double _kFabHalfSize =
+    28.0; // TODO(mpcomplete): needs to adapt to screen size
 const double _kRecipePageMaxWidth = 500.0;
 
 final Set<Recipe> _favoriteRecipes = new Set<Recipe>();
@@ -51,20 +51,20 @@ class PestoStyle extends TextStyle {
     double letterSpacing,
     double height,
   }) : super(
-    inherit: false,
-    color: color,
-    fontFamily: 'Raleway',
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    textBaseline: TextBaseline.alphabetic,
-    letterSpacing: letterSpacing,
-    height: height,
-  );
+          inherit: false,
+          color: color,
+          fontFamily: 'Raleway',
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          textBaseline: TextBaseline.alphabetic,
+          letterSpacing: letterSpacing,
+          height: height,
+        );
 }
 
 // Displays a grid of recipe cards.
 class RecipeGridPage extends StatefulWidget {
-  const RecipeGridPage({ Key key, this.recipes }) : super(key: key);
+  const RecipeGridPage({Key key, this.recipes}) : super(key: key);
 
   final List<Recipe> recipes;
 
@@ -79,25 +79,24 @@ class _RecipeGridPageState extends State<RecipeGridPage> {
   Widget build(BuildContext context) {
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     return new Theme(
-      data: _kTheme.copyWith(platform: Theme.of(context).platform),
-      child: new Scaffold(
-        key: scaffoldKey,
-        floatingActionButton: new FloatingActionButton(
-          child: const Icon(Icons.edit),
-          onPressed: () {
-            scaffoldKey.currentState.showSnackBar(const SnackBar(
-              content: const Text('Not supported.'),
-            ));
-          },
-        ),
-        body: new CustomScrollView(
-          slivers: <Widget>[
-            _buildAppBar(context, statusBarHeight),
-            _buildBody(context, statusBarHeight),
-          ],
-        ),
-      )
-    );
+        data: _kTheme.copyWith(platform: Theme.of(context).platform),
+        child: new Scaffold(
+          key: scaffoldKey,
+          floatingActionButton: new FloatingActionButton(
+            child: const Icon(Icons.edit),
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(const SnackBar(
+                content: const Text('Not supported.'),
+              ));
+            },
+          ),
+          body: new CustomScrollView(
+            slivers: <Widget>[
+              _buildAppBar(context, statusBarHeight),
+              _buildBody(context, statusBarHeight),
+            ],
+          ),
+        ));
   }
 
   Widget _buildAppBar(BuildContext context, double statusBarHeight) {
@@ -119,8 +118,10 @@ class _RecipeGridPageState extends State<RecipeGridPage> {
         builder: (BuildContext context, BoxConstraints constraints) {
           final Size size = constraints.biggest;
           final double appBarHeight = size.height - statusBarHeight;
-          final double t = (appBarHeight - kToolbarHeight) / (_kAppBarHeight - kToolbarHeight);
-          final double extraPadding = new Tween<double>(begin: 10.0, end: 24.0).lerp(t);
+          final double t = (appBarHeight - kToolbarHeight) /
+              (_kAppBarHeight - kToolbarHeight);
+          final double extraPadding =
+              new Tween<double>(begin: 10.0, end: 24.0).lerp(t);
           final double logoHeight = appBarHeight - 1.5 * extraPadding;
           return new Padding(
             padding: new EdgeInsets.only(
@@ -128,8 +129,7 @@ class _RecipeGridPageState extends State<RecipeGridPage> {
               bottom: extraPadding,
             ),
             child: new Center(
-              child: new PestoLogo(height: logoHeight, t: t.clamp(0.0, 1.0))
-            ),
+                child: new PestoLogo(height: logoHeight, t: t.clamp(0.0, 1.0))),
           );
         },
       ),
@@ -139,11 +139,10 @@ class _RecipeGridPageState extends State<RecipeGridPage> {
   Widget _buildBody(BuildContext context, double statusBarHeight) {
     final EdgeInsets mediaPadding = MediaQuery.of(context).padding;
     final EdgeInsets padding = new EdgeInsets.only(
-      top: 8.0,
-      left: 8.0 + mediaPadding.left,
-      right: 8.0 + mediaPadding.right,
-      bottom: 8.0
-    );
+        top: 8.0,
+        left: 8.0 + mediaPadding.left,
+        right: 8.0 + mediaPadding.right,
+        bottom: 8.0);
     return new SliverPadding(
       padding: padding,
       sliver: new SliverGrid(
@@ -157,7 +156,9 @@ class _RecipeGridPageState extends State<RecipeGridPage> {
             final Recipe recipe = widget.recipes[index];
             return new RecipeCard(
               recipe: recipe,
-              onTap: () { showRecipePage(context, recipe); },
+              onTap: () {
+                showRecipePage(context, recipe);
+              },
             );
           },
           childCount: widget.recipes.length,
@@ -167,22 +168,26 @@ class _RecipeGridPageState extends State<RecipeGridPage> {
   }
 
   void showFavoritesPage(BuildContext context) {
-    Navigator.push(context, new MaterialPageRoute<void>(
-      settings: const RouteSettings(name: '/pesto/favorites'),
-      builder: (BuildContext context) => new PestoFavorites(),
-    ));
+    Navigator.push(
+        context,
+        new MaterialPageRoute<void>(
+          settings: const RouteSettings(name: '/pesto/favorites'),
+          builder: (BuildContext context) => new PestoFavorites(),
+        ));
   }
 
   void showRecipePage(BuildContext context, Recipe recipe) {
-    Navigator.push(context, new MaterialPageRoute<void>(
-      settings: const RouteSettings(name: '/pesto/recipe'),
-      builder: (BuildContext context) {
-        return new Theme(
-          data: _kTheme.copyWith(platform: Theme.of(context).platform),
-          child: new RecipePage(recipe: recipe),
-        );
-      },
-    ));
+    Navigator.push(
+        context,
+        new MaterialPageRoute<void>(
+          settings: const RouteSettings(name: '/pesto/recipe'),
+          builder: (BuildContext context) {
+            return new Theme(
+              data: _kTheme.copyWith(platform: Theme.of(context).platform),
+              child: new RecipePage(recipe: recipe),
+            );
+          },
+        ));
   }
 }
 
@@ -202,11 +207,14 @@ class _PestoLogoState extends State<PestoLogo> {
   static const double kLogoWidth = 220.0;
   static const double kImageHeight = 108.0;
   static const double kTextHeight = 48.0;
-  final TextStyle titleStyle = const PestoStyle(fontSize: kTextHeight, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 3.0);
+  final TextStyle titleStyle = const PestoStyle(
+      fontSize: kTextHeight,
+      fontWeight: FontWeight.w900,
+      color: Colors.white,
+      letterSpacing: 3.0);
   final RectTween _textRectTween = new RectTween(
-    begin: new Rect.fromLTWH(0.0, kLogoHeight, kLogoWidth, kTextHeight),
-    end: new Rect.fromLTWH(0.0, kImageHeight, kLogoWidth, kTextHeight)
-  );
+      begin: new Rect.fromLTWH(0.0, kLogoHeight, kLogoWidth, kTextHeight),
+      end: new Rect.fromLTWH(0.0, kImageHeight, kLogoWidth, kTextHeight));
   final Curve _textOpacity = const Interval(0.4, 1.0, curve: Curves.easeInOut);
   final RectTween _imageRectTween = new RectTween(
     begin: new Rect.fromLTWH(0.0, 0.0, kLogoWidth, kLogoHeight),
@@ -235,7 +243,8 @@ class _PestoLogoState extends State<PestoLogo> {
               rect: _textRectTween.lerp(widget.t),
               child: new Opacity(
                 opacity: _textOpacity.transform(widget.t),
-                child: new Text('PESTO', style: titleStyle, textAlign: TextAlign.center),
+                child: new Text('PESTO',
+                    style: titleStyle, textAlign: TextAlign.center),
               ),
             ),
           ],
@@ -247,10 +256,12 @@ class _PestoLogoState extends State<PestoLogo> {
 
 // A card with the recipe's image, author, and title.
 class RecipeCard extends StatelessWidget {
-  final TextStyle titleStyle = const PestoStyle(fontSize: 24.0, fontWeight: FontWeight.w600);
-  final TextStyle authorStyle = const PestoStyle(fontWeight: FontWeight.w500, color: Colors.black54);
+  final TextStyle titleStyle =
+      const PestoStyle(fontSize: 24.0, fontWeight: FontWeight.w600);
+  final TextStyle authorStyle =
+      const PestoStyle(fontWeight: FontWeight.w500, color: Colors.black54);
 
-  const RecipeCard({ Key key, this.recipe, this.onTap }) : super(key: key);
+  const RecipeCard({Key key, this.recipe, this.onTap}) : super(key: key);
 
   final Recipe recipe;
   final VoidCallback onTap;
@@ -288,7 +299,10 @@ class RecipeCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new Text(recipe.name, style: titleStyle, softWrap: false, overflow: TextOverflow.ellipsis),
+                        new Text(recipe.name,
+                            style: titleStyle,
+                            softWrap: false,
+                            overflow: TextOverflow.ellipsis),
                         new Text(recipe.author, style: authorStyle),
                       ],
                     ),
@@ -305,7 +319,7 @@ class RecipeCard extends StatelessWidget {
 
 // Displays one recipe. Includes the recipe sheet with a background image.
 class RecipePage extends StatefulWidget {
-  const RecipePage({ Key key, this.recipe }) : super(key: key);
+  const RecipePage({Key key, this.recipe}) : super(key: key);
 
   final Recipe recipe;
 
@@ -315,9 +329,11 @@ class RecipePage extends StatefulWidget {
 
 class _RecipePageState extends State<RecipePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final TextStyle menuItemStyle = const PestoStyle(fontSize: 15.0, color: Colors.black54, height: 24.0/15.0);
+  final TextStyle menuItemStyle = const PestoStyle(
+      fontSize: 15.0, color: Colors.black54, height: 24.0 / 15.0);
 
-  double _getAppBarHeight(BuildContext context) => MediaQuery.of(context).size.height * 0.3;
+  double _getAppBarHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height * 0.3;
 
   @override
   Widget build(BuildContext context) {
@@ -338,7 +354,8 @@ class _RecipePageState extends State<RecipePage> {
             right: 0.0,
             height: appBarHeight + _kFabHalfSize,
             child: new Hero(
-              tag: 'packages/$_kGalleryAssetsPackage/${widget.recipe.imagePath}',
+              tag:
+                  'packages/$_kGalleryAssetsPackage/${widget.recipe.imagePath}',
               child: new Image.asset(
                 widget.recipe.imagePath,
                 package: widget.recipe.imagePackage,
@@ -354,12 +371,13 @@ class _RecipePageState extends State<RecipePage> {
                 actions: <Widget>[
                   new PopupMenuButton<String>(
                     onSelected: (String item) {},
-                    itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-                      _buildMenuItem(Icons.share, 'Tweet recipe'),
-                      _buildMenuItem(Icons.email, 'Email recipe'),
-                      _buildMenuItem(Icons.message, 'Message recipe'),
-                      _buildMenuItem(Icons.people, 'Share on Facebook'),
-                    ],
+                    itemBuilder: (BuildContext context) =>
+                        <PopupMenuItem<String>>[
+                          _buildMenuItem(Icons.share, 'Tweet recipe'),
+                          _buildMenuItem(Icons.email, 'Email recipe'),
+                          _buildMenuItem(Icons.message, 'Message recipe'),
+                          _buildMenuItem(Icons.people, 'Share on Facebook'),
+                        ],
                   ),
                 ],
                 flexibleSpace: const FlexibleSpaceBar(
@@ -368,30 +386,33 @@ class _RecipePageState extends State<RecipePage> {
                       gradient: const LinearGradient(
                         begin: const Alignment(0.0, -1.0),
                         end: const Alignment(0.0, -0.2),
-                        colors: const<Color>[const Color(0x60000000), const Color(0x00000000)],
+                        colors: const <Color>[
+                          const Color(0x60000000),
+                          const Color(0x00000000)
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
               new SliverToBoxAdapter(
-                child: new Stack(
-                  children: <Widget>[
-                    new Container(
-                      padding: const EdgeInsets.only(top: _kFabHalfSize),
-                      width: fullWidth ? null : _kRecipePageMaxWidth,
-                      child: new RecipeSheet(recipe: widget.recipe),
+                  child: new Stack(
+                children: <Widget>[
+                  new Container(
+                    padding: const EdgeInsets.only(top: _kFabHalfSize),
+                    width: fullWidth ? null : _kRecipePageMaxWidth,
+                    child: new RecipeSheet(recipe: widget.recipe),
+                  ),
+                  new Positioned(
+                    right: 16.0,
+                    child: new FloatingActionButton(
+                      child: new Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border),
+                      onPressed: _toggleFavorite,
                     ),
-                    new Positioned(
-                      right: 16.0,
-                      child: new FloatingActionButton(
-                        child: new Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-                        onPressed: _toggleFavorite,
-                      ),
-                    ),
-                  ],
-                )
-              ),
+                  ),
+                ],
+              )),
             ],
           ),
         ],
@@ -404,9 +425,8 @@ class _RecipePageState extends State<RecipePage> {
       child: new Row(
         children: <Widget>[
           new Padding(
-            padding: const EdgeInsets.only(right: 24.0),
-            child: new Icon(icon, color: Colors.black54)
-          ),
+              padding: const EdgeInsets.only(right: 24.0),
+              child: new Icon(icon, color: Colors.black54)),
           new Text(label, style: menuItemStyle),
         ],
       ),
@@ -426,12 +446,16 @@ class _RecipePageState extends State<RecipePage> {
 /// Displays the recipe's name and instructions.
 class RecipeSheet extends StatelessWidget {
   final TextStyle titleStyle = const PestoStyle(fontSize: 34.0);
-  final TextStyle descriptionStyle = const PestoStyle(fontSize: 15.0, color: Colors.black54, height: 24.0/15.0);
-  final TextStyle itemStyle = const PestoStyle(fontSize: 15.0, height: 24.0/15.0);
-  final TextStyle itemAmountStyle = new PestoStyle(fontSize: 15.0, color: _kTheme.primaryColor, height: 24.0/15.0);
-  final TextStyle headingStyle = const PestoStyle(fontSize: 16.0, fontWeight: FontWeight.bold, height: 24.0/15.0);
+  final TextStyle descriptionStyle = const PestoStyle(
+      fontSize: 15.0, color: Colors.black54, height: 24.0 / 15.0);
+  final TextStyle itemStyle =
+      const PestoStyle(fontSize: 15.0, height: 24.0 / 15.0);
+  final TextStyle itemAmountStyle = new PestoStyle(
+      fontSize: 15.0, color: _kTheme.primaryColor, height: 24.0 / 15.0);
+  final TextStyle headingStyle = const PestoStyle(
+      fontSize: 16.0, fontWeight: FontWeight.bold, height: 24.0 / 15.0);
 
-  RecipeSheet({ Key key, this.recipe }) : super(key: key);
+  RecipeSheet({Key key, this.recipe}) : super(key: key);
 
   final Recipe recipe;
 
@@ -448,62 +472,45 @@ class RecipeSheet extends StatelessWidget {
               0: const FixedColumnWidth(64.0)
             },
             children: <TableRow>[
-              new TableRow(
-                children: <Widget>[
-                  new TableCell(
+              new TableRow(children: <Widget>[
+                new TableCell(
                     verticalAlignment: TableCellVerticalAlignment.middle,
-                    child: new Image.asset(
-                      recipe.ingredientsImagePath,
-                      package: recipe.ingredientsImagePackage,
-                      width: 32.0,
-                      height: 32.0,
-                      alignment: Alignment.centerLeft,
-                      fit: BoxFit.scaleDown
-                    )
-                  ),
-                  new TableCell(
+                    child: new Image.asset(recipe.ingredientsImagePath,
+                        package: recipe.ingredientsImagePackage,
+                        width: 32.0,
+                        height: 32.0,
+                        alignment: Alignment.centerLeft,
+                        fit: BoxFit.scaleDown)),
+                new TableCell(
                     verticalAlignment: TableCellVerticalAlignment.middle,
-                    child: new Text(recipe.name, style: titleStyle)
-                  ),
-                ]
-              ),
-              new TableRow(
-                children: <Widget>[
-                  const SizedBox(),
-                  new Padding(
+                    child: new Text(recipe.name, style: titleStyle)),
+              ]),
+              new TableRow(children: <Widget>[
+                const SizedBox(),
+                new Padding(
                     padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
-                    child: new Text(recipe.description, style: descriptionStyle)
-                  ),
-                ]
-              ),
-              new TableRow(
-                children: <Widget>[
-                  const SizedBox(),
-                  new Padding(
+                    child:
+                        new Text(recipe.description, style: descriptionStyle)),
+              ]),
+              new TableRow(children: <Widget>[
+                const SizedBox(),
+                new Padding(
                     padding: const EdgeInsets.only(top: 24.0, bottom: 4.0),
-                    child: new Text('Ingredients', style: headingStyle)
-                  ),
-                ]
-              ),
-            ]..addAll(recipe.ingredients.map(
-              (RecipeIngredient ingredient) {
+                    child: new Text('Ingredients', style: headingStyle)),
+              ]),
+            ]
+              ..addAll(recipe.ingredients.map((RecipeIngredient ingredient) {
                 return _buildItemRow(ingredient.amount, ingredient.description);
-              }
-            ))..add(
-              new TableRow(
-                children: <Widget>[
-                  const SizedBox(),
-                  new Padding(
+              }))
+              ..add(new TableRow(children: <Widget>[
+                const SizedBox(),
+                new Padding(
                     padding: const EdgeInsets.only(top: 24.0, bottom: 4.0),
-                    child: new Text('Steps', style: headingStyle)
-                  ),
-                ]
-              )
-            )..addAll(recipe.steps.map(
-              (RecipeStep step) {
+                    child: new Text('Steps', style: headingStyle)),
+              ]))
+              ..addAll(recipe.steps.map((RecipeStep step) {
                 return _buildItemRow(step.duration ?? '', step.description);
-              }
-            )),
+              })),
           ),
         ),
       ),
@@ -527,17 +534,16 @@ class RecipeSheet extends StatelessWidget {
 }
 
 class Recipe {
-  const Recipe({
-    this.name,
-    this.author,
-    this.description,
-    this.imagePath,
-    this.imagePackage,
-    this.ingredientsImagePath,
-    this.ingredientsImagePackage,
-    this.ingredients,
-    this.steps
-  });
+  const Recipe(
+      {this.name,
+      this.author,
+      this.description,
+      this.imagePath,
+      this.imagePackage,
+      this.ingredientsImagePath,
+      this.ingredientsImagePackage,
+      this.ingredients,
+      this.steps});
 
   final String name;
   final String author;
@@ -570,17 +576,20 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Peter Carlsson',
     ingredientsImagePath: 'pesto/quick.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Bask in greens this season by trying this delightful take on traditional bruschetta. Top with a dollop of homemade pesto, and season with freshly ground sea salt and pepper.',
+    description:
+        'Bask in greens this season by trying this delightful take on traditional bruschetta. Top with a dollop of homemade pesto, and season with freshly ground sea salt and pepper.',
     imagePath: 'pesto/image1.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
-      const RecipeIngredient(amount: '6 pieces', description: 'Mozzarella cheese'),
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '6 pieces', description: 'Mozzarella cheese'),
       const RecipeIngredient(amount: '6 pieces', description: 'Toasts'),
       const RecipeIngredient(amount: '⅔ cup', description: 'Homemade pesto'),
-      const RecipeIngredient(amount: '1tbsp', description: 'Freshly ground pepper'),
+      const RecipeIngredient(
+          amount: '1tbsp', description: 'Freshly ground pepper'),
       const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(description: 'Put in oven'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -590,17 +599,20 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Trevor Hansen',
     ingredientsImagePath: 'pesto/veggie.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Abundant in color, and healthy, delicious goodness, cooking with these South American purple potatoes is a treat. Boil, mash, bake, or roast them. For taste cook with chicken stock, and a dash of extra virgin olive oil.',
+    description:
+        'Abundant in color, and healthy, delicious goodness, cooking with these South American purple potatoes is a treat. Boil, mash, bake, or roast them. For taste cook with chicken stock, and a dash of extra virgin olive oil.',
     imagePath: 'pesto/image2.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
-      const RecipeIngredient(amount: '2 lbs', description: 'Purple potatoes, skin on'),
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '2 lbs', description: 'Purple potatoes, skin on'),
       const RecipeIngredient(amount: '1 tsp', description: 'Salt'),
       const RecipeIngredient(amount: '2 tsp', description: 'Lemon'),
       const RecipeIngredient(amount: '4 cups', description: 'Chicken stock'),
-      const RecipeIngredient(amount: '1tbsp', description: 'Extra virgin olive oil')
+      const RecipeIngredient(
+          amount: '1tbsp', description: 'Extra virgin olive oil')
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -610,18 +622,22 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Ali Connors',
     ingredientsImagePath: 'pesto/main.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'This beautiful sprouts recipe is the most glorious side dish on a cold winter’s night. Construct it with bacon or fake-on, but always make sure the sprouts are deliciously seasoned and appropriately sautéed.',
+    description:
+        'This beautiful sprouts recipe is the most glorious side dish on a cold winter’s night. Construct it with bacon or fake-on, but always make sure the sprouts are deliciously seasoned and appropriately sautéed.',
     imagePath: 'pesto/image3.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '2 lbs', description: 'Brussel sprouts'),
       const RecipeIngredient(amount: '3 lbs', description: 'Bacon'),
-      const RecipeIngredient(amount: '⅔ cup', description: 'Shaved parmesan cheese'),
-      const RecipeIngredient(amount: '1tbsp', description: 'Extra virgin olive oil'),
+      const RecipeIngredient(
+          amount: '⅔ cup', description: 'Shaved parmesan cheese'),
+      const RecipeIngredient(
+          amount: '1tbsp', description: 'Extra virgin olive oil'),
       const RecipeIngredient(amount: '1 tsp', description: 'Lemon juice'),
-      const RecipeIngredient(amount: '1/2 cup', description: 'Sun dried tomatoes'),
+      const RecipeIngredient(
+          amount: '1/2 cup', description: 'Sun dried tomatoes'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -631,14 +647,17 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Sandra Adams',
     ingredientsImagePath: 'pesto/meat.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Robust cuts of portuguese sausage add layers of flavour. Bake or fry until sausages are slightly browned and with a crispy skin. Serve warm and with cuts of pineapple for a delightful mix of sweet and savory flavour. This is the perfect dish after a swim in the sea.',
+    description:
+        'Robust cuts of portuguese sausage add layers of flavour. Bake or fry until sausages are slightly browned and with a crispy skin. Serve warm and with cuts of pineapple for a delightful mix of sweet and savory flavour. This is the perfect dish after a swim in the sea.',
     imagePath: 'pesto/image4.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '1 1/2 lbs', description: 'Linguisa'),
-      const RecipeIngredient(amount: '1 lbs', description: 'Pineapple or other fresh citrus fruit'),
+      const RecipeIngredient(
+          amount: '1 lbs',
+          description: 'Pineapple or other fresh citrus fruit'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -648,16 +667,19 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Peter Carlsson',
     ingredientsImagePath: 'pesto/spicy.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Crisp flavours and a bit of spice make this roasted chicken dish an easy go to when cooking for large groups. Top with Baja sauce for an extra kick of spice.',
+    description:
+        'Crisp flavours and a bit of spice make this roasted chicken dish an easy go to when cooking for large groups. Top with Baja sauce for an extra kick of spice.',
     imagePath: 'pesto/image5.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
-      const RecipeIngredient(amount: '4-6', description: 'Small corn tortillas'),
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '4-6', description: 'Small corn tortillas'),
       const RecipeIngredient(amount: '½ cup', description: 'Chopped onion'),
       const RecipeIngredient(amount: '⅔', description: 'Cream'),
-      const RecipeIngredient(amount: '3-4oz', description: 'Roasted, shredded chicken breast'),
+      const RecipeIngredient(
+          amount: '3-4oz', description: 'Roasted, shredded chicken breast'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -667,17 +689,18 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Ali Connors',
     ingredientsImagePath: 'pesto/healthy.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'This dish is a terrific pairing to almost any main. Bonus- it’s quick, easy to make, and turns even the simplest of dishes into a delicacy. Sweet coconut cream will leave your mouth watering, with yummy caramelized flecks of rice adding an extra bit of taste. Fluff with fork before serving for best results.',
+    description:
+        'This dish is a terrific pairing to almost any main. Bonus- it’s quick, easy to make, and turns even the simplest of dishes into a delicacy. Sweet coconut cream will leave your mouth watering, with yummy caramelized flecks of rice adding an extra bit of taste. Fluff with fork before serving for best results.',
     imagePath: 'pesto/image6.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '2 cups', description: 'Jasmine rice'),
       const RecipeIngredient(amount: '1 1/2 cups', description: 'Water'),
       const RecipeIngredient(amount: '1 cup', description: 'Coconut milk'),
       const RecipeIngredient(amount: '1 1/2 tbsp', description: 'Sugar'),
       const RecipeIngredient(amount: '1tsp', description: 'Salt'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook')
     ],
@@ -687,16 +710,18 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Trevor Hansen',
     ingredientsImagePath: 'pesto/quick.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'This mellow and herb filled blending of simple ingredients is easy enough to mix that a novice host will feel like a seasoned bartender. Top with crushed basil, shake or stir.',
+    description:
+        'This mellow and herb filled blending of simple ingredients is easy enough to mix that a novice host will feel like a seasoned bartender. Top with crushed basil, shake or stir.',
     imagePath: 'pesto/image7.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '3 parts', description: 'Gin'),
-      const RecipeIngredient(amount: '1 part', description: 'Fresh lemon juice'),
+      const RecipeIngredient(
+          amount: '1 part', description: 'Fresh lemon juice'),
       const RecipeIngredient(amount: '½ part', description: 'Simple syrup'),
       const RecipeIngredient(amount: '5', description: 'Basil leaves, crushed'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -706,18 +731,21 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Ali Connors',
     ingredientsImagePath: 'pesto/fish.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Cuts of fish like this are perfect for simple searing with bright flavours. Try Sesame seeds on these fillets for crusty skin filled with crunch. For added flavour try dipping in a homemade ponzu sauce - delicious.',
+    description:
+        'Cuts of fish like this are perfect for simple searing with bright flavours. Try Sesame seeds on these fillets for crusty skin filled with crunch. For added flavour try dipping in a homemade ponzu sauce - delicious.',
     imagePath: 'pesto/image8.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
-      const RecipeIngredient(amount: '1 ½ lbs', description: 'Thin fish fillets'),
-      const RecipeIngredient(amount: '1 lb', description: 'Salt and black pepper to taste'),
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '1 ½ lbs', description: 'Thin fish fillets'),
+      const RecipeIngredient(
+          amount: '1 lb', description: 'Salt and black pepper to taste'),
       const RecipeIngredient(amount: '3/4 cup', description: 'Sesame seeds'),
       const RecipeIngredient(amount: '2tbsp', description: 'Sesame oil'),
       const RecipeIngredient(amount: '1tbsp', description: 'Lime juice'),
       const RecipeIngredient(amount: '2 tbsp', description: 'Soy sauce'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -727,18 +755,23 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Sandra Adams',
     ingredientsImagePath: 'pesto/healthy.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'This tasty and healthy veggie is a favorite. Artichoke like this can be paired with a hearty main or works well as a small meal with some white wine on the side. Simple and fresh, all foodies love tasty artichoke.',
+    description:
+        'This tasty and healthy veggie is a favorite. Artichoke like this can be paired with a hearty main or works well as a small meal with some white wine on the side. Simple and fresh, all foodies love tasty artichoke.',
     imagePath: 'pesto/image9.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
-      const RecipeIngredient(amount: '1', description: 'Small garlic clove, peeled'),
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '1', description: 'Small garlic clove, peeled'),
       const RecipeIngredient(amount: '2', description: 'Whole artichokes'),
-      const RecipeIngredient(amount: '4 tbsp', description: 'Fresh lemon juice'),
+      const RecipeIngredient(
+          amount: '4 tbsp', description: 'Fresh lemon juice'),
       const RecipeIngredient(amount: '4 tbsp', description: 'Unsalted butter'),
-      const RecipeIngredient(amount: '2 tbsp', description: 'Extra-virgin olive oil'),
-      const RecipeIngredient(amount: '1⁄4 tsp', description: 'Freshly ground black pepper'),
+      const RecipeIngredient(
+          amount: '2 tbsp', description: 'Extra-virgin olive oil'),
+      const RecipeIngredient(
+          amount: '1⁄4 tsp', description: 'Freshly ground black pepper'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -748,11 +781,13 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Trevor Hansen',
     ingredientsImagePath: 'pesto/veggie.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Life is good when you add amazingly warm bread, fresh pesto sauce, and roasted tomatoes to the table. This a classic starter to break out in a pinch. It’s easy to make and extra tasty.',
+    description:
+        'Life is good when you add amazingly warm bread, fresh pesto sauce, and roasted tomatoes to the table. This a classic starter to break out in a pinch. It’s easy to make and extra tasty.',
     imagePath: 'pesto/image10.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
-      const RecipeIngredient(amount: '1 loaf', description: 'Sliced French bread'),
+    ingredients: const <RecipeIngredient>[
+      const RecipeIngredient(
+          amount: '1 loaf', description: 'Sliced French bread'),
       const RecipeIngredient(amount: '½ cup', description: 'Cheese'),
       const RecipeIngredient(amount: '1 cup', description: 'Heirloom tomatoes'),
       const RecipeIngredient(amount: '1 cup', description: 'Fresh basil'),
@@ -761,7 +796,7 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
       const RecipeIngredient(amount: '3tsp', description: 'White wine vinegar'),
       const RecipeIngredient(amount: '¼ tsp', description: 'Sea salt'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -771,17 +806,18 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Sandra Adams',
     ingredientsImagePath: 'pesto/spicy.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Great stir-fried bok choy starts at the market. For me, nothing says tasty like garlic and baby bok choy. Choose fresh, crisp greens. Once home, wash, chop, and then ready for the wok. No family style spread is complete without these greens.',
+    description:
+        'Great stir-fried bok choy starts at the market. For me, nothing says tasty like garlic and baby bok choy. Choose fresh, crisp greens. Once home, wash, chop, and then ready for the wok. No family style spread is complete without these greens.',
     imagePath: 'pesto/image11.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '1/2 cup', description: 'Chick broth'),
       const RecipeIngredient(amount: '1 tbsp', description: 'Soy sauce'),
       const RecipeIngredient(amount: '¼ cup', description: 'Sliced garlic'),
       const RecipeIngredient(amount: '2-3 lbs', description: 'Bok choy'),
       const RecipeIngredient(amount: '2 tsp', description: 'Sesame oil'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -791,18 +827,20 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Ali Connors',
     ingredientsImagePath: 'pesto/main.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'Satisfy a need for rich, creamy homemade goodness with this classic. Creamy fettuccine alfredo will have you hitting the gym the next day, but it’s so good it’s worth it.',
+    description:
+        'Satisfy a need for rich, creamy homemade goodness with this classic. Creamy fettuccine alfredo will have you hitting the gym the next day, but it’s so good it’s worth it.',
     imagePath: 'pesto/image12.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '¾ cup', description: 'Milk'),
       const RecipeIngredient(amount: '1 ½ tsp', description: 'Salt'),
       const RecipeIngredient(amount: '1 tbsp', description: 'Olive oil'),
       const RecipeIngredient(amount: '8oz', description: 'Fettuccine'),
       const RecipeIngredient(amount: '½ cup', description: 'Fresh basil'),
-      const RecipeIngredient(amount: '½ cup', description: 'Fresh ground pepper'),
+      const RecipeIngredient(
+          amount: '½ cup', description: 'Fresh ground pepper'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],
@@ -812,18 +850,24 @@ const List<Recipe> kPestoRecipes = const <Recipe>[
     author: 'Peter Carlsson',
     ingredientsImagePath: 'pesto/quick.png',
     ingredientsImagePackage: _kGalleryAssetsPackage,
-    description: 'My go to way to eat sardines is with a splash of tangy lemon and fresh fennel drizzled on top. The best thing about this dish is the flavour it packs. Prepaid with wild caught sardines or canned.',
+    description:
+        'My go to way to eat sardines is with a splash of tangy lemon and fresh fennel drizzled on top. The best thing about this dish is the flavour it packs. Prepaid with wild caught sardines or canned.',
     imagePath: 'pesto/image13.jpg',
     imagePackage: _kGalleryAssetsPackage,
-    ingredients: const<RecipeIngredient>[
+    ingredients: const <RecipeIngredient>[
       const RecipeIngredient(amount: '1/4 cup', description: 'Dry white wine'),
-      const RecipeIngredient(amount: '1', description: 'Finely chopped shallot'),
-      const RecipeIngredient(amount: '2 tbsp', description: 'Fresh lemon juice'),
-      const RecipeIngredient(amount: '1 tbsp', description: 'Fennel seeds, crushed'),
-      const RecipeIngredient(amount: '4 tbsp', description: 'Extra virgin olive oil, to taste'),
-      const RecipeIngredient(amount: '2 cans', description: 'Sardines in oil, drained'),
+      const RecipeIngredient(
+          amount: '1', description: 'Finely chopped shallot'),
+      const RecipeIngredient(
+          amount: '2 tbsp', description: 'Fresh lemon juice'),
+      const RecipeIngredient(
+          amount: '1 tbsp', description: 'Fennel seeds, crushed'),
+      const RecipeIngredient(
+          amount: '4 tbsp', description: 'Extra virgin olive oil, to taste'),
+      const RecipeIngredient(
+          amount: '2 cans', description: 'Sardines in oil, drained'),
     ],
-    steps: const<RecipeStep>[
+    steps: const <RecipeStep>[
       const RecipeStep(duration: '3 min', description: 'Stir'),
       const RecipeStep(duration: '45 min', description: 'Cook'),
     ],

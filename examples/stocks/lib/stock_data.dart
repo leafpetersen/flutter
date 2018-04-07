@@ -22,7 +22,8 @@ class Stock {
   String marketCap;
   double percentChange;
 
-  Stock(this.symbol, this.name, this.lastSale, this.marketCap, this.percentChange);
+  Stock(this.symbol, this.name, this.lastSale, this.marketCap,
+      this.percentChange);
 
   Stock.fromFields(List<String> fields) {
     // FIXME: This class should only have static data, not lastSale, etc.
@@ -77,7 +78,9 @@ class StockData extends ChangeNotifier {
   static bool actuallyFetchData = true;
 
   void _fetchNextChunk() {
-    _httpClient.get(_urlToFetch(_nextChunk++)).then<Null>((http.Response response) {
+    _httpClient
+        .get(_urlToFetch(_nextChunk++))
+        .then<Null>((http.Response response) {
       final String json = response.body;
       if (json == null) {
         debugPrint('Failed to load stock data chunk ${_nextChunk - 1}');

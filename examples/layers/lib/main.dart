@@ -4,4 +4,6 @@
 
 import 'package:flutter/widgets.dart';
 
-void main() => runApp(const Center(child: const Text('flutter run -t xxx/yyy.dart', textDirection: TextDirection.ltr)));
+void main() => runApp(const Center(
+    child: const Text('flutter run -t xxx/yyy.dart',
+        textDirection: TextDirection.ltr)));

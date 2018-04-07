@@ -4,14 +4,10 @@
 
 import 'package:flutter/material.dart';
 
-enum TabsDemoStyle {
-  iconsAndText,
-  iconsOnly,
-  textOnly
-}
+enum TabsDemoStyle { iconsAndText, iconsOnly, textOnly }
 
 class _Page {
-  const _Page({ this.icon, this.text });
+  const _Page({this.icon, this.text});
   final IconData icon;
   final String text;
 }
@@ -40,7 +36,8 @@ class ScrollableTabsDemo extends StatefulWidget {
   ScrollableTabsDemoState createState() => new ScrollableTabsDemoState();
 }
 
-class ScrollableTabsDemoState extends State<ScrollableTabsDemo> with SingleTickerProviderStateMixin {
+class ScrollableTabsDemoState extends State<ScrollableTabsDemo>
+    with SingleTickerProviderStateMixin {
   TabController _controller;
   TabsDemoStyle _demoStyle = TabsDemoStyle.iconsAndText;
   bool _customIndicator = false;
@@ -64,55 +61,59 @@ class ScrollableTabsDemoState extends State<ScrollableTabsDemo> with SingleTicke
   }
 
   Decoration getIndicator() {
-    if (!_customIndicator)
-      return const UnderlineTabIndicator();
+    if (!_customIndicator) return const UnderlineTabIndicator();
 
-    switch(_demoStyle) {
+    switch (_demoStyle) {
       case TabsDemoStyle.iconsAndText:
         return new ShapeDecoration(
           shape: const RoundedRectangleBorder(
-            borderRadius: const BorderRadius.all(const Radius.circular(4.0)),
-            side: const BorderSide(
-              color: Colors.white24,
-              width: 2.0,
-            ),
-          ) + const RoundedRectangleBorder(
-            borderRadius: const BorderRadius.all(const Radius.circular(4.0)),
-            side: const BorderSide(
-              color: Colors.transparent,
-              width: 4.0,
-            ),
-          ),
+                borderRadius:
+                    const BorderRadius.all(const Radius.circular(4.0)),
+                side: const BorderSide(
+                  color: Colors.white24,
+                  width: 2.0,
+                ),
+              ) +
+              const RoundedRectangleBorder(
+                borderRadius:
+                    const BorderRadius.all(const Radius.circular(4.0)),
+                side: const BorderSide(
+                  color: Colors.transparent,
+                  width: 4.0,
+                ),
+              ),
         );
 
       case TabsDemoStyle.iconsOnly:
         return new ShapeDecoration(
           shape: const CircleBorder(
-            side: const BorderSide(
-              color: Colors.white24,
-              width: 4.0,
-            ),
-          ) + const CircleBorder(
-            side: const BorderSide(
-              color: Colors.transparent,
-              width: 4.0,
-            ),
-          ),
+                side: const BorderSide(
+                  color: Colors.white24,
+                  width: 4.0,
+                ),
+              ) +
+              const CircleBorder(
+                side: const BorderSide(
+                  color: Colors.transparent,
+                  width: 4.0,
+                ),
+              ),
         );
 
       case TabsDemoStyle.textOnly:
         return new ShapeDecoration(
           shape: const StadiumBorder(
-            side: const BorderSide(
-              color: Colors.white24,
-              width: 2.0,
-            ),
-          ) + const StadiumBorder(
-            side: const BorderSide(
-              color: Colors.transparent,
-              width: 4.0,
-            ),
-          ),
+                side: const BorderSide(
+                  color: Colors.white24,
+                  width: 2.0,
+                ),
+              ) +
+              const StadiumBorder(
+                side: const BorderSide(
+                  color: Colors.transparent,
+                  width: 4.0,
+                ),
+              ),
         );
     }
     return null;
@@ -135,20 +136,18 @@ class ScrollableTabsDemoState extends State<ScrollableTabsDemo> with SingleTicke
           ),
           new PopupMenuButton<TabsDemoStyle>(
             onSelected: changeDemoStyle,
-            itemBuilder: (BuildContext context) => <PopupMenuItem<TabsDemoStyle>>[
-              const PopupMenuItem<TabsDemoStyle>(
-                value: TabsDemoStyle.iconsAndText,
-                child: const Text('Icons and text')
-              ),
-              const PopupMenuItem<TabsDemoStyle>(
-                value: TabsDemoStyle.iconsOnly,
-                child: const Text('Icons only')
-              ),
-              const PopupMenuItem<TabsDemoStyle>(
-                value: TabsDemoStyle.textOnly,
-                child: const Text('Text only')
-              ),
-            ],
+            itemBuilder: (BuildContext context) =>
+                <PopupMenuItem<TabsDemoStyle>>[
+                  const PopupMenuItem<TabsDemoStyle>(
+                      value: TabsDemoStyle.iconsAndText,
+                      child: const Text('Icons and text')),
+                  const PopupMenuItem<TabsDemoStyle>(
+                      value: TabsDemoStyle.iconsOnly,
+                      child: const Text('Icons only')),
+                  const PopupMenuItem<TabsDemoStyle>(
+                      value: TabsDemoStyle.textOnly,
+                      child: const Text('Text only')),
+                ],
           ),
         ],
         bottom: new TabBar(
@@ -168,28 +167,27 @@ class ScrollableTabsDemoState extends State<ScrollableTabsDemo> with SingleTicke
         ),
       ),
       body: new TabBarView(
-        controller: _controller,
-        children: _allPages.map((_Page page) {
-          return new SafeArea(
-            top: false,
-            bottom: false,
-            child: new Container(
-              key: new ObjectKey(page.icon),
-              padding: const EdgeInsets.all(12.0),
-              child: new Card(
-                child: new Center(
-                  child: new Icon(
-                    page.icon,
-                    color: iconColor,
-                    size: 128.0,
-                    semanticLabel: 'Placeholder for ${page.text} tab',
+          controller: _controller,
+          children: _allPages.map((_Page page) {
+            return new SafeArea(
+              top: false,
+              bottom: false,
+              child: new Container(
+                key: new ObjectKey(page.icon),
+                padding: const EdgeInsets.all(12.0),
+                child: new Card(
+                  child: new Center(
+                    child: new Icon(
+                      page.icon,
+                      color: iconColor,
+                      size: 128.0,
+                      semanticLabel: 'Placeholder for ${page.text} tab',
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        }).toList()
-      ),
+            );
+          }).toList()),
     );
   }
 }

@@ -10,18 +10,18 @@ class NavigationIconView {
     String title,
     Color color,
     TickerProvider vsync,
-  }) : _icon = icon,
-       _color = color,
-       _title = title,
-       item = new BottomNavigationBarItem(
-         icon: icon,
-         title: new Text(title),
-         backgroundColor: color,
-       ),
-       controller = new AnimationController(
-         duration: kThemeAnimationDuration,
-         vsync: vsync,
-       ) {
+  })  : _icon = icon,
+        _color = color,
+        _title = title,
+        item = new BottomNavigationBarItem(
+          icon: icon,
+          title: new Text(title),
+          backgroundColor: color,
+        ),
+        controller = new AnimationController(
+          duration: kThemeAnimationDuration,
+          vsync: vsync,
+        ) {
     _animation = new CurvedAnimation(
       parent: controller,
       curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
@@ -35,7 +35,8 @@ class NavigationIconView {
   final AnimationController controller;
   CurvedAnimation _animation;
 
-  FadeTransition transition(BottomNavigationBarType type, BuildContext context) {
+  FadeTransition transition(
+      BottomNavigationBarType type, BuildContext context) {
     Color iconColor;
     if (type == BottomNavigationBarType.shifting) {
       iconColor = _color;
@@ -138,8 +139,7 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo>
 
   @override
   void dispose() {
-    for (NavigationIconView view in _navigationViews)
-      view.controller.dispose();
+    for (NavigationIconView view in _navigationViews) view.controller.dispose();
     super.dispose();
   }
 
@@ -194,22 +194,21 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo>
                 _type = value;
               });
             },
-            itemBuilder: (BuildContext context) => <PopupMenuItem<BottomNavigationBarType>>[
-              const PopupMenuItem<BottomNavigationBarType>(
-                value: BottomNavigationBarType.fixed,
-                child: const Text('Fixed'),
-              ),
-              const PopupMenuItem<BottomNavigationBarType>(
-                value: BottomNavigationBarType.shifting,
-                child: const Text('Shifting'),
-              )
-            ],
+            itemBuilder: (BuildContext context) =>
+                <PopupMenuItem<BottomNavigationBarType>>[
+                  const PopupMenuItem<BottomNavigationBarType>(
+                    value: BottomNavigationBarType.fixed,
+                    child: const Text('Fixed'),
+                  ),
+                  const PopupMenuItem<BottomNavigationBarType>(
+                    value: BottomNavigationBarType.shifting,
+                    child: const Text('Shifting'),
+                  )
+                ],
           )
         ],
       ),
-      body: new Center(
-        child: _buildTransitionsStack()
-      ),
+      body: new Center(child: _buildTransitionsStack()),
       bottomNavigationBar: botNavBar,
     );
   }

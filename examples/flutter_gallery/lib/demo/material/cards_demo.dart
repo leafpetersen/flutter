@@ -20,7 +20,8 @@ class TravelDestination {
   final String title;
   final List<String> description;
 
-  bool get isValid => assetName != null && title != null && description?.length == 3;
+  bool get isValid =>
+      assetName != null && title != null && description?.length == 3;
 }
 
 final List<TravelDestination> destinations = <TravelDestination>[
@@ -47,9 +48,9 @@ final List<TravelDestination> destinations = <TravelDestination>[
 ];
 
 class TravelDestinationItem extends StatelessWidget {
-  TravelDestinationItem({ Key key, @required this.destination, this.shape })
-    : assert(destination != null && destination.isValid),
-      super(key: key);
+  TravelDestinationItem({Key key, @required this.destination, this.shape})
+      : assert(destination != null && destination.isValid),
+        super(key: key);
 
   static const double height = 366.0;
   final TravelDestination destination;
@@ -58,7 +59,8 @@ class TravelDestinationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final TextStyle titleStyle = theme.textTheme.headline.copyWith(color: Colors.white);
+    final TextStyle titleStyle =
+        theme.textTheme.headline.copyWith(color: Colors.white);
     final TextStyle descriptionStyle = theme.textTheme.subhead;
 
     return new SafeArea(
@@ -91,7 +93,8 @@ class TravelDestinationItem extends StatelessWidget {
                       child: new FittedBox(
                         fit: BoxFit.scaleDown,
                         alignment: Alignment.centerLeft,
-                        child: new Text(destination.title,
+                        child: new Text(
+                          destination.title,
                           style: titleStyle,
                         ),
                       ),
@@ -115,7 +118,8 @@ class TravelDestinationItem extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: new Text(
                             destination.description[0],
-                            style: descriptionStyle.copyWith(color: Colors.black54),
+                            style: descriptionStyle.copyWith(
+                                color: Colors.black54),
                           ),
                         ),
                         new Text(destination.description[1]),
@@ -133,12 +137,12 @@ class TravelDestinationItem extends StatelessWidget {
                     new FlatButton(
                       child: const Text('SHARE'),
                       textColor: Colors.amber.shade500,
-                      onPressed: () { /* do nothing */ },
+                      onPressed: () {/* do nothing */},
                     ),
                     new FlatButton(
                       child: const Text('EXPLORE'),
                       textColor: Colors.amber.shade500,
-                      onPressed: () { /* do nothing */ },
+                      onPressed: () {/* do nothing */},
                     ),
                   ],
                 ),
@@ -150,7 +154,6 @@ class TravelDestinationItem extends StatelessWidget {
     );
   }
 }
-
 
 class CardsDemo extends StatefulWidget {
   static const String routeName = '/material/cards';
@@ -165,39 +168,39 @@ class _CardsDemoState extends State<CardsDemo> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Travel stream'),
-        actions: <Widget>[
-          new IconButton(
-            icon: const Icon(Icons.sentiment_very_satisfied),
-            onPressed: () {
-              setState(() {
-                _shape = _shape != null ? null : const RoundedRectangleBorder(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: const Radius.circular(16.0),
-                    topRight: const Radius.circular(16.0),
-                    bottomLeft: const Radius.circular(2.0),
-                    bottomRight: const Radius.circular(2.0),
-                  ),
-                );
-              });
-            },
-          ),
-        ],
-      ),
-      body: new ListView(
-        itemExtent: TravelDestinationItem.height,
-        padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-        children: destinations.map((TravelDestination destination) {
-          return new Container(
-            margin: const EdgeInsets.only(bottom: 8.0),
-            child: new TravelDestinationItem(
-              destination: destination,
-              shape: _shape,
+        appBar: new AppBar(
+          title: const Text('Travel stream'),
+          actions: <Widget>[
+            new IconButton(
+              icon: const Icon(Icons.sentiment_very_satisfied),
+              onPressed: () {
+                setState(() {
+                  _shape = _shape != null
+                      ? null
+                      : const RoundedRectangleBorder(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: const Radius.circular(16.0),
+                            topRight: const Radius.circular(16.0),
+                            bottomLeft: const Radius.circular(2.0),
+                            bottomRight: const Radius.circular(2.0),
+                          ),
+                        );
+                });
+              },
             ),
-          );
-        }).toList()
-      )
-    );
+          ],
+        ),
+        body: new ListView(
+            itemExtent: TravelDestinationItem.height,
+            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+            children: destinations.map((TravelDestination destination) {
+              return new Container(
+                margin: const EdgeInsets.only(bottom: 8.0),
+                child: new TravelDestinationItem(
+                  destination: destination,
+                  shape: _shape,
+                ),
+              );
+            }).toList()));
   }
 }

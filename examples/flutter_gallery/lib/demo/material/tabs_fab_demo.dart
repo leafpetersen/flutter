@@ -5,19 +5,20 @@
 import 'package:flutter/material.dart';
 
 const String _explanatoryText =
-  "When the Scaffold's floating action button changes, the new button fades and "
-  'turns into view. In this demo, changing tabs can cause the app to be rebuilt '
-  'with a FloatingActionButton that the Scaffold distinguishes from the others '
-  'by its key.';
+    "When the Scaffold's floating action button changes, the new button fades and "
+    'turns into view. In this demo, changing tabs can cause the app to be rebuilt '
+    'with a FloatingActionButton that the Scaffold distinguishes from the others '
+    'by its key.';
 
 class _Page {
-  _Page({ this.label, this.colors, this.icon });
+  _Page({this.label, this.colors, this.icon});
 
   final String label;
   final MaterialColor colors;
   final IconData icon;
 
-  Color get labelColor => colors != null ? colors.shade300 : Colors.grey.shade300;
+  Color get labelColor =>
+      colors != null ? colors.shade300 : Colors.grey.shade300;
   bool get fabDefined => colors != null && icon != null;
   Color get fabColor => colors.shade400;
   Icon get fabIcon => new Icon(icon);
@@ -39,7 +40,8 @@ class TabsFabDemo extends StatefulWidget {
   _TabsFabDemoState createState() => new _TabsFabDemoState();
 }
 
-class _TabsFabDemoState extends State<TabsFabDemo> with SingleTickerProviderStateMixin {
+class _TabsFabDemoState extends State<TabsFabDemo>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   TabController _controller;
@@ -69,61 +71,49 @@ class _TabsFabDemoState extends State<TabsFabDemo> with SingleTickerProviderStat
   void _showExplanatoryText() {
     _scaffoldKey.currentState.showBottomSheet<Null>((BuildContext context) {
       return new Container(
-        decoration: new BoxDecoration(
-          border: new Border(top: new BorderSide(color: Theme.of(context).dividerColor))
-        ),
-        child: new Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: new Text(_explanatoryText, style: Theme.of(context).textTheme.subhead)
-        )
-      );
+          decoration: new BoxDecoration(
+              border: new Border(
+                  top: new BorderSide(color: Theme.of(context).dividerColor))),
+          child: new Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: new Text(_explanatoryText,
+                  style: Theme.of(context).textTheme.subhead)));
     });
   }
 
   Widget buildTabView(_Page page) {
-    return new Builder(
-      builder: (BuildContext context) {
-        return new Container(
+    return new Builder(builder: (BuildContext context) {
+      return new Container(
           key: new ValueKey<String>(page.label),
           padding: const EdgeInsets.fromLTRB(48.0, 48.0, 48.0, 96.0),
           child: new Card(
-            child: new Center(
-              child: new Text(page.label,
-                style: new TextStyle(
-                  color: page.labelColor,
-                  fontSize: 32.0
-                ),
-                textAlign: TextAlign.center
-              )
-            )
-          )
-        );
-      }
-    );
+              child: new Center(
+                  child: new Text(page.label,
+                      style:
+                          new TextStyle(color: page.labelColor, fontSize: 32.0),
+                      textAlign: TextAlign.center))));
+    });
   }
 
   Widget buildFloatingActionButton(_Page page) {
-    if (!page.fabDefined)
-      return null;
+    if (!page.fabDefined) return null;
 
     if (_extendedButtons) {
       return new FloatingActionButton.extended(
-        key: new ValueKey<Key>(page.fabKey),
-        tooltip: 'Show explanation',
-        backgroundColor: page.fabColor,
-        icon: page.fabIcon,
-        label: new Text(page.label.toUpperCase()),
-        onPressed: _showExplanatoryText
-      );
+          key: new ValueKey<Key>(page.fabKey),
+          tooltip: 'Show explanation',
+          backgroundColor: page.fabColor,
+          icon: page.fabIcon,
+          label: new Text(page.label.toUpperCase()),
+          onPressed: _showExplanatoryText);
     }
 
     return new FloatingActionButton(
-      key: page.fabKey,
-      tooltip: 'Show explanation',
-      backgroundColor: page.fabColor,
-      child: page.fabIcon,
-      onPressed: _showExplanatoryText
-    );
+        key: page.fabKey,
+        tooltip: 'Show explanation',
+        backgroundColor: page.fabColor,
+        child: page.fabIcon,
+        onPressed: _showExplanatoryText);
   }
 
   @override
@@ -134,7 +124,9 @@ class _TabsFabDemoState extends State<TabsFabDemo> with SingleTickerProviderStat
         title: const Text('FAB per tab'),
         bottom: new TabBar(
           controller: _controller,
-          tabs: _allPages.map((_Page page) => new Tab(text: page.label.toUpperCase())).toList(),
+          tabs: _allPages
+              .map((_Page page) => new Tab(text: page.label.toUpperCase()))
+              .toList(),
         ),
         actions: <Widget>[
           new IconButton(
@@ -149,9 +141,8 @@ class _TabsFabDemoState extends State<TabsFabDemo> with SingleTickerProviderStat
       ),
       floatingActionButton: buildFloatingActionButton(_selectedPage),
       body: new TabBarView(
-        controller: _controller,
-        children: _allPages.map(buildTabView).toList()
-      ),
+          controller: _controller,
+          children: _allPages.map(buildTabView).toList()),
     );
   }
 }

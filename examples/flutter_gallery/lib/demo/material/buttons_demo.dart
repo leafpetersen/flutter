@@ -57,9 +57,8 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonThemeData buttonTheme = ButtonTheme.of(context).copyWith(
-      shape: _buttonShape
-    );
+    final ButtonThemeData buttonTheme =
+        ButtonTheme.of(context).copyWith(shape: _buttonShape);
 
     final List<ComponentDemoTabData> demos = <ComponentDemoTabData>[
       new ComponentDemoTabData(
@@ -117,7 +116,8 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
           icon: const Icon(Icons.sentiment_very_satisfied),
           onPressed: () {
             setState(() {
-              _buttonShape = _buttonShape == null ? const StadiumBorder() : null;
+              _buttonShape =
+                  _buttonShape == null ? const StadiumBorder() : null;
             });
           },
         ),
@@ -316,17 +316,30 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
                 });
               },
               items: <String>[
-                  'One', 'Two', 'Free', 'Four', 'Can', 'I', 'Have', 'A', 'Little',
-                  'Bit', 'More', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
-                 ]
-                .map((String value) {
-                  return new DropdownMenuItem<String>(
-                    value: value,
-                    child: new Text(value),
-                  );
-                })
-                .toList(),
-             ),
+                'One',
+                'Two',
+                'Free',
+                'Four',
+                'Can',
+                'I',
+                'Have',
+                'A',
+                'Little',
+                'Bit',
+                'More',
+                'Five',
+                'Six',
+                'Seven',
+                'Eight',
+                'Nine',
+                'Ten'
+              ].map((String value) {
+                return new DropdownMenuItem<String>(
+                  value: value,
+                  child: new Text(value),
+                );
+              }).toList(),
+            ),
           ),
         ],
       ),
@@ -359,8 +372,9 @@ class _ButtonsDemoState extends State<ButtonsDemo> {
             onPressed: null,
           )
         ]
-        .map((Widget button) => new SizedBox(width: 64.0, height: 64.0, child: button))
-        .toList(),
+            .map((Widget button) =>
+                new SizedBox(width: 64.0, height: 64.0, child: button))
+            .toList(),
       ),
     );
   }

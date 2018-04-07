@@ -34,11 +34,12 @@ ui.Picture paint(ui.Rect paintBounds) {
 
   canvas.save();
   canvas.translate(-mid.dx / 2.0, logicalSize.height * 2.0);
-  canvas.clipRect(new ui.Rect.fromLTRB(0.0, -logicalSize.height, logicalSize.width, radius));
+  canvas.clipRect(new ui.Rect.fromLTRB(
+      0.0, -logicalSize.height, logicalSize.width, radius));
 
   canvas.translate(mid.dx, mid.dy);
   paint.color = const ui.Color.fromARGB(128, 255, 0, 255);
-  canvas.rotate(math.pi/4.0);
+  canvas.rotate(math.pi / 4.0);
 
   final ui.Gradient yellowBlue = new ui.Gradient.linear(
     new ui.Offset(-radius, -radius),
@@ -46,14 +47,26 @@ ui.Picture paint(ui.Rect paintBounds) {
     <ui.Color>[const ui.Color(0xFFFFFF00), const ui.Color(0xFF0000FF)],
   );
   canvas.drawRect(new ui.Rect.fromLTRB(-radius, -radius, radius, radius),
-                  new ui.Paint()..shader = yellowBlue);
+      new ui.Paint()..shader = yellowBlue);
 
   // Scale x and y by 0.5.
   final Float64List scaleMatrix = new Float64List.fromList(<double>[
-      0.5, 0.0, 0.0, 0.0,
-      0.0, 0.5, 0.0, 0.0,
-      0.0, 0.0, 1.0, 0.0,
-      0.0, 0.0, 0.0, 1.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
   ]);
   canvas.transform(scaleMatrix);
   paint.color = const ui.Color.fromARGB(128, 0, 255, 0);
@@ -85,7 +98,8 @@ ui.Scene composite(ui.Picture picture, ui.Rect paintBounds) {
 }
 
 void beginFrame(Duration timeStamp) {
-  final ui.Rect paintBounds = ui.Offset.zero & (ui.window.physicalSize / ui.window.devicePixelRatio);
+  final ui.Rect paintBounds =
+      ui.Offset.zero & (ui.window.physicalSize / ui.window.devicePixelRatio);
   final ui.Picture picture = paint(paintBounds);
   final ui.Scene scene = composite(picture, paintBounds);
   ui.window.render(scene);
