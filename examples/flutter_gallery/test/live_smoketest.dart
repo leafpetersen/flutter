@@ -14,10 +14,12 @@ import 'package:flutter_gallery/gallery/app.dart';
 import 'package:flutter_gallery/gallery/item.dart';
 
 // Reports success or failure to the native code.
-const MethodChannel _kTestChannel = const MethodChannel('io.flutter.demo.gallery/TestLifecycleListener');
+const MethodChannel _kTestChannel =
+    const MethodChannel('io.flutter.demo.gallery/TestLifecycleListener');
 
 // The titles for all of the Gallery demos.
-final List<String> _kAllDemos = kAllGalleryItems.map((GalleryItem item) => item.title).toList();
+final List<String> _kAllDemos =
+    kAllGalleryItems.map((GalleryItem item) => item.title).toList();
 
 // We don't want to wait for animations to complete before tapping the
 // back button in the demos with these titles.
@@ -39,7 +41,8 @@ Future<Null> main() async {
     // Verify that _kUnsynchronizedDemos and _kSkippedDemos identify
     // demos that actually exist.
     if (!new Set<String>.from(_kAllDemos).containsAll(_kUnsynchronizedDemos))
-      fail('Unrecognized demo names in _kUnsynchronizedDemos: $_kUnsynchronizedDemos');
+      fail(
+          'Unrecognized demo names in _kUnsynchronizedDemos: $_kUnsynchronizedDemos');
     if (!new Set<String>.from(_kAllDemos).containsAll(_kSkippedDemos))
       fail('Unrecognized demo names in _kSkippedDemos: $_kSkippedDemos');
 
@@ -71,8 +74,8 @@ Future<Null> main() async {
 }
 
 class _LiveWidgetController {
-
-  final WidgetController _controller = new WidgetController(WidgetsBinding.instance);
+  final WidgetController _controller =
+      new WidgetController(WidgetsBinding.instance);
 
   /// With [frameSync] enabled, Flutter Driver will wait to perform an action
   /// until there are no pending frames in the app under test.
@@ -94,12 +97,14 @@ class _LiveWidgetController {
   /// Runs `finder` repeatedly until it finds one or more [Element]s.
   Future<Finder> _waitForElement(Finder finder) async {
     if (frameSync)
-      await _waitUntilFrame(() => SchedulerBinding.instance.transientCallbackCount == 0);
+      await _waitUntilFrame(
+          () => SchedulerBinding.instance.transientCallbackCount == 0);
 
     await _waitUntilFrame(() => finder.precache());
 
     if (frameSync)
-      await _waitUntilFrame(() => SchedulerBinding.instance.transientCallbackCount == 0);
+      await _waitUntilFrame(
+          () => SchedulerBinding.instance.transientCallbackCount == 0);
 
     return finder;
   }
@@ -110,6 +115,7 @@ class _LiveWidgetController {
 
   Future<Null> scrollIntoView(Finder finder, {double alignment}) async {
     final Finder target = await _waitForElement(finder);
-    await Scrollable.ensureVisible(target.evaluate().single, duration: const Duration(milliseconds: 100), alignment: alignment);
+    await Scrollable.ensureVisible(target.evaluate().single,
+        duration: const Duration(milliseconds: 100), alignment: alignment);
   }
 }

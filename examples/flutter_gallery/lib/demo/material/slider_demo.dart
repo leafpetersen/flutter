@@ -19,9 +19,11 @@ Path _triangle(double size, Offset thumbCenter, {bool invert: false}) {
   final double halfSide = size / 2.0;
   final double centerHeight = size * height / 3.0;
   final double sign = invert ? -1.0 : 1.0;
-  thumbPath.moveTo(thumbCenter.dx - halfSide, thumbCenter.dy + sign * centerHeight);
+  thumbPath.moveTo(
+      thumbCenter.dx - halfSide, thumbCenter.dy + sign * centerHeight);
   thumbPath.lineTo(thumbCenter.dx, thumbCenter.dy - 2.0 * sign * centerHeight);
-  thumbPath.lineTo(thumbCenter.dx + halfSide, thumbCenter.dy + sign * centerHeight);
+  thumbPath.lineTo(
+      thumbCenter.dx + halfSide, thumbCenter.dy + sign * centerHeight);
   thumbPath.close();
   return thumbPath;
 }
@@ -32,7 +34,9 @@ class _CustomThumbShape extends SliderComponentShape {
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
-    return isEnabled ? const Size.fromRadius(_thumbSize) : const Size.fromRadius(_disabledThumbSize);
+    return isEnabled
+        ? const Size.fromRadius(_thumbSize)
+        : const Size.fromRadius(_disabledThumbSize);
   }
 
   static final Tween<double> sizeTween = new Tween<double>(
@@ -60,7 +64,8 @@ class _CustomThumbShape extends SliderComponentShape {
     );
     final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
     final Path thumbPath = _triangle(size, thumbCenter);
-    canvas.drawPath(thumbPath, new Paint()..color = colorTween.evaluate(enableAnimation));
+    canvas.drawPath(
+        thumbPath, new Paint()..color = colorTween.evaluate(enableAnimation));
   }
 }
 
@@ -71,7 +76,8 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
-    return new Size.fromRadius(isEnabled ? _indicatorSize : _disabledIndicatorSize);
+    return new Size.fromRadius(
+        isEnabled ? _indicatorSize : _disabledIndicatorSize);
   }
 
   static final Tween<double> sizeTween = new Tween<double>(
@@ -102,13 +108,16 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
       end: _slideUpHeight,
     );
     final double size = _indicatorSize * sizeTween.evaluate(enableAnimation);
-    final Offset slideUpOffset = new Offset(0.0, -slideUpTween.evaluate(activationAnimation));
+    final Offset slideUpOffset =
+        new Offset(0.0, -slideUpTween.evaluate(activationAnimation));
     final Path thumbPath = _triangle(
       size,
       thumbCenter + slideUpOffset,
       invert: true,
     );
-    final Color paintColor = enableColor.evaluate(enableAnimation).withAlpha((255.0 * activationAnimation.value).round());
+    final Color paintColor = enableColor
+        .evaluate(enableAnimation)
+        .withAlpha((255.0 * activationAnimation.value).round());
     canvas.drawPath(
       thumbPath,
       new Paint()..color = paintColor,
@@ -120,7 +129,11 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
           ..color = paintColor
           ..style = PaintingStyle.stroke
           ..strokeWidth = 2.0);
-    labelPainter.paint(canvas, thumbCenter + slideUpOffset + new Offset(-labelPainter.width / 2.0, -labelPainter.height - 4.0));
+    labelPainter.paint(
+        canvas,
+        thumbCenter +
+            slideUpOffset +
+            new Offset(-labelPainter.width / 2.0, -labelPainter.height - 4.0));
   }
 }
 
@@ -193,7 +206,8 @@ class _SliderDemoState extends State<SliderDemo> {
                     valueIndicatorColor: Colors.deepPurpleAccent,
                     thumbShape: new _CustomThumbShape(),
                     valueIndicatorShape: new _CustomValueIndicatorShape(),
-                    valueIndicatorTextStyle: theme.accentTextTheme.body2.copyWith(color: Colors.black87),
+                    valueIndicatorTextStyle: theme.accentTextTheme.body2
+                        .copyWith(color: Colors.black87),
                   ),
                   child: new Slider(
                     value: _discreteValue,

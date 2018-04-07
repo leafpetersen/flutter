@@ -8,27 +8,28 @@ class ImagesDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new TabbedComponentDemoScaffold(
-      title: 'Animated images',
-      demos: <ComponentDemoTabData>[
-        new ComponentDemoTabData(
-          tabName: 'ANIMATED WEBP',
-          description: '',
-          exampleCodeTag: 'animated_image',
-          demoWidget: new Semantics(
-            label: 'Example of animated WEBP',
-            child: new Image.asset('packages/flutter_gallery_assets/animated_flutter_stickers.webp'),
+        title: 'Animated images',
+        demos: <ComponentDemoTabData>[
+          new ComponentDemoTabData(
+            tabName: 'ANIMATED WEBP',
+            description: '',
+            exampleCodeTag: 'animated_image',
+            demoWidget: new Semantics(
+              label: 'Example of animated WEBP',
+              child: new Image.asset(
+                  'packages/flutter_gallery_assets/animated_flutter_stickers.webp'),
+            ),
           ),
-        ),
-        new ComponentDemoTabData(
-          tabName: 'ANIMATED GIF',
-          description: '',
-          exampleCodeTag: 'animated_image',
-          demoWidget: new Semantics(
-            label: 'Example of animated GIF',
-            child:new Image.asset('packages/flutter_gallery_assets/animated_flutter_lgtm.gif'),
+          new ComponentDemoTabData(
+            tabName: 'ANIMATED GIF',
+            description: '',
+            exampleCodeTag: 'animated_image',
+            demoWidget: new Semantics(
+              label: 'Example of animated GIF',
+              child: new Image.asset(
+                  'packages/flutter_gallery_assets/animated_flutter_lgtm.gif'),
+            ),
           ),
-        ),
-      ]
-    );
+        ]);
   }
 }

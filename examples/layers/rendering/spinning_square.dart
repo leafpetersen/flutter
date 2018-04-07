@@ -20,28 +20,24 @@ class NonStopVSync implements TickerProvider {
 void main() {
   // We first create a render object that represents a green box.
   final RenderBox green = new RenderDecoratedBox(
-    decoration: const BoxDecoration(color: const Color(0xFF00FF00))
-  );
+      decoration: const BoxDecoration(color: const Color(0xFF00FF00)));
   // Second, we wrap that green box in a render object that forces the green box
   // to have a specific size.
   final RenderBox square = new RenderConstrainedBox(
-    additionalConstraints: const BoxConstraints.tightFor(width: 200.0, height: 200.0),
-    child: green
-  );
+      additionalConstraints:
+          const BoxConstraints.tightFor(width: 200.0, height: 200.0),
+      child: green);
   // Third, we wrap the sized green square in a render object that applies rotation
   // transform before painting its child. Each frame of the animation, we'll
   // update the transform of this render object to cause the green square to
   // spin.
   final RenderTransform spin = new RenderTransform(
-    transform: new Matrix4.identity(),
-    alignment: Alignment.center,
-    child: square
-  );
+      transform: new Matrix4.identity(),
+      alignment: Alignment.center,
+      child: square);
   // Finally, we center the spinning green square...
-  final RenderBox root = new RenderPositionedBox(
-    alignment: Alignment.center,
-    child: spin
-  );
+  final RenderBox root =
+      new RenderPositionedBox(alignment: Alignment.center, child: spin);
   // and attach it to the window.
   new RenderingFlutterBinding(root: root);
 

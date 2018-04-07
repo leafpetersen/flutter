@@ -18,10 +18,10 @@ class GalleryItem extends StatelessWidget {
     @required this.category,
     @required this.routeName,
     @required this.buildRoute,
-  }) : assert(title != null),
-       assert(category != null),
-       assert(routeName != null),
-       assert(buildRoute != null);
+  })  : assert(title != null),
+        assert(category != null),
+        assert(routeName != null),
+        assert(buildRoute != null);
 
   final String title;
   final String subtitle;
@@ -32,18 +32,15 @@ class GalleryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new ListTile(
-      title: new Text(title),
-      subtitle: new Text(subtitle),
-      onTap: () {
-        if (routeName != null) {
-          Timeline.instantSync('Start Transition', arguments: <String, String>{
-            'from': '/',
-            'to': routeName
-          });
-          Navigator.pushNamed(context, routeName);
-        }
-      }
-    );
+        title: new Text(title),
+        subtitle: new Text(subtitle),
+        onTap: () {
+          if (routeName != null) {
+            Timeline.instantSync('Start Transition',
+                arguments: <String, String>{'from': '/', 'to': routeName});
+            Navigator.pushNamed(context, routeName);
+          }
+        });
   }
 }
 
@@ -297,7 +294,8 @@ List<GalleryItem> _buildGalleryItems() {
       subtitle: 'Cupertino styled activity indicator',
       category: 'Cupertino Components',
       routeName: CupertinoProgressIndicatorDemo.routeName,
-      buildRoute: (BuildContext context) => new CupertinoProgressIndicatorDemo(),
+      buildRoute: (BuildContext context) =>
+          new CupertinoProgressIndicatorDemo(),
     ),
     new GalleryItem(
       title: 'Buttons',
@@ -376,7 +374,8 @@ List<GalleryItem> _buildGalleryItems() {
   // Keep Pesto around for its regression test value. It is not included
   // in (release builds) the performance tests.
   assert(() {
-    galleryItems.insert(0,
+    galleryItems.insert(
+      0,
       new GalleryItem(
         title: 'Pesto',
         subtitle: 'Simple recipe browser',

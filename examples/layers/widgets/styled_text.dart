@@ -18,41 +18,30 @@ Dave: What are you talking about, HAL?
 HAL: This mission is too important for me to allow you to jeopardize it.''';
 
 // [["Dave", "Open the pod bay..."] ...]
-final List<List<String>> _kNameLines = _kDialogText
-  .split('\n')
-  .map((String line) => line.split(':'))
-  .toList();
+final List<List<String>> _kNameLines =
+    _kDialogText.split('\n').map((String line) => line.split(':')).toList();
 
-final TextStyle _kDaveStyle = new TextStyle(color: Colors.indigo.shade400, height: 1.8);
-final TextStyle _kHalStyle = new TextStyle(color: Colors.red.shade400, fontFamily: 'monospace');
+final TextStyle _kDaveStyle =
+    new TextStyle(color: Colors.indigo.shade400, height: 1.8);
+final TextStyle _kHalStyle =
+    new TextStyle(color: Colors.red.shade400, fontFamily: 'monospace');
 const TextStyle _kBold = const TextStyle(fontWeight: FontWeight.bold);
 const TextStyle _kUnderline = const TextStyle(
-  decoration: TextDecoration.underline,
-  decorationColor: const Color(0xFF000000),
-  decorationStyle: TextDecorationStyle.wavy
-);
+    decoration: TextDecoration.underline,
+    decorationColor: const Color(0xFF000000),
+    decorationStyle: TextDecorationStyle.wavy);
 
 Widget toStyledText(String name, String text) {
   final TextStyle lineStyle = (name == 'Dave') ? _kDaveStyle : _kHalStyle;
   return new RichText(
-    key: new Key(text),
-    text: new TextSpan(
-      style: lineStyle,
-      children: <TextSpan>[
-        new TextSpan(
-          style: _kBold,
-          children: <TextSpan>[
-            new TextSpan(
-              style: _kUnderline,
-              text: name
-            ),
-            const TextSpan(text: ':')
-          ]
-        ),
+      key: new Key(text),
+      text: new TextSpan(style: lineStyle, children: <TextSpan>[
+        new TextSpan(style: _kBold, children: <TextSpan>[
+          new TextSpan(style: _kUnderline, text: name),
+          const TextSpan(text: ':')
+        ]),
         new TextSpan(text: text)
-      ]
-    )
-  );
+      ]));
 }
 
 Widget toPlainText(String name, String text) => new Text(name + ':' + text);
@@ -61,14 +50,12 @@ class SpeakerSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      constraints: const BoxConstraints.expand(height: 0.0),
-      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 64.0),
-      decoration: const BoxDecoration(
-        border: const Border(
-          bottom: const BorderSide(color: const Color.fromARGB(24, 0, 0, 0))
-        )
-      )
-    );
+        constraints: const BoxConstraints.expand(height: 0.0),
+        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 64.0),
+        decoration: const BoxDecoration(
+            border: const Border(
+                bottom: const BorderSide(
+                    color: const Color.fromARGB(24, 0, 0, 0)))));
   }
 }
 
@@ -95,41 +82,32 @@ class _StyledTextDemoState extends State<StyledTextDemo> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> lines = _kNameLines
-      .map<Widget>((List<String> nameAndText) => _toText(nameAndText[0], nameAndText[1]))
-      .toList();
+        .map<Widget>((List<String> nameAndText) =>
+            _toText(nameAndText[0], nameAndText[1]))
+        .toList();
 
     final List<Widget> children = <Widget>[];
     for (Widget line in lines) {
       children.add(line);
-      if (line != lines.last)
-        children.add(new SpeakerSeparator());
+      if (line != lines.last) children.add(new SpeakerSeparator());
     }
 
     return new GestureDetector(
-      onTap: _handleTap,
-      child: new Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: new Column(
-          children: children,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start
-        )
-      )
-    );
+        onTap: _handleTap,
+        child: new Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: new Column(
+                children: children,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start)));
   }
 }
 
 void main() {
   runApp(new MaterialApp(
-    theme: new ThemeData.light(),
-    home: new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Hal and Dave')
-      ),
-      body: new Material(
-        color: Colors.grey.shade50,
-        child: new StyledTextDemo()
-      )
-    )
-  ));
+      theme: new ThemeData.light(),
+      home: new Scaffold(
+          appBar: new AppBar(title: const Text('Hal and Dave')),
+          body: new Material(
+              color: Colors.grey.shade50, child: new StyledTextDemo()))));
 }

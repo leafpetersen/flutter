@@ -5,14 +5,15 @@
 import 'package:flutter/material.dart';
 
 class _PageSelector extends StatelessWidget {
-  const _PageSelector({ this.icons });
+  const _PageSelector({this.icons});
 
   final List<Icon> icons;
 
   void _handleArrowButtonPress(BuildContext context, int delta) {
     final TabController controller = DefaultTabController.of(context);
     if (!controller.indexIsChanging)
-      controller.animateTo((controller.index + delta).clamp(0, icons.length - 1));
+      controller
+          .animateTo((controller.index + delta).clamp(0, icons.length - 1));
   }
 
   @override
@@ -25,26 +26,24 @@ class _PageSelector extends StatelessWidget {
       child: new Column(
         children: <Widget>[
           new Container(
-            margin: const EdgeInsets.only(top: 16.0),
-            child: new Row(
-              children: <Widget>[
+              margin: const EdgeInsets.only(top: 16.0),
+              child: new Row(children: <Widget>[
                 new IconButton(
-                  icon: const Icon(Icons.chevron_left),
-                  color: color,
-                  onPressed: () { _handleArrowButtonPress(context, -1); },
-                  tooltip: 'Page back'
-                ),
+                    icon: const Icon(Icons.chevron_left),
+                    color: color,
+                    onPressed: () {
+                      _handleArrowButtonPress(context, -1);
+                    },
+                    tooltip: 'Page back'),
                 new TabPageSelector(controller: controller),
                 new IconButton(
-                  icon: const Icon(Icons.chevron_right),
-                  color: color,
-                  onPressed: () { _handleArrowButtonPress(context, 1); },
-                  tooltip: 'Page forward'
-                )
-              ],
-              mainAxisAlignment: MainAxisAlignment.spaceBetween
-            )
-          ),
+                    icon: const Icon(Icons.chevron_right),
+                    color: color,
+                    onPressed: () {
+                      _handleArrowButtonPress(context, 1);
+                    },
+                    tooltip: 'Page forward')
+              ], mainAxisAlignment: MainAxisAlignment.spaceBetween)),
           new Expanded(
             child: new IconTheme(
               data: new IconThemeData(
@@ -52,17 +51,16 @@ class _PageSelector extends StatelessWidget {
                 color: color,
               ),
               child: new TabBarView(
-                children: icons.map((Icon icon) {
-                  return new Container(
-                    padding: const EdgeInsets.all(12.0),
-                    child: new Card(
-                      child: new Center(
-                        child: icon,
-                      ),
+                  children: icons.map((Icon icon) {
+                return new Container(
+                  padding: const EdgeInsets.all(12.0),
+                  child: new Card(
+                    child: new Center(
+                      child: icon,
                     ),
-                  );
-                }).toList()
-              ),
+                  ),
+                );
+              }).toList()),
             ),
           ),
         ],

@@ -19,7 +19,8 @@ void main() {
     final String codeSnippet1 = await getExampleCode('test_1', bundle);
     expect(codeSnippet1, 'test 1 0\ntest 1 1');
 
-    final String codeSnippet3 = await getExampleCode('test_2_windows_breaks', bundle);
+    final String codeSnippet3 =
+        await getExampleCode('test_2_windows_breaks', bundle);
     expect(codeSnippet3, 'windows test 2 0\nwindows test 2 1');
   });
 }
@@ -44,14 +45,15 @@ class TestAssetBundle extends AssetBundle {
   Future<ByteData> load(String key) => null;
 
   @override
-  Future<String> loadString(String key, { bool cache: true }) {
+  Future<String> loadString(String key, {bool cache: true}) {
     if (key == 'lib/gallery/example_code.dart')
       return new Future<String>.value(testCodeFile);
     return null;
   }
 
   @override
-  Future<T> loadStructuredData<T>(String key, Future<T> parser(String value)) async {
+  Future<T> loadStructuredData<T>(
+      String key, Future<T> parser(String value)) async {
     return parser(await loadString(key));
   }
 

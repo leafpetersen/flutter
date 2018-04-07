@@ -14,52 +14,62 @@ class BottomAppBarDemo extends StatefulWidget {
 
 class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
   // The key given to the Scaffold so that _showSnackbar can find it.
-  static final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  static final GlobalKey<ScaffoldState> _scaffoldKey =
+      new GlobalKey<ScaffoldState>();
 
   // The index of the currently-selected _FabLocationConfiguration.
   int fabLocationIndex = 1;
 
-  static const List<_FabLocationConfiguration> _fabLocationConfigurations = const <_FabLocationConfiguration>[
-    const _FabLocationConfiguration('End, undocked above the bottom app bar', _BabMode.END_FAB, FloatingActionButtonLocation.endFloat),
-    const _FabLocationConfiguration('End, docked to the bottom app bar', _BabMode.END_FAB, FloatingActionButtonLocation.endDocked),
-    const _FabLocationConfiguration('Center, docked to the bottom app bar', _BabMode.CENTER_FAB, FloatingActionButtonLocation.centerDocked),
-    const _FabLocationConfiguration('Center, undocked above the bottom app bar', _BabMode.CENTER_FAB, FloatingActionButtonLocation.centerFloat),
+  static const List<_FabLocationConfiguration> _fabLocationConfigurations =
+      const <_FabLocationConfiguration>[
+    const _FabLocationConfiguration('End, undocked above the bottom app bar',
+        _BabMode.END_FAB, FloatingActionButtonLocation.endFloat),
+    const _FabLocationConfiguration('End, docked to the bottom app bar',
+        _BabMode.END_FAB, FloatingActionButtonLocation.endDocked),
+    const _FabLocationConfiguration('Center, docked to the bottom app bar',
+        _BabMode.CENTER_FAB, FloatingActionButtonLocation.centerDocked),
+    const _FabLocationConfiguration('Center, undocked above the bottom app bar',
+        _BabMode.CENTER_FAB, FloatingActionButtonLocation.centerFloat),
     // This configuration uses a custom FloatingActionButtonLocation.
-    const _FabLocationConfiguration('Start, docked to the top app bar', _BabMode.CENTER_FAB, const _StartTopFloatingActionButtonLocation()),
+    const _FabLocationConfiguration('Start, docked to the top app bar',
+        _BabMode.CENTER_FAB, const _StartTopFloatingActionButtonLocation()),
   ];
-  
+
   // The index of the currently-selected _FabShapeConfiguration.
   int fabShapeIndex = 1;
 
-  static const List<_FabShapeConfiguration> _fabShapeConfigurations = const <_FabShapeConfiguration>[
-      const _FabShapeConfiguration('None', null),
-      const _FabShapeConfiguration('Circular', 
-        const FloatingActionButton(
-          onPressed: _showSnackbar,
-          child: const Icon(Icons.add),
-          backgroundColor: Colors.orange,
-        ),
+  static const List<_FabShapeConfiguration> _fabShapeConfigurations =
+      const <_FabShapeConfiguration>[
+    const _FabShapeConfiguration('None', null),
+    const _FabShapeConfiguration(
+      'Circular',
+      const FloatingActionButton(
+        onPressed: _showSnackbar,
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.orange,
       ),
-      const _FabShapeConfiguration('Diamond',
-        const _DiamondFab(
-          onPressed: _showSnackbar,
-          child: const Icon(Icons.add),
-        ),
+    ),
+    const _FabShapeConfiguration(
+      'Diamond',
+      const _DiamondFab(
+        onPressed: _showSnackbar,
+        child: const Icon(Icons.add),
       ),
-    ];
+    ),
+  ];
 
   // The currently-selected Color for the Bottom App Bar.
   Color babColor;
 
   // Accessible names for the colors that a Screen Reader can use to
   // identify them.
-  static final Map<Color, String> colorToName = <Color, String> {
+  static final Map<Color, String> colorToName = <Color, String>{
     null: 'White',
     Colors.orange: 'Orange',
     Colors.green: 'Green',
     Colors.lightBlue: 'Light blue',
   };
-  static const List<Color> babColors = const <Color> [
+  static const List<Color> babColors = const <Color>[
     null,
     Colors.orange,
     Colors.green,
@@ -75,12 +85,12 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: new AppBar(
-        title: const Text('Bottom App Bar with FAB location'), 
+        title: const Text('Bottom App Bar with FAB location'),
         // Add 48dp of space onto the bottom of the appbar.
         // This gives space for the top-start location to attach to without
         // blocking the 'back' button.
         bottom: const PreferredSize(
-          preferredSize: const Size.fromHeight(48.0), 
+          preferredSize: const Size.fromHeight(48.0),
           child: const SizedBox(),
         ),
       ),
@@ -88,15 +98,19 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
         padding: const EdgeInsets.all(16.0),
         child: buildControls(context),
       ),
-      bottomNavigationBar: new _DemoBottomAppBar(_fabLocationConfigurations[fabLocationIndex].babMode, babColor, notchEnabled),
+      bottomNavigationBar: new _DemoBottomAppBar(
+          _fabLocationConfigurations[fabLocationIndex].babMode,
+          babColor,
+          notchEnabled),
       floatingActionButton: _fabShapeConfigurations[fabShapeIndex].fab,
-      floatingActionButtonLocation: _fabLocationConfigurations[fabLocationIndex].fabLocation,
+      floatingActionButtonLocation:
+          _fabLocationConfigurations[fabLocationIndex].fabLocation,
     );
   }
 
   Widget buildControls(BuildContext context) {
     return new Column(
-      children: <Widget> [
+      children: <Widget>[
         new Text(
           'Floating action button',
           style: Theme.of(context).textTheme.title,
@@ -127,17 +141,19 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
     return new Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        const SizedBox(width: 96.0,
+        const SizedBox(
+          width: 96.0,
           child: const Text('Shape: '),
         ),
         new Expanded(
           child: new Padding(
-            padding: const EdgeInsets.all(8.0), 
+            padding: const EdgeInsets.all(8.0),
             child: new RaisedButton(
               child: const Text('Change shape'),
               onPressed: () {
                 setState(() {
-                  fabShapeIndex = (fabShapeIndex + 1) % _fabShapeConfigurations.length;
+                  fabShapeIndex =
+                      (fabShapeIndex + 1) % _fabShapeConfigurations.length;
                 });
               },
             ),
@@ -157,12 +173,13 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
         ),
         new Expanded(
           child: new Padding(
-            padding: const EdgeInsets.all(8.0), 
+            padding: const EdgeInsets.all(8.0),
             child: new RaisedButton(
               child: const Text('Move'),
               onPressed: () {
                 setState(() {
-                  fabLocationIndex = (fabLocationIndex + 1) % _fabLocationConfigurations.length;
+                  fabLocationIndex = (fabLocationIndex + 1) %
+                      _fabLocationConfigurations.length;
                 });
               },
             ),
@@ -173,7 +190,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
   }
 
   Widget buildBabColorPicker() {
-    final List<Widget> colors = <Widget> [
+    final List<Widget> colors = <Widget>[
       const Text('Color:'),
     ];
     for (Color color in babColors) {
@@ -181,7 +198,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
         new Semantics(
           label: 'Set Bottom App Bar color to ${colorToName[color]}',
           container: true,
-          child: new Row(children: <Widget> [
+          child: new Row(children: <Widget>[
             new Radio<Color>(
               value: color,
               groupValue: babColor,
@@ -194,7 +211,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
             new Container(
               decoration: new BoxDecoration(
                 color: color,
-                border: new Border.all(width:2.0, color: Colors.black),
+                border: new Border.all(width: 2.0, color: Colors.black),
               ),
               child: const SizedBox(width: 20.0, height: 20.0),
             ),
@@ -220,14 +237,14 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
 }
 
 const String _explanatoryText =
-  "When the Scaffold's floating action button location changes, "
-  'the floating action button animates to its new position.'
-  'The BottomAppBar adapts its shape appropriately.';
+    "When the Scaffold's floating action button location changes, "
+    'the floating action button animates to its new position.'
+    'The BottomAppBar adapts its shape appropriately.';
 
 // Whether the Bottom App Bar's menu should keep icons away from the center or from the end of the screen.
 //
 // When the Floating Action Button is positioned at the end of the screen,
-// it would cover icons at the end of the screen, so the END_FAB mode tells 
+// it would cover icons at the end of the screen, so the END_FAB mode tells
 // the MyBottomAppBar to place icons away from the end.
 //
 // Similar logic applies to the CENTER_FAB mode.
@@ -276,21 +293,25 @@ class _DemoBottomAppBar extends StatelessWidget {
       color: color,
       hasNotch: enableNotch,
       child: new Row(
-        children: <Widget> [
+        children: <Widget>[
           new IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {
-              showModalBottomSheet<Null>(context: context, builder: (BuildContext context) => const _DemoDrawer());
+              showModalBottomSheet<Null>(
+                  context: context,
+                  builder: (BuildContext context) => const _DemoDrawer());
             },
           ),
           new Expanded(
             child: new AnimatedCrossFade(
               duration: const Duration(milliseconds: 225),
               firstChild: buildBabContents(context, _BabMode.END_FAB),
-              firstCurve: showsFirst ? fadeOutCurve  : fadeInCurve,
+              firstCurve: showsFirst ? fadeOutCurve : fadeInCurve,
               secondChild: buildBabContents(context, _BabMode.CENTER_FAB),
-              secondCurve: showsFirst ? fadeInCurve  : fadeOutCurve,
-              crossFadeState: showsFirst ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              secondCurve: showsFirst ? fadeInCurve : fadeOutCurve,
+              crossFadeState: showsFirst
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
             ),
           ),
         ],
@@ -299,7 +320,7 @@ class _DemoBottomAppBar extends StatelessWidget {
   }
 
   Widget buildBabContents(BuildContext context, _BabMode babMode) {
-    final List<Widget> rowContents = <Widget> [];
+    final List<Widget> rowContents = <Widget>[];
     if (babMode == _BabMode.CENTER_FAB) {
       rowContents.add(
         new Expanded(
@@ -309,21 +330,23 @@ class _DemoBottomAppBar extends StatelessWidget {
         ),
       );
     }
-    rowContents.addAll(<Widget> [
+    rowContents.addAll(<Widget>[
       new IconButton(
         icon: const Icon(Icons.search),
         onPressed: () {
           Scaffold.of(context).showSnackBar(
-            const SnackBar(content: const Text('This is a dummy search action.')),
-          );
+                const SnackBar(
+                    content: const Text('This is a dummy search action.')),
+              );
         },
       ),
       new IconButton(
         icon: const Icon(Icons.more_vert),
         onPressed: () {
           Scaffold.of(context).showSnackBar(
-            const SnackBar(content: const Text('This is a dummy menu action.')),
-          );
+                const SnackBar(
+                    content: const Text('This is a dummy menu action.')),
+              );
         },
       ),
     ]);
@@ -373,7 +396,6 @@ class _DiamondFab extends StatefulWidget {
 }
 
 class _DiamondFabState extends State<_DiamondFab> {
-
   VoidCallback _clearComputeNotch;
 
   @override
@@ -387,7 +409,8 @@ class _DiamondFabState extends State<_DiamondFab> {
           width: 56.0,
           height: 56.0,
           child: IconTheme.merge(
-            data: new IconThemeData(color: Theme.of(context).accentIconTheme.color),
+            data: new IconThemeData(
+                color: Theme.of(context).accentIconTheme.color),
             child: widget.child,
           ),
         ),
@@ -399,13 +422,13 @@ class _DiamondFabState extends State<_DiamondFab> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _clearComputeNotch = Scaffold.setFloatingActionButtonNotchFor(context, _computeNotch);
+    _clearComputeNotch =
+        Scaffold.setFloatingActionButtonNotchFor(context, _computeNotch);
   }
 
   @override
   void deactivate() {
-    if (_clearComputeNotch != null)
-      _clearComputeNotch();
+    if (_clearComputeNotch != null) _clearComputeNotch();
     super.deactivate();
   }
 
@@ -427,13 +450,14 @@ class _DiamondFabState extends State<_DiamondFab> {
     //  notchToCenter is the horizontal distance between the guest's center and
     //  the host's top edge where the notch starts (marked with "*").
     //  We compute notchToCenter by similar triangles:
-    final double notchToCenter =
-      intersection.height * (marginedGuest.height / 2.0)
-      / (marginedGuest.width / 2.0);
+    final double notchToCenter = intersection.height *
+        (marginedGuest.height / 2.0) /
+        (marginedGuest.width / 2.0);
 
     return new Path()
       ..lineTo(marginedGuest.center.dx - notchToCenter, host.top)
-      ..lineTo(marginedGuest.left + marginedGuest.width / 2.0, marginedGuest.bottom)
+      ..lineTo(
+          marginedGuest.left + marginedGuest.width / 2.0, marginedGuest.bottom)
       ..lineTo(marginedGuest.center.dx + notchToCenter, host.top)
       ..lineTo(end.dx, end.dy);
   }
@@ -448,22 +472,22 @@ class _DiamondBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, {TextDirection textDirection}) {
     return getOuterPath(rect, textDirection: textDirection);
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
     return new Path()
       ..moveTo(rect.left + rect.width / 2.0, rect.top)
       ..lineTo(rect.right, rect.top + rect.height / 2.0)
-      ..lineTo(rect.left + rect.width  / 2.0, rect.bottom)
+      ..lineTo(rect.left + rect.width / 2.0, rect.bottom)
       ..lineTo(rect.left, rect.top + rect.height / 2.0)
       ..close();
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {}
 
   // This border doesn't support scaling.
   @override
@@ -474,7 +498,8 @@ class _DiamondBorder extends ShapeBorder {
 
 // Places the Floating Action Button at the top of the content area of the
 // app, on the border between the body and the app bar.
-class _StartTopFloatingActionButtonLocation extends FloatingActionButtonLocation {
+class _StartTopFloatingActionButtonLocation
+    extends FloatingActionButtonLocation {
   const _StartTopFloatingActionButtonLocation();
 
   @override
@@ -497,8 +522,11 @@ class _StartTopFloatingActionButtonLocation extends FloatingActionButtonLocation
         // The Floating Action Button's origin is at its top-left, so we also need
         // to subtract the Floating Action Button's width to align the right edge
         // of the Floating Action Button instead of the left edge.
-        final double startPadding = kFloatingActionButtonMargin + scaffoldGeometry.minInsets.right;
-        fabX = scaffoldGeometry.scaffoldSize.width - scaffoldGeometry.floatingActionButtonSize.width - startPadding;
+        final double startPadding =
+            kFloatingActionButtonMargin + scaffoldGeometry.minInsets.right;
+        fabX = scaffoldGeometry.scaffoldSize.width -
+            scaffoldGeometry.floatingActionButtonSize.width -
+            startPadding;
         break;
       case TextDirection.ltr:
         // In LTR layouts, the start of the screen is on the left side,
@@ -507,11 +535,12 @@ class _StartTopFloatingActionButtonLocation extends FloatingActionButtonLocation
         // Placing the fabX at 0.0 will align the left edge of the
         // Floating Action Button with the left edge of the screen, so all
         // we need to do is offset fabX by the designated padding.
-        final double startPadding = kFloatingActionButtonMargin + scaffoldGeometry.minInsets.left;
+        final double startPadding =
+            kFloatingActionButtonMargin + scaffoldGeometry.minInsets.left;
         fabX = startPadding;
         break;
     }
-    // Finally, we'll place the Y coordinate for the Floating Action Button 
+    // Finally, we'll place the Y coordinate for the Floating Action Button
     // at the top of the content body.
     //
     // We want to place the middle of the Floating Action Button on the
@@ -522,7 +551,8 @@ class _StartTopFloatingActionButtonLocation extends FloatingActionButtonLocation
     //
     // We don't have to worry about which way is the top like we did
     // for left and right, so we place fabY in this one-liner.
-    final double fabY = scaffoldGeometry.contentTop - (scaffoldGeometry.floatingActionButtonSize.height / 2.0);
+    final double fabY = scaffoldGeometry.contentTop -
+        (scaffoldGeometry.floatingActionButtonSize.height / 2.0);
     return new Offset(fabX, fabY);
   }
 }

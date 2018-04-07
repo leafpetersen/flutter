@@ -14,14 +14,14 @@ import 'theme.dart';
 import 'updates.dart';
 
 class GalleryApp extends StatefulWidget {
-  const GalleryApp({
-    this.updateUrlFetcher,
-    this.enablePerformanceOverlay: true,
-    this.checkerboardRasterCacheImages: true,
-    this.checkerboardOffscreenLayers: true,
-    this.onSendFeedback,
-    Key key}
-  ) : super(key: key);
+  const GalleryApp(
+      {this.updateUrlFetcher,
+      this.enablePerformanceOverlay: true,
+      this.checkerboardRasterCacheImages: true,
+      this.checkerboardOffscreenLayers: true,
+      this.onSendFeedback,
+      Key key})
+      : super(key: key);
 
   final UpdateUrlFetcher updateUrlFetcher;
 
@@ -67,11 +67,11 @@ class GalleryAppState extends State<GalleryApp> {
   Widget _applyScaleFactor(Widget child) {
     return new Builder(
       builder: (BuildContext context) => new MediaQuery(
-        data: MediaQuery.of(context).copyWith(
-          textScaleFactor: _textScaleFactor,
-        ),
-        child: child,
-      ),
+            data: MediaQuery.of(context).copyWith(
+                  textScaleFactor: _textScaleFactor,
+                ),
+            child: child,
+          ),
     );
   }
 
@@ -85,23 +85,30 @@ class GalleryAppState extends State<GalleryApp> {
         });
       },
       showPerformanceOverlay: _showPerformanceOverlay,
-      onShowPerformanceOverlayChanged: widget.enablePerformanceOverlay ? (bool value) {
-        setState(() {
-          _showPerformanceOverlay = value;
-        });
-      } : null,
+      onShowPerformanceOverlayChanged: widget.enablePerformanceOverlay
+          ? (bool value) {
+              setState(() {
+                _showPerformanceOverlay = value;
+              });
+            }
+          : null,
       checkerboardRasterCacheImages: _checkerboardRasterCacheImages,
-      onCheckerboardRasterCacheImagesChanged: widget.checkerboardRasterCacheImages ? (bool value) {
-        setState(() {
-          _checkerboardRasterCacheImages = value;
-        });
-      } : null,
+      onCheckerboardRasterCacheImagesChanged:
+          widget.checkerboardRasterCacheImages
+              ? (bool value) {
+                  setState(() {
+                    _checkerboardRasterCacheImages = value;
+                  });
+                }
+              : null,
       checkerboardOffscreenLayers: _checkerboardOffscreenLayers,
-      onCheckerboardOffscreenLayersChanged: widget.checkerboardOffscreenLayers ? (bool value) {
-        setState(() {
-          _checkerboardOffscreenLayers = value;
-        });
-      } : null,
+      onCheckerboardOffscreenLayersChanged: widget.checkerboardOffscreenLayers
+          ? (bool value) {
+              setState(() {
+                _checkerboardOffscreenLayers = value;
+              });
+            }
+          : null,
       onPlatformChanged: (TargetPlatform value) {
         setState(() {
           _platform = value == defaultTargetPlatform ? null : value;
@@ -117,7 +124,8 @@ class GalleryAppState extends State<GalleryApp> {
             // We delay the time dilation change long enough that the user can see
             // that the checkbox in the drawer has started reacting, then we slam
             // on the brakes so that they see that the time is in fact now dilated.
-            _timeDilationTimer = new Timer(const Duration(milliseconds: 150), () {
+            _timeDilationTimer =
+                new Timer(const Duration(milliseconds: 150), () {
               timeDilation = _timeDilation;
             });
           } else {
@@ -129,7 +137,7 @@ class GalleryAppState extends State<GalleryApp> {
       onTextScaleFactorChanged: (double value) {
         setState(() {
           _textScaleFactor = value;
-         });
+        });
       },
       overrideDirection: _overrideDirection,
       onOverrideDirectionChanged: (TextDirection value) {
@@ -160,7 +168,8 @@ class GalleryAppState extends State<GalleryApp> {
     return new MaterialApp(
       title: 'Flutter Gallery',
       color: Colors.grey,
-      theme: _galleryTheme.theme.copyWith(platform: _platform ?? defaultTargetPlatform),
+      theme: _galleryTheme.theme
+          .copyWith(platform: _platform ?? defaultTargetPlatform),
       showPerformanceOverlay: _showPerformanceOverlay,
       checkerboardRasterCacheImages: _checkerboardRasterCacheImages,
       checkerboardOffscreenLayers: _checkerboardOffscreenLayers,

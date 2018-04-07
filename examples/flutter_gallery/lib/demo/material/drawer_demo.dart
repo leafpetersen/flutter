@@ -20,7 +20,11 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   static const List<String> _drawerContents = const <String>[
-    'A', 'B', 'C', 'D', 'E',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
   ];
 
   AnimationController _controller;
@@ -69,8 +73,7 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
   void _showNotImplementedMessage() {
     Navigator.pop(context); // Dismiss the drawer.
     _scaffoldKey.currentState.showSnackBar(const SnackBar(
-      content: const Text("The drawer's items don't do anything")
-    ));
+        content: const Text("The drawer's items don't do anything")));
   }
 
   @override
@@ -168,7 +171,8 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
                         new SlideTransition(
                           position: _drawerDetailsPosition,
                           child: new FadeTransition(
-                            opacity: new ReverseAnimation(_drawerContentsOpacity),
+                            opacity:
+                                new ReverseAnimation(_drawerContentsOpacity),
                             child: new Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -219,7 +223,8 @@ class _DrawerDemoState extends State<DrawerDemo> with TickerProviderStateMixin {
               ),
               new Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: new Text('Tap here to open the drawer',
+                child: new Text(
+                  'Tap here to open the drawer',
                   style: Theme.of(context).textTheme.subhead,
                 ),
               ),

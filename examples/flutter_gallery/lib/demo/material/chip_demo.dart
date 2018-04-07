@@ -23,9 +23,7 @@ class _ChipDemoState extends State<ChipDemo> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> chips = <Widget>[
-      const Chip(
-        label: const Text('Apple')
-      ),
+      const Chip(label: const Text('Apple')),
       const Chip(
         avatar: const CircleAvatar(child: const Text('B')),
         label: const Text('Blueberry'),
@@ -33,22 +31,15 @@ class _ChipDemoState extends State<ChipDemo> {
     ];
 
     if (_showBananas) {
-      chips.add(new Chip(
-        label: const Text('Bananas'),
-        onDeleted: _deleteBananas
-      ));
+      chips.add(
+          new Chip(label: const Text('Bananas'), onDeleted: _deleteBananas));
     }
 
     return new Scaffold(
-      appBar: new AppBar(title: const Text('Chips')),
-      body: new ListView(
-        children: chips.map((Widget chip) {
-          return new Container(
-            height: 100.0,
-            child: new Center(child: chip)
-          );
-        }).toList()
-      )
-    );
+        appBar: new AppBar(title: const Text('Chips')),
+        body: new ListView(
+            children: chips.map((Widget chip) {
+          return new Container(height: 100.0, child: new Center(child: chip));
+        }).toList()));
   }
 }
