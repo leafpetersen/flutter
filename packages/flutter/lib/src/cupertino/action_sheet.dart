@@ -100,6 +100,7 @@ class CupertinoActionSheet extends StatelessWidget {
   /// Generally, action sheets are used to give the user a choice between
   /// two or more choices for the current context.
   const CupertinoActionSheet({
+    [
     Key key,
     this.title,
     this.message,
@@ -107,6 +108,7 @@ class CupertinoActionSheet extends StatelessWidget {
     this.messageScrollController,
     this.actionScrollController,
     this.cancelButton,
+  ]
   }) : assert(actions != null || title != null || message != null || cancelButton != null,
           'An action sheet must have a non-null value for at least one of the following arguments: '
           'actions, title, message, or cancelButton'),
@@ -262,10 +264,12 @@ class CupertinoActionSheetAction extends StatelessWidget {
   ///
   /// The [child] and [onPressed] arguments must not be null.
   const CupertinoActionSheetAction({
-    @required this.onPressed,
+     this.onPressed,
+    [
     this.isDefaultAction = false,
-    this.isDestructiveAction = false,
-    @required this.child,
+    this.isDestructiveAction = false
+    ]
+     this.child,
   }) : assert(child != null),
        assert(onPressed != null);
 
@@ -330,8 +334,10 @@ class CupertinoActionSheetAction extends StatelessWidget {
 
 class _CupertinoActionSheetCancelButton extends StatefulWidget {
   const _CupertinoActionSheetCancelButton({
+    [
     Key key,
     this.child,
+  ]
   }) : super(key: key);
 
   final Widget child;
@@ -387,9 +393,11 @@ class _CupertinoActionSheetCancelButtonState extends State<_CupertinoActionSheet
 
 class _CupertinoAlertRenderWidget extends RenderObjectWidget {
   const _CupertinoAlertRenderWidget({
-    Key key,
-    @required this.contentSection,
-    @required this.actionsSection,
+    [
+    Key key
+    ]
+     this.contentSection,
+     this.actionsSection,
   }) : super(key: key);
 
   final Widget contentSection;
@@ -511,9 +519,11 @@ class _CupertinoAlertRenderElement extends RenderObjectElement {
 // to take up any remaining space that was not consumed by the content section.
 class _RenderCupertinoAlert extends RenderBox {
   _RenderCupertinoAlert({
+    [
     RenderBox contentSection,
     RenderBox actionsSection,
     double dividerThickness = 0.0,
+  ]
   }) : _contentSection = contentSection,
        _actionsSection = actionsSection,
        _dividerThickness = dividerThickness;
@@ -713,7 +723,7 @@ class _RenderCupertinoAlert extends RenderBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     bool isHit = false;
     final MultiChildLayoutParentData contentSectionParentData = contentSection.parentData;
     final MultiChildLayoutParentData actionsSectionParentData = actionsSection.parentData;
@@ -741,10 +751,12 @@ enum _AlertSections {
 // a SingleChildScrollView with a zero-sized Container.
 class _CupertinoAlertContentSection extends StatelessWidget {
   const _CupertinoAlertContentSection({
+    [
     Key key,
     this.title,
     this.message,
     this.scrollController,
+  ]
   }) : super(key: key);
 
   // An optional title of the action sheet. When the message is non-null,
@@ -839,10 +851,14 @@ class _CupertinoAlertContentSection extends StatelessWidget {
 // and layout.
 class _CupertinoAlertActionSection extends StatefulWidget {
   const _CupertinoAlertActionSection({
-    Key key,
-    @required this.children,
+    [
+    Key key
+    ]
+     this.children,
+    [
     this.scrollController,
     this.hasCancelButton,
+  ]
   }) : assert(children != null),
        super(key: key);
 
@@ -895,7 +911,7 @@ class _CupertinoAlertActionSectionState extends State<_CupertinoAlertActionSecti
 // appropriately by _RenderCupertinoAlertActions.
 class _PressableActionButton extends StatefulWidget {
   const _PressableActionButton({
-    @required this.child,
+     this.child,
   });
 
   final Widget child;
@@ -934,9 +950,11 @@ class _PressableActionButtonState extends State<_PressableActionButton> {
 // incoming isPressed property.
 class _ActionButtonParentDataWidget extends ParentDataWidget<_CupertinoAlertActionsRenderWidget> {
   const _ActionButtonParentDataWidget({
+    [
     Key key,
-    this.isPressed,
-    @required Widget child,
+    this.isPressed
+    ]
+     Widget child,
   }) : super(key: key, child: child);
 
   final bool isPressed;
@@ -960,7 +978,9 @@ class _ActionButtonParentDataWidget extends ParentDataWidget<_CupertinoAlertActi
 // that button is currently pressed by the user.
 class _ActionButtonParentData extends MultiChildLayoutParentData {
   _ActionButtonParentData({
+    [
     this.isPressed = false,
+  ]
   });
 
   bool isPressed;
@@ -971,10 +991,14 @@ class _ActionButtonParentData extends MultiChildLayoutParentData {
 // See _RenderCupertinoAlertActions for specific layout policy details.
 class _CupertinoAlertActionsRenderWidget extends MultiChildRenderObjectWidget {
   _CupertinoAlertActionsRenderWidget({
-    Key key,
-    @required List<Widget> actionButtons,
+    [
+    Key key
+    ]
+     List<Widget> actionButtons,
+    [
     double dividerThickness = 0.0,
     bool hasCancelButton = false,
+  ]
   }) : _dividerThickness = dividerThickness,
        _hasCancelButton = hasCancelButton,
        super(key: key, children: actionButtons);
@@ -1019,9 +1043,11 @@ class _RenderCupertinoAlertActions extends RenderBox
     with ContainerRenderObjectMixin<RenderBox, MultiChildLayoutParentData>,
         RenderBoxContainerDefaultsMixin<RenderBox, MultiChildLayoutParentData> {
   _RenderCupertinoAlertActions({
+    [
     List<RenderBox> children,
     double dividerThickness = 0.0,
     bool hasCancelButton = false,
+  ]
   }) : _dividerThickness = dividerThickness,
        _hasCancelButton = hasCancelButton {
     addAll(children);
@@ -1261,7 +1287,7 @@ class _RenderCupertinoAlertActions extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return defaultHitTestChildren(result, position: position);
   }
 }

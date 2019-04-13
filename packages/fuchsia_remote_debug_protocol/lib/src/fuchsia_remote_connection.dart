@@ -83,7 +83,7 @@ enum DartVmEventType {
 /// Specifies the type of the event (whether the VM has started or has stopped),
 /// and contains the service port of the VM as well as a URI to connect to it.
 class DartVmEvent {
-  DartVmEvent._({this.eventType, this.servicePort, this.uri});
+  DartVmEvent._({[this.eventType, this.servicePort, this.uri]});
 
   /// The URI used to connect to the Dart VM.
   final Uri uri;
@@ -291,8 +291,10 @@ class FuchsiaRemoteConnection {
   /// matches `pattern`.
   Future<List<IsolateRef>> getMainIsolatesByPattern(
     Pattern pattern, {
+    [
     Duration timeout = _kIsolateFindTimeout,
     Duration vmConnectionTimeout = _kDartVmConnectionTimeout,
+  ]
   }) async {
     // If for some reason there are no Dart VM's that are alive, wait for one to
     // start with the Isolate in question.
@@ -420,7 +422,9 @@ class FuchsiaRemoteConnection {
   /// [TimeoutException], else a [DartVm] instance.
   Future<DartVm> _getDartVm(
     int port, {
+    [
     Duration timeout = _kDartVmConnectionTimeout,
+  ]
   }) async {
     if (!_dartVmCache.containsKey(port)) {
       // When raising an HttpException this means that there is no instance of

@@ -24,13 +24,17 @@ abstract class RenderToggleable extends RenderConstrainedBox {
   /// The [activeColor], and [inactiveColor] arguments must not be
   /// null. The [value] can only be null if tristate is true.
   RenderToggleable({
-    @required bool value,
-    bool tristate = false,
-    @required Color activeColor,
-    @required Color inactiveColor,
+     bool value,
+    [
+    bool tristate = false
+    ]
+     Color activeColor,
+     Color inactiveColor,
+    [
     ValueChanged<bool> onChanged,
-    BoxConstraints additionalConstraints,
-    @required TickerProvider vsync,
+    BoxConstraints additionalConstraints
+    ]
+     TickerProvider vsync,
   }) : assert(tristate != null),
        assert(tristate || value != null),
        assert(activeColor != null),

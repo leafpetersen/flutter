@@ -279,8 +279,8 @@ abstract class BindingBase {
   /// {@macro flutter.foundation.bindingBase.registerServiceExtension}
   @protected
   void registerSignalServiceExtension({
-    @required String name,
-    @required AsyncCallback callback,
+     String name,
+     AsyncCallback callback,
   }) {
     assert(name != null);
     assert(callback != null);
@@ -309,9 +309,9 @@ abstract class BindingBase {
   /// {@macro flutter.foundation.bindingBase.registerServiceExtension}
   @protected
   void registerBoolServiceExtension({
-    @required String name,
-    @required AsyncValueGetter<bool> getter,
-    @required AsyncValueSetter<bool> setter,
+     String name,
+     AsyncValueGetter<bool> getter,
+     AsyncValueSetter<bool> setter,
   }) {
     assert(name != null);
     assert(getter != null);
@@ -343,9 +343,9 @@ abstract class BindingBase {
   /// {@macro flutter.foundation.bindingBase.registerServiceExtension}
   @protected
   void registerNumericServiceExtension({
-    @required String name,
-    @required AsyncValueGetter<double> getter,
-    @required AsyncValueSetter<double> setter,
+     String name,
+     AsyncValueGetter<double> getter,
+     AsyncValueSetter<double> setter,
   }) {
     assert(name != null);
     assert(getter != null);
@@ -405,9 +405,9 @@ abstract class BindingBase {
   /// {@macro flutter.foundation.bindingBase.registerServiceExtension}
   @protected
   void registerStringServiceExtension({
-    @required String name,
-    @required AsyncValueGetter<String> getter,
-    @required AsyncValueSetter<String> setter,
+     String name,
+     AsyncValueGetter<String> getter,
+     AsyncValueSetter<String> setter,
   }) {
     assert(name != null);
     assert(getter != null);
@@ -477,8 +477,8 @@ abstract class BindingBase {
   /// {@endtemplate}
   @protected
   void registerServiceExtension({
-    @required String name,
-    @required ServiceExtensionCallback callback,
+     String name,
+     ServiceExtensionCallback callback,
   }) {
     assert(name != null);
     assert(callback != null);

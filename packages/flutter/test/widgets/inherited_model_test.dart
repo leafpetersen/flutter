@@ -11,12 +11,14 @@ import 'package:flutter/material.dart';
 // valued fields: a, b, c.
 class ABCModel extends InheritedModel<String> {
   const ABCModel({
+    [
     Key key,
     this.a,
     this.b,
     this.c,
     this.aspects,
     Widget child,
+  ]
   }) : super(key: key, child: child);
 
   final int a;
@@ -48,13 +50,13 @@ class ABCModel extends InheritedModel<String> {
         || (c != old.c && dependencies.contains('c'));
   }
 
-  static ABCModel of(BuildContext context, { String fieldName }) {
+  static ABCModel of(BuildContext context, { [ String fieldName ] }) {
     return InheritedModel.inheritFrom<ABCModel>(context, aspect: fieldName);
   }
 }
 
 class ShowABCField extends StatefulWidget {
-  const ShowABCField({ Key key, this.fieldName }) : super(key: key);
+  const ShowABCField({ [ Key key, this.fieldName ] }) : super(key: key);
 
   final String fieldName;
 

@@ -36,9 +36,11 @@ class SliverPrototypeExtentList extends SliverMultiBoxAdaptorWidget {
   /// constrains them to have the same extent as a prototype item along
   /// the main axis.
   const SliverPrototypeExtentList({
-    Key key,
-    @required SliverChildDelegate delegate,
-    @required this.prototypeItem,
+    [
+    Key key
+    ]
+     SliverChildDelegate delegate,
+     this.prototypeItem,
   }) : assert(prototypeItem != null),
        super(key: key, delegate: delegate);
 
@@ -127,7 +129,7 @@ class _SliverPrototypeExtentListElement extends SliverMultiBoxAdaptorElement {
 
 class _RenderSliverPrototypeExtentList extends RenderSliverFixedExtentBoxAdaptor {
   _RenderSliverPrototypeExtentList({
-    @required _SliverPrototypeExtentListElement childManager,
+     _SliverPrototypeExtentListElement childManager,
   }) : super(childManager: childManager);
 
   RenderBox _child;

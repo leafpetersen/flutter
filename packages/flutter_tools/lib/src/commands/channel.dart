@@ -12,7 +12,7 @@ import '../runner/flutter_command.dart';
 import '../version.dart';
 
 class ChannelCommand extends FlutterCommand {
-  ChannelCommand({ bool verboseHelp = false }) {
+  ChannelCommand({ [ bool verboseHelp = false ] }) {
     argParser.addFlag(
       'all',
       abbr: 'a',
@@ -51,7 +51,7 @@ class ChannelCommand extends FlutterCommand {
     }
   }
 
-  Future<void> _listChannels({ bool showAll, bool verbose }) async {
+  Future<void> _listChannels({ [ bool showAll, bool verbose ] }) async {
     // Beware: currentBranch could contain PII. See getBranchName().
     final String currentChannel = FlutterVersion.instance.channel;
     final String currentBranch = FlutterVersion.instance.getBranchName();

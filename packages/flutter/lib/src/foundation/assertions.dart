@@ -26,6 +26,7 @@ class FlutterErrorDetails {
   /// their default values. (`throw null` results in a
   /// [NullThrownError] exception.)
   const FlutterErrorDetails({
+    [
     this.exception,
     this.stack,
     this.library = 'Flutter framework',
@@ -33,6 +34,7 @@ class FlutterErrorDetails {
     this.stackFilter,
     this.informationCollector,
     this.silent = false,
+  ]
   });
 
   /// The exception. Often this will be an [AssertionError], maybe specifically
@@ -255,7 +257,7 @@ class FlutterError extends AssertionError {
   /// had not been called before (so the next message is verbose again).
   ///
   /// The default behavior for the [onError] handler is to call this function.
-  static void dumpErrorToConsole(FlutterErrorDetails details, { bool forceReport = false }) {
+  static void dumpErrorToConsole(FlutterErrorDetails details, { [ bool forceReport = false ] }) {
     assert(details != null);
     assert(details.exception != null);
     bool reportError = details.silent != true; // could be null
@@ -423,7 +425,7 @@ class FlutterError extends AssertionError {
 /// of lines. By default, all non-filtered stack lines are shown.
 ///
 /// The `label` argument, if present, will be printed before the stack.
-void debugPrintStack({ String label, int maxFrames }) {
+void debugPrintStack({ [ String label, int maxFrames ] }) {
   if (label != null)
     debugPrint(label);
   Iterable<String> lines = StackTrace.current.toString().trimRight().split('\n');

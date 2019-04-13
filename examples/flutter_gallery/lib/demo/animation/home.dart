@@ -32,8 +32,8 @@ const double _kAppBarMidHeight = 256.0;
 // TODO(hansmuller): it would be worth adding something like this to the framework.
 class _RenderStatusBarPaddingSliver extends RenderSliver {
   _RenderStatusBarPaddingSliver({
-    @required double maxHeight,
-    @required double scrollFactor,
+     double maxHeight,
+     double scrollFactor,
   }) : assert(maxHeight != null && maxHeight >= 0.0),
        assert(scrollFactor != null && scrollFactor >= 1.0),
        _maxHeight = maxHeight,
@@ -75,9 +75,13 @@ class _RenderStatusBarPaddingSliver extends RenderSliver {
 
 class _StatusBarPaddingSliver extends SingleChildRenderObjectWidget {
   const _StatusBarPaddingSliver({
-    Key key,
-    @required this.maxHeight,
+    [
+    Key key
+    ]
+     this.maxHeight,
+    [
     this.scrollFactor = 5.0,
+  ]
   }) : assert(maxHeight != null && maxHeight >= 0.0),
        assert(scrollFactor != null && scrollFactor >= 1.0),
        super(key: key);
@@ -110,9 +114,9 @@ class _StatusBarPaddingSliver extends SingleChildRenderObjectWidget {
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   _SliverAppBarDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
+     this.minHeight,
+     this.maxHeight,
+     this.child,
   });
 
   final double minHeight;
@@ -163,11 +167,13 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 // until they're all visible.
 class _AllSectionsLayout extends MultiChildLayoutDelegate {
   _AllSectionsLayout({
+    [
     this.translation,
     this.tColumnToRow,
     this.tCollapsed,
     this.cardCount,
     this.selectedIndex,
+  ]
   });
 
   final Alignment translation;
@@ -260,14 +266,18 @@ class _AllSectionsLayout extends MultiChildLayoutDelegate {
 
 class _AllSectionsView extends AnimatedWidget {
   _AllSectionsView({
+    [
     Key key,
-    this.sectionIndex,
-    @required this.sections,
-    @required this.selectedIndex,
+    this.sectionIndex
+    ]
+     this.sections,
+     this.selectedIndex,
+    [
     this.minHeight,
     this.midHeight,
     this.maxHeight,
     this.sectionCards = const <Widget>[],
+  ]
   }) : assert(sections != null),
        assert(sectionCards != null),
        assert(sectionCards.length == sections.length),
@@ -364,8 +374,10 @@ class _AllSectionsView extends AnimatedWidget {
 // visible.
 class _SnappingScrollPhysics extends ClampingScrollPhysics {
   const _SnappingScrollPhysics({
-    ScrollPhysics parent,
-    @required this.midScrollOffset,
+    [
+    ScrollPhysics parent
+    ]
+     this.midScrollOffset,
   }) : assert(midScrollOffset != null),
        super(parent: parent);
 
@@ -419,7 +431,7 @@ class _SnappingScrollPhysics extends ClampingScrollPhysics {
 }
 
 class AnimationDemoHome extends StatefulWidget {
-  const AnimationDemoHome({ Key key }) : super(key: key);
+  const AnimationDemoHome({ [ Key key ] }) : super(key: key);
 
   static const String routeName = '/animation';
 

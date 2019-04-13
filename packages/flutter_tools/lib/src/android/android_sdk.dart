@@ -590,9 +590,9 @@ class AndroidSdk {
 class AndroidSdkVersion implements Comparable<AndroidSdkVersion> {
   AndroidSdkVersion._(
     this.sdk, {
-    @required this.sdkLevel,
-    @required this.platformName,
-    @required this.buildToolsVersion,
+     this.sdkLevel,
+     this.platformName,
+     this.buildToolsVersion,
   }) : assert(sdkLevel != null),
        assert(platformName != null),
        assert(buildToolsVersion != null);

@@ -13,9 +13,11 @@ import 'theme.dart';
 // below the top.
 class _FadeUpwardsPageTransition extends StatelessWidget {
   _FadeUpwardsPageTransition({
-    Key key,
-    @required Animation<double> routeAnimation, // The route's linear 0.0 - 1.0 animation.
-    @required this.child,
+    [
+    Key key
+    ]
+     Animation<double> routeAnimation, // The route's linear 0.0 - 1.0 animation.
+     this.child,
   }) : _positionAnimation = routeAnimation.drive(_bottomUpTween.chain(_fastOutSlowInTween)),
        _opacityAnimation = routeAnimation.drive(_easeInTween),
        super(key: key);
@@ -48,10 +50,12 @@ class _FadeUpwardsPageTransition extends StatelessWidget {
 // This transition is intended to match the default for Android P.
 class _OpenUpwardsPageTransition extends StatelessWidget {
   const _OpenUpwardsPageTransition({
+    [
     Key key,
     this.animation,
     this.secondaryAnimation,
     this.child,
+  ]
   }) : super(key: key);
 
   // The new page slides upwards just a little as its clip
@@ -288,7 +292,7 @@ class PageTransitionsTheme extends Diagnosticable {
   /// By default the list of builders is: [FadeUpwardsPageTransitionsBuilder],
   /// [CupertinoPageTransitionsBuilder] for [TargetPlatform.android]
   /// and [TargetPlatform.iOS] respectively.
-  const PageTransitionsTheme({ Map<TargetPlatform, PageTransitionsBuilder> builders }) : _builders = builders;
+  const PageTransitionsTheme({ [ Map<TargetPlatform, PageTransitionsBuilder> builders ] }) : _builders = builders;
 
   static const Map<TargetPlatform, PageTransitionsBuilder> _defaultBuilders = <TargetPlatform, PageTransitionsBuilder>{
     TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),

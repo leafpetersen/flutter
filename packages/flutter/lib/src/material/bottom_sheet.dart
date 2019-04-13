@@ -52,12 +52,14 @@ class BottomSheet extends StatefulWidget {
   /// [ScaffoldState.showBottomSheet], for persistent bottom sheets, or by
   /// [showModalBottomSheet], for modal bottom sheets.
   const BottomSheet({
+    [
     Key key,
     this.animationController,
     this.enableDrag = true,
-    this.elevation = 0.0,
-    @required this.onClosing,
-    @required this.builder,
+    this.elevation = 0.0
+    ]
+     this.onClosing,
+     this.builder,
   }) : assert(enableDrag != null),
        assert(onClosing != null),
        assert(builder != null),
@@ -194,7 +196,7 @@ class _ModalBottomSheetLayout extends SingleChildLayoutDelegate {
 }
 
 class _ModalBottomSheet<T> extends StatefulWidget {
-  const _ModalBottomSheet({ Key key, this.route }) : super(key: key);
+  const _ModalBottomSheet({ [ Key key, this.route ] }) : super(key: key);
 
   final _ModalBottomSheetRoute<T> route;
 
@@ -251,10 +253,12 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
 
 class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
   _ModalBottomSheetRoute({
+    [
     this.builder,
     this.theme,
     this.barrierLabel,
     RouteSettings settings,
+  ]
   }) : super(settings: settings);
 
   final WidgetBuilder builder;
@@ -323,8 +327,8 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
 ///    non-modal bottom sheets.
 ///  * <https://material.io/design/components/sheets-bottom.html#modal-bottom-sheet>
 Future<T> showModalBottomSheet<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
+   BuildContext context,
+   WidgetBuilder builder,
 }) {
   assert(context != null);
   assert(builder != null);
@@ -374,8 +378,8 @@ Future<T> showModalBottomSheet<T>({
 ///  * [Scaffold.of], for information about how to obtain the [BuildContext].
 ///  * <https://material.io/design/components/sheets-bottom.html#standard-bottom-sheet>
 PersistentBottomSheetController<T> showBottomSheet<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
+   BuildContext context,
+   WidgetBuilder builder,
 }) {
   assert(context != null);
   assert(builder != null);

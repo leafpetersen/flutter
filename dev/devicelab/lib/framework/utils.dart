@@ -78,7 +78,7 @@ void fail(String message) {
 }
 
 // Remove the given file or directory.
-void rm(FileSystemEntity entity, { bool recursive = false}) {
+void rm(FileSystemEntity entity, { [ bool recursive = false]}) {
   if (entity.existsSync()) {
     // This should not be necessary, but it turns out that
     // on Windows it's common for deletions to fail due to
@@ -102,7 +102,7 @@ Directory dir(String path) => Directory(path);
 
 File file(String path) => File(path);
 
-void copy(File sourceFile, Directory targetDirectory, {String name}) {
+void copy(File sourceFile, Directory targetDirectory, {[String name]}) {
   final File target = file(
       path.join(targetDirectory.path, name ?? path.basename(sourceFile.path)));
   target.writeAsBytesSync(sourceFile.readAsBytesSync());
@@ -124,7 +124,7 @@ void recursiveCopy(Directory source, Directory target) {
 }
 
 FileSystemEntity move(FileSystemEntity whatToMove,
-    {Directory to, String name}) {
+    {[Directory to, String name]}) {
   return whatToMove
       .renameSync(path.join(to.path, name ?? path.basename(whatToMove.path)));
 }
@@ -218,9 +218,11 @@ Future<DateTime> getFlutterRepoCommitTimestamp(String commit) {
 Future<Process> startProcess(
   String executable,
   List<String> arguments, {
+  [
   Map<String, String> environment,
   bool isBot = true, // set to false to pretend not to be on a bot (e.g. to test user-facing outputs)
   String workingDirectory,
+]
 }) async {
   assert(isBot != null);
   final String command = '$executable ${arguments?.join(" ") ?? ""}';
@@ -264,9 +266,11 @@ Future<void> forceQuitRunningProcesses() async {
 Future<int> exec(
   String executable,
   List<String> arguments, {
+  [
   Map<String, String> environment,
   bool canFail = false, // as in, whether failures are ok. False means that they are fatal.
   String workingDirectory,
+]
 }) async {
   final Process process = await startProcess(executable, arguments, environment: environment, workingDirectory: workingDirectory);
 
@@ -300,9 +304,11 @@ Future<int> exec(
 Future<String> eval(
   String executable,
   List<String> arguments, {
+  [
   Map<String, String> environment,
   bool canFail = false, // as in, whether failures are ok. False means that they are fatal.
   String workingDirectory,
+]
 }) async {
   final Process process = await startProcess(executable, arguments, environment: environment, workingDirectory: workingDirectory);
 
@@ -333,9 +339,11 @@ Future<String> eval(
 }
 
 Future<int> flutter(String command, {
+  [
   List<String> options = const <String>[],
   bool canFail = false, // as in, whether failures are ok. False means that they are fatal.
   Map<String, String> environment,
+]
 }) {
   final List<String> args = <String>[command]..addAll(options);
   return exec(path.join(flutterDirectory.path, 'bin', 'flutter'), args,
@@ -344,9 +352,11 @@ Future<int> flutter(String command, {
 
 /// Runs a `flutter` command and returns the standard output as a string.
 Future<String> evalFlutter(String command, {
+  [
   List<String> options = const <String>[],
   bool canFail = false, // as in, whether failures are ok. False means that they are fatal.
   Map<String, String> environment,
+]
 }) {
   final List<String> args = <String>[command]..addAll(options);
   return eval(path.join(flutterDirectory.path, 'bin', 'flutter'), args,
@@ -477,7 +487,7 @@ void checkNotNull(Object o1,
 }
 
 /// Splits [from] into lines and selects those that contain [pattern].
-Iterable<String> grep(Pattern pattern, {@required String from}) {
+Iterable<String> grep(Pattern pattern, { String from}) {
   return from.split('\n').where((String line) {
     return line.contains(pattern);
   });
@@ -532,8 +542,10 @@ String extractCloudAuthTokenArg(List<String> rawArgs) {
 ///
 /// The `multiLine` flag should be set to true if `line` is actually a buffer of many lines.
 int parseServicePort(String line, {
+  [
   String prefix = 'An Observatory debugger .* is available at: ',
   bool multiLine = false,
+]
 }) {
   // e.g. "An Observatory debugger and profiler on ... is available at: http://127.0.0.1:8100/"
   final RegExp pattern = RegExp('$prefix(\\S+:(\\d+)/\\S*)\$', multiLine: multiLine);

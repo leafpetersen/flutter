@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 // (CategoryView) on top of the backdrop.
 
 class Category {
-  const Category({ this.title, this.assets });
+  const Category({ [ this.title, this.assets ] });
   final String title;
   final List<String> assets;
   @override
@@ -95,7 +95,7 @@ const List<Category> allCategories = <Category>[
 ];
 
 class CategoryView extends StatelessWidget {
-  const CategoryView({ Key key, this.category }) : super(key: key);
+  const CategoryView({ [ Key key, this.category ] }) : super(key: key);
 
   final Category category;
 
@@ -147,12 +147,14 @@ class CategoryView extends StatelessWidget {
 // the BackdropDemo.
 class BackdropPanel extends StatelessWidget {
   const BackdropPanel({
+    [
     Key key,
     this.onTap,
     this.onVerticalDragUpdate,
     this.onVerticalDragEnd,
     this.title,
     this.child,
+  ]
   }) : super(key: key);
 
   final VoidCallback onTap;
@@ -202,8 +204,10 @@ class BackdropPanel extends StatelessWidget {
 // Cross fades between 'Select a Category' and 'Asset Viewer'.
 class BackdropTitle extends AnimatedWidget {
   const BackdropTitle({
+    [
     Key key,
     Listenable listenable,
+  ]
   }) : super(key: key, listenable: listenable);
 
   @override

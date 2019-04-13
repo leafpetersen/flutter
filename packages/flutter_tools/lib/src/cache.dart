@@ -43,7 +43,7 @@ enum DevelopmentArtifact {
 class Cache {
   /// [rootOverride] is configurable for testing.
   /// [artifacts] is configurable for testing.
-  Cache({ Directory rootOverride, List<CachedArtifact> artifacts }) : _rootOverride = rootOverride {
+  Cache({ [ Directory rootOverride, List<CachedArtifact> artifacts ] }) : _rootOverride = rootOverride {
     if (artifacts == null) {
       _artifacts.add(MaterialFonts(this));
       _artifacts.add(AndroidEngineArtifacts(this));
@@ -271,8 +271,10 @@ class Cache {
   }
 
   Future<bool> areRemoteArtifactsAvailable({
+    [
     String engineVersion,
     bool includeAllPlatforms = true,
+  ]
   }) async {
     final bool includeAllPlatformsState = cache.includeAllPlatforms;
     bool allAvailible = true;

@@ -51,17 +51,21 @@ class CupertinoPicker extends StatefulWidget {
   /// will loop the list back to the beginning.  If set to false, the list will
   /// stop scrolling when you reach the end or the beginning.
   CupertinoPicker({
+    [
     Key key,
     this.diameterRatio = _kDefaultDiameterRatio,
     this.backgroundColor = _kDefaultBackground,
     this.offAxisFraction = 0.0,
     this.useMagnifier = false,
     this.magnification = 1.0,
-    this.scrollController,
-    @required this.itemExtent,
-    @required this.onSelectedItemChanged,
-    @required List<Widget> children,
+    this.scrollController
+    ]
+     this.itemExtent,
+     this.onSelectedItemChanged,
+     List<Widget> children,
+    [
     bool looping = false,
+  ]
   }) : assert(children != null),
        assert(diameterRatio != null),
        assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
@@ -91,17 +95,21 @@ class CupertinoPicker extends StatefulWidget {
   /// disable the background painting entirely; this is mildly more efficient
   /// than using [Colors.transparent].
   CupertinoPicker.builder({
+    [
     Key key,
     this.diameterRatio = _kDefaultDiameterRatio,
     this.backgroundColor = _kDefaultBackground,
     this.offAxisFraction = 0.0,
     this.useMagnifier = false,
     this.magnification = 1.0,
-    this.scrollController,
-    @required this.itemExtent,
-    @required this.onSelectedItemChanged,
-    @required IndexedWidgetBuilder itemBuilder,
+    this.scrollController
+    ]
+     this.itemExtent,
+     this.onSelectedItemChanged,
+     IndexedWidgetBuilder itemBuilder,
+    [
     int childCount,
+  ]
   }) : assert(itemBuilder != null),
        assert(diameterRatio != null),
        assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
@@ -360,9 +368,11 @@ class _CupertinoPickerState extends State<CupertinoPicker> {
 // scroll controller.
 class _CupertinoPickerSemantics extends SingleChildRenderObjectWidget {
   const _CupertinoPickerSemantics({
+    [
     Key key,
-    Widget child,
-    @required this.scrollController,
+    Widget child
+    ]
+     this.scrollController,
   }) : super(key: key, child: child);
 
   final FixedExtentScrollController scrollController;

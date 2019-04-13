@@ -29,13 +29,15 @@ class DrawerHeader extends StatelessWidget {
   ///
   /// Requires one of its ancestors to be a [Material] widget.
   const DrawerHeader({
+    [
     Key key,
     this.decoration,
     this.margin = const EdgeInsets.only(bottom: 8.0),
     this.padding = const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 8.0),
     this.duration = const Duration(milliseconds: 250),
-    this.curve = Curves.fastOutSlowIn,
-    @required this.child,
+    this.curve = Curves.fastOutSlowIn
+    ]
+     this.child,
   }) : super(key: key);
 
   /// Decoration for the main drawer header [Container]; useful for applying

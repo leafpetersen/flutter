@@ -19,7 +19,7 @@ import 'common.dart';
 ///
 /// Call [verifyCalls] to verify that each desired call occurred.
 class FakeProcessManager extends Mock implements ProcessManager {
-  FakeProcessManager({this.stdinResults}) {
+  FakeProcessManager({[this.stdinResults]}) {
     _setupMock();
   }
 
@@ -117,7 +117,7 @@ class FakeProcessManager extends Mock implements ProcessManager {
 
 /// A fake process that can be used to interact with a process "started" by the FakeProcessManager.
 class FakeProcess extends Mock implements Process {
-  FakeProcess(ProcessResult result, {void stdinResults(String input)})
+  FakeProcess(ProcessResult result, {[void stdinResults(String input)]})
       : stdoutStream = Stream<List<int>>.fromIterable(<List<int>>[result.stdout.codeUnits]),
         stderrStream = Stream<List<int>>.fromIterable(<List<int>>[result.stderr.codeUnits]),
         desiredExitCode = result.exitCode,

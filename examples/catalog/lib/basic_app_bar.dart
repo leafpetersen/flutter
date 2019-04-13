@@ -57,7 +57,7 @@ class _BasicAppBarSampleState extends State<BasicAppBarSample> {
 }
 
 class Choice {
-  const Choice({ this.title, this.icon });
+  const Choice({ [ this.title, this.icon ] });
   final String title;
   final IconData icon;
 }
@@ -72,7 +72,7 @@ const List<Choice> choices = <Choice>[
 ];
 
 class ChoiceCard extends StatelessWidget {
-  const ChoiceCard({ Key key, this.choice }) : super(key: key);
+  const ChoiceCard({ [ Key key, this.choice ] }) : super(key: key);
 
   final Choice choice;
 

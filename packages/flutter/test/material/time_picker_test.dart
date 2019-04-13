@@ -20,7 +20,7 @@ final Finder _minuteControl = find.byWidgetPredicate((Widget widget) => '${widge
 final Finder _timePickerDialog = find.byWidgetPredicate((Widget widget) => '${widget.runtimeType}' == '_TimePickerDialog');
 
 class _TimePickerLauncher extends StatelessWidget {
-  const _TimePickerLauncher({ Key key, this.onChanged, this.locale }) : super(key: key);
+  const _TimePickerLauncher({ [ Key key, this.onChanged, this.locale ] }) : super(key: key);
 
   final ValueChanged<TimeOfDay> onChanged;
   final Locale locale;
@@ -226,7 +226,9 @@ void _tests() {
   Future<void> mediaQueryBoilerplate(
     WidgetTester tester,
     bool alwaysUse24HourFormat, {
+    [
     TimeOfDay initialTime = const TimeOfDay(hour: 7, minute: 0),
+  ]
   }) async {
     await tester.pumpWidget(
       Localizations(
@@ -400,7 +402,7 @@ void _tests() {
   testWidgets('can increment and decrement hours', (WidgetTester tester) async {
     final SemanticsTester semantics = SemanticsTester(tester);
 
-    Future<void> actAndExpect({ String initialValue, SemanticsAction action, String finalValue }) async {
+    Future<void> actAndExpect({ [ String initialValue, SemanticsAction action, String finalValue ] }) async {
       final SemanticsNode elevenHours = semantics.nodesWith(
         value: initialValue,
         ancestor: tester.renderObject(_hourControl).debugSemantics,
@@ -466,7 +468,7 @@ void _tests() {
   testWidgets('can increment and decrement minutes', (WidgetTester tester) async {
     final SemanticsTester semantics = SemanticsTester(tester);
 
-    Future<void> actAndExpect({ String initialValue, SemanticsAction action, String finalValue }) async {
+    Future<void> actAndExpect({ [ String initialValue, SemanticsAction action, String finalValue ] }) async {
       final SemanticsNode elevenHours = semantics.nodesWith(
         value: initialValue,
         ancestor: tester.renderObject(_minuteControl).debugSemantics,

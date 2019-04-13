@@ -97,9 +97,12 @@ class Draggable<T> extends StatefulWidget {
   /// The [child] and [feedback] arguments must not be null. If
   /// [maxSimultaneousDrags] is non-null, it must be non-negative.
   const Draggable({
-    Key key,
-    @required this.child,
-    @required this.feedback,
+    [
+    Key key
+    ]
+     this.child,
+     this.feedback,
+    [
     this.data,
     this.axis,
     this.childWhenDragging,
@@ -112,6 +115,7 @@ class Draggable<T> extends StatefulWidget {
     this.onDragEnd,
     this.onDragCompleted,
     this.ignoringFeedbackSemantics = true,
+  ]
   }) : assert(child != null),
        assert(feedback != null),
        assert(ignoringFeedbackSemantics != null),
@@ -275,9 +279,12 @@ class LongPressDraggable<T> extends Draggable<T> {
   /// The [child] and [feedback] arguments must not be null. If
   /// [maxSimultaneousDrags] is non-null, it must be non-negative.
   const LongPressDraggable({
-    Key key,
-    @required Widget child,
-    @required Widget feedback,
+    [
+    Key key
+    ]
+     Widget child,
+     Widget feedback,
+    [
     T data,
     Axis axis,
     Widget childWhenDragging,
@@ -290,6 +297,7 @@ class LongPressDraggable<T> extends Draggable<T> {
     VoidCallback onDragCompleted,
     this.hapticFeedbackOnStart = true,
     bool ignoringFeedbackSemantics = true,
+  ]
   }) : super(
     key: key,
     child: child,
@@ -439,9 +447,11 @@ class DraggableDetails {
   ///
   /// The [velocity] or [offset] arguments must not be `null`.
   DraggableDetails({
-    this.wasAccepted = false,
-    @required this.velocity,
-    @required this.offset,
+    [
+    this.wasAccepted = false
+    ]
+     this.velocity,
+     this.offset,
   }) : assert(velocity != null),
        assert(offset != null);
 
@@ -474,11 +484,15 @@ class DragTarget<T> extends StatefulWidget {
   ///
   /// The [builder] argument must not be null.
   const DragTarget({
-    Key key,
-    @required this.builder,
+    [
+    Key key
+    ]
+     this.builder,
+    [
     this.onWillAccept,
     this.onAccept,
     this.onLeave,
+  ]
   }) : super(key: key);
 
   /// Called to build the contents of this widget.
@@ -570,15 +584,17 @@ typedef _OnDragEnd = void Function(Velocity velocity, Offset offset, bool wasAcc
 // needing this object pointer events even after it has been disposed.
 class _DragAvatar<T> extends Drag {
   _DragAvatar({
-    @required this.overlayState,
+     this.overlayState,
+    [
     this.data,
     this.axis,
     Offset initialPosition,
     this.dragStartPoint = Offset.zero,
     this.feedback,
     this.feedbackOffset = Offset.zero,
-    this.onDragEnd,
-    @required this.ignoringFeedbackSemantics,
+    this.onDragEnd
+    ]
+     this.ignoringFeedbackSemantics,
   }) : assert(overlayState != null),
        assert(ignoringFeedbackSemantics != null),
        assert(dragStartPoint != null),

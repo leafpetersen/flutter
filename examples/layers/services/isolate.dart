@@ -17,7 +17,7 @@ typedef OnResultListener = void Function(String result);
 // The choice of JSON parsing here is meant as an example that might surface
 // in real-world applications.
 class Calculator {
-  Calculator({ @required this.onProgressListener, @required this.onResultListener, String data })
+  Calculator({  this.onProgressListener,  this.onResultListener, [ String data ] })
     : assert(onProgressListener != null),
       assert(onResultListener != null),
       // In order to keep the example files smaller, we "cheat" a little and
@@ -85,7 +85,7 @@ class CalculationMessage {
 // This class manages these ports and maintains state related to the
 // progress of the background computation.
 class CalculationManager {
-  CalculationManager({ @required this.onProgressListener, @required this.onResultListener })
+  CalculationManager({  this.onProgressListener,  this.onResultListener })
     : assert(onProgressListener != null),
       assert(onResultListener != null),
       _receivePort = ReceivePort() {

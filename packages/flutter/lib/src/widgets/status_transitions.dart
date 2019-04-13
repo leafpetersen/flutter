@@ -11,8 +11,10 @@ abstract class StatusTransitionWidget extends StatefulWidget {
   ///
   /// The [animation] argument must not be null.
   const StatusTransitionWidget({
-    Key key,
-    @required this.animation,
+    [
+    Key key
+    ]
+     this.animation,
   }) : assert(animation != null),
        super(key: key);
 

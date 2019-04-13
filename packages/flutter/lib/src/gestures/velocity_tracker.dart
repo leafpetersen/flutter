@@ -16,7 +16,7 @@ class Velocity {
   ///
   /// The [pixelsPerSecond] argument must not be null.
   const Velocity({
-    @required this.pixelsPerSecond,
+     this.pixelsPerSecond,
   }) : assert(pixelsPerSecond != null);
 
   /// A velocity that isn't moving at all.
@@ -94,10 +94,10 @@ class VelocityEstimate {
   ///
   /// [pixelsPerSecond], [confidence], [duration], and [offset] must not be null.
   const VelocityEstimate({
-    @required this.pixelsPerSecond,
-    @required this.confidence,
-    @required this.duration,
-    @required this.offset,
+     this.pixelsPerSecond,
+     this.confidence,
+     this.duration,
+     this.offset,
   }) : assert(pixelsPerSecond != null),
        assert(confidence != null),
        assert(duration != null),

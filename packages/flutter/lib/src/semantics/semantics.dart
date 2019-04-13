@@ -97,7 +97,7 @@ class CustomSemanticsAction {
   /// Creates a new [CustomSemanticsAction].
   ///
   /// The [label] must not be null or the empty string.
-  const CustomSemanticsAction({@required this.label})
+  const CustomSemanticsAction({ this.label})
     : assert(label != null),
       assert(label != ''),
       hint = null,
@@ -107,7 +107,7 @@ class CustomSemanticsAction {
   /// action.
   ///
   /// The [hint] must not be null or the empty string.
-  const CustomSemanticsAction.overridingAction({@required this.hint, @required this.action})
+  const CustomSemanticsAction.overridingAction({ this.hint,  this.action})
     : assert(hint != null),
       assert(hint != ''),
       assert(action != null),
@@ -179,27 +179,29 @@ class SemanticsData extends Diagnosticable {
   ///
   /// If [label] is not empty, then [textDirection] must also not be null.
   const SemanticsData({
-    @required this.flags,
-    @required this.actions,
-    @required this.label,
-    @required this.increasedValue,
-    @required this.value,
-    @required this.decreasedValue,
-    @required this.hint,
-    @required this.textDirection,
-    @required this.rect,
-    @required this.elevation,
-    @required this.thickness,
-    @required this.textSelection,
-    @required this.scrollIndex,
-    @required this.scrollChildCount,
-    @required this.scrollPosition,
-    @required this.scrollExtentMax,
-    @required this.scrollExtentMin,
-    @required this.platformViewId,
+     this.flags,
+     this.actions,
+     this.label,
+     this.increasedValue,
+     this.value,
+     this.decreasedValue,
+     this.hint,
+     this.textDirection,
+     this.rect,
+     this.elevation,
+     this.thickness,
+     this.textSelection,
+     this.scrollIndex,
+     this.scrollChildCount,
+     this.scrollPosition,
+     this.scrollExtentMax,
+     this.scrollExtentMin,
+     this.platformViewId,
+    [
     this.tags,
     this.transform,
     this.customSemanticsActionIds,
+  ]
   }) : assert(flags != null),
        assert(actions != null),
        assert(label != null),
@@ -470,10 +472,12 @@ class SemanticsData extends Diagnosticable {
 
 class _SemanticsDiagnosticableNode extends DiagnosticableNode<SemanticsNode> {
   _SemanticsDiagnosticableNode({
-    String name,
-    @required SemanticsNode value,
-    @required DiagnosticsTreeStyle style,
-    @required this.childOrder,
+    [
+    String name
+    ]
+     SemanticsNode value,
+     DiagnosticsTreeStyle style,
+     this.childOrder,
   }) : super(
     name: name,
     value: value,
@@ -499,8 +503,10 @@ class _SemanticsDiagnosticableNode extends DiagnosticableNode<SemanticsNode> {
 class SemanticsHintOverrides extends DiagnosticableTree {
   /// Creates a semantics hint overrides.
   const SemanticsHintOverrides({
+    [
     this.onTapHint,
     this.onLongPressHint,
+  ]
   }) : assert(onTapHint != ''),
        assert(onLongPressHint != '');
 
@@ -558,6 +564,7 @@ class SemanticsHintOverrides extends DiagnosticableTree {
 class SemanticsProperties extends DiagnosticableTree {
   /// Creates a semantic annotation.
   const SemanticsProperties({
+    [
     this.enabled,
     this.checked,
     this.selected,
@@ -601,6 +608,7 @@ class SemanticsProperties extends DiagnosticableTree {
     this.onDidLoseAccessibilityFocus,
     this.onDismiss,
     this.customSemanticsActions,
+  ]
   });
 
   /// If non-null, indicates that this subtree represents something that can be
@@ -1088,8 +1096,10 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
   /// Each semantic node has a unique identifier that is assigned when the node
   /// is created.
   SemanticsNode({
+    [
     this.key,
     VoidCallback showOnScreen,
+  ]
   }) : id = _generateNewId(),
        _showOnScreen = showOnScreen;
 
@@ -1097,9 +1107,11 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
   ///
   /// The root node is assigned an identifier of zero.
   SemanticsNode.root({
+    [
     this.key,
     VoidCallback showOnScreen,
     SemanticsOwner owner,
+  ]
   }) : id = 0,
        _showOnScreen = showOnScreen {
     attach(owner);
@@ -1719,8 +1731,10 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
   /// No reference is kept to the [SemanticsConfiguration] object, but the child
   /// list is used as-is and should therefore not be changed after this call.
   void updateWith({
-    @required SemanticsConfiguration config,
+     SemanticsConfiguration config,
+    [
     List<SemanticsNode> childrenInInversePaintOrder,
+  ]
   }) {
     config ??= _kEmptyConfig;
     if (_isDifferentFromCurrentSemanticAnnotation(config))
@@ -2107,10 +2121,12 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
   /// controlled by the [childOrder] parameter.
   @override
   String toStringDeep({
+    [
     String prefixLineOne = '',
     String prefixOtherLines,
     DiagnosticLevel minLevel = DiagnosticLevel.debug,
     DebugSemanticsDumpOrder childOrder = DebugSemanticsDumpOrder.traversalOrder,
+  ]
   }) {
     assert(childOrder != null);
     return toDiagnosticsNode(childOrder: childOrder).toStringDeep(prefixLineOne: prefixLineOne, prefixOtherLines: prefixOtherLines, minLevel: minLevel);
@@ -2118,9 +2134,11 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
 
   @override
   DiagnosticsNode toDiagnosticsNode({
+    [
     String name,
     DiagnosticsTreeStyle style = DiagnosticsTreeStyle.sparse,
     DebugSemanticsDumpOrder childOrder = DebugSemanticsDumpOrder.traversalOrder,
+  ]
   }) {
     return _SemanticsDiagnosticableNode(
       name: name,
@@ -2131,7 +2149,7 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
   }
 
   @override
-  List<DiagnosticsNode> debugDescribeChildren({ DebugSemanticsDumpOrder childOrder = DebugSemanticsDumpOrder.inverseHitTest }) {
+  List<DiagnosticsNode> debugDescribeChildren({ [ DebugSemanticsDumpOrder childOrder = DebugSemanticsDumpOrder.inverseHitTest ] }) {
     return debugListChildrenInOrder(childOrder)
       .map<DiagnosticsNode>((SemanticsNode node) => node.toDiagnosticsNode(childOrder: childOrder))
       .toList();
@@ -2164,9 +2182,9 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
 /// for each [SemanticsNode], one for the top and one for the bottom edge.
 class _BoxEdge implements Comparable<_BoxEdge> {
   _BoxEdge({
-    @required this.isLeadingEdge,
-    @required this.offset,
-    @required this.node,
+     this.isLeadingEdge,
+     this.offset,
+     this.node,
   }) : assert(isLeadingEdge != null),
        assert(offset != null),
        assert(node != null);
@@ -2201,8 +2219,8 @@ class _BoxEdge implements Comparable<_BoxEdge> {
 /// The [nodes] are sorted among each other separately from other nodes.
 class _SemanticsSortGroup extends Comparable<_SemanticsSortGroup> {
   _SemanticsSortGroup({
-    @required this.startOffset,
-    @required this.textDirection,
+     this.startOffset,
+     this.textDirection,
   }) : assert(startOffset != null);
 
   /// The offset from the start edge of the parent [SemanticsNode] in the
@@ -2428,9 +2446,11 @@ List<SemanticsNode> _childrenInDefaultOrder(List<SemanticsNode> children, TextDi
 /// the list of its siblings. [sortKey] takes precedence over position.
 class _TraversalSortNode implements Comparable<_TraversalSortNode> {
   _TraversalSortNode({
-    @required this.node,
-    this.sortKey,
-    @required this.position,
+     this.node,
+    [
+    this.sortKey
+    ]
+     this.position,
   })
     : assert(node != null),
       assert(position != null);
@@ -3764,10 +3784,10 @@ enum DebugSemanticsDumpOrder {
 }
 
 String _concatStrings({
-  @required String thisString,
-  @required String otherString,
-  @required TextDirection thisTextDirection,
-  @required TextDirection otherTextDirection,
+   String thisString,
+   String otherString,
+   TextDirection thisTextDirection,
+   TextDirection otherTextDirection,
 }) {
   if (otherString.isEmpty)
     return thisString;
@@ -3818,7 +3838,7 @@ String _concatStrings({
 abstract class SemanticsSortKey extends Diagnosticable implements Comparable<SemanticsSortKey> {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const SemanticsSortKey({this.name});
+  const SemanticsSortKey({[this.name]});
 
   /// An optional name that will make this sort key only order itself
   /// with respect to other sort keys of the same [name], as long as
@@ -3868,7 +3888,9 @@ class OrdinalSortKey extends SemanticsSortKey {
   /// The [order] must be a finite number.
   const OrdinalSortKey(
     this.order, {
+    [
     String name,
+  ]
   }) : assert(order != null),
        assert(order != double.nan),
        assert(order > double.negativeInfinity),

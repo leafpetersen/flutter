@@ -329,11 +329,13 @@ class RenderStack extends RenderBox
   /// By default, the non-positioned children of the stack are aligned by their
   /// top left corners.
   RenderStack({
+    [
     List<RenderBox> children,
     AlignmentGeometry alignment = AlignmentDirectional.topStart,
     TextDirection textDirection,
     StackFit fit = StackFit.loose,
     Overflow overflow = Overflow.clip,
+  ]
   }) : assert(alignment != null),
        assert(fit != null),
        assert(overflow != null),
@@ -581,7 +583,7 @@ class RenderStack extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return defaultHitTestChildren(result, position: position);
   }
 
@@ -626,10 +628,12 @@ class RenderIndexedStack extends RenderStack {
   ///
   /// If the [index] parameter is null, nothing is displayed.
   RenderIndexedStack({
+    [
     List<RenderBox> children,
     AlignmentGeometry alignment = AlignmentDirectional.topStart,
     TextDirection textDirection,
     int index = 0,
+  ]
   }) : _index = index,
        super(
          children: children,
@@ -668,7 +672,7 @@ class RenderIndexedStack extends RenderStack {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required Offset position }) {
+  bool hitTestChildren(HitTestResult result, {  Offset position }) {
     if (firstChild == null || index == null)
       return false;
     assert(position != null);

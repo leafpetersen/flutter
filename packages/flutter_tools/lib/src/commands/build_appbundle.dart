@@ -10,7 +10,7 @@ import '../runner/flutter_command.dart' show FlutterCommandResult;
 import 'build.dart';
 
 class BuildAppBundleCommand extends BuildSubCommand {
-  BuildAppBundleCommand({bool verboseHelp = false}) {
+  BuildAppBundleCommand({[bool verboseHelp = false]}) {
     usesTargetOption();
     addBuildModeFlags();
     usesFlavorOption();

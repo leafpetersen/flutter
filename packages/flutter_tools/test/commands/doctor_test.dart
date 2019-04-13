@@ -742,7 +742,7 @@ class FakeSmallGroupDoctor extends Doctor {
 }
 
 class VsCodeValidatorTestTargets extends VsCodeValidator {
-  VsCodeValidatorTestTargets._(String installDirectory, String extensionDirectory, {String edition})
+  VsCodeValidatorTestTargets._(String installDirectory, String extensionDirectory, {[String edition]})
     : super(VsCode.fromDirectory(installDirectory, extensionDirectory, edition: edition));
 
   static VsCodeValidatorTestTargets get installedWithExtension =>

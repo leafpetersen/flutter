@@ -68,7 +68,7 @@ abstract class RenderAbstractViewport extends RenderObject {
   /// See also:
   ///
   ///  * [RevealedOffset], which describes the return value of this method.
-  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { Rect rect });
+  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { [ Rect rect ] });
 
   /// The default value for the cache extent of the viewport.
   ///
@@ -88,8 +88,8 @@ class RevealedOffset {
 
   /// Instantiates a return value for [RenderAbstractViewport.getOffsetToReveal].
   const RevealedOffset({
-    @required this.offset,
-    @required this.rect,
+     this.offset,
+     this.rect,
   }) : assert(offset != null),
        assert(rect != null);
 
@@ -157,10 +157,14 @@ abstract class RenderViewportBase<ParentDataClass extends ContainerParentDataMix
     implements RenderAbstractViewport {
   /// Initializes fields for subclasses.
   RenderViewportBase({
-    AxisDirection axisDirection = AxisDirection.down,
-    @required AxisDirection crossAxisDirection,
-    @required ViewportOffset offset,
+    [
+    AxisDirection axisDirection = AxisDirection.down
+    ]
+     AxisDirection crossAxisDirection,
+     ViewportOffset offset,
+    [
     double cacheExtent,
+  ]
   }) : assert(axisDirection != null),
        assert(crossAxisDirection != null),
        assert(offset != null),
@@ -370,17 +374,17 @@ abstract class RenderViewportBase<ParentDataClass extends ContainerParentDataMix
   /// function repeatedly until it returns 0.0.
   @protected
   double layoutChildSequence({
-    @required RenderSliver child,
-    @required double scrollOffset,
-    @required double overlap,
-    @required double layoutOffset,
-    @required double remainingPaintExtent,
-    @required double mainAxisExtent,
-    @required double crossAxisExtent,
-    @required GrowthDirection growthDirection,
-    @required RenderSliver advance(RenderSliver child),
-    @required double remainingCacheExtent,
-    @required double cacheOrigin,
+     RenderSliver child,
+     double scrollOffset,
+     double overlap,
+     double layoutOffset,
+     double remainingPaintExtent,
+     double mainAxisExtent,
+     double crossAxisExtent,
+     GrowthDirection growthDirection,
+     RenderSliver advance(RenderSliver child),
+     double remainingCacheExtent,
+     double cacheOrigin,
   }) {
     assert(scrollOffset.isFinite);
     assert(scrollOffset >= 0.0);
@@ -558,7 +562,7 @@ abstract class RenderViewportBase<ParentDataClass extends ContainerParentDataMix
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     double mainAxisPosition, crossAxisPosition;
     switch (axis) {
       case Axis.vertical:
@@ -585,7 +589,7 @@ abstract class RenderViewportBase<ParentDataClass extends ContainerParentDataMix
   }
 
   @override
-  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { Rect rect }) {
+  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { [ Rect rect ] }) {
     double leadingScrollOffset = 0.0;
     double targetMainAxisExtent;
     rect ??= target.paintBounds;
@@ -878,10 +882,12 @@ abstract class RenderViewportBase<ParentDataClass extends ContainerParentDataMix
 
   @override
   void showOnScreen({
+    [
     RenderObject descendant,
     Rect rect,
     Duration duration = Duration.zero,
     Curve curve = Curves.ease,
+  ]
   }) {
     if (!offset.allowImplicitScrolling) {
       return super.showOnScreen(
@@ -929,12 +935,16 @@ abstract class RenderViewportBase<ParentDataClass extends ContainerParentDataMix
   /// The `duration` parameter can be set to a non-zero value to animate the
   /// target object into the viewport with an animation defined by `curve`.
   static Rect showInViewport({
+    [
     RenderObject descendant,
-    Rect rect,
-    @required RenderAbstractViewport viewport,
-    @required ViewportOffset offset,
+    Rect rect
+    ]
+     RenderAbstractViewport viewport,
+     ViewportOffset offset,
+    [
     Duration duration = Duration.zero,
     Curve curve = Curves.ease,
+  ]
   }) {
     assert(viewport != null);
     assert(offset != null);
@@ -1035,13 +1045,17 @@ class RenderViewport extends RenderViewportBase<SliverPhysicalContainerParentDat
   /// The [offset] must be specified. For testing purposes, consider passing a
   /// [new ViewportOffset.zero] or [new ViewportOffset.fixed].
   RenderViewport({
-    AxisDirection axisDirection = AxisDirection.down,
-    @required AxisDirection crossAxisDirection,
-    @required ViewportOffset offset,
+    [
+    AxisDirection axisDirection = AxisDirection.down
+    ]
+     AxisDirection crossAxisDirection,
+     ViewportOffset offset,
+    [
     double anchor = 0.0,
     List<RenderSliver> children,
     RenderSliver center,
     double cacheExtent,
+  ]
   }) : assert(anchor != null),
        assert(anchor >= 0.0 && anchor <= 1.0),
        _anchor = anchor,
@@ -1534,10 +1548,14 @@ class RenderShrinkWrappingViewport extends RenderViewportBase<SliverLogicalConta
   /// The [offset] must be specified. For testing purposes, consider passing a
   /// [new ViewportOffset.zero] or [new ViewportOffset.fixed].
   RenderShrinkWrappingViewport({
-    AxisDirection axisDirection = AxisDirection.down,
-    @required AxisDirection crossAxisDirection,
-    @required ViewportOffset offset,
+    [
+    AxisDirection axisDirection = AxisDirection.down
+    ]
+     AxisDirection crossAxisDirection,
+     ViewportOffset offset,
+    [
     List<RenderSliver> children,
+  ]
   }) : super(axisDirection: axisDirection, crossAxisDirection: crossAxisDirection, offset: offset) {
     addAll(children);
   }

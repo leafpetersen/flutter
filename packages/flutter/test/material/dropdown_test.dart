@@ -28,6 +28,7 @@ Finder _iconRichText(Key iconKey) {
 }
 
 Widget buildFrame({
+  [
   Key buttonKey,
   String value = 'two',
   ValueChanged<String> onChanged,
@@ -43,6 +44,7 @@ Widget buildFrame({
   List<String> items = menuItems,
   Alignment alignment = Alignment.center,
   TextDirection textDirection = TextDirection.ltr,
+]
 }) {
   return TestApp(
     textDirection: textDirection,
@@ -78,7 +80,7 @@ Widget buildFrame({
 }
 
 class TestApp extends StatefulWidget {
-  const TestApp({ this.textDirection, this.child });
+  const TestApp({ [ this.textDirection, this.child ] });
   final TextDirection textDirection;
   final Widget child;
   @override
@@ -1000,7 +1002,7 @@ void main() {
   testWidgets('disabledHint displays on empty items or onChanged', (WidgetTester tester) async {
     final Key buttonKey = UniqueKey();
 
-    Widget build({ List<String> items, ValueChanged<String> onChanged }) => buildFrame(
+    Widget build({ [ List<String> items, ValueChanged<String> onChanged ] }) => buildFrame(
       items: items,
       onChanged: onChanged,
       buttonKey: buttonKey, value: null,

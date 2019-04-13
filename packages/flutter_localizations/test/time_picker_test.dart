@@ -8,7 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class _TimePickerLauncher extends StatelessWidget {
-  const _TimePickerLauncher({ Key key, this.onChanged, this.locale }) : super(key: key);
+  const _TimePickerLauncher({ [ Key key, this.onChanged, this.locale ] }) : super(key: key);
 
   final ValueChanged<TimeOfDay> onChanged;
   final Locale locale;
@@ -43,7 +43,9 @@ class _TimePickerLauncher extends StatelessWidget {
 Future<Offset> startPicker(
   WidgetTester tester,
   ValueChanged<TimeOfDay> onChanged, {
+  [
   Locale locale = const Locale('en', 'US'),
+]
 }) async {
   await tester.pumpWidget(_TimePickerLauncher(onChanged: onChanged, locale: locale,));
   await tester.tap(find.text('X'));

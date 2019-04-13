@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class TestScrollPhysics extends ScrollPhysics {
-  const TestScrollPhysics({ this.name, ScrollPhysics parent }) : super(parent: parent);
+  const TestScrollPhysics({ [ this.name, ScrollPhysics parent ] }) : super(parent: parent);
   final String name;
 
   @override

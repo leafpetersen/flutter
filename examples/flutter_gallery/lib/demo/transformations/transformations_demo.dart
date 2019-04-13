@@ -5,7 +5,7 @@ import 'transformations_demo_edit_board_point.dart';
 import 'transformations_demo_gesture_transformable.dart';
 
 class TransformationsDemo extends StatefulWidget {
-  const TransformationsDemo({ Key key }) : super(key: key);
+  const TransformationsDemo({ [ Key key ] }) : super(key: key);
 
   static const String routeName = '/transformations';
 
@@ -125,7 +125,9 @@ class _TransformationsDemoState extends State<TransformationsDemo> {
 // when its `paint` method is called.
 class BoardPainter extends CustomPainter {
   const BoardPainter({
+    [
     this.board,
+  ]
   });
 
   final Board board;

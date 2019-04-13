@@ -579,7 +579,7 @@ void main() {
       final Key bodyKey = UniqueKey();
       double mediaQueryBottom;
 
-      Widget buildFrame({ bool extendBody, bool resizeToAvoidBottomInset, double viewInsetBottom = 0.0 }) {
+      Widget buildFrame({ [ bool extendBody, bool resizeToAvoidBottomInset, double viewInsetBottom = 0.0 ] }) {
         return Directionality(
           textDirection: TextDirection.ltr,
           child: MediaQuery(
@@ -1394,10 +1394,12 @@ class _GeometryCachePainter extends CustomPainter {
 
 class _CustomPageRoute<T> extends PageRoute<T> {
   _CustomPageRoute({
-    @required this.builder,
+     this.builder,
+    [
     RouteSettings settings = const RouteSettings(),
     this.maintainState = true,
     bool fullscreenDialog = false,
+  ]
   }) : assert(builder != null),
        super(settings: settings, fullscreenDialog: fullscreenDialog);
 

@@ -40,6 +40,7 @@ class AboutListTile extends StatelessWidget {
   /// derived from the nearest [Title] widget. The version, icon, and legalese
   /// values default to the empty string.
   const AboutListTile({
+    [
     Key key,
     this.icon = const Icon(null),
     this.child,
@@ -48,6 +49,7 @@ class AboutListTile extends StatelessWidget {
     this.applicationIcon,
     this.applicationLegalese,
     this.aboutBoxChildren,
+  ]
   }) : super(key: key);
 
   /// The icon to show for this drawer item.
@@ -145,12 +147,14 @@ class AboutListTile extends StatelessWidget {
 /// The `context` argument is passed to [showDialog], the documentation for
 /// which discusses how it is used.
 void showAboutDialog({
-  @required BuildContext context,
+   BuildContext context,
+  [
   String applicationName,
   String applicationVersion,
   Widget applicationIcon,
   String applicationLegalese,
   List<Widget> children,
+]
 }) {
   assert(context != null);
   showDialog<void>(
@@ -181,11 +185,13 @@ void showAboutDialog({
 /// The licenses shown on the [LicensePage] are those returned by the
 /// [LicenseRegistry] API, which can be used to add more licenses to the list.
 void showLicensePage({
-  @required BuildContext context,
+   BuildContext context,
+  [
   String applicationName,
   String applicationVersion,
   Widget applicationIcon,
   String applicationLegalese,
+]
 }) {
   assert(context != null);
   Navigator.push(context, MaterialPageRoute<void>(
@@ -218,12 +224,14 @@ class AboutDialog extends StatelessWidget {
   /// derived from the nearest [Title] widget. The version, icon, and legalese
   /// values default to the empty string.
   const AboutDialog({
+    [
     Key key,
     this.applicationName,
     this.applicationVersion,
     this.applicationIcon,
     this.applicationLegalese,
     this.children,
+  ]
   }) : super(key: key);
 
   /// The name of the application.
@@ -339,10 +347,12 @@ class LicensePage extends StatefulWidget {
   /// The licenses shown on the [LicensePage] are those returned by the
   /// [LicenseRegistry] API, which can be used to add more licenses to the list.
   const LicensePage({
+    [
     Key key,
     this.applicationName,
     this.applicationVersion,
     this.applicationLegalese,
+  ]
   }) : super(key: key);
 
   /// The name of the application.

@@ -37,8 +37,10 @@ class CupertinoScrollbar extends StatefulWidget {
   /// The [child] should be a source of [ScrollNotification] notifications,
   /// typically a [Scrollable] widget.
   const CupertinoScrollbar({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
   }) : super(key: key);
 
   /// The subtree to place inside the [CupertinoScrollbar].

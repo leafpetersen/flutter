@@ -12,7 +12,9 @@ import 'rendering_tester.dart';
 
 class TestRenderSliverBoxChildManager extends RenderSliverBoxChildManager {
   TestRenderSliverBoxChildManager({
+    [
     this.children,
+  ]
   });
 
   RenderSliverList _renderObject;
@@ -27,7 +29,7 @@ class TestRenderSliverBoxChildManager extends RenderSliverBoxChildManager {
   int _currentlyUpdatingChildIndex;
 
   @override
-  void createChild(int index, { @required RenderBox after }) {
+  void createChild(int index, {  RenderBox after }) {
     if (index < 0 || index >= children.length)
       return;
     try {
@@ -46,10 +48,12 @@ class TestRenderSliverBoxChildManager extends RenderSliverBoxChildManager {
   @override
   double estimateMaxScrollOffset(
     SliverConstraints constraints, {
+    [
     int firstIndex,
     int lastIndex,
     double leadingScrollOffset,
     double trailingScrollOffset,
+  ]
   }) {
     assert(lastIndex >= firstIndex);
     return children.length * (trailingScrollOffset - leadingScrollOffset) / (lastIndex - firstIndex + 1);
@@ -99,8 +103,8 @@ class ViewportOffsetSpy extends ViewportOffset {
   @override
   Future<void> animateTo(
       double to, {
-        @required Duration duration,
-        @required Curve curve,
+         Duration duration,
+         Curve curve,
       }) async {
     // Do nothing, not required in test.
   }

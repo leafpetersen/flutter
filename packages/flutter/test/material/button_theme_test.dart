@@ -224,7 +224,7 @@ void main() {
   testWidgets('ButtonTheme alignedDropdown', (WidgetTester tester) async {
     final Key dropdownKey = UniqueKey();
 
-    Widget buildFrame({ bool alignedDropdown, TextDirection textDirection }) {
+    Widget buildFrame({ [ bool alignedDropdown, TextDirection textDirection ] }) {
       return MaterialApp(
         builder: (BuildContext context, Widget child) {
           return Directionality(

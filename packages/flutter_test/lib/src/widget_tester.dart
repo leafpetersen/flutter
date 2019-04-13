@@ -87,9 +87,11 @@ typedef WidgetTesterCallback = Future<void> Function(WidgetTester widgetTester);
 void testWidgets(
   String description,
   WidgetTesterCallback callback, {
+  [
   bool skip = false,
   test_package.Timeout timeout,
   bool semanticsEnabled = false,
+]
 }) {
   final TestWidgetsFlutterBinding binding = TestWidgetsFlutterBinding.ensureInitialized();
   final WidgetTester tester = WidgetTester._(binding);
@@ -189,8 +191,10 @@ Future<void> benchmarkWidgets(WidgetTesterCallback callback) {
 void expect(
   dynamic actual,
   dynamic matcher, {
+  [
   String reason,
   dynamic skip, // true or a String
+] // true or a String
 }) {
   TestAsyncUtils.guardSync();
   test_package.expect(actual, matcher, reason: reason, skip: skip);
@@ -208,7 +212,9 @@ void expect(
 void expectSync(
   dynamic actual,
   dynamic matcher, {
+  [
   String reason,
+]
 }) {
   test_package.expect(actual, matcher, reason: reason);
 }
@@ -224,8 +230,10 @@ void expectSync(
 Future<void> expectLater(
   dynamic actual,
   dynamic matcher, {
+  [
   String reason,
   dynamic skip, // true or a String
+] // true or a String
 }) {
   // We can't wrap the delegate in a guard, or we'll hit async barriers in
   // [TestWidgetsFlutterBinding] while we're waiting for the matcher to complete
@@ -411,7 +419,9 @@ class WidgetTester extends WidgetController implements HitTestDispatcher, Ticker
   /// [TestFailure] error being thrown.
   Future<T> runAsync<T>(
     Future<T> callback(), {
+    [
     Duration additionalTime = const Duration(milliseconds: 1000),
+  ]
   }) => binding.runAsync<T>(callback, additionalTime: additionalTime);
 
   /// Whether there are any any transient callbacks scheduled.

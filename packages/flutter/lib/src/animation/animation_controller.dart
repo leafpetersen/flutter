@@ -229,13 +229,15 @@ class AnimationController extends Animation<double>
   ///   changed by calling [resync]. It is required and must not be null. See
   ///   [TickerProvider] for advice on obtaining a ticker provider.
   AnimationController({
+    [
     double value,
     this.duration,
     this.debugLabel,
     this.lowerBound = 0.0,
     this.upperBound = 1.0,
-    this.animationBehavior = AnimationBehavior.normal,
-    @required TickerProvider vsync,
+    this.animationBehavior = AnimationBehavior.normal
+    ]
+     TickerProvider vsync,
   }) : assert(lowerBound != null),
        assert(upperBound != null),
        assert(upperBound >= lowerBound),
@@ -262,11 +264,15 @@ class AnimationController extends Animation<double>
   /// physics simulation, especially when the physics simulation has no
   /// pre-determined bounds.
   AnimationController.unbounded({
+    [
     double value = 0.0,
     this.duration,
-    this.debugLabel,
-    @required TickerProvider vsync,
+    this.debugLabel
+    ]
+     TickerProvider vsync,
+    [
     this.animationBehavior = AnimationBehavior.preserve,
+  ]
   }) : assert(value != null),
        assert(vsync != null),
        lowerBound = double.negativeInfinity,
@@ -425,7 +431,7 @@ class AnimationController extends Animation<double>
   /// During the animation, [status] is reported as [AnimationStatus.forward],
   /// which switches to [AnimationStatus.completed] when [upperBound] is
   /// reached at the end of the animation.
-  TickerFuture forward({ double from }) {
+  TickerFuture forward({ [ double from ] }) {
     assert(() {
       if (duration == null) {
         throw FlutterError(
@@ -458,7 +464,7 @@ class AnimationController extends Animation<double>
   /// During the animation, [status] is reported as [AnimationStatus.reverse],
   /// which switches to [AnimationStatus.dismissed] when [lowerBound] is
   /// reached at the end of the animation.
-  TickerFuture reverse({ double from }) {
+  TickerFuture reverse({ [ double from ] }) {
     assert(() {
       if (duration == null) {
         throw FlutterError(
@@ -492,7 +498,7 @@ class AnimationController extends Animation<double>
   /// regardless of whether `target` > [value] or not. At the end of the
   /// animation, when `target` is reached, [status] is reported as
   /// [AnimationStatus.completed].
-  TickerFuture animateTo(double target, { Duration duration, Curve curve = Curves.linear }) {
+  TickerFuture animateTo(double target, { [ Duration duration, Curve curve = Curves.linear ] }) {
     assert(
       _ticker != null,
       'AnimationController.animateTo() called after AnimationController.dispose()\n'
@@ -514,7 +520,7 @@ class AnimationController extends Animation<double>
   /// regardless of whether `target` < [value] or not. At the end of the
   /// animation, when `target` is reached, [status] is reported as
   /// [AnimationStatus.dismissed].
-  TickerFuture animateBack(double target, { Duration duration, Curve curve = Curves.linear }) {
+  TickerFuture animateBack(double target, { [ Duration duration, Curve curve = Curves.linear ] }) {
     assert(
       _ticker != null,
       'AnimationController.animateBack() called after AnimationController.dispose()\n'
@@ -524,7 +530,7 @@ class AnimationController extends Animation<double>
     return _animateToInternal(target, duration: duration, curve: curve);
   }
 
-  TickerFuture _animateToInternal(double target, { Duration duration, Curve curve = Curves.linear }) {
+  TickerFuture _animateToInternal(double target, { [ Duration duration, Curve curve = Curves.linear ] }) {
     double scale = 1.0;
     if (SemanticsBinding.instance.disableAnimations) {
       switch (animationBehavior) {
@@ -590,7 +596,7 @@ class AnimationController extends Animation<double>
   /// The most recently returned [TickerFuture], if any, is marked as having been
   /// canceled, meaning the future never completes and its [TickerFuture.orCancel]
   /// derivative future completes with a [TickerCanceled] error.
-  TickerFuture repeat({ double min, double max, bool reverse = false, Duration period }) {
+  TickerFuture repeat({ [ double min, double max, bool reverse = false, Duration period ] }) {
     min ??= lowerBound;
     max ??= upperBound;
     period ??= duration;
@@ -622,7 +628,7 @@ class AnimationController extends Animation<double>
   /// The most recently returned [TickerFuture], if any, is marked as having been
   /// canceled, meaning the future never completes and its [TickerFuture.orCancel]
   /// derivative future completes with a [TickerCanceled] error.
-  TickerFuture fling({ double velocity = 1.0, AnimationBehavior animationBehavior }) {
+  TickerFuture fling({ [ double velocity = 1.0, AnimationBehavior animationBehavior ] }) {
     _direction = velocity < 0.0 ? _AnimationDirection.reverse : _AnimationDirection.forward;
     final double target = velocity < 0.0 ? lowerBound - _kFlingTolerance.distance
                                          : upperBound + _kFlingTolerance.distance;
@@ -692,7 +698,7 @@ class AnimationController extends Animation<double>
   ///    and which does send notifications.
   ///  * [forward], [reverse], [animateTo], [animateWith], [fling], and [repeat],
   ///    which restart the animation controller.
-  void stop({ bool canceled = true }) {
+  void stop({ [ bool canceled = true ] }) {
     assert(
       _ticker != null,
       'AnimationController.stop() called after AnimationController.dispose()\n'

@@ -108,7 +108,7 @@ void main(List<String> arguments) {
 }
 
 class SampleCheckerException implements Exception {
-  SampleCheckerException(this.message, {this.file, this.line});
+  SampleCheckerException(this.message, {[this.file, this.line]});
   final String message;
   final String file;
   final int line;
@@ -140,7 +140,7 @@ class SampleCheckerException implements Exception {
 /// don't necessarily match. It does, however, print the source of the
 /// problematic line.
 class SampleChecker {
-  SampleChecker(this._flutterPackage, {Directory tempDirectory})
+  SampleChecker(this._flutterPackage, {[Directory tempDirectory]})
       : _tempDirectory = tempDirectory,
         _keepTmp = tempDirectory != null {
     _tempDirectory ??= Directory.systemTemp.createTempSync('flutter_analyze_sample_code.');
@@ -202,7 +202,7 @@ class SampleChecker {
     return dartExecutable.absolute.path;
   }
 
-  static List<File> _listDartFiles(Directory directory, {bool recursive = false}) {
+  static List<File> _listDartFiles(Directory directory, {[bool recursive = false]}) {
     return directory.listSync(recursive: recursive, followLinks: false).whereType<File>().where((File file) => path.extension(file.path) == '.dart').toList();
   }
 
@@ -798,7 +798,7 @@ linter:
 
 /// A class to represent a line of input code.
 class Line {
-  const Line(this.code, {this.filename, this.line, this.indent});
+  const Line(this.code, {[this.filename, this.line, this.indent]});
   final String filename;
   final int line;
   final int indent;
@@ -867,7 +867,7 @@ class Section {
 /// regular samples, because they must be injected into templates in order to be
 /// analyzed.
 class Snippet {
-  Snippet({this.start, List<String> input, List<String> args, this.serial}) {
+  Snippet({[this.start, List<String> input, List<String> args, this.serial]}) {
     this.input = <String>[]..addAll(input);
     this.args = <String>[]..addAll(args);
   }
@@ -899,7 +899,9 @@ class AnalysisError {
     this.message,
     this.errorCode,
     this.source, {
+    [
     this.snippet,
+  ]
   });
 
   final int line;

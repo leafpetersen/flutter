@@ -228,7 +228,7 @@ class FakeCommand extends FlutterCommand {
 }
 
 class FakeStdio extends Stdio {
-  FakeStdio({this.hasFakeTerminal});
+  FakeStdio({[this.hasFakeTerminal]});
 
   final bool hasFakeTerminal;
 

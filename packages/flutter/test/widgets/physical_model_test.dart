@@ -75,8 +75,10 @@ void main() {
     Future<void> _testStackChildren(
       WidgetTester tester,
       List<Widget> children, {
-      @required int expectedErrorCount,
+       int expectedErrorCount,
+      [
       bool enableCheck = true,
+    ]
     }) async {
       assert(expectedErrorCount != null);
       if (enableCheck) {

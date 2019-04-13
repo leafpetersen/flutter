@@ -34,13 +34,17 @@ class AnimatedIcon extends StatelessWidget {
   /// The [progress] and [icon] arguments must not be null.
   /// The [size] and [color] default to the value given by the current [IconTheme].
   const AnimatedIcon({
-    Key key,
-    @required this.icon,
-    @required this.progress,
+    [
+    Key key
+    ]
+     this.icon,
+     this.progress,
+    [
     this.color,
     this.size,
     this.semanticLabel,
     this.textDirection,
+  ]
   }) : assert(progress != null),
        assert(icon != null),
        super(key: key);
@@ -131,12 +135,12 @@ typedef _UiPathFactory = ui.Path Function();
 
 class _AnimatedIconPainter extends CustomPainter {
   _AnimatedIconPainter({
-    @required this.paths,
-    @required this.progress,
-    @required this.color,
-    @required this.scale,
-    @required this.shouldMirror,
-    @required this.uiPathFactory,
+     this.paths,
+     this.progress,
+     this.color,
+     this.scale,
+     this.shouldMirror,
+     this.uiPathFactory,
   }) : super(repaint: progress);
 
   // This list is assumed to be immutable, changes to the contents of the list
@@ -188,8 +192,8 @@ class _AnimatedIconPainter extends CustomPainter {
 
 class _PathFrames {
   const _PathFrames({
-    @required this.commands,
-    @required this.opacities,
+     this.commands,
+     this.opacities,
   });
 
   final List<_PathCommand> commands;

@@ -114,10 +114,12 @@ Future<void> saveScreenshots(List<String> fromPaths, List<String> largeNames, Li
 String screenshotName(String path) => basenameWithoutExtension(path);
 
 Future<void> saveCatalogScreenshots({
+    [
     Directory directory, // Where the *.png screenshots are.
     String commit, // The commit hash to be used as a cloud storage "directory".
     String token, // Cloud storage authorization token.
     String prefix, // Prefix for all file names.
+  ] // Prefix for all file names.
   }) async {
   final List<String> screenshots = <String>[];
   for (FileSystemEntity entity in directory.listSync()) {

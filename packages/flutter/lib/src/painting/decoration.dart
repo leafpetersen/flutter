@@ -157,7 +157,7 @@ abstract class Decoration extends Diagnosticable {
   /// is what [Container] uses), the `textDirection` parameter will be populated
   /// based on the ambient [Directionality] (by way of the [RenderDecoratedBox]
   /// renderer).
-  bool hitTest(Size size, Offset position, { TextDirection textDirection }) => true;
+  bool hitTest(Size size, Offset position, { [ TextDirection textDirection ] }) => true;
 
   /// Returns a [BoxPainter] that will paint this decoration.
   ///

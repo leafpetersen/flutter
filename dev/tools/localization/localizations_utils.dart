@@ -15,11 +15,13 @@ typedef ConstructorGenerator = String Function(LocaleInfo locale);
 /// Simple data class to hold parsed locale. Does not promise validity of any data.
 class LocaleInfo implements Comparable<LocaleInfo> {
   LocaleInfo({
+    [
     this.languageCode,
     this.scriptCode,
     this.countryCode,
     this.length,
     this.originalString,
+  ]
   });
 
   /// Simple parser. Expects the locale string to be in the form of 'language_script_COUNTRY'
@@ -30,7 +32,7 @@ class LocaleInfo implements Comparable<LocaleInfo> {
   ///
   /// When `deriveScriptCode` is true, if [scriptCode] was unspecified, it will
   /// be derived from the [languageCode] and [countryCode] if possible.
-  factory LocaleInfo.fromString(String locale, { bool deriveScriptCode = false }) {
+  factory LocaleInfo.fromString(String locale, { [ bool deriveScriptCode = false ] }) {
     final List<String> codes = locale.split('_'); // [language, script, country]
     assert(codes.isNotEmpty && codes.length < 4);
     final String languageCode = codes[0];
@@ -135,10 +137,10 @@ class LocaleInfo implements Comparable<LocaleInfo> {
 /// Parse the data for a locale from a file, and store it in the [attributes]
 /// and [resources] keys.
 void loadMatchingArbsIntoBundleMaps({
-  @required Directory directory,
-  @required RegExp filenamePattern,
-  @required Map<LocaleInfo, Map<String, String>> localeToResources,
-  @required Map<LocaleInfo, Map<String, dynamic>> localeToResourceAttributes,
+   Directory directory,
+   RegExp filenamePattern,
+   Map<LocaleInfo, Map<String, String>> localeToResources,
+   Map<LocaleInfo, Map<String, dynamic>> localeToResourceAttributes,
 }) {
   assert(directory != null);
   assert(filenamePattern != null);
@@ -240,7 +242,7 @@ GeneratorOptions parseArgs(List<String> rawArgs) {
 
 class GeneratorOptions {
   GeneratorOptions({
-    @required this.writeToFile,
+     this.writeToFile,
   });
 
   final bool writeToFile;

@@ -1094,5 +1094,5 @@ void main() {
 }
 
 class CustomSortKey extends OrdinalSortKey {
-  const CustomSortKey(double order, {String name}) : super(order, name: name);
+  const CustomSortKey(double order, {[String name]}) : super(order, name: name);
 }

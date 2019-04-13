@@ -72,7 +72,7 @@ class TestPointer {
   ///
   /// By default, the time stamp on the event is [Duration.zero]. You can give a
   /// specific time stamp by passing the `timeStamp` argument.
-  PointerDownEvent down(Offset newLocation, {Duration timeStamp = Duration.zero}) {
+  PointerDownEvent down(Offset newLocation, {[Duration timeStamp = Duration.zero]}) {
     assert(!isDown);
     _isDown = true;
     _location = newLocation;
@@ -91,7 +91,7 @@ class TestPointer {
   ///
   /// [isDown] must be true when this is called, since move events can only
   /// be generated when the pointer is down.
-  PointerMoveEvent move(Offset newLocation, {Duration timeStamp = Duration.zero}) {
+  PointerMoveEvent move(Offset newLocation, {[Duration timeStamp = Duration.zero]}) {
     assert(
         isDown,
         'Move events can only be generated when the pointer is down. To '
@@ -114,7 +114,7 @@ class TestPointer {
   /// specific time stamp by passing the `timeStamp` argument.
   ///
   /// The object is no longer usable after this method has been called.
-  PointerUpEvent up({Duration timeStamp = Duration.zero}) {
+  PointerUpEvent up({[Duration timeStamp = Duration.zero]}) {
     assert(isDown);
     _isDown = false;
     return PointerUpEvent(
@@ -131,7 +131,7 @@ class TestPointer {
   /// specific time stamp by passing the `timeStamp` argument.
   ///
   /// The object is no longer usable after this method has been called.
-  PointerCancelEvent cancel({Duration timeStamp = Duration.zero}) {
+  PointerCancelEvent cancel({[Duration timeStamp = Duration.zero]}) {
     assert(isDown);
     _isDown = false;
     return PointerCancelEvent(
@@ -151,7 +151,9 @@ class TestPointer {
   /// is up.
   PointerHoverEvent hover(
     Offset newLocation, {
+    [
     Duration timeStamp = Duration.zero,
+  ]
   }) {
     assert(newLocation != null);
     assert(timeStamp != null);
@@ -177,7 +179,9 @@ class TestPointer {
   /// specific time stamp by passing the `timeStamp` argument.
   PointerScrollEvent scroll(
     Offset scrollDelta, {
+    [
     Duration timeStamp = Duration.zero,
+  ]
   }) {
     assert(scrollDelta != null);
     assert(timeStamp != null);
@@ -221,10 +225,12 @@ class TestGesture {
   /// None of the arguments may be null. The `dispatcher` and `hitTester`
   /// arguments are required.
   TestGesture({
-    @required EventDispatcher dispatcher,
-    @required HitTester hitTester,
+     EventDispatcher dispatcher,
+     HitTester hitTester,
+    [
     int pointer = 1,
     PointerDeviceKind kind = PointerDeviceKind.touch,
+  ]
   }) : assert(dispatcher != null),
        assert(hitTester != null),
        assert(pointer != null),
@@ -260,7 +266,7 @@ class TestGesture {
 
   /// In a test, send a move event that moves the pointer by the given offset.
   @visibleForTesting
-  Future<void> updateWithCustomEvent(PointerEvent event, { Duration timeStamp = Duration.zero }) {
+  Future<void> updateWithCustomEvent(PointerEvent event, { [ Duration timeStamp = Duration.zero ] }) {
     _pointer.setDownInfo(event, event.position);
     return TestAsyncUtils.guard<void>(() {
       return _dispatcher(event, _result);
@@ -272,7 +278,7 @@ class TestGesture {
   /// If the pointer is down, then a move event is dispatched. If the pointer is
   /// up, then a hover event is dispatched. Touch devices are not able to send
   /// hover events.
-  Future<void> moveBy(Offset offset, {Duration timeStamp = Duration.zero}) {
+  Future<void> moveBy(Offset offset, {[Duration timeStamp = Duration.zero]}) {
     return moveTo(_pointer.location + offset, timeStamp: timeStamp);
   }
 
@@ -281,7 +287,7 @@ class TestGesture {
   /// If the pointer is down, then a move event is dispatched. If the pointer is
   /// up, then a hover event is dispatched. Touch devices are not able to send
   /// hover events.
-  Future<void> moveTo(Offset location, {Duration timeStamp = Duration.zero}) {
+  Future<void> moveTo(Offset location, {[Duration timeStamp = Duration.zero]}) {
     return TestAsyncUtils.guard<void>(() {
       if (_pointer._isDown) {
         assert(_result != null,

@@ -88,11 +88,13 @@ class DraggableScrollableSheet extends StatefulWidget {
   /// The [builder], [initialChildSize], [minChildSize], and [maxChildSize]
   /// parameters must not be null.
   const DraggableScrollableSheet({
+    [
     Key key,
     this.initialChildSize = 0.5,
     this.minChildSize = 0.25,
-    this.maxChildSize = 1.0,
-    @required this.builder,
+    this.maxChildSize = 1.0
+    ]
+     this.builder,
   })  : assert(initialChildSize != null),
         assert(minChildSize != null),
         assert(maxChildSize != null),
@@ -143,10 +145,10 @@ class DraggableScrollableSheet extends StatefulWidget {
 /// The [availablePixels] will never be null, but may be `double.infinity`.
 class _DraggableSheetExtent {
   _DraggableSheetExtent({
-    @required this.minExtent,
-    @required this.maxExtent,
-    @required this.initialExtent,
-    @required VoidCallback listener,
+     this.minExtent,
+     this.maxExtent,
+     this.initialExtent,
+     VoidCallback listener,
   }) : assert(minExtent != null),
        assert(maxExtent != null),
        assert(initialExtent != null),
@@ -240,9 +242,11 @@ class _DraggableScrollableSheetState extends State<DraggableScrollableSheet> {
 ///    descendants.
 class _DraggableScrollableSheetScrollController extends ScrollController {
   _DraggableScrollableSheetScrollController({
+    [
     double initialScrollOffset = 0.0,
-    String debugLabel,
-    @required this.extent,
+    String debugLabel
+    ]
+     this.extent,
   }) : assert(extent != null),
        super(
          debugLabel: debugLabel,
@@ -287,13 +291,15 @@ class _DraggableScrollableSheetScrollController extends ScrollController {
 class _DraggableScrollableSheetScrollPosition
     extends ScrollPositionWithSingleContext {
   _DraggableScrollableSheetScrollPosition({
-    @required ScrollPhysics physics,
-    @required ScrollContext context,
+     ScrollPhysics physics,
+     ScrollContext context,
+    [
     double initialPixels = 0.0,
     bool keepScrollOffset = true,
     ScrollPosition oldPosition,
-    String debugLabel,
-    @required this.extent,
+    String debugLabel
+    ]
+     this.extent,
   })  : assert(extent != null),
         super(
           physics: physics,

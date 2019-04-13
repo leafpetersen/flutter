@@ -183,11 +183,11 @@ void main() {
 }
 
 void verifyThatTestWindowCanFakeProperty<WindowPropertyType>({
-  @required WidgetTester tester,
-  @required WindowPropertyType realValue,
-  @required WindowPropertyType fakeValue,
-  @required WindowPropertyType Function() propertyRetriever,
-  @required Function(TestWidgetsFlutterBinding, WindowPropertyType fakeValue) propertyFaker,
+   WidgetTester tester,
+   WindowPropertyType realValue,
+   WindowPropertyType fakeValue,
+   WindowPropertyType Function() propertyRetriever,
+   Function(TestWidgetsFlutterBinding, WindowPropertyType fakeValue) propertyFaker,
 }) {
   WindowPropertyType propertyBeforeFaking;
   WindowPropertyType propertyAfterFaking;
@@ -211,10 +211,12 @@ TestWidgetsFlutterBinding retrieveTestBinding(WidgetTester tester) {
 
 class FakeWindowPadding implements WindowPadding {
   const FakeWindowPadding({
+    [
     this.left = 0.0,
     this.top = 0.0,
     this.right = 0.0,
     this.bottom = 0.0,
+  ]
   });
 
   @override
@@ -232,11 +234,13 @@ class FakeWindowPadding implements WindowPadding {
 
 class FakeAccessibilityFeatures implements AccessibilityFeatures {
   const FakeAccessibilityFeatures({
+    [
     this.accessibleNavigation = false,
     this.invertColors = false,
     this.disableAnimations = false,
     this.boldText = false,
     this.reduceMotion = false,
+  ]
   });
 
   @override

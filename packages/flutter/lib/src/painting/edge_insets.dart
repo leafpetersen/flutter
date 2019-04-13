@@ -346,10 +346,12 @@ class EdgeInsets extends EdgeInsetsGeometry {
   /// ```
   /// {@end-tool}
   const EdgeInsets.only({
+    [
     this.left = 0.0,
     this.top = 0.0,
     this.right = 0.0,
     this.bottom = 0.0,
+  ]
   });
 
   /// Creates insets with symmetrical vertical and horizontal offsets.
@@ -363,8 +365,10 @@ class EdgeInsets extends EdgeInsetsGeometry {
   /// ```
   /// {@end-tool}
   const EdgeInsets.symmetric({
+    [
     double vertical = 0.0,
     double horizontal = 0.0,
+  ]
   }) : left = horizontal,
        top = vertical,
        right = horizontal,
@@ -584,10 +588,12 @@ class EdgeInsets extends EdgeInsetsGeometry {
   /// Creates a copy of this EdgeInsets but with the given fields replaced
   /// with the new values.
   EdgeInsets copyWith({
+    [
     double left,
     double top,
     double right,
     double bottom,
+  ]
   }) {
     return EdgeInsets.only(
       left: left ?? this.left,
@@ -624,10 +630,12 @@ class EdgeInsetsDirectional extends EdgeInsetsGeometry {
   /// ```
   /// {@end-tool}
   const EdgeInsetsDirectional.only({
+    [
     this.start = 0.0,
     this.top = 0.0,
     this.end = 0.0,
     this.bottom = 0.0,
+  ]
   });
 
   /// An [EdgeInsetsDirectional] with zero offsets in each direction.

@@ -81,7 +81,7 @@ abstract class ListWheelChildDelegate {
 /// conditions.
 class ListWheelChildListDelegate extends ListWheelChildDelegate {
   /// Constructs the delegate from a concrete list of children.
-  ListWheelChildListDelegate({@required this.children}) : assert(children != null);
+  ListWheelChildListDelegate({ this.children}) : assert(children != null);
 
   /// The list containing all children that can be supplied.
   final List<Widget> children;
@@ -124,7 +124,7 @@ class ListWheelChildListDelegate extends ListWheelChildDelegate {
 /// conditions.
 class ListWheelChildLoopingListDelegate extends ListWheelChildDelegate {
   /// Constructs the delegate from a concrete list of children.
-  ListWheelChildLoopingListDelegate({@required this.children}) : assert(children != null);
+  ListWheelChildLoopingListDelegate({ this.children}) : assert(children != null);
 
   /// The list containing all children that can be supplied.
   final List<Widget> children;
@@ -158,8 +158,10 @@ class ListWheelChildLoopingListDelegate extends ListWheelChildDelegate {
 class ListWheelChildBuilderDelegate extends ListWheelChildDelegate {
   /// Constructs the delegate from a builder callback.
   ListWheelChildBuilderDelegate({
-    @required this.builder,
+     this.builder,
+    [
     this.childCount,
+  ]
   }) : assert(builder != null);
 
   /// Called lazily to build children.
@@ -214,7 +216,9 @@ class FixedExtentScrollController extends ScrollController {
   ///
   /// [initialItem] defaults to 0 and must not be null.
   FixedExtentScrollController({
+    [
     this.initialItem = 0,
+  ]
   }) : assert(initialItem != null);
 
   /// The page to show when first creating the scroll view.
@@ -256,8 +260,8 @@ class FixedExtentScrollController extends ScrollController {
   /// The `duration` and `curve` arguments must not be null.
   Future<void> animateToItem(
     int itemIndex, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) async {
     if (!hasClients) {
       return;
@@ -308,12 +312,12 @@ class FixedExtentMetrics extends FixedScrollMetrics {
   /// Creates an immutable snapshot of values associated with a
   /// [ListWheelScrollView].
   FixedExtentMetrics({
-    @required double minScrollExtent,
-    @required double maxScrollExtent,
-    @required double pixels,
-    @required double viewportDimension,
-    @required AxisDirection axisDirection,
-    @required this.itemIndex,
+     double minScrollExtent,
+     double maxScrollExtent,
+     double pixels,
+     double viewportDimension,
+     AxisDirection axisDirection,
+     this.itemIndex,
   }) : super(
          minScrollExtent: minScrollExtent,
          maxScrollExtent: maxScrollExtent,
@@ -324,12 +328,14 @@ class FixedExtentMetrics extends FixedScrollMetrics {
 
   @override
   FixedExtentMetrics copyWith({
+    [
     double minScrollExtent,
     double maxScrollExtent,
     double pixels,
     double viewportDimension,
     AxisDirection axisDirection,
     int itemIndex,
+  ]
   }) {
     return FixedExtentMetrics(
       minScrollExtent: minScrollExtent ?? this.minScrollExtent,
@@ -346,10 +352,12 @@ class FixedExtentMetrics extends FixedScrollMetrics {
 }
 
 int _getItemFromOffset({
+  [
   double offset,
   double itemExtent,
   double minScrollExtent,
   double maxScrollExtent,
+]
 }) {
   return (_clipOffsetToScrollableRange(offset, minScrollExtent, maxScrollExtent) / itemExtent).round();
 }
@@ -366,12 +374,14 @@ double _clipOffsetToScrollableRange(
 /// [_FixedExtentScrollable] and can access its `itemExtent` to derive [itemIndex].
 class _FixedExtentScrollPosition extends ScrollPositionWithSingleContext implements FixedExtentMetrics {
   _FixedExtentScrollPosition({
-    @required ScrollPhysics physics,
-    @required ScrollContext context,
-    @required int initialItem,
+     ScrollPhysics physics,
+     ScrollContext context,
+     int initialItem,
+    [
     bool keepScrollOffset = true,
     ScrollPosition oldPosition,
     String debugLabel,
+  ]
   }) : assert(
          context is _FixedExtentScrollableState,
          'FixedExtentScrollController can only be used with ListWheelScrollViews'
@@ -404,12 +414,14 @@ class _FixedExtentScrollPosition extends ScrollPositionWithSingleContext impleme
 
   @override
   FixedExtentMetrics copyWith({
+    [
     double minScrollExtent,
     double maxScrollExtent,
     double pixels,
     double viewportDimension,
     AxisDirection axisDirection,
     int itemIndex,
+  ]
   }) {
     return FixedExtentMetrics(
       minScrollExtent: minScrollExtent ?? this.minScrollExtent,
@@ -426,12 +438,14 @@ class _FixedExtentScrollPosition extends ScrollPositionWithSingleContext impleme
 /// size so it can pass it on ultimately to the [FixedExtentScrollController].
 class _FixedExtentScrollable extends Scrollable {
   const _FixedExtentScrollable({
+    [
     Key key,
     AxisDirection axisDirection = AxisDirection.down,
     ScrollController controller,
-    ScrollPhysics physics,
-    @required this.itemExtent,
-    @required ViewportBuilder viewportBuilder,
+    ScrollPhysics physics
+    ]
+     this.itemExtent,
+     ViewportBuilder viewportBuilder,
   }) : super (
     key: key,
     axisDirection: axisDirection,
@@ -468,7 +482,7 @@ class _FixedExtentScrollableState extends ScrollableState {
 /// Defers back to the parent beyond the scroll extents.
 class FixedExtentScrollPhysics extends ScrollPhysics {
   /// Creates a scroll physics that always lands on items.
-  const FixedExtentScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const FixedExtentScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   FixedExtentScrollPhysics applyTo(ScrollPhysics ancestor) {
@@ -567,6 +581,7 @@ class ListWheelScrollView extends StatefulWidget {
   /// Constructs a list in which children are scrolled a wheel. Its children
   /// are passed to a delegate and lazily built during layout.
   ListWheelScrollView({
+    [
     Key key,
     this.controller,
     this.physics,
@@ -574,12 +589,15 @@ class ListWheelScrollView extends StatefulWidget {
     this.perspective = RenderListWheelViewport.defaultPerspective,
     this.offAxisFraction = 0.0,
     this.useMagnifier = false,
-    this.magnification = 1.0,
-    @required this.itemExtent,
+    this.magnification = 1.0
+    ]
+     this.itemExtent,
+    [
     this.onSelectedItemChanged,
     this.clipToSize = true,
-    this.renderChildrenOutsideViewport = false,
-    @required List<Widget> children,
+    this.renderChildrenOutsideViewport = false
+    ]
+     List<Widget> children,
   }) : assert(children != null),
        assert(diameterRatio != null),
        assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
@@ -601,6 +619,7 @@ class ListWheelScrollView extends StatefulWidget {
   /// Constructs a list in which children are scrolled a wheel. Its children
   /// are managed by a delegate and are lazily built during layout.
   const ListWheelScrollView.useDelegate({
+    [
     Key key,
     this.controller,
     this.physics,
@@ -608,12 +627,15 @@ class ListWheelScrollView extends StatefulWidget {
     this.perspective = RenderListWheelViewport.defaultPerspective,
     this.offAxisFraction = 0.0,
     this.useMagnifier = false,
-    this.magnification = 1.0,
-    @required this.itemExtent,
+    this.magnification = 1.0
+    ]
+     this.itemExtent,
+    [
     this.onSelectedItemChanged,
     this.clipToSize = true,
-    this.renderChildrenOutsideViewport = false,
-    @required this.childDelegate,
+    this.renderChildrenOutsideViewport = false
+    ]
+     this.childDelegate,
   }) : assert(childDelegate != null),
        assert(diameterRatio != null),
        assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
@@ -830,7 +852,7 @@ class ListWheelElement extends RenderObjectElement implements ListWheelChildMana
   bool childExistsAt(int index) => retrieveWidget(index) != null;
 
   @override
-  void createChild(int index, { @required RenderBox after }) {
+  void createChild(int index, {  RenderBox after }) {
     owner.buildScope(this, () {
       final bool insertFirst = after == null;
       assert(insertFirst || _childElements[index - 1] != null);
@@ -934,17 +956,21 @@ class ListWheelViewport extends RenderObjectWidget {
   ///
   /// The [offset] argument must be provided and must not be null.
   const ListWheelViewport({
+    [
     Key key,
     this.diameterRatio = RenderListWheelViewport.defaultDiameterRatio,
     this.perspective = RenderListWheelViewport.defaultPerspective,
     this.offAxisFraction = 0.0,
     this.useMagnifier = false,
-    this.magnification = 1.0,
-    @required this.itemExtent,
+    this.magnification = 1.0
+    ]
+     this.itemExtent,
+    [
     this.clipToSize = true,
-    this.renderChildrenOutsideViewport = false,
-    @required this.offset,
-    @required this.childDelegate,
+    this.renderChildrenOutsideViewport = false
+    ]
+     this.offset,
+     this.childDelegate,
   }) : assert(childDelegate != null),
        assert(offset != null),
        assert(diameterRatio != null),

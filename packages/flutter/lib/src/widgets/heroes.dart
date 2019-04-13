@@ -133,13 +133,17 @@ class Hero extends StatefulWidget {
   /// The [tag] and [child] parameters must not be null.
   /// The [child] parameter and all of the its descendants must not be [Hero]s.
   const Hero({
-    Key key,
-    @required this.tag,
+    [
+    Key key
+    ]
+     this.tag,
+    [
     this.createRectTween,
     this.flightShuttleBuilder,
     this.placeholderBuilder,
-    this.transitionOnUserGestures = false,
-    @required this.child,
+    this.transitionOnUserGestures = false
+    ]
+     this.child,
   }) : assert(tag != null),
        assert(transitionOnUserGestures != null),
        assert(child != null),
@@ -326,16 +330,16 @@ class _HeroState extends State<Hero> {
 // Everything known about a hero flight that's to be started or diverted.
 class _HeroFlightManifest {
   _HeroFlightManifest({
-    @required this.type,
-    @required this.overlay,
-    @required this.navigatorRect,
-    @required this.fromRoute,
-    @required this.toRoute,
-    @required this.fromHero,
-    @required this.toHero,
-    @required this.createRectTween,
-    @required this.shuttleBuilder,
-    @required this.isUserGestureTransition,
+     this.type,
+     this.overlay,
+     this.navigatorRect,
+     this.fromRoute,
+     this.toRoute,
+     this.fromHero,
+     this.toHero,
+     this.createRectTween,
+     this.shuttleBuilder,
+     this.isUserGestureTransition,
   }) : assert(fromHero.widget.tag == toHero.widget.tag);
 
   final HeroFlightDirection type;
@@ -598,7 +602,7 @@ class HeroController extends NavigatorObserver {
   ///
   /// The [createRectTween] argument is optional. If null, the controller uses a
   /// linear [Tween<Rect>].
-  HeroController({ this.createRectTween });
+  HeroController({ [ this.createRectTween ] });
 
   /// Used to create [RectTween]s that interpolate the position of heroes in flight.
   ///
@@ -624,7 +628,7 @@ class HeroController extends NavigatorObserver {
   }
 
   @override
-  void didReplace({ Route<dynamic> newRoute, Route<dynamic> oldRoute }) {
+  void didReplace({ [ Route<dynamic> newRoute, Route<dynamic> oldRoute ] }) {
     assert(navigator != null);
     if (newRoute?.isCurrent == true) {
       // Only run hero animations if the top-most route got replaced.

@@ -31,7 +31,7 @@ class FortnightlyDemo extends StatelessWidget {
 }
 
 class ShortAppBar extends StatelessWidget {
-  const ShortAppBar({ this.onBackPressed });
+  const ShortAppBar({ [ this.onBackPressed ] });
 
   final VoidCallback onBackPressed;
 

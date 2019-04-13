@@ -199,7 +199,7 @@ class AndroidDeviceDiscovery implements DeviceDiscovery {
 }
 
 class AndroidDevice implements Device {
-  AndroidDevice({@required this.deviceId});
+  AndroidDevice({ this.deviceId});
 
   @override
   final String deviceId;
@@ -261,17 +261,17 @@ class AndroidDevice implements Device {
   }
 
   /// Executes [command] on `adb shell` and returns its exit code.
-  Future<void> shellExec(String command, List<String> arguments, { Map<String, String> environment }) async {
+  Future<void> shellExec(String command, List<String> arguments, { [ Map<String, String> environment ] }) async {
     await adb(<String>['shell', command]..addAll(arguments), environment: environment);
   }
 
   /// Executes [command] on `adb shell` and returns its standard output as a [String].
-  Future<String> shellEval(String command, List<String> arguments, { Map<String, String> environment }) {
+  Future<String> shellEval(String command, List<String> arguments, { [ Map<String, String> environment ] }) {
     return adb(<String>['shell', command]..addAll(arguments), environment: environment);
   }
 
   /// Runs `adb` with the given [arguments], selecting this device.
-  Future<String> adb(List<String> arguments, { Map<String, String> environment }) {
+  Future<String> adb(List<String> arguments, { [ Map<String, String> environment ] }) {
     return eval(adbPath, <String>['-s', deviceId]..addAll(arguments), environment: environment, canFail: false);
   }
 
@@ -421,7 +421,7 @@ class IosDeviceDiscovery implements DeviceDiscovery {
 
 /// iOS device.
 class IosDevice implements Device {
-  const IosDevice({ @required this.deviceId });
+  const IosDevice({  this.deviceId });
 
   @override
   final String deviceId;

@@ -246,9 +246,11 @@ class MockVM implements VM {
   @override
   Future<Map<String, dynamic>> invokeRpcRaw(
     String method, {
+    [
     Map<String, dynamic> params = const <String, dynamic>{},
     Duration timeout,
     bool timeoutFatal = true,
+  ]
   }) async {
     _service.messages.add('$method $params');
     return <String, dynamic>{'success': true};
@@ -273,7 +275,7 @@ void _cleanupTempDirs() {
     tryToDelete(_tempDirs.removeLast());
 }
 
-Future<void> _createPackage(FileSystem fs, String pkgName, String pkgFileName, { bool doubleSlash = false }) async {
+Future<void> _createPackage(FileSystem fs, String pkgName, String pkgFileName, { [ bool doubleSlash = false ] }) async {
   final Directory pkgTempDir = _newTempDir(fs);
   String pkgFilePath = fs.path.join(pkgTempDir.path, pkgName, 'lib', pkgFileName);
   if (doubleSlash) {

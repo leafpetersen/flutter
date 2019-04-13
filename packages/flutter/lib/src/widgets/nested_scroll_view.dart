@@ -182,14 +182,18 @@ class NestedScrollView extends StatefulWidget {
   /// The [reverse], [headerSliverBuilder], and [body] arguments must not be
   /// null.
   const NestedScrollView({
+    [
     Key key,
     this.controller,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
-    this.physics,
-    @required this.headerSliverBuilder,
-    @required this.body,
+    this.physics
+    ]
+     this.headerSliverBuilder,
+     this.body,
+    [
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(scrollDirection != null),
        assert(reverse != null),
        assert(headerSliverBuilder != null),
@@ -365,13 +369,15 @@ class _NestedScrollViewState extends State<NestedScrollView> {
 
 class _NestedScrollViewCustomScrollView extends CustomScrollView {
   const _NestedScrollViewCustomScrollView({
-    @required Axis scrollDirection,
-    @required bool reverse,
-    @required ScrollPhysics physics,
-    @required ScrollController controller,
-    @required List<Widget> slivers,
-    @required this.handle,
+     Axis scrollDirection,
+     bool reverse,
+     ScrollPhysics physics,
+     ScrollController controller,
+     List<Widget> slivers,
+     this.handle,
+    [
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : super(
          scrollDirection: scrollDirection,
          reverse: reverse,
@@ -402,9 +408,11 @@ class _NestedScrollViewCustomScrollView extends CustomScrollView {
 
 class _InheritedNestedScrollView extends InheritedWidget {
   const _InheritedNestedScrollView({
-    Key key,
-    @required this.state,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.state,
+     Widget child,
   }) : assert(state != null),
        assert(child != null),
        super(key: key, child: child);
@@ -417,14 +425,14 @@ class _InheritedNestedScrollView extends InheritedWidget {
 
 class _NestedScrollMetrics extends FixedScrollMetrics {
   _NestedScrollMetrics({
-    @required double minScrollExtent,
-    @required double maxScrollExtent,
-    @required double pixels,
-    @required double viewportDimension,
-    @required AxisDirection axisDirection,
-    @required this.minRange,
-    @required this.maxRange,
-    @required this.correctionOffset,
+     double minScrollExtent,
+     double maxScrollExtent,
+     double pixels,
+     double viewportDimension,
+     AxisDirection axisDirection,
+     this.minRange,
+     this.maxRange,
+     this.correctionOffset,
   }) : super(
     minScrollExtent: minScrollExtent,
     maxScrollExtent: maxScrollExtent,
@@ -435,6 +443,7 @@ class _NestedScrollMetrics extends FixedScrollMetrics {
 
   @override
   _NestedScrollMetrics copyWith({
+    [
     double minScrollExtent,
     double maxScrollExtent,
     double pixels,
@@ -443,6 +452,7 @@ class _NestedScrollMetrics extends FixedScrollMetrics {
     double minRange,
     double maxRange,
     double correctionOffset,
+  ]
   }) {
     return _NestedScrollMetrics(
       minScrollExtent: minScrollExtent ?? this.minScrollExtent,
@@ -715,8 +725,8 @@ class _NestedScrollCoordinator implements ScrollActivityDelegate, ScrollHoldCont
 
   Future<void> animateTo(
     double to, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) async {
     final DrivenScrollActivity outerActivity = _outerPosition.createDrivenScrollActivity(
       nestOffset(to, _outerPosition),
@@ -846,8 +856,10 @@ class _NestedScrollCoordinator implements ScrollActivityDelegate, ScrollHoldCont
 class _NestedScrollController extends ScrollController {
   _NestedScrollController(
     this.coordinator, {
+    [
     double initialScrollOffset = 0.0,
     String debugLabel,
+  ]
   }) : super(initialScrollOffset: initialScrollOffset, debugLabel: debugLabel);
 
   final _NestedScrollCoordinator coordinator;
@@ -911,12 +923,14 @@ class _NestedScrollController extends ScrollController {
 // this class, they can defer, or be influenced by, the coordinator.
 class _NestedScrollPosition extends ScrollPosition implements ScrollActivityDelegate {
   _NestedScrollPosition({
-    @required ScrollPhysics physics,
-    @required ScrollContext context,
+     ScrollPhysics physics,
+     ScrollContext context,
+    [
     double initialPixels = 0.0,
     ScrollPosition oldPosition,
-    String debugLabel,
-    @required this.coordinator,
+    String debugLabel
+    ]
+     this.coordinator,
   }) : super(
     physics: physics,
     context: context,
@@ -1061,8 +1075,10 @@ class _NestedScrollPosition extends ScrollPosition implements ScrollActivityDele
 
   ScrollActivity createBallisticScrollActivity(
     Simulation simulation, {
-    @required _NestedBallisticScrollActivityMode mode,
+     _NestedBallisticScrollActivityMode mode,
+    [
     _NestedScrollMetrics metrics,
+  ]
   }) {
     if (simulation == null)
       return IdleScrollActivity(this);
@@ -1084,8 +1100,8 @@ class _NestedScrollPosition extends ScrollPosition implements ScrollActivityDele
   @override
   Future<void> animateTo(
     double to, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) {
     return coordinator.animateTo(coordinator.unnestOffset(to, this), duration: duration, curve: curve);
   }
@@ -1332,9 +1348,13 @@ class SliverOverlapAbsorber extends SingleChildRenderObjectWidget {
   ///
   /// The [child] must be a sliver.
   const SliverOverlapAbsorber({
-    Key key,
-    @required this.handle,
+    [
+    Key key
+    ]
+     this.handle,
+    [
     Widget child,
+  ]
   }) : assert(handle != null),
        super(key: key, child: child);
 
@@ -1379,8 +1399,10 @@ class RenderSliverOverlapAbsorber extends RenderSliver with RenderObjectWithChil
   ///
   /// The [child] must be a [RenderSliver].
   RenderSliverOverlapAbsorber({
-    @required SliverOverlapAbsorberHandle handle,
+     SliverOverlapAbsorberHandle handle,
+    [
     RenderSliver child,
+  ]
   }) : assert(handle != null),
        _handle = handle {
     this.child = child;
@@ -1446,7 +1468,7 @@ class RenderSliverOverlapAbsorber extends RenderSliver with RenderObjectWithChil
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTestChildren(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) {
     if (child != null)
       return child.hitTest(result, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition);
     return false;
@@ -1482,9 +1504,13 @@ class SliverOverlapInjector extends SingleChildRenderObjectWidget {
   ///
   /// The [handle] must not be null.
   const SliverOverlapInjector({
-    Key key,
-    @required this.handle,
+    [
+    Key key
+    ]
+     this.handle,
+    [
     Widget child,
+  ]
   }) : assert(handle != null),
        super(key: key, child: child);
 
@@ -1526,7 +1552,7 @@ class RenderSliverOverlapInjector extends RenderSliver {
   ///
   /// The [handle] must not be null.
   RenderSliverOverlapInjector({
-    @required SliverOverlapAbsorberHandle handle,
+     SliverOverlapAbsorberHandle handle,
   }) : assert(handle != null),
        _handle = handle;
 
@@ -1630,14 +1656,18 @@ class NestedScrollViewViewport extends Viewport {
   ///
   /// The [handle] must not be null.
   NestedScrollViewViewport({
+    [
     Key key,
     AxisDirection axisDirection = AxisDirection.down,
     AxisDirection crossAxisDirection,
-    double anchor = 0.0,
-    @required ViewportOffset offset,
+    double anchor = 0.0
+    ]
+     ViewportOffset offset,
+    [
     Key center,
-    List<Widget> slivers = const <Widget>[],
-    @required this.handle,
+    List<Widget> slivers = const <Widget>[]
+    ]
+     this.handle,
   }) : assert(handle != null),
        super(
          key: key,
@@ -1689,13 +1719,17 @@ class RenderNestedScrollViewViewport extends RenderViewport {
   ///
   /// The [handle] must not be null.
   RenderNestedScrollViewViewport({
-    AxisDirection axisDirection = AxisDirection.down,
-    @required AxisDirection crossAxisDirection,
-    @required ViewportOffset offset,
+    [
+    AxisDirection axisDirection = AxisDirection.down
+    ]
+     AxisDirection crossAxisDirection,
+     ViewportOffset offset,
+    [
     double anchor = 0.0,
     List<RenderSliver> children,
-    RenderSliver center,
-    @required SliverOverlapAbsorberHandle handle,
+    RenderSliver center
+    ]
+     SliverOverlapAbsorberHandle handle,
   }) : assert(handle != null),
        _handle = handle,
        super(

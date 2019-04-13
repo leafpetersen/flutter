@@ -26,6 +26,7 @@ import 'theme.dart';
 class TabBarTheme extends Diagnosticable {
   /// Creates a tab bar theme that can be used with [ThemeData.tabBarTheme].
   const TabBarTheme({
+    [
     this.indicator,
     this.indicatorSize,
     this.labelColor,
@@ -33,6 +34,7 @@ class TabBarTheme extends Diagnosticable {
     this.labelStyle,
     this.unselectedLabelColor,
     this.unselectedLabelStyle,
+  ]
   });
 
   /// Default value for [TabBar.indicator].
@@ -59,6 +61,7 @@ class TabBarTheme extends Diagnosticable {
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   TabBarTheme copyWith({
+    [
     Decoration indicator,
     TabBarIndicatorSize indicatorSize,
     Color labelColor,
@@ -66,6 +69,7 @@ class TabBarTheme extends Diagnosticable {
     TextStyle labelStyle,
     Color unselectedLabelColor,
     TextStyle unselectedLabelStyle,
+  ]
   }) {
     return TabBarTheme(
       indicator: indicator ?? this.indicator,

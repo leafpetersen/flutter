@@ -146,6 +146,7 @@ class CupertinoTextField extends StatefulWidget {
   ///  * [maxLength], which discusses the precise meaning of "number of
   ///    characters" and how it may differ from the intuitive meaning.
   const CupertinoTextField({
+    [
     Key key,
     this.controller,
     this.focusNode,
@@ -186,6 +187,7 @@ class CupertinoTextField extends StatefulWidget {
     this.keyboardAppearance,
     this.scrollPadding = const EdgeInsets.all(20.0),
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(textAlign != null),
        assert(autofocus != null),
        assert(obscureText != null),
@@ -581,8 +583,10 @@ class _CupertinoTextFieldState extends State<CupertinoTextField> with AutomaticK
   bool get wantKeepAlive => _controller?.text?.isNotEmpty == true;
 
   bool _shouldShowAttachment({
+    [
     OverlayVisibilityMode attachment,
     bool hasText,
+  ]
   }) {
     switch (attachment) {
       case OverlayVisibilityMode.never:

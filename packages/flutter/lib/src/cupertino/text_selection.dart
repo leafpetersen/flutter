@@ -63,11 +63,13 @@ class _TextSelectionToolbarNotchPainter extends CustomPainter {
 /// Manages a copy/paste text selection toolbar.
 class _TextSelectionToolbar extends StatelessWidget {
   const _TextSelectionToolbar({
+    [
     Key key,
     this.handleCut,
     this.handleCopy,
     this.handlePaste,
     this.handleSelectAll,
+  ]
   }) : super(key: key);
 
   final VoidCallback handleCut;
@@ -204,7 +206,7 @@ class _TextSelectionToolbarLayout extends SingleChildLayoutDelegate {
 /// such that the ball is below the point of origin and the bar is above the
 /// point of origin.
 class _TextSelectionHandlePainter extends CustomPainter {
-  _TextSelectionHandlePainter({this.origin});
+  _TextSelectionHandlePainter({[this.origin]});
 
   final Offset origin;
 

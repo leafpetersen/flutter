@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 
 class Leaf extends StatefulWidget {
-  const Leaf({ Key key, this.child }) : super(key: key);
+  const Leaf({ [ Key key, this.child ] }) : super(key: key);
   final Widget child;
   @override
   _LeafState createState() => _LeafState();
@@ -48,7 +48,7 @@ class _LeafState extends State<Leaf> {
   }
 }
 
-List<Widget> generateList(Widget child, { @required bool impliedMode }) {
+List<Widget> generateList(Widget child, {  bool impliedMode }) {
   return List<Widget>.generate(
     100,
     (int index) {
@@ -64,7 +64,7 @@ List<Widget> generateList(Widget child, { @required bool impliedMode }) {
   );
 }
 
-void tests({ @required bool impliedMode }) {
+void tests({  bool impliedMode }) {
   testWidgets('AutomaticKeepAlive with ListView with itemExtent', (WidgetTester tester) async {
     await tester.pumpWidget(
       Directionality(
@@ -560,7 +560,7 @@ void main() {
 }
 
 class _AlwaysKeepAlive extends StatefulWidget {
-  const _AlwaysKeepAlive({Key key}) : super(key: key);
+  const _AlwaysKeepAlive({[Key key]}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _AlwaysKeepAliveState();
@@ -612,7 +612,9 @@ class RenderSliverMultiBoxAdaptorAlt extends RenderSliver with
     RenderSliverWithKeepAliveMixin {
 
   RenderSliverMultiBoxAdaptorAlt({
+    [
     RenderSliverBoxChildManager childManager,
+  ]
   }) : _childManager = childManager;
 
   @protected
@@ -621,7 +623,7 @@ class RenderSliverMultiBoxAdaptorAlt extends RenderSliver with
 
   final List<RenderBox> children = <RenderBox>[];
 
-  void insert(RenderBox child, { RenderBox after }) {
+  void insert(RenderBox child, { [ RenderBox after ] }) {
     children.add(child);
   }
 

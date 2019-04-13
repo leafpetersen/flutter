@@ -97,8 +97,8 @@ class TweenSequenceItem<T> {
   ///
   /// The [tween] must not be null and [weight] must be greater than 0.0.
   const TweenSequenceItem({
-    @required this.tween,
-    @required this.weight,
+     this.tween,
+     this.weight,
   }) : assert(tween != null),
        assert(weight != null),
        assert(weight > 0.0);

@@ -100,11 +100,13 @@ class CocoaPods {
   }
 
   Future<bool> processPods({
-    @required IosProject iosProject,
+     IosProject iosProject,
     // For backward compatibility with previously created Podfile only.
-    @required String iosEngineDir,
+     String iosEngineDir,
+    [
     bool isSwift = false,
     bool dependenciesChanged = true,
+  ]
   }) async {
     if (!(await iosProject.podfile.exists())) {
       throwToolExit('Podfile missing');

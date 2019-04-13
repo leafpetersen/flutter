@@ -74,12 +74,14 @@ class RenderAnimatedSize extends RenderAligningShiftedBox {
   /// The arguments [duration], [curve], [alignment], and [vsync] must
   /// not be null.
   RenderAnimatedSize({
-    @required TickerProvider vsync,
-    @required Duration duration,
+     TickerProvider vsync,
+     Duration duration,
+    [
     Curve curve = Curves.linear,
     AlignmentGeometry alignment = Alignment.center,
     TextDirection textDirection,
     RenderBox child,
+  ]
   }) : assert(vsync != null),
        assert(duration != null),
        assert(curve != null),

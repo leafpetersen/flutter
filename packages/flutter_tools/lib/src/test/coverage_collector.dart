@@ -72,8 +72,10 @@ class CoverageCollector extends TestWatcher {
   /// This will not start any collection tasks. It us up to the caller of to
   /// call [collectCoverage] for each process first.
   Future<String> finalizeCoverage({
+    [
     coverage.Formatter formatter,
     Directory coverageDirectory,
+  ]
   }) async {
     printTrace('formating coverage data');
     if (_globalHitmap == null)
@@ -91,7 +93,7 @@ class CoverageCollector extends TestWatcher {
     return result;
   }
 
-  Future<bool> collectCoverageData(String coveragePath, { bool mergeCoverageData = false, Directory coverageDirectory }) async {
+  Future<bool> collectCoverageData(String coveragePath, { [ bool mergeCoverageData = false, Directory coverageDirectory ] }) async {
     final Status status = logger.startProgress('Collecting coverage information...', timeout: timeoutConfiguration.fastOperation);
     final String coverageData = await finalizeCoverage(
       coverageDirectory: coverageDirectory,

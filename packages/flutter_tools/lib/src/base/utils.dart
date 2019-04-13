@@ -257,7 +257,7 @@ typedef AsyncCallback = Future<void> Function();
 ///   - has a different initial value for the first callback delay
 ///   - waits for a callback to be complete before it starts the next timer
 class Poller {
-  Poller(this.callback, this.pollingInterval, { this.initialDelay = Duration.zero }) {
+  Poller(this.callback, this.pollingInterval, { [ this.initialDelay = Duration.zero ] }) {
     Future<void>.delayed(initialDelay, _handleCallback);
   }
 
@@ -343,7 +343,7 @@ const int kMinColumnWidth = 10;
 ///
 /// The [indent] and [hangingIndent] must be smaller than [columnWidth] when
 /// added together.
-String wrapText(String text, { int columnWidth, int hangingIndent, int indent, bool shouldWrap }) {
+String wrapText(String text, { [ int columnWidth, int hangingIndent, int indent, bool shouldWrap ] }) {
   if (text == null || text.isEmpty) {
     return '';
   }
@@ -431,7 +431,7 @@ class _AnsiRun {
 /// If [outputPreferences.wrapText] is false, then the text will be returned
 /// simply split at the newlines, but not wrapped. If [shouldWrap] is specified,
 /// then it overrides the [outputPreferences.wrapText] setting.
-List<String> _wrapTextAsLines(String text, { int start = 0, int columnWidth, bool shouldWrap }) {
+List<String> _wrapTextAsLines(String text, { [ int start = 0, int columnWidth, bool shouldWrap ] }) {
   if (text == null || text.isEmpty) {
     return <String>[''];
   }

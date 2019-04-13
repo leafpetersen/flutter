@@ -11,7 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 
 class TestImageInfo implements ImageInfo {
-  const TestImageInfo(this.value, { this.image, this.scale = 1.0 });
+  const TestImageInfo(this.value, { [ this.image, this.scale = 1.0 ] });
 
   @override
   final ui.Image image;
@@ -26,7 +26,7 @@ class TestImageInfo implements ImageInfo {
 }
 
 class TestImageProvider extends ImageProvider<int> {
-  const TestImageProvider(this.key, this.imageValue, { this.image });
+  const TestImageProvider(this.key, this.imageValue, { [ this.image ] });
   final int key;
   final int imageValue;
   final ui.Image image;
@@ -48,7 +48,7 @@ class TestImageProvider extends ImageProvider<int> {
 }
 
 class FailingTestImageProvider extends TestImageProvider {
-  const FailingTestImageProvider(int key, int imageValue, { ui.Image image }) : super(key, imageValue, image: image);
+  const FailingTestImageProvider(int key, int imageValue, { [ ui.Image image ] }) : super(key, imageValue, image: image);
 
   @override
   ImageStreamCompleter load(int key) {
@@ -67,7 +67,7 @@ Future<ImageInfo> extractOneFrame(ImageStream stream) {
 }
 
 class TestImage implements ui.Image {
-  const TestImage({this.height = 0, this.width = 0});
+  const TestImage({[this.height = 0, this.width = 0]});
   @override
   final int height;
   @override
@@ -77,7 +77,7 @@ class TestImage implements ui.Image {
   void dispose() { }
 
   @override
-  Future<ByteData> toByteData({ ImageByteFormat format = ImageByteFormat.rawRgba }) {
+  Future<ByteData> toByteData({ [ ImageByteFormat format = ImageByteFormat.rawRgba ] }) {
     throw UnimplementedError();
   }
 }

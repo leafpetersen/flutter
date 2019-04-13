@@ -20,7 +20,9 @@ class IntelliJPlugins {
     List<ValidationMessage> messages,
     List<String> packageNames,
     String title, {
+    [
     Version minVersion,
+  ]
   }) {
     for (String packageName in packageNames) {
       if (!_hasPackage(packageName)) {

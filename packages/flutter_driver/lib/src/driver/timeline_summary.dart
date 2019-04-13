@@ -109,8 +109,10 @@ class TimelineSummary {
   /// Writes all of the recorded timeline data to a file.
   Future<void> writeTimelineToFile(
     String traceName, {
+    [
     String destinationDirectory,
     bool pretty = false,
+  ]
   }) async {
     destinationDirectory ??= testOutputsDirectory;
     await fs.directory(destinationDirectory).create(recursive: true);
@@ -121,8 +123,10 @@ class TimelineSummary {
   /// Writes [summaryJson] to a file.
   Future<void> writeSummaryToFile(
     String traceName, {
+    [
     String destinationDirectory,
     bool pretty = false,
+  ]
   }) async {
     destinationDirectory ??= testOutputsDirectory;
     await fs.directory(destinationDirectory).create(recursive: true);

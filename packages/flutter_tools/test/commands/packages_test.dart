@@ -45,7 +45,7 @@ void main() {
       tryToDelete(tempDir);
     });
 
-    Future<String> createProjectWithPlugin(String plugin, { List<String> arguments }) async {
+    Future<String> createProjectWithPlugin(String plugin, { [ List<String> arguments ] }) async {
       final String projectPath = await createProject(tempDir, arguments: arguments);
       final File pubspec = fs.file(fs.path.join(projectPath, 'pubspec.yaml'));
       String content = await pubspec.readAsString();
@@ -57,7 +57,7 @@ void main() {
       return projectPath;
     }
 
-    Future<void> runCommandIn(String projectPath, String verb, { List<String> args }) async {
+    Future<void> runCommandIn(String projectPath, String verb, { [ List<String> args ] }) async {
       final PackagesCommand command = PackagesCommand();
       final CommandRunner<void> runner = createTestCommandRunner(command);
 

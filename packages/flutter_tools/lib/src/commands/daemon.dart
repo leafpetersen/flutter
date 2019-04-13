@@ -34,7 +34,7 @@ const String protocolVersion = '0.4.2';
 /// It can be shutdown with a `daemon.shutdown` command (or by killing the
 /// process).
 class DaemonCommand extends FlutterCommand {
-  DaemonCommand({ this.hidden = false });
+  DaemonCommand({ [ this.hidden = false ] });
 
   @override
   final String name = 'daemon';
@@ -79,9 +79,11 @@ class Daemon {
   Daemon(
     Stream<Map<String, dynamic>> commandStream,
     this.sendCommand, {
+    [
     this.daemonCommand,
     this.notifyingLogger,
     this.logToStdout = false,
+  ]
   }) {
     // Set up domains.
     _registerDomain(daemonDomain = DaemonDomain(this));
@@ -152,7 +154,7 @@ class Daemon {
 
   void _send(Map<String, dynamic> map) => sendCommand(map);
 
-  void shutdown({ dynamic error }) {
+  void shutdown({ [ dynamic error ] }) {
     _commandSubscription?.cancel();
     for (Domain domain in _domainMap.values)
       domain.dispose();
@@ -210,7 +212,7 @@ abstract class Domain {
 
   void _send(Map<String, dynamic> map) => daemon._send(map);
 
-  String _getStringArg(Map<String, dynamic> args, String name, { bool required = false }) {
+  String _getStringArg(Map<String, dynamic> args, String name, { [ bool required = false ] }) {
     if (required && !args.containsKey(name))
       throw '$name is required';
     final dynamic val = args[name];
@@ -219,7 +221,7 @@ abstract class Domain {
     return val;
   }
 
-  bool _getBoolArg(Map<String, dynamic> args, String name, { bool required = false }) {
+  bool _getBoolArg(Map<String, dynamic> args, String name, { [ bool required = false ] }) {
     if (required && !args.containsKey(name))
       throw '$name is required';
     final dynamic val = args[name];
@@ -228,7 +230,7 @@ abstract class Domain {
     return val;
   }
 
-  int _getIntArg(Map<String, dynamic> args, String name, { bool required = false }) {
+  int _getIntArg(Map<String, dynamic> args, String name, { [ bool required = false ] }) {
     if (required && !args.containsKey(name))
       throw '$name is required';
     final dynamic val = args[name];
@@ -302,8 +304,10 @@ class DaemonDomain extends Domain {
 }
 
 typedef _RunOrAttach = Future<void> Function({
+  [
   Completer<DebugConnectionInfo> connectionInfoCompleter,
   Completer<void> appStartedCompleter,
+]
 });
 
 /// This domain responds to methods like [start] and [stop].
@@ -330,13 +334,17 @@ class AppDomain extends Domain {
     String route,
     DebuggingOptions options,
     bool enableHotReload, {
-    File applicationBinary,
-    @required bool trackWidgetCreation,
+    [
+    File applicationBinary
+    ]
+     bool trackWidgetCreation,
+    [
     String projectRootPath,
     String packagesFilePath,
     String dillOutputPath,
     bool ipv6 = false,
     String isolateFilter,
+  ]
   }) async {
     if (await device.isLocalEmulator && !options.buildInfo.supportsEmulator) {
       throw '${toTitleCase(options.buildInfo.friendlyModeName)} mode is not supported for emulators.';
@@ -382,8 +390,10 @@ class AppDomain extends Domain {
     return launch(
       runner,
       ({
+        [
         Completer<DebugConnectionInfo> connectionInfoCompleter,
         Completer<void> appStartedCompleter,
+      ]
       }) {
         return runner.run(
           connectionInfoCompleter: connectionInfoCompleter,
@@ -752,12 +762,14 @@ class NotifyingLogger extends Logger {
   @override
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis = false,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _messageController.add(LogMessage('error', message, stackTrace));
   }
@@ -765,12 +777,14 @@ class NotifyingLogger extends Logger {
   @override
   void printStatus(
     String message, {
+    [
     bool emphasis = false,
     TerminalColor color,
     bool newline = true,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _messageController.add(LogMessage('status', message));
   }
@@ -783,10 +797,12 @@ class NotifyingLogger extends Logger {
   @override
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   }) {
     assert(timeout != null);
     printStatus(message);
@@ -800,7 +816,7 @@ class NotifyingLogger extends Logger {
 
 /// A running application, started by this daemon.
 class AppInstance {
-  AppInstance(this.id, { this.runner, this.logToStdout = false });
+  AppInstance(this.id, { [ this.runner, this.logToStdout = false ] });
 
   final String id;
   final ResidentRunner runner;
@@ -808,7 +824,7 @@ class AppInstance {
 
   _AppRunLogger _logger;
 
-  Future<OperationResult> restart({ bool fullRestart = false, bool pauseAfterRestart = false, String reason }) {
+  Future<OperationResult> restart({ [ bool fullRestart = false, bool pauseAfterRestart = false, String reason ] }) {
     return runner.restart(fullRestart: fullRestart, pauseAfterRestart: pauseAfterRestart, reason: reason);
   }
 
@@ -879,7 +895,7 @@ class EmulatorDomain extends Domain {
 // TODO(devoncarew): To simplify this code a bit, we could choose to specialize
 // this class into two, one for each of the above use cases.
 class _AppRunLogger extends Logger {
-  _AppRunLogger(this.domain, this.app, { this.parent });
+  _AppRunLogger(this.domain, this.app, { [ this.parent ] });
 
   AppDomain domain;
   final AppInstance app;
@@ -889,12 +905,14 @@ class _AppRunLogger extends Logger {
   @override
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     if (parent != null) {
       parent.printError(
@@ -924,12 +942,14 @@ class _AppRunLogger extends Logger {
   @override
   void printStatus(
     String message, {
+    [
     bool emphasis = false,
     TerminalColor color,
     bool newline = true,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     if (parent != null) {
       parent.printStatus(
@@ -960,10 +980,12 @@ class _AppRunLogger extends Logger {
   @override
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   }) {
     assert(timeout != null);
     final int id = _nextProgressId++;

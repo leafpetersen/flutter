@@ -67,11 +67,13 @@ abstract class ScrollPosition extends ViewportOffset with ScrollMetrics {
   ///
   /// The [physics], [context], and [keepScrollOffset] parameters must not be null.
   ScrollPosition({
-    @required this.physics,
-    @required this.context,
+     this.physics,
+     this.context,
+    [
     this.keepScrollOffset = true,
     ScrollPosition oldPosition,
     this.debugLabel,
+  ]
   }) : assert(physics != null),
        assert(context != null),
        assert(context.vsync != null),
@@ -490,9 +492,11 @@ abstract class ScrollPosition extends ViewportOffset with ScrollMetrics {
   /// by just scrolling this position.
   Future<void> ensureVisible(
     RenderObject object, {
+    [
     double alignment = 0.0,
     Duration duration = Duration.zero,
     Curve curve = Curves.ease,
+  ]
   }) {
     assert(object.attached);
     final RenderAbstractViewport viewport = RenderAbstractViewport.of(object);
@@ -548,8 +552,8 @@ abstract class ScrollPosition extends ViewportOffset with ScrollMetrics {
   @override
   Future<void> animateTo(
     double to, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   });
 
   /// Jumps the scroll position from its current value to the given value,
@@ -574,9 +578,11 @@ abstract class ScrollPosition extends ViewportOffset with ScrollMetrics {
   @override
   Future<void> moveTo(
     double to, {
+    [
     Duration duration,
     Curve curve,
     bool clamp = true,
+  ]
   }) {
     assert(to != null);
     assert(clamp != null);

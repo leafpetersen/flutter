@@ -20,7 +20,7 @@ class IconThemeData extends Diagnosticable {
   ///
   /// The opacity applies to both explicit and default icon colors. The value
   /// is clamped between 0.0 and 1.0.
-  const IconThemeData({this.color, double opacity, this.size}) : _opacity = opacity;
+  const IconThemeData({[this.color, double opacity, this.size]}) : _opacity = opacity;
 
   /// Creates an icon them with some reasonable default values.
   ///
@@ -32,7 +32,7 @@ class IconThemeData extends Diagnosticable {
 
   /// Creates a copy of this icon theme but with the given fields replaced with
   /// the new values.
-  IconThemeData copyWith({ Color color, double opacity, double size }) {
+  IconThemeData copyWith({ [ Color color, double opacity, double size ] }) {
     return IconThemeData(
       color: color ?? this.color,
       opacity: opacity ?? this.opacity,

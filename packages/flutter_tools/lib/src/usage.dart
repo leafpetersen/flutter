@@ -31,7 +31,7 @@ Usage get flutterUsage => Usage.instance;
 class Usage {
   /// Create a new Usage instance; [versionOverride] and [configDirOverride] are
   /// used for testing.
-  Usage({ String settingsName = 'flutter', String versionOverride, String configDirOverride}) {
+  Usage({ [ String settingsName = 'flutter', String versionOverride, String configDirOverride]}) {
     final FlutterVersion flutterVersion = FlutterVersion.instance;
     final String version = versionOverride ?? flutterVersion.getVersionString(redactUnknownBranches: true);
     _analytics = AnalyticsIO(_kFlutterUA, settingsName, version,
@@ -82,7 +82,7 @@ class Usage {
   /// reports coming from the same computer.
   String get clientId => _analytics.clientId;
 
-  void sendCommand(String command, { Map<String, String> parameters }) {
+  void sendCommand(String command, { [ Map<String, String> parameters ] }) {
     if (suppressAnalytics)
       return;
 
@@ -94,7 +94,9 @@ class Usage {
   void sendEvent(
     String category,
     String parameter, {
+    [
     Map<String, String> parameters,
+  ]
   }) {
     if (suppressAnalytics)
       return;
@@ -108,7 +110,9 @@ class Usage {
     String category,
     String variableName,
     Duration duration, {
+    [
     String label,
+  ]
   }) {
     if (!suppressAnalytics) {
       _analytics.sendTiming(

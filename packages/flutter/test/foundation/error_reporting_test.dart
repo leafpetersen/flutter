@@ -45,7 +45,7 @@ Future<void> main() async {
 
   test('Error reporting - pretest', () async {
     expect(debugPrint, equals(debugPrintThrottled));
-    debugPrint = (String message, { int wrapWidth }) {
+    debugPrint = (String message, { [ int wrapWidth ] }) {
       console.add(message);
     };
   });

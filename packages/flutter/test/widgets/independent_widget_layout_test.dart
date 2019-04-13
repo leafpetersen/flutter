@@ -65,7 +65,7 @@ class Trigger {
 }
 
 class TriggerableWidget extends StatefulWidget {
-  const TriggerableWidget({ this.trigger, this.counter });
+  const TriggerableWidget({ [ this.trigger, this.counter ] });
   final Trigger trigger;
   final Counter counter;
   @override
@@ -101,9 +101,11 @@ class TriggerableState extends State<TriggerableWidget> {
 
 class TestFocusable extends StatefulWidget {
   const TestFocusable({
+    [
     Key key,
     this.focusNode,
     this.autofocus = true,
+  ]
   }) : super(key: key);
 
   final bool autofocus;

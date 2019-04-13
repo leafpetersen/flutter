@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 
 class TextStyleItem extends StatelessWidget {
   const TextStyleItem({
-    Key key,
-    @required this.name,
-    @required this.style,
-    @required this.text,
+    [
+    Key key
+    ]
+     this.name,
+     this.style,
+     this.text,
   }) : assert(name != null),
        assert(style != null),
        assert(text != null),

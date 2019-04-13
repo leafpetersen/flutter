@@ -219,10 +219,12 @@ void main() {
 /// A broken SDK installation.
 class MockBrokenAndroidSdk extends Mock implements AndroidSdk {
   static Directory createSdkDirectory({
+    [
     bool withAndroidN = false,
     String withNdkDir,
     bool withNdkSysroot = false,
     bool withSdkManager = true,
+  ]
   }) {
     final Directory dir = fs.systemTempDirectory.createTempSync('flutter_mock_android_sdk.');
     final String exe = platform.isWindows ? '.exe' : '';
@@ -239,7 +241,7 @@ class MockBrokenAndroidSdk extends Mock implements AndroidSdk {
     return dir;
   }
 
-  static void _createSdkFile(Directory dir, String filePath, { String contents }) {
+  static void _createSdkFile(Directory dir, String filePath, { [ String contents ] }) {
     final File file = dir.childFile(filePath);
     file.createSync(recursive: true);
     if (contents != null) {

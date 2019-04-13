@@ -122,7 +122,7 @@ class LogicalKeyboardKey extends Diagnosticable {
   /// const LogicalKeyboardKey(0x0010000000a, debugName: kReleaseMode ? null : 'Special Key')
   /// ```
   /// {@end-tool}
-  const LogicalKeyboardKey(this.keyId, {this.debugName, this.keyLabel})
+  const LogicalKeyboardKey(this.keyId, {[this.debugName, this.keyLabel]})
       : assert(keyId != null);
 
   /// A unique code representing this key.
@@ -1739,7 +1739,7 @@ class PhysicalKeyboardKey extends Diagnosticable {
   /// const PhysicalKeyboardKey(0x0000ffff, debugName: kReleaseMode ? null : 'Special Key')
   /// ```
   /// {@end-tool}
-  const PhysicalKeyboardKey(this.usbHidUsage, {this.debugName})
+  const PhysicalKeyboardKey(this.usbHidUsage, {[this.debugName]})
       : assert(usbHidUsage != null);
 
   /// The unique USB HID usage ID of this physical key on the keyboard.

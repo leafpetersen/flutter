@@ -110,6 +110,7 @@ class ThemeData extends Diagnosticable {
   /// See <https://material.io/design/color/> for
   /// more discussion on how to pick the right colors.
   factory ThemeData({
+    [
     Brightness brightness,
     MaterialColor primarySwatch,
     Color primaryColor,
@@ -163,6 +164,7 @@ class ThemeData extends Diagnosticable {
     FloatingActionButtonThemeData floatingActionButtonTheme,
     Typography typography,
     CupertinoThemeData cupertinoOverrideTheme,
+  ]
   }) {
     brightness ??= Brightness.light;
     final bool isDark = brightness == Brightness.dark;
@@ -328,57 +330,57 @@ class ThemeData extends Diagnosticable {
     // Warning: make sure these properties are in the exact same order as in
     // operator == and in the hashValues method and in the order of fields
     // in this class, and in the lerp() method.
-    @required this.brightness,
-    @required this.primaryColor,
-    @required this.primaryColorBrightness,
-    @required this.primaryColorLight,
-    @required this.primaryColorDark,
-    @required this.canvasColor,
-    @required this.accentColor,
-    @required this.accentColorBrightness,
-    @required this.scaffoldBackgroundColor,
-    @required this.bottomAppBarColor,
-    @required this.cardColor,
-    @required this.dividerColor,
-    @required this.highlightColor,
-    @required this.splashColor,
-    @required this.splashFactory,
-    @required this.selectedRowColor,
-    @required this.unselectedWidgetColor,
-    @required this.disabledColor,
-    @required this.buttonTheme,
-    @required this.buttonColor,
-    @required this.secondaryHeaderColor,
-    @required this.textSelectionColor,
-    @required this.cursorColor,
-    @required this.textSelectionHandleColor,
-    @required this.backgroundColor,
-    @required this.dialogBackgroundColor,
-    @required this.indicatorColor,
-    @required this.hintColor,
-    @required this.errorColor,
-    @required this.toggleableActiveColor,
-    @required this.textTheme,
-    @required this.primaryTextTheme,
-    @required this.accentTextTheme,
-    @required this.inputDecorationTheme,
-    @required this.iconTheme,
-    @required this.primaryIconTheme,
-    @required this.accentIconTheme,
-    @required this.sliderTheme,
-    @required this.tabBarTheme,
-    @required this.cardTheme,
-    @required this.chipTheme,
-    @required this.platform,
-    @required this.materialTapTargetSize,
-    @required this.pageTransitionsTheme,
-    @required this.appBarTheme,
-    @required this.bottomAppBarTheme,
-    @required this.colorScheme,
-    @required this.dialogTheme,
-    @required this.floatingActionButtonTheme,
-    @required this.typography,
-    @required this.cupertinoOverrideTheme,
+     this.brightness,
+     this.primaryColor,
+     this.primaryColorBrightness,
+     this.primaryColorLight,
+     this.primaryColorDark,
+     this.canvasColor,
+     this.accentColor,
+     this.accentColorBrightness,
+     this.scaffoldBackgroundColor,
+     this.bottomAppBarColor,
+     this.cardColor,
+     this.dividerColor,
+     this.highlightColor,
+     this.splashColor,
+     this.splashFactory,
+     this.selectedRowColor,
+     this.unselectedWidgetColor,
+     this.disabledColor,
+     this.buttonTheme,
+     this.buttonColor,
+     this.secondaryHeaderColor,
+     this.textSelectionColor,
+     this.cursorColor,
+     this.textSelectionHandleColor,
+     this.backgroundColor,
+     this.dialogBackgroundColor,
+     this.indicatorColor,
+     this.hintColor,
+     this.errorColor,
+     this.toggleableActiveColor,
+     this.textTheme,
+     this.primaryTextTheme,
+     this.accentTextTheme,
+     this.inputDecorationTheme,
+     this.iconTheme,
+     this.primaryIconTheme,
+     this.accentIconTheme,
+     this.sliderTheme,
+     this.tabBarTheme,
+     this.cardTheme,
+     this.chipTheme,
+     this.platform,
+     this.materialTapTargetSize,
+     this.pageTransitionsTheme,
+     this.appBarTheme,
+     this.bottomAppBarTheme,
+     this.colorScheme,
+     this.dialogTheme,
+     this.floatingActionButtonTheme,
+     this.typography,
+     this.cupertinoOverrideTheme,
   }) : assert(brightness != null),
        assert(primaryColor != null),
        assert(primaryColorBrightness != null),
@@ -690,6 +692,7 @@ class ThemeData extends Diagnosticable {
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
   ThemeData copyWith({
+    [
     Brightness brightness,
     Color primaryColor,
     Brightness primaryColorBrightness,
@@ -741,6 +744,7 @@ class ThemeData extends Diagnosticable {
     FloatingActionButtonThemeData floatingActionButtonTheme,
     Typography typography,
     CupertinoThemeData cupertinoOverrideTheme,
+  ]
   }) {
     cupertinoOverrideTheme = cupertinoOverrideTheme?.noDefault();
     return ThemeData.raw(
@@ -1146,7 +1150,7 @@ class MaterialBasedCupertinoThemeData extends CupertinoThemeData {
   ///
   /// The [materialTheme] parameter must not be null.
   MaterialBasedCupertinoThemeData({
-    @required ThemeData materialTheme,
+     ThemeData materialTheme,
   }) : assert(materialTheme != null),
        _materialTheme = materialTheme,
        // Pass all values to the superclass so Material-agnostic properties
@@ -1188,12 +1192,14 @@ class MaterialBasedCupertinoThemeData extends CupertinoThemeData {
   /// instead.
   @override
   CupertinoThemeData copyWith({
+    [
     Brightness brightness,
     Color primaryColor,
     Color primaryContrastingColor,
     CupertinoTextThemeData textTheme,
     Color barBackgroundColor,
     Color scaffoldBackgroundColor,
+  ]
   }) {
     return _materialTheme.cupertinoOverrideTheme?.copyWith(
       brightness: brightness,

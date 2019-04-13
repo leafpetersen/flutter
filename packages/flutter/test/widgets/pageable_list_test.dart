@@ -22,9 +22,11 @@ Widget buildPage(int page) {
 }
 
 Widget buildFrame({
+  [
   bool reverse = false,
-  List<int> pages = defaultPages,
-  @required TextDirection textDirection,
+  List<int> pages = defaultPages
+  ]
+   TextDirection textDirection,
 }) {
   final PageView child = PageView(
     scrollDirection: Axis.horizontal,

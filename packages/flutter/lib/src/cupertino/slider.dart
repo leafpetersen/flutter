@@ -50,15 +50,19 @@ class CupertinoSlider extends StatefulWidget {
   /// * [onChangeEnd] is called when the user is done selecting a new value for
   ///   the slider.
   const CupertinoSlider({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.onChangeStart,
     this.onChangeEnd,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
     this.activeColor,
+  ]
   }) : assert(value != null),
        assert(min != null),
        assert(max != null),
@@ -239,6 +243,7 @@ class _CupertinoSliderState extends State<CupertinoSlider> with TickerProviderSt
 
 class _CupertinoSliderRenderObjectWidget extends LeafRenderObjectWidget {
   const _CupertinoSliderRenderObjectWidget({
+    [
     Key key,
     this.value,
     this.divisions,
@@ -247,6 +252,7 @@ class _CupertinoSliderRenderObjectWidget extends LeafRenderObjectWidget {
     this.onChangeStart,
     this.onChangeEnd,
     this.vsync,
+  ]
   }) : super(key: key);
 
   final double value;
@@ -296,14 +302,16 @@ const double _kAdjustmentUnit = 0.1; // Matches iOS implementation of material s
 
 class _RenderCupertinoSlider extends RenderConstrainedBox {
   _RenderCupertinoSlider({
-    @required double value,
+     double value,
+    [
     int divisions,
     Color activeColor,
     ValueChanged<double> onChanged,
     this.onChangeStart,
     this.onChangeEnd,
-    TickerProvider vsync,
-    @required TextDirection textDirection,
+    TickerProvider vsync
+    ]
+     TextDirection textDirection,
   }) : assert(value != null && value >= 0.0 && value <= 1.0),
        assert(textDirection != null),
        _value = value,

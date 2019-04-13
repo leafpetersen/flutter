@@ -147,10 +147,12 @@ void main() {
 }
 
 Widget _buildSliverList({
+  [
   List<int> items = const <int>[],
   ScrollController controller,
   double itemHeight = 500.0,
   double viewportHeight = 300.0,
+]
 }) {
   return Directionality(
     textDirection: TextDirection.ltr,

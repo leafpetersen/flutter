@@ -182,7 +182,7 @@ class FlutterVersion {
   static FlutterVersion get instance => context[FlutterVersion];
 
   /// Return a short string for the version (e.g. `master/0.0.59-pre.92`, `scroll_refactor/a76bc8e22b`).
-  String getVersionString({ bool redactUnknownBranches = false }) {
+  String getVersionString({ [ bool redactUnknownBranches = false ] }) {
     if (frameworkVersion != 'unknown')
       return '${getBranchName(redactUnknownBranches: redactUnknownBranches)}/$frameworkVersion';
     return '${getBranchName(redactUnknownBranches: redactUnknownBranches)}/$frameworkRevisionShort';
@@ -192,7 +192,7 @@ class FlutterVersion {
   ///
   /// If [redactUnknownBranches] is true and the branch is unknown,
   /// the branch name will be returned as `'[user-branch]'`.
-  String getBranchName({ bool redactUnknownBranches = false }) {
+  String getBranchName({ [ bool redactUnknownBranches = false ] }) {
     _branch ??= () {
       final String branch = _runGit('git rev-parse --abbrev-ref HEAD');
       return branch == 'HEAD' ? channel : branch;
@@ -209,8 +209,10 @@ class FlutterVersion {
   /// the `tentativeAncestorRevision` revision on the Flutter framework repo
   /// tree.
   bool checkRevisionAncestry({
+    [
     String tentativeDescendantRevision,
     String tentativeAncestorRevision,
+  ]
   }) {
     final ProcessResult result = processManager.runSync(
       <String>['git', 'merge-base', '--is-ancestor', tentativeAncestorRevision, tentativeDescendantRevision],
@@ -399,9 +401,11 @@ class FlutterVersion {
 @visibleForTesting
 class VersionCheckStamp {
   const VersionCheckStamp({
+    [
     this.lastTimeVersionWasChecked,
     this.lastKnownRemoteVersion,
     this.lastTimeWarningWasPrinted,
+  ]
   });
 
   final DateTime lastTimeVersionWasChecked;
@@ -449,9 +453,11 @@ class VersionCheckStamp {
   }
 
   Future<void> store({
+    [
     DateTime newTimeVersionWasChecked,
     DateTime newKnownRemoteVersion,
     DateTime newTimeWarningWasPrinted,
+  ]
   }) async {
     final Map<String, String> jsonData = toJson();
 
@@ -469,9 +475,11 @@ class VersionCheckStamp {
   }
 
   Map<String, String> toJson({
+    [
     DateTime updateTimeVersionWasChecked,
     DateTime updateKnownRemoteVersion,
     DateTime updateTimeWarningWasPrinted,
+  ]
   }) {
     updateTimeVersionWasChecked = updateTimeVersionWasChecked ?? lastTimeVersionWasChecked;
     updateKnownRemoteVersion = updateKnownRemoteVersion ?? lastKnownRemoteVersion;
@@ -511,7 +519,7 @@ class VersionCheckError implements Exception {
 ///
 /// If [lenient] is true and the command fails, returns an empty string.
 /// Otherwise, throws a [ToolExit] exception.
-String _runSync(List<String> command, { bool lenient = true }) {
+String _runSync(List<String> command, { [ bool lenient = true ] }) {
   final ProcessResult results = processManager.runSync(command, workingDirectory: Cache.flutterRoot);
 
   if (results.exitCode == 0)

@@ -107,7 +107,7 @@ abstract class GlobalKey<T extends State<StatefulWidget>> extends Key {
   ///
   /// The label is purely for debugging and not used for comparing the identity
   /// of the key.
-  factory GlobalKey({ String debugLabel }) => LabeledGlobalKey<T>(debugLabel);
+  factory GlobalKey({ [ String debugLabel ] }) => LabeledGlobalKey<T>(debugLabel);
 
   /// Creates a global key without a label.
   ///
@@ -368,7 +368,7 @@ class TypeMatcher<T> {
 @immutable
 abstract class Widget extends DiagnosticableTree {
   /// Initializes [key] for subclasses.
-  const Widget({ this.key });
+  const Widget({ [ this.key ] });
 
   /// Controls how one widget replaces another widget in the tree.
   ///
@@ -544,7 +544,7 @@ abstract class Widget extends DiagnosticableTree {
 ///    be read by descendant widgets.
 abstract class StatelessWidget extends Widget {
   /// Initializes [key] for subclasses.
-  const StatelessWidget({ Key key }) : super(key: key);
+  const StatelessWidget({ [ Key key ] }) : super(key: key);
 
   /// Creates a [StatelessElement] to manage this widget's location in the tree.
   ///
@@ -779,7 +779,7 @@ abstract class StatelessWidget extends Widget {
 ///    be read by descendant widgets.
 abstract class StatefulWidget extends Widget {
   /// Initializes [key] for subclasses.
-  const StatefulWidget({ Key key }) : super(key: key);
+  const StatefulWidget({ [ Key key ] }) : super(key: key);
 
   /// Creates a [StatefulElement] to manage this widget's location in the tree.
   ///
@@ -1335,7 +1335,7 @@ abstract class State<T extends StatefulWidget> extends Diagnosticable {
 ///  * [Widget], for an overview of widgets in general.
 abstract class ProxyWidget extends Widget {
   /// Creates a widget that has exactly one child widget.
-  const ProxyWidget({ Key key, @required this.child }) : super(key: key);
+  const ProxyWidget({ [ Key key ]  this.child }) : super(key: key);
 
   /// The widget below this widget in the tree.
   ///
@@ -1401,7 +1401,7 @@ abstract class ProxyWidget extends Widget {
 abstract class ParentDataWidget<T extends RenderObjectWidget> extends ProxyWidget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const ParentDataWidget({ Key key, Widget child })
+  const ParentDataWidget({ [ Key key, Widget child ] })
     : super(key: key, child: child);
 
   @override
@@ -1422,7 +1422,7 @@ abstract class ParentDataWidget<T extends RenderObjectWidget> extends ProxyWidge
   /// ParentDataWidget subclass. It is called when debugIsValidAncestor()
   /// returned false for an ancestor, or when there are extraneous
   /// [ParentDataWidget]s in the ancestor chain.
-  String debugDescribeInvalidAncestorChain({ String description, String ownershipChain, bool foundValidAncestor, Iterable<Widget> badAncestors }) {
+  String debugDescribeInvalidAncestorChain({ [ String description, String ownershipChain, bool foundValidAncestor, Iterable<Widget> badAncestors ] }) {
     assert(T != dynamic);
     assert(T != RenderObjectWidget);
     String result;
@@ -1549,7 +1549,7 @@ abstract class ParentDataWidget<T extends RenderObjectWidget> extends ProxyWidge
 abstract class InheritedWidget extends ProxyWidget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const InheritedWidget({ Key key, Widget child })
+  const InheritedWidget({ [ Key key, Widget child ] })
     : super(key: key, child: child);
 
   @override
@@ -1577,7 +1577,7 @@ abstract class InheritedWidget extends ProxyWidget {
 abstract class RenderObjectWidget extends Widget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const RenderObjectWidget({ Key key }) : super(key: key);
+  const RenderObjectWidget({ [ Key key ] }) : super(key: key);
 
   /// RenderObjectWidgets always inflate to a [RenderObjectElement] subclass.
   @override
@@ -1619,7 +1619,7 @@ abstract class RenderObjectWidget extends Widget {
 abstract class LeafRenderObjectWidget extends RenderObjectWidget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const LeafRenderObjectWidget({ Key key }) : super(key: key);
+  const LeafRenderObjectWidget({ [ Key key ] }) : super(key: key);
 
   @override
   LeafRenderObjectElement createElement() => LeafRenderObjectElement(this);
@@ -1631,7 +1631,7 @@ abstract class LeafRenderObjectWidget extends RenderObjectWidget {
 abstract class SingleChildRenderObjectWidget extends RenderObjectWidget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const SingleChildRenderObjectWidget({ Key key, this.child }) : super(key: key);
+  const SingleChildRenderObjectWidget({ [ Key key, this.child ] }) : super(key: key);
 
   /// The widget below this widget in the tree.
   ///
@@ -1651,7 +1651,7 @@ abstract class MultiChildRenderObjectWidget extends RenderObjectWidget {
   ///
   /// The [children] argument must not be null and must not contain any null
   /// objects.
-  MultiChildRenderObjectWidget({ Key key, this.children = const <Widget>[] })
+  MultiChildRenderObjectWidget({ [ Key key, this.children = const <Widget>[] ] })
     : assert(children != null),
       assert(!children.any((Widget child) => child == null)), // https://github.com/dart-lang/sdk/issues/29276
       super(key: key);
@@ -1881,7 +1881,7 @@ abstract class BuildContext {
   ///
   /// All of the qualifications about when [inheritFromWidgetOfExactType] can
   /// be called apply to this method as well.
-  InheritedWidget inheritFromElement(InheritedElement ancestor, { Object aspect });
+  InheritedWidget inheritFromElement(InheritedElement ancestor, { [ Object aspect ] });
 
   /// Obtains the nearest widget of the given type, which must be the type of a
   /// concrete [InheritedWidget] subclass, and registers this build context with
@@ -1922,7 +1922,7 @@ abstract class BuildContext {
   /// [InheritedWidget] subclasses that supports partial updates, like
   /// [InheritedModel]. It specifies what "aspect" of the inherited
   /// widget this context depends on.
-  InheritedWidget inheritFromWidgetOfExactType(Type targetType, { Object aspect });
+  InheritedWidget inheritFromWidgetOfExactType(Type targetType, { [ Object aspect ] });
 
   /// Obtains the element corresponding to the nearest widget of the given type,
   /// which must be the type of a concrete [InheritedWidget] subclass.
@@ -2086,7 +2086,7 @@ abstract class BuildContext {
 /// widget tree.
 class BuildOwner {
   /// Creates an object that manages widgets.
-  BuildOwner({ this.onBuildScheduled });
+  BuildOwner({ [ this.onBuildScheduled ] });
 
   /// Called on each build pass when the first buildable element is marked
   /// dirty.
@@ -3268,7 +3268,7 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
   }
 
   @override
-  InheritedWidget inheritFromElement(InheritedElement ancestor, { Object aspect }) {
+  InheritedWidget inheritFromElement(InheritedElement ancestor, { [ Object aspect ] }) {
     assert(ancestor != null);
     _dependencies ??= HashSet<InheritedElement>();
     _dependencies.add(ancestor);
@@ -3277,7 +3277,7 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
   }
 
   @override
-  InheritedWidget inheritFromWidgetOfExactType(Type targetType, { Object aspect }) {
+  InheritedWidget inheritFromWidgetOfExactType(Type targetType, { [ Object aspect ] }) {
     assert(_debugCheckStateIsActiveForAncestorLookup());
     final InheritedElement ancestor = _inheritedWidgets == null ? null : _inheritedWidgets[targetType];
     if (ancestor != null) {
@@ -3695,7 +3695,7 @@ typedef TransitionBuilder = Widget Function(BuildContext context, Widget child);
 /// See also:
 ///
 ///  * [WidgetBuilder], which is similar but only takes a [BuildContext].
-typedef ControlsWidgetBuilder = Widget Function(BuildContext context, { VoidCallback onStepContinue, VoidCallback onStepCancel });
+typedef ControlsWidgetBuilder = Widget Function(BuildContext context, { [ VoidCallback onStepContinue, VoidCallback onStepCancel ] });
 
 /// An [Element] that composes other [Element]s.
 ///
@@ -3934,7 +3934,7 @@ class StatefulElement extends ComponentElement {
   }
 
   @override
-  InheritedWidget inheritFromElement(Element ancestor, { Object aspect }) {
+  InheritedWidget inheritFromElement(Element ancestor, { [ Object aspect ] }) {
     assert(ancestor != null);
     assert(() {
       final Type targetType = ancestor.widget.runtimeType;
@@ -4548,7 +4548,7 @@ abstract class RenderObjectElement extends Element {
   /// each individual child. When calling [updateChild], this function uses the
   /// previous element as the `newSlot` argument.
   @protected
-  List<Element> updateChildren(List<Element> oldChildren, List<Widget> newWidgets, { Set<Element> forgottenChildren }) {
+  List<Element> updateChildren(List<Element> oldChildren, List<Widget> newWidgets, { [ Set<Element> forgottenChildren ] }) {
     assert(oldChildren != null);
     assert(newWidgets != null);
 
@@ -5011,7 +5011,9 @@ FlutterErrorDetails _debugReportException(
   String context,
   dynamic exception,
   StackTrace stack, {
+  [
   InformationCollector informationCollector,
+]
 }) {
   final FlutterErrorDetails details = FlutterErrorDetails(
     exception: exception,

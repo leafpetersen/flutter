@@ -39,7 +39,7 @@ class RenderSliverList extends RenderSliverMultiBoxAdaptor {
   ///
   /// The [childManager] argument must not be null.
   RenderSliverList({
-    @required RenderSliverBoxChildManager childManager,
+     RenderSliverBoxChildManager childManager,
   }) : super(childManager: childManager);
 
   @override

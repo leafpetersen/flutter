@@ -19,10 +19,12 @@ import 'package:flutter/widgets.dart';
 
 class CutCornersBorder extends OutlineInputBorder {
   const CutCornersBorder({
+    [
     BorderSide borderSide = BorderSide.none,
     BorderRadius borderRadius = const BorderRadius.all(Radius.circular(2.0)),
     this.cut = 7.0,
     double gapPadding = 2.0,
+  ]
   }) : super(
     borderSide: borderSide,
     borderRadius: borderRadius,
@@ -31,10 +33,12 @@ class CutCornersBorder extends OutlineInputBorder {
 
   @override
   CutCornersBorder copyWith({
+    [
     BorderSide borderSide,
     BorderRadius borderRadius,
     double gapPadding,
     double cut,
+  ]
   }) {
     return CutCornersBorder(
       borderSide: borderSide ?? this.borderSide,
@@ -103,10 +107,12 @@ class CutCornersBorder extends OutlineInputBorder {
   void paint(
     Canvas canvas,
     Rect rect, {
+    [
     double gapStart,
     double gapExtent = 0.0,
     double gapPercentage = 0.0,
     TextDirection textDirection,
+  ]
   }) {
     assert(gapExtent != null);
     assert(gapPercentage >= 0.0 && gapPercentage <= 1.0);

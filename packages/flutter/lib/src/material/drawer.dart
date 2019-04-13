@@ -89,10 +89,12 @@ class Drawer extends StatelessWidget {
   ///
   /// The [elevation] must be non-negative.
   const Drawer({
+    [
     Key key,
     this.elevation = 16.0,
     this.child,
     this.semanticLabel,
+  ]
   }) : assert(elevation != null && elevation >= 0.0),
        super(key: key);
 
@@ -176,11 +178,15 @@ class DrawerController extends StatefulWidget {
   ///
   /// The [child] argument must not be null and is typically a [Drawer].
   const DrawerController({
-    GlobalKey key,
-    @required this.child,
-    @required this.alignment,
+    [
+    GlobalKey key
+    ]
+     this.child,
+     this.alignment,
+    [
     this.drawerCallback,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(child != null),
        assert(dragStartBehavior != null),
        assert(alignment != null),

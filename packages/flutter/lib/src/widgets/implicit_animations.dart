@@ -34,7 +34,7 @@ class BoxConstraintsTween extends Tween<BoxConstraints> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as a tight constraint of zero size.
-  BoxConstraintsTween({ BoxConstraints begin, BoxConstraints end }) : super(begin: begin, end: end);
+  BoxConstraintsTween({ [ BoxConstraints begin, BoxConstraints end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -65,7 +65,7 @@ class DecorationTween extends Tween<Decoration> {
   /// result is always null. If [end] is not null, then its lerping logic is
   /// used (via [Decoration.lerpTo]). Otherwise, [begin]'s lerping logic is used
   /// (via [Decoration.lerpFrom]).
-  DecorationTween({ Decoration begin, Decoration end }) : super(begin: begin, end: end);
+  DecorationTween({ [ Decoration begin, Decoration end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -88,7 +88,7 @@ class EdgeInsetsTween extends Tween<EdgeInsets> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as an [EdgeInsets] with no inset.
-  EdgeInsetsTween({ EdgeInsets begin, EdgeInsets end }) : super(begin: begin, end: end);
+  EdgeInsetsTween({ [ EdgeInsets begin, EdgeInsets end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -110,7 +110,7 @@ class EdgeInsetsGeometryTween extends Tween<EdgeInsetsGeometry> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as an [EdgeInsetsGeometry] with no inset.
-  EdgeInsetsGeometryTween({ EdgeInsetsGeometry begin, EdgeInsetsGeometry end }) : super(begin: begin, end: end);
+  EdgeInsetsGeometryTween({ [ EdgeInsetsGeometry begin, EdgeInsetsGeometry end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -128,7 +128,7 @@ class BorderRadiusTween extends Tween<BorderRadius> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as a right angle (no radius).
-  BorderRadiusTween({ BorderRadius begin, BorderRadius end }) : super(begin: begin, end: end);
+  BorderRadiusTween({ [ BorderRadius begin, BorderRadius end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -146,7 +146,7 @@ class BorderTween extends Tween<Border> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as having no border.
-  BorderTween({ Border begin, Border end }) : super(begin: begin, end: end);
+  BorderTween({ [ Border begin, Border end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -167,7 +167,7 @@ class Matrix4Tween extends Tween<Matrix4> {
   /// The [begin] and [end] properties must be non-null before the tween is
   /// first used, but the arguments can be null if the values are going to be
   /// filled in later.
-  Matrix4Tween({ Matrix4 begin, Matrix4 end }) : super(begin: begin, end: end);
+  Matrix4Tween({ [ Matrix4 begin, Matrix4 end ] }) : super(begin: begin, end: end);
 
   @override
   Matrix4 lerp(double t) {
@@ -205,7 +205,7 @@ class TextStyleTween extends Tween<TextStyle> {
   /// The [begin] and [end] properties must be non-null before the tween is
   /// first used, but the arguments can be null if the values are going to be
   /// filled in later.
-  TextStyleTween({ TextStyle begin, TextStyle end }) : super(begin: begin, end: end);
+  TextStyleTween({ [ TextStyle begin, TextStyle end ] }) : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
   @override
@@ -224,9 +224,11 @@ abstract class ImplicitlyAnimatedWidget extends StatefulWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   const ImplicitlyAnimatedWidget({
+    [
     Key key,
-    this.curve = Curves.linear,
-    @required this.duration,
+    this.curve = Curves.linear
+    ]
+     this.duration,
   }) : assert(curve != null),
        assert(duration != null),
        super(key: key);
@@ -475,6 +477,7 @@ class AnimatedContainer extends ImplicitlyAnimatedWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   AnimatedContainer({
+    [
     Key key,
     this.alignment,
     this.padding,
@@ -487,8 +490,9 @@ class AnimatedContainer extends ImplicitlyAnimatedWidget {
     this.margin,
     this.transform,
     this.child,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(margin == null || margin.isNonNegative),
        assert(padding == null || padding.isNonNegative),
        assert(decoration == null || decoration.debugAssertIsValid()),
@@ -640,11 +644,15 @@ class AnimatedPadding extends ImplicitlyAnimatedWidget {
   ///
   /// The [padding], [curve], and [duration] arguments must not be null.
   AnimatedPadding({
-    Key key,
-    @required this.padding,
+    [
+    Key key
+    ]
+     this.padding,
+    [
     this.child,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(padding != null),
        assert(padding.isNonNegative),
        super(key: key, curve: curve, duration: duration);
@@ -711,11 +719,15 @@ class AnimatedAlign extends ImplicitlyAnimatedWidget {
   ///
   /// The [alignment], [curve], and [duration] arguments must not be null.
   const AnimatedAlign({
-    Key key,
-    @required this.alignment,
+    [
+    Key key
+    ]
+     this.alignment,
+    [
     this.child,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(alignment != null),
        super(key: key, curve: curve, duration: duration);
 
@@ -806,16 +818,20 @@ class AnimatedPositioned extends ImplicitlyAnimatedWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   const AnimatedPositioned({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
+    [
     this.left,
     this.top,
     this.right,
     this.bottom,
     this.width,
     this.height,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(left == null || right == null || width == null),
        assert(top == null || bottom == null || height == null),
        super(key: key, curve: curve, duration: duration);
@@ -824,11 +840,13 @@ class AnimatedPositioned extends ImplicitlyAnimatedWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   AnimatedPositioned.fromRect({
+    [
     Key key,
     this.child,
     Rect rect,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : left = rect.left,
        top = rect.top,
        width = rect.width,
@@ -957,16 +975,20 @@ class AnimatedPositionedDirectional extends ImplicitlyAnimatedWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   const AnimatedPositionedDirectional({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
+    [
     this.start,
     this.top,
     this.end,
     this.bottom,
     this.width,
     this.height,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(start == null || end == null || width == null),
        assert(top == null || bottom == null || height == null),
        super(key: key, curve: curve, duration: duration);
@@ -1116,11 +1138,15 @@ class AnimatedOpacity extends ImplicitlyAnimatedWidget {
   /// The [opacity] argument must not be null and must be between 0.0 and 1.0,
   /// inclusive. The [curve] and [duration] arguments must not be null.
   const AnimatedOpacity({
+    [
     Key key,
-    this.child,
-    @required this.opacity,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    this.child
+    ]
+     this.opacity,
+    [
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(opacity != null && opacity >= 0.0 && opacity <= 1.0),
        super(key: key, curve: curve, duration: duration);
 
@@ -1187,15 +1213,19 @@ class AnimatedDefaultTextStyle extends ImplicitlyAnimatedWidget {
   /// The [child], [style], [softWrap], [overflow], [curve], and [duration]
   /// arguments must not be null.
   const AnimatedDefaultTextStyle({
-    Key key,
-    @required this.child,
-    @required this.style,
+    [
+    Key key
+    ]
+     this.child,
+     this.style,
+    [
     this.textAlign,
     this.softWrap = true,
     this.overflow = TextOverflow.clip,
     this.maxLines,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(style != null),
        assert(child != null),
        assert(softWrap != null),
@@ -1299,18 +1329,26 @@ class AnimatedPhysicalModel extends ImplicitlyAnimatedWidget {
   ///
   /// Animating [shadowColor] is optional and is controlled by the [animateShadowColor] flag.
   const AnimatedPhysicalModel({
-    Key key,
-    @required this.child,
-    @required this.shape,
+    [
+    Key key
+    ]
+     this.child,
+     this.shape,
+    [
     this.clipBehavior = Clip.none,
-    this.borderRadius = BorderRadius.zero,
-    @required this.elevation,
-    @required this.color,
-    this.animateColor = true,
-    @required this.shadowColor,
+    this.borderRadius = BorderRadius.zero
+    ]
+     this.elevation,
+     this.color,
+    [
+    this.animateColor = true
+    ]
+     this.shadowColor,
+    [
     this.animateShadowColor = true,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(child != null),
        assert(shape != null),
        assert(clipBehavior != null),

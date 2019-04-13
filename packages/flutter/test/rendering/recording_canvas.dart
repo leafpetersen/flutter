@@ -10,7 +10,7 @@ import 'package:flutter/rendering.dart';
 /// Used by [TestRecordingCanvas] to trace canvas calls.
 class RecordedInvocation {
   /// Create a record for an invocation list.
-  const RecordedInvocation(this.invocation, { this.stack });
+  const RecordedInvocation(this.invocation, { [ this.stack ] });
 
   /// The method that was called and its arguments.
   ///
@@ -28,7 +28,7 @@ class RecordedInvocation {
   String toString() => _describeInvocation(invocation);
 
   /// Converts [stack] to a string using the [FlutterError.defaultStackFilter] logic.
-  String stackToString({ String indent = '' }) {
+  String stackToString({ [ String indent = '' ] }) {
     assert(indent != null);
     return indent + FlutterError.defaultStackFilter(
       stack.toString().trimRight().split('\n')
@@ -103,18 +103,18 @@ class TestRecordingPaintingContext extends ClipContext implements PaintingContex
   }
 
   @override
-  void pushClipRect(bool needsCompositing, Offset offset, Rect clipRect, PaintingContextCallback painter, { Clip clipBehavior = Clip.hardEdge }) {
+  void pushClipRect(bool needsCompositing, Offset offset, Rect clipRect, PaintingContextCallback painter, { [ Clip clipBehavior = Clip.hardEdge ] }) {
     clipRectAndPaint(clipRect.shift(offset), clipBehavior, clipRect.shift(offset), () => painter(this, offset));
   }
 
   @override
-  void pushClipRRect(bool needsCompositing, Offset offset, Rect bounds, RRect clipRRect, PaintingContextCallback painter, { Clip clipBehavior = Clip.antiAlias }) {
+  void pushClipRRect(bool needsCompositing, Offset offset, Rect bounds, RRect clipRRect, PaintingContextCallback painter, { [ Clip clipBehavior = Clip.antiAlias ] }) {
     assert(clipBehavior != null);
     clipRRectAndPaint(clipRRect.shift(offset), clipBehavior, bounds.shift(offset), () => painter(this, offset));
   }
 
   @override
-  void pushClipPath(bool needsCompositing, Offset offset, Rect bounds, Path clipPath, PaintingContextCallback painter, { Clip clipBehavior = Clip.antiAlias }) {
+  void pushClipPath(bool needsCompositing, Offset offset, Rect bounds, Path clipPath, PaintingContextCallback painter, { [ Clip clipBehavior = Clip.antiAlias ] }) {
     clipPathAndPaint(clipPath.shift(offset), clipBehavior, bounds.shift(offset), () => painter(this, offset));
   }
 
@@ -134,7 +134,7 @@ class TestRecordingPaintingContext extends ClipContext implements PaintingContex
   }
 
   @override
-  void pushLayer(Layer childLayer, PaintingContextCallback painter, Offset offset, { Rect childPaintBounds }) {
+  void pushLayer(Layer childLayer, PaintingContextCallback painter, Offset offset, { [ Rect childPaintBounds ] }) {
     painter(this, offset);
   }
 

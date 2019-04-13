@@ -31,6 +31,7 @@ void printProgress(String action, String workingDir, String command) {
 }
 
 Stream<String> runAndGetStdout(String executable, List<String> arguments, {
+  [
   String workingDirectory,
   Map<String, String> environment,
   bool expectNonZeroExit = false,
@@ -38,6 +39,7 @@ Stream<String> runAndGetStdout(String executable, List<String> arguments, {
   String failureMessage,
   Duration timeout = _kLongTimeout,
   Function beforeExit,
+]
 }) async* {
   final String commandDescription = '${path.relative(executable, from: workingDirectory)} ${arguments.join(' ')}';
   final String relativeWorkingDir = path.relative(workingDirectory);
@@ -78,6 +80,7 @@ Stream<String> runAndGetStdout(String executable, List<String> arguments, {
 }
 
 Future<void> runCommand(String executable, List<String> arguments, {
+  [
   String workingDirectory,
   Map<String, String> environment,
   bool expectNonZeroExit = false,
@@ -86,6 +89,7 @@ Future<void> runCommand(String executable, List<String> arguments, {
   bool printOutput = true,
   bool skip = false,
   Duration timeout = _kLongTimeout,
+]
 }) async {
   final String commandDescription = '${path.relative(executable, from: workingDirectory)} ${arguments.join(' ')}';
   final String relativeWorkingDir = path.relative(workingDirectory);

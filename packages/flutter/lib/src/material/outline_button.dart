@@ -58,8 +58,11 @@ class OutlineButton extends MaterialButton {
   /// The [highlightElevation] argument must be null or a positive value
   /// and the [clipBehavior] argument must not be null.
   const OutlineButton({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ButtonTextTheme textTheme,
     Color textColor,
     Color disabledTextColor,
@@ -74,6 +77,7 @@ class OutlineButton extends MaterialButton {
     ShapeBorder shape,
     Clip clipBehavior = Clip.none,
     Widget child,
+  ]
   }) : assert(highlightElevation == null || highlightElevation >= 0.0),
        super(
          key: key,
@@ -100,8 +104,11 @@ class OutlineButton extends MaterialButton {
   /// The [highlightElevation] argument must be null or a positive value. The
   /// [icon], [label], and [clipBehavior] arguments must not be null.
   factory OutlineButton.icon({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ButtonTextTheme textTheme,
     Color textColor,
     Color disabledTextColor,
@@ -114,9 +121,10 @@ class OutlineButton extends MaterialButton {
     BorderSide borderSide,
     EdgeInsetsGeometry padding,
     ShapeBorder shape,
-    Clip clipBehavior,
-    @required Widget icon,
-    @required Widget label,
+    Clip clipBehavior
+    ]
+     Widget icon,
+     Widget label,
   }) = _OutlineButtonWithIcon;
 
   /// The outline border's color when the button is [enabled] and pressed.
@@ -189,8 +197,11 @@ class OutlineButton extends MaterialButton {
 // a distinct class for the sake of ButtonTheme. It can not be instantiated.
 class _OutlineButtonWithIcon extends OutlineButton with MaterialButtonWithIconMixin {
   _OutlineButtonWithIcon({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ButtonTextTheme textTheme,
     Color textColor,
     Color disabledTextColor,
@@ -203,9 +214,10 @@ class _OutlineButtonWithIcon extends OutlineButton with MaterialButtonWithIconMi
     BorderSide borderSide,
     EdgeInsetsGeometry padding,
     ShapeBorder shape,
-    Clip clipBehavior,
-    @required Widget icon,
-    @required Widget label,
+    Clip clipBehavior
+    ]
+     Widget icon,
+     Widget label,
   }) : assert(highlightElevation == null || highlightElevation >= 0.0),
        assert(icon != null),
        assert(label != null),
@@ -238,23 +250,31 @@ class _OutlineButtonWithIcon extends OutlineButton with MaterialButtonWithIconMi
 
 class _OutlineButton extends StatefulWidget {
   const _OutlineButton({
-    Key key,
-    @required this.onPressed,
+    [
+    Key key
+    ]
+     this.onPressed,
+    [
     this.brightness,
     this.textTheme,
     this.textColor,
     this.disabledTextColor,
     this.color,
     this.highlightColor,
-    this.splashColor,
-    @required this.highlightElevation,
+    this.splashColor
+    ]
+     this.highlightElevation,
+    [
     this.borderSide,
-    this.disabledBorderColor,
-    @required this.highlightedBorderColor,
+    this.disabledBorderColor
+    ]
+     this.highlightedBorderColor,
+    [
     this.padding,
     this.shape,
     this.clipBehavior,
     this.child,
+  ]
   }) : assert(highlightElevation != null && highlightElevation >= 0.0),
        assert(highlightedBorderColor != null),
        super(key: key);
@@ -416,8 +436,8 @@ class _OutlineButtonState extends State<_OutlineButton> with SingleTickerProvide
 // border parameters and the button or buttonTheme's shape.
 class _OutlineBorder extends ShapeBorder {
   const _OutlineBorder({
-    @required this.shape,
-    @required this.side,
+     this.shape,
+     this.side,
   }) : assert(shape != null),
        assert(side != null);
 
@@ -462,17 +482,17 @@ class _OutlineBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     return shape.getInnerPath(rect.deflate(side.width), textDirection: textDirection);
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return shape.getOuterPath(rect, textDirection: textDirection);
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;

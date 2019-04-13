@@ -165,6 +165,7 @@ class Material extends StatefulWidget {
   /// [MaterialType.circle]. In both cases, these restrictions are intended to
   /// catch likely errors.
   const Material({
+    [
     Key key,
     this.type = MaterialType.canvas,
     this.elevation = 0.0,
@@ -177,6 +178,7 @@ class Material extends StatefulWidget {
     this.clipBehavior = Clip.none,
     this.animationDuration = kThemeChangeDuration,
     this.child,
+  ]
   }) : assert(type != null),
        assert(elevation != null && elevation >= 0.0),
        assert(shadowColor != null),
@@ -398,10 +400,10 @@ class _MaterialState extends State<Material> with TickerProviderStateMixin {
   }
 
   static Widget _transparentInterior({
-    @required BuildContext context,
-    @required ShapeBorder shape,
-    @required Clip clipBehavior,
-    @required Widget contents,
+     BuildContext context,
+     ShapeBorder shape,
+     Clip clipBehavior,
+     Widget contents,
   }) {
     final _ShapeBorderPaint child = _ShapeBorderPaint(
       child: contents,
@@ -452,9 +454,13 @@ class _MaterialState extends State<Material> with TickerProviderStateMixin {
 
 class _RenderInkFeatures extends RenderProxyBox implements MaterialInkController {
   _RenderInkFeatures({
-    RenderBox child,
-    @required this.vsync,
+    [
+    RenderBox child
+    ]
+     this.vsync,
+    [
     this.color,
+  ]
   }) : assert(vsync != null),
        super(child);
 
@@ -513,10 +519,14 @@ class _RenderInkFeatures extends RenderProxyBox implements MaterialInkController
 
 class _InkFeatures extends SingleChildRenderObjectWidget {
   const _InkFeatures({
+    [
     Key key,
-    this.color,
-    @required this.vsync,
+    this.color
+    ]
+     this.vsync,
+    [
     Widget child,
+  ]
   }) : super(key: key, child: child);
 
   // This widget must be owned by a MaterialState, which must be provided as the vsync.
@@ -549,9 +559,11 @@ class _InkFeatures extends SingleChildRenderObjectWidget {
 abstract class InkFeature {
   /// Initializes fields for subclasses.
   InkFeature({
-    @required MaterialInkController controller,
-    @required this.referenceBox,
+     MaterialInkController controller,
+     this.referenceBox,
+    [
     this.onRemoved,
+  ]
   }) : assert(controller != null),
        assert(referenceBox != null),
        _controller = controller;
@@ -619,7 +631,7 @@ class ShapeBorderTween extends Tween<ShapeBorder> {
   ///
   /// the [begin] and [end] properties may be null; see [ShapeBorder.lerp] for
   /// the null handling semantics.
-  ShapeBorderTween({ShapeBorder begin, ShapeBorder end}) : super(begin: begin, end: end);
+  ShapeBorderTween({[ShapeBorder begin, ShapeBorder end]}) : super(begin: begin, end: end);
 
   /// Returns the value this tween has at the given animation clock value.
   @override
@@ -633,16 +645,22 @@ class ShapeBorderTween extends Tween<ShapeBorder> {
 /// Animates [elevation], [shadowColor], and [shape].
 class _MaterialInterior extends ImplicitlyAnimatedWidget {
   const _MaterialInterior({
-    Key key,
-    @required this.child,
-    @required this.shape,
+    [
+    Key key
+    ]
+     this.child,
+     this.shape,
+    [
     this.borderOnForeground = true,
-    this.clipBehavior = Clip.none,
-    @required this.elevation,
-    @required this.color,
-    @required this.shadowColor,
-    Curve curve = Curves.linear,
-    @required Duration duration,
+    this.clipBehavior = Clip.none
+    ]
+     this.elevation,
+     this.color,
+     this.shadowColor,
+    [
+    Curve curve = Curves.linear
+    ]
+     Duration duration,
   }) : assert(child != null),
        assert(shape != null),
        assert(clipBehavior != null),
@@ -731,9 +749,11 @@ class _MaterialInteriorState extends AnimatedWidgetBaseState<_MaterialInterior> 
 
 class _ShapeBorderPaint extends StatelessWidget {
   const _ShapeBorderPaint({
-    @required this.child,
-    @required this.shape,
+     this.child,
+     this.shape,
+    [
     this.borderOnForeground = true,
+  ]
   });
 
   final Widget child;

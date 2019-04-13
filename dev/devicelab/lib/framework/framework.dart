@@ -176,7 +176,7 @@ class _TaskRunner {
 /// A result of running a single task.
 class TaskResult {
   /// Constructs a successful result.
-  TaskResult.success(this.data, {this.benchmarkScoreKeys = const <String>[]})
+  TaskResult.success(this.data, {[this.benchmarkScoreKeys = const <String>[]]})
       : succeeded = true,
         message = 'success' {
     const JsonEncoder prettyJson = JsonEncoder.withIndent('  ');
@@ -195,7 +195,7 @@ class TaskResult {
 
   /// Constructs a successful result using JSON data stored in a file.
   factory TaskResult.successFromFile(File file,
-      {List<String> benchmarkScoreKeys}) {
+      {[List<String> benchmarkScoreKeys]}) {
     return TaskResult.success(json.decode(file.readAsStringSync()),
         benchmarkScoreKeys: benchmarkScoreKeys);
   }

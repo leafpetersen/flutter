@@ -54,12 +54,16 @@ class ReorderableListView extends StatefulWidget {
 
   /// Creates a reorderable list.
   ReorderableListView({
-    this.header,
-    @required this.children,
-    @required this.onReorder,
+    [
+    this.header
+    ]
+     this.children,
+     this.onReorder,
+    [
     this.scrollDirection = Axis.vertical,
     this.padding,
     this.reverse = false,
+  ]
   }) : assert(scrollDirection != null),
        assert(onReorder != null),
        assert(children != null),
@@ -157,12 +161,12 @@ class _ReorderableListViewState extends State<ReorderableListView> {
 // ReorderableListView.
 class _ReorderableListContent extends StatefulWidget {
   const _ReorderableListContent({
-    @required this.header,
-    @required this.children,
-    @required this.scrollDirection,
-    @required this.padding,
-    @required this.onReorder,
-    @required this.reverse,
+     this.header,
+     this.children,
+     this.scrollDirection,
+     this.padding,
+     this.onReorder,
+     this.reverse,
   });
 
   final Widget header;
@@ -328,7 +332,7 @@ class _ReorderableListContentState extends State<_ReorderableListContent> with T
 
   // Wraps children in Row or Column, so that the children flow in
   // the widget's scrollDirection.
-  Widget _buildContainerForScrollDirection({ List<Widget> children }) {
+  Widget _buildContainerForScrollDirection({ [ List<Widget> children ] }) {
     switch (widget.scrollDirection) {
       case Axis.horizontal:
         return Row(children: children);

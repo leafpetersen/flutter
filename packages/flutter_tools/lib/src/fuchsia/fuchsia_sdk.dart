@@ -67,7 +67,7 @@ class FuchsiaSdk {
 /// Fuchsia-specific artifacts used to interact with a device.
 class FuchsiaArtifacts {
   /// Creates a new [FuchsiaArtifacts].
-  FuchsiaArtifacts({this.sshConfig, this.devFinder});
+  FuchsiaArtifacts({[this.sshConfig, this.devFinder]});
 
   /// The location of the SSH configuration file used to interact with a
   /// Fuchsia device.

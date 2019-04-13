@@ -19,11 +19,13 @@ const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 
 class Photo {
   Photo({
+    [
     this.assetName,
     this.assetPackage,
     this.title,
     this.caption,
     this.isFavorite = false,
+  ]
   });
 
   final String assetName;
@@ -38,7 +40,7 @@ class Photo {
 }
 
 class GridPhotoViewer extends StatefulWidget {
-  const GridPhotoViewer({ Key key, this.photo }) : super(key: key);
+  const GridPhotoViewer({ [ Key key, this.photo ] }) : super(key: key);
 
   final Photo photo;
 
@@ -152,10 +154,12 @@ class _GridPhotoViewerState extends State<GridPhotoViewer> with SingleTickerProv
 
 class GridDemoPhotoItem extends StatelessWidget {
   GridDemoPhotoItem({
-    Key key,
-    @required this.photo,
-    @required this.tileStyle,
-    @required this.onBannerTap,
+    [
+    Key key
+    ]
+     this.photo,
+     this.tileStyle,
+     this.onBannerTap,
   }) : assert(photo != null && photo.isValid),
        assert(tileStyle != null),
        assert(onBannerTap != null),
@@ -243,7 +247,7 @@ class GridDemoPhotoItem extends StatelessWidget {
 }
 
 class GridListDemo extends StatefulWidget {
-  const GridListDemo({ Key key }) : super(key: key);
+  const GridListDemo({ [ Key key ] }) : super(key: key);
 
   static const String routeName = '/material/grid-list';
 

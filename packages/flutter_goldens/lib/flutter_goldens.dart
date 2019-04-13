@@ -39,7 +39,9 @@ class FlutterGoldenFileComparator implements GoldenFileComparator {
   @visibleForTesting
   FlutterGoldenFileComparator(
     this.basedir, {
+    [
     this.fs = const LocalFileSystem(),
+  ]
   });
 
   /// The directory to which golden file URIs will be resolved in [compare] and [update].
@@ -58,8 +60,10 @@ class FlutterGoldenFileComparator implements GoldenFileComparator {
   /// The [goldens] and [defaultComparator] parameters are visible for testing
   /// purposes only.
   static Future<FlutterGoldenFileComparator> fromDefaultComparator({
+    [
     GoldensClient goldens,
     LocalFileComparator defaultComparator,
+  ]
   }) async {
     defaultComparator ??= goldenFileComparator;
 

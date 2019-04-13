@@ -8,11 +8,13 @@ import '../../gallery/demo.dart';
 
 class NavigationIconView {
   NavigationIconView({
+    [
     Widget icon,
     Widget activeIcon,
     String title,
     Color color,
     TickerProvider vsync,
+  ]
   }) : _icon = icon,
        _color = color,
        _title = title,

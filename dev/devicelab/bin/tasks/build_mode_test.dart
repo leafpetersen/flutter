@@ -58,7 +58,7 @@ void main() {
     final Device device = await devices.workingDevice;
     await device.unlock();
     final Directory appDir = dir(path.join(flutterDirectory.path, 'dev/integration_tests/ui'));
-    Future<void> checkMode(String mode, {bool releaseExpected = false, bool dynamic = false}) async {
+    Future<void> checkMode(String mode, {[bool releaseExpected = false, bool dynamic = false]}) async {
       await inDirectory(appDir, () async {
         print('run: starting $mode test...');
         final List<String> args = <String>['--$mode']..addAll(dynamic ? <String>['--dynamic'] : const <String>[]);

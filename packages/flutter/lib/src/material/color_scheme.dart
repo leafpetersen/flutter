@@ -19,19 +19,19 @@ import 'theme_data.dart';
 class ColorScheme extends Diagnosticable {
   /// Create a ColorScheme instance.
   const ColorScheme({
-    @required this.primary,
-    @required this.primaryVariant,
-    @required this.secondary,
-    @required this.secondaryVariant,
-    @required this.surface,
-    @required this.background,
-    @required this.error,
-    @required this.onPrimary,
-    @required this.onSecondary,
-    @required this.onSurface,
-    @required this.onBackground,
-    @required this.onError,
-    @required this.brightness,
+     this.primary,
+     this.primaryVariant,
+     this.secondary,
+     this.secondaryVariant,
+     this.surface,
+     this.background,
+     this.error,
+     this.onPrimary,
+     this.onSecondary,
+     this.onSurface,
+     this.onBackground,
+     this.onError,
+     this.brightness,
   }) : assert(primary != null),
        assert(primaryVariant != null),
        assert(secondary != null),
@@ -49,6 +49,7 @@ class ColorScheme extends Diagnosticable {
   /// Create a ColorScheme based on a purple primary color that matches the
   /// [baseline Material color scheme](https://material.io/design/color/the-color-system.html#color-theme-creation).
   const ColorScheme.light({
+    [
     this.primary = const Color(0xff6200ee),
     this.primaryVariant = const Color(0xff3700b3),
     this.secondary = const Color(0xff03dac6),
@@ -62,6 +63,7 @@ class ColorScheme extends Diagnosticable {
     this.onBackground = Colors.black,
     this.onError = Colors.white,
     this.brightness = Brightness.light,
+  ]
   }) : assert(primary != null),
        assert(primaryVariant != null),
        assert(secondary != null),
@@ -79,6 +81,7 @@ class ColorScheme extends Diagnosticable {
   /// Create dark version of the
   /// [baseline Material color scheme](https://material.io/design/color/the-color-system.html#color-theme-creation).
   const ColorScheme.dark({
+    [
     this.primary = const Color(0xffbb86fc),
     this.primaryVariant = const Color(0xff4b01d0),
     this.secondary = const Color(0xff03dac6),
@@ -92,6 +95,7 @@ class ColorScheme extends Diagnosticable {
     this.onBackground = Colors.white,
     this.onError = Colors.black,
     this.brightness = Brightness.dark,
+  ]
   }) : assert(primary != null),
        assert(primaryVariant != null),
        assert(secondary != null),
@@ -111,6 +115,7 @@ class ColorScheme extends Diagnosticable {
   /// This constructor is used by [ThemeData] to create its default
   /// color scheme.
   factory ColorScheme.fromSwatch({
+    [
     MaterialColor primarySwatch = Colors.blue,
     Color primaryColorDark,
     Color accentColor,
@@ -118,6 +123,7 @@ class ColorScheme extends Diagnosticable {
     Color backgroundColor,
     Color errorColor,
     Brightness brightness = Brightness.light,
+  ]
   }) {
     assert(primarySwatch != null);
     assert(brightness != null);
@@ -210,6 +216,7 @@ class ColorScheme extends Diagnosticable {
   /// Creates a copy of this color scheme with the given fields
   /// replaced by the non-null parameter values.
   ColorScheme copyWith({
+    [
     Color primary,
     Color primaryVariant,
     Color secondary,
@@ -223,6 +230,7 @@ class ColorScheme extends Diagnosticable {
     Color onBackground,
     Color onError,
     Brightness brightness,
+  ]
   }) {
     return ColorScheme(
       primary: primary ?? this.primary,

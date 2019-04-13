@@ -40,6 +40,7 @@ class ListTileTheme extends InheritedWidget {
   /// Creates a list tile theme that controls the color and style parameters for
   /// [ListTile]s.
   const ListTileTheme({
+    [
     Key key,
     this.dense = false,
     this.style = ListTileStyle.list,
@@ -48,6 +49,7 @@ class ListTileTheme extends InheritedWidget {
     this.textColor,
     this.contentPadding,
     Widget child,
+  ]
   }) : super(key: key, child: child);
 
   /// Creates a list tile theme that controls the color and style parameters for
@@ -55,14 +57,16 @@ class ListTileTheme extends InheritedWidget {
   ///
   /// The [child] argument must not be null.
   static Widget merge({
+    [
     Key key,
     bool dense,
     ListTileStyle style,
     Color selectedColor,
     Color iconColor,
     Color textColor,
-    EdgeInsetsGeometry contentPadding,
-    @required Widget child,
+    EdgeInsetsGeometry contentPadding
+    ]
+     Widget child,
   }) {
     assert(child != null);
     return Builder(
@@ -610,6 +614,7 @@ class ListTile extends StatelessWidget {
   ///
   /// Requires one of its ancestors to be a [Material] widget.
   const ListTile({
+    [
     Key key,
     this.leading,
     this.title,
@@ -622,6 +627,7 @@ class ListTile extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.selected = false,
+  ]
   }) : assert(isThreeLine != null),
        assert(enabled != null),
        assert(selected != null),
@@ -714,7 +720,7 @@ class ListTile extends StatelessWidget {
   /// See also:
   ///
   ///  * [Divider], which you can use to obtain this effect manually.
-  static Iterable<Widget> divideTiles({ BuildContext context, @required Iterable<Widget> tiles, Color color }) sync* {
+  static Iterable<Widget> divideTiles({ [ BuildContext context ]  Iterable<Widget> tiles, [ Color color ] }) sync* {
     assert(tiles != null);
     assert(color != null || context != null);
 
@@ -900,16 +906,20 @@ enum _ListTileSlot {
 
 class _ListTile extends RenderObjectWidget {
   const _ListTile({
+    [
     Key key,
     this.leading,
     this.title,
     this.subtitle,
-    this.trailing,
-    @required this.isThreeLine,
-    @required this.isDense,
-    @required this.textDirection,
-    @required this.titleBaselineType,
+    this.trailing
+    ]
+     this.isThreeLine,
+     this.isDense,
+     this.textDirection,
+     this.titleBaselineType,
+    [
     this.subtitleBaselineType,
+  ]
   }) : assert(isThreeLine != null),
        assert(isDense != null),
        assert(textDirection != null),
@@ -1066,11 +1076,13 @@ class _ListTileElement extends RenderObjectElement {
 
 class _RenderListTile extends RenderBox {
   _RenderListTile({
-    @required bool isDense,
-    @required bool isThreeLine,
-    @required TextDirection textDirection,
-    @required TextBaseline titleBaselineType,
+     bool isDense,
+     bool isThreeLine,
+     TextDirection textDirection,
+     TextBaseline titleBaselineType,
+    [
     TextBaseline subtitleBaselineType,
+  ]
   }) : assert(isDense != null),
        assert(isThreeLine != null),
        assert(textDirection != null),
@@ -1460,7 +1472,7 @@ class _RenderListTile extends RenderBox {
   bool hitTestSelf(Offset position) => true;
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required Offset position }) {
+  bool hitTestChildren(HitTestResult result, {  Offset position }) {
     assert(position != null);
     for (RenderBox child in _children) {
       final BoxParentData parentData = child.parentData;

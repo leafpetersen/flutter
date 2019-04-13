@@ -10,14 +10,20 @@ import 'transformations_demo_inertial_motion.dart';
 @immutable
 class GestureTransformable extends StatefulWidget {
   const GestureTransformable({
-    Key key,
+    [
+    Key key
     // The child to perform the transformations on.
-    @required this.child,
+    ]
+    // The child to perform the transformations on.
+     this.child,
     // The desired visible size of the widget and the area that is receptive to
     // gestures. If a widget that's as big as possible is desired, then wrap
     // this in a LayoutBuilder and pass
     // `Size(constraints.maxWidth, constraints.maxHeight)`.
-    @required this.size,
+     this.size,
+    // The scale will be clamped to between these values. A maxScale of null has
+    // no bounds. minScale must be greater than zero.
+    [
     // The scale will be clamped to between these values. A maxScale of null has
     // no bounds. minScale must be greater than zero.
     this.maxScale = 2.5,
@@ -67,6 +73,7 @@ class GestureTransformable extends StatefulWidget {
     this.onScaleStart,
     this.onScaleUpdate,
     this.onScaleEnd,
+  ]
   }) : assert(child != null),
        assert(size != null),
        assert(minScale != null),

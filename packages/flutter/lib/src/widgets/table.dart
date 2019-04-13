@@ -32,7 +32,7 @@ export 'package:flutter/rendering.dart' show
 @immutable
 class TableRow {
   /// Creates a row in a [Table].
-  const TableRow({ this.key, this.decoration, this.children });
+  const TableRow({ [ this.key, this.decoration, this.children ] });
 
   /// An identifier for the row.
   final LocalKey key;
@@ -72,7 +72,7 @@ class TableRow {
 }
 
 class _TableElementRow {
-  const _TableElementRow({ this.key, this.children });
+  const _TableElementRow({ [ this.key, this.children ] });
   final LocalKey key;
   final List<Element> children;
 }
@@ -96,6 +96,7 @@ class Table extends RenderObjectWidget {
   /// The [children], [defaultColumnWidth], and [defaultVerticalAlignment]
   /// arguments must not be null.
   Table({
+    [
     Key key,
     this.children = const <TableRow>[],
     this.columnWidths,
@@ -104,6 +105,7 @@ class Table extends RenderObjectWidget {
     this.border,
     this.defaultVerticalAlignment = TableCellVerticalAlignment.top,
     this.textBaseline,
+  ]
   }) : assert(children != null),
        assert(defaultColumnWidth != null),
        assert(defaultVerticalAlignment != null),
@@ -375,9 +377,11 @@ class _TableElement extends RenderObjectElement {
 class TableCell extends ParentDataWidget<Table> {
   /// Creates a widget that controls how a child of a [Table] is aligned.
   const TableCell({
+    [
     Key key,
-    this.verticalAlignment,
-    @required Widget child,
+    this.verticalAlignment
+    ]
+     Widget child,
   }) : super(key: key, child: child);
 
   /// How this cell is aligned vertically.

@@ -472,7 +472,7 @@ Iterable<String> libraryRefs() sync* {
   yield 'platform_integration/ios.dart';
 }
 
-void printStream(Stream<List<int>> stream, { String prefix = '', List<Pattern> filter = const <Pattern>[] }) {
+void printStream(Stream<List<int>> stream, { [ String prefix = '', List<Pattern> filter = const <Pattern>[] ] }) {
   assert(prefix != null);
   assert(filter != null);
   stream

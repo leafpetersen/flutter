@@ -203,10 +203,12 @@ class MatrixUtils {
   /// almost always possible to end up seeing the inner side of the cylinder
   /// or the back side of the transformed plane before π / 2 when perspective > 0.
   static Matrix4 createCylindricalProjectionTransform({
-    @required double radius,
-    @required double angle,
+     double radius,
+     double angle,
+    [
     double perspective = 0.001,
     Axis orientation = Axis.vertical,
+  ]
   }) {
     assert(radius != null);
     assert(angle != null);
@@ -268,9 +270,11 @@ class TransformProperty extends DiagnosticsProperty<Matrix4> {
   TransformProperty(
     String name,
     Matrix4 value, {
+    [
     bool showName = true,
     Object defaultValue = kNoDefaultValue,
     DiagnosticLevel level = DiagnosticLevel.info,
+  ]
   }) : assert(showName != null),
        assert(level != null),
        super(
@@ -282,7 +286,7 @@ class TransformProperty extends DiagnosticsProperty<Matrix4> {
        );
 
   @override
-  String valueToString({ TextTreeConfiguration parentConfiguration }) {
+  String valueToString({ [ TextTreeConfiguration parentConfiguration ] }) {
     if (parentConfiguration != null && !parentConfiguration.lineBreakProperties) {
       // Format the value on a single line to be compatible with the parent's
       // style.

@@ -87,7 +87,7 @@ class _DummyLocalizationsDelegate extends LocalizationsDelegate<DummyLocalizatio
 class DummyLocalizations {}
 
 class LocalizationTracker extends StatefulWidget {
-  const LocalizationTracker({Key key}) : super(key: key);
+  const LocalizationTracker({[Key key]}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => LocalizationTrackerState();

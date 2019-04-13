@@ -55,9 +55,11 @@ abstract class DragGestureRecognizer extends OneSequenceGestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   DragGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(dragStartBehavior != null),
        super(debugOwner: debugOwner, kind: kind);
 
@@ -302,8 +304,10 @@ class VerticalDragGestureRecognizer extends DragGestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   VerticalDragGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   @override
@@ -341,8 +345,10 @@ class HorizontalDragGestureRecognizer extends DragGestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   HorizontalDragGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   @override
@@ -376,7 +382,7 @@ class HorizontalDragGestureRecognizer extends DragGestureRecognizer {
 ///    some time has passed.
 class PanGestureRecognizer extends DragGestureRecognizer {
   /// Create a gesture recognizer for tracking movement on a plane.
-  PanGestureRecognizer({ Object debugOwner }) : super(debugOwner: debugOwner);
+  PanGestureRecognizer({ [ Object debugOwner ] }) : super(debugOwner: debugOwner);
 
   @override
   bool _isFlingGesture(VelocityEstimate estimate) {

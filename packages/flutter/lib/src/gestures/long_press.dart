@@ -51,7 +51,7 @@ class LongPressStartDetails {
   /// Creates the details for a [GestureLongPressStartCallback].
   ///
   /// The [globalPosition] argument must not be null.
-  const LongPressStartDetails({ this.globalPosition = Offset.zero })
+  const LongPressStartDetails({ [ this.globalPosition = Offset.zero ] })
     : assert(globalPosition != null);
 
   /// The global position at which the pointer contacted the screen.
@@ -70,8 +70,10 @@ class LongPressMoveUpdateDetails {
   ///
   /// The [globalPosition] and [offsetFromOrigin] arguments must not be null.
   const LongPressMoveUpdateDetails({
+    [
     this.globalPosition = Offset.zero,
     this.offsetFromOrigin = Offset.zero,
+  ]
   }) : assert(globalPosition != null),
        assert(offsetFromOrigin != null);
 
@@ -95,7 +97,7 @@ class LongPressEndDetails {
   /// Creates the details for a [GestureLongPressEndCallback].
   ///
   /// The [globalPosition] argument must not be null.
-  const LongPressEndDetails({ this.globalPosition = Offset.zero })
+  const LongPressEndDetails({ [ this.globalPosition = Offset.zero ] })
     : assert(globalPosition != null);
 
   /// The global position at which the pointer lifted from the screen.
@@ -122,9 +124,11 @@ class LongPressGestureRecognizer extends PrimaryPointerGestureRecognizer {
   /// [onLongPressEnd]) will stop. Defaults to null, which means the gesture
   /// can be moved without limit once the long press is accepted.
   LongPressGestureRecognizer({
+    [
     double postAcceptSlopTolerance,
     PointerDeviceKind kind,
     Object debugOwner,
+  ]
   }) : super(
     deadline: kLongPressTimeout,
     postAcceptSlopTolerance: postAcceptSlopTolerance,

@@ -16,10 +16,10 @@ import 'transitions.dart';
 // to expose to the public API (like the controller).
 class _ChildEntry {
   _ChildEntry({
-    @required this.controller,
-    @required this.animation,
-    @required this.transition,
-    @required this.widgetChild,
+     this.controller,
+     this.animation,
+     this.transition,
+     this.widgetChild,
   }) : assert(animation != null),
        assert(transition != null),
        assert(controller != null);
@@ -147,13 +147,17 @@ class AnimatedSwitcher extends StatefulWidget {
   /// The [duration], [transitionBuilder], [layoutBuilder], [switchInCurve], and
   /// [switchOutCurve] parameters must not be null.
   const AnimatedSwitcher({
+    [
     Key key,
-    this.child,
-    @required this.duration,
+    this.child
+    ]
+     this.duration,
+    [
     this.switchInCurve = Curves.linear,
     this.switchOutCurve = Curves.linear,
     this.transitionBuilder = AnimatedSwitcher.defaultTransitionBuilder,
     this.layoutBuilder = AnimatedSwitcher.defaultLayoutBuilder,
+  ]
   }) : assert(duration != null),
        assert(switchInCurve != null),
        assert(switchOutCurve != null),
@@ -319,7 +323,7 @@ class _AnimatedSwitcherState extends State<AnimatedSwitcher> with TickerProvider
     }
   }
 
-  void _addEntryForNewChild({ @required bool animate }) {
+  void _addEntryForNewChild({  bool animate }) {
     assert(animate || _currentEntry == null);
     if (_currentEntry != null) {
       assert(animate);
@@ -355,10 +359,10 @@ class _AnimatedSwitcherState extends State<AnimatedSwitcher> with TickerProvider
   }
 
   _ChildEntry _newEntry({
-    @required Widget child,
-    @required AnimatedSwitcherTransitionBuilder builder,
-    @required AnimationController controller,
-    @required Animation<double> animation,
+     Widget child,
+     AnimatedSwitcherTransitionBuilder builder,
+     AnimationController controller,
+     Animation<double> animation,
   }) {
     final _ChildEntry entry = _ChildEntry(
       widgetChild: child,

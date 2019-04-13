@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'test_widgets.dart';
 
 class TestInherited extends InheritedWidget {
-  const TestInherited({ Key key, Widget child, this.shouldNotify = true })
+  const TestInherited({ [ Key key, Widget child, this.shouldNotify = true ] })
     : super(key: key, child: child);
 
   final bool shouldNotify;
@@ -20,7 +20,7 @@ class TestInherited extends InheritedWidget {
 }
 
 class ValueInherited extends InheritedWidget {
-  const ValueInherited({ Key key, Widget child, this.value })
+  const ValueInherited({ [ Key key, Widget child, this.value ] })
     : super(key: key, child: child);
 
   final int value;
@@ -53,7 +53,7 @@ class ExpectFailState extends State<ExpectFail> {
 }
 
 class ChangeNotifierInherited extends InheritedNotifier<ChangeNotifier> {
-  const ChangeNotifierInherited({ Key key, Widget child, ChangeNotifier notifier })
+  const ChangeNotifierInherited({ [ Key key, Widget child, ChangeNotifier notifier ] })
     : super(key: key, child: child, notifier: notifier);
 }
 

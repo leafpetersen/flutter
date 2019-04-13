@@ -121,7 +121,7 @@ void main() {
   });
 }
 
-Widget wrap({ Widget child }) {
+Widget wrap({ [ Widget child ] }) {
   return MaterialApp(
     home: Center(
       child: Material(child: child),

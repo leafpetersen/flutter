@@ -67,18 +67,18 @@ enum _TimePickerHeaderId {
 @immutable
 class _TimePickerFragmentContext {
   const _TimePickerFragmentContext({
-    @required this.headerTextTheme,
-    @required this.textDirection,
-    @required this.selectedTime,
-    @required this.mode,
-    @required this.activeColor,
-    @required this.activeStyle,
-    @required this.inactiveColor,
-    @required this.inactiveStyle,
-    @required this.onTimeChange,
-    @required this.onModeChange,
-    @required this.targetPlatform,
-    @required this.use24HourDials,
+     this.headerTextTheme,
+     this.textDirection,
+     this.selectedTime,
+     this.mode,
+     this.activeColor,
+     this.activeStyle,
+     this.inactiveColor,
+     this.inactiveStyle,
+     this.onTimeChange,
+     this.onModeChange,
+     this.targetPlatform,
+     this.use24HourDials,
   }) : assert(headerTextTheme != null),
        assert(textDirection != null),
        assert(selectedTime != null),
@@ -111,9 +111,11 @@ class _TimePickerFragmentContext {
 /// formatted time string.
 class _TimePickerHeaderFragment {
   const _TimePickerHeaderFragment({
-    @required this.layoutId,
-    @required this.widget,
+     this.layoutId,
+     this.widget,
+    [
     this.startMargin = 0.0,
+  ]
   }) : assert(layoutId != null),
        assert(widget != null),
        assert(startMargin != null);
@@ -142,7 +144,7 @@ class _TimePickerHeaderPiece {
   ///
   /// All arguments must be non-null. If the piece does not contain a pivot
   /// fragment, use the value -1 as a convention.
-  const _TimePickerHeaderPiece(this.pivotIndex, this.fragments, { this.bottomMargin = 0.0 })
+  const _TimePickerHeaderPiece(this.pivotIndex, this.fragments, { [ this.bottomMargin = 0.0 ] })
     : assert(pivotIndex != null),
       assert(fragments != null),
       assert(bottomMargin != null);
@@ -193,7 +195,7 @@ class _TimePickerHeaderFormat {
 /// and pm.
 class _DayPeriodControl extends StatelessWidget {
   const _DayPeriodControl({
-    @required this.fragmentContext,
+     this.fragmentContext,
   });
 
   final _TimePickerFragmentContext fragmentContext;
@@ -281,7 +283,7 @@ class _DayPeriodControl extends StatelessWidget {
 /// When tapped changes time picker dial mode to [_TimePickerMode.hour].
 class _HourControl extends StatelessWidget {
   const _HourControl({
-    @required this.fragmentContext,
+     this.fragmentContext,
   });
 
   final _TimePickerFragmentContext fragmentContext;
@@ -349,8 +351,8 @@ class _HourControl extends StatelessWidget {
 /// A passive fragment showing a string value.
 class _StringFragment extends StatelessWidget {
   const _StringFragment({
-    @required this.fragmentContext,
-    @required this.value,
+     this.fragmentContext,
+     this.value,
   });
 
   final _TimePickerFragmentContext fragmentContext;
@@ -369,7 +371,7 @@ class _StringFragment extends StatelessWidget {
 /// When tapped changes time picker dial mode to [_TimePickerMode.minute].
 class _MinuteControl extends StatelessWidget {
   const _MinuteControl({
-    @required this.fragmentContext,
+     this.fragmentContext,
   });
 
   final _TimePickerFragmentContext fragmentContext;
@@ -483,11 +485,13 @@ _TimePickerHeaderFormat _buildHeaderFormat(TimeOfDayFormat timeOfDayFormat, _Tim
 
   // Convenience function for creating a time header piece with up to three fragments.
   _TimePickerHeaderPiece piece({
+    [
     int pivotIndex = -1,
     double bottomMargin = 0.0,
     _TimePickerHeaderFragment fragment1,
     _TimePickerHeaderFragment fragment2,
     _TimePickerHeaderFragment fragment3,
+  ]
   }) {
     final List<_TimePickerHeaderFragment> fragments = <_TimePickerHeaderFragment>[fragment1];
     if (fragment2 != null) {
@@ -673,12 +677,12 @@ class _TimePickerHeaderLayout extends MultiChildLayoutDelegate {
 
 class _TimePickerHeader extends StatelessWidget {
   const _TimePickerHeader({
-    @required this.selectedTime,
-    @required this.mode,
-    @required this.orientation,
-    @required this.onModeChanged,
-    @required this.onChanged,
-    @required this.use24HourDials,
+     this.selectedTime,
+     this.mode,
+     this.orientation,
+     this.onModeChanged,
+     this.onChanged,
+     this.use24HourDials,
   }) : assert(selectedTime != null),
        assert(mode != null),
        assert(orientation != null),
@@ -804,9 +808,9 @@ enum _DialRing {
 
 class _TappableLabel {
   _TappableLabel({
-    @required this.value,
-    @required this.painter,
-    @required this.onTap,
+     this.value,
+     this.painter,
+     this.onTap,
   });
 
   /// The value this label is displaying.
@@ -821,16 +825,16 @@ class _TappableLabel {
 
 class _DialPainter extends CustomPainter {
   const _DialPainter({
-    @required this.primaryOuterLabels,
-    @required this.primaryInnerLabels,
-    @required this.secondaryOuterLabels,
-    @required this.secondaryInnerLabels,
-    @required this.backgroundColor,
-    @required this.accentColor,
-    @required this.theta,
-    @required this.activeRing,
-    @required this.textDirection,
-    @required this.selectedValue,
+     this.primaryOuterLabels,
+     this.primaryInnerLabels,
+     this.secondaryOuterLabels,
+     this.secondaryInnerLabels,
+     this.backgroundColor,
+     this.accentColor,
+     this.theta,
+     this.activeRing,
+     this.textDirection,
+     this.selectedValue,
   });
 
   final List<_TappableLabel> primaryOuterLabels;
@@ -996,10 +1000,10 @@ class _DialPainter extends CustomPainter {
 
 class _Dial extends StatefulWidget {
   const _Dial({
-    @required this.selectedTime,
-    @required this.mode,
-    @required this.use24HourDials,
-    @required this.onChanged,
+     this.selectedTime,
+     this.mode,
+     this.use24HourDials,
+     this.onChanged,
   }) : assert(selectedTime != null);
 
   final TimeOfDay selectedTime;
@@ -1424,8 +1428,10 @@ class _TimePickerDialog extends StatefulWidget {
   ///
   /// [initialTime] must not be null.
   const _TimePickerDialog({
-    Key key,
-    @required this.initialTime,
+    [
+    Key key
+    ]
+     this.initialTime,
   }) : assert(initialTime != null),
        super(key: key);
 
@@ -1718,9 +1724,11 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
 ///  * [showDatePicker], which shows a dialog that contains a material design
 ///    date picker.
 Future<TimeOfDay> showTimePicker({
-  @required BuildContext context,
-  @required TimeOfDay initialTime,
+   BuildContext context,
+   TimeOfDay initialTime,
+  [
   TransitionBuilder builder,
+]
 }) async {
   assert(context != null);
   assert(initialTime != null);

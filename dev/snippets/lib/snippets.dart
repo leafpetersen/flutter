@@ -18,7 +18,7 @@ void errorExit(String message) {
 // A Tuple containing the name and contents associated with a code block in a
 // snippet.
 class _ComponentTuple {
-  _ComponentTuple(this.name, this.contents, {String language}) : language = language ?? '';
+  _ComponentTuple(this.name, this.contents, {[String language]}) : language = language ?? '';
   final String name;
   final List<String> contents;
   final String language;
@@ -28,7 +28,7 @@ class _ComponentTuple {
 /// Generates the snippet HTML, as well as saving the output snippet main to
 /// the output directory.
 class SnippetGenerator {
-  SnippetGenerator({Configuration configuration})
+  SnippetGenerator({[Configuration configuration]})
       : configuration = configuration ??
             // Flutter's root is four directories up from this script.
             Configuration(flutterRoot: Directory(Platform.environment['FLUTTER_ROOT']
@@ -51,7 +51,7 @@ class SnippetGenerator {
   File getOutputFile(String id) => File(path.join(configuration.outputDirectory.path, '$id.dart'));
 
   /// Gets the path to the template file requested.
-  File getTemplatePath(String templateName, {Directory templatesDir}) {
+  File getTemplatePath(String templateName, {[Directory templatesDir]}) {
     final Directory templateDir = templatesDir ?? configuration.templatesDirectory;
     final File templateFile = File(path.join(templateDir.path, '$templateName.tmpl'));
     return templateFile.existsSync() ? templateFile : null;
@@ -207,7 +207,7 @@ class SnippetGenerator {
   /// The [id] is a string ID to use for the output file, and to tell the user
   /// about in the `flutter create` hint. It must not be null if the [type] is
   /// [SnippetType.application].
-  String generate(File input, SnippetType type, {String template, String id, File output, Map<String, Object> metadata}) {
+  String generate(File input, SnippetType type, {[String template, String id, File output, Map<String, Object> metadata]}) {
     assert(template != null || type != SnippetType.application);
     assert(id != null || type != SnippetType.application);
     assert(input != null);

@@ -39,7 +39,7 @@ abstract class FlowPaintingContext {
   /// x increasing rightward and y increasing downward.
   ///
   /// The container will clip the children to its bounds.
-  void paintChild(int i, { Matrix4 transform, double opacity = 1.0 });
+  void paintChild(int i, { [ Matrix4 transform, double opacity = 1.0 ] });
 }
 
 /// A delegate that controls the appearance of a flow layout.
@@ -56,7 +56,7 @@ abstract class FlowPaintingContext {
 ///  * [RenderFlow]
 abstract class FlowDelegate {
   /// The flow will repaint whenever [repaint] notifies its listeners.
-  const FlowDelegate({ Listenable repaint }) : _repaint = repaint;
+  const FlowDelegate({ [ Listenable repaint ] }) : _repaint = repaint;
 
   final Listenable _repaint;
 
@@ -180,8 +180,10 @@ class RenderFlow extends RenderBox
   /// For optimal performance, consider using children that return true from
   /// [isRepaintBoundary].
   RenderFlow({
-    List<RenderBox> children,
-    @required FlowDelegate delegate,
+    [
+    List<RenderBox> children
+    ]
+     FlowDelegate delegate,
   }) : assert(delegate != null),
        _delegate = delegate {
     addAll(children);
@@ -313,7 +315,7 @@ class RenderFlow extends RenderBox
   }
 
   @override
-  void paintChild(int i, { Matrix4 transform, double opacity = 1.0 }) {
+  void paintChild(int i, { [ Matrix4 transform, double opacity = 1.0 ] }) {
     transform ??= Matrix4.identity();
     final RenderBox child = _randomAccessChildren[i];
     final FlowParentData childParentData = child.parentData;
@@ -369,7 +371,7 @@ class RenderFlow extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     final List<RenderBox> children = getChildrenAsList();
     for (int i = _lastPaintOrder.length - 1; i >= 0; --i) {
       final int childIndex = _lastPaintOrder[i];

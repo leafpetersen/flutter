@@ -39,7 +39,7 @@ void main() {
       return contents;
     }
 
-    Map<String, String> _getManifest(Directory base, String marker, { bool isTemplate = false }) {
+    Map<String, String> _getManifest(Directory base, String marker, { [ bool isTemplate = false ] }) {
       final String basePath = fs.path.relative(base.path, from: tempDir.absolute.path);
       final String suffix = isTemplate ? Template.copyTemplateExtension : '';
       return <String, String>{
@@ -77,10 +77,12 @@ void main() {
     }
 
     Future<void> _updateIdeConfig({
+      [
       Directory dir,
       List<String> args = const <String>[],
       Map<String, String> expectedContents = const <String, String>{},
       List<String> unexpectedPaths = const <String>[],
+    ]
     }) async {
       dir ??= tempDir;
       final IdeConfigCommand command = IdeConfigCommand();

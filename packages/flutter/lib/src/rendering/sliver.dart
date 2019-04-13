@@ -95,18 +95,18 @@ class SliverConstraints extends Constraints {
   ///
   /// All of the argument must not be null.
   const SliverConstraints({
-    @required this.axisDirection,
-    @required this.growthDirection,
-    @required this.userScrollDirection,
-    @required this.scrollOffset,
-    @required this.precedingScrollExtent,
-    @required this.overlap,
-    @required this.remainingPaintExtent,
-    @required this.crossAxisExtent,
-    @required this.crossAxisDirection,
-    @required this.viewportMainAxisExtent,
-    @required this.remainingCacheExtent,
-    @required this.cacheOrigin,
+     this.axisDirection,
+     this.growthDirection,
+     this.userScrollDirection,
+     this.scrollOffset,
+     this.precedingScrollExtent,
+     this.overlap,
+     this.remainingPaintExtent,
+     this.crossAxisExtent,
+     this.crossAxisDirection,
+     this.viewportMainAxisExtent,
+     this.remainingCacheExtent,
+     this.cacheOrigin,
   }) : assert(axisDirection != null),
        assert(growthDirection != null),
        assert(userScrollDirection != null),
@@ -123,6 +123,7 @@ class SliverConstraints extends Constraints {
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   SliverConstraints copyWith({
+    [
     AxisDirection axisDirection,
     GrowthDirection growthDirection,
     ScrollDirection userScrollDirection,
@@ -135,6 +136,7 @@ class SliverConstraints extends Constraints {
     double viewportMainAxisExtent,
     double remainingCacheExtent,
     double cacheOrigin,
+  ]
   }) {
     return SliverConstraints(
       axisDirection: axisDirection ?? this.axisDirection,
@@ -388,9 +390,11 @@ class SliverConstraints extends Constraints {
   ///
   /// Useful for slivers that have [RenderBox] children.
   BoxConstraints asBoxConstraints({
+    [
     double minExtent = 0.0,
     double maxExtent = double.infinity,
     double crossAxisExtent,
+  ]
   }) {
     crossAxisExtent ??= this.crossAxisExtent;
     switch (axis) {
@@ -414,8 +418,10 @@ class SliverConstraints extends Constraints {
 
   @override
   bool debugAssertIsValid({
+    [
     bool isAppliedConstraint = false,
     InformationCollector informationCollector,
+  ]
   }) {
     assert(() {
       void verify(bool check, String message) {
@@ -516,6 +522,7 @@ class SliverGeometry extends Diagnosticable {
   ///
   /// The other arguments must not be null.
   const SliverGeometry({
+    [
     this.scrollExtent = 0.0,
     this.paintExtent = 0.0,
     this.paintOrigin = 0.0,
@@ -527,6 +534,7 @@ class SliverGeometry extends Diagnosticable {
     this.hasVisualOverflow = false,
     this.scrollOffsetCorrection,
     double cacheExtent,
+  ]
   }) : assert(scrollExtent != null),
        assert(paintExtent != null),
        assert(paintOrigin != null),
@@ -693,7 +701,9 @@ class SliverGeometry extends Diagnosticable {
   ///
   /// Does nothing if asserts are disabled. Always returns true.
   bool debugAssertIsValid({
+    [
     InformationCollector informationCollector,
+  ]
   }) {
     assert(() {
       void verify(bool check, String message) {
@@ -776,8 +786,8 @@ class SliverHitTestEntry extends HitTestEntry {
   /// The [mainAxisPosition] and [crossAxisPosition] arguments must not be null.
   const SliverHitTestEntry(
     RenderSliver target, {
-    @required this.mainAxisPosition,
-    @required this.crossAxisPosition,
+     this.mainAxisPosition,
+     this.crossAxisPosition,
   }) : assert(mainAxisPosition != null),
        assert(crossAxisPosition != null),
        super(target);
@@ -1167,7 +1177,7 @@ abstract class RenderSliver extends RenderObject {
   /// The most straight-forward way to implement hit testing for a new sliver
   /// render object is to override its [hitTestSelf] and [hitTestChildren]
   /// methods.
-  bool hitTest(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTest(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) {
     if (mainAxisPosition >= 0.0 && mainAxisPosition < geometry.hitTestExtent &&
         crossAxisPosition >= 0.0 && crossAxisPosition < constraints.crossAxisExtent) {
       if (hitTestChildren(result, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition) ||
@@ -1191,7 +1201,7 @@ abstract class RenderSliver extends RenderObject {
   ///
   /// For a discussion of the semantics of the arguments, see [hitTest].
   @protected
-  bool hitTestSelf({ @required double mainAxisPosition, @required double crossAxisPosition }) => false;
+  bool hitTestSelf({  double mainAxisPosition,  double crossAxisPosition }) => false;
 
   /// Override this method to check whether any children are located at the
   /// given position.
@@ -1205,7 +1215,7 @@ abstract class RenderSliver extends RenderObject {
   ///
   /// For a discussion of the semantics of the arguments, see [hitTest].
   @protected
-  bool hitTestChildren(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) => false;
+  bool hitTestChildren(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) => false;
 
   /// Computes the portion of the region from `from` to `to` that is visible,
   /// assuming that only the region from the [SliverConstraints.scrollOffset]
@@ -1224,7 +1234,7 @@ abstract class RenderSliver extends RenderObject {
   /// function's results will not be consistent.
   // This could be a static method but isn't, because it would be less convenient
   // to call it from subclasses if it was.
-  double calculatePaintOffset(SliverConstraints constraints, { @required double from, @required double to }) {
+  double calculatePaintOffset(SliverConstraints constraints, {  double from,  double to }) {
     assert(from <= to);
     final double a = constraints.scrollOffset;
     final double b = constraints.scrollOffset + constraints.remainingPaintExtent;
@@ -1240,7 +1250,7 @@ abstract class RenderSliver extends RenderObject {
   ///
   /// This method is not useful if there is not a 1:1 relationship between
   /// consumed scroll offset and consumed cache extent.
-  double calculateCacheOffset(SliverConstraints constraints, { @required double from, @required double to }) {
+  double calculateCacheOffset(SliverConstraints constraints, {  double from,  double to }) {
     assert(from <= to);
     final double a = constraints.scrollOffset + constraints.cacheOrigin;
     final double b = constraints.scrollOffset + constraints.remainingCacheExtent;
@@ -1495,7 +1505,7 @@ abstract class RenderSliverHelpers implements RenderSliver {
   ///
   /// Calling this for a child that is not visible is not valid.
   @protected
-  bool hitTestBoxChild(HitTestResult result, RenderBox child, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTestBoxChild(HitTestResult result, RenderBox child, {  double mainAxisPosition,  double crossAxisPosition }) {
     final bool rightWayUp = _getRightWayUp(constraints);
     double absolutePosition = mainAxisPosition - childMainAxisPosition(child);
     final double absoluteCrossAxisPosition = crossAxisPosition - childCrossAxisPosition(child);
@@ -1558,7 +1568,9 @@ abstract class RenderSliverHelpers implements RenderSliver {
 abstract class RenderSliverSingleBoxAdapter extends RenderSliver with RenderObjectWithChildMixin<RenderBox>, RenderSliverHelpers {
   /// Creates a [RenderSliver] that wraps a [RenderBox].
   RenderSliverSingleBoxAdapter({
+    [
     RenderBox child,
+  ]
   }) {
     this.child = child;
   }
@@ -1595,7 +1607,7 @@ abstract class RenderSliverSingleBoxAdapter extends RenderSliver with RenderObje
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTestChildren(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) {
     assert(geometry.hitTestExtent > 0.0);
     if (child != null)
       return hitTestBoxChild(result, child, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition);
@@ -1639,7 +1651,9 @@ abstract class RenderSliverSingleBoxAdapter extends RenderSliver with RenderObje
 class RenderSliverToBoxAdapter extends RenderSliverSingleBoxAdapter {
   /// Creates a [RenderSliver] that wraps a [RenderBox].
   RenderSliverToBoxAdapter({
+    [
     RenderBox child,
+  ]
   }) : super(child: child);
 
   @override

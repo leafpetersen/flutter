@@ -42,8 +42,11 @@ class MaterialButton extends StatelessWidget {
   /// [FlatButton] or [RaisedButton]. To create a custom Material button
   /// consider using [RawMaterialButton].
   const MaterialButton({
-    Key key,
-    @required this.onPressed,
+    [
+    Key key
+    ]
+     this.onPressed,
+    [
     this.onHighlightChanged,
     this.textTheme,
     this.textColor,
@@ -64,6 +67,7 @@ class MaterialButton extends StatelessWidget {
     this.minWidth,
     this.height,
     this.child,
+  ]
   }) : super(key: key);
 
   /// The callback that is called when the button is tapped or otherwise activated.

@@ -80,11 +80,15 @@ class Step {
   ///
   /// The [title], [content], and [state] arguments must not be null.
   const Step({
-    @required this.title,
-    this.subtitle,
-    @required this.content,
+     this.title,
+    [
+    this.subtitle
+    ]
+     this.content,
+    [
     this.state = StepState.indexed,
     this.isActive = false,
+  ]
   }) : assert(title != null),
        assert(content != null),
        assert(state != null);
@@ -133,8 +137,11 @@ class Stepper extends StatefulWidget {
   ///
   /// The [steps], [type], and [currentStep] arguments must not be null.
   Stepper({
-    Key key,
-    @required this.steps,
+    [
+    Key key
+    ]
+     this.steps,
+    [
     this.physics,
     this.type = StepperType.vertical,
     this.currentStep = 0,
@@ -142,6 +149,7 @@ class Stepper extends StatefulWidget {
     this.onStepContinue,
     this.onStepCancel,
     this.controlsBuilder,
+  ]
   }) : assert(steps != null),
        assert(type != null),
        assert(currentStep != null),
@@ -709,7 +717,9 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
 // top vertex the middle of its top.
 class _TrianglePainter extends CustomPainter {
   _TrianglePainter({
+    [
     this.color,
+  ]
   });
 
   final Color color;

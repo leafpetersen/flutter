@@ -107,6 +107,7 @@ class TextTheme extends Diagnosticable {
   /// If you do decide to create your own text theme, consider using one of
   /// those predefined themes as a starting point for [copyWith] or [apply].
   const TextTheme({
+    [
     this.display4,
     this.display3,
     this.display2,
@@ -120,6 +121,7 @@ class TextTheme extends Diagnosticable {
     this.button,
     this.subtitle,
     this.overline,
+  ]
   });
 
   /// Extremely large text.
@@ -210,6 +212,7 @@ class TextTheme extends Diagnosticable {
   ///  * [merge] is used instead of [copyWith] when you want to merge all
   ///    of the fields of a TextTheme instead of individual fields.
   TextTheme copyWith({
+    [
     TextStyle display4,
     TextStyle display3,
     TextStyle display2,
@@ -223,6 +226,7 @@ class TextTheme extends Diagnosticable {
     TextStyle button,
     TextStyle subtitle,
     TextStyle overline,
+  ]
   }) {
     return TextTheme(
       display4: display4 ?? this.display4,
@@ -323,6 +327,7 @@ class TextTheme extends Diagnosticable {
   /// the typography styles in the material design specification, as a starting
   /// point.
   TextTheme apply({
+    [
     String fontFamily,
     double fontSizeFactor = 1.0,
     double fontSizeDelta = 0.0,
@@ -331,6 +336,7 @@ class TextTheme extends Diagnosticable {
     TextDecoration decoration,
     Color decorationColor,
     TextDecorationStyle decorationStyle,
+  ]
   }) {
     return TextTheme(
       display4: display4?.apply(

@@ -8,9 +8,13 @@ import 'framework.dart';
 
 class _FocusScopeMarker extends InheritedWidget {
   const _FocusScopeMarker({
-    Key key,
-    @required this.node,
+    [
+    Key key
+    ]
+     this.node,
+    [
     Widget child,
+  ]
   }) : assert(node != null),
        super(key: key, child: child);
 
@@ -54,10 +58,14 @@ class FocusScope extends StatefulWidget {
   ///
   /// The [node] argument must not be null.
   const FocusScope({
-    Key key,
-    @required this.node,
+    [
+    Key key
+    ]
+     this.node,
+    [
     this.autofocus = false,
     this.child,
+  ]
   }) : assert(node != null),
        assert(autofocus != null),
        super(key: key);

@@ -14,7 +14,7 @@ class TestSchedulerBinding extends BindingBase with ServicesBinding, SchedulerBi
 class TestStrategy {
   int allowedPriority = 10000;
 
-  bool shouldRunTaskWithPriority({ int priority, SchedulerBinding scheduler }) {
+  bool shouldRunTaskWithPriority({ [ int priority, SchedulerBinding scheduler ] }) {
     return priority >= allowedPriority;
   }
 }

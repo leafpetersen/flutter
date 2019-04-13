@@ -48,9 +48,11 @@ class ScrollController extends ChangeNotifier {
   ///
   /// The values of `initialScrollOffset` and `keepScrollOffset` must not be null.
   ScrollController({
+    [
     double initialScrollOffset = 0.0,
     this.keepScrollOffset = true,
     this.debugLabel,
+  ]
   }) : assert(initialScrollOffset != null),
        assert(keepScrollOffset != null),
        _initialScrollOffset = initialScrollOffset;
@@ -144,8 +146,8 @@ class ScrollController extends ChangeNotifier {
   /// animation, use [jumpTo].
   Future<void> animateTo(
     double offset, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) {
     assert(_positions.isNotEmpty, 'ScrollController not attached to any scroll views.');
     final List<Future<void>> animations = List<Future<void>>(_positions.length);
@@ -317,9 +319,11 @@ class TrackingScrollController extends ScrollController {
   /// Creates a scroll controller that continually updates its
   /// [initialScrollOffset] to match the last scroll notification it received.
   TrackingScrollController({
+    [
     double initialScrollOffset = 0.0,
     bool keepScrollOffset = true,
     String debugLabel,
+  ]
   }) : super(initialScrollOffset: initialScrollOffset,
              keepScrollOffset: keepScrollOffset,
              debugLabel: debugLabel);

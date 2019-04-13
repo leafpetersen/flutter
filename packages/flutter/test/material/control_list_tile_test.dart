@@ -8,7 +8,7 @@ import 'package:flutter/rendering.dart';
 
 import '../widgets/semantics_tester.dart';
 
-Widget wrap({ Widget child }) {
+Widget wrap({ [ Widget child ] }) {
   return MediaQuery(
     data: const MediaQueryData(),
     child: Directionality(

@@ -50,8 +50,8 @@ class ForcePressDetails {
   ///
   /// The [globalPosition] argument must not be null.
   ForcePressDetails({
-    @required this.globalPosition,
-    @required this.pressure,
+     this.globalPosition,
+     this.pressure,
   }) : assert(globalPosition != null),
        assert(pressure != null);
 
@@ -119,11 +119,13 @@ class ForcePressGestureRecognizer extends OneSequenceGestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   ForcePressGestureRecognizer({
+    [
     this.startPressure = 0.4,
     this.peakPressure = 0.85,
     this.interpolation = _inverseLerp,
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : assert(startPressure != null),
        assert(peakPressure != null),
        assert(interpolation != null),

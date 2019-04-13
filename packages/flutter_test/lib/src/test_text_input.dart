@@ -27,7 +27,7 @@ class TestTextInput {
   ///
   /// The [onCleared] argument may be set to be notified of when the keyboard
   /// is dismissed.
-  TestTextInput({ this.onCleared });
+  TestTextInput({ [ this.onCleared ] });
 
   /// Called when the keyboard goes away.
   ///

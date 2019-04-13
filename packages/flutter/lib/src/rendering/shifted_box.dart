@@ -72,7 +72,7 @@ abstract class RenderShiftedBox extends RenderBox with RenderObjectWithChildMixi
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     if (child != null) {
       final BoxParentData childParentData = child.parentData;
       return child.hitTest(result, position: position - childParentData.offset);
@@ -93,9 +93,11 @@ class RenderPadding extends RenderShiftedBox {
   ///
   /// The [padding] argument must not be null and must have non-negative insets.
   RenderPadding({
-    @required EdgeInsetsGeometry padding,
+     EdgeInsetsGeometry padding,
+    [
     TextDirection textDirection,
     RenderBox child,
+  ]
   }) : assert(padding != null),
        assert(padding.isNonNegative),
        _textDirection = textDirection,
@@ -233,9 +235,13 @@ abstract class RenderAligningShiftedBox extends RenderShiftedBox {
   /// The [textDirection] must be non-null if the [alignment] is
   /// direction-sensitive.
   RenderAligningShiftedBox({
-    AlignmentGeometry alignment = Alignment.center,
-    @required TextDirection textDirection,
+    [
+    AlignmentGeometry alignment = Alignment.center
+    ]
+     TextDirection textDirection,
+    [
     RenderBox child,
+  ]
   }) : assert(alignment != null),
        _alignment = alignment,
        _textDirection = textDirection,
@@ -339,11 +345,13 @@ abstract class RenderAligningShiftedBox extends RenderShiftedBox {
 class RenderPositionedBox extends RenderAligningShiftedBox {
   /// Creates a render object that positions its child.
   RenderPositionedBox({
+    [
     RenderBox child,
     double widthFactor,
     double heightFactor,
     AlignmentGeometry alignment = Alignment.center,
     TextDirection textDirection,
+  ]
   }) : assert(widthFactor == null || widthFactor >= 0.0),
        assert(heightFactor == null || heightFactor >= 0.0),
        _widthFactor = widthFactor,
@@ -491,6 +499,7 @@ class RenderPositionedBox extends RenderAligningShiftedBox {
 class RenderConstrainedOverflowBox extends RenderAligningShiftedBox {
   /// Creates a render object that lets its child overflow itself.
   RenderConstrainedOverflowBox({
+    [
     RenderBox child,
     double minWidth,
     double maxWidth,
@@ -498,6 +507,7 @@ class RenderConstrainedOverflowBox extends RenderAligningShiftedBox {
     double maxHeight,
     AlignmentGeometry alignment = Alignment.center,
     TextDirection textDirection,
+  ]
   }) : _minWidth = minWidth,
        _maxWidth = maxWidth,
        _minHeight = minHeight,
@@ -613,10 +623,12 @@ class RenderUnconstrainedBox extends RenderAligningShiftedBox with DebugOverflow
   ///
   /// The [alignment] must not be null.
   RenderUnconstrainedBox({
-    @required AlignmentGeometry alignment,
-    @required TextDirection textDirection,
+     AlignmentGeometry alignment,
+     TextDirection textDirection,
+    [
     Axis constrainedAxis,
     RenderBox child,
+  ]
   }) : assert(alignment != null),
        _constrainedAxis = constrainedAxis,
        super.mixin(alignment, textDirection, child);
@@ -730,10 +742,14 @@ class RenderSizedOverflowBox extends RenderAligningShiftedBox {
   /// The [textDirection] argument must not be null if the [alignment] is
   /// direction-sensitive.
   RenderSizedOverflowBox({
-    RenderBox child,
-    @required Size requestedSize,
+    [
+    RenderBox child
+    ]
+     Size requestedSize,
+    [
     AlignmentGeometry alignment = Alignment.center,
     TextDirection textDirection,
+  ]
   }) : assert(requestedSize != null),
        _requestedSize = requestedSize,
        super(child: child, alignment: alignment, textDirection: textDirection);
@@ -808,11 +824,13 @@ class RenderFractionallySizedOverflowBox extends RenderAligningShiftedBox {
   /// The [textDirection] must be non-null if the [alignment] is
   /// direction-sensitive.
   RenderFractionallySizedOverflowBox({
+    [
     RenderBox child,
     double widthFactor,
     double heightFactor,
     AlignmentGeometry alignment = Alignment.center,
     TextDirection textDirection,
+  ]
   }) : _widthFactor = widthFactor,
        _heightFactor = heightFactor,
        super(child: child, alignment: alignment, textDirection: textDirection) {
@@ -969,7 +987,7 @@ abstract class SingleChildLayoutDelegate {
   /// Creates a layout delegate.
   ///
   /// The layout will update whenever [relayout] notifies its listeners.
-  const SingleChildLayoutDelegate({ Listenable relayout }) : _relayout = relayout;
+  const SingleChildLayoutDelegate({ [ Listenable relayout ] }) : _relayout = relayout;
 
   final Listenable _relayout;
 
@@ -1031,8 +1049,10 @@ class RenderCustomSingleChildLayoutBox extends RenderShiftedBox {
   ///
   /// The [delegate] argument must not be null.
   RenderCustomSingleChildLayoutBox({
-    RenderBox child,
-    @required SingleChildLayoutDelegate delegate,
+    [
+    RenderBox child
+    ]
+     SingleChildLayoutDelegate delegate,
   }) : assert(delegate != null),
        _delegate = delegate,
        super(child);
@@ -1140,9 +1160,11 @@ class RenderBaseline extends RenderShiftedBox {
   ///
   /// The [baseline] and [baselineType] arguments must not be null.
   RenderBaseline({
-    RenderBox child,
-    @required double baseline,
-    @required TextBaseline baselineType,
+    [
+    RenderBox child
+    ]
+     double baseline,
+     TextBaseline baselineType,
   }) : assert(baseline != null),
        assert(baselineType != null),
        _baseline = baseline,

@@ -57,11 +57,15 @@ class CupertinoSwitch extends StatefulWidget {
   /// The [value] parameter must not be null.
   /// The [dragStartBehavior] parameter defaults to [DragStartBehavior.start] and must not be null.
   const CupertinoSwitch({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.activeColor,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(value != null),
        assert(dragStartBehavior != null),
        super(key: key);
@@ -147,12 +151,14 @@ class _CupertinoSwitchState extends State<CupertinoSwitch> with TickerProviderSt
 
 class _CupertinoSwitchRenderObjectWidget extends LeafRenderObjectWidget {
   const _CupertinoSwitchRenderObjectWidget({
+    [
     Key key,
     this.value,
     this.activeColor,
     this.onChanged,
     this.vsync,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : super(key: key);
 
   final bool value;
@@ -200,12 +206,16 @@ const Duration _kToggleDuration = Duration(milliseconds: 200);
 
 class _RenderCupertinoSwitch extends RenderConstrainedBox {
   _RenderCupertinoSwitch({
-    @required bool value,
-    @required Color activeColor,
-    ValueChanged<bool> onChanged,
-    @required TextDirection textDirection,
-    @required TickerProvider vsync,
+     bool value,
+     Color activeColor,
+    [
+    ValueChanged<bool> onChanged
+    ]
+     TextDirection textDirection,
+     TickerProvider vsync,
+    [
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(value != null),
        assert(activeColor != null),
        assert(vsync != null),

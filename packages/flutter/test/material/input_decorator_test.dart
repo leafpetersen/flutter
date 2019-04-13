@@ -12,6 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../rendering/mock_canvas.dart';
 
 Widget buildInputDecorator({
+  [
   InputDecoration decoration = const InputDecoration(),
   InputDecorationTheme inputDecorationTheme,
   TextDirection textDirection = TextDirection.ltr,
@@ -22,6 +23,7 @@ Widget buildInputDecorator({
     'text',
     style: TextStyle(fontFamily: 'Ahem', fontSize: 16.0),
   ),
+]
 }) {
   return MaterialApp(
     home: Material(
@@ -696,10 +698,12 @@ void main() {
 
   testWidgets('InputDecorator counter text, widget, and null', (WidgetTester tester) async {
     Widget buildFrame({
+      [
       InputCounterWidgetBuilder buildCounter,
       String counterText,
       Widget counter,
       int maxLength,
+    ]
     }) {
       return MaterialApp(
         home: Scaffold(
@@ -738,7 +742,7 @@ void main() {
     const String counterText = 'I show instead of count';
     final Widget counter = Text('hello', key: counterKey);
     final InputCounterWidgetBuilder buildCounter =
-      (BuildContext context, { int currentLength, int maxLength, bool isFocused }) {
+      (BuildContext context, { [ int currentLength, int maxLength, bool isFocused ] }) {
         return Text(
           '${currentLength.toString()} of ${maxLength.toString()}',
           key: buildCounterKey,

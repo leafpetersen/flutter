@@ -79,9 +79,9 @@ class RenderAndroidView extends RenderBox {
 
   /// Creates a render object for an Android view.
   RenderAndroidView({
-    @required AndroidViewController viewController,
-    @required this.hitTestBehavior,
-    @required Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers,
+     AndroidViewController viewController,
+     this.hitTestBehavior,
+     Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers,
   }) : assert(viewController != null),
        assert(hitTestBehavior != null),
        assert(gestureRecognizers != null),
@@ -230,7 +230,7 @@ class RenderAndroidView extends RenderBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (hitTestBehavior == PlatformViewHitTestBehavior.transparent || !size.contains(position))
       return false;
     result.add(BoxHitTestEntry(this, position));
@@ -292,9 +292,9 @@ class RenderUiKitView extends RenderBox {
   ///
   /// The `viewId`, `hitTestBehavior`, and `gestureRecognizers` parameters must not be null.
   RenderUiKitView({
-    @required UiKitViewController viewController,
-    @required this.hitTestBehavior,
-    @required Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers,
+     UiKitViewController viewController,
+     this.hitTestBehavior,
+     Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers,
   }) : assert(viewController != null),
        assert(hitTestBehavior != null),
        assert(gestureRecognizers != null),
@@ -365,7 +365,7 @@ class RenderUiKitView extends RenderBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (hitTestBehavior == PlatformViewHitTestBehavior.transparent || !size.contains(position))
       return false;
     result.add(BoxHitTestEntry(this, position));
@@ -433,7 +433,9 @@ class _UiKitViewGestureRecognizer extends OneSequenceGestureRecognizer {
   _UiKitViewGestureRecognizer(
     this.controller,
     this.gestureRecognizerFactories, {
+    [
     PointerDeviceKind kind,
+  ]
   }) : super(kind: kind) {
     team = GestureArenaTeam();
     team.captain = this;
@@ -497,7 +499,9 @@ class _AndroidViewGestureRecognizer extends OneSequenceGestureRecognizer {
   _AndroidViewGestureRecognizer(
     this.dispatcher,
     this.gestureRecognizerFactories, {
+    [
     PointerDeviceKind kind,
+  ]
   }) : super(kind: kind) {
     team = GestureArenaTeam();
     team.captain = this;

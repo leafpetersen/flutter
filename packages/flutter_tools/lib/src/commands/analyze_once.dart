@@ -23,7 +23,9 @@ class AnalyzeOnce extends AnalyzeBase {
     ArgResults argResults,
     this.repoRoots,
     this.repoPackages, {
+    [
     this.workingDirectory,
+  ]
   }) : super(argResults);
 
   final List<String> repoRoots;

@@ -716,7 +716,7 @@ void main() {
   });
 
   testWidgets('MaterialButton minWidth and height parameters', (WidgetTester tester) async {
-    Widget buildFrame({ double minWidth, double height, EdgeInsets padding = EdgeInsets.zero, Widget child }) {
+    Widget buildFrame({ [ double minWidth, double height, EdgeInsets padding = EdgeInsets.zero, Widget child ] }) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: Center(

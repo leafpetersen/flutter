@@ -35,6 +35,7 @@ class TestSemantics {
   ///  * [TestSemantics.fullScreen] 800x600, the test screen's size in logical
   ///    pixels, useful for other full-screen widgets.
   TestSemantics({
+    [
     this.id,
     this.flags = 0,
     this.actions = 0,
@@ -53,6 +54,7 @@ class TestSemantics {
     this.scrollIndex,
     this.scrollChildren,
     Iterable<SemanticsTag> tags,
+  ]
   }) : assert(flags is int || flags is List<SemanticsFlag>),
        assert(actions is int || actions is List<SemanticsAction>),
        assert(label != null),
@@ -66,6 +68,7 @@ class TestSemantics {
   /// Creates an object with some test semantics data, with the [id] and [rect]
   /// set to the appropriate values for the root node.
   TestSemantics.root({
+    [
     this.flags = 0,
     this.actions = 0,
     this.label = '',
@@ -80,6 +83,7 @@ class TestSemantics {
     this.scrollIndex,
     this.scrollChildren,
     Iterable<SemanticsTag> tags,
+  ]
   }) : id = 0,
        assert(flags is int || flags is List<SemanticsFlag>),
        assert(actions is int || actions is List<SemanticsAction>),
@@ -104,6 +108,7 @@ class TestSemantics {
   /// [TestSemantics.fullScreen] property may be useful as a value; it describes
   /// an 800x600 rectangle, which is the test screen's size in logical pixels.
   TestSemantics.rootChild({
+    [
     this.id,
     this.flags = 0,
     this.actions = 0,
@@ -122,6 +127,7 @@ class TestSemantics {
     this.scrollIndex,
     this.scrollChildren,
     Iterable<SemanticsTag> tags,
+  ]
   }) : assert(flags is int || flags is List<SemanticsFlag>),
        assert(actions is int || actions is List<SemanticsAction>),
        assert(label != null),
@@ -251,10 +257,12 @@ class TestSemantics {
   bool _matches(
     SemanticsNode node,
     Map<dynamic, dynamic> matchState, {
+    [
     bool ignoreRect = false,
     bool ignoreTransform = false,
     bool ignoreId = false,
     DebugSemanticsDumpOrder childOrder = DebugSemanticsDumpOrder.inverseHitTest,
+  ]
   }) {
     bool fail(String message) {
       matchState[TestSemantics] = '$message';
@@ -431,6 +439,7 @@ class SemanticsTester {
   ///
   /// If `ancestor` is not null, only the descendants of it are returned.
   Iterable<SemanticsNode> nodesWith({
+    [
     String label,
     String value,
     String hint,
@@ -441,6 +450,7 @@ class SemanticsTester {
     double scrollExtentMax,
     double scrollExtentMin,
     SemanticsNode ancestor,
+  ]
   }) {
     bool checkNode(SemanticsNode node) {
       if (label != null && node.label != label)
@@ -622,10 +632,10 @@ class SemanticsTester {
 class _HasSemantics extends Matcher {
   const _HasSemantics(
     this._semantics, {
-    @required this.ignoreRect,
-    @required this.ignoreTransform,
-    @required this.ignoreId,
-    @required this.childOrder,
+     this.ignoreRect,
+     this.ignoreTransform,
+     this.ignoreId,
+     this.childOrder,
   }) : assert(_semantics != null),
        assert(ignoreRect != null),
        assert(ignoreId != null),
@@ -687,10 +697,12 @@ class _HasSemantics extends Matcher {
 /// Asserts that a [SemanticsTester] has a semantics tree that exactly matches the given semantics.
 Matcher hasSemantics(
   TestSemantics semantics, {
+  [
   bool ignoreRect = false,
   bool ignoreTransform = false,
   bool ignoreId = false,
   DebugSemanticsDumpOrder childOrder = DebugSemanticsDumpOrder.traversalOrder,
+]
 }) {
   return _HasSemantics(
     semantics,
@@ -703,6 +715,7 @@ Matcher hasSemantics(
 
 class _IncludesNodeWith extends Matcher {
   const _IncludesNodeWith({
+    [
     this.label,
     this.value,
     this.hint,
@@ -712,6 +725,7 @@ class _IncludesNodeWith extends Matcher {
     this.scrollPosition,
     this.scrollExtentMax,
     this.scrollExtentMin,
+]
 }) : assert(label != null || value != null || actions != null || flags != null || scrollPosition != null || scrollExtentMax != null || scrollExtentMin != null);
 
   final String label;
@@ -778,6 +792,7 @@ class _IncludesNodeWith extends Matcher {
 ///
 /// If null is provided for an argument, it will match against any value.
 Matcher includesNodeWith({
+  [
   String label,
   String value,
   String hint,
@@ -787,6 +802,7 @@ Matcher includesNodeWith({
   double scrollPosition,
   double scrollExtentMax,
   double scrollExtentMin,
+]
 }) {
   return _IncludesNodeWith(
     label: label,

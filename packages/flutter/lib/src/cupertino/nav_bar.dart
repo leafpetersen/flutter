@@ -83,10 +83,12 @@ class _HeroTag {
 /// When `updateSystemUiOverlay` is true, the nav bar will update the OS
 /// status bar's color theme based on the background color of the nav bar.
 Widget _wrapWithBackground({
+  [
   Border border,
   Color backgroundColor,
   Widget child,
   bool updateSystemUiOverlay = true,
+]
 }) {
   Widget result = child;
   if (updateSystemUiOverlay) {
@@ -187,6 +189,7 @@ bool _isTransitionable(BuildContext context) {
 class CupertinoNavigationBar extends StatefulWidget implements ObstructingPreferredSizeWidget {
   /// Creates a navigation bar in the iOS style.
   const CupertinoNavigationBar({
+    [
     Key key,
     this.leading,
     this.automaticallyImplyLeading = true,
@@ -200,6 +203,7 @@ class CupertinoNavigationBar extends StatefulWidget implements ObstructingPrefer
     this.actionsForegroundColor,
     this.transitionBetweenRoutes = true,
     this.heroTag = _defaultHeroTag,
+  ]
   }) : assert(automaticallyImplyLeading != null),
        assert(automaticallyImplyMiddle != null),
        assert(transitionBetweenRoutes != null),
@@ -507,6 +511,7 @@ class CupertinoSliverNavigationBar extends StatefulWidget {
   ///
   /// The [largeTitle] argument is required and must not be null.
   const CupertinoSliverNavigationBar({
+    [
     Key key,
     this.largeTitle,
     this.leading,
@@ -521,6 +526,7 @@ class CupertinoSliverNavigationBar extends StatefulWidget {
     this.actionsForegroundColor,
     this.transitionBetweenRoutes = true,
     this.heroTag = _defaultHeroTag,
+  ]
   }) : assert(automaticallyImplyLeading != null),
        assert(automaticallyImplyTitle != null),
        assert(
@@ -674,17 +680,17 @@ class _CupertinoSliverNavigationBarState extends State<CupertinoSliverNavigation
 class _LargeTitleNavigationBarSliverDelegate
     extends SliverPersistentHeaderDelegate with DiagnosticableTreeMixin {
   _LargeTitleNavigationBarSliverDelegate({
-    @required this.keys,
-    @required this.components,
-    @required this.userMiddle,
-    @required this.backgroundColor,
-    @required this.border,
-    @required this.padding,
-    @required this.actionsForegroundColor,
-    @required this.transitionBetweenRoutes,
-    @required this.heroTag,
-    @required this.persistentHeight,
-    @required this.alwaysShowMiddle,
+     this.keys,
+     this.components,
+     this.userMiddle,
+     this.backgroundColor,
+     this.border,
+     this.padding,
+     this.actionsForegroundColor,
+     this.transitionBetweenRoutes,
+     this.heroTag,
+     this.persistentHeight,
+     this.alwaysShowMiddle,
   }) : assert(persistentHeight != null),
        assert(alwaysShowMiddle != null),
        assert(transitionBetweenRoutes != null);
@@ -829,10 +835,12 @@ class _LargeTitleNavigationBarSliverDelegate
 /// doesn't scroll.
 class _PersistentNavigationBar extends StatelessWidget {
   const _PersistentNavigationBar({
+    [
     Key key,
     this.components,
     this.padding,
     this.middleVisible,
+  ]
   }) : super(key: key);
 
   final _NavigationBarStaticComponents components;
@@ -934,17 +942,17 @@ class _NavigationBarStaticComponentsKeys {
 @immutable
 class _NavigationBarStaticComponents {
   _NavigationBarStaticComponents({
-    @required _NavigationBarStaticComponentsKeys keys,
-    @required ModalRoute<dynamic> route,
-    @required Widget userLeading,
-    @required bool automaticallyImplyLeading,
-    @required bool automaticallyImplyTitle,
-    @required String previousPageTitle,
-    @required Widget userMiddle,
-    @required Widget userTrailing,
-    @required Widget userLargeTitle,
-    @required EdgeInsetsDirectional padding,
-    @required bool large,
+     _NavigationBarStaticComponentsKeys keys,
+     ModalRoute<dynamic> route,
+     Widget userLeading,
+     bool automaticallyImplyLeading,
+     bool automaticallyImplyTitle,
+     String previousPageTitle,
+     Widget userMiddle,
+     Widget userTrailing,
+     Widget userLargeTitle,
+     EdgeInsetsDirectional padding,
+     bool large,
   }) : leading = createLeading(
          leadingKey: keys.leadingKey,
          userLeading: userLeading,
@@ -987,8 +995,10 @@ class _NavigationBarStaticComponents {
        );
 
   static Widget _derivedTitle({
+    [
     bool automaticallyImplyTitle,
     ModalRoute<dynamic> currentRoute,
+  ]
   }) {
     // Auto use the CupertinoPageRoute's title if middle not provided.
     if (automaticallyImplyTitle &&
@@ -1002,11 +1012,11 @@ class _NavigationBarStaticComponents {
 
   final KeyedSubtree leading;
   static KeyedSubtree createLeading({
-    @required GlobalKey leadingKey,
-    @required Widget userLeading,
-    @required ModalRoute<dynamic> route,
-    @required bool automaticallyImplyLeading,
-    @required EdgeInsetsDirectional padding,
+     GlobalKey leadingKey,
+     Widget userLeading,
+     ModalRoute<dynamic> route,
+     bool automaticallyImplyLeading,
+     EdgeInsetsDirectional padding,
   }) {
     Widget leadingContent;
 
@@ -1047,10 +1057,10 @@ class _NavigationBarStaticComponents {
 
   final KeyedSubtree backChevron;
   static KeyedSubtree createBackChevron({
-    @required GlobalKey backChevronKey,
-    @required Widget userLeading,
-    @required ModalRoute<dynamic> route,
-    @required bool automaticallyImplyLeading,
+     GlobalKey backChevronKey,
+     Widget userLeading,
+     ModalRoute<dynamic> route,
+     bool automaticallyImplyLeading,
   }) {
     if (
       userLeading != null ||
@@ -1069,11 +1079,11 @@ class _NavigationBarStaticComponents {
   /// animate during transitions.
   final KeyedSubtree backLabel;
   static KeyedSubtree createBackLabel({
-    @required GlobalKey backLabelKey,
-    @required Widget userLeading,
-    @required ModalRoute<dynamic> route,
-    @required bool automaticallyImplyLeading,
-    @required String previousPageTitle,
+     GlobalKey backLabelKey,
+     Widget userLeading,
+     ModalRoute<dynamic> route,
+     bool automaticallyImplyLeading,
+     String previousPageTitle,
   }) {
     if (
       userLeading != null ||
@@ -1098,12 +1108,12 @@ class _NavigationBarStaticComponents {
   /// animate during transitions.
   final KeyedSubtree middle;
   static KeyedSubtree createMiddle({
-    @required GlobalKey middleKey,
-    @required Widget userMiddle,
-    @required Widget userLargeTitle,
-    @required bool large,
-    @required bool automaticallyImplyTitle,
-    @required ModalRoute<dynamic> route,
+     GlobalKey middleKey,
+     Widget userMiddle,
+     Widget userLargeTitle,
+     bool large,
+     bool automaticallyImplyTitle,
+     ModalRoute<dynamic> route,
   }) {
     Widget middleContent = userMiddle;
 
@@ -1128,9 +1138,9 @@ class _NavigationBarStaticComponents {
 
   final KeyedSubtree trailing;
   static KeyedSubtree createTrailing({
-    @required GlobalKey trailingKey,
-    @required Widget userTrailing,
-    @required EdgeInsetsDirectional padding,
+     GlobalKey trailingKey,
+     Widget userTrailing,
+     EdgeInsetsDirectional padding,
   }) {
     if (userTrailing == null) {
       return null;
@@ -1156,11 +1166,11 @@ class _NavigationBarStaticComponents {
   /// animate during transitions.
   final KeyedSubtree largeTitle;
   static KeyedSubtree createLargeTitle({
-    @required GlobalKey largeTitleKey,
-    @required Widget userLargeTitle,
-    @required bool large,
-    @required bool automaticImplyTitle,
-    @required ModalRoute<dynamic> route,
+     GlobalKey largeTitleKey,
+     Widget userLargeTitle,
+     bool large,
+     bool automaticImplyTitle,
+     ModalRoute<dynamic> route,
   }) {
     if (!large) {
       return null;
@@ -1198,8 +1208,10 @@ class CupertinoNavigationBarBackButton extends StatelessWidget {
   ///
   /// The [color] parameter must not be null.
   const CupertinoNavigationBarBackButton({
+    [
     this.color,
     this.previousPageTitle,
+  ]
   }) : _backChevron = null,
        _backLabel = null;
 
@@ -1276,7 +1288,7 @@ class CupertinoNavigationBarBackButton extends StatelessWidget {
 
 
 class _BackChevron extends StatelessWidget {
-  const _BackChevron({ Key key }) : super(key: key);
+  const _BackChevron({ [ Key key ] }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1318,9 +1330,11 @@ class _BackChevron extends StatelessWidget {
 /// is true.
 class _BackLabel extends StatelessWidget {
   const _BackLabel({
-    Key key,
-    @required this.specifiedPreviousTitle,
-    @required this.route,
+    [
+    Key key
+    ]
+     this.specifiedPreviousTitle,
+     this.route,
   }) : assert(route != null),
        super(key: key);
 
@@ -1380,15 +1394,15 @@ class _BackLabel extends StatelessWidget {
 /// navigation bar in each route.
 class _TransitionableNavigationBar extends StatelessWidget {
   _TransitionableNavigationBar({
-    @required this.componentsKeys,
-    @required this.backgroundColor,
-    @required this.backButtonTextStyle,
-    @required this.titleTextStyle,
-    @required this.largeTitleTextStyle,
-    @required this.border,
-    @required this.hasUserMiddle,
-    @required this.largeExpanded,
-    @required this.child,
+     this.componentsKeys,
+     this.backgroundColor,
+     this.backButtonTextStyle,
+     this.titleTextStyle,
+     this.largeTitleTextStyle,
+     this.border,
+     this.hasUserMiddle,
+     this.largeExpanded,
+     this.child,
   }) : assert(componentsKeys != null),
        assert(largeExpanded != null),
        assert(!largeExpanded || largeTitleTextStyle != null),
@@ -1463,9 +1477,9 @@ class _TransitionableNavigationBar extends StatelessWidget {
 /// results.
 class _NavigationBarTransition extends StatelessWidget {
   _NavigationBarTransition({
-    @required this.animation,
-    @required this.topNavBar,
-    @required this.bottomNavBar,
+     this.animation,
+     this.topNavBar,
+     this.bottomNavBar,
   }) : heightTween = Tween<double>(
          begin: bottomNavBar.renderBox.size.height,
          end: topNavBar.renderBox.size.height,
@@ -1570,10 +1584,10 @@ class _NavigationBarTransition extends StatelessWidget {
 @immutable
 class _NavigationBarComponentsTransition {
   _NavigationBarComponentsTransition({
-    @required this.animation,
-    @required _TransitionableNavigationBar bottomNavBar,
-    @required _TransitionableNavigationBar topNavBar,
-    @required TextDirection directionality,
+     this.animation,
+     _TransitionableNavigationBar bottomNavBar,
+     _TransitionableNavigationBar topNavBar,
+     TextDirection directionality,
   }) : bottomComponents = bottomNavBar.componentsKeys,
        topComponents = topNavBar.componentsKeys,
        bottomNavBarBox = bottomNavBar.renderBox,
@@ -1635,7 +1649,7 @@ class _NavigationBarComponentsTransition {
   // translate it into a RelativeBox in the transition navigation bar box.
   RelativeRect positionInTransitionBox(
     GlobalKey key, {
-    @required RenderBox from,
+     RenderBox from,
   }) {
     final RenderBox componentBox = key.currentContext.findRenderObject();
     assert(componentBox.attached);
@@ -1657,10 +1671,10 @@ class _NavigationBarComponentsTransition {
   // BoxConstraints of the 'from' widget so that animating font sizes etc don't
   // produce rounding error artifacts with a linearly resizing rect.
   RelativeRectTween slideFromLeadingEdge({
-    @required GlobalKey fromKey,
-    @required RenderBox fromNavBarBox,
-    @required GlobalKey toKey,
-    @required RenderBox toNavBarBox,
+     GlobalKey fromKey,
+     RenderBox fromNavBarBox,
+     GlobalKey toKey,
+     RenderBox toNavBarBox,
   }) {
     final RelativeRect fromRect = positionInTransitionBox(fromKey, from: fromNavBarBox);
 
@@ -1691,13 +1705,13 @@ class _NavigationBarComponentsTransition {
       );
   }
 
-  Animation<double> fadeInFrom(double t, { Curve curve = Curves.easeIn }) {
+  Animation<double> fadeInFrom(double t, { [ Curve curve = Curves.easeIn ] }) {
     return animation.drive(fadeIn.chain(
       CurveTween(curve: Interval(t, 1.0, curve: curve)),
     ));
   }
 
-  Animation<double> fadeOutBy(double t, { Curve curve = Curves.easeOut }) {
+  Animation<double> fadeOutBy(double t, { [ Curve curve = Curves.easeOut ] }) {
     return animation.drive(fadeOut.chain(
       CurveTween(curve: Interval(0.0, t, curve: curve)),
     ));

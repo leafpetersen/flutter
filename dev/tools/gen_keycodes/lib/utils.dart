@@ -98,7 +98,7 @@ const List<String> kDartReservedWords = <String>[
 ];
 
 /// Converts an integer into a hex string with the given number of digits.
-String toHex(int value, {int digits = 8}) {
+String toHex(int value, {[int digits = 8]}) {
   if (value == null) {
     return 'null';
   }

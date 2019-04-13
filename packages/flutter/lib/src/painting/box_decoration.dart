@@ -82,6 +82,7 @@ class BoxDecoration extends Decoration {
   ///
   /// The [shape] argument must not be null.
   const BoxDecoration({
+    [
     this.color,
     this.image,
     this.border,
@@ -90,6 +91,7 @@ class BoxDecoration extends Decoration {
     this.gradient,
     this.backgroundBlendMode,
     this.shape = BoxShape.rectangle,
+  ]
   }) : assert(shape != null),
        assert(
          backgroundBlendMode == null || color != null || gradient != null,
@@ -305,7 +307,7 @@ class BoxDecoration extends Decoration {
   }
 
   @override
-  bool hitTest(Size size, Offset position, { TextDirection textDirection }) {
+  bool hitTest(Size size, Offset position, { [ TextDirection textDirection ] }) {
     assert(shape != null);
     assert((Offset.zero & size).contains(position));
     switch (shape) {

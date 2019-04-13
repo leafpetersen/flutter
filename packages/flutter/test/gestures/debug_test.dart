@@ -12,7 +12,7 @@ void main() {
     debugPrintGestureArenaDiagnostics = true;
     final DebugPrintCallback oldCallback = debugPrint;
     final List<String> log = <String>[];
-    debugPrint = (String s, { int wrapWidth }) { log.add(s); };
+    debugPrint = (String s, { [ int wrapWidth ] }) { log.add(s); };
 
     final TapGestureRecognizer tap = TapGestureRecognizer()
       ..onTapDown = (TapDownDetails details) { }
@@ -58,7 +58,7 @@ void main() {
     debugPrintRecognizerCallbacksTrace = true;
     final DebugPrintCallback oldCallback = debugPrint;
     final List<String> log = <String>[];
-    debugPrint = (String s, { int wrapWidth }) { log.add(s); };
+    debugPrint = (String s, { [ int wrapWidth ] }) { log.add(s); };
 
     final TapGestureRecognizer tap = TapGestureRecognizer()
       ..onTapDown = (TapDownDetails details) { }
@@ -101,7 +101,7 @@ void main() {
     debugPrintRecognizerCallbacksTrace = true;
     final DebugPrintCallback oldCallback = debugPrint;
     final List<String> log = <String>[];
-    debugPrint = (String s, { int wrapWidth }) { log.add(s); };
+    debugPrint = (String s, { [ int wrapWidth ] }) { log.add(s); };
 
     final TapGestureRecognizer tap = TapGestureRecognizer()
       ..onTapDown = (TapDownDetails details) { }

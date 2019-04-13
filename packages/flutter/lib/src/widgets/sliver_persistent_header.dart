@@ -91,10 +91,14 @@ class SliverPersistentHeader extends StatelessWidget {
   ///
   /// The [delegate], [pinned], and [floating] arguments must not be null.
   const SliverPersistentHeader({
-    Key key,
-    @required this.delegate,
+    [
+    Key key
+    ]
+     this.delegate,
+    [
     this.pinned = false,
     this.floating = false,
+  ]
   }) : assert(delegate != null),
        assert(pinned != null),
        assert(floating != null),
@@ -231,8 +235,10 @@ class _SliverPersistentHeaderElement extends RenderObjectElement {
 
 abstract class _SliverPersistentHeaderRenderObjectWidget extends RenderObjectWidget {
   const _SliverPersistentHeaderRenderObjectWidget({
-    Key key,
-    @required this.delegate,
+    [
+    Key key
+    ]
+     this.delegate,
   }) : assert(delegate != null),
        super(key: key);
 
@@ -274,8 +280,10 @@ mixin _RenderSliverPersistentHeaderForWidgetsMixin on RenderSliverPersistentHead
 
 class _SliverScrollingPersistentHeader extends _SliverPersistentHeaderRenderObjectWidget {
   const _SliverScrollingPersistentHeader({
-    Key key,
-    @required SliverPersistentHeaderDelegate delegate,
+    [
+    Key key
+    ]
+     SliverPersistentHeaderDelegate delegate,
   }) : super(key: key, delegate: delegate);
 
   @override
@@ -292,8 +300,10 @@ class _RenderSliverScrollingPersistentHeaderForWidgets extends _RenderSliverScro
 
 class _SliverPinnedPersistentHeader extends _SliverPersistentHeaderRenderObjectWidget {
   const _SliverPinnedPersistentHeader({
-    Key key,
-    @required SliverPersistentHeaderDelegate delegate,
+    [
+    Key key
+    ]
+     SliverPersistentHeaderDelegate delegate,
   }) : super(key: key, delegate: delegate);
 
   @override
@@ -309,8 +319,10 @@ class _RenderSliverPinnedPersistentHeaderForWidgets extends _RenderSliverPinnedP
 
 class _SliverFloatingPersistentHeader extends _SliverPersistentHeaderRenderObjectWidget {
   const _SliverFloatingPersistentHeader({
-    Key key,
-    @required SliverPersistentHeaderDelegate delegate,
+    [
+    Key key
+    ]
+     SliverPersistentHeaderDelegate delegate,
   }) : super(key: key, delegate: delegate);
 
   @override
@@ -334,8 +346,10 @@ class _RenderSliverFloatingPinnedPersistentHeaderForWidgets extends _RenderSlive
 
 class _SliverFloatingPinnedPersistentHeader extends _SliverPersistentHeaderRenderObjectWidget {
   const _SliverFloatingPinnedPersistentHeader({
-    Key key,
-    @required SliverPersistentHeaderDelegate delegate,
+    [
+    Key key
+    ]
+     SliverPersistentHeaderDelegate delegate,
   }) : super(key: key, delegate: delegate);
 
   @override

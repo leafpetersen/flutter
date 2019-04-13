@@ -138,7 +138,7 @@ class PackagesTestCommand extends FlutterCommand {
 }
 
 class PackagesForwardCommand extends FlutterCommand {
-  PackagesForwardCommand(this._commandName, this._description, {bool requiresPubspec = false}) {
+  PackagesForwardCommand(this._commandName, this._description, {[bool requiresPubspec = false]}) {
     if (requiresPubspec) {
       requiresPubspecYaml();
     }

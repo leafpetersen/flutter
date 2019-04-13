@@ -42,13 +42,17 @@ class GlowingOverscrollIndicator extends StatefulWidget {
   /// The [showLeading], [showTrailing], [axisDirection], [color], and
   /// [notificationPredicate] arguments must not be null.
   const GlowingOverscrollIndicator({
+    [
     Key key,
     this.showLeading = true,
-    this.showTrailing = true,
-    @required this.axisDirection,
-    @required this.color,
+    this.showTrailing = true
+    ]
+     this.axisDirection,
+     this.color,
+    [
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.child,
+  ]
   }) : assert(showLeading != null),
        assert(showTrailing != null),
        assert(axisDirection != null),
@@ -245,9 +249,9 @@ enum _GlowState { idle, absorb, pull, recede }
 
 class _GlowController extends ChangeNotifier {
   _GlowController({
-    @required TickerProvider vsync,
-    @required Color color,
-    @required Axis axis,
+     TickerProvider vsync,
+     Color color,
+     Axis axis,
   }) : assert(vsync != null),
        assert(color != null),
        assert(axis != null),
@@ -458,10 +462,12 @@ class _GlowController extends ChangeNotifier {
 
 class _GlowingOverscrollIndicatorPainter extends CustomPainter {
   _GlowingOverscrollIndicatorPainter({
+    [
     this.leadingController,
     this.trailingController,
     this.axisDirection,
     Listenable repaint,
+  ]
   }) : super(
     repaint: repaint,
   );
@@ -540,7 +546,7 @@ class OverscrollIndicatorNotification extends Notification with ViewportNotifica
   ///
   /// The [leading] argument must not be null.
   OverscrollIndicatorNotification({
-    @required this.leading,
+     this.leading,
   });
 
   /// Whether the indication will be shown on the leading edge of the scroll

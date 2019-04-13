@@ -61,14 +61,18 @@ class AndroidView extends StatefulWidget {
   /// If `creationParams` is not null then `creationParamsCodec` must not be null.
   /// {@endtemplate}
   const AndroidView({
-    Key key,
-    @required this.viewType,
+    [
+    Key key
+    ]
+     this.viewType,
+    [
     this.onPlatformViewCreated,
     this.hitTestBehavior = PlatformViewHitTestBehavior.opaque,
     this.layoutDirection,
     this.gestureRecognizers,
     this.creationParams,
     this.creationParamsCodec,
+  ]
   }) : assert(viewType != null),
        assert(hitTestBehavior != null),
        assert(creationParams == null || creationParamsCodec != null),
@@ -202,14 +206,18 @@ class UiKitView extends StatefulWidget {
   ///
   /// {@macro flutter.widgets.platformViews.constructorParams}
   const UiKitView({
-    Key key,
-    @required this.viewType,
+    [
+    Key key
+    ]
+     this.viewType,
+    [
     this.onPlatformViewCreated,
     this.hitTestBehavior = PlatformViewHitTestBehavior.opaque,
     this.layoutDirection,
     this.creationParams,
     this.creationParamsCodec,
     this.gestureRecognizers,
+  ]
   }) : assert(viewType != null),
        assert(hitTestBehavior != null),
        assert(creationParams == null || creationParamsCodec != null),
@@ -471,10 +479,12 @@ class _UiKitViewState extends State<UiKitView> {
 
 class _AndroidPlatformView extends LeafRenderObjectWidget {
   const _AndroidPlatformView({
-    Key key,
-    @required this.controller,
-    @required this.hitTestBehavior,
-    @required this.gestureRecognizers,
+    [
+    Key key
+    ]
+     this.controller,
+     this.hitTestBehavior,
+     this.gestureRecognizers,
   }) : assert(controller != null),
        assert(hitTestBehavior != null),
        assert(gestureRecognizers != null),
@@ -502,10 +512,12 @@ class _AndroidPlatformView extends LeafRenderObjectWidget {
 
 class _UiKitPlatformView extends LeafRenderObjectWidget {
   const _UiKitPlatformView({
-    Key key,
-    @required this.controller,
-    @required this.hitTestBehavior,
-    @required this.gestureRecognizers,
+    [
+    Key key
+    ]
+     this.controller,
+     this.hitTestBehavior,
+     this.gestureRecognizers,
   }) : assert(controller != null),
        assert(hitTestBehavior != null),
        assert(gestureRecognizers != null),

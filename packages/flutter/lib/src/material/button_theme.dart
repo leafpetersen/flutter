@@ -68,6 +68,7 @@ class ButtonTheme extends InheritedWidget {
   /// The [textTheme], [minWidth], [height], and [colorScheme] arguments
   /// must not be null.
   ButtonTheme({
+    [
     Key key,
     ButtonTextTheme textTheme = ButtonTextTheme.normal,
     ButtonBarLayoutBehavior layoutBehavior = ButtonBarLayoutBehavior.padded,
@@ -83,6 +84,7 @@ class ButtonTheme extends InheritedWidget {
     ColorScheme colorScheme,
     MaterialTapTargetSize materialTapTargetSize,
     Widget child,
+  ]
   }) : assert(textTheme != null),
        assert(minWidth != null && minWidth >= 0.0),
        assert(height != null && height >= 0.0),
@@ -109,9 +111,13 @@ class ButtonTheme extends InheritedWidget {
   ///
   /// The [data] argument must not be null.
   const ButtonTheme.fromButtonThemeData({
-    Key key,
-    @required this.data,
+    [
+    Key key
+    ]
+     this.data,
+    [
     Widget child,
+  ]
   }) : assert(data != null),
        super(key: key, child: child);
 
@@ -130,6 +136,7 @@ class ButtonTheme extends InheritedWidget {
   /// For example, buttons at the bottom of [Dialog] or [Card] widgets use this
   /// button theme.
   ButtonTheme.bar({
+    [
     Key key,
     ButtonTextTheme textTheme = ButtonTextTheme.accent,
     double minWidth = 64.0,
@@ -144,6 +151,7 @@ class ButtonTheme extends InheritedWidget {
     ColorScheme colorScheme,
     Widget child,
     ButtonBarLayoutBehavior layoutBehavior = ButtonBarLayoutBehavior.padded,
+  ]
   }) : assert(textTheme != null),
        assert(minWidth != null && minWidth >= 0.0),
        assert(height != null && height >= 0.0),
@@ -211,6 +219,7 @@ class ButtonThemeData extends Diagnosticable {
   /// have a name with a `get` prefix are used by [RaisedButton],
   /// [OutlineButton], and [FlatButton] to configure a [RawMaterialButton].
   const ButtonThemeData({
+    [
     this.textTheme = ButtonTextTheme.normal,
     this.minWidth = 88.0,
     this.height = 36.0,
@@ -224,6 +233,7 @@ class ButtonThemeData extends Diagnosticable {
     Color splashColor,
     this.colorScheme,
     MaterialTapTargetSize materialTapTargetSize,
+  ]
   }) : assert(textTheme != null),
        assert(minWidth != null && minWidth >= 0.0),
        assert(height != null && height >= 0.0),
@@ -728,6 +738,7 @@ class ButtonThemeData extends Diagnosticable {
   /// Creates a copy of this button theme data object with the matching fields
   /// replaced with the non-null parameter values.
   ButtonThemeData copyWith({
+    [
     ButtonTextTheme textTheme,
     ButtonBarLayoutBehavior layoutBehavior,
     double minWidth,
@@ -741,6 +752,7 @@ class ButtonThemeData extends Diagnosticable {
     Color splashColor,
     ColorScheme colorScheme,
     MaterialTapTargetSize materialTapTargetSize,
+  ]
   }) {
     return ButtonThemeData(
       textTheme: textTheme ?? this.textTheme,

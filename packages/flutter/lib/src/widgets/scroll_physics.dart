@@ -27,7 +27,7 @@ export 'package:flutter/physics.dart' show Simulation, ScrollSpringSimulation, T
 @immutable
 class ScrollPhysics {
   /// Creates an object with the default scroll physics.
-  const ScrollPhysics({ this.parent });
+  const ScrollPhysics({ [ this.parent ] });
 
   /// If non-null, determines the default behavior for each method.
   ///
@@ -257,7 +257,7 @@ class ScrollPhysics {
 ///    clamping behavior.
 class BouncingScrollPhysics extends ScrollPhysics {
   /// Creates scroll physics that bounce back from the edge.
-  const BouncingScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const BouncingScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   BouncingScrollPhysics applyTo(ScrollPhysics ancestor) {
@@ -379,7 +379,7 @@ class BouncingScrollPhysics extends ScrollPhysics {
 class ClampingScrollPhysics extends ScrollPhysics {
   /// Creates scroll physics that prevent the scroll offset from exceeding the
   /// bounds of the content..
-  const ClampingScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const ClampingScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   ClampingScrollPhysics applyTo(ScrollPhysics ancestor) {
@@ -463,7 +463,7 @@ class ClampingScrollPhysics extends ScrollPhysics {
 ///    found on Android.
 class AlwaysScrollableScrollPhysics extends ScrollPhysics {
   /// Creates scroll physics that always lets the user scroll.
-  const AlwaysScrollableScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const AlwaysScrollableScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   AlwaysScrollableScrollPhysics applyTo(ScrollPhysics ancestor) {
@@ -486,7 +486,7 @@ class AlwaysScrollableScrollPhysics extends ScrollPhysics {
 ///    found on Android.
 class NeverScrollableScrollPhysics extends ScrollPhysics {
   /// Creates scroll physics that does not let the user scroll.
-  const NeverScrollableScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const NeverScrollableScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   NeverScrollableScrollPhysics applyTo(ScrollPhysics ancestor) {

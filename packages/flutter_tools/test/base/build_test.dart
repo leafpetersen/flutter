@@ -29,7 +29,9 @@ class MockXcode extends Mock implements Xcode {}
 
 class _FakeGenSnapshot implements GenSnapshot {
   _FakeGenSnapshot({
+    [
     this.succeed = true,
+  ]
   });
 
   final bool succeed;
@@ -49,10 +51,12 @@ class _FakeGenSnapshot implements GenSnapshot {
 
   @override
   Future<int> run({
+    [
     SnapshotType snapshotType,
     String depfilePath,
     IOSArch iosArch,
     Iterable<String> additionalArgs = const <String>[],
+  ]
   }) async {
     _callCount += 1;
     _snapshotType = snapshotType;

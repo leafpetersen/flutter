@@ -96,12 +96,14 @@ class Typography extends Diagnosticable {
   /// The default values for [englishLike], [dense], and [tall] are
   /// [englishLike2014], [dense2014], and [tall2014].
   factory Typography({
+    [
     TargetPlatform platform = TargetPlatform.android,
     TextTheme black,
     TextTheme white,
     TextTheme englishLike,
     TextTheme dense,
     TextTheme tall,
+  ]
   }) {
     assert(platform != null || (black != null && white != null));
     switch (platform) {
@@ -198,11 +200,13 @@ class Typography extends Diagnosticable {
   /// Creates a copy of this [Typography] with the given fields
   /// replaced by the non-null parameter values.
   Typography copyWith({
+    [
     TextTheme black,
     TextTheme white,
     TextTheme englishLike,
     TextTheme dense,
     TextTheme tall,
+  ]
   }) {
     return Typography(
       black: black ?? this.black,

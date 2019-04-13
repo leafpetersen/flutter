@@ -540,7 +540,7 @@ void main() {
   });
 
   testWidgets('Tooltip text scales with textScaleFactor', (WidgetTester tester) async {
-    Widget buildApp(String text, { double textScaleFactor }) {
+    Widget buildApp(String text, { [ double textScaleFactor ] }) {
       return MediaQuery(
         data: MediaQueryData(textScaleFactor: textScaleFactor),
         child: Directionality(

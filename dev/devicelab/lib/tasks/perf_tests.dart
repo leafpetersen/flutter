@@ -113,7 +113,7 @@ TaskFunction createBasicMaterialCompileTest() {
 
 /// Measure application startup performance.
 class StartupTest {
-  const StartupTest(this.testDirectory, { this.reportMetrics = true });
+  const StartupTest(this.testDirectory, { [ this.reportMetrics = true ] });
 
   final String testDirectory;
   final bool reportMetrics;
@@ -201,7 +201,7 @@ class PerfTest {
 /// Measures how long it takes to compile a Flutter app and how big the compiled
 /// code is.
 class CompileTest {
-  const CompileTest(this.testDirectory, { this.reportPackageContentSizes = false });
+  const CompileTest(this.testDirectory, { [ this.reportPackageContentSizes = false ] });
 
   final String testDirectory;
   final bool reportPackageContentSizes;
@@ -258,7 +258,7 @@ class CompileTest {
     return metrics;
   }
 
-  static Future<Map<String, dynamic>> _compileApp({ bool reportPackageContentSizes = false }) async {
+  static Future<Map<String, dynamic>> _compileApp({ [ bool reportPackageContentSizes = false ] }) async {
     await flutter('clean');
     final Stopwatch watch = Stopwatch();
     int releaseSizeInBytes;
@@ -577,9 +577,9 @@ class _UnzipListEntry {
   }
 
   _UnzipListEntry._({
-    @required this.uncompressedSize,
-    @required this.compressedSize,
-    @required this.path,
+     this.uncompressedSize,
+     this.compressedSize,
+     this.path,
   }) : assert(uncompressedSize != null),
        assert(compressedSize != null),
        assert(compressedSize <= uncompressedSize),

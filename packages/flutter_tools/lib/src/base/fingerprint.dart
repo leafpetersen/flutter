@@ -24,11 +24,13 @@ typedef FingerprintPathFilter = bool Function(String path);
 /// of the fingerprint inputs.
 class Fingerprinter {
   Fingerprinter({
-    @required this.fingerprintPath,
-    @required Iterable<String> paths,
-    @required Map<String, String> properties,
+     this.fingerprintPath,
+     Iterable<String> paths,
+     Map<String, String> properties,
+    [
     Iterable<String> depfilePaths = const <String>[],
     FingerprintPathFilter pathFilter,
+  ]
   }) : _paths = paths.toList(),
        _properties = Map<String, String>.from(properties),
        _depfilePaths = depfilePaths.toList(),

@@ -10,10 +10,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 class TestTree extends Object with DiagnosticableTreeMixin {
   TestTree({
+    [
     this.name,
     this.style,
     this.children = const <TestTree>[],
     this.properties = const <DiagnosticsNode>[],
+  ]
   });
 
   final String name;
@@ -183,9 +185,11 @@ void main() {
   test('TreeDiagnosticsMixin control test', () async {
     void goldenStyleTest(
       String description, {
+      [
       DiagnosticsTreeStyle style,
       DiagnosticsTreeStyle lastChildStyle,
       String golden = '',
+    ]
     }) {
       final TestTree tree = TestTree(children: <TestTree>[
         TestTree(name: 'node A', style: style),
@@ -320,9 +324,11 @@ void main() {
   test('TreeDiagnosticsMixin tree with properties test', () async {
     void goldenStyleTest(
       String description, {
+      [
       DiagnosticsTreeStyle style,
-      DiagnosticsTreeStyle lastChildStyle,
-      @required String golden,
+      DiagnosticsTreeStyle lastChildStyle
+      ]
+       String golden,
     }) {
       final TestTree tree = TestTree(
         properties: <DiagnosticsNode>[

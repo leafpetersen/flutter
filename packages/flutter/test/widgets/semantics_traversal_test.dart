@@ -288,9 +288,11 @@ class TraversalTester {
   final SemanticsTester semantics;
 
   Future<void> test({
+    [
     TextDirection textDirection,
     Map<String, Rect> children,
     String expectedTraversal,
+  ]
   }) async {
     assert(children is LinkedHashMap);
     await tester.pumpWidget(

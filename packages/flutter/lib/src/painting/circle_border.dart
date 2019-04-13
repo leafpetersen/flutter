@@ -25,7 +25,7 @@ class CircleBorder extends ShapeBorder {
   /// Create a circle border.
   ///
   /// The [side] argument must not be null.
-  const CircleBorder({ this.side = BorderSide.none }) : assert(side != null);
+  const CircleBorder({ [ this.side = BorderSide.none ] }) : assert(side != null);
 
   /// The style of this border.
   final BorderSide side;
@@ -53,7 +53,7 @@ class CircleBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addOval(Rect.fromCircle(
         center: rect.center,
@@ -62,7 +62,7 @@ class CircleBorder extends ShapeBorder {
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addOval(Rect.fromCircle(
         center: rect.center,
@@ -71,7 +71,7 @@ class CircleBorder extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;

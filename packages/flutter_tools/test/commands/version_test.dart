@@ -68,12 +68,14 @@ class MockProcessManager extends Mock implements ProcessManager {
   @override
   Future<ProcessResult> run(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
+  ]
   }) async {
     if (command[0] == 'git' && command[1] == 'tag') {
       return ProcessResult(0, 0, 'v10.0.0\r\nv20.0.0', '');
@@ -87,12 +89,14 @@ class MockProcessManager extends Mock implements ProcessManager {
   @override
   ProcessResult runSync(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
+  ]
   }) {
     final String commandStr = command.join(' ');
     if (commandStr == 'git log -n 1 --pretty=format:%H') {
@@ -110,11 +114,13 @@ class MockProcessManager extends Mock implements ProcessManager {
   @override
   Future<Process> start(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     ProcessStartMode mode = ProcessStartMode.normal,
+  ]
   }) {
     final Completer<Process> completer = Completer<Process>();
     completer.complete(MockProcess());

@@ -440,7 +440,7 @@ void expectNotExists(FileSystemEntity entity) {
   expect(entity.existsSync(), isFalse);
 }
 
-void addIosWithBundleId(Directory directory, String id, {String qualifier}) {
+void addIosWithBundleId(Directory directory, String id, {[String qualifier]}) {
   directory
       .childDirectory('ios')
       .childDirectory('Runner.xcodeproj')
@@ -475,7 +475,7 @@ flutter:
   invalid:
 ''';
 
-String projectFileWithBundleId(String id, {String qualifier}) {
+String projectFileWithBundleId(String id, {[String qualifier]}) {
   return '''
 97C147061CF9000F007C117D /* Debug */ = {
   isa = XCBuildConfiguration;

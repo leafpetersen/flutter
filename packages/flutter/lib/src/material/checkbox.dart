@@ -54,13 +54,19 @@ class Checkbox extends StatefulWidget {
   ///
   /// The value of [tristate] must not be null.
   const Checkbox({
-    Key key,
-    @required this.value,
-    this.tristate = false,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+    [
+    this.tristate = false
+    ]
+     this.onChanged,
+    [
     this.activeColor,
     this.checkColor,
     this.materialTapTargetSize,
+  ]
   }) : assert(tristate != null),
        assert(tristate || value != null),
        super(key: key);
@@ -167,15 +173,17 @@ class _CheckboxState extends State<Checkbox> with TickerProviderStateMixin {
 
 class _CheckboxRenderObjectWidget extends LeafRenderObjectWidget {
   const _CheckboxRenderObjectWidget({
-    Key key,
-    @required this.value,
-    @required this.tristate,
-    @required this.activeColor,
-    @required this.checkColor,
-    @required this.inactiveColor,
-    @required this.onChanged,
-    @required this.vsync,
-    @required this.additionalConstraints,
+    [
+    Key key
+    ]
+     this.value,
+     this.tristate,
+     this.activeColor,
+     this.checkColor,
+     this.inactiveColor,
+     this.onChanged,
+     this.vsync,
+     this.additionalConstraints,
   }) : assert(tristate != null),
        assert(tristate || value != null),
        assert(activeColor != null),
@@ -224,14 +232,16 @@ const double _kStrokeWidth = 2.0;
 
 class _RenderCheckbox extends RenderToggleable {
   _RenderCheckbox({
+    [
     bool value,
     bool tristate,
     Color activeColor,
     this.checkColor,
     Color inactiveColor,
     BoxConstraints additionalConstraints,
-    ValueChanged<bool> onChanged,
-    @required TickerProvider vsync,
+    ValueChanged<bool> onChanged
+    ]
+     TickerProvider vsync,
   }) : _oldValue = value,
        super(
          value: value,

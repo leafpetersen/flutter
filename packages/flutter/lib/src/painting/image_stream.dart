@@ -18,7 +18,7 @@ class ImageInfo {
   /// Creates an [ImageInfo] object for the given image and scale.
   ///
   /// Both the image and the scale must not be null.
-  const ImageInfo({ @required this.image, this.scale = 1.0 })
+  const ImageInfo({  this.image, [ this.scale = 1.0 ] })
     : assert(image != null),
       assert(scale != null);
 
@@ -155,7 +155,7 @@ class ImageStream extends Diagnosticable {
   /// discouraged because [removeListener] will remove the first instance that
   /// was added, even if it was added with a different `onError` than the
   /// intended paired `addListener` call.
-  void addListener(ImageListener listener, { ImageErrorListener onError }) {
+  void addListener(ImageListener listener, { [ ImageErrorListener onError ] }) {
     if (_completer != null)
       return _completer.addListener(listener, onError: onError);
     _listeners ??= <_ImageListenerPair>[];
@@ -277,7 +277,7 @@ abstract class ImageStreamCompleter extends Diagnosticable {
   /// discouraged because [removeListener] will remove the first instance that
   /// was added, even if it was added with a different `onError` than the
   /// intended paired `addListener` call.
-  void addListener(ImageListener listener, { ImageErrorListener onError }) {
+  void addListener(ImageListener listener, { [ ImageErrorListener onError ] }) {
     _listeners.add(_ImageListenerPair(listener, onError));
     if (_currentImage != null) {
       try {
@@ -374,11 +374,13 @@ abstract class ImageStreamCompleter extends Diagnosticable {
   /// See [FlutterErrorDetails] for further details on these values.
   @protected
   void reportError({
+    [
     String context,
     dynamic exception,
     StackTrace stack,
     InformationCollector informationCollector,
     bool silent = false,
+  ]
   }) {
     _currentError = FlutterErrorDetails(
       exception: exception,
@@ -447,7 +449,7 @@ class OneFrameImageStreamCompleter extends ImageStreamCompleter {
   /// argument on [FlutterErrorDetails] set to true, meaning that by default the
   /// message is only dumped to the console in debug mode (see [new
   /// FlutterErrorDetails]).
-  OneFrameImageStreamCompleter(Future<ImageInfo> image, { InformationCollector informationCollector })
+  OneFrameImageStreamCompleter(Future<ImageInfo> image, { [ InformationCollector informationCollector ] })
       : assert(image != null) {
     image.then<void>(setImage, onError: (dynamic error, StackTrace stack) {
       reportError(
@@ -503,9 +505,11 @@ class MultiFrameImageStreamCompleter extends ImageStreamCompleter {
   /// [scale] is the linear scale factor for drawing this frames of this image
   /// at their intended size.
   MultiFrameImageStreamCompleter({
-    @required Future<ui.Codec> codec,
-    @required double scale,
+     Future<ui.Codec> codec,
+     double scale,
+    [
     InformationCollector informationCollector,
+  ]
   }) : assert(codec != null),
        _informationCollector = informationCollector,
        _scale = scale {
@@ -610,7 +614,7 @@ class MultiFrameImageStreamCompleter extends ImageStreamCompleter {
   }
 
   @override
-  void addListener(ImageListener listener, { ImageErrorListener onError }) {
+  void addListener(ImageListener listener, { [ ImageErrorListener onError ] }) {
     if (!hasListeners && _codec != null)
       _decodeNextFrameAndSchedule();
     super.addListener(listener, onError: onError);

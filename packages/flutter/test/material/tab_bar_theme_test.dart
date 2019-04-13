@@ -27,8 +27,10 @@ final List<SizedBox> _sizedTabs = <SizedBox>[
 
 Widget _withTheme(
   TabBarTheme theme, {
+  [
   List<Widget> tabs = _tabs,
   bool isScrollable = false,
+]
 }) {
   return MaterialApp(
     theme: ThemeData(tabBarTheme: theme),

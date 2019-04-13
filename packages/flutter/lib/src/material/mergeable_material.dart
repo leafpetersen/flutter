@@ -39,8 +39,8 @@ class MaterialSlice extends MergeableMaterialItem {
   /// Creates a slice of [Material] that's mergeable within a
   /// [MergeableMaterial].
   const MaterialSlice({
-    @required LocalKey key,
-    @required this.child,
+     LocalKey key,
+     this.child,
   }) : assert(key != null),
        super(key);
 
@@ -61,8 +61,10 @@ class MaterialSlice extends MergeableMaterialItem {
 class MaterialGap extends MergeableMaterialItem {
   /// Creates a Material gap with a given size.
   const MaterialGap({
-    @required LocalKey key,
+     LocalKey key,
+    [
     this.size = 16.0,
+  ]
   }) : assert(key != null),
        super(key);
 
@@ -100,11 +102,13 @@ class MaterialGap extends MergeableMaterialItem {
 class MergeableMaterial extends StatefulWidget {
   /// Creates a mergeable Material list of items.
   const MergeableMaterial({
+    [
     Key key,
     this.mainAxis = Axis.vertical,
     this.elevation = 2,
     this.hasDividers = false,
     this.children = const <MergeableMaterialItem>[],
+  ]
   }) : super(key: key);
 
   /// The children of the [MergeableMaterial].
@@ -136,11 +140,13 @@ class MergeableMaterial extends StatefulWidget {
 
 class _AnimationTuple {
   _AnimationTuple({
+    [
     this.controller,
     this.startAnimation,
     this.endAnimation,
     this.gapAnimation,
     this.gapStart = 0.0,
+  ]
   });
 
   final AnimationController controller;
@@ -645,10 +651,12 @@ class _MergeableMaterialSliceKey extends GlobalKey {
 
 class _MergeableMaterialListBody extends ListBody {
   _MergeableMaterialListBody({
+    [
     List<Widget> children,
     Axis mainAxis = Axis.vertical,
     this.items,
     this.boxShadows,
+  ]
   }) : super(children: children, mainAxis: mainAxis);
 
   final List<MergeableMaterialItem> items;
@@ -677,9 +685,11 @@ class _MergeableMaterialListBody extends ListBody {
 
 class _RenderMergeableMaterialListBody extends RenderListBody {
   _RenderMergeableMaterialListBody({
+    [
     List<RenderBox> children,
     AxisDirection axisDirection = AxisDirection.down,
     this.boxShadows,
+  ]
   }) : super(children: children, axisDirection: axisDirection);
 
   List<BoxShadow> boxShadows;

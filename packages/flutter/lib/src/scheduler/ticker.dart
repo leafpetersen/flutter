@@ -59,7 +59,7 @@ class Ticker {
   ///
   /// An optional label can be provided for debugging purposes. That label
   /// will appear in the [toString] output in debug builds.
-  Ticker(this._onTick, { this.debugLabel }) {
+  Ticker(this._onTick, { [ this.debugLabel ] }) {
     assert(() {
       _debugCreationStack = StackTrace.current;
       return true;
@@ -178,7 +178,7 @@ class Ticker {
   ///
   /// By convention, this method is used by the object that receives the ticks
   /// (as opposed to the [TickerProvider] which created the ticker).
-  void stop({ bool canceled = false }) {
+  void stop({ [ bool canceled = false ] }) {
     if (!isActive)
       return;
 
@@ -237,7 +237,7 @@ class Ticker {
   ///
   /// This should only be called if [shouldScheduleTick] is true.
   @protected
-  void scheduleTick({ bool rescheduling = false }) {
+  void scheduleTick({ [ bool rescheduling = false ] }) {
     assert(!scheduled);
     assert(shouldScheduleTick);
     _animationId = SchedulerBinding.instance.scheduleFrameCallback(_tick, rescheduling: rescheduling);
@@ -311,7 +311,7 @@ class Ticker {
   StackTrace _debugCreationStack;
 
   @override
-  String toString({ bool debugIncludeStack = false }) {
+  String toString({ [ bool debugIncludeStack = false ] }) {
     final StringBuffer buffer = StringBuffer();
     buffer.write('$runtimeType(');
     assert(() {
@@ -419,17 +419,17 @@ class TickerFuture implements Future<void> {
   }
 
   @override
-  Future<void> catchError(Function onError, { bool test(dynamic error) }) {
+  Future<void> catchError(Function onError, { [ bool test(dynamic error) ] }) {
     return _primaryCompleter.future.catchError(onError, test: test);
   }
 
   @override
-  Future<E> then<E>(dynamic f(void value), { Function onError }) {
+  Future<E> then<E>(dynamic f(void value), { [ Function onError ] }) {
     return _primaryCompleter.future.then<E>(f, onError: onError);
   }
 
   @override
-  Future<void> timeout(Duration timeLimit, { dynamic onTimeout() }) {
+  Future<void> timeout(Duration timeLimit, { [ dynamic onTimeout() ] }) {
     return _primaryCompleter.future.timeout(timeLimit, onTimeout: onTimeout);
   }
 

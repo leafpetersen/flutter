@@ -86,10 +86,12 @@ class _DebugSize extends Size {
 class BoxConstraints extends Constraints {
   /// Creates box constraints with the given constraints.
   const BoxConstraints({
+    [
     this.minWidth = 0.0,
     this.maxWidth = double.infinity,
     this.minHeight = 0.0,
     this.maxHeight = double.infinity,
+  ]
   });
 
   /// Creates box constraints that is respected only by the given size.
@@ -107,8 +109,10 @@ class BoxConstraints extends Constraints {
   ///    being tight if the value is non-null, is tight if the value is not
   ///    infinite.
   const BoxConstraints.tightFor({
+    [
     double width,
     double height,
+  ]
   }) : minWidth = width != null ? width : 0.0,
        maxWidth = width != null ? width : double.infinity,
        minHeight = height != null ? height : 0.0,
@@ -122,8 +126,10 @@ class BoxConstraints extends Constraints {
   ///  * [new BoxConstraints.tightFor], which is similar but instead of being
   ///    tight if the value is not infinite, is tight if the value is non-null.
   const BoxConstraints.tightForFinite({
+    [
     double width = double.infinity,
     double height = double.infinity,
+  ]
   }) : minWidth = width != double.infinity ? width : 0.0,
        maxWidth = width != double.infinity ? width : double.infinity,
        minHeight = height != double.infinity ? height : 0.0,
@@ -141,8 +147,10 @@ class BoxConstraints extends Constraints {
   /// If width or height is given, the constraints will require exactly the
   /// given value in the given dimension.
   const BoxConstraints.expand({
+    [
     double width,
     double height,
+  ]
   }) : minWidth = width != null ? width : double.infinity,
        maxWidth = width != null ? width : double.infinity,
        minHeight = height != null ? height : double.infinity,
@@ -166,10 +174,12 @@ class BoxConstraints extends Constraints {
 
   /// Creates a copy of this box constraints but with the given fields replaced with the new values.
   BoxConstraints copyWith({
+    [
     double minWidth,
     double maxWidth,
     double minHeight,
     double maxHeight,
+  ]
   }) {
     return BoxConstraints(
       minWidth: minWidth ?? this.minWidth,
@@ -220,7 +230,7 @@ class BoxConstraints extends Constraints {
   /// Returns new box constraints with a tight width and/or height as close to
   /// the given width and height as possible while still respecting the original
   /// box constraints.
-  BoxConstraints tighten({ double width, double height }) {
+  BoxConstraints tighten({ [ double width, double height ] }) {
     return BoxConstraints(minWidth: width == null ? minWidth : width.clamp(minWidth, maxWidth),
                               maxWidth: width == null ? maxWidth : width.clamp(minWidth, maxWidth),
                               minHeight: height == null ? minHeight : height.clamp(minHeight, maxHeight),
@@ -493,8 +503,10 @@ class BoxConstraints extends Constraints {
 
   @override
   bool debugAssertIsValid({
+    [
     bool isAppliedConstraint = false,
     InformationCollector informationCollector,
+  ]
   }) {
     assert(() {
       void throwError(String message) {
@@ -1638,7 +1650,7 @@ abstract class RenderBox extends RenderObject {
   ///
   /// When implementing a [RenderBox] subclass, to override the baseline
   /// computation, override [computeDistanceToActualBaseline].
-  double getDistanceToBaseline(TextBaseline baseline, { bool onlyReal = false }) {
+  double getDistanceToBaseline(TextBaseline baseline, { [ bool onlyReal = false ] }) {
     assert(!_debugDoingBaseline, 'Please see the documentation for computeDistanceToActualBaseline for the required calling conventions of this method.');
     assert(!debugNeedsLayout);
     assert(() {
@@ -1882,7 +1894,7 @@ abstract class RenderBox extends RenderObject {
   /// called. For example, a render object might be a child of a [RenderOpacity]
   /// object, which calls [hitTest] on its children when its opacity is zero
   /// even through it does not [paint] its children.
-  bool hitTest(HitTestResult result, { @required Offset position }) {
+  bool hitTest(HitTestResult result, {  Offset position }) {
     assert(() {
       if (!hasSize) {
         if (debugNeedsLayout) {
@@ -1947,7 +1959,7 @@ abstract class RenderBox extends RenderObject {
   /// Used by [hitTest]. If you override [hitTest] and do not call this
   /// function, then you don't need to implement this function.
   @protected
-  bool hitTestChildren(HitTestResult result, { Offset position }) => false;
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) => false;
 
   /// Multiply the transform from the parent's coordinate system to this box's
   /// coordinate system into the given transform.
@@ -2000,7 +2012,7 @@ abstract class RenderBox extends RenderObject {
   /// object) instead of from the global coordinate system.
   ///
   /// This method is implemented in terms of [getTransformTo].
-  Offset globalToLocal(Offset point, { RenderObject ancestor }) {
+  Offset globalToLocal(Offset point, { [ RenderObject ancestor ] }) {
     // We want to find point (p) that corresponds to a given point on the
     // screen (s), but that also physically resides on the local render plane,
     // so that it is useful for visually accurate gesture processing in the
@@ -2033,7 +2045,7 @@ abstract class RenderBox extends RenderObject {
   /// object) instead of to the global coordinate system.
   ///
   /// This method is implemented in terms of [getTransformTo].
-  Offset localToGlobal(Offset point, { RenderObject ancestor }) {
+  Offset localToGlobal(Offset point, { [ RenderObject ancestor ] }) {
     return MatrixUtils.transformPoint(getTransformTo(ancestor), point);
   }
 
@@ -2248,7 +2260,7 @@ mixin RenderBoxContainerDefaultsMixin<ChildType extends RenderBox, ParentDataTyp
   ///
   ///  * [defaultPaint], which paints the children appropriate for this
   ///    hit-testing strategy.
-  bool defaultHitTestChildren(HitTestResult result, { Offset position }) {
+  bool defaultHitTestChildren(HitTestResult result, { [ Offset position ] }) {
     // the x, y parameters have the top left of the node's box as the origin
     ChildType child = lastChild;
     while (child != null) {

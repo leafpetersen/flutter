@@ -145,7 +145,7 @@ List<FuchsiaDevice> parseListDevices(String text) {
 }
 
 class FuchsiaDevice extends Device {
-  FuchsiaDevice(String id, { this.name }) : super(id);
+  FuchsiaDevice(String id, { [ this.name ] }) : super(id);
 
   @override
   bool get supportsHotReload => true;
@@ -183,6 +183,7 @@ class FuchsiaDevice extends Device {
   @override
   Future<LaunchResult> startApp(
     ApplicationPackage package, {
+    [
     String mainPath,
     String route,
     DebuggingOptions debuggingOptions,
@@ -190,6 +191,7 @@ class FuchsiaDevice extends Device {
     bool prebuiltApplication = false,
     bool usesTerminalUi = true,
     bool ipv6 = false,
+  ]
   }) => Future<void>.error('unimplemented');
 
   @override
@@ -205,7 +207,7 @@ class FuchsiaDevice extends Device {
   Future<String> get sdkNameAndVersion async => 'Fuchsia';
 
   @override
-  DeviceLogReader getLogReader({ ApplicationPackage app }) => _logReader ??= _FuchsiaLogReader(this, app);
+  DeviceLogReader getLogReader({ [ ApplicationPackage app ] }) => _logReader ??= _FuchsiaLogReader(this, app);
   _FuchsiaLogReader _logReader;
 
   @override
@@ -398,7 +400,7 @@ class _FuchsiaPortForwarder extends DevicePortForwarder {
   final Map<int, Process> _processes = <int, Process>{};
 
   @override
-  Future<int> forward(int devicePort, { int hostPort }) async {
+  Future<int> forward(int devicePort, { [ int hostPort ] }) async {
     hostPort ??= await _findPort();
     // Note: the provided command works around a bug in -N, see US-515
     // for more explanation.
@@ -452,7 +454,7 @@ class _FuchsiaPortForwarder extends DevicePortForwarder {
 }
 
 class FuchsiaModulePackage extends ApplicationPackage {
-  FuchsiaModulePackage({@required this.name}) : super(id: name);
+  FuchsiaModulePackage({ this.name}) : super(id: name);
 
   @override
   final String name;

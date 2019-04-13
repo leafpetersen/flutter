@@ -38,10 +38,14 @@ class Theme extends StatelessWidget {
   ///
   /// The [data] and [child] arguments must not be null.
   const Theme({
-    Key key,
-    @required this.data,
-    this.isMaterialAppTheme = false,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.data,
+    [
+    this.isMaterialAppTheme = false
+    ]
+     this.child,
   }) : assert(child != null),
        assert(data != null),
        super(key: key);
@@ -124,7 +128,7 @@ class Theme extends StatelessWidget {
   ///   );
   /// }
   /// ```
-  static ThemeData of(BuildContext context, { bool shadowThemeOnly = false }) {
+  static ThemeData of(BuildContext context, { [ bool shadowThemeOnly = false ] }) {
     final _InheritedTheme inheritedTheme = context.inheritFromWidgetOfExactType(_InheritedTheme);
     if (shadowThemeOnly) {
       if (inheritedTheme == null || inheritedTheme.theme.isMaterialAppTheme)
@@ -166,9 +170,11 @@ class Theme extends StatelessWidget {
 
 class _InheritedTheme extends InheritedWidget {
   const _InheritedTheme({
-    Key key,
-    @required this.theme,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.theme,
+     Widget child,
   }) : assert(theme != null),
        super(key: key, child: child);
 
@@ -190,7 +196,7 @@ class ThemeDataTween extends Tween<ThemeData> {
   /// The [begin] and [end] properties must be non-null before the tween is
   /// first used, but the arguments can be null if the values are going to be
   /// filled in later.
-  ThemeDataTween({ ThemeData begin, ThemeData end }) : super(begin: begin, end: end);
+  ThemeDataTween({ [ ThemeData begin, ThemeData end ] }) : super(begin: begin, end: end);
 
   @override
   ThemeData lerp(double t) => ThemeData.lerp(begin, end, t);
@@ -216,12 +222,16 @@ class AnimatedTheme extends ImplicitlyAnimatedWidget {
   /// By default, the theme transition uses a linear curve. The [data] and
   /// [child] arguments must not be null.
   const AnimatedTheme({
-    Key key,
-    @required this.data,
+    [
+    Key key
+    ]
+     this.data,
+    [
     this.isMaterialAppTheme = false,
     Curve curve = Curves.linear,
-    Duration duration = kThemeAnimationDuration,
-    @required this.child,
+    Duration duration = kThemeAnimationDuration
+    ]
+     this.child,
   }) : assert(child != null),
        assert(data != null),
        super(key: key, curve: curve, duration: duration);

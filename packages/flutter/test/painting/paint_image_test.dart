@@ -11,7 +11,7 @@ import 'package:flutter/painting.dart';
 import '../flutter_test_alternative.dart';
 
 class TestImage implements ui.Image {
-  TestImage({ this.width, this.height });
+  TestImage({ [ this.width, this.height ] });
 
   @override
   final int width;
@@ -23,7 +23,7 @@ class TestImage implements ui.Image {
   void dispose() { }
 
   @override
-  Future<ByteData> toByteData({ ui.ImageByteFormat format = ui.ImageByteFormat.rawRgba }) async {
+  Future<ByteData> toByteData({ [ ui.ImageByteFormat format = ui.ImageByteFormat.rawRgba ] }) async {
     throw UnsupportedError('Cannot encode test image');
   }
 }

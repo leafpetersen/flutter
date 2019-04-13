@@ -17,9 +17,11 @@ import 'theme.dart';
 
 class _AccountPictures extends StatelessWidget {
   const _AccountPictures({
+    [
     Key key,
     this.currentAccountPicture,
     this.otherAccountsPictures,
+  ]
   }) : super(key: key);
 
   final Widget currentAccountPicture;
@@ -67,11 +69,15 @@ class _AccountPictures extends StatelessWidget {
 
 class _AccountDetails extends StatefulWidget {
   const _AccountDetails({
-    Key key,
-    @required this.accountName,
-    @required this.accountEmail,
+    [
+    Key key
+    ]
+     this.accountName,
+     this.accountEmail,
+    [
     this.onTap,
     this.isOpen,
+  ]
   }) : super(key: key);
 
   final Widget accountName;
@@ -218,7 +224,7 @@ const double _kAccountDetailsHeight = 56.0;
 
 class _AccountDetailsLayout extends MultiChildLayoutDelegate {
 
-  _AccountDetailsLayout({ @required this.textDirection });
+  _AccountDetailsLayout({  this.textDirection });
 
   static const String accountName = 'accountName';
   static const String accountEmail = 'accountEmail';
@@ -306,14 +312,18 @@ class UserAccountsDrawerHeader extends StatefulWidget {
   ///
   /// Requires one of its ancestors to be a [Material] widget.
   const UserAccountsDrawerHeader({
+    [
     Key key,
     this.decoration,
     this.margin = const EdgeInsets.only(bottom: 8.0),
     this.currentAccountPicture,
-    this.otherAccountsPictures,
-    @required this.accountName,
-    @required this.accountEmail,
+    this.otherAccountsPictures
+    ]
+     this.accountName,
+     this.accountEmail,
+    [
     this.onDetailsPressed,
+  ]
   }) : super(key: key);
 
   /// The header's background. If decoration is null then a [BoxDecoration]

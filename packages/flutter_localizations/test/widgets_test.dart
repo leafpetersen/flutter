@@ -139,6 +139,7 @@ class OnlyRTLDefaultWidgetsLocalizationsDelegate extends LocalizationsDelegate<W
 }
 
 Widget buildFrame({
+  [
   Locale locale,
   Iterable<LocalizationsDelegate<dynamic>> delegates,
   WidgetBuilder buildContent,
@@ -147,6 +148,7 @@ Widget buildFrame({
     Locale('en', 'US'),
     Locale('en', 'GB'),
   ],
+]
 }) {
   return WidgetsApp(
     color: const Color(0xFFFFFFFF),

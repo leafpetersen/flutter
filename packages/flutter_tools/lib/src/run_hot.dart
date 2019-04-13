@@ -55,6 +55,7 @@ class DeviceReloadReport {
 class HotRunner extends ResidentRunner {
   HotRunner(
     List<FlutterDevice> devices, {
+    [
     String target,
     DebuggingOptions debuggingOptions,
     bool usesTerminalUI = true,
@@ -67,6 +68,7 @@ class HotRunner extends ResidentRunner {
     bool saveCompilationTrace = false,
     bool stayResident = true,
     bool ipv6 = false,
+  ]
   }) : super(devices,
              target: target,
              debuggingOptions: debuggingOptions,
@@ -95,8 +97,10 @@ class HotRunner extends ResidentRunner {
 
   Future<void> _reloadSourcesService(
     String isolateId, {
+    [
     bool force = false,
     bool pause = false,
+  ]
   }) async {
     // TODO(cbernaschina): check that isolateId is the id of the UI isolate.
     final OperationResult result = await restart(pauseAfterRestart: pause);
@@ -108,7 +112,7 @@ class HotRunner extends ResidentRunner {
     }
   }
 
-  Future<void> _restartService({ bool pause = false }) async {
+  Future<void> _restartService({ [ bool pause = false ] }) async {
     final OperationResult result =
       await restart(fullRestart: true, pauseAfterRestart: pause);
     if (!result.isOk) {
@@ -144,8 +148,10 @@ class HotRunner extends ResidentRunner {
   // Returns the exit code of the flutter tool process, like [run].
   @override
   Future<int> attach({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
+  ]
   }) async {
     _didAttach = true;
     try {
@@ -234,10 +240,12 @@ class HotRunner extends ResidentRunner {
 
   @override
   Future<int> run({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
     String route,
     bool shouldBuild = true,
+  ]
   }) async {
     if (!fs.isFileSync(mainPath)) {
       String message = 'Tried to run $mainPath, but that file does not exist.';
@@ -306,7 +314,7 @@ class HotRunner extends ResidentRunner {
     return devFSUris;
   }
 
-  Future<UpdateFSReport> _updateDevFS({ bool fullRestart = false }) async {
+  Future<UpdateFSReport> _updateDevFS({ [ bool fullRestart = false ] }) async {
     final bool isFirstUpload = assetBundle.wasBuiltOnce() == false;
     final bool rebuildBundle = assetBundle.needsBuild();
     if (rebuildBundle) {
@@ -402,7 +410,7 @@ class HotRunner extends ResidentRunner {
 
   }
 
-  Future<OperationResult> _restartFromSources({ String reason, bool benchmarkMode = false }) async {
+  Future<OperationResult> _restartFromSources({ [ String reason, bool benchmarkMode = false ] }) async {
     final Map<String, String> analyticsParameters =
       reason == null
         ? null
@@ -491,7 +499,9 @@ class HotRunner extends ResidentRunner {
   /// Prints errors if [printErrors] is [true].
   static bool validateReloadReport(
     Map<String, dynamic> reloadReport, {
+    [
     bool printErrors = true,
+  ]
   }) {
     if (reloadReport == null) {
       if (printErrors)
@@ -530,7 +540,7 @@ class HotRunner extends ResidentRunner {
   bool get supportsRestart => true;
 
   @override
-  Future<OperationResult> restart({ bool fullRestart = false, bool pauseAfterRestart = false, String reason, bool benchmarkMode = false }) async {
+  Future<OperationResult> restart({ [ bool fullRestart = false, bool pauseAfterRestart = false, String reason, bool benchmarkMode = false ] }) async {
     final Stopwatch timer = Stopwatch()..start();
     if (fullRestart) {
       if (!canHotRestart) {
@@ -592,7 +602,7 @@ class HotRunner extends ResidentRunner {
     }
   }
 
-  Future<OperationResult> _reloadSources({ bool pause = false, String reason, void Function(String message) onSlow }) async {
+  Future<OperationResult> _reloadSources({ [ bool pause = false, String reason, void Function(String message) onSlow ] }) async {
     final Map<String, String> analyticsParameters = <String, String>{};
     if (reason != null) {
       analyticsParameters[kEventReloadReasonParameterName] = reason;
@@ -872,7 +882,7 @@ class HotRunner extends ResidentRunner {
   }
 
   @override
-  void printHelp({ @required bool details }) {
+  void printHelp({  bool details }) {
     const String fire = '🔥';
     String rawMessage = '  To hot reload changes while running, press "r". ';
     if (canHotRestart) {
@@ -945,9 +955,9 @@ class ProjectFileInvalidator {
   static const String _pubCachePathWindows = 'Pub/Cache';
 
   static List<Uri> findInvalidated({
-    @required DateTime lastCompiled,
-    @required List<Uri> urisToMonitor,
-    @required String packagesPath,
+     DateTime lastCompiled,
+     List<Uri> urisToMonitor,
+     String packagesPath,
   }) {
     final List<Uri> invalidatedFiles = <Uri>[];
     int scanned = 0;

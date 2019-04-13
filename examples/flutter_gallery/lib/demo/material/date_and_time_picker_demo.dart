@@ -11,12 +11,14 @@ import '../../gallery/demo.dart';
 
 class _InputDropdown extends StatelessWidget {
   const _InputDropdown({
+    [
     Key key,
     this.child,
     this.labelText,
     this.valueText,
     this.valueStyle,
     this.onPressed,
+  ]
   }) : super(key: key);
 
   final String labelText;
@@ -51,12 +53,14 @@ class _InputDropdown extends StatelessWidget {
 
 class _DateTimePicker extends StatelessWidget {
   const _DateTimePicker({
+    [
     Key key,
     this.labelText,
     this.selectedDate,
     this.selectedTime,
     this.selectDate,
     this.selectTime,
+  ]
   }) : super(key: key);
 
   final String labelText;

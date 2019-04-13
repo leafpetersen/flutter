@@ -7,7 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class TestCustomPainter extends CustomPainter {
-  TestCustomPainter({ this.log, this.name });
+  TestCustomPainter({ [ this.log, this.name ] });
 
   final List<String> log;
   final String name;

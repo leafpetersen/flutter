@@ -39,6 +39,7 @@ class Dialog extends StatelessWidget {
   ///
   /// Typically used in conjunction with [showDialog].
   const Dialog({
+    [
     Key key,
     this.backgroundColor,
     this.elevation,
@@ -46,6 +47,7 @@ class Dialog extends StatelessWidget {
     this.insetAnimationCurve = Curves.decelerate,
     this.shape,
     this.child,
+  ]
   }) : super(key: key);
 
   /// {@template flutter.material.dialog.backgroundColor}
@@ -201,6 +203,7 @@ class AlertDialog extends StatelessWidget {
   /// null, which implies a default that depends on the values of the other
   /// properties. See the documentation of [titlePadding] for details.
   const AlertDialog({
+    [
     Key key,
     this.title,
     this.titlePadding,
@@ -213,6 +216,7 @@ class AlertDialog extends StatelessWidget {
     this.elevation,
     this.semanticLabel,
     this.shape,
+  ]
   }) : assert(contentPadding != null),
        super(key: key);
 
@@ -407,9 +411,11 @@ class AlertDialog extends StatelessWidget {
 class SimpleDialogOption extends StatelessWidget {
   /// Creates an option for a [SimpleDialog].
   const SimpleDialogOption({
+    [
     Key key,
     this.onPressed,
     this.child,
+  ]
   }) : super(key: key);
 
   /// The callback that is called when this option is selected.
@@ -511,6 +517,7 @@ class SimpleDialog extends StatelessWidget {
   ///
   /// The [titlePadding] and [contentPadding] arguments must not be null.
   const SimpleDialog({
+    [
     Key key,
     this.title,
     this.titlePadding = const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
@@ -520,6 +527,7 @@ class SimpleDialog extends StatelessWidget {
     this.elevation,
     this.semanticLabel,
     this.shape,
+  ]
   }) : assert(titlePadding != null),
        assert(contentPadding != null),
        super(key: key);
@@ -689,7 +697,8 @@ Widget _buildMaterialDialogTransitions(BuildContext context, Animation<double> a
 ///  * [showGeneralDialog], which allows for customization of the dialog popup.
 ///  * <https://material.io/design/components/dialogs.html>
 Future<T> showDialog<T>({
-  @required BuildContext context,
+   BuildContext context,
+  [
   bool barrierDismissible = true,
   @Deprecated(
     'Instead of using the "child" argument, return the child from a closure '
@@ -697,6 +706,7 @@ Future<T> showDialog<T>({
     'is appropriate for widgets built in the dialog.'
   ) Widget child,
   WidgetBuilder builder,
+]
 }) {
   assert(child == null || builder == null);
   assert(debugCheckHasMaterialLocalizations(context));

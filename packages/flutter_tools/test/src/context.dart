@@ -41,11 +41,13 @@ typedef ContextInitializer = void Function(AppContext testContext);
 void testUsingContext(
   String description,
   dynamic testMethod(), {
+  [
   Timeout timeout,
   Map<Type, Generator> overrides = const <Type, Generator>{},
   bool initializeFlutterRoot = true,
   String testOn,
   bool skip, // should default to `false`, but https://github.com/dart-lang/test/issues/545 doesn't allow this
+] // should default to `false`, but https://github.com/dart-lang/test/issues/545 doesn't allow this
 }) {
   // Ensure we don't rely on the default [Config] constructor which will
   // leak a sticky $HOME/.flutter_settings behind!
@@ -255,13 +257,13 @@ class MockUsage implements Usage {
   String get clientId => '00000000-0000-4000-0000-000000000000';
 
   @override
-  void sendCommand(String command, { Map<String, String> parameters }) { }
+  void sendCommand(String command, { [ Map<String, String> parameters ] }) { }
 
   @override
-  void sendEvent(String category, String parameter, { Map<String, String> parameters }) { }
+  void sendEvent(String category, String parameter, { [ Map<String, String> parameters ] }) { }
 
   @override
-  void sendTiming(String category, String variableName, Duration duration, { String label }) { }
+  void sendTiming(String category, String variableName, Duration duration, { [ String label ] }) { }
 
   @override
   void sendException(dynamic exception, StackTrace trace) { }

@@ -115,16 +115,22 @@ class AnimatedCrossFade extends StatefulWidget {
   ///
   /// All the arguments other than [key] must be non-null.
   const AnimatedCrossFade({
-    Key key,
-    @required this.firstChild,
-    @required this.secondChild,
+    [
+    Key key
+    ]
+     this.firstChild,
+     this.secondChild,
+    [
     this.firstCurve = Curves.linear,
     this.secondCurve = Curves.linear,
     this.sizeCurve = Curves.linear,
-    this.alignment = Alignment.topCenter,
-    @required this.crossFadeState,
-    @required this.duration,
+    this.alignment = Alignment.topCenter
+    ]
+     this.crossFadeState,
+     this.duration,
+    [
     this.layoutBuilder = defaultLayoutBuilder,
+  ]
   }) : assert(firstChild != null),
        assert(secondChild != null),
        assert(firstCurve != null),

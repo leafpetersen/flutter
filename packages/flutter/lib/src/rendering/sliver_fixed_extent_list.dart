@@ -40,7 +40,7 @@ abstract class RenderSliverFixedExtentBoxAdaptor extends RenderSliverMultiBoxAda
   ///
   /// The [childManager] argument must not be null.
   RenderSliverFixedExtentBoxAdaptor({
-    @required RenderSliverBoxChildManager childManager,
+     RenderSliverBoxChildManager childManager,
   }) : super(childManager: childManager);
 
   /// The main-axis extent of each item.
@@ -95,10 +95,12 @@ abstract class RenderSliverFixedExtentBoxAdaptor extends RenderSliverMultiBoxAda
   @protected
   double estimateMaxScrollOffset(
     SliverConstraints constraints, {
+    [
     int firstIndex,
     int lastIndex,
     double leadingScrollOffset,
     double trailingScrollOffset,
+  ]
   }) {
     return childManager.estimateMaxScrollOffset(
       constraints,
@@ -296,8 +298,10 @@ class RenderSliverFixedExtentList extends RenderSliverFixedExtentBoxAdaptor {
   ///
   /// The [childManager] argument must not be null.
   RenderSliverFixedExtentList({
-    @required RenderSliverBoxChildManager childManager,
+     RenderSliverBoxChildManager childManager,
+    [
     double itemExtent,
+  ]
   }) : _itemExtent = itemExtent,
        super(childManager: childManager);
 

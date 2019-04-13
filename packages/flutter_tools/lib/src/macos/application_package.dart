@@ -14,7 +14,7 @@ bool _isBundleDirectory(FileSystemEntity entity) =>
     entity is Directory && entity.path.endsWith('.app');
 
 abstract class MacOSApp extends ApplicationPackage {
-  MacOSApp({@required String projectBundleId}) : super(id: projectBundleId);
+  MacOSApp({ String projectBundleId}) : super(id: projectBundleId);
 
   /// Creates a new [MacOSApp] from an existing app bundle.
   ///
@@ -73,10 +73,10 @@ abstract class MacOSApp extends ApplicationPackage {
 
 class PrebuiltMacOSApp extends MacOSApp {
   PrebuiltMacOSApp({
-    @required this.bundleDir,
-    @required this.bundleName,
-    @required this.projectBundleId,
-    @required this.executable,
+     this.bundleDir,
+     this.bundleName,
+     this.projectBundleId,
+     this.executable,
   }) : super(projectBundleId: projectBundleId);
 
   final Directory bundleDir;

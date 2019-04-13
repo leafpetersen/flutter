@@ -102,6 +102,7 @@ class Card extends StatelessWidget {
   /// The [elevation] must be null or non-negative. The [borderOnForeground]
   /// must not be null.
   const Card({
+    [
     Key key,
     this.color,
     this.elevation,
@@ -111,6 +112,7 @@ class Card extends StatelessWidget {
     this.clipBehavior,
     this.child,
     this.semanticContainer = true,
+  ]
   }) : assert(elevation == null || elevation >= 0.0),
        assert(borderOnForeground != null),
        super(key: key);

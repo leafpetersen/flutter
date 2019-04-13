@@ -46,7 +46,7 @@ class BarState extends State<Bar> {
 }
 
 class StatefulCreationCounter extends StatefulWidget {
-  const StatefulCreationCounter({ Key key }) : super(key: key);
+  const StatefulCreationCounter({ [ Key key ] }) : super(key: key);
 
   @override
   StatefulCreationCounterState createState() => StatefulCreationCounterState();

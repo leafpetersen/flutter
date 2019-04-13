@@ -44,9 +44,11 @@ abstract class InheritedNotifier<T extends Listenable> extends InheritedWidget {
   ///
   /// The [child] argument must not be null.
   const InheritedNotifier({
+    [
     Key key,
-    this.notifier,
-    @required Widget child,
+    this.notifier
+    ]
+     Widget child,
   }) : assert(child != null),
        super(key: key, child: child);
 

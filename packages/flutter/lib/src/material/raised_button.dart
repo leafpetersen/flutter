@@ -105,8 +105,11 @@ class RaisedButton extends MaterialButton {
   /// [clipBehavior] arguments must not be null. Additionally,  [elevation],
   /// [highlightElevation], and [disabledElevation] must be non-negative.
   const RaisedButton({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
     Color textColor,
@@ -125,6 +128,7 @@ class RaisedButton extends MaterialButton {
     MaterialTapTargetSize materialTapTargetSize,
     Duration animationDuration,
     Widget child,
+  ]
   }) : assert(elevation == null || elevation >= 0.0),
        assert(highlightElevation == null || highlightElevation >= 0.0),
        assert(disabledElevation == null || disabledElevation >= 0.0),
@@ -160,8 +164,11 @@ class RaisedButton extends MaterialButton {
   /// The [elevation], [highlightElevation], [disabledElevation], [icon],
   /// [label], and [clipBehavior] arguments must not be null.
   factory RaisedButton.icon({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
     Color textColor,
@@ -177,9 +184,10 @@ class RaisedButton extends MaterialButton {
     ShapeBorder shape,
     Clip clipBehavior,
     MaterialTapTargetSize materialTapTargetSize,
-    Duration animationDuration,
-    @required Widget icon,
-    @required Widget label,
+    Duration animationDuration
+    ]
+     Widget icon,
+     Widget label,
   }) = _RaisedButtonWithIcon;
 
   @override
@@ -231,8 +239,11 @@ class RaisedButton extends MaterialButton {
 /// a distinct class for the sake of [ButtonTheme]. It can not be instantiated.
 class _RaisedButtonWithIcon extends RaisedButton with MaterialButtonWithIconMixin {
   _RaisedButtonWithIcon({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
     Color textColor,
@@ -248,9 +259,10 @@ class _RaisedButtonWithIcon extends RaisedButton with MaterialButtonWithIconMixi
     ShapeBorder shape,
     Clip clipBehavior = Clip.none,
     MaterialTapTargetSize materialTapTargetSize,
-    Duration animationDuration,
-    @required Widget icon,
-    @required Widget label,
+    Duration animationDuration
+    ]
+     Widget icon,
+     Widget label,
   }) : assert(elevation == null || elevation >= 0.0),
        assert(highlightElevation == null || highlightElevation >= 0.0),
        assert(disabledElevation == null || disabledElevation >= 0.0),

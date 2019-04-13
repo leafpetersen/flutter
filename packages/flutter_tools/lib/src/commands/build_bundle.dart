@@ -11,7 +11,7 @@ import '../runner/flutter_command.dart' show FlutterOptions, FlutterCommandResul
 import 'build.dart';
 
 class BuildBundleCommand extends BuildSubCommand {
-  BuildBundleCommand({bool verboseHelp = false}) {
+  BuildBundleCommand({[bool verboseHelp = false]}) {
     usesTargetOption();
     usesFilesystemOptions(hide: !verboseHelp);
     usesBuildNumberOption();

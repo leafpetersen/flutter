@@ -22,8 +22,10 @@ enum MarkerType { topLeft, bottomRight, touch }
 
 class _MarkerPainter extends CustomPainter {
   const _MarkerPainter({
+    [
     this.size,
     this.type,
+  ]
   });
 
   final double size;
@@ -58,10 +60,12 @@ class _MarkerPainter extends CustomPainter {
 
 class Marker extends StatelessWidget {
   const Marker({
+    [
     Key key,
     this.type = MarkerType.touch,
     this.position,
     this.size = 40.0,
+  ]
   }) : super(key: key);
 
   final Offset position;
@@ -95,7 +99,7 @@ class OverlayGeometryApp extends StatefulWidget {
 typedef CardTapCallback = void Function(GlobalKey targetKey, Offset globalPosition);
 
 class CardBuilder extends SliverChildDelegate {
-  CardBuilder({ this.cardModels, this.onTapUp });
+  CardBuilder({ [ this.cardModels, this.onTapUp ] });
 
   final List<CardModel> cardModels;
   final CardTapCallback onTapUp;

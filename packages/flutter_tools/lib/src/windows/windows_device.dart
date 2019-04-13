@@ -17,7 +17,7 @@ class WindowsDevice extends Device {
   void clearLogs() { }
 
   @override
-  DeviceLogReader getLogReader({ ApplicationPackage app }) => NoOpDeviceLogReader('windows');
+  DeviceLogReader getLogReader({ [ ApplicationPackage app ] }) => NoOpDeviceLogReader('windows');
 
   @override
   Future<bool> installApp(ApplicationPackage app) {
@@ -52,6 +52,7 @@ class WindowsDevice extends Device {
   @override
   Future<LaunchResult> startApp(
     ApplicationPackage package, {
+    [
     String mainPath,
     String route,
     DebuggingOptions debuggingOptions,
@@ -59,6 +60,7 @@ class WindowsDevice extends Device {
     bool prebuiltApplication = false,
     bool usesTerminalUi = true,
     bool ipv6 = false,
+  ]
   }) {
     throw UnimplementedError();
   }

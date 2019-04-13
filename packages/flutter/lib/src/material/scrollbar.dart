@@ -34,8 +34,10 @@ class Scrollbar extends StatefulWidget {
   /// The [child] should be a source of [ScrollNotification] notifications,
   /// typically a [Scrollable] widget.
   const Scrollbar({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.

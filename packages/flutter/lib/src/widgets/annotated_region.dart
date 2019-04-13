@@ -21,10 +21,14 @@ class AnnotatedRegion<T> extends SingleChildRenderObjectWidget {
   /// [sized] defaults to true and controls whether the annotated region will
   /// clip its child.
   const AnnotatedRegion({
-    Key key,
-    @required Widget child,
-    @required this.value,
+    [
+    Key key
+    ]
+     Widget child,
+     this.value,
+    [
     this.sized = true,
+  ]
   }) : assert(value != null),
        assert(child != null),
        super(key: key, child: child);

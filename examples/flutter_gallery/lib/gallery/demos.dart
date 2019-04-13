@@ -9,8 +9,8 @@ import 'icons.dart';
 
 class GalleryDemoCategory {
   const GalleryDemoCategory._({
-    @required this.name,
-    @required this.icon,
+     this.name,
+     this.icon,
   });
 
   final String name;
@@ -62,13 +62,17 @@ const GalleryDemoCategory _kMedia = GalleryDemoCategory._(
 
 class GalleryDemo {
   const GalleryDemo({
-    @required this.title,
-    @required this.icon,
-    this.subtitle,
-    @required this.category,
-    @required this.routeName,
-    this.documentationUrl,
-    @required this.buildRoute,
+     this.title,
+     this.icon,
+    [
+    this.subtitle
+    ]
+     this.category,
+     this.routeName,
+    [
+    this.documentationUrl
+    ]
+     this.buildRoute,
   }) : assert(title != null),
        assert(category != null),
        assert(routeName != null),

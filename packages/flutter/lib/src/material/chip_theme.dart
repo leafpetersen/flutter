@@ -45,9 +45,11 @@ class ChipTheme extends InheritedWidget {
   ///
   /// The [data] and [child] arguments must not be null.
   const ChipTheme({
-    Key key,
-    @required this.data,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.data,
+     Widget child,
   }) : assert(child != null),
        assert(data != null),
        super(key: key, child: child);
@@ -170,21 +172,27 @@ class ChipThemeData extends Diagnosticable {
   /// This will rarely be used directly. It is used by [lerp] to
   /// create intermediate themes based on two themes.
   const ChipThemeData({
-    @required this.backgroundColor,
-    this.deleteIconColor,
-    @required this.disabledColor,
-    @required this.selectedColor,
-    @required this.secondarySelectedColor,
+     this.backgroundColor,
+    [
+    this.deleteIconColor
+    ]
+     this.disabledColor,
+     this.selectedColor,
+     this.secondarySelectedColor,
+    [
     this.shadowColor,
-    this.selectedShadowColor,
-    @required this.labelPadding,
-    @required this.padding,
-    @required this.shape,
-    @required this.labelStyle,
-    @required this.secondaryLabelStyle,
-    @required this.brightness,
+    this.selectedShadowColor
+    ]
+     this.labelPadding,
+     this.padding,
+     this.shape,
+     this.labelStyle,
+     this.secondaryLabelStyle,
+     this.brightness,
+    [
     this.elevation,
     this.pressElevation,
+  ]
   }) : assert(backgroundColor != null),
        assert(disabledColor != null),
        assert(selectedColor != null),
@@ -214,10 +222,12 @@ class ChipThemeData extends Diagnosticable {
   ///
   /// This is used to generate the default chip theme for a [ThemeData].
   factory ChipThemeData.fromDefaults({
+    [
     Brightness brightness,
-    Color primaryColor,
-    @required Color secondaryColor,
-    @required TextStyle labelStyle,
+    Color primaryColor
+    ]
+     Color secondaryColor,
+     TextStyle labelStyle,
   }) {
     assert(primaryColor != null || brightness != null,
       'One of primaryColor or brightness must be specified');
@@ -367,6 +377,7 @@ class ChipThemeData extends Diagnosticable {
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   ChipThemeData copyWith({
+    [
     Color backgroundColor,
     Color deleteIconColor,
     Color disabledColor,
@@ -382,6 +393,7 @@ class ChipThemeData extends Diagnosticable {
     Brightness brightness,
     double elevation,
     double pressElevation,
+  ]
   }) {
     return ChipThemeData(
       backgroundColor: backgroundColor ?? this.backgroundColor,

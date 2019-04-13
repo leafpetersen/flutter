@@ -18,7 +18,7 @@ enum LeaveBehindDemoAction {
 }
 
 class LeaveBehindItem implements Comparable<LeaveBehindItem> {
-  LeaveBehindItem({ this.index, this.name, this.subject, this.body });
+  LeaveBehindItem({ [ this.index, this.name, this.subject, this.body ] });
 
   LeaveBehindItem.from(LeaveBehindItem item)
     : index = item.index, name = item.name, subject = item.subject, body = item.body;
@@ -33,7 +33,7 @@ class LeaveBehindItem implements Comparable<LeaveBehindItem> {
 }
 
 class LeaveBehindDemo extends StatefulWidget {
-  const LeaveBehindDemo({ Key key }) : super(key: key);
+  const LeaveBehindDemo({ [ Key key ] }) : super(key: key);
 
   static const String routeName = '/material/leave-behind';
 
@@ -188,12 +188,14 @@ class LeaveBehindDemoState extends State<LeaveBehindDemo> {
 
 class _LeaveBehindListItem extends StatelessWidget {
   const _LeaveBehindListItem({
-    Key key,
-    @required this.item,
-    @required this.onArchive,
-    @required this.onDelete,
-    @required this.dismissDirection,
-    @required this.confirmDismiss,
+    [
+    Key key
+    ]
+     this.item,
+     this.onArchive,
+     this.onDelete,
+     this.dismissDirection,
+     this.confirmDismiss,
   }) : super(key: key);
 
   final LeaveBehindItem item;

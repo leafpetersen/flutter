@@ -15,7 +15,7 @@ class SliderDemo extends StatefulWidget {
   _SliderDemoState createState() => _SliderDemoState();
 }
 
-Path _triangle(double size, Offset thumbCenter, {bool invert = false}) {
+Path _triangle(double size, Offset thumbCenter, {[bool invert = false]}) {
   final Path thumbPath = Path();
   final double height = math.sqrt(3.0) / 2.0;
   final double halfSide = size / 2.0;
@@ -46,6 +46,7 @@ class _CustomThumbShape extends SliderComponentShape {
   void paint(
     PaintingContext context,
     Offset thumbCenter, {
+    [
     Animation<double> activationAnimation,
     Animation<double> enableAnimation,
     bool isDiscrete,
@@ -54,6 +55,7 @@ class _CustomThumbShape extends SliderComponentShape {
     SliderThemeData sliderTheme,
     TextDirection textDirection,
     double value,
+  ]
   }) {
     final Canvas canvas = context.canvas;
     final ColorTween colorTween = ColorTween(
@@ -85,6 +87,7 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
   void paint(
     PaintingContext context,
     Offset thumbCenter, {
+    [
     Animation<double> activationAnimation,
     Animation<double> enableAnimation,
     bool isDiscrete,
@@ -93,6 +96,7 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
     SliderThemeData sliderTheme,
     TextDirection textDirection,
     double value,
+  ]
   }) {
     final Canvas canvas = context.canvas;
     final ColorTween enableColor = ColorTween(

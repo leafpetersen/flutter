@@ -38,9 +38,11 @@ class CupertinoTheme extends StatelessWidget {
   ///
   /// The [data] and [child] parameters must not be null.
   const CupertinoTheme({
-    Key key,
-    @required this.data,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.data,
+     this.child,
   }) : assert(child != null),
        assert(data != null),
        super(key: key);
@@ -76,9 +78,11 @@ class CupertinoTheme extends StatelessWidget {
 
 class _InheritedCupertinoTheme extends InheritedWidget {
   const _InheritedCupertinoTheme({
-    Key key,
-    @required this.theme,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.theme,
+     Widget child,
   }) : assert(theme != null),
        super(key: key, child: child);
 
@@ -110,12 +114,14 @@ class CupertinoThemeData extends Diagnosticable {
   ///
   /// Unspecified parameters default to a reasonable iOS default style.
   const CupertinoThemeData({
+    [
     Brightness brightness,
     Color primaryColor,
     Color primaryContrastingColor,
     CupertinoTextThemeData textTheme,
     Color barBackgroundColor,
     Color scaffoldBackgroundColor,
+  ]
   }) : this.raw(
         brightness,
         primaryColor,
@@ -237,12 +243,14 @@ class CupertinoThemeData extends Diagnosticable {
   /// copying with a different [brightness] will also change the copy's
   /// implied [primaryColor].
   CupertinoThemeData copyWith({
+    [
     Brightness brightness,
     Color primaryColor,
     Color primaryContrastingColor,
     CupertinoTextThemeData textTheme,
     Color barBackgroundColor,
     Color scaffoldBackgroundColor,
+  ]
   }) {
     return CupertinoThemeData(
       brightness: brightness ?? _brightness,

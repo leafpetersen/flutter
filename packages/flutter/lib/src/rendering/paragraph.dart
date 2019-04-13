@@ -43,14 +43,18 @@ class RenderParagraph extends RenderBox {
   /// it is not null, it must be greater than zero.
   RenderParagraph(
     TextSpan text, {
-    TextAlign textAlign = TextAlign.start,
-    @required TextDirection textDirection,
+    [
+    TextAlign textAlign = TextAlign.start
+    ]
+     TextDirection textDirection,
+    [
     bool softWrap = true,
     TextOverflow overflow = TextOverflow.clip,
     double textScaleFactor = 1.0,
     int maxLines,
     Locale locale,
     StrutStyle strutStyle,
+  ]
   }) : assert(text != null),
        assert(text.debugAssertIsValid()),
        assert(textAlign != null),
@@ -212,7 +216,7 @@ class RenderParagraph extends RenderBox {
     markNeedsLayout();
   }
 
-  void _layoutText({ double minWidth = 0.0, double maxWidth = double.infinity }) {
+  void _layoutText({ [ double minWidth = 0.0, double maxWidth = double.infinity ] }) {
     final bool widthMatters = softWrap || overflow == TextOverflow.ellipsis;
     _textPainter.layout(minWidth: minWidth, maxWidth: widthMatters ? maxWidth : double.infinity);
   }

@@ -79,10 +79,12 @@ Branch fromBranchName(String name) {
 /// properly without dropping any.
 class ProcessRunner {
   ProcessRunner({
+    [
     ProcessManager processManager,
     this.subprocessOutput = true,
     this.defaultWorkingDirectory,
     this.platform = const LocalPlatform(),
+  ]
   }) : processManager = processManager ?? const LocalProcessManager() {
     environment = Map<String, String>.from(platform.environment);
   }
@@ -113,8 +115,10 @@ class ProcessRunner {
   /// command completes with a a non-zero exit code.
   Future<String> runProcess(
     List<String> commandLine, {
+    [
     Directory workingDirectory,
     bool failOk = false,
+  ]
   }) async {
     workingDirectory ??= defaultWorkingDirectory ?? Directory.current;
     if (subprocessOutput) {
@@ -177,7 +181,7 @@ class ProcessRunner {
   }
 }
 
-typedef HttpReader = Future<Uint8List> Function(Uri url, {Map<String, String> headers});
+typedef HttpReader = Future<Uint8List> Function(Uri url, {[Map<String, String> headers]});
 
 /// Creates a pre-populated Flutter archive from a git repo.
 class ArchiveCreator {
@@ -194,11 +198,13 @@ class ArchiveCreator {
     this.outputDir,
     this.revision,
     this.branch, {
+    [
     this.strict = true,
     ProcessManager processManager,
     bool subprocessOutput = true,
     this.platform = const LocalPlatform(),
     HttpReader httpReader,
+  ]
   })  : assert(revision.length == 40),
         flutterRoot = Directory(path.join(tempDir.path, 'flutter')),
         httpReader = httpReader ?? http.readBytes,
@@ -379,14 +385,14 @@ class ArchiveCreator {
     }
   }
 
-  Future<String> _runFlutter(List<String> args, {Directory workingDirectory}) {
+  Future<String> _runFlutter(List<String> args, {[Directory workingDirectory]}) {
     return _processRunner.runProcess(
       <String>[_flutter]..addAll(args),
       workingDirectory: workingDirectory ?? flutterRoot,
     );
   }
 
-  Future<String> _runGit(List<String> args, {Directory workingDirectory}) {
+  Future<String> _runGit(List<String> args, {[Directory workingDirectory]}) {
     return _processRunner.runProcess(
       <String>['git']..addAll(args),
       workingDirectory: workingDirectory ?? flutterRoot,
@@ -395,7 +401,7 @@ class ArchiveCreator {
 
   /// Unpacks the given zip file into the currentDirectory (if set), or the
   /// same directory as the archive.
-  Future<String> _unzipArchive(File archive, {Directory workingDirectory}) {
+  Future<String> _unzipArchive(File archive, {[Directory workingDirectory]}) {
     workingDirectory ??= Directory(path.dirname(archive.absolute.path));
     List<String> commandLine;
     if (platform.isWindows) {
@@ -458,9 +464,11 @@ class ArchivePublisher {
     this.branch,
     this.version,
     this.outputFile, {
+    [
     ProcessManager processManager,
     bool subprocessOutput = true,
     this.platform = const LocalPlatform(),
+  ]
   })  : assert(revision.length == 40),
         platformName = platform.operatingSystem.toLowerCase(),
         metadataGsPath = '$gsReleaseFolder/${getMetadataFilename(platform)}',
@@ -569,8 +577,10 @@ class ArchivePublisher {
 
   Future<String> _runGsUtil(
     List<String> args, {
+    [
     Directory workingDirectory,
     bool failOk = false,
+  ]
   }) async {
     if (platform.isWindows) {
       return _processRunner.runProcess(
@@ -669,7 +679,7 @@ Future<void> main(List<String> rawArguments) async {
     exit(0);
   }
 
-  void errorExit(String message, {int exitCode = -1}) {
+  void errorExit(String message, {[int exitCode = -1]}) {
     stderr.write('Error: $message\n\n');
     stderr.write('${argParser.usage}\n');
     exit(exitCode);

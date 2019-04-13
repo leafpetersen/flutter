@@ -157,8 +157,11 @@ class BottomNavigationBar extends StatefulWidget {
   /// [BottomNavigationBarType.fixed] and `false` if [type] is
   /// [BottomNavigationBarType.shifting].
   BottomNavigationBar({
-    Key key,
-    @required this.items,
+    [
+    Key key
+    ]
+     this.items,
+    [
     this.onTap,
     this.currentIndex = 0,
     this.elevation = 8.0,
@@ -172,6 +175,7 @@ class BottomNavigationBar extends StatefulWidget {
     this.unselectedFontSize = 12.0,
     this.showSelectedLabels = true,
     bool showUnselectedLabels,
+  ]
   }) : assert(items != null),
        assert(items.length >= 2),
        assert(
@@ -310,15 +314,19 @@ class _BottomNavigationTile extends StatelessWidget {
     this.item,
     this.animation,
     this.iconSize, {
+    [
     this.onTap,
     this.colorTween,
     this.flex,
-    this.selected = false,
-    @required this.selectedFontSize,
-    @required this.unselectedFontSize,
+    this.selected = false
+    ]
+     this.selectedFontSize,
+     this.unselectedFontSize,
+    [
     this.showSelectedLabels,
     this.showUnselectedLabels,
     this.indexLabel,
+    ]
     }) : assert(type != null),
          assert(item != null),
          assert(animation != null),
@@ -444,12 +452,14 @@ class _BottomNavigationTile extends StatelessWidget {
 
 class _TileIcon extends StatelessWidget {
   const _TileIcon({
-    Key key,
-    @required this.colorTween,
-    @required this.animation,
-    @required this.iconSize,
-    @required this.selected,
-    @required this.item,
+    [
+    Key key
+    ]
+     this.colorTween,
+     this.animation,
+     this.iconSize,
+     this.selected,
+     this.item,
   }) : assert(selected != null),
        assert(item != null),
        super(key: key);
@@ -481,14 +491,16 @@ class _TileIcon extends StatelessWidget {
 
 class _Label extends StatelessWidget {
   const _Label({
-    Key key,
-    @required this.colorTween,
-    @required this.animation,
-    @required this.item,
-    @required this.selectedFontSize,
-    @required this.unselectedFontSize,
-    @required this.showSelectedLabels,
-    @required this.showUnselectedLabels,
+    [
+    Key key
+    ]
+     this.colorTween,
+     this.animation,
+     this.item,
+     this.selectedFontSize,
+     this.unselectedFontSize,
+     this.showSelectedLabels,
+     this.showUnselectedLabels,
   }) : assert(colorTween != null),
        assert(animation != null),
        assert(item != null),
@@ -793,10 +805,10 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> with TickerPr
 // Describes an animating color splash circle.
 class _Circle {
   _Circle({
-    @required this.state,
-    @required this.index,
-    @required this.color,
-    @required TickerProvider vsync,
+     this.state,
+     this.index,
+     this.color,
+     TickerProvider vsync,
   }) : assert(state != null),
        assert(index != null),
        assert(color != null) {
@@ -840,8 +852,8 @@ class _Circle {
 // Paints the animating color splash circles.
 class _RadialPainter extends CustomPainter {
   _RadialPainter({
-    @required this.circles,
-    @required this.textDirection,
+     this.circles,
+     this.textDirection,
   }) : assert(circles != null),
        assert(textDirection != null);
 

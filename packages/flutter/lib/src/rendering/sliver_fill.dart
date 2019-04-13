@@ -32,8 +32,10 @@ class RenderSliverFillViewport extends RenderSliverFixedExtentBoxAdaptor {
   ///
   /// The [childManager] argument must not be null.
   RenderSliverFillViewport({
-    @required RenderSliverBoxChildManager childManager,
+     RenderSliverBoxChildManager childManager,
+    [
     double viewportFraction = 1.0,
+  ]
   }) : assert(viewportFraction != null),
        assert(viewportFraction > 0.0),
        _viewportFraction = viewportFraction,
@@ -77,10 +79,12 @@ class RenderSliverFillViewport extends RenderSliverFixedExtentBoxAdaptor {
   @override
   double estimateMaxScrollOffset(
     SliverConstraints constraints, {
+    [
     int firstIndex,
     int lastIndex,
     double leadingScrollOffset,
     double trailingScrollOffset,
+  ]
   }) {
     final double padding = _padding;
     return childManager.estimateMaxScrollOffset(
@@ -112,7 +116,9 @@ class RenderSliverFillRemaining extends RenderSliverSingleBoxAdapter {
   /// Creates a [RenderSliver] that wraps a [RenderBox] which is sized to fit
   /// the remaining space in the viewport.
   RenderSliverFillRemaining({
+    [
     RenderBox child,
+  ]
   }) : super(child: child);
 
   @override

@@ -179,9 +179,11 @@ Future<void> _checkForTrailingSpaces() async {
 
 class EvalResult {
   EvalResult({
+    [
     this.stdout,
     this.stderr,
     this.exitCode = 0,
+  ]
   });
 
   final String stdout;
@@ -190,10 +192,12 @@ class EvalResult {
 }
 
 Future<EvalResult> _evalCommand(String executable, List<String> arguments, {
-  @required String workingDirectory,
+   String workingDirectory,
+  [
   Map<String, String> environment,
   bool skip = false,
   bool allowNonZeroExit = false,
+]
 }) async {
   final String commandDescription = '${path.relative(executable, from: workingDirectory)} ${arguments.join(' ')}';
   final String relativeWorkingDir = path.relative(workingDirectory);
@@ -236,7 +240,9 @@ Future<EvalResult> _evalCommand(String executable, List<String> arguments, {
 }
 
 Future<void> _runFlutterAnalyze(String workingDirectory, {
+  [
   List<String> options = const <String>[],
+]
 }) {
   return runCommand(flutter, <String>['analyze', '--dartdocs']..addAll(options),
     workingDirectory: workingDirectory,
@@ -397,7 +403,7 @@ bool _matches<T>(List<T> a, List<T> b) {
 final RegExp _importPattern = RegExp(r'''^\s*import (['"])package:flutter/([^.]+)\.dart\1''');
 final RegExp _importMetaPattern = RegExp(r'''^\s*import (['"])package:meta/meta\.dart\1''');
 
-Set<String> _findFlutterDependencies(String srcPath, List<String> errors, { bool checkForMeta = false }) {
+Set<String> _findFlutterDependencies(String srcPath, List<String> errors, { [ bool checkForMeta = false ] }) {
   return Directory(srcPath).listSync(recursive: true).where((FileSystemEntity entity) {
     return entity is File && path.extension(entity.path) == '.dart';
   }).map<Set<String>>((FileSystemEntity entity) {

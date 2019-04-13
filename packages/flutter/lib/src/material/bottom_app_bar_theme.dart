@@ -28,9 +28,11 @@ import 'theme.dart';
 class BottomAppBarTheme extends Diagnosticable {
   /// Creates a theme that can be used for [ThemeData.BottomAppBarTheme].
   const BottomAppBarTheme({
+    [
     this.color,
     this.elevation,
     this.shape,
+  ]
   });
 
   /// Default value for [BottomAppBar.color].
@@ -47,9 +49,11 @@ class BottomAppBarTheme extends Diagnosticable {
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   BottomAppBarTheme copyWith({
+    [
     Color color,
     double elevation,
     NotchedShape shape,
+  ]
   }) {
     return BottomAppBarTheme(
       color: color ?? this.color,

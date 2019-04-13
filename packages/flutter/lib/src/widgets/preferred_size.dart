@@ -43,9 +43,11 @@ abstract class PreferredSizeWidget implements Widget {
 class PreferredSize extends StatelessWidget implements PreferredSizeWidget {
   /// Creates a widget that has a preferred size.
   const PreferredSize({
-    Key key,
-    @required this.child,
-    @required this.preferredSize,
+    [
+    Key key
+    ]
+     this.child,
+     this.preferredSize,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.

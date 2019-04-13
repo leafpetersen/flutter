@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/rendering.dart';
 
 class TestFlowDelegate extends FlowDelegate {
-  TestFlowDelegate({this.startOffset}) : super(repaint: startOffset);
+  TestFlowDelegate({[this.startOffset]}) : super(repaint: startOffset);
 
   final Animation<double> startOffset;
 

@@ -77,8 +77,10 @@ abstract class Gradient {
   /// [colors] (this is also not verified until the [createShader] method is
   /// called).
   const Gradient({
-    @required this.colors,
+     this.colors,
+    [
     this.stops,
+  ]
   }) : assert(colors != null);
 
   /// The colors the gradient should obtain at each of the stops.
@@ -124,7 +126,7 @@ abstract class Gradient {
   /// If the gradient's configuration is text-direction-dependent, for example
   /// it uses [AlignmentDirectional] objects instead of [Alignment]
   /// objects, then the `textDirection` argument must not be null.
-  Shader createShader(Rect rect, { TextDirection textDirection });
+  Shader createShader(Rect rect, { [ TextDirection textDirection ] });
 
   /// Returns a new gradient with its properties scaled by the given factor.
   ///
@@ -279,11 +281,15 @@ class LinearGradient extends Gradient {
   /// The [colors] argument must not be null. If [stops] is non-null, it must
   /// have the same length as [colors].
   const LinearGradient({
+    [
     this.begin = Alignment.centerLeft,
-    this.end = Alignment.centerRight,
-    @required List<Color> colors,
+    this.end = Alignment.centerRight
+    ]
+     List<Color> colors,
+    [
     List<double> stops,
     this.tileMode = TileMode.clamp,
+  ]
   }) : assert(begin != null),
        assert(end != null),
        assert(tileMode != null),
@@ -330,7 +336,7 @@ class LinearGradient extends Gradient {
   final TileMode tileMode;
 
   @override
-  Shader createShader(Rect rect, { TextDirection textDirection }) {
+  Shader createShader(Rect rect, { [ TextDirection textDirection ] }) {
     return ui.Gradient.linear(
       begin.resolve(textDirection).withinRect(rect),
       end.resolve(textDirection).withinRect(rect),
@@ -526,13 +532,17 @@ class RadialGradient extends Gradient {
   /// The [colors] argument must not be null. If [stops] is non-null, it must
   /// have the same length as [colors].
   const RadialGradient({
+    [
     this.center = Alignment.center,
-    this.radius = 0.5,
-    @required List<Color> colors,
+    this.radius = 0.5
+    ]
+     List<Color> colors,
+    [
     List<double> stops,
     this.tileMode = TileMode.clamp,
     this.focal,
     this.focalRadius = 0.0,
+  ]
   }) : assert(center != null),
        assert(radius != null),
        assert(tileMode != null),
@@ -600,7 +610,7 @@ class RadialGradient extends Gradient {
   final double focalRadius;
 
   @override
-  Shader createShader(Rect rect, { TextDirection textDirection }) {
+  Shader createShader(Rect rect, { [ TextDirection textDirection ] }) {
     return ui.Gradient.radial(
       center.resolve(textDirection).withinRect(rect),
       radius * rect.shortestSide,
@@ -791,12 +801,16 @@ class SweepGradient extends Gradient {
   /// The [colors] argument must not be null. If [stops] is non-null, it must
   /// have the same length as [colors].
   const SweepGradient({
+    [
     this.center = Alignment.center,
     this.startAngle = 0.0,
-    this.endAngle = math.pi * 2,
-    @required List<Color> colors,
+    this.endAngle = math.pi * 2
+    ]
+     List<Color> colors,
+    [
     List<double> stops,
     this.tileMode = TileMode.clamp,
+  ]
   }) : assert(center != null),
        assert(startAngle != null),
        assert(endAngle != null),
@@ -840,7 +854,7 @@ class SweepGradient extends Gradient {
   final TileMode tileMode;
 
   @override
-  Shader createShader(Rect rect, { TextDirection textDirection }) {
+  Shader createShader(Rect rect, { [ TextDirection textDirection ] }) {
     return ui.Gradient.sweep(
       center.resolve(textDirection).withinRect(rect),
       colors, _impliedStops(), tileMode,

@@ -23,8 +23,10 @@ class ViewConfiguration {
   ///
   /// By default, the view has zero [size] and a [devicePixelRatio] of 1.0.
   const ViewConfiguration({
+    [
     this.size = Size.zero,
     this.devicePixelRatio = 1.0,
+  ]
   });
 
   /// The size of the output surface.
@@ -54,9 +56,11 @@ class RenderView extends RenderObject with RenderObjectWithChildMixin<RenderBox>
   ///
   /// The [configuration] must not be null.
   RenderView({
-    RenderBox child,
-    @required ViewConfiguration configuration,
-    @required ui.Window window,
+    [
+    RenderBox child
+    ]
+     ViewConfiguration configuration,
+     ui.Window window,
   }) : assert(configuration != null),
        _configuration = configuration,
        _window = window {
@@ -152,7 +156,7 @@ class RenderView extends RenderObject with RenderObjectWithChildMixin<RenderBox>
   }
 
   @override
-  void rotate({ int oldAngle, int newAngle, Duration time }) {
+  void rotate({ [ int oldAngle, int newAngle, Duration time ] }) {
     assert(false); // nobody tells the screen to rotate, the whole rotate() dance is started from our performResize()
   }
 
@@ -166,7 +170,7 @@ class RenderView extends RenderObject with RenderObjectWithChildMixin<RenderBox>
   /// which is to say, in logical pixels. This is not necessarily the same
   /// coordinate system as that expected by the root [Layer], which will
   /// normally be in physical (device) pixels.
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (child != null)
       child.hitTest(result, position: position);
     result.add(HitTestEntry(this));

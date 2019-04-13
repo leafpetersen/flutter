@@ -136,17 +136,23 @@ class IconButton extends StatelessWidget {
   /// The [icon] argument must be specified, and is typically either an [Icon]
   /// or an [ImageIcon].
   const IconButton({
+    [
     Key key,
     this.iconSize = 24.0,
     this.padding = const EdgeInsets.all(8.0),
-    this.alignment = Alignment.center,
-    @required this.icon,
+    this.alignment = Alignment.center
+    ]
+     this.icon,
+    [
     this.color,
     this.highlightColor,
     this.splashColor,
-    this.disabledColor,
-    @required this.onPressed,
+    this.disabledColor
+    ]
+     this.onPressed,
+    [
     this.tooltip,
+  ]
   }) : assert(iconSize != null),
        assert(padding != null),
        assert(alignment != null),

@@ -65,8 +65,10 @@ class Template {
   int render(
     Directory destination,
     Map<String, dynamic> context, {
+    [
     bool overwriteExisting = true,
     bool printStatusWhenWriting = true,
+  ]
   }) {
     destination.createSync(recursive: true);
     int fileCount = 0;

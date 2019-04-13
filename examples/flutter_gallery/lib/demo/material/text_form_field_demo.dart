@@ -11,7 +11,7 @@ import 'package:flutter/gestures.dart' show DragStartBehavior;
 import '../../gallery/demo.dart';
 
 class TextFormFieldDemo extends StatefulWidget {
-  const TextFormFieldDemo({ Key key }) : super(key: key);
+  const TextFormFieldDemo({ [ Key key ] }) : super(key: key);
 
   static const String routeName = '/material/text-form-field';
 
@@ -28,6 +28,7 @@ class PersonData {
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
+    [
     this.fieldKey,
     this.hintText,
     this.labelText,
@@ -35,6 +36,7 @@ class PasswordField extends StatefulWidget {
     this.onSaved,
     this.validator,
     this.onFieldSubmitted,
+  ]
   });
 
   final Key fieldKey;

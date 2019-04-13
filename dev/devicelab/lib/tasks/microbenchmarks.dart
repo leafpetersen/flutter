@@ -59,10 +59,12 @@ TaskFunction createMicrobenchmarkTask() {
 }
 
 Future<Process> _startFlutter({
+  [
   String command = 'run',
   List<String> options = const <String>[],
   bool canFail = false,
   Map<String, String> environment,
+]
 }) {
   final List<String> args = <String>['run']..addAll(options);
   return startProcess(path.join(flutterDirectory.path, 'bin', 'flutter'), args, environment: environment);

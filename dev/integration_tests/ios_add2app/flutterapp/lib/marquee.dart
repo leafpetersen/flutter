@@ -3,7 +3,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/services.dart';
 
 class _MarqueeText extends AnimatedWidget {
-  const _MarqueeText({Key key, Animation<double> animation})
+  const _MarqueeText({[Key key, Animation<double> animation]})
       : super(key: key, listenable: animation);
 
   @override
@@ -20,7 +20,7 @@ class _MarqueeText extends AnimatedWidget {
 }
 
 class Marquee extends StatefulWidget {
-  const Marquee({this.color});
+  const Marquee({[this.color]});
 
   final Color color;
 

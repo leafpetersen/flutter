@@ -44,7 +44,7 @@ typedef ComputeCallback<Q, R> = FutureOr<R> Function(Q message);
 ///
 /// The `debugLabel` argument can be specified to provide a name to add to the
 /// [Timeline]. This is useful when profiling an application.
-Future<R> compute<Q, R>(ComputeCallback<Q, R> callback, Q message, { String debugLabel }) async {
+Future<R> compute<Q, R>(ComputeCallback<Q, R> callback, Q message, { [ String debugLabel ] }) async {
   if (!kReleaseMode) {
     debugLabel ??= callback.toString();
   }

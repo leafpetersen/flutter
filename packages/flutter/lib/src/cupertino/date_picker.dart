@@ -31,8 +31,8 @@ const TextStyle _kDefaultPickerTextStyle = TextStyle(
 // column will be extended equally to the remaining width.
 class _DatePickerLayoutDelegate extends MultiChildLayoutDelegate {
   _DatePickerLayoutDelegate({
-    @required this.columnWidths,
-    @required this.textDirectionFactor,
+     this.columnWidths,
+     this.textDirectionFactor,
   }) : assert(columnWidths != null),
        assert(textDirectionFactor != null);
 
@@ -166,8 +166,11 @@ class CupertinoDatePicker extends StatefulWidget {
   ///
   /// [use24hFormat] decides whether 24 hour format is used. Defaults to false.
   CupertinoDatePicker({
-    this.mode = CupertinoDatePickerMode.dateAndTime,
-    @required this.onDateTimeChanged,
+    [
+    this.mode = CupertinoDatePickerMode.dateAndTime
+    ]
+     this.onDateTimeChanged,
+    [
     DateTime initialDateTime,
     this.minimumDate,
     this.maximumDate,
@@ -175,6 +178,7 @@ class CupertinoDatePicker extends StatefulWidget {
     this.maximumYear,
     this.minuteInterval = 1,
     this.use24hFormat = false,
+  ]
   }) : initialDateTime = initialDateTime ?? DateTime.now(),
        assert(mode != null),
        assert(onDateTimeChanged != null),
@@ -979,11 +983,13 @@ class CupertinoTimerPicker extends StatefulWidget {
   /// [secondInterval] is the granularity of the second spinner. Must be a
   /// positive integer factor of 60.
   CupertinoTimerPicker({
+    [
     this.mode = CupertinoTimerPickerMode.hms,
     this.initialTimerDuration = Duration.zero,
     this.minuteInterval = 1,
-    this.secondInterval = 1,
-    @required this.onTimerDurationChanged,
+    this.secondInterval = 1
+    ]
+     this.onTimerDurationChanged,
   }) : assert(mode != null),
        assert(onTimerDurationChanged != null),
        assert(initialTimerDuration >= Duration.zero),

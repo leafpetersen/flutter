@@ -41,17 +41,19 @@ class _InkRippleFactory extends InteractiveInkFeatureFactory {
 
   @override
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+     Offset position,
+     Color color,
+     TextDirection textDirection,
+    [
     bool containedInkWell = false,
     RectCallback rectCallback,
     BorderRadius borderRadius,
     ShapeBorder customBorder,
     double radius,
     VoidCallback onRemoved,
+  ]
   }) {
     return InkRipple(
       controller: controller,
@@ -108,17 +110,19 @@ class InkRipple extends InteractiveInkFeature {
   ///
   /// When the ripple is removed, [onRemoved] will be called.
   InkRipple({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+     Offset position,
+     Color color,
+     TextDirection textDirection,
+    [
     bool containedInkWell = false,
     RectCallback rectCallback,
     BorderRadius borderRadius,
     ShapeBorder customBorder,
     double radius,
     VoidCallback onRemoved,
+  ]
   }) : assert(color != null),
        assert(position != null),
        assert(textDirection != null),

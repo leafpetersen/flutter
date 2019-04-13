@@ -338,7 +338,7 @@ void main() {
 }
 
 class NoImplicitScrollPhysics extends AlwaysScrollableScrollPhysics {
-  const NoImplicitScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const NoImplicitScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   bool get allowImplicitScrolling => false;

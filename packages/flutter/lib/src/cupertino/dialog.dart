@@ -132,12 +132,14 @@ class CupertinoAlertDialog extends StatelessWidget {
   ///
   /// The [actions] must not be null.
   const CupertinoAlertDialog({
+    [
     Key key,
     this.title,
     this.content,
     this.actions = const <Widget>[],
     this.scrollController,
     this.actionScrollController,
+  ]
   }) : assert(actions != null),
        super(key: key);
 
@@ -275,8 +277,10 @@ class CupertinoAlertDialog extends StatelessWidget {
 class CupertinoDialog extends StatelessWidget {
   /// Creates an iOS-style dialog.
   const CupertinoDialog({
+    [
     Key key,
     this.child,
+  ]
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
@@ -313,9 +317,11 @@ class CupertinoDialog extends StatelessWidget {
 class CupertinoPopupSurface extends StatelessWidget {
   /// Creates an iOS-style rounded rectangle popup surface.
   const CupertinoPopupSurface({
+    [
     Key key,
     this.isSurfacePainted = true,
     this.child,
+  ]
   }) : super(key: key);
 
   /// Whether or not to paint a translucent white on top of this surface's
@@ -355,9 +361,11 @@ class CupertinoPopupSurface extends StatelessWidget {
 // See [_RenderCupertinoDialog] for specific layout policy details.
 class _CupertinoDialogRenderWidget extends RenderObjectWidget {
   const _CupertinoDialogRenderWidget({
-    Key key,
-    @required this.contentSection,
-    @required this.actionsSection,
+    [
+    Key key
+    ]
+     this.contentSection,
+     this.actionsSection,
   }) : super(key: key);
 
   final Widget contentSection;
@@ -485,10 +493,12 @@ class _CupertinoDialogRenderElement extends RenderObjectElement {
 // section is given whatever height remains.
 class _RenderCupertinoDialog extends RenderBox {
   _RenderCupertinoDialog({
+    [
     RenderBox contentSection,
     RenderBox actionsSection,
     double dividerThickness = 0.0,
     bool isInAccessibilityMode = false,
+  ]
   }) : _contentSection = contentSection,
        _actionsSection = actionsSection,
        _dividerThickness = dividerThickness,
@@ -775,7 +785,7 @@ class _RenderCupertinoDialog extends RenderBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     bool isHit = false;
     final BoxParentData contentSectionParentData = contentSection.parentData;
     final BoxParentData actionsSectionParentData = actionsSection.parentData;
@@ -802,10 +812,12 @@ enum _AlertDialogSections {
 // a SingleChildScrollView with a zero-sized Container.
 class _CupertinoAlertContentSection extends StatelessWidget {
   const _CupertinoAlertContentSection({
+    [
     Key key,
     this.title,
     this.content,
     this.scrollController,
+  ]
   }) : super(key: key);
 
   // The (optional) title of the dialog is displayed in a large font at the top
@@ -891,9 +903,13 @@ class _CupertinoAlertContentSection extends StatelessWidget {
 // and layout.
 class _CupertinoAlertActionSection extends StatefulWidget {
   const _CupertinoAlertActionSection({
-    Key key,
-    @required this.children,
+    [
+    Key key
+    ]
+     this.children,
+    [
     this.scrollController,
+  ]
   }) : assert(children != null),
        super(key: key);
 
@@ -943,7 +959,7 @@ class _CupertinoAlertActionSectionState extends State<_CupertinoAlertActionSecti
 // appropriately by _RenderCupertinoDialogActions.
 class _PressableActionButton extends StatefulWidget {
   const _PressableActionButton({
-    @required this.child,
+     this.child,
   });
 
   final Widget child;
@@ -988,9 +1004,11 @@ class _PressableActionButtonState extends State<_PressableActionButton> {
 // incoming [isPressed] property.
 class _ActionButtonParentDataWidget extends ParentDataWidget<_CupertinoDialogActionsRenderWidget> {
   const _ActionButtonParentDataWidget({
+    [
     Key key,
-    this.isPressed,
-    @required Widget child,
+    this.isPressed
+    ]
+     Widget child,
   }) : super(key: key, child: child);
 
   final bool isPressed;
@@ -1014,7 +1032,9 @@ class _ActionButtonParentDataWidget extends ParentDataWidget<_CupertinoDialogAct
 // that button is currently pressed by the user.
 class _ActionButtonParentData extends MultiChildLayoutParentData {
   _ActionButtonParentData({
+    [
     this.isPressed = false,
+  ]
   });
 
   bool isPressed;
@@ -1029,11 +1049,13 @@ class _ActionButtonParentData extends MultiChildLayoutParentData {
 class CupertinoDialogAction extends StatelessWidget {
   /// Creates an action for an iOS-style dialog.
   const CupertinoDialogAction({
+    [
     this.onPressed,
     this.isDefaultAction = false,
     this.isDestructiveAction = false,
-    this.textStyle,
-    @required this.child,
+    this.textStyle
+    ]
+     this.child,
   }) : assert(child != null);
 
   /// The callback that is called when the button is tapped or otherwise
@@ -1079,9 +1101,9 @@ class CupertinoDialogAction extends StatelessWidget {
   //
   // This policy only applies when the device is not in accessibility mode.
   Widget _buildContentWithRegularSizingPolicy({
-    @required BuildContext context,
-    @required TextStyle textStyle,
-    @required Widget content,
+     BuildContext context,
+     TextStyle textStyle,
+     Widget content,
   }) {
     final bool isInAccessibilityMode = _isInAccessibilityMode(context);
     final double dialogWidth = isInAccessibilityMode
@@ -1125,8 +1147,8 @@ class CupertinoDialogAction extends StatelessWidget {
   // accessibility mode. If text is used as the content, the text wraps instead
   // of ellipsizing.
   Widget _buildContentWithAccessibilitySizingPolicy({
-    @required TextStyle textStyle,
-    @required Widget content,
+     TextStyle textStyle,
+     Widget content,
   }) {
     return DefaultTextStyle(
       style: textStyle,
@@ -1192,9 +1214,13 @@ class CupertinoDialogAction extends StatelessWidget {
 // See [_RenderCupertinoDialogActions] for specific layout policy details.
 class _CupertinoDialogActionsRenderWidget extends MultiChildRenderObjectWidget {
   _CupertinoDialogActionsRenderWidget({
-    Key key,
-    @required List<Widget> actionButtons,
+    [
+    Key key
+    ]
+     List<Widget> actionButtons,
+    [
     double dividerThickness = 0.0,
+  ]
   }) : _dividerThickness = dividerThickness,
        super(key: key, children: actionButtons);
 
@@ -1257,9 +1283,13 @@ class _RenderCupertinoDialogActions extends RenderBox
     with ContainerRenderObjectMixin<RenderBox, MultiChildLayoutParentData>,
         RenderBoxContainerDefaultsMixin<RenderBox, MultiChildLayoutParentData> {
   _RenderCupertinoDialogActions({
-    List<RenderBox> children,
-    @required double dialogWidth,
+    [
+    List<RenderBox> children
+    ]
+     double dialogWidth,
+    [
     double dividerThickness = 0.0,
+  ]
   }) : _dialogWidth = dialogWidth,
        _dividerThickness = dividerThickness {
     addAll(children);
@@ -1693,7 +1723,7 @@ class _RenderCupertinoDialogActions extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return defaultHitTestChildren(result, position: position);
   }
 }

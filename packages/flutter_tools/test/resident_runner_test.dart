@@ -29,22 +29,26 @@ class TestRunner extends ResidentRunner {
   }
 
   @override
-  void printHelp({ bool details }) {
+  void printHelp({ [ bool details ] }) {
     hasHelpBeenPrinted = true;
   }
 
   @override
   Future<int> run({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
     String route,
     bool shouldBuild = true,
+  ]
   }) async => null;
 
   @override
   Future<int> attach({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
+  ]
   }) async => null;
 }
 

@@ -51,9 +51,11 @@ void main() {
 // and [invertColors] applied for testing the invert colors.
 class InvertColorTestWidget extends LeafRenderObjectWidget {
   const InvertColorTestWidget({
+    [
     this.color,
     this.filter,
     Key key,
+  ]
   }) : super(key: key);
 
   final Color color;

@@ -14,6 +14,7 @@ import 'flutter_test_alternative.dart';
 /// the Android accessibility bridge, and not the semantics object created by
 /// the Flutter framework.
 Matcher hasAndroidSemantics({
+  [
   String text,
   String contentDescription,
   String className,
@@ -30,6 +31,7 @@ Matcher hasAndroidSemantics({
   bool isFocused,
   bool isPassword,
   bool isLongClickable,
+]
 }) {
   return _AndroidSemanticsMatcher(
     text: text,
@@ -52,6 +54,7 @@ Matcher hasAndroidSemantics({
 
 class _AndroidSemanticsMatcher extends Matcher {
   _AndroidSemanticsMatcher({
+    [
     this.text,
     this.contentDescription,
     this.className,
@@ -67,6 +70,7 @@ class _AndroidSemanticsMatcher extends Matcher {
     this.isFocused,
     this.isPassword,
     this.isLongClickable,
+  ]
   });
 
   final String text;

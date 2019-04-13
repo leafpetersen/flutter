@@ -183,8 +183,10 @@ abstract class ScrollHoldController {
 class HoldScrollActivity extends ScrollActivity implements ScrollHoldController {
   /// Creates a scroll activity that does nothing.
   HoldScrollActivity({
-    @required ScrollActivityDelegate delegate,
+     ScrollActivityDelegate delegate,
+    [
     this.onHoldCanceled,
+  ]
   }) : super(delegate);
 
   /// Called when [dispose] is called.
@@ -224,11 +226,13 @@ class ScrollDragController implements Drag {
   ///
   /// The [delegate] and `details` arguments must not be null.
   ScrollDragController({
-    @required ScrollActivityDelegate delegate,
-    @required DragStartDetails details,
+     ScrollActivityDelegate delegate,
+     DragStartDetails details,
+    [
     this.onDragCanceled,
     this.carriedVelocity,
     this.motionStartDistanceThreshold,
+  ]
   }) : assert(delegate != null),
        assert(details != null),
        assert(
@@ -590,11 +594,11 @@ class DrivenScrollActivity extends ScrollActivity {
   /// All of the parameters must be non-null.
   DrivenScrollActivity(
     ScrollActivityDelegate delegate, {
-    @required double from,
-    @required double to,
-    @required Duration duration,
-    @required Curve curve,
-    @required TickerProvider vsync,
+     double from,
+     double to,
+     Duration duration,
+     Curve curve,
+     TickerProvider vsync,
   }) : assert(from != null),
        assert(to != null),
        assert(duration != null),

@@ -22,11 +22,13 @@ class RawKeyEventDataLinux extends RawKeyEventData {
   /// The [toolkit], [scanCode], [codePoint], [keyCode], and [modifiers], arguments
   /// must not be null.
   const RawKeyEventDataLinux({
-    @required this.keyHelper,
+     this.keyHelper,
+    [
     this.scanCode = 0,
     this.codePoint = 0,
     this.keyCode = 0,
     this.modifiers = 0,
+  ]
   }) : assert(scanCode != null),
        assert(codePoint != null),
        assert(keyCode != null),
@@ -111,7 +113,7 @@ class RawKeyEventDataLinux extends RawKeyEventData {
   }
 
   @override
-  bool isModifierPressed(ModifierKey key, {KeyboardSide side = KeyboardSide.any}) {
+  bool isModifierPressed(ModifierKey key, {[KeyboardSide side = KeyboardSide.any]}) {
    return keyHelper.isModifierPressed(key, modifiers, side: side);
   }
 
@@ -149,7 +151,7 @@ abstract class KeyHelper {
 
   /// Returns true if the given [ModifierKey] was pressed at the time of this
   /// event.
-  bool isModifierPressed(ModifierKey key, int modifiers, {KeyboardSide side = KeyboardSide.any});
+  bool isModifierPressed(ModifierKey key, int modifiers, {[KeyboardSide side = KeyboardSide.any]});
 
   /// The numpad key from the specific key code mapping.
   LogicalKeyboardKey numpadKey(int keyCode);
@@ -202,7 +204,7 @@ class GLFWKeyHelper with KeyHelper {
   static const int modifierNumericPad = 0x0020;
 
   @override
-  bool isModifierPressed(ModifierKey key, int modifiers, {KeyboardSide side = KeyboardSide.any}) {
+  bool isModifierPressed(ModifierKey key, int modifiers, {[KeyboardSide side = KeyboardSide.any]}) {
     switch (key) {
       case ModifierKey.controlModifier:
       return modifiers & modifierControl != 0;

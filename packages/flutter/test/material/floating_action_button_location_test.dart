@@ -435,6 +435,7 @@ class _GeometryCachePainter extends CustomPainter {
 }
 
 Widget buildFrame({
+  [
   FloatingActionButton fab = const FloatingActionButton(
     onPressed: null,
     child: Text('1'),
@@ -444,6 +445,7 @@ Widget buildFrame({
   TextDirection textDirection = TextDirection.ltr,
   EdgeInsets viewInsets = const EdgeInsets.only(bottom: 200.0),
   Widget bab,
+]
 }) {
   return Localizations(
     locale: const Locale('en', 'us'),

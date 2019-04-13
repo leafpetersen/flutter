@@ -24,8 +24,10 @@ class RenderRotatedBox extends RenderBox with RenderObjectWithChildMixin<RenderB
   ///
   /// The [quarterTurns] argument must not be null.
   RenderRotatedBox({
-    @required int quarterTurns,
+     int quarterTurns,
+    [
     RenderBox child,
+  ]
   }) : assert(quarterTurns != null),
        _quarterTurns = quarterTurns {
     this.child = child;
@@ -90,7 +92,7 @@ class RenderRotatedBox extends RenderBox with RenderObjectWithChildMixin<RenderB
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     assert(_paintTransform != null || debugNeedsLayout || child == null);
     if (child == null || _paintTransform == null)
       return false;

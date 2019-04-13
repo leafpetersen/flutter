@@ -27,7 +27,7 @@ String getEnumName(dynamic enumItem) {
 /// A class to compute the configuration of the snippets input and output
 /// locations based in the current location of the snippets main.dart.
 class Configuration {
-  Configuration({@required this.flutterRoot}) : assert(flutterRoot != null);
+  Configuration({ this.flutterRoot}) : assert(flutterRoot != null);
 
   final Directory flutterRoot;
 

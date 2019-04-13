@@ -15,7 +15,7 @@ import 'system_channels.dart';
 @immutable
 class ClipboardData {
   /// Creates data for the system clipboard.
-  const ClipboardData({ this.text });
+  const ClipboardData({ [ this.text ] });
 
   /// Plain text variant of this clipboard data.
   final String text;

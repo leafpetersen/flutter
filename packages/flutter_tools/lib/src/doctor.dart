@@ -174,7 +174,7 @@ class Doctor {
   }
 
   /// Print information about the state of installed tooling.
-  Future<bool> diagnose({ bool androidLicenses = false, bool verbose = true }) async {
+  Future<bool> diagnose({ [ bool androidLicenses = false, bool verbose = true ] }) async {
     if (androidLicenses)
       return AndroidLicenseValidator.runLicenseManager();
 
@@ -362,7 +362,7 @@ class GroupedValidator extends DoctorValidator {
 class ValidationResult {
   /// [ValidationResult.type] should only equal [ValidationResult.installed]
   /// if no [messages] are hints or errors.
-  ValidationResult(this.type, this.messages, { this.statusInfo });
+  ValidationResult(this.type, this.messages, { [ this.statusInfo ] });
 
   final ValidationType type;
   // A short message about the status.

@@ -121,6 +121,7 @@ class FloatingActionButton extends StatelessWidget {
   /// [elevation], [highlightElevation], and [disabledElevation] (if specified)
   /// must be non-negative.
   const FloatingActionButton({
+    [
     Key key,
     this.child,
     this.tooltip,
@@ -129,13 +130,16 @@ class FloatingActionButton extends StatelessWidget {
     this.heroTag = const _DefaultHeroTag(),
     this.elevation,
     this.highlightElevation,
-    this.disabledElevation,
-    @required this.onPressed,
+    this.disabledElevation
+    ]
+     this.onPressed,
+    [
     this.mini = false,
     this.shape,
     this.clipBehavior = Clip.none,
     this.materialTapTargetSize,
     this.isExtended = false,
+  ]
   }) : assert(elevation == null || elevation >= 0.0),
        assert(highlightElevation == null || highlightElevation >= 0.0),
        assert(disabledElevation == null || disabledElevation >= 0.0),
@@ -151,6 +155,7 @@ class FloatingActionButton extends StatelessWidget {
   /// [elevation], [highlightElevation], and [disabledElevation] (if specified)
   /// must be non-negative.
   FloatingActionButton.extended({
+    [
     Key key,
     this.tooltip,
     this.foregroundColor,
@@ -158,14 +163,17 @@ class FloatingActionButton extends StatelessWidget {
     this.heroTag = const _DefaultHeroTag(),
     this.elevation,
     this.highlightElevation,
-    this.disabledElevation,
-    @required this.onPressed,
+    this.disabledElevation
+    ]
+     this.onPressed,
+    [
     this.shape,
     this.isExtended = true,
     this.materialTapTargetSize,
     this.clipBehavior = Clip.none,
-    Widget icon,
-    @required Widget label,
+    Widget icon
+    ]
+     Widget label,
   }) : assert(elevation == null || elevation >= 0.0),
        assert(highlightElevation == null || highlightElevation >= 0.0),
        assert(disabledElevation == null || disabledElevation >= 0.0),
@@ -404,8 +412,10 @@ class FloatingActionButton extends StatelessWidget {
 // and MainAxisSize.min, to be as wide as their label and icon.
 class _ChildOverflowBox extends SingleChildRenderObjectWidget {
   const _ChildOverflowBox({
+    [
     Key key,
     Widget child,
+  ]
   }) : super(key: key, child: child);
 
   @override
@@ -424,8 +434,10 @@ class _ChildOverflowBox extends SingleChildRenderObjectWidget {
 
 class _RenderChildOverflowBox extends RenderAligningShiftedBox {
   _RenderChildOverflowBox({
+    [
     RenderBox child,
     TextDirection textDirection,
+  ]
   }) : super(child: child, alignment: Alignment.center, textDirection: textDirection);
 
   @override

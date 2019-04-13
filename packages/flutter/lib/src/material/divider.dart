@@ -33,10 +33,12 @@ class Divider extends StatelessWidget {
   ///
   /// The height must be positive.
   const Divider({
+    [
     Key key,
     this.height = 16.0,
     this.indent = 0.0,
     this.color,
+  ]
   }) : assert(height >= 0.0),
        super(key: key);
 
@@ -93,7 +95,7 @@ class Divider extends StatelessWidget {
   /// )
   /// ```
   /// {@end-tool}
-  static BorderSide createBorderSide(BuildContext context, { Color color, double width = 0.0 }) {
+  static BorderSide createBorderSide(BuildContext context, { [ Color color, double width = 0.0 ] }) {
     assert(width != null);
     return BorderSide(
       color: color ?? Theme.of(context).dividerColor,
@@ -142,10 +144,12 @@ class VerticalDivider extends StatelessWidget {
   ///
   /// The width must be positive.
   const VerticalDivider({
+    [
     Key key,
     this.width = 16.0,
     this.indent = 0.0,
     this.color,
+  ]
   }) : assert(width >= 0.0),
        super(key: key);
 

@@ -27,8 +27,10 @@ class OrientationBuilder extends StatelessWidget {
   ///
   /// The [builder] argument must not be null.
   const OrientationBuilder({
-    Key key,
-    @required this.builder,
+    [
+    Key key
+    ]
+     this.builder,
   }) : assert(builder != null),
        super(key: key);
 

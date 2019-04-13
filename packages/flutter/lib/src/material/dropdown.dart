@@ -30,10 +30,12 @@ const EdgeInsetsGeometry _kUnalignedMenuMargin = EdgeInsetsDirectional.only(star
 
 class _DropdownMenuPainter extends CustomPainter {
   _DropdownMenuPainter({
+    [
     this.color,
     this.elevation,
     this.selectedIndex,
     this.resize,
+  ]
   }) : _painter = BoxDecoration(
          // If you add an image here, you must provide a real
          // configuration in the paint() function and you must provide some sort
@@ -95,9 +97,11 @@ class _DropdownScrollBehavior extends ScrollBehavior {
 
 class _DropdownMenu<T> extends StatefulWidget {
   const _DropdownMenu({
+    [
     Key key,
     this.padding,
     this.route,
+  ]
   }) : super(key: key);
 
   final _DropdownRoute<T> route;
@@ -207,10 +211,10 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
 
 class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
   _DropdownMenuRouteLayout({
-    @required this.buttonRect,
-    @required this.menuTop,
-    @required this.menuHeight,
-    @required this.textDirection,
+     this.buttonRect,
+     this.menuTop,
+     this.menuHeight,
+     this.textDirection,
   });
 
   final Rect buttonRect;
@@ -293,14 +297,18 @@ class _DropdownRouteResult<T> {
 
 class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
   _DropdownRoute({
+    [
     this.items,
     this.padding,
     this.buttonRect,
     this.selectedIndex,
     this.elevation = 8,
-    this.theme,
-    @required this.style,
+    this.theme
+    ]
+     this.style,
+    [
     this.barrierLabel,
+  ]
   }) : assert(style != null);
 
   final List<DropdownMenuItem<T>> items;
@@ -351,6 +359,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
 
 class _DropdownRoutePage<T> extends StatelessWidget {
   const _DropdownRoutePage({
+    [
     Key key,
     this.route,
     this.constraints,
@@ -361,6 +370,7 @@ class _DropdownRoutePage<T> extends StatelessWidget {
     this.elevation = 8,
     this.theme,
     this.style,
+  ]
   }) : super(key: key);
 
   final _DropdownRoute<T> route;
@@ -464,9 +474,11 @@ class DropdownMenuItem<T> extends StatelessWidget {
   ///
   /// The [child] argument is required.
   const DropdownMenuItem({
+    [
     Key key,
-    this.value,
-    @required this.child,
+    this.value
+    ]
+     this.child,
   }) : assert(child != null),
        super(key: key);
 
@@ -500,8 +512,10 @@ class DropdownButtonHideUnderline extends InheritedWidget {
   /// Creates a [DropdownButtonHideUnderline]. A non-null [child] must
   /// be given.
   const DropdownButtonHideUnderline({
-    Key key,
-    @required Widget child,
+    [
+    Key key
+    ]
+     Widget child,
   }) : assert(child != null),
        super(key: key, child: child);
 
@@ -591,12 +605,17 @@ class DropdownButton<T> extends StatefulWidget {
   /// defaults, so do not need to be specified). The boolean [isDense] and
   /// [isExpanded] arguments must not be null.
   DropdownButton({
-    Key key,
-    @required this.items,
+    [
+    Key key
+    ]
+     this.items,
+    [
     this.value,
     this.hint,
-    this.disabledHint,
-    @required this.onChanged,
+    this.disabledHint
+    ]
+     this.onChanged,
+    [
     this.elevation = 8,
     this.style,
     this.underline,
@@ -606,6 +625,7 @@ class DropdownButton<T> extends StatefulWidget {
     this.iconSize = 24.0,
     this.isDense = false,
     this.isExpanded = false,
+  ]
   }) : assert(items == null || items.isEmpty || value == null || items.where((DropdownMenuItem<T> item) => item.value == value).length == 1),
        assert(elevation != null),
        assert(iconSize != null),
@@ -932,14 +952,18 @@ class DropdownButtonFormField<T> extends FormField<T> {
   ///
   /// The [DropdownButton] [items] parameters must not be null.
   DropdownButtonFormField({
+    [
     Key key,
-    T value,
-    @required List<DropdownMenuItem<T>> items,
+    T value
+    ]
+     List<DropdownMenuItem<T>> items,
+    [
     this.onChanged,
     InputDecoration decoration = const InputDecoration(),
     FormFieldSetter<T> onSaved,
     FormFieldValidator<T> validator,
     Widget hint,
+  ]
   }) : assert(decoration != null),
        super(
          key: key,

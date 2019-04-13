@@ -11,7 +11,7 @@ import 'package:flutter_devicelab/framework/adb.dart';
 import 'package:flutter_devicelab/framework/framework.dart';
 import 'package:flutter_devicelab/framework/utils.dart';
 
-Future<void> testReload(Process process, { Future<void> Function() onListening }) async {
+Future<void> testReload(Process process, { [ Future<void> Function() onListening ] }) async {
   section('Testing hot reload, restart and quit');
   final Completer<void> listening = Completer<void>();
   final Completer<void> ready = Completer<void>();

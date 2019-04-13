@@ -47,9 +47,11 @@ class GenSnapshot {
   }
 
   Future<int> run({
-    @required SnapshotType snapshotType,
+     SnapshotType snapshotType,
+    [
     IOSArch iosArch,
     Iterable<String> additionalArgs = const <String>[],
+  ]
   }) {
     final List<String> args = <String>[
       '--causal_async_stacks',
@@ -70,7 +72,7 @@ class GenSnapshot {
 }
 
 class AOTSnapshotter {
-  AOTSnapshotter({this.reportTimings = false});
+  AOTSnapshotter({[this.reportTimings = false]});
 
   /// If true then AOTSnapshotter would report timings for individual building
   /// steps (Dart front-end parsing and snapshot generation) in a stable
@@ -79,14 +81,16 @@ class AOTSnapshotter {
 
   /// Builds an architecture-specific ahead-of-time compiled snapshot of the specified script.
   Future<int> build({
-    @required TargetPlatform platform,
-    @required BuildMode buildMode,
-    @required String mainPath,
-    @required String packagesPath,
-    @required String outputPath,
-    @required bool buildSharedLibrary,
+     TargetPlatform platform,
+     BuildMode buildMode,
+     String mainPath,
+     String packagesPath,
+     String outputPath,
+     bool buildSharedLibrary,
+    [
     IOSArch iosArch,
     List<String> extraGenSnapshotOptions = const <String>[],
+  ]
   }) async {
     FlutterProject flutterProject;
     if (fs.file('pubspec.yaml').existsSync()) {
@@ -241,9 +245,9 @@ class AOTSnapshotter {
   /// Builds an iOS framework at [outputPath]/App.framework from the assembly
   /// source at [assemblyPath].
   Future<RunResult> _buildIosFramework({
-    @required IOSArch iosArch,
-    @required String assemblyPath,
-    @required String outputPath,
+     IOSArch iosArch,
+     String assemblyPath,
+     String outputPath,
   }) async {
     final String targetArch = iosArch == IOSArch.armv7 ? 'armv7' : 'arm64';
     printStatus('Building App.framework for $targetArch...');
@@ -277,8 +281,8 @@ class AOTSnapshotter {
   /// Builds an Android shared library at [outputPath]/app.so from the assembly
   /// source at [assemblyPath].
   Future<RunResult> _buildAndroidSharedLibrary({
-    @required String assemblyPath,
-    @required String outputPath,
+     String assemblyPath,
+     String outputPath,
   }) async {
     // A word of warning: Instead of compiling via two steps, to a .o file and
     // then to a .so file we use only one command. When using two commands
@@ -297,13 +301,15 @@ class AOTSnapshotter {
   ///
   /// Returns the output kernel file path, or null on failure.
   Future<String> compileKernel({
-    @required TargetPlatform platform,
-    @required BuildMode buildMode,
-    @required String mainPath,
-    @required String packagesPath,
-    @required String outputPath,
-    @required bool trackWidgetCreation,
+     TargetPlatform platform,
+     BuildMode buildMode,
+     String mainPath,
+     String packagesPath,
+     String outputPath,
+     bool trackWidgetCreation,
+    [
     List<String> extraFrontEndOptions = const <String>[],
+  ]
   }) async {
     final FlutterProject flutterProject = await FlutterProject.current();
     final Directory outputDir = fs.directory(outputPath);
@@ -372,16 +378,18 @@ class JITSnapshotter {
   /// Builds a JIT VM snapshot of the specified kernel. This snapshot includes
   /// data as well as either machine code or DBC, depending on build configuration.
   Future<int> build({
-    @required TargetPlatform platform,
-    @required BuildMode buildMode,
-    @required String mainPath,
-    @required String packagesPath,
-    @required String outputPath,
-    @required String compilationTraceFilePath,
-    @required bool createPatch,
+     TargetPlatform platform,
+     BuildMode buildMode,
+     String mainPath,
+     String packagesPath,
+     String outputPath,
+     String compilationTraceFilePath,
+     bool createPatch,
+    [
     String buildNumber,
     String baselineDir,
     List<String> extraGenSnapshotOptions = const <String>[],
+  ]
   }) async {
     if (!_isValidJitPlatform(platform)) {
       printError('${getNameForTargetPlatform(platform)} does not support JIT snapshotting.');

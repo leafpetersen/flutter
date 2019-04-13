@@ -361,10 +361,12 @@ Information about project "Runner":
     }
 
     Future<void> checkBuildVersion({
+      [
       String manifestString,
       BuildInfo buildInfo,
       String expectedBuildName,
       String expectedBuildNumber,
+    ]
     }) async {
       when(mockArtifacts.getArtifactPath(Artifact.flutterFramework, TargetPlatform.ios, any)).thenReturn('engine');
       when(mockArtifacts.engineOutPath).thenReturn(fs.path.join('out', 'ios'));

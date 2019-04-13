@@ -245,7 +245,7 @@ class WidgetControllerSpy extends WidgetController {
   TestGestureSpy testGestureSpy;
 
   @override
-  Future<TestGesture> createGesture({int pointer, PointerDeviceKind kind = PointerDeviceKind.touch}) async {
+  Future<TestGesture> createGesture({[int pointer, PointerDeviceKind kind = PointerDeviceKind.touch]}) async {
     return testGestureSpy = TestGestureSpy(
       pointer: pointer ?? _getNextPointer(),
       kind: kind,
@@ -257,10 +257,12 @@ class WidgetControllerSpy extends WidgetController {
 
 class TestGestureSpy extends TestGesture {
   TestGestureSpy({
+    [
     int pointer,
     PointerDeviceKind kind,
     EventDispatcher dispatcher,
     HitTester hitTester,
+  ]
   }) : super(
         pointer: pointer,
         kind: kind,
@@ -275,7 +277,7 @@ class TestGestureSpy extends TestGesture {
   }
 
   @override
-  Future<void> moveBy(Offset offset, {Duration timeStamp = Duration.zero}) {
+  Future<void> moveBy(Offset offset, {[Duration timeStamp = Duration.zero]}) {
     offsets.add(offset);
     return super.moveBy(offset, timeStamp: timeStamp);
   }

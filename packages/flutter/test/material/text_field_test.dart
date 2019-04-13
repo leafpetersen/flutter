@@ -55,7 +55,7 @@ class WidgetsLocalizationsDelegate extends LocalizationsDelegate<WidgetsLocaliza
   bool shouldReload(WidgetsLocalizationsDelegate old) => false;
 }
 
-Widget overlay({ Widget child }) {
+Widget overlay({ [ Widget child ] }) {
   return Localizations(
     locale: const Locale('en', 'US'),
     delegates: <LocalizationsDelegate<dynamic>>[
@@ -84,7 +84,7 @@ Widget overlay({ Widget child }) {
   );
 }
 
-Widget boilerplate({ Widget child }) {
+Widget boilerplate({ [ Widget child ] }) {
   return Localizations(
     locale: const Locale('en', 'US'),
     delegates: <LocalizationsDelegate<dynamic>>[
@@ -176,8 +176,10 @@ void main() {
 
   final Key textFieldKey = UniqueKey();
   Widget textFieldBuilder({
+    [
     int maxLines = 1,
     int minLines,
+  ]
   }) {
     return boilerplate(
       child: TextField(
@@ -1241,9 +1243,11 @@ void main() {
 
   testWidgets('Multiline text when wrapped in Expanded', (WidgetTester tester) async {
     Widget expandedTextFieldBuilder({
+      [
       int maxLines = 1,
       int minLines,
       bool expands = false,
+    ]
     }) {
       return boilerplate(
         child: Column(
@@ -1383,10 +1387,12 @@ void main() {
     const double padding = 24.0;
 
     Widget containedTextFieldBuilder({
+      [
       Widget counter,
       String helperText,
       String labelText,
       Widget prefix,
+    ]
     }) {
       return boilerplate(
         child: Container(
@@ -2685,7 +2691,7 @@ void main() {
       home: Material(
         child: Center(
             child: TextField(
-              buildCounter: (BuildContext context, { int currentLength, int maxLength, bool isFocused }) {
+              buildCounter: (BuildContext context, { [ int currentLength, int maxLength, bool isFocused ] }) {
                 return Text('${currentLength.toString()} of ${maxLength.toString()}');
               },
               maxLength: 10,
@@ -4317,9 +4323,11 @@ void main() {
     // This is a regression test for https://github.com/flutter/flutter/issues/24612
 
     Widget buildFrame({
+      [
       double stepWidth,
       double cursorWidth,
       TextAlign textAlign,
+    ]
     }) {
       return MaterialApp(
         home: Scaffold(

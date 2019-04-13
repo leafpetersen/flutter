@@ -544,6 +544,7 @@ void main() {
 class TestRender extends RenderProxyBox {
 
   TestRender({
+    [
     this.hasTapAction = false,
     this.hasLongPressAction = false,
     this.hasScrollLeftAction = false,
@@ -552,6 +553,7 @@ class TestRender extends RenderProxyBox {
     this.hasScrollDownAction = false,
     this.isSemanticBoundary,
     RenderObject child,
+  ]
   }) : super(child);
 
   bool hasTapAction;
@@ -584,5 +586,5 @@ class TestRender extends RenderProxyBox {
 }
 
 class CustomSortKey extends OrdinalSortKey {
-  const CustomSortKey(double order, {String name}) : super(order, name: name);
+  const CustomSortKey(double order, {[String name]}) : super(order, name: name);
 }

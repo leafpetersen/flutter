@@ -29,9 +29,11 @@ class RenderSliverPadding extends RenderSliver with RenderObjectWithChildMixin<R
   ///
   /// The [padding] argument must not be null and must have non-negative insets.
   RenderSliverPadding({
-    @required EdgeInsetsGeometry padding,
+     EdgeInsetsGeometry padding,
+    [
     TextDirection textDirection,
     RenderSliver child,
+  ]
   }) : assert(padding != null),
        assert(padding.isNonNegative),
        _padding = padding,
@@ -261,7 +263,7 @@ class RenderSliverPadding extends RenderSliver with RenderObjectWithChildMixin<R
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTestChildren(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) {
     if (child != null && child.geometry.hitTestExtent > 0.0)
       return child.hitTest(result, mainAxisPosition: mainAxisPosition - childMainAxisPosition(child), crossAxisPosition: crossAxisPosition - childCrossAxisPosition(child));
     return false;

@@ -22,7 +22,9 @@ final Logger _log = Logger('DartVm');
 /// connection to a [Uri].
 typedef RpcPeerConnectionFunction = Future<json_rpc.Peer> Function(
   Uri uri, {
+  [
   Duration timeout,
+]
 });
 
 /// [DartVm] uses this function to connect to the Dart VM on Fuchsia.
@@ -36,7 +38,9 @@ RpcPeerConnectionFunction fuchsiaVmServiceConnectionFunction = _waitAndConnect;
 /// Gives up after `timeout` has elapsed.
 Future<json_rpc.Peer> _waitAndConnect(
   Uri uri, {
+  [
   Duration timeout = _kConnectTimeout,
+]
 }) async {
   final Stopwatch timer = Stopwatch()..start();
 
@@ -112,7 +116,9 @@ class DartVm {
   /// Throws an error if unable to connect.
   static Future<DartVm> connect(
     Uri uri, {
+    [
     Duration timeout = _kConnectTimeout,
+  ]
   }) async {
     if (uri.scheme == 'http') {
       uri = uri.replace(scheme: 'ws', path: '/ws');
@@ -132,7 +138,9 @@ class DartVm {
   /// matching unintended isolates.
   Future<List<IsolateRef>> getMainIsolatesByPattern(
     Pattern pattern, {
+    [
     Duration timeout = _kRpcTimeout,
+  ]
   }) async {
     final Map<String, dynamic> jsonVmRef =
         await invokeRpc('getVM', timeout: timeout);
@@ -154,8 +162,10 @@ class DartVm {
   /// If the function returns, it is with a parsed JSON response.
   Future<Map<String, dynamic>> invokeRpc(
     String function, {
+    [
     Map<String, dynamic> params,
     Duration timeout = _kRpcTimeout,
+  ]
   }) async {
     final Map<String, dynamic> result = await _peer
       .sendRequest(function, params ?? <String, dynamic>{})
@@ -175,7 +185,9 @@ class DartVm {
   /// instead. If none of these things can be found (isolate has no name or the
   /// flutter view has no ID), then the result will not be added to the list.
   Future<List<FlutterView>> getAllFlutterViews({
+    [
     Duration timeout = _kRpcTimeout,
+  ]
   }) async {
     final List<FlutterView> views = <FlutterView>[];
     final Map<String, dynamic> rpcResponse =

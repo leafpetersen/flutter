@@ -1362,7 +1362,7 @@ void main() {
 
 }
 
-Widget boilerplate({ Widget bottomNavigationBar, @required TextDirection textDirection }) {
+Widget boilerplate({ [ Widget bottomNavigationBar ]  TextDirection textDirection }) {
   assert(textDirection != null);
   return Localizations(
     locale: const Locale('en', 'US'),

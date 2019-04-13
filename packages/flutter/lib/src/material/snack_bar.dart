@@ -80,11 +80,13 @@ class SnackBarAction extends StatefulWidget {
   ///
   /// The [label] and [onPressed] arguments must be non-null.
   const SnackBarAction({
+    [
     Key key,
     this.textColor,
-    this.disabledTextColor,
-    @required this.label,
-    @required this.onPressed,
+    this.disabledTextColor
+    ]
+     this.label,
+     this.onPressed,
   }) : assert(label != null),
        assert(onPressed != null),
        super(key: key);
@@ -159,12 +161,16 @@ class SnackBar extends StatelessWidget {
   ///
   /// The [content] argument must be non-null.
   const SnackBar({
-    Key key,
-    @required this.content,
+    [
+    Key key
+    ]
+     this.content,
+    [
     this.backgroundColor,
     this.action,
     this.duration = _kSnackBarDisplayDuration,
     this.animation,
+  ]
   }) : assert(content != null),
        assert(duration != null),
        super(key: key);
@@ -284,7 +290,7 @@ class SnackBar extends StatelessWidget {
   // API for Scaffold.addSnackBar():
 
   /// Creates an animation controller useful for driving a snack bar's entrance and exit animation.
-  static AnimationController createAnimationController({ @required TickerProvider vsync }) {
+  static AnimationController createAnimationController({  TickerProvider vsync }) {
     return AnimationController(
       duration: _kSnackBarTransitionDuration,
       debugLabel: 'SnackBar',
@@ -296,7 +302,7 @@ class SnackBar extends StatelessWidget {
   ///
   /// If the original snack bar lacks a key, the newly created snack bar will
   /// use the given fallback key.
-  SnackBar withAnimation(Animation<double> newAnimation, { Key fallbackKey }) {
+  SnackBar withAnimation(Animation<double> newAnimation, { [ Key fallbackKey ] }) {
     return SnackBar(
       key: key ?? fallbackKey,
       content: content,

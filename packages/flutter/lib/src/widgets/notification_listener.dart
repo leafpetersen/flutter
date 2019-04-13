@@ -91,9 +91,13 @@ abstract class Notification {
 class NotificationListener<T extends Notification> extends StatelessWidget {
   /// Creates a widget that listens for notifications.
   const NotificationListener({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
+    [
     this.onNotification,
+  ]
   }) : super(key: key);
 
   /// The widget directly below this widget in the tree.

@@ -878,14 +878,14 @@ void main() {
   });
 }
 
-void expectSliverConstraints({ RenderSliver sliver, double cacheOrigin, double remainingPaintExtent, double remainingCacheExtent, double scrollOffset }) {
+void expectSliverConstraints({ [ RenderSliver sliver, double cacheOrigin, double remainingPaintExtent, double remainingCacheExtent, double scrollOffset ] }) {
   expect(sliver.constraints.cacheOrigin, cacheOrigin, reason: 'cacheOrigin');
   expect(sliver.constraints.remainingPaintExtent, remainingPaintExtent, reason: 'remainingPaintExtent');
   expect(sliver.constraints.remainingCacheExtent, remainingCacheExtent, reason: 'remainingCacheExtent');
   expect(sliver.constraints.scrollOffset, scrollOffset, reason: 'scrollOffset');
 }
 
-void expectSliverGeometry({ RenderSliver sliver, double paintExtent, double cacheExtent, bool visible }) {
+void expectSliverGeometry({ [ RenderSliver sliver, double paintExtent, double cacheExtent, bool visible ] }) {
   expect(sliver.geometry.paintExtent, paintExtent, reason: 'paintExtent');
   expect(sliver.geometry.cacheExtent, cacheExtent, reason: 'cacheExtent');
   expect(sliver.geometry.visible, visible, reason: 'visible');
@@ -893,7 +893,9 @@ void expectSliverGeometry({ RenderSliver sliver, double paintExtent, double cach
 
 class TestRenderSliverBoxChildManager extends RenderSliverBoxChildManager {
   TestRenderSliverBoxChildManager({
+    [
     this.children,
+  ]
   });
 
   RenderSliverMultiBoxAdaptor _renderObject;
@@ -929,7 +931,7 @@ class TestRenderSliverBoxChildManager extends RenderSliverBoxChildManager {
   int _currentlyUpdatingChildIndex;
 
   @override
-  void createChild(int index, { @required RenderBox after }) {
+  void createChild(int index, {  RenderBox after }) {
     if (index < 0 || index >= children.length)
       return;
     try {
@@ -948,10 +950,12 @@ class TestRenderSliverBoxChildManager extends RenderSliverBoxChildManager {
   @override
   double estimateMaxScrollOffset(
     SliverConstraints constraints, {
+    [
     int firstIndex,
     int lastIndex,
     double leadingScrollOffset,
     double trailingScrollOffset,
+  ]
   }) {
     assert(lastIndex >= firstIndex);
     return children.length * (trailingScrollOffset - leadingScrollOffset) / (lastIndex - firstIndex + 1);

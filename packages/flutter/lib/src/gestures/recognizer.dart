@@ -64,7 +64,7 @@ abstract class GestureRecognizer extends GestureArenaMember with DiagnosticableT
   /// by providing the optional [kind] argument. If [kind] is null,
   /// the recognizer will accept pointer events from all device kinds.
   /// {@endtemplate}
-  GestureRecognizer({ this.debugOwner, PointerDeviceKind kind }) : _kind = kind;
+  GestureRecognizer({ [ this.debugOwner, PointerDeviceKind kind ] }) : _kind = kind;
 
   /// The recognizer's owner.
   ///
@@ -149,7 +149,7 @@ abstract class GestureRecognizer extends GestureArenaMember with DiagnosticableT
   /// callback that returns a string describing useful debugging information,
   /// e.g. the arguments passed to the callback.
   @protected
-  T invokeCallback<T>(String name, RecognizerCallback<T> callback, { String debugReport() }) {
+  T invokeCallback<T>(String name, RecognizerCallback<T> callback, { [ String debugReport() ] }) {
     assert(callback != null);
     T result;
     try {
@@ -200,8 +200,10 @@ abstract class OneSequenceGestureRecognizer extends GestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   OneSequenceGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   final Map<int, GestureArenaEntry> _entries = <int, GestureArenaEntry>{};
@@ -350,11 +352,13 @@ abstract class PrimaryPointerGestureRecognizer extends OneSequenceGestureRecogni
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   PrimaryPointerGestureRecognizer({
+    [
     this.deadline,
     this.preAcceptSlopTolerance = kTouchSlop,
     this.postAcceptSlopTolerance = kTouchSlop,
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : assert(
          preAcceptSlopTolerance == null || preAcceptSlopTolerance >= 0,
          'The preAcceptSlopTolerance must be positive or null',

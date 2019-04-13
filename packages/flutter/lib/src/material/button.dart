@@ -33,8 +33,11 @@ class RawMaterialButton extends StatefulWidget {
   /// Additionally, [elevation], [highlightElevation], and [disabledElevation]
   /// must be non-negative.
   const RawMaterialButton({
-    Key key,
-    @required this.onPressed,
+    [
+    Key key
+    ]
+     this.onPressed,
+    [
     this.onHighlightChanged,
     this.textStyle,
     this.fillColor,
@@ -50,6 +53,7 @@ class RawMaterialButton extends StatefulWidget {
     this.clipBehavior = Clip.none,
     MaterialTapTargetSize materialTapTargetSize,
     this.child,
+  ]
   }) : materialTapTargetSize = materialTapTargetSize ?? MaterialTapTargetSize.padded,
        assert(shape != null),
        assert(elevation != null && elevation >= 0.0),
@@ -251,9 +255,11 @@ class _RawMaterialButtonState extends State<RawMaterialButton> {
 /// "tap target", but not its material or its ink splashes.
 class _InputPadding extends SingleChildRenderObjectWidget {
   const _InputPadding({
+    [
     Key key,
     Widget child,
     this.minSize,
+  ]
   }) : super(key: key, child: child);
 
   final Size minSize;
@@ -324,7 +330,7 @@ class _RenderInputPadding extends RenderShiftedBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     return super.hitTest(result, position: position) ||
       child.hitTest(result, position: child.size.center(Offset.zero));
   }

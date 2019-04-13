@@ -299,8 +299,10 @@ void main() {
     void _testConflicts(
       PhysicalModelLayer layerA,
       PhysicalModelLayer layerB, {
-      @required int expectedErrorCount,
+       int expectedErrorCount,
+      [
       bool enableCheck = true,
+    ]
     }) {
       assert(expectedErrorCount != null);
       assert(enableCheck || expectedErrorCount == 0, 'Cannot disable check and expect non-zero error count.');

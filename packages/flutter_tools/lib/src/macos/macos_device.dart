@@ -23,7 +23,7 @@ class MacOSDevice extends Device {
   void clearLogs() { }
 
   @override
-  DeviceLogReader getLogReader({ ApplicationPackage app }) => NoOpDeviceLogReader('macos');
+  DeviceLogReader getLogReader({ [ ApplicationPackage app ] }) => NoOpDeviceLogReader('macos');
 
   // Since the host and target devices are the same, no work needs to be done
   // to install the application.
@@ -58,6 +58,7 @@ class MacOSDevice extends Device {
   @override
   Future<LaunchResult> startApp(
     covariant MacOSApp package, {
+    [
     String mainPath,
     String route,
     DebuggingOptions debuggingOptions,
@@ -65,6 +66,7 @@ class MacOSDevice extends Device {
     bool prebuiltApplication = false,
     bool usesTerminalUi = true,
     bool ipv6 = false,
+  ]
   }) async {
     if (!prebuiltApplication) {
       return LaunchResult.failed();

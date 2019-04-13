@@ -284,7 +284,7 @@ void main() {
       primarySwatch: Colors.blue,
     );
     final SliderThemeData sliderTheme = theme.sliderTheme.copyWith(thumbColor: Colors.red.shade500, showValueIndicator: ShowValueIndicator.always);
-    Widget buildApp(String value, { double sliderValue = 0.5, double textScale = 1.0 }) {
+    Widget buildApp(String value, { [ double sliderValue = 0.5, double textScale = 1.0 ] }) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: MediaQuery(
@@ -740,9 +740,11 @@ void main() {
 
 Widget _buildApp(
   SliderThemeData sliderTheme, {
+  [
   double value = 0.0,
   bool enabled = true,
   int divisions,
+]
 }) {
   final ValueChanged<double> onChanged = enabled ? (double d) => value = d : null;
   return MaterialApp(

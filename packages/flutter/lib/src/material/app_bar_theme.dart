@@ -30,12 +30,14 @@ import 'theme.dart';
 class AppBarTheme extends Diagnosticable {
   /// Creates a theme that can be used for [ThemeData.AppBarTheme].
   const AppBarTheme({
+    [
     this.brightness,
     this.color,
     this.elevation,
     this.iconTheme,
     this.actionsIconTheme,
     this.textTheme,
+  ]
   });
 
   /// Default value for [AppBar.brightness].
@@ -71,12 +73,14 @@ class AppBarTheme extends Diagnosticable {
   /// Creates a copy of this object with the given fields replaced with the
   /// new values.
   AppBarTheme copyWith({
+    [
     IconThemeData actionsIconTheme,
     Brightness brightness,
     Color color,
     double elevation,
     IconThemeData iconTheme,
     TextTheme textTheme,
+  ]
   }) {
     return AppBarTheme(
       brightness: brightness ?? this.brightness,

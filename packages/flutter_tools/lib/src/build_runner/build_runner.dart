@@ -120,11 +120,13 @@ class BuildRunner extends CodeGenerator {
   @override
   Future<CodegenDaemon> daemon(
     FlutterProject flutterProject, {
+    [
     String mainPath,
     bool linkPlatformKernelIn = false,
     bool targetProductVm = false,
     bool trackWidgetCreation = false,
     List<String> extraFrontEndOptions = const <String> [],
+  ]
   }) async {
     await generateBuildScript(flutterProject);
     final String engineDartBinaryPath = artifacts.getArtifactPath(Artifact.engineDartBinary);

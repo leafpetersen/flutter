@@ -30,8 +30,10 @@ class RenderListBody extends RenderBox
   ///
   /// By default, children are arranged along the vertical axis.
   RenderListBody({
+    [
     List<RenderBox> children,
     AxisDirection axisDirection = AxisDirection.down,
+  ]
   }) : assert(axisDirection != null),
        _axisDirection = axisDirection {
     addAll(children);
@@ -265,7 +267,7 @@ class RenderListBody extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return defaultHitTestChildren(result, position: position);
   }
 

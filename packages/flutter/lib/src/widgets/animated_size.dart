@@ -15,12 +15,14 @@ class AnimatedSize extends SingleChildRenderObjectWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   const AnimatedSize({
+    [
     Key key,
     Widget child,
     this.alignment = Alignment.center,
-    this.curve = Curves.linear,
-    @required this.duration,
-    @required this.vsync,
+    this.curve = Curves.linear
+    ]
+     this.duration,
+     this.vsync,
   }) : super(key: key, child: child);
 
   /// The alignment of the child within the parent when the parent is not yet

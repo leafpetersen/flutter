@@ -93,12 +93,14 @@ void main() {
 
 void expectAdjustable(
   SemanticsNode node, {
+  [
   bool hasIncreaseAction = true,
   bool hasDecreaseAction = true,
   String label = '',
   String decreasedValue = '',
   String value = '',
   String increasedValue = '',
+]
 }) {
   final SemanticsData semanticsData = node.getSemanticsData();
 

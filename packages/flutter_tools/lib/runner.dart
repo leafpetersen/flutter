@@ -29,12 +29,14 @@ import 'src/version.dart';
 Future<int> run(
   List<String> args,
   List<FlutterCommand> commands, {
+  [
   bool muteCommandLogging = false,
   bool verbose = false,
   bool verboseHelp = false,
   bool reportCrashes,
   String flutterVersion,
   Map<Type, Generator> overrides,
+]
 }) {
   reportCrashes ??= !isRunningOnBot;
 

@@ -14,11 +14,13 @@ import 'syntax_highlighter.dart';
 
 class ComponentDemoTabData {
   ComponentDemoTabData({
+    [
     this.demoWidget,
     this.exampleCodeTag,
     this.description,
     this.tabName,
     this.documentationUrl,
+  ]
   });
 
   final Widget demoWidget;
@@ -43,9 +45,11 @@ class ComponentDemoTabData {
 
 class TabbedComponentDemoScaffold extends StatelessWidget {
   const TabbedComponentDemoScaffold({
+    [
     this.title,
     this.demos,
     this.actions,
+  ]
   });
 
   final List<ComponentDemoTabData> demos;
@@ -144,7 +148,7 @@ class TabbedComponentDemoScaffold extends StatelessWidget {
 }
 
 class FullScreenCodeDialog extends StatefulWidget {
-  const FullScreenCodeDialog({ this.exampleCodeTag });
+  const FullScreenCodeDialog({ [ this.exampleCodeTag ] });
 
   final String exampleCodeTag;
 
@@ -212,7 +216,7 @@ class FullScreenCodeDialogState extends State<FullScreenCodeDialog> {
 }
 
 class MaterialDemoDocumentationButton extends StatelessWidget {
-  MaterialDemoDocumentationButton(String routeName, { Key key })
+  MaterialDemoDocumentationButton(String routeName, { [ Key key ] })
     : documentationUrl = kDemoDocumentationUrl[routeName],
       assert(
         kDemoDocumentationUrl[routeName] != null,
@@ -233,7 +237,7 @@ class MaterialDemoDocumentationButton extends StatelessWidget {
 }
 
 class CupertinoDemoDocumentationButton extends StatelessWidget {
-  CupertinoDemoDocumentationButton(String routeName, { Key key })
+  CupertinoDemoDocumentationButton(String routeName, { [ Key key ] })
     : documentationUrl = kDemoDocumentationUrl[routeName],
       assert(
         kDemoDocumentationUrl[routeName] != null,

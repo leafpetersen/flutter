@@ -71,6 +71,7 @@ class TextFormField extends FormField<String> {
   /// For documentation about the various parameters, see the [TextField] class
   /// and [new TextField], the constructor.
   TextFormField({
+    [
     Key key,
     this.controller,
     String initialValue,
@@ -105,6 +106,7 @@ class TextFormField extends FormField<String> {
     EdgeInsets scrollPadding = const EdgeInsets.all(20.0),
     bool enableInteractiveSelection = true,
     InputCounterWidgetBuilder buildCounter,
+  ]
   }) : assert(initialValue == null || controller == null),
        assert(textAlign != null),
        assert(autofocus != null),

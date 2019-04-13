@@ -21,8 +21,10 @@ import 'package:flutter_gallery/demo/shrine/model/product.dart';
 
 class CategoryMenuPage extends StatelessWidget {
   const CategoryMenuPage({
+    [
     Key key,
     this.onCategoryTap,
+  ]
   }) : super(key: key);
 
   final VoidCallback onCategoryTap;

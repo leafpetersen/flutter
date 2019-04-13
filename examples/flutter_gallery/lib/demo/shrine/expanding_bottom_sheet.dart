@@ -38,7 +38,7 @@ const double _kCornerRadius = 24.0;
 const double _kWidthForCartIcon = 64.0;
 
 class ExpandingBottomSheet extends StatefulWidget {
-  const ExpandingBottomSheet({Key key, @required this.hideController})
+  const ExpandingBottomSheet({[Key key ]  this.hideController})
       : assert(hideController != null),
         super(key: key);
 
@@ -47,7 +47,7 @@ class ExpandingBottomSheet extends StatefulWidget {
   @override
   _ExpandingBottomSheetState createState() => _ExpandingBottomSheetState();
 
-  static _ExpandingBottomSheetState of(BuildContext context, {bool isNullOk = false}) {
+  static _ExpandingBottomSheetState of(BuildContext context, {[bool isNullOk = false]}) {
     assert(isNullOk != null);
     assert(context != null);
     final _ExpandingBottomSheetState result = context.ancestorStateOfType(
@@ -67,11 +67,11 @@ class ExpandingBottomSheet extends StatefulWidget {
 // curve formula. It's quintic, not cubic. But it _can_ be expressed as one
 // curve followed by another, which we do here.
 Animation<T> _getEmphasizedEasingAnimation<T>({
-  @required T begin,
-  @required T peak,
-  @required T end,
-  @required bool isForward,
-  @required Animation<double> parent,
+   T begin,
+   T peak,
+   T end,
+   bool isForward,
+   Animation<double> parent,
 }) {
   Curve firstCurve;
   Curve secondCurve;
@@ -112,7 +112,7 @@ Animation<T> _getEmphasizedEasingAnimation<T>({
 
 // Calculates the value where two double Animations should be joined. Used by
 // callers of _getEmphasisedEasing<double>().
-double _getPeakPoint({double begin, double end}) {
+double _getPeakPoint({[double begin, double end]}) {
   return begin + (end - begin) * _kPeakVelocityProgress;
 }
 
@@ -608,9 +608,11 @@ class ProductThumbnail extends StatelessWidget {
 // _ListModel manipulates an internal list and an AnimatedList
 class _ListModel {
   _ListModel({
-    @required this.listKey,
-    @required this.removedItemBuilder,
+     this.listKey,
+     this.removedItemBuilder,
+    [
     Iterable<int> initialItems,
+  ]
   }) : assert(listKey != null),
        assert(removedItemBuilder != null),
        _items = initialItems?.toList() ?? <int>[];

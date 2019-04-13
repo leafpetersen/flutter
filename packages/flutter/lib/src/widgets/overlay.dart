@@ -59,9 +59,11 @@ class OverlayEntry {
   /// [Overlay.of] and then call [OverlayState.insert]. To remove the entry,
   /// call [remove] on the overlay entry itself.
   OverlayEntry({
-    @required this.builder,
+     this.builder,
+    [
     bool opaque = false,
     bool maintainState = false,
+  ]
   }) : assert(builder != null),
        assert(opaque != null),
        assert(maintainState != null),
@@ -201,8 +203,10 @@ class Overlay extends StatefulWidget {
   /// Rather than creating an overlay, consider using the overlay that is
   /// created by the [WidgetsApp] or the [MaterialApp] for the application.
   const Overlay({
+    [
     Key key,
     this.initialEntries = const <OverlayEntry>[],
+  ]
   }) : assert(initialEntries != null),
        super(key: key);
 
@@ -234,7 +238,7 @@ class Overlay extends StatefulWidget {
   /// ```dart
   /// OverlayState overlay = Overlay.of(context);
   /// ```
-  static OverlayState of(BuildContext context, { Widget debugRequiredFor }) {
+  static OverlayState of(BuildContext context, { [ Widget debugRequiredFor ] }) {
     final OverlayState result = context.ancestorStateOfType(const TypeMatcher<OverlayState>());
     assert(() {
       if (debugRequiredFor != null && result == null) {
@@ -288,7 +292,7 @@ class OverlayState extends State<Overlay> with TickerProviderStateMixin {
   /// Otherwise, the entry is inserted on top.
   ///
   /// It is an error to specify both `above` and `below`.
-  void insert(OverlayEntry entry, { OverlayEntry below, OverlayEntry above }) {
+  void insert(OverlayEntry entry, { [ OverlayEntry below, OverlayEntry above ] }) {
     assert(
       above == null || below == null,
       'Only one of `above` and `below` may be specified.',
@@ -316,7 +320,7 @@ class OverlayState extends State<Overlay> with TickerProviderStateMixin {
   /// Otherwise, the entries are inserted on top.
   ///
   /// It is an error to specify both `above` and `below`.
-  void insertAll(Iterable<OverlayEntry> entries, { OverlayEntry below, OverlayEntry above }) {
+  void insertAll(Iterable<OverlayEntry> entries, { [ OverlayEntry below, OverlayEntry above ] }) {
     assert(
       above == null || below == null,
       'Only one of `above` and `below` may be specified.',
@@ -365,7 +369,7 @@ class OverlayState extends State<Overlay> with TickerProviderStateMixin {
   /// below.
   ///
   /// It is an error to specify both `above` and `below`.
-  void rearrange(Iterable<OverlayEntry> newEntries, { OverlayEntry below, OverlayEntry above }) {
+  void rearrange(Iterable<OverlayEntry> newEntries, { [ OverlayEntry below, OverlayEntry above ] }) {
     final List<OverlayEntry> newEntriesList = newEntries is List<OverlayEntry> ? newEntries : newEntries.toList(growable: false);
     assert(
       above == null || below == null,
@@ -488,8 +492,10 @@ class OverlayState extends State<Overlay> with TickerProviderStateMixin {
 /// widgets.
 class _Theatre extends RenderObjectWidget {
   _Theatre({
-    this.onstage,
-    @required this.offstage,
+    [
+    this.onstage
+    ]
+     this.offstage,
   }) : assert(offstage != null),
        assert(!offstage.any((Widget child) => child == null));
 

@@ -132,7 +132,7 @@ abstract class CustomPainter extends Listenable {
   /// Creates a custom painter.
   ///
   /// The painter will repaint whenever `repaint` notifies its listeners.
-  const CustomPainter({ Listenable repaint }) : _repaint = repaint;
+  const CustomPainter({ [ Listenable repaint ] }) : _repaint = repaint;
 
   final Listenable _repaint;
 
@@ -287,11 +287,15 @@ class CustomPainterSemantics {
   ///
   /// Arguments `rect` and `properties` must not be null.
   const CustomPainterSemantics({
-    this.key,
-    @required this.rect,
-    @required this.properties,
+    [
+    this.key
+    ]
+     this.rect,
+     this.properties,
+    [
     this.transform,
     this.tags,
+  ]
   }) : assert(rect != null),
        assert(properties != null);
 
@@ -363,12 +367,14 @@ class CustomPainterSemantics {
 class RenderCustomPaint extends RenderProxyBox {
   /// Creates a render object that delegates its painting.
   RenderCustomPaint({
+    [
     CustomPainter painter,
     CustomPainter foregroundPainter,
     Size preferredSize = Size.zero,
     this.isComplex = false,
     this.willChange = false,
     RenderBox child,
+  ]
   }) : assert(preferredSize != null),
        _painter = painter,
        _foregroundPainter = foregroundPainter,
@@ -497,7 +503,7 @@ class RenderCustomPaint extends RenderProxyBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     if (_foregroundPainter != null && (_foregroundPainter.hitTest(position) ?? false))
       return true;
     return super.hitTestChildren(result, position: position);

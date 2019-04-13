@@ -140,10 +140,12 @@ List<List<String>> contacts = <List<String>>[
 
 class _ListItem extends StatelessWidget {
   const _ListItem({
+    [
     this.name,
     this.place,
     this.date,
     this.called,
+  ]
   });
 
   final String name;

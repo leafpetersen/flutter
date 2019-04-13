@@ -151,7 +151,7 @@ String escapePath(String path) => platform.isWindows ? path.replaceAll('\\', '\\
 /// Returns true, if [entity] does not exist.
 ///
 /// Returns false, if [entity] exists, but [referenceFile] does not.
-bool isOlderThanReference({ @required FileSystemEntity entity, @required File referenceFile }) {
+bool isOlderThanReference({  FileSystemEntity entity,  File referenceFile }) {
   if (!entity.existsSync())
     return true;
   return referenceFile.existsSync()

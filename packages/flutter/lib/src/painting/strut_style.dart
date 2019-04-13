@@ -273,6 +273,7 @@ class StrutStyle extends Diagnosticable {
   ///
   /// If provided, fontSize must be positive and non-zero, leading must be zero or positive.
   const StrutStyle({
+    [
     String fontFamily,
     List<String> fontFamilyFallback,
     this.fontSize,
@@ -283,6 +284,7 @@ class StrutStyle extends Diagnosticable {
     this.forceStrutHeight,
     this.debugLabel,
     String package,
+  ]
   }) : fontFamily = package == null ? fontFamily : 'packages/$package/$fontFamily',
        _fontFamilyFallback = fontFamilyFallback,
        _package = package,
@@ -308,6 +310,7 @@ class StrutStyle extends Diagnosticable {
   /// This prevents the previous package name from being prepended twice.
   StrutStyle.fromTextStyle(
     TextStyle textStyle, {
+    [
     String fontFamily,
     List<String> fontFamilyFallback,
     double fontSize,
@@ -318,6 +321,7 @@ class StrutStyle extends Diagnosticable {
     this.forceStrutHeight,
     String debugLabel,
     String package,
+  ]
   }) : assert(textStyle != null),
        assert(fontSize == null || fontSize > 0),
        assert(leading == null || leading >= 0),
@@ -533,7 +537,7 @@ class StrutStyle extends Diagnosticable {
 
   /// Adds all properties prefixing property names with the optional `prefix`.
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties, { String prefix = '' }) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties, { [ String prefix = '' ] }) {
     super.debugFillProperties(properties);
     if (debugLabel != null)
       properties.add(MessageProperty('${prefix}debugLabel', debugLabel));

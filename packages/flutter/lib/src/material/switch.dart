@@ -63,9 +63,12 @@ class Switch extends StatefulWidget {
   /// * [value] determines whether this switch is on or off.
   /// * [onChanged] is called when the user toggles the switch on or off.
   const Switch({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.activeColor,
     this.activeTrackColor,
     this.inactiveThumbColor,
@@ -74,6 +77,7 @@ class Switch extends StatefulWidget {
     this.inactiveThumbImage,
     this.materialTapTargetSize,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : _switchType = _SwitchType.material,
        assert(dragStartBehavior != null),
        super(key: key);
@@ -87,9 +91,12 @@ class Switch extends StatefulWidget {
   ///
   /// The target platform is based on the current [Theme]: [ThemeData.platform].
   const Switch.adaptive({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.activeColor,
     this.activeTrackColor,
     this.inactiveThumbColor,
@@ -98,6 +105,7 @@ class Switch extends StatefulWidget {
     this.inactiveThumbImage,
     this.materialTapTargetSize,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : _switchType = _SwitchType.adaptive,
        super(key: key);
 
@@ -280,6 +288,7 @@ class _SwitchState extends State<Switch> with TickerProviderStateMixin {
 
 class _SwitchRenderObjectWidget extends LeafRenderObjectWidget {
   const _SwitchRenderObjectWidget({
+    [
     Key key,
     this.value,
     this.activeColor,
@@ -293,6 +302,7 @@ class _SwitchRenderObjectWidget extends LeafRenderObjectWidget {
     this.vsync,
     this.additionalConstraints,
     this.dragStartBehavior,
+  ]
   }) : super(key: key);
 
   final bool value;
@@ -348,6 +358,7 @@ class _SwitchRenderObjectWidget extends LeafRenderObjectWidget {
 
 class _RenderSwitch extends RenderToggleable {
   _RenderSwitch({
+    [
     bool value,
     Color activeColor,
     Color inactiveColor,
@@ -356,11 +367,16 @@ class _RenderSwitch extends RenderToggleable {
     Color activeTrackColor,
     Color inactiveTrackColor,
     ImageConfiguration configuration,
-    BoxConstraints additionalConstraints,
-    @required TextDirection textDirection,
-    ValueChanged<bool> onChanged,
-    @required TickerProvider vsync,
+    BoxConstraints additionalConstraints
+    ]
+     TextDirection textDirection,
+    [
+    ValueChanged<bool> onChanged
+    ]
+     TickerProvider vsync,
+    [
     DragStartBehavior dragStartBehavior,
+  ]
   }) : assert(textDirection != null),
        _activeThumbImage = activeThumbImage,
        _inactiveThumbImage = inactiveThumbImage,

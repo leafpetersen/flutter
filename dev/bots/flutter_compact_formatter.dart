@@ -209,13 +209,15 @@ enum TestStatus {
 /// The detailed status of a test run.
 class TestResult {
   TestResult({
-    @required this.id,
-    @required this.name,
-    @required this.line,
-    @required this.column,
-    @required this.path,
-    @required this.startTime,
+     this.id,
+     this.name,
+     this.line,
+     this.column,
+     this.path,
+     this.startTime,
+    [
     this.status = TestStatus.started,
+  ]
   })  : assert(id != null),
         assert(name != null),
         assert(line != null),

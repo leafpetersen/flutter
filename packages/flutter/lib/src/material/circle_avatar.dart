@@ -53,6 +53,7 @@ import 'theme_data.dart';
 class CircleAvatar extends StatelessWidget {
   /// Creates a circle that represents a user.
   const CircleAvatar({
+    [
     Key key,
     this.child,
     this.backgroundColor,
@@ -61,6 +62,7 @@ class CircleAvatar extends StatelessWidget {
     this.radius,
     this.minRadius,
     this.maxRadius,
+  ]
   }) : assert(radius == null || (minRadius == null && maxRadius == null)),
        super(key: key);
 

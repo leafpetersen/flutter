@@ -25,6 +25,7 @@ class RenderImage extends RenderBox {
   /// must not be null. The [textDirection] argument must not be null if
   /// [alignment] will need resolving or if [matchTextDirection] is true.
   RenderImage({
+    [
     ui.Image image,
     double width,
     double height,
@@ -39,6 +40,7 @@ class RenderImage extends RenderBox {
     TextDirection textDirection,
     bool invertColors = false,
     FilterQuality filterQuality = FilterQuality.low,
+  ]
   }) : assert(scale != null),
        assert(repeat != null),
        assert(alignment != null),

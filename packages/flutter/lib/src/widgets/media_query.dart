@@ -57,6 +57,7 @@ class MediaQueryData {
   /// Consider using [MediaQueryData.fromWindow] to create data based on a
   /// [Window].
   const MediaQueryData({
+    [
     this.size = Size.zero,
     this.devicePixelRatio = 1.0,
     this.textScaleFactor = 1.0,
@@ -68,6 +69,7 @@ class MediaQueryData {
     this.invertColors = false,
     this.disableAnimations = false,
     this.boldText = false,
+  ]
   });
 
   /// Creates data for a media query based on the given window.
@@ -213,6 +215,7 @@ class MediaQueryData {
   /// Creates a copy of this media query data but with the given fields replaced
   /// with the new values.
   MediaQueryData copyWith({
+    [
     Size size,
     double devicePixelRatio,
     double textScaleFactor,
@@ -224,6 +227,7 @@ class MediaQueryData {
     bool invertColors,
     bool accessibleNavigation,
     bool boldText,
+  ]
   }) {
     return MediaQueryData(
       size: size ?? this.size,
@@ -255,10 +259,12 @@ class MediaQueryData {
   ///    adds a [Padding] widget.
   ///  * [removeViewInsets], the same thing but for [viewInsets].
   MediaQueryData removePadding({
+    [
     bool removeLeft = false,
     bool removeTop = false,
     bool removeRight = false,
     bool removeBottom = false,
+  ]
   }) {
     if (!(removeLeft || removeTop || removeRight || removeBottom))
       return this;
@@ -295,10 +301,12 @@ class MediaQueryData {
   ///    padding from the ambient [MediaQuery].
   ///  * [removePadding], the same thing but for [padding].
   MediaQueryData removeViewInsets({
+    [
     bool removeLeft = false,
     bool removeTop = false,
     bool removeRight = false,
     bool removeBottom = false,
+  ]
   }) {
     if (!(removeLeft || removeTop || removeRight || removeBottom))
       return this;
@@ -400,9 +408,11 @@ class MediaQuery extends InheritedWidget {
   ///
   /// The [data] and [child] arguments must not be null.
   const MediaQuery({
-    Key key,
-    @required this.data,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.data,
+     Widget child,
   }) : assert(child != null),
        assert(data != null),
        super(key: key, child: child);
@@ -431,13 +441,17 @@ class MediaQuery extends InheritedWidget {
   ///  * [MediaQueryData.padding], the affected property of the [MediaQueryData].
   ///  * [new removeViewInsets], the same thing but for removing view insets.
   factory MediaQuery.removePadding({
-    Key key,
-    @required BuildContext context,
+    [
+    Key key
+    ]
+     BuildContext context,
+    [
     bool removeLeft = false,
     bool removeTop = false,
     bool removeRight = false,
-    bool removeBottom = false,
-    @required Widget child,
+    bool removeBottom = false
+    ]
+     Widget child,
   }) {
     return MediaQuery(
       key: key,
@@ -473,13 +487,17 @@ class MediaQuery extends InheritedWidget {
   ///  * [MediaQueryData.viewInsets], the affected property of the [MediaQueryData].
   ///  * [new removePadding], the same thing but for removing paddings.
   factory MediaQuery.removeViewInsets({
-    Key key,
-    @required BuildContext context,
+    [
+    Key key
+    ]
+     BuildContext context,
+    [
     bool removeLeft = false,
     bool removeTop = false,
     bool removeRight = false,
-    bool removeBottom = false,
-    @required Widget child,
+    bool removeBottom = false
+    ]
+     Widget child,
   }) {
     return MediaQuery(
       key: key,
@@ -517,7 +535,7 @@ class MediaQuery extends InheritedWidget {
   ///
   /// If you use this from a widget (e.g. in its build function), consider
   /// calling [debugCheckHasMediaQuery].
-  static MediaQueryData of(BuildContext context, { bool nullOk = false }) {
+  static MediaQueryData of(BuildContext context, { [ bool nullOk = false ] }) {
     assert(context != null);
     assert(nullOk != null);
     final MediaQuery query = context.inheritFromWidgetOfExactType(MediaQuery);

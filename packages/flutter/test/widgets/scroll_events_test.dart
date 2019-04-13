@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 
-Widget _buildScroller({ List<String> log }) {
+Widget _buildScroller({ [ List<String> log ] }) {
   return NotificationListener<ScrollNotification>(
     onNotification: (ScrollNotification notification) {
       if (notification is ScrollStartNotification) {
@@ -27,7 +27,7 @@ Widget _buildScroller({ List<String> log }) {
 }
 
 void main() {
-  Completer<void> animateTo(WidgetTester tester, double newScrollOffset, { @required Duration duration }) {
+  Completer<void> animateTo(WidgetTester tester, double newScrollOffset, {  Duration duration }) {
     final Completer<void> completer = Completer<void>();
     final ScrollableState scrollable = tester.state(find.byType(Scrollable));
     scrollable.position.animateTo(newScrollOffset, duration: duration, curve: Curves.linear).whenComplete(completer.complete);

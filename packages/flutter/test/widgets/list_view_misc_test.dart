@@ -72,7 +72,7 @@ void main() {
     int first = 0;
     int second = 0;
 
-    Widget buildBlock({ bool reverse = false }) {
+    Widget buildBlock({ [ bool reverse = false ] }) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: ListView(

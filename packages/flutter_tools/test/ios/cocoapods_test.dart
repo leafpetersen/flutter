@@ -46,7 +46,7 @@ void main() {
     fs.directory(fs.path.join(homeDirPath, '.cocoapods', 'repos', 'master')).createSync(recursive: true);
   }
 
-  String podsIsInCustomDir({String cocoapodsReposDir}) {
+  String podsIsInCustomDir({[String cocoapodsReposDir]}) {
     cocoapodsReposDir ??= fs.path.join(homeDirPath, 'cache', 'cocoapods', 'repos');
     fs.directory(fs.path.join(cocoapodsReposDir, 'master')).createSync(recursive: true);
     return cocoapodsReposDir;

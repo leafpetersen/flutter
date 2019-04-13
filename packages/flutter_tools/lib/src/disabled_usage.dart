@@ -26,13 +26,13 @@ class DisabledUsage implements Usage {
   String get clientId => null;
 
   @override
-  void sendCommand(String command, { Map<String, String> parameters }) { }
+  void sendCommand(String command, { [ Map<String, String> parameters ] }) { }
 
   @override
-  void sendEvent(String category, String parameter, { Map<String, String> parameters }) { }
+  void sendEvent(String category, String parameter, { [ Map<String, String> parameters ] }) { }
 
   @override
-  void sendTiming(String category, String variableName, Duration duration, { String label }) { }
+  void sendTiming(String category, String variableName, Duration duration, { [ String label ] }) { }
 
   @override
   void sendException(dynamic exception, StackTrace trace) { }

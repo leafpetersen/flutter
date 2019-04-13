@@ -16,10 +16,12 @@ class Title extends StatelessWidget {
   /// [color] must be an opaque color (i.e. color.alpha must be 255 (0xFF)).
   /// [color] and [child] are required arguments.
   Title({
+    [
     Key key,
-    this.title = '',
-    @required this.color,
-    @required this.child,
+    this.title = ''
+    ]
+     this.color,
+     this.child,
   }) : assert(title != null),
        assert(color != null && color.alpha == 0xFF),
        super(key: key);

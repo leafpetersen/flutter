@@ -60,9 +60,11 @@ class BorderSide {
   ///
   /// By default, the border is 1.0 logical pixels wide and solid black.
   const BorderSide({
+    [
     this.color = const Color(0xFF000000),
     this.width = 1.0,
     this.style = BorderStyle.solid,
+  ]
   }) : assert(color != null),
        assert(width != null),
        assert(width >= 0.0),
@@ -119,9 +121,11 @@ class BorderSide {
 
   /// Creates a copy of this border but with the given fields replaced with the new values.
   BorderSide copyWith({
+    [
     Color color,
     double width,
     BorderStyle style,
+  ]
   }) {
     assert(width == null || width >= 0.0);
     return BorderSide(
@@ -308,7 +312,7 @@ abstract class ShapeBorder {
   /// The `reversed` argument is true if this object was the right operand of
   /// the `+` operator, and false if it was the left operand.
   @protected
-  ShapeBorder add(ShapeBorder other, { bool reversed = false }) => null;
+  ShapeBorder add(ShapeBorder other, { [ bool reversed = false ] }) => null;
 
   /// Creates a new border consisting of the two borders on either side of the
   /// operator.
@@ -446,7 +450,7 @@ abstract class ShapeBorder {
   ///
   ///  * [getInnerPath], which creates the path for the inner edge.
   ///  * [Path.contains], which can tell if an [Offset] is within a [Path].
-  Path getOuterPath(Rect rect, { TextDirection textDirection });
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] });
 
   /// Create a [Path] that describes the inner edge of the border.
   ///
@@ -467,7 +471,7 @@ abstract class ShapeBorder {
   ///
   ///  * [getOuterPath], which creates the path for the outer edge.
   ///  * [Path.contains], which can tell if an [Offset] is within a [Path].
-  Path getInnerPath(Rect rect, { TextDirection textDirection });
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] });
 
   /// Paints the border within the given [Rect] on the given [Canvas].
   ///
@@ -475,7 +479,7 @@ abstract class ShapeBorder {
   /// has a text direction dependency (for example if it is expressed in terms
   /// of "start" and "end" instead of "left" and "right"). It may be null if
   /// the border will not need the text direction to paint itself.
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection });
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] });
 
   @override
   String toString() {
@@ -505,7 +509,7 @@ class _CompoundBorder extends ShapeBorder {
   }
 
   @override
-  ShapeBorder add(ShapeBorder other, { bool reversed = false }) {
+  ShapeBorder add(ShapeBorder other, { [ bool reversed = false ] }) {
     // This wraps the list of borders with "other", or, if "reversed" is true,
     // wraps "other" with the list of borders.
     // If "reversed" is false, "other" should end up being at the start of the
@@ -585,19 +589,19 @@ class _CompoundBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     for (int index = 0; index < borders.length - 1; index += 1)
       rect = borders[index].dimensions.resolve(textDirection).deflateRect(rect);
     return borders.last.getInnerPath(rect, textDirection: textDirection);
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return borders.first.getOuterPath(rect, textDirection: textDirection);
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     for (ShapeBorder border in borders) {
       border.paint(canvas, rect, textDirection: textDirection);
       rect = border.dimensions.resolve(textDirection).deflateRect(rect);
@@ -655,10 +659,12 @@ class _CompoundBorder extends ShapeBorder {
 void paintBorder(
   Canvas canvas,
   Rect rect, {
+  [
   BorderSide top = BorderSide.none,
   BorderSide right = BorderSide.none,
   BorderSide bottom = BorderSide.none,
   BorderSide left = BorderSide.none,
+]
 }) {
   assert(canvas != null);
   assert(rect != null);

@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 @immutable
 class ColorPicker extends StatelessWidget {
   const ColorPicker({
-    @required this.colors,
-    @required this.selectedColor,
+     this.colors,
+     this.selectedColor,
+    [
     this.onColorSelection,
+  ]
   }) : assert(colors != null),
        assert(selectedColor != null);
 
@@ -37,9 +39,11 @@ class ColorPicker extends StatelessWidget {
 @immutable
 class _ColorPickerSwatch extends StatelessWidget {
   const _ColorPickerSwatch({
-    @required this.color,
-    @required this.selected,
+     this.color,
+     this.selected,
+    [
     this.onTap,
+  ]
   }) : assert(color != null),
        assert(selected != null);
 

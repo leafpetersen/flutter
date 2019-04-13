@@ -35,8 +35,10 @@ import 'framework.dart';
 class Texture extends LeafRenderObjectWidget {
   /// Creates a widget backed by the texture identified by [textureId].
   const Texture({
-    Key key,
-    @required this.textureId,
+    [
+    Key key
+    ]
+     this.textureId,
   }) : assert(textureId != null),
        super(key: key);
 

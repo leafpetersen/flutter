@@ -55,7 +55,7 @@ class PubContext {
   String toString() => 'PubContext: ${_values.join(':')}';
 }
 
-bool _shouldRunPubGet({ File pubSpecYaml, File dotPackages }) {
+bool _shouldRunPubGet({ [ File pubSpecYaml, File dotPackages ] }) {
   if (!dotPackages.existsSync())
     return true;
   final DateTime dotPackagesLastModified = dotPackages.lastModifiedSync();
@@ -71,13 +71,15 @@ bool _shouldRunPubGet({ File pubSpecYaml, File dotPackages }) {
 /// [context] provides extra information to package server requests to
 /// understand usage.
 Future<void> pubGet({
-  @required PubContext context,
+   PubContext context,
+  [
   String directory,
   bool skipIfAbsent = false,
   bool upgrade = false,
   bool offline = false,
   bool checkLastModified = true,
   bool skipPubspecYamlCheck = false,
+]
 }) async {
   directory ??= fs.currentDirectory.path;
 
@@ -139,12 +141,16 @@ typedef MessageFilter = String Function(String message);
 /// understand usage.
 Future<void> pub(
   List<String> arguments, {
-  @required PubContext context,
+   PubContext context,
+  [
   String directory,
   MessageFilter filter,
-  String failureMessage = 'pub failed',
-  @required bool retry,
+  String failureMessage = 'pub failed'
+  ]
+   bool retry,
+  [
   bool showTraceForErrors,
+]
 }) async {
   showTraceForErrors ??= isRunningOnBot;
 
@@ -178,7 +184,9 @@ Future<void> pub(
 /// streams of this process.
 Future<void> pubInteractively(
   List<String> arguments, {
+  [
   String directory,
+]
 }) async {
   Cache.releaseLockEarly();
   final int code = await runInteractively(

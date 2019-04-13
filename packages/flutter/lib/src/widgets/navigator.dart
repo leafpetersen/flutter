@@ -81,7 +81,7 @@ abstract class Route<T> {
   ///
   /// If the [settings] are not provided, an empty [RouteSettings] object is
   /// used instead.
-  Route({ RouteSettings settings }) : settings = settings ?? const RouteSettings();
+  Route({ [ RouteSettings settings ] }) : settings = settings ?? const RouteSettings();
 
   /// The navigator that the route is in, if any.
   NavigatorState get navigator => _navigator;
@@ -288,17 +288,21 @@ abstract class Route<T> {
 class RouteSettings {
   /// Creates data used to construct routes.
   const RouteSettings({
+    [
     this.name,
     this.isInitialRoute = false,
     this.arguments,
+  ]
   });
 
   /// Creates a copy of this route settings object with the given fields
   /// replaced with the new values.
   RouteSettings copyWith({
+    [
     String name,
     bool isInitialRoute,
     Object arguments,
+  ]
   }) {
     return RouteSettings(
       name: name ?? this.name,
@@ -356,7 +360,7 @@ class NavigatorObserver {
   void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) { }
 
   /// The [Navigator] replaced `oldRoute` with `newRoute`.
-  void didReplace({ Route<dynamic> newRoute, Route<dynamic> oldRoute }) { }
+  void didReplace({ [ Route<dynamic> newRoute, Route<dynamic> oldRoute ] }) { }
 
   /// The [Navigator]'s route `route` is being moved by a user gesture.
   ///
@@ -737,11 +741,15 @@ class Navigator extends StatefulWidget {
   ///
   /// The [onGenerateRoute] argument must not be null.
   const Navigator({
+    [
     Key key,
-    this.initialRoute,
-    @required this.onGenerateRoute,
+    this.initialRoute
+    ]
+     this.onGenerateRoute,
+    [
     this.onUnknownRoute,
     this.observers = const <NavigatorObserver>[],
+  ]
   }) : assert(onGenerateRoute != null),
        super(key: key);
 
@@ -872,7 +880,9 @@ class Navigator extends StatefulWidget {
   static Future<T> pushNamed<T extends Object>(
     BuildContext context,
     String routeName, {
+    [
     Object arguments,
+   ]
    }) {
     return Navigator.of(context).pushNamed<T>(routeName, arguments: arguments);
   }
@@ -926,8 +936,10 @@ class Navigator extends StatefulWidget {
   static Future<T> pushReplacementNamed<T extends Object, TO extends Object>(
     BuildContext context,
     String routeName, {
+    [
     TO result,
     Object arguments,
+  ]
   }) {
     return Navigator.of(context).pushReplacementNamed<T, TO>(routeName, arguments: arguments, result: result);
   }
@@ -981,8 +993,10 @@ class Navigator extends StatefulWidget {
   static Future<T> popAndPushNamed<T extends Object, TO extends Object>(
     BuildContext context,
     String routeName, {
+    [
     TO result,
     Object arguments,
+   ]
    }) {
     return Navigator.of(context).popAndPushNamed<T, TO>(routeName, arguments: arguments, result: result);
   }
@@ -1043,7 +1057,9 @@ class Navigator extends StatefulWidget {
     BuildContext context,
     String newRouteName,
     RoutePredicate predicate, {
+    [
     Object arguments,
+  ]
   }) {
     return Navigator.of(context).pushNamedAndRemoveUntil<T>(newRouteName, predicate, arguments: arguments);
   }
@@ -1121,7 +1137,7 @@ class Navigator extends StatefulWidget {
   /// ```
   /// {@end-tool}
   @optionalTypeArgs
-  static Future<T> pushReplacement<T extends Object, TO extends Object>(BuildContext context, Route<T> newRoute, { TO result }) {
+  static Future<T> pushReplacement<T extends Object, TO extends Object>(BuildContext context, Route<T> newRoute, { [ TO result ] }) {
     return Navigator.of(context).pushReplacement<T, TO>(newRoute, result: result);
   }
 
@@ -1211,7 +1227,7 @@ class Navigator extends StatefulWidget {
   ///  * [replaceRouteBelow], which is the same but identifies the route to be
   ///    removed by reference to the route above it, rather than directly.
   @optionalTypeArgs
-  static void replace<T extends Object>(BuildContext context, { @required Route<dynamic> oldRoute, @required Route<T> newRoute }) {
+  static void replace<T extends Object>(BuildContext context, {  Route<dynamic> oldRoute,  Route<T> newRoute }) {
     return Navigator.of(context).replace<T>(oldRoute: oldRoute, newRoute: newRoute);
   }
 
@@ -1245,7 +1261,7 @@ class Navigator extends StatefulWidget {
   ///  * [replace], which is the same but identifies the route to be removed
   ///    directly.
   @optionalTypeArgs
-  static void replaceRouteBelow<T extends Object>(BuildContext context, { @required Route<dynamic> anchorRoute, Route<T> newRoute }) {
+  static void replaceRouteBelow<T extends Object>(BuildContext context, {  Route<dynamic> anchorRoute, [ Route<T> newRoute ] }) {
     return Navigator.of(context).replaceRouteBelow<T>(anchorRoute: anchorRoute, newRoute: newRoute);
   }
 
@@ -1438,8 +1454,10 @@ class Navigator extends StatefulWidget {
   /// instances of [Navigator].
   static NavigatorState of(
     BuildContext context, {
+    [
     bool rootNavigator = false,
     bool nullOk = false,
+  ]
   }) {
     final NavigatorState navigator = rootNavigator
         ? context.rootAncestorStateOfType(const TypeMatcher<NavigatorState>())
@@ -1574,7 +1592,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
 
   bool _debugLocked = false; // used to prevent re-entrant calls to push, pop, and friends
 
-  Route<T> _routeNamed<T>(String name, { @required Object arguments, bool allowNull = false }) {
+  Route<T> _routeNamed<T>(String name, {  Object arguments, [ bool allowNull = false ] }) {
     assert(!_debugLocked);
     assert(name != null);
     final RouteSettings settings = RouteSettings(
@@ -1632,7 +1650,9 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   @optionalTypeArgs
   Future<T> pushNamed<T extends Object>(
     String routeName, {
+    [
     Object arguments,
+  ]
   }) {
     return push<T>(_routeNamed<T>(routeName, arguments: arguments));
   }
@@ -1658,8 +1678,10 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   @optionalTypeArgs
   Future<T> pushReplacementNamed<T extends Object, TO extends Object>(
     String routeName, {
+    [
     TO result,
     Object arguments,
+  ]
   }) {
     return pushReplacement<T, TO>(_routeNamed<T>(routeName, arguments: arguments), result: result);
   }
@@ -1684,8 +1706,10 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   @optionalTypeArgs
   Future<T> popAndPushNamed<T extends Object, TO extends Object>(
     String routeName, {
+    [
     TO result,
     Object arguments,
+  ]
   }) {
     pop<TO>(result);
     return pushNamed<T>(routeName, arguments: arguments);
@@ -1712,7 +1736,9 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   Future<T> pushNamedAndRemoveUntil<T extends Object>(
     String newRouteName,
     RoutePredicate predicate, {
+    [
     Object arguments,
+  ]
   }) {
     return pushAndRemoveUntil<T>(_routeNamed<T>(newRouteName, arguments: arguments), predicate);
   }
@@ -1784,7 +1810,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   /// ```
   /// {@end-tool}
   @optionalTypeArgs
-  Future<T> pushReplacement<T extends Object, TO extends Object>(Route<T> newRoute, { TO result }) {
+  Future<T> pushReplacement<T extends Object, TO extends Object>(Route<T> newRoute, { [ TO result ] }) {
     assert(!_debugLocked);
     assert(() { _debugLocked = true; return true; }());
     final Route<dynamic> oldRoute = _history.last;
@@ -1882,7 +1908,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   ///  * [replaceRouteBelow], which is the same but identifies the route to be
   ///    removed by reference to the route above it, rather than directly.
   @optionalTypeArgs
-  void replace<T extends Object>({ @required Route<dynamic> oldRoute, @required Route<T> newRoute }) {
+  void replace<T extends Object>({  Route<dynamic> oldRoute,  Route<T> newRoute }) {
     assert(!_debugLocked);
     assert(oldRoute != null);
     assert(newRoute != null);
@@ -1926,7 +1952,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   ///  * [replace], which is the same but identifies the route to be removed
   ///    directly.
   @optionalTypeArgs
-  void replaceRouteBelow<T extends Object>({ @required Route<dynamic> anchorRoute, Route<T> newRoute }) {
+  void replaceRouteBelow<T extends Object>({  Route<dynamic> anchorRoute, [ Route<T> newRoute ] }) {
     assert(anchorRoute != null);
     assert(anchorRoute._navigator == this);
     assert(_history.indexOf(anchorRoute) > 0);

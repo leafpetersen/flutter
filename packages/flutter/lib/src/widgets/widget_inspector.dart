@@ -40,8 +40,8 @@ import 'icon_data.dart';
 typedef InspectorSelectButtonBuilder = Widget Function(BuildContext context, VoidCallback onPressed);
 
 typedef _RegisterServiceExtensionCallback = void Function({
-  @required String name,
-  @required ServiceExtensionCallback callback,
+   String name,
+   ServiceExtensionCallback callback,
 });
 
 /// A layer that mimics the behavior of another layer.
@@ -67,8 +67,8 @@ class _ProxyLayer extends Layer {
 /// time as performing a normal paint.
 class _MulticastCanvas implements Canvas {
   _MulticastCanvas({
-    @required Canvas main,
-    @required Canvas screenshot,
+     Canvas main,
+     Canvas screenshot,
   }) : assert(main != null),
        assert(screenshot != null),
        _main = main,
@@ -78,19 +78,19 @@ class _MulticastCanvas implements Canvas {
   final Canvas _screenshot;
 
   @override
-  void clipPath(Path path, { bool doAntiAlias = true }) {
+  void clipPath(Path path, { [ bool doAntiAlias = true ] }) {
     _main.clipPath(path, doAntiAlias: doAntiAlias);
     _screenshot.clipPath(path, doAntiAlias: doAntiAlias);
   }
 
   @override
-  void clipRRect(RRect rrect, { bool doAntiAlias = true }) {
+  void clipRRect(RRect rrect, { [ bool doAntiAlias = true ] }) {
     _main.clipRRect(rrect, doAntiAlias: doAntiAlias);
     _screenshot.clipRRect(rrect, doAntiAlias: doAntiAlias);
   }
 
   @override
-  void clipRect(Rect rect, { ui.ClipOp clipOp = ui.ClipOp.intersect, bool doAntiAlias = true }) {
+  void clipRect(Rect rect, { [ ui.ClipOp clipOp = ui.ClipOp.intersect, bool doAntiAlias = true ] }) {
     _main.clipRect(rect, clipOp: clipOp, doAntiAlias: doAntiAlias);
     _screenshot.clipRect(rect, clipOp: clipOp, doAntiAlias: doAntiAlias);
   }
@@ -322,7 +322,7 @@ class _ScreenshotContainerLayer extends OffsetLayer {
 /// a screenshot.
 class _ScreenshotData {
   _ScreenshotData({
-    @required this.target,
+     this.target,
   }) : assert(target != null),
        containerLayer = _ScreenshotContainerLayer();
 
@@ -374,9 +374,9 @@ class _ScreenshotData {
 /// render object.
 class _ScreenshotPaintingContext extends PaintingContext {
   _ScreenshotPaintingContext({
-    @required ContainerLayer containerLayer,
-    @required Rect estimatedBounds,
-    @required _ScreenshotData screenshotData,
+     ContainerLayer containerLayer,
+     Rect estimatedBounds,
+     _ScreenshotData screenshotData,
   }) : _data = screenshotData,
        super(containerLayer, estimatedBounds);
 
@@ -535,8 +535,10 @@ class _ScreenshotPaintingContext extends PaintingContext {
   static Future<ui.Image> toImage(
     RenderObject renderObject,
     Rect renderBounds, {
+    [
     double pixelRatio = 1.0,
     bool debugPaint = false,
+  ]
   }) {
     RenderObject repaintBoundary = renderObject;
     while (repaintBoundary != null && !repaintBoundary.isRepaintBoundary) {
@@ -606,9 +608,11 @@ class _DiagnosticsPathNode {
   ///
   /// The [node] and [child] arguments must not be null.
   _DiagnosticsPathNode({
-    @required this.node,
-    @required this.children,
+     this.node,
+     this.children,
+    [
     this.childIndex,
+  ]
   }) : assert(node != null),
        assert(children != null);
 
@@ -631,8 +635,10 @@ class _DiagnosticsPathNode {
 
 List<_DiagnosticsPathNode> _followDiagnosticableChain(
   List<Diagnosticable> chain, {
+  [
   String name,
   DiagnosticsTreeStyle style,
+]
 }) {
   final List<_DiagnosticsPathNode> path = <_DiagnosticsPathNode>[];
   if (chain.isEmpty)
@@ -678,18 +684,22 @@ class _InspectorReferenceData {
 /// JSON mainly focused on if and how children are included in the JSON.
 class _SerializeConfig {
   _SerializeConfig({
+    [
     this.groupName,
     this.summaryTree = false,
     this.subtreeDepth  = 1,
     this.pathToInclude,
     this.includeProperties = false,
     this.expandPropertyValues = true,
+  ]
   });
 
   _SerializeConfig.merge(
     _SerializeConfig base, {
+    [
     int subtreeDepth,
     Iterable<Diagnosticable> pathToInclude,
+  ]
   }) : groupName = base.groupName,
        summaryTree = base.summaryTree,
        subtreeDepth = subtreeDepth ?? base.subtreeDepth,
@@ -807,8 +817,8 @@ mixin WidgetInspectorService {
   /// reported to the remote caller and is dumped to the logs.
   @protected
   void registerServiceExtension({
-    @required String name,
-    @required ServiceExtensionCallback callback,
+     String name,
+     ServiceExtensionCallback callback,
   }) {
     _registerServiceExtensionCallback(
       name: 'inspector.$name',
@@ -819,8 +829,8 @@ mixin WidgetInspectorService {
   /// Registers a service extension method with the given name (full
   /// name "ext.flutter.inspector.name"), which takes no arguments.
   void _registerSignalServiceExtension({
-    @required String name,
-    @required FutureOr<Object> callback(),
+     String name,
+     FutureOr<Object> callback(),
   }) {
     registerServiceExtension(
       name: name,
@@ -837,8 +847,8 @@ mixin WidgetInspectorService {
   /// If "objectGroup" is omitted, the returned JSON will not include any object
   /// references to avoid leaking memory.
   void _registerObjectGroupServiceExtension({
-    @required String name,
-    @required FutureOr<Object> callback(String objectGroup),
+     String name,
+     FutureOr<Object> callback(String objectGroup),
   }) {
     registerServiceExtension(
       name: name,
@@ -861,9 +871,9 @@ mixin WidgetInspectorService {
   /// Calls the `setter` callback with the new value when the
   /// service extension method is called with a new value.
   void _registerBoolServiceExtension({
-    @required String name,
-    @required AsyncValueGetter<bool> getter,
-    @required AsyncValueSetter<bool> setter,
+     String name,
+     AsyncValueGetter<bool> getter,
+     AsyncValueSetter<bool> setter,
   }) {
     assert(name != null);
     assert(getter != null);
@@ -906,8 +916,8 @@ mixin WidgetInspectorService {
   /// "arg" and a required parameter named "objectGroup" used to control the
   /// lifetimes of object references in the returned JSON (see [disposeGroup]).
   void _registerServiceExtensionWithArg({
-    @required String name,
-    @required FutureOr<Object> callback(String objectId, String objectGroup),
+     String name,
+     FutureOr<Object> callback(String objectId, String objectGroup),
   }) {
     registerServiceExtension(
       name: name,
@@ -924,8 +934,8 @@ mixin WidgetInspectorService {
   /// name "ext.flutter.inspector.name"), that takes arguments
   /// "arg0", "arg1", "arg2", ..., "argn".
   void _registerServiceExtensionVarArgs({
-    @required String name,
-    @required FutureOr<Object> callback(List<String> args),
+     String name,
+     FutureOr<Object> callback(List<String> args),
   }) {
     registerServiceExtension(
       name: name,
@@ -1375,7 +1385,7 @@ mixin WidgetInspectorService {
     };
   }
 
-  List<Element> _getRawElementParentChain(Element element, { int numLocalParents }) {
+  List<Element> _getRawElementParentChain(Element element, { [ int numLocalParents ] }) {
     List<Element> elements = element?.debugGetDiagnosticChain();
     if (numLocalParents != null) {
       for (int i = 0; i < elements.length; i += 1) {
@@ -1391,13 +1401,13 @@ mixin WidgetInspectorService {
     return elements?.reversed?.toList();
   }
 
-  List<_DiagnosticsPathNode> _getElementParentChain(Element element, String groupName, { int numLocalParents }) {
+  List<_DiagnosticsPathNode> _getElementParentChain(Element element, String groupName, { [ int numLocalParents ] }) {
     return _followDiagnosticableChain(
       _getRawElementParentChain(element, numLocalParents: numLocalParents),
     ) ?? const <_DiagnosticsPathNode>[];
   }
 
-  List<_DiagnosticsPathNode> _getRenderObjectParentChain(RenderObject renderObject, String groupName, { int maxparents }) {
+  List<_DiagnosticsPathNode> _getRenderObjectParentChain(RenderObject renderObject, String groupName, { [ int maxparents ] }) {
     final List<RenderObject> chain = <RenderObject>[];
     while (renderObject != null) {
       chain.add(renderObject);
@@ -1753,11 +1763,13 @@ mixin WidgetInspectorService {
   @protected
   Future<ui.Image> screenshot(
     Object object, {
-    @required double width,
-    @required double height,
+     double width,
+     double height,
+    [
     double margin = 0.0,
     double maxPixelRatio = 1.0,
     bool debugPaint = false,
+  ]
   }) async {
     if (object is! Element && object is! RenderObject) {
       return null;
@@ -1945,9 +1957,9 @@ mixin WidgetInspectorService {
 /// [id] for efficiency encoding terse JSON payloads describing counts.
 class _LocationCount {
   _LocationCount({
-    @required this.location,
-    @required this.id,
-    @required this.local,
+     this.location,
+     this.id,
+     this.local,
   });
 
   /// Location id.
@@ -2128,9 +2140,11 @@ class WidgetInspector extends StatefulWidget {
   ///
   /// The [child] argument must not be null.
   const WidgetInspector({
-    Key key,
-    @required this.child,
-    @required this.selectButtonBuilder,
+    [
+    Key key
+    ]
+     this.child,
+     this.selectButtonBuilder,
   }) : assert(child != null),
        super(key: key);
 
@@ -2426,8 +2440,10 @@ class InspectorSelection {
 
 class _InspectorOverlay extends LeafRenderObjectWidget {
   const _InspectorOverlay({
-    Key key,
-    @required this.selection,
+    [
+    Key key
+    ]
+     this.selection,
   }) : super(key: key);
 
   final InspectorSelection selection;
@@ -2445,7 +2461,7 @@ class _InspectorOverlay extends LeafRenderObjectWidget {
 
 class _RenderInspectorOverlay extends RenderBox {
   /// The arguments must not be null.
-  _RenderInspectorOverlay({ @required InspectorSelection selection })
+  _RenderInspectorOverlay({  InspectorSelection selection })
     : _selection = selection,
       assert(selection != null);
 
@@ -2505,11 +2521,11 @@ class _TransformedRect {
 /// be rendered again.
 class _InspectorOverlayRenderState {
   _InspectorOverlayRenderState({
-    @required this.overlayRect,
-    @required this.selected,
-    @required this.candidates,
-    @required this.tooltip,
-    @required this.textDirection,
+     this.overlayRect,
+     this.selected,
+     this.candidates,
+     this.tooltip,
+     this.textDirection,
   });
 
   final Rect overlayRect;
@@ -2547,8 +2563,8 @@ const Color _kHighlightedRenderObjectBorderColor = Color.fromARGB(128, 64, 64, 1
 class _InspectorOverlayLayer extends Layer {
   /// Creates a layer that displays the inspector overlay.
   _InspectorOverlayLayer({
-    @required this.overlayRect,
-    @required this.selection,
+     this.overlayRect,
+     this.selection,
   }) : assert(overlayRect != null),
        assert(selection != null) {
     bool inDebugMode = false;
@@ -2751,11 +2767,13 @@ abstract class _HasCreationLocation {
 /// file locations.
 class _Location {
   const _Location({
+    [
     this.file,
     this.line,
     this.column,
     this.name,
     this.parameterLocations,
+  ]
   });
 
   /// File path of the location.

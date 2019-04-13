@@ -57,7 +57,7 @@ Widget buildFrame(MultiChildLayoutDelegate delegate) {
 }
 
 class PreferredSizeDelegate extends MultiChildLayoutDelegate {
-  PreferredSizeDelegate({ this.preferredSize });
+  PreferredSizeDelegate({ [ this.preferredSize ] });
 
   final Size preferredSize;
 

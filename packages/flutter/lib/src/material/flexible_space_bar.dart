@@ -43,12 +43,14 @@ class FlexibleSpaceBar extends StatefulWidget {
   ///
   /// Most commonly used in the [AppBar.flexibleSpace] field.
   const FlexibleSpaceBar({
+    [
     Key key,
     this.title,
     this.background,
     this.centerTitle,
     this.titlePadding,
     this.collapseMode = CollapseMode.parallax,
+  ]
   }) : assert(collapseMode != null),
        super(key: key);
 
@@ -103,11 +105,13 @@ class FlexibleSpaceBar extends StatefulWidget {
   ///  * [FlexibleSpaceBarSettings] which creates a settings object that can be
   ///    used to specify these settings to a [FlexibleSpaceBar].
   static Widget createSettings({
+    [
     double toolbarOpacity,
     double minExtent,
-    double maxExtent,
-    @required double currentExtent,
-    @required Widget child,
+    double maxExtent
+    ]
+     double currentExtent,
+     Widget child,
   }) {
     assert(currentExtent != null);
     return FlexibleSpaceBarSettings(
@@ -261,12 +265,14 @@ class FlexibleSpaceBarSettings extends InheritedWidget {
   /// Used by [Scaffold] and [SliverAppBar]. [child] must have a
   /// [FlexibleSpaceBar] widget in its tree for the settings to take affect.
   const FlexibleSpaceBarSettings({
+    [
     Key key,
     this.toolbarOpacity,
     this.minExtent,
-    this.maxExtent,
-    @required this.currentExtent,
-    @required Widget child,
+    this.maxExtent
+    ]
+     this.currentExtent,
+     Widget child,
   }) : assert(currentExtent != null),
        super(key: key, child: child);
 

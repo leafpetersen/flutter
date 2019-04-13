@@ -22,7 +22,7 @@ void main() {
       return layer.firstChild is PhysicalModelLayer ? layer.firstChild : layer;
     }
 
-    void checkPhysicalLayer(Element element, Color expectedColor, {Path clipPath, Rect clipRect}) {
+    void checkPhysicalLayer(Element element, Color expectedColor, {[Path clipPath, Rect clipRect]}) {
       final PhysicalModelLayer expectedLayer = findPhysicalLayer(element);
       expect(expectedLayer.elevation, 0.0);
       expect(expectedLayer.color, expectedColor);
@@ -91,7 +91,7 @@ void main() {
     const Color disabledBorderColor = Color(0xFFFF00FF);
     const double borderWidth = 4.0;
 
-    Widget buildFrame({ VoidCallback onPressed }) {
+    Widget buildFrame({ [ VoidCallback onPressed ] }) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: Theme(

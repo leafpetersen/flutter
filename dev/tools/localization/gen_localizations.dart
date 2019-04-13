@@ -50,14 +50,14 @@ import 'localizations_validator.dart';
 
 /// This is the core of this script; it generates the code used for translations.
 String generateArbBasedLocalizationSubclasses({
-  @required Map<LocaleInfo, Map<String, String>> localeToResources,
-  @required Map<LocaleInfo, Map<String, dynamic>> localeToResourceAttributes,
-  @required String generatedClassPrefix,
-  @required String baseClass,
-  @required HeaderGenerator generateHeader,
-  @required ConstructorGenerator generateConstructor,
-  @required String factoryDeclaration,
-  @required String factoryArguments,
+   Map<LocaleInfo, Map<String, String>> localeToResources,
+   Map<LocaleInfo, Map<String, dynamic>> localeToResourceAttributes,
+   String generatedClassPrefix,
+   String baseClass,
+   HeaderGenerator generateHeader,
+   ConstructorGenerator generateConstructor,
+   String factoryDeclaration,
+   String factoryArguments,
 }) {
   assert(localeToResources != null);
   assert(localeToResourceAttributes != null);

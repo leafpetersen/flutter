@@ -886,7 +886,7 @@ void main() {
 }
 
 class _ExpectStyles extends StatelessWidget {
-  const _ExpectStyles({ this.color, this.index });
+  const _ExpectStyles({ [ this.color, this.index ] });
 
   final Color color;
   final int index;

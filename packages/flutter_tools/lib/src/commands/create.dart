@@ -429,7 +429,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
     return null;
   }
 
-  Future<int> _generateModule(Directory directory, Map<String, dynamic> templateContext, { bool overwrite = false }) async {
+  Future<int> _generateModule(Directory directory, Map<String, dynamic> templateContext, { [ bool overwrite = false ] }) async {
     int generatedCount = 0;
     final String description = argResults.wasParsed('description')
         ? argResults['description']
@@ -448,7 +448,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
     return generatedCount;
   }
 
-  Future<int> _generatePackage(Directory directory, Map<String, dynamic> templateContext, { bool overwrite = false }) async {
+  Future<int> _generatePackage(Directory directory, Map<String, dynamic> templateContext, { [ bool overwrite = false ] }) async {
     int generatedCount = 0;
     final String description = argResults.wasParsed('description')
         ? argResults['description']
@@ -465,7 +465,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
     return generatedCount;
   }
 
-  Future<int> _generatePlugin(Directory directory, Map<String, dynamic> templateContext, { bool overwrite = false }) async {
+  Future<int> _generatePlugin(Directory directory, Map<String, dynamic> templateContext, { [ bool overwrite = false ] }) async {
     int generatedCount = 0;
     final String description = argResults.wasParsed('description')
         ? argResults['description']
@@ -497,7 +497,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
     return generatedCount;
   }
 
-  Future<int> _generateApp(Directory directory, Map<String, dynamic> templateContext, { bool overwrite = false }) async {
+  Future<int> _generateApp(Directory directory, Map<String, dynamic> templateContext, { [ bool overwrite = false ] }) async {
     int generatedCount = 0;
     generatedCount += _renderTemplate('app', directory, templateContext, overwrite: overwrite);
     final FlutterProject project = await FlutterProject.fromDirectory(directory);
@@ -533,6 +533,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
   }
 
   Map<String, dynamic> _templateContext({
+    [
     String organization,
     String projectName,
     String projectDescription,
@@ -541,6 +542,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
     String flutterRoot,
     bool renderDriverTest = false,
     bool withPluginHook = false,
+  ]
   }) {
     flutterRoot = fs.path.normalize(flutterRoot);
 
@@ -570,7 +572,7 @@ To edit platform code in an IDE see https://flutter.dev/developing-packages/#edi
     };
   }
 
-  int _renderTemplate(String templateName, Directory directory, Map<String, dynamic> context, { bool overwrite = false }) {
+  int _renderTemplate(String templateName, Directory directory, Map<String, dynamic> context, { [ bool overwrite = false ] }) {
     final Template template = Template.fromName(templateName);
     return template.render(directory, context, overwriteExisting: overwrite);
   }
@@ -690,7 +692,7 @@ String _validateProjectName(String projectName) {
 
 /// Return null if the project directory is legal. Return a validation message
 /// if we should disallow the directory name.
-String _validateProjectDir(String dirPath, { String flutterRoot, bool overwrite = false }) {
+String _validateProjectDir(String dirPath, { [ String flutterRoot, bool overwrite = false ] }) {
   if (fs.path.isWithin(flutterRoot, dirPath)) {
     return 'Cannot create a project within the Flutter SDK. '
       "Target directory '$dirPath' is within the Flutter SDK at '$flutterRoot'.";

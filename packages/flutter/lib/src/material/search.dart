@@ -49,9 +49,11 @@ import 'theme.dart';
 ///
 ///  * [SearchDelegate] to define the content of the search page.
 Future<T> showSearch<T>({
-  @required BuildContext context,
-  @required SearchDelegate<T> delegate,
+   BuildContext context,
+   SearchDelegate<T> delegate,
+  [
   String query = '',
+]
 }) {
   assert(delegate != null);
   assert(context != null);
@@ -266,7 +268,7 @@ enum _SearchBody {
 
 class _SearchPageRoute<T> extends PageRoute<T> {
   _SearchPageRoute({
-    @required this.delegate,
+     this.delegate,
   }) : assert(delegate != null) {
     assert(
       delegate._route == null,
@@ -334,8 +336,10 @@ class _SearchPageRoute<T> extends PageRoute<T> {
 
 class _SearchPage<T> extends StatefulWidget {
   const _SearchPage({
+    [
     this.delegate,
     this.animation,
+  ]
   });
 
   final SearchDelegate<T> delegate;

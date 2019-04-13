@@ -10,7 +10,7 @@ import '../project.dart';
 import '../runner/flutter_command.dart';
 
 class InjectPluginsCommand extends FlutterCommand {
-  InjectPluginsCommand({ this.hidden = false }) {
+  InjectPluginsCommand({ [ this.hidden = false ] }) {
     requiresPubspecYaml();
   }
 

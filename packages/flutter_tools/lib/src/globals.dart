@@ -22,12 +22,14 @@ Artifacts get artifacts => Artifacts.instance;
 /// supports it. The [color] defaults to [TerminalColor.red].
 void printError(
   String message, {
+  [
   StackTrace stackTrace,
   bool emphasis,
   TerminalColor color,
   int indent,
   int hangingIndent,
   bool wrap,
+]
 }) {
   logger.printError(
     message,
@@ -51,12 +53,14 @@ void printError(
 /// specified number of whitespaces.
 void printStatus(
   String message, {
+  [
   bool emphasis,
   bool newline,
   TerminalColor color,
   int indent,
   int hangingIndent,
   bool wrap,
+]
 }) {
   logger.printStatus(
     message,

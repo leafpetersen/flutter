@@ -36,15 +36,17 @@ class InkHighlight extends InteractiveInkFeature {
   ///
   /// When the highlight is removed, `onRemoved` will be called.
   InkHighlight({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Color color,
-    @required TextDirection textDirection,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+     Color color,
+     TextDirection textDirection,
+    [
     BoxShape shape = BoxShape.rectangle,
     BorderRadius borderRadius,
     ShapeBorder customBorder,
     RectCallback rectCallback,
     VoidCallback onRemoved,
+  ]
   }) : assert(color != null),
        assert(shape != null),
        assert(textDirection != null),

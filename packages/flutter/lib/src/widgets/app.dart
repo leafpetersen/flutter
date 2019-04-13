@@ -136,6 +136,7 @@ class WidgetsApp extends StatefulWidget {
   /// The `supportedLocales` argument must be a list of one or more elements.
   /// By default supportedLocales is `[const Locale('en', 'US')]`.
   WidgetsApp({ // can't be const because the asserts use methods on Iterable :-(
+    [ // can't be const because the asserts use methods on Iterable :-(
     Key key,
     this.navigatorKey,
     this.onGenerateRoute,
@@ -148,8 +149,10 @@ class WidgetsApp extends StatefulWidget {
     this.builder,
     this.title = '',
     this.onGenerateTitle,
-    this.textStyle,
-    @required this.color,
+    this.textStyle
+    ]
+     this.color,
+    [
     this.locale,
     this.localizationsDelegates,
     this.localeListResolutionCallback,
@@ -162,6 +165,7 @@ class WidgetsApp extends StatefulWidget {
     this.debugShowWidgetInspector = false,
     this.debugShowCheckedModeBanner = true,
     this.inspectorSelectButtonBuilder,
+  ]
   }) : assert(navigatorObservers != null),
        assert(routes != null),
        assert(

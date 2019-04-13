@@ -90,7 +90,7 @@ void main() {
   });
 }
 
-Future<void> _testFile(String testName, String workingDirectory, String testDirectory, { Matcher exitCode }) async {
+Future<void> _testFile(String testName, String workingDirectory, String testDirectory, { [ Matcher exitCode ] }) async {
   exitCode ??= isNonZero;
   final String fullTestExpectation = fs.path.join(testDirectory, '${testName}_expectation.txt');
   final File expectationFile = fs.file(fullTestExpectation);
@@ -152,7 +152,9 @@ Future<ProcessResult> _runFlutterTest(
   String testName,
   String workingDirectory,
   String testDirectory, {
+  [
   List<String> extraArgs = const <String>[],
+]
 }) async {
 
   final String testFilePath = fs.path.join(testDirectory, '${testName}_test.dart');

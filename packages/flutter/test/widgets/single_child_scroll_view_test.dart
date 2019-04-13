@@ -12,10 +12,12 @@ import 'semantics_tester.dart';
 
 class TestScrollPosition extends ScrollPositionWithSingleContext {
   TestScrollPosition({
+    [
     ScrollPhysics physics,
     ScrollContext state,
     double initialPixels = 0.0,
     ScrollPosition oldPosition,
+  ]
   }) : super(
     physics: physics,
     context: state,
@@ -706,7 +708,7 @@ void main() {
   group('Nested SingleChildScrollView (same orientation) showOnScreen', () {
     List<Widget> children;
 
-    Future<void> buildNestedScroller({ WidgetTester tester, ScrollController inner, ScrollController outer }) {
+    Future<void> buildNestedScroller({ [ WidgetTester tester, ScrollController inner, ScrollController outer ] }) {
       return tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,

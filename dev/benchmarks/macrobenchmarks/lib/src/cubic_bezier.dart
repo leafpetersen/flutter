@@ -24,7 +24,7 @@ class CubicBezierPage extends StatelessWidget {
 }
 
 class Bezier extends StatelessWidget {
-  const Bezier(this.color, this.scale, {this.blur = 0.0, this.delay = 0.0});
+  const Bezier(this.color, this.scale, {[this.blur = 0.0, this.delay = 0.0]});
 
   final Color color;
   final double scale;
@@ -85,7 +85,7 @@ class Bezier extends StatelessWidget {
 }
 
 class PathDetail {
-  PathDetail(this.path, {this.translate, this.rotation});
+  PathDetail(this.path, {[this.translate, this.rotation]});
 
   Path path;
   List<double> translate = <double>[];
@@ -93,7 +93,7 @@ class PathDetail {
 }
 
 class AnimatedBezier extends StatefulWidget {
-  const AnimatedBezier(this.color, this.scale, {this.blur = 0.0, this.delay});
+  const AnimatedBezier(this.color, this.scale, {[this.blur = 0.0, this.delay]});
 
   final Color color;
   final double scale;

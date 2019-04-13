@@ -59,10 +59,12 @@ class Tab extends StatelessWidget {
   /// and [child] must be non-null. The [text] and [child] arguments must not be
   /// used at the same time.
   const Tab({
+    [
     Key key,
     this.text,
     this.icon,
     this.child,
+  ]
   }) : assert(text != null || child != null || icon != null),
        assert(!(text != null && null != child)), // TODO(goderbauer): https://github.com/dart-lang/sdk/issues/34180
        super(key: key);
@@ -132,14 +134,16 @@ class Tab extends StatelessWidget {
 
 class _TabStyle extends AnimatedWidget {
   const _TabStyle({
+    [
     Key key,
     Animation<double> animation,
     this.selected,
     this.labelColor,
     this.unselectedLabelColor,
     this.labelStyle,
-    this.unselectedLabelStyle,
-    @required this.child,
+    this.unselectedLabelStyle
+    ]
+     this.child,
   }) : super(key: key, listenable: animation);
 
   final TextStyle labelStyle;
@@ -197,14 +201,16 @@ typedef _LayoutCallback = void Function(List<double> xOffsets, TextDirection tex
 
 class _TabLabelBarRenderer extends RenderFlex {
   _TabLabelBarRenderer({
-    List<RenderBox> children,
-    @required Axis direction,
-    @required MainAxisSize mainAxisSize,
-    @required MainAxisAlignment mainAxisAlignment,
-    @required CrossAxisAlignment crossAxisAlignment,
-    @required TextDirection textDirection,
-    @required VerticalDirection verticalDirection,
-    @required this.onPerformLayout,
+    [
+    List<RenderBox> children
+    ]
+     Axis direction,
+     MainAxisSize mainAxisSize,
+     MainAxisAlignment mainAxisAlignment,
+     CrossAxisAlignment crossAxisAlignment,
+     TextDirection textDirection,
+     VerticalDirection verticalDirection,
+     this.onPerformLayout,
   }) : assert(onPerformLayout != null),
        assert(textDirection != null),
        super(
@@ -252,9 +258,11 @@ class _TabLabelBarRenderer extends RenderFlex {
 // or in response to input.
 class _TabLabelBar extends Flex {
   _TabLabelBar({
+    [
     Key key,
     List<Widget> children = const <Widget>[],
     this.onPerformLayout,
+  ]
   }) : super(
     key: key,
     children: children,
@@ -303,11 +311,13 @@ double _indexChangeProgress(TabController controller) {
 
 class _IndicatorPainter extends CustomPainter {
   _IndicatorPainter({
-    @required this.controller,
-    @required this.indicator,
-    @required this.indicatorSize,
-    @required this.tabKeys,
+     this.controller,
+     this.indicator,
+     this.indicatorSize,
+     this.tabKeys,
+    [
     _IndicatorPainter old,
+  ]
   }) : assert(controller != null),
        assert(indicator != null),
        super(repaint: controller.animation) {
@@ -470,10 +480,12 @@ class _DragAnimation extends Animation<double> with AnimationWithParentMixin<dou
 // pixels value) after the TabBar viewport width and scroll limits are known.
 class _TabBarScrollPosition extends ScrollPositionWithSingleContext {
   _TabBarScrollPosition({
+    [
     ScrollPhysics physics,
     ScrollContext context,
     ScrollPosition oldPosition,
     this.tabBar,
+  ]
   }) : super(
     physics: physics,
     context: context,
@@ -555,8 +567,11 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
   /// If [indicator] is not null, then [indicatorWeight], [indicatorPadding], and
   /// [indicatorColor] are ignored.
   const TabBar({
-    Key key,
-    @required this.tabs,
+    [
+    Key key
+    ]
+     this.tabs,
+    [
     this.controller,
     this.isScrollable = false,
     this.indicatorColor,
@@ -571,6 +586,7 @@ class TabBar extends StatefulWidget implements PreferredSizeWidget {
     this.unselectedLabelStyle,
     this.dragStartBehavior = DragStartBehavior.start,
     this.onTap,
+  ]
   }) : assert(tabs != null),
        assert(isScrollable != null),
        assert(dragStartBehavior != null),
@@ -1074,11 +1090,15 @@ class TabBarView extends StatefulWidget {
   ///
   /// The length of [children] must be the same as the [controller]'s length.
   const TabBarView({
-    Key key,
-    @required this.children,
+    [
+    Key key
+    ]
+     this.children,
+    [
     this.controller,
     this.physics,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(children != null),
        assert(dragStartBehavior != null),
        super(key: key);
@@ -1278,10 +1298,12 @@ class TabPageSelectorIndicator extends StatelessWidget {
   ///
   /// The [backgroundColor], [borderColor], and [size] parameters must not be null.
   const TabPageSelectorIndicator({
-    Key key,
-    @required this.backgroundColor,
-    @required this.borderColor,
-    @required this.size,
+    [
+    Key key
+    ]
+     this.backgroundColor,
+     this.borderColor,
+     this.size,
   }) : assert(backgroundColor != null),
        assert(borderColor != null),
        assert(size != null),
@@ -1319,11 +1341,13 @@ class TabPageSelectorIndicator extends StatelessWidget {
 class TabPageSelector extends StatelessWidget {
   /// Creates a compact widget that indicates which tab has been selected.
   const TabPageSelector({
+    [
     Key key,
     this.controller,
     this.indicatorSize = 12.0,
     this.color,
     this.selectedColor,
+  ]
   }) : assert(indicatorSize != null && indicatorSize > 0.0),
        super(key: key);
 

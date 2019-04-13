@@ -58,6 +58,7 @@ abstract class ScrollView extends StatelessWidget {
   ///
   /// The [anchor] argument must be non-null and in the range 0.0 to 1.0.
   const ScrollView({
+    [
     Key key,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
@@ -70,6 +71,7 @@ abstract class ScrollView extends StatelessWidget {
     this.cacheExtent,
     this.semanticChildCount,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(scrollDirection != null),
        assert(reverse != null),
        assert(shrinkWrap != null),
@@ -442,6 +444,7 @@ class CustomScrollView extends ScrollView {
   ///
   /// See the [new ScrollView] constructor for more details on these arguments.
   const CustomScrollView({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -455,6 +458,7 @@ class CustomScrollView extends ScrollView {
     this.slivers = const <Widget>[],
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : super(
     key: key,
     scrollDirection: scrollDirection,
@@ -490,6 +494,7 @@ abstract class BoxScrollView extends ScrollView {
   ///
   /// If the [primary] argument is true, the [controller] must be null.
   const BoxScrollView({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -501,6 +506,7 @@ abstract class BoxScrollView extends ScrollView {
     double cacheExtent,
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : super(
     key: key,
     scrollDirection: scrollDirection,
@@ -855,6 +861,7 @@ class ListView extends BoxScrollView {
   /// [SliverChildListDelegate.addSemanticIndexes] property. None
   /// may be null.
   ListView({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -871,6 +878,7 @@ class ListView extends BoxScrollView {
     List<Widget> children = const <Widget>[],
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : childrenDelegate = SliverChildListDelegate(
          children,
          addAutomaticKeepAlives: addAutomaticKeepAlives,
@@ -918,6 +926,7 @@ class ListView extends BoxScrollView {
   /// [SliverChildBuilderDelegate.addSemanticIndexes] property. None may be
   /// null.
   ListView.builder({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -926,8 +935,10 @@ class ListView extends BoxScrollView {
     ScrollPhysics physics,
     bool shrinkWrap = false,
     EdgeInsetsGeometry padding,
-    this.itemExtent,
-    @required IndexedWidgetBuilder itemBuilder,
+    this.itemExtent
+    ]
+     IndexedWidgetBuilder itemBuilder,
+    [
     int itemCount,
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
@@ -935,6 +946,7 @@ class ListView extends BoxScrollView {
     double cacheExtent,
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : childrenDelegate = SliverChildBuilderDelegate(
          itemBuilder,
          childCount: itemCount,
@@ -1004,6 +1016,7 @@ class ListView extends BoxScrollView {
   /// [SliverChildBuilderDelegate.addSemanticIndexes] property. None may be
   /// null.
   ListView.separated({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1011,14 +1024,17 @@ class ListView extends BoxScrollView {
     bool primary,
     ScrollPhysics physics,
     bool shrinkWrap = false,
-    EdgeInsetsGeometry padding,
-    @required IndexedWidgetBuilder itemBuilder,
-    @required IndexedWidgetBuilder separatorBuilder,
-    @required int itemCount,
+    EdgeInsetsGeometry padding
+    ]
+     IndexedWidgetBuilder itemBuilder,
+     IndexedWidgetBuilder separatorBuilder,
+     int itemCount,
+    [
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
     bool addSemanticIndexes = true,
     double cacheExtent,
+  ]
   }) : assert(itemBuilder != null),
        assert(separatorBuilder != null),
        assert(itemCount != null && itemCount >= 0),
@@ -1066,6 +1082,7 @@ class ListView extends BoxScrollView {
   /// For example, a custom child model can control the algorithm used to
   /// estimate the size of children that are not actually visible.
   const ListView.custom({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1074,10 +1091,13 @@ class ListView extends BoxScrollView {
     ScrollPhysics physics,
     bool shrinkWrap = false,
     EdgeInsetsGeometry padding,
-    this.itemExtent,
-    @required this.childrenDelegate,
+    this.itemExtent
+    ]
+     this.childrenDelegate,
+    [
     double cacheExtent,
     int semanticChildCount,
+  ]
   }) : assert(childrenDelegate != null),
        super(
          key: key,
@@ -1276,6 +1296,7 @@ class GridView extends BoxScrollView {
   /// [SliverChildListDelegate.addRepaintBoundaries] property. Both must not be
   /// null.
   GridView({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1283,14 +1304,17 @@ class GridView extends BoxScrollView {
     bool primary,
     ScrollPhysics physics,
     bool shrinkWrap = false,
-    EdgeInsetsGeometry padding,
-    @required this.gridDelegate,
+    EdgeInsetsGeometry padding
+    ]
+     this.gridDelegate,
+    [
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
     bool addSemanticIndexes = true,
     double cacheExtent,
     List<Widget> children = const <Widget>[],
     int semanticChildCount,
+  ]
   }) : assert(gridDelegate != null),
        childrenDelegate = SliverChildListDelegate(
          children,
@@ -1331,6 +1355,7 @@ class GridView extends BoxScrollView {
   /// [SliverChildBuilderDelegate.addRepaintBoundaries] property. Both must not
   /// be null.
   GridView.builder({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1338,15 +1363,18 @@ class GridView extends BoxScrollView {
     bool primary,
     ScrollPhysics physics,
     bool shrinkWrap = false,
-    EdgeInsetsGeometry padding,
-    @required this.gridDelegate,
-    @required IndexedWidgetBuilder itemBuilder,
+    EdgeInsetsGeometry padding
+    ]
+     this.gridDelegate,
+     IndexedWidgetBuilder itemBuilder,
+    [
     int itemCount,
     bool addAutomaticKeepAlives = true,
     bool addRepaintBoundaries = true,
     bool addSemanticIndexes = true,
     double cacheExtent,
     int semanticChildCount,
+  ]
   }) : assert(gridDelegate != null),
        childrenDelegate = SliverChildBuilderDelegate(
          itemBuilder,
@@ -1376,6 +1404,7 @@ class GridView extends BoxScrollView {
   ///
   /// The [gridDelegate] and [childrenDelegate] arguments must not be null.
   const GridView.custom({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1383,12 +1412,15 @@ class GridView extends BoxScrollView {
     bool primary,
     ScrollPhysics physics,
     bool shrinkWrap = false,
-    EdgeInsetsGeometry padding,
-    @required this.gridDelegate,
-    @required this.childrenDelegate,
+    EdgeInsetsGeometry padding
+    ]
+     this.gridDelegate,
+     this.childrenDelegate,
+    [
     double cacheExtent,
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(gridDelegate != null),
        assert(childrenDelegate != null),
        super(
@@ -1420,6 +1452,7 @@ class GridView extends BoxScrollView {
   ///
   ///  * [new SliverGrid.count], the equivalent constructor for [SliverGrid].
   GridView.count({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1427,8 +1460,10 @@ class GridView extends BoxScrollView {
     bool primary,
     ScrollPhysics physics,
     bool shrinkWrap = false,
-    EdgeInsetsGeometry padding,
-    @required int crossAxisCount,
+    EdgeInsetsGeometry padding
+    ]
+     int crossAxisCount,
+    [
     double mainAxisSpacing = 0.0,
     double crossAxisSpacing = 0.0,
     double childAspectRatio = 1.0,
@@ -1439,6 +1474,7 @@ class GridView extends BoxScrollView {
     List<Widget> children = const <Widget>[],
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
          crossAxisCount: crossAxisCount,
          mainAxisSpacing: mainAxisSpacing,
@@ -1480,6 +1516,7 @@ class GridView extends BoxScrollView {
   ///
   ///  * [new SliverGrid.extent], the equivalent constructor for [SliverGrid].
   GridView.extent({
+    [
     Key key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
@@ -1487,8 +1524,10 @@ class GridView extends BoxScrollView {
     bool primary,
     ScrollPhysics physics,
     bool shrinkWrap = false,
-    EdgeInsetsGeometry padding,
-    @required double maxCrossAxisExtent,
+    EdgeInsetsGeometry padding
+    ]
+     double maxCrossAxisExtent,
+    [
     double mainAxisSpacing = 0.0,
     double crossAxisSpacing = 0.0,
     double childAspectRatio = 1.0,
@@ -1498,6 +1537,7 @@ class GridView extends BoxScrollView {
     List<Widget> children = const <Widget>[],
     int semanticChildCount,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
          maxCrossAxisExtent: maxCrossAxisExtent,
          mainAxisSpacing: mainAxisSpacing,

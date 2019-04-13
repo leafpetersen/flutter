@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart';
 
 Finder findKey(int i) => find.byKey(ValueKey<int>(i));
 
-Widget buildSingleChildScrollView(Axis scrollDirection, { bool reverse = false }) {
+Widget buildSingleChildScrollView(Axis scrollDirection, { [ bool reverse = false ] }) {
   return Directionality(
     textDirection: TextDirection.ltr,
     child: Center(
@@ -38,7 +38,7 @@ Widget buildSingleChildScrollView(Axis scrollDirection, { bool reverse = false }
   );
 }
 
-Widget buildListView(Axis scrollDirection, { bool reverse = false, bool shrinkWrap = false }) {
+Widget buildListView(Axis scrollDirection, { [ bool reverse = false, bool shrinkWrap = false ] }) {
   return Directionality(
     textDirection: TextDirection.ltr,
     child: Center(

@@ -9,7 +9,7 @@ import 'package:flutter/gestures.dart' show DragStartBehavior;
 import 'package:flutter/rendering.dart';
 
 class _CustomPhysics extends ClampingScrollPhysics {
-  const _CustomPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const _CustomPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   _CustomPhysics applyTo(ScrollPhysics ancestor) {
@@ -22,7 +22,7 @@ class _CustomPhysics extends ClampingScrollPhysics {
   }
 }
 
-Widget buildTest({ ScrollController controller, String title = 'TTTTTTTT' }) {
+Widget buildTest({ [ ScrollController controller, String title = 'TTTTTTTT' ] }) {
   return Localizations(
     locale: const Locale('en', 'US'),
     delegates: const <LocalizationsDelegate<dynamic>>[
@@ -488,7 +488,7 @@ void main() {
     }
 
     final ContainerLayer nestedScrollViewLayer = find.byType(NestedScrollView).evaluate().first.renderObject.debugLayer;
-    void _checkPhysicalLayer({@required double elevation}) {
+    void _checkPhysicalLayer({ double elevation}) {
       final PhysicalModelLayer layer = _dfsFindPhysicalLayer(nestedScrollViewLayer);
       expect(layer, isNotNull);
       expect(layer.elevation, equals(elevation));
@@ -679,7 +679,7 @@ void main() {
 }
 
 class TestHeader extends SliverPersistentHeaderDelegate {
-  const TestHeader({ this.key });
+  const TestHeader({ [ this.key ] });
   final Key key;
   @override
   double get minExtent => 100.0;

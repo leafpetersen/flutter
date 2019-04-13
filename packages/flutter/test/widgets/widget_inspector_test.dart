@@ -55,8 +55,10 @@ class _ClockDemoState extends State<ClockDemo> {
 
 class ClockText extends StatefulWidget {
   const ClockText({
+    [
     Key key,
     this.utcOffset = 0,
+  ]
   }) : super(key: key);
 
   final num utcOffset;
@@ -99,10 +101,10 @@ class _ClockTextState extends State<ClockText> {
 
 class _CreationLocation {
   const _CreationLocation({
-    @required this.file,
-    @required this.line,
-    @required this.column,
-    @required this.id,
+     this.file,
+     this.line,
+     this.column,
+     this.id,
   });
 
   final String file;
@@ -167,8 +169,10 @@ class RenderRepaintBoundaryWithDebugPaint extends RenderRepaintBoundary {
 class RepaintBoundaryWithDebugPaint extends RepaintBoundary {
   /// Creates a widget that isolates repaints.
   const RepaintBoundaryWithDebugPaint({
+    [
     Key key,
     Widget child,
+  ]
   }) : super(key: key, child: child);
 
   @override
@@ -198,8 +202,8 @@ class TestWidgetInspectorService extends Object with WidgetInspectorService {
 
   @override
   void registerServiceExtension({
-    @required String name,
-    @required FutureOr<Map<String, Object>> callback(Map<String, String> parameters),
+     String name,
+     FutureOr<Map<String, Object>> callback(Map<String, String> parameters),
   }) {
     assert(!extensions.containsKey(name));
     extensions[name] = callback;
@@ -470,7 +474,7 @@ class TestWidgetInspectorService extends Object with WidgetInspectorService {
       final GlobalKey inspectorKey = GlobalKey();
       final GlobalKey clickTarget = GlobalKey();
 
-      Widget createSubtree({ double width, Key key }) {
+      Widget createSubtree({ [ double width, Key key ] }) {
         return Stack(
           children: <Widget>[
             Positioned(
@@ -2295,8 +2299,8 @@ class TestWidgetInspectorService extends Object with WidgetInspectorService {
 }
 
 void addToKnownLocationsMap({
-  @required Map<int, _CreationLocation> knownLocations,
-  @required Map<String, List<int>> newLocations,
+   Map<int, _CreationLocation> knownLocations,
+   Map<String, List<int>> newLocations,
 }) {
   newLocations.forEach((String file, List<int> entries) {
     assert(entries.length % 3 == 0);

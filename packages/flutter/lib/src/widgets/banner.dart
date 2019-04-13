@@ -59,12 +59,14 @@ class BannerPainter extends CustomPainter {
   /// The [message], [textDirection], [location], and [layoutDirection]
   /// arguments must not be null.
   BannerPainter({
-    @required this.message,
-    @required this.textDirection,
-    @required this.location,
-    @required this.layoutDirection,
+     this.message,
+     this.textDirection,
+     this.location,
+     this.layoutDirection,
+    [
     this.color = _kColor,
     this.textStyle = _kTextStyle,
+  ]
   }) : assert(message != null),
        assert(textDirection != null),
        assert(location != null),
@@ -243,14 +245,20 @@ class Banner extends StatelessWidget {
   ///
   /// The [message] and [location] arguments must not be null.
   const Banner({
+    [
     Key key,
-    this.child,
-    @required this.message,
-    this.textDirection,
-    @required this.location,
+    this.child
+    ]
+     this.message,
+    [
+    this.textDirection
+    ]
+     this.location,
+    [
     this.layoutDirection,
     this.color = _kColor,
     this.textStyle = _kTextStyle,
+  ]
   }) : assert(message != null),
        assert(location != null),
        assert(color != null),
@@ -333,8 +341,10 @@ class Banner extends StatelessWidget {
 class CheckedModeBanner extends StatelessWidget {
   /// Creates a checked mode banner.
   const CheckedModeBanner({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
   }) : super(key: key);
 
   /// The widget to show behind the banner.

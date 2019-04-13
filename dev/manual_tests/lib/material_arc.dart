@@ -47,8 +47,10 @@ class _IgnoreDrag extends Drag {
 
 class _PointDemoPainter extends CustomPainter {
   _PointDemoPainter({
+    [
     Animation<double> repaint,
     this.arc,
+  ]
   }) : _repaint = repaint, super(repaint: repaint);
 
   final MaterialPointArcTween arc;
@@ -103,7 +105,7 @@ class _PointDemoPainter extends CustomPainter {
 }
 
 class _PointDemo extends StatefulWidget {
-  const _PointDemo({ Key key, this.controller }) : super(key: key);
+  const _PointDemo({ [ Key key, this.controller ] }) : super(key: key);
 
   final AnimationController controller;
 
@@ -225,8 +227,10 @@ class _PointDemoState extends State<_PointDemo> {
 
 class _RectangleDemoPainter extends CustomPainter {
   _RectangleDemoPainter({
+    [
     Animation<double> repaint,
     this.arc,
+  ]
   }) : _repaint = repaint, super(repaint: repaint);
 
   final MaterialRectArcTween arc;
@@ -271,7 +275,7 @@ class _RectangleDemoPainter extends CustomPainter {
 }
 
 class _RectangleDemo extends StatefulWidget {
-  const _RectangleDemo({ Key key, this.controller }) : super(key: key);
+  const _RectangleDemo({ [ Key key, this.controller ] }) : super(key: key);
 
   final AnimationController controller;
 
@@ -410,7 +414,7 @@ class _ArcDemo {
 }
 
 class AnimationDemo extends StatefulWidget {
-  const AnimationDemo({ Key key }) : super(key: key);
+  const AnimationDemo({ [ Key key ] }) : super(key: key);
 
   @override
   _AnimationDemoState createState() => _AnimationDemoState();

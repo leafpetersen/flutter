@@ -87,13 +87,13 @@ abstract class GlobalMaterialLocalizations implements MaterialLocalizations {
   /// The [narrowWeekdays] and [firstDayOfWeekIndex] properties use the values
   /// from the [intl.DateFormat] used by [formatFullDate].
   const GlobalMaterialLocalizations({
-    @required String localeName,
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+     String localeName,
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : assert(localeName != null),
        _localeName = localeName,
        assert(fullYearFormat != null),
@@ -118,7 +118,7 @@ abstract class GlobalMaterialLocalizations implements MaterialLocalizations {
   final intl.NumberFormat _twoDigitZeroPaddedFormat;
 
   @override
-  String formatHour(TimeOfDay timeOfDay, { bool alwaysUse24HourFormat = false }) {
+  String formatHour(TimeOfDay timeOfDay, { [ bool alwaysUse24HourFormat = false ] }) {
     switch (hourFormat(of: timeOfDayFormat(alwaysUse24HourFormat: alwaysUse24HourFormat))) {
       case HourFormat.HH:
         return _twoDigitZeroPaddedFormat.format(timeOfDay.hour);
@@ -170,7 +170,7 @@ abstract class GlobalMaterialLocalizations implements MaterialLocalizations {
   }
 
   @override
-  String formatTimeOfDay(TimeOfDay timeOfDay, { bool alwaysUse24HourFormat = false }) {
+  String formatTimeOfDay(TimeOfDay timeOfDay, { [ bool alwaysUse24HourFormat = false ] }) {
     // Not using intl.DateFormat for two reasons:
     //
     // - DateFormat supports more formats than our material time picker does,
@@ -247,7 +247,7 @@ abstract class GlobalMaterialLocalizations implements MaterialLocalizations {
   String get tabLabelRaw;
 
   @override
-  String tabLabel({ int tabIndex, int tabCount }) {
+  String tabLabel({ [ int tabIndex, int tabCount ] }) {
     assert(tabIndex >= 1);
     assert(tabCount >= 1);
     final String template = tabLabelRaw;
@@ -381,7 +381,7 @@ abstract class GlobalMaterialLocalizations implements MaterialLocalizations {
   ///  * <http://demo.icu-project.org/icu-bin/locexp?d_=en&_=en_US>, which shows
   ///    the short time pattern used in the `en_US` locale.
   @override
-  TimeOfDayFormat timeOfDayFormat({ bool alwaysUse24HourFormat = false }) {
+  TimeOfDayFormat timeOfDayFormat({ [ bool alwaysUse24HourFormat = false ] }) {
     assert(alwaysUse24HourFormat != null);
     if (alwaysUse24HourFormat)
       return _get24HourVersionOf(timeOfDayFormatRaw);

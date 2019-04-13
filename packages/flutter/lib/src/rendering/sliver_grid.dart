@@ -25,10 +25,10 @@ import 'sliver_multi_box_adaptor.dart';
 class SliverGridGeometry {
   /// Creates an object that describes the placement of a child in a [RenderSliverGrid].
   const SliverGridGeometry({
-    @required this.scrollOffset,
-    @required this.crossAxisOffset,
-    @required this.mainAxisExtent,
-    @required this.crossAxisExtent,
+     this.scrollOffset,
+     this.crossAxisOffset,
+     this.mainAxisExtent,
+     this.crossAxisExtent,
   });
 
   /// The scroll offset of the leading edge of the child relative to the leading
@@ -148,12 +148,12 @@ class SliverGridRegularTileLayout extends SliverGridLayout {
   /// All of the arguments must not be null and must not be negative. The
   /// `crossAxisCount` argument must be greater than zero.
   const SliverGridRegularTileLayout({
-    @required this.crossAxisCount,
-    @required this.mainAxisStride,
-    @required this.crossAxisStride,
-    @required this.childMainAxisExtent,
-    @required this.childCrossAxisExtent,
-    @required this.reverseCrossAxis,
+     this.crossAxisCount,
+     this.mainAxisStride,
+     this.crossAxisStride,
+     this.childMainAxisExtent,
+     this.childCrossAxisExtent,
+     this.reverseCrossAxis,
   }) : assert(crossAxisCount != null && crossAxisCount > 0),
        assert(mainAxisStride != null && mainAxisStride >= 0),
        assert(crossAxisStride != null && crossAxisStride >= 0),
@@ -293,10 +293,12 @@ class SliverGridDelegateWithFixedCrossAxisCount extends SliverGridDelegate {
   /// `crossAxisSpacing` arguments must not be negative. The `crossAxisCount`
   /// and `childAspectRatio` arguments must be greater than zero.
   const SliverGridDelegateWithFixedCrossAxisCount({
-    @required this.crossAxisCount,
+     this.crossAxisCount,
+    [
     this.mainAxisSpacing = 0.0,
     this.crossAxisSpacing = 0.0,
     this.childAspectRatio = 1.0,
+  ]
   }) : assert(crossAxisCount != null && crossAxisCount > 0),
        assert(mainAxisSpacing != null && mainAxisSpacing >= 0),
        assert(crossAxisSpacing != null && crossAxisSpacing >= 0),
@@ -380,10 +382,12 @@ class SliverGridDelegateWithMaxCrossAxisExtent extends SliverGridDelegate {
   /// [mainAxisSpacing], and [crossAxisSpacing] arguments must not be negative.
   /// The [childAspectRatio] argument must be greater than zero.
   const SliverGridDelegateWithMaxCrossAxisExtent({
-    @required this.maxCrossAxisExtent,
+     this.maxCrossAxisExtent,
+    [
     this.mainAxisSpacing = 0.0,
     this.crossAxisSpacing = 0.0,
     this.childAspectRatio = 1.0,
+  ]
   }) : assert(maxCrossAxisExtent != null && maxCrossAxisExtent >= 0),
        assert(mainAxisSpacing != null && mainAxisSpacing >= 0),
        assert(crossAxisSpacing != null && crossAxisSpacing >= 0),
@@ -477,8 +481,8 @@ class RenderSliverGrid extends RenderSliverMultiBoxAdaptor {
   ///
   /// The [childManager] and [gridDelegate] arguments must not be null.
   RenderSliverGrid({
-    @required RenderSliverBoxChildManager childManager,
-    @required SliverGridDelegate gridDelegate,
+     RenderSliverBoxChildManager childManager,
+     SliverGridDelegate gridDelegate,
   }) : assert(gridDelegate != null),
        _gridDelegate = gridDelegate,
        super(childManager: childManager);

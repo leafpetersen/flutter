@@ -39,9 +39,11 @@ OutputPreferences get outputPreferences => (context == null || context[OutputPre
 /// console.
 class OutputPreferences {
   OutputPreferences({
+    [
     bool wrapText,
     int wrapColumn,
     bool showColor,
+  ]
   }) : wrapText = wrapText ?? io.stdio?.hasTerminal ?? const io.Stdio().hasTerminal,
        _overrideWrapColumn = wrapColumn,
        showColor = showColor ?? platform.stdoutSupportsAnsi ?? false;
@@ -188,9 +190,11 @@ class AnsiTerminal {
   /// `defaultChoiceIndex`.
   Future<String> promptForCharInput(
     List<String> acceptedCharacters, {
+    [
     String prompt,
     int defaultChoiceIndex,
     bool displayAcceptedCharacters = true,
+  ]
   }) async {
     assert(acceptedCharacters != null);
     assert(acceptedCharacters.isNotEmpty);

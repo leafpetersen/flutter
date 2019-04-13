@@ -53,7 +53,7 @@ class ComplexLayoutAppState extends State<ComplexLayoutApp> {
 }
 
 class TileScrollLayout extends StatelessWidget {
-  const TileScrollLayout({ Key key }) : super(key: key);
+  const TileScrollLayout({ [ Key key ] }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class TileScrollLayout extends StatelessWidget {
 }
 
 class ComplexLayout extends StatefulWidget {
-  const ComplexLayout({ Key key }) : super(key: key);
+  const ComplexLayout({ [ Key key ] }) : super(key: key);
 
   @override
   ComplexLayoutState createState() => ComplexLayoutState();
@@ -199,7 +199,7 @@ class MenuItemWithIcon extends StatelessWidget {
 }
 
 class FancyImageItem extends StatelessWidget {
-  const FancyImageItem(this.index, {Key key}) : super(key: key);
+  const FancyImageItem(this.index, {[Key key]}) : super(key: key);
 
   final int index;
 
@@ -223,7 +223,7 @@ class FancyImageItem extends StatelessWidget {
 }
 
 class FancyGalleryItem extends StatelessWidget {
-  const FancyGalleryItem(this.index, {Key key}) : super(key: key);
+  const FancyGalleryItem(this.index, {[Key key]}) : super(key: key);
 
   final int index;
   @override
@@ -596,7 +596,7 @@ class BottomBarButton extends StatelessWidget {
 }
 
 class GalleryDrawer extends StatelessWidget {
-  const GalleryDrawer({ Key key }) : super(key: key);
+  const GalleryDrawer({ [ Key key ] }) : super(key: key);
 
   void _changeTheme(BuildContext context, bool value) {
     ComplexLayoutApp.of(context).lightTheme = value;

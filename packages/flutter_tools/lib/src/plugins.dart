@@ -23,11 +23,13 @@ void _renderTemplateToFile(String template, dynamic context, String filePath) {
 
 class Plugin {
   Plugin({
+    [
     this.name,
     this.path,
     this.androidPackage,
     this.iosPrefix,
     this.pluginClass,
+  ]
   });
 
   factory Plugin.fromYaml(String name, String path, dynamic pluginYaml) {

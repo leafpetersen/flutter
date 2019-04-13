@@ -142,6 +142,7 @@ class AppBar extends StatefulWidget implements PreferredSizeWidget {
   ///
   /// Typically used in the [Scaffold.appBar] property.
   AppBar({
+    [
     Key key,
     this.leading,
     this.automaticallyImplyLeading = true,
@@ -161,6 +162,7 @@ class AppBar extends StatefulWidget implements PreferredSizeWidget {
     this.titleSpacing = NavigationToolbar.kMiddleSpacing,
     this.toolbarOpacity = 1.0,
     this.bottomOpacity = 1.0,
+  ]
   }) : assert(automaticallyImplyLeading != null),
        assert(elevation == null || elevation >= 0.0),
        assert(primary != null),
@@ -602,7 +604,7 @@ class _AppBarState extends State<AppBar> {
 }
 
 class _FloatingAppBar extends StatefulWidget {
-  const _FloatingAppBar({ Key key, this.child }) : super(key: key);
+  const _FloatingAppBar({ [ Key key, this.child ] }) : super(key: key);
 
   final Widget child;
 
@@ -655,28 +657,28 @@ class _FloatingAppBarState extends State<_FloatingAppBar> {
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   _SliverAppBarDelegate({
-    @required this.leading,
-    @required this.automaticallyImplyLeading,
-    @required this.title,
-    @required this.actions,
-    @required this.flexibleSpace,
-    @required this.bottom,
-    @required this.elevation,
-    @required this.forceElevated,
-    @required this.backgroundColor,
-    @required this.brightness,
-    @required this.iconTheme,
-    @required this.actionsIconTheme,
-    @required this.textTheme,
-    @required this.primary,
-    @required this.centerTitle,
-    @required this.titleSpacing,
-    @required this.expandedHeight,
-    @required this.collapsedHeight,
-    @required this.topPadding,
-    @required this.floating,
-    @required this.pinned,
-    @required this.snapConfiguration,
+     this.leading,
+     this.automaticallyImplyLeading,
+     this.title,
+     this.actions,
+     this.flexibleSpace,
+     this.bottom,
+     this.elevation,
+     this.forceElevated,
+     this.backgroundColor,
+     this.brightness,
+     this.iconTheme,
+     this.actionsIconTheme,
+     this.textTheme,
+     this.primary,
+     this.centerTitle,
+     this.titleSpacing,
+     this.expandedHeight,
+     this.collapsedHeight,
+     this.topPadding,
+     this.floating,
+     this.pinned,
+     this.snapConfiguration,
   }) : assert(primary || topPadding == 0.0),
        _bottomHeight = bottom?.preferredSize?.height ?? 0.0;
 
@@ -877,6 +879,7 @@ class SliverAppBar extends StatefulWidget {
   /// The arguments [forceElevated], [primary], [floating], [pinned], [snap]
   /// and [automaticallyImplyLeading] must not be null.
   const SliverAppBar({
+    [
     Key key,
     this.leading,
     this.automaticallyImplyLeading = true,
@@ -898,6 +901,7 @@ class SliverAppBar extends StatefulWidget {
     this.floating = false,
     this.pinned = false,
     this.snap = false,
+  ]
   }) : assert(automaticallyImplyLeading != null),
        assert(forceElevated != null),
        assert(primary != null),

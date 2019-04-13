@@ -79,14 +79,18 @@ class CupertinoSegmentedControl<T> extends StatefulWidget {
   /// appear as selected. The [groupValue] must be either null or one of the keys
   /// in the [children] map.
   CupertinoSegmentedControl({
-    Key key,
-    @required this.children,
-    @required this.onValueChanged,
+    [
+    Key key
+    ]
+     this.children,
+     this.onValueChanged,
+    [
     this.groupValue,
     this.unselectedColor,
     this.selectedColor,
     this.borderColor,
     this.pressedColor,
+  ]
   }) : assert(children != null),
        assert(children.length >= 2),
        assert(onValueChanged != null),
@@ -418,12 +422,14 @@ class _SegmentedControlState<T> extends State<CupertinoSegmentedControl<T>>
 
 class _SegmentedControlRenderWidget<T> extends MultiChildRenderObjectWidget {
   _SegmentedControlRenderWidget({
+    [
     Key key,
-    List<Widget> children = const <Widget>[],
-    @required this.selectedIndex,
-    @required this.pressedIndex,
-    @required this.backgroundColors,
-    @required this.borderColor,
+    List<Widget> children = const <Widget>[]
+    ]
+     this.selectedIndex,
+     this.pressedIndex,
+     this.backgroundColors,
+     this.borderColor,
   }) : super(
           key: key,
           children: children,
@@ -466,12 +472,14 @@ class _RenderSegmentedControl<T> extends RenderBox
     with ContainerRenderObjectMixin<RenderBox, ContainerBoxParentData<RenderBox>>,
         RenderBoxContainerDefaultsMixin<RenderBox, ContainerBoxParentData<RenderBox>> {
   _RenderSegmentedControl({
-    List<RenderBox> children,
-    @required int selectedIndex,
-    @required int pressedIndex,
-    @required TextDirection textDirection,
-    @required List<Color> backgroundColors,
-    @required Color borderColor,
+    [
+    List<RenderBox> children
+    ]
+     int selectedIndex,
+     int pressedIndex,
+     TextDirection textDirection,
+     List<Color> backgroundColors,
+     Color borderColor,
   }) : assert(textDirection != null),
        _textDirection = textDirection,
        _selectedIndex = selectedIndex,
@@ -703,7 +711,7 @@ class _RenderSegmentedControl<T> extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required Offset position }) {
+  bool hitTestChildren(HitTestResult result, {  Offset position }) {
     assert(position != null);
     RenderBox child = lastChild;
     while (child != null) {

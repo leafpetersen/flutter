@@ -94,8 +94,11 @@ import 'theme_data.dart';
 class FlatButton extends MaterialButton {
   /// Create a simple text button.
   const FlatButton({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
     Color textColor,
@@ -108,8 +111,9 @@ class FlatButton extends MaterialButton {
     EdgeInsetsGeometry padding,
     ShapeBorder shape,
     Clip clipBehavior = Clip.none,
-    MaterialTapTargetSize materialTapTargetSize,
-    @required Widget child,
+    MaterialTapTargetSize materialTapTargetSize
+    ]
+     Widget child,
   }) : super(
          key: key,
          onPressed: onPressed,
@@ -137,8 +141,11 @@ class FlatButton extends MaterialButton {
   ///
   /// The [icon], [label], and [clipBehavior] arguments must not be null.
   factory FlatButton.icon({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
     Color textColor,
@@ -151,9 +158,10 @@ class FlatButton extends MaterialButton {
     EdgeInsetsGeometry padding,
     ShapeBorder shape,
     Clip clipBehavior,
-    MaterialTapTargetSize materialTapTargetSize,
-    @required Widget icon,
-    @required Widget label,
+    MaterialTapTargetSize materialTapTargetSize
+    ]
+     Widget icon,
+     Widget label,
   }) = _FlatButtonWithIcon;
 
   @override
@@ -204,8 +212,11 @@ class FlatButton extends MaterialButton {
 /// a distinct class for the sake of [ButtonTheme]. It can not be instantiated.
 class _FlatButtonWithIcon extends FlatButton with MaterialButtonWithIconMixin {
   _FlatButtonWithIcon({
-    Key key,
-    @required VoidCallback onPressed,
+    [
+    Key key
+    ]
+     VoidCallback onPressed,
+    [
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
     Color textColor,
@@ -218,9 +229,10 @@ class _FlatButtonWithIcon extends FlatButton with MaterialButtonWithIconMixin {
     EdgeInsetsGeometry padding,
     ShapeBorder shape,
     Clip clipBehavior,
-    MaterialTapTargetSize materialTapTargetSize,
-    @required Widget icon,
-    @required Widget label,
+    MaterialTapTargetSize materialTapTargetSize
+    ]
+     Widget icon,
+     Widget label,
   }) : assert(icon != null),
        assert(label != null),
        super(

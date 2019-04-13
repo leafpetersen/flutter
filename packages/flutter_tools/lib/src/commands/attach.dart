@@ -45,7 +45,7 @@ import '../runner/flutter_command.dart';
 /// To attach to a flutter mod running on a fuchsia device, `--module` must
 /// also be provided.
 class AttachCommand extends FlutterCommand {
-  AttachCommand({bool verboseHelp = false, this.hotRunnerFactory}) {
+  AttachCommand({[bool verboseHelp = false, this.hotRunnerFactory]}) {
     addBuildModeFlags(defaultToRelease: false);
     usesIsolateFilterOption(hide: !verboseHelp);
     usesTargetOption();
@@ -281,6 +281,7 @@ class AttachCommand extends FlutterCommand {
 class HotRunnerFactory {
   HotRunner build(
     List<FlutterDevice> devices, {
+    [
     String target,
     DebuggingOptions debuggingOptions,
     bool usesTerminalUI = true,
@@ -293,6 +294,7 @@ class HotRunnerFactory {
     bool stayResident = true,
     bool ipv6 = false,
     FlutterProject flutterProject,
+  ]
   }) => HotRunner(
     devices,
     target: target,
@@ -317,7 +319,7 @@ class MDnsObservatoryPortDiscovery {
   /// The [applicationId] parameter may be null, and can be used to
   /// automatically select which application to use if multiple are advertising
   /// Dart observatory ports.
-  MDnsObservatoryPortDiscovery({MDnsClient mdnsClient})
+  MDnsObservatoryPortDiscovery({[MDnsClient mdnsClient]})
     : client = mdnsClient ?? MDnsClient();
 
   /// The [MDnsClient] used to do a lookup.
@@ -342,7 +344,7 @@ class MDnsObservatoryPortDiscovery {
   ///
   /// If it is null and there is only one available port, it will return that
   /// port regardless of what application the port is for.
-  Future<int> queryForPort({String applicationId}) async {
+  Future<int> queryForPort({[String applicationId]}) async {
     printStatus('Checking for advertised Dart observatories...');
     try {
       await client.start();

@@ -18,7 +18,7 @@ const String extensionMarketplaceUrl =
   'https://marketplace.visualstudio.com/items?itemName=$extensionIdentifier';
 
 class VsCode {
-  VsCode._(this.directory, this.extensionDirectory, { Version version, this.edition })
+  VsCode._(this.directory, this.extensionDirectory, { [ Version version, this.edition ] })
       : version = version ?? Version.unknown {
 
     if (!fs.isDirectorySync(directory)) {
@@ -60,7 +60,9 @@ class VsCode {
   factory VsCode.fromDirectory(
     String installPath,
     String extensionDirectory, {
+    [
     String edition,
+  ]
   }) {
     final String packageJsonPath =
         fs.path.join(installPath, 'resources', 'app', 'package.json');
@@ -225,7 +227,7 @@ class VsCode {
 }
 
 class _VsCodeInstallLocation {
-  const _VsCodeInstallLocation(this.installPath, this.extensionsFolder, { this.edition, bool isInsiders })
+  const _VsCodeInstallLocation(this.installPath, this.extensionsFolder, { [ this.edition, bool isInsiders ] })
     : isInsiders = isInsiders ?? false;
   final String installPath;
   final String extensionsFolder;

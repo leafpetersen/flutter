@@ -11,10 +11,12 @@ typedef StockRowActionCallback = void Function(Stock stock);
 
 class StockRow extends StatelessWidget {
   StockRow({
+    [
     this.stock,
     this.onPressed,
     this.onDoubleTap,
     this.onLongPressed,
+  ]
   }) : super(key: ObjectKey(stock));
 
   final Stock stock;

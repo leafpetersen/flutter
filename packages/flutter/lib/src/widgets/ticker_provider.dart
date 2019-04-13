@@ -20,9 +20,13 @@ class TickerMode extends InheritedWidget {
   ///
   /// The [enabled] argument must not be null.
   const TickerMode({
-    Key key,
-    @required this.enabled,
+    [
+    Key key
+    ]
+     this.enabled,
+    [
     Widget child,
+  ]
   }) : assert(enabled != null),
        super(key: key, child: child);
 
@@ -222,7 +226,7 @@ mixin TickerProviderStateMixin<T extends StatefulWidget> on State<T> implements 
 // confusing. Instead we use the less precise but more anodyne "_WidgetTicker",
 // which attracts less attention.
 class _WidgetTicker extends Ticker {
-  _WidgetTicker(TickerCallback onTick, this._creator, { String debugLabel }) : super(onTick, debugLabel: debugLabel);
+  _WidgetTicker(TickerCallback onTick, this._creator, { [ String debugLabel ] }) : super(onTick, debugLabel: debugLabel);
 
   final TickerProviderStateMixin _creator;
 

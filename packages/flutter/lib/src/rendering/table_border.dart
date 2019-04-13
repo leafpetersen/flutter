@@ -17,21 +17,25 @@ class TableBorder {
   ///
   /// All the sides of the border default to [BorderSide.none].
   const TableBorder({
+    [
     this.top = BorderSide.none,
     this.right = BorderSide.none,
     this.bottom = BorderSide.none,
     this.left = BorderSide.none,
     this.horizontalInside = BorderSide.none,
     this.verticalInside = BorderSide.none,
+  ]
   });
 
   /// A uniform border with all sides the same color and width.
   ///
   /// The sides default to black solid borders, one logical pixel wide.
   factory TableBorder.all({
+    [
     Color color = const Color(0xFF000000),
     double width = 1.0,
     BorderStyle style = BorderStyle.solid,
+  ]
   }) {
     final BorderSide side = BorderSide(color: color, width: width, style: style);
     return TableBorder(top: side, right: side, bottom: side, left: side, horizontalInside: side, verticalInside: side);
@@ -40,8 +44,10 @@ class TableBorder {
   /// Creates a border for a table where all the interior sides use the same
   /// styling and all the exterior sides use the same styling.
   factory TableBorder.symmetric({
+    [
     BorderSide inside = BorderSide.none,
     BorderSide outside = BorderSide.none,
+  ]
   }) {
     return TableBorder(
       top: outside,
@@ -195,8 +201,8 @@ class TableBorder {
   void paint(
     Canvas canvas,
     Rect rect, {
-    @required Iterable<double> rows,
-    @required Iterable<double> columns,
+     Iterable<double> rows,
+     Iterable<double> columns,
   }) {
     // properties can't be null
     assert(top != null);

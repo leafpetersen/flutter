@@ -20,7 +20,7 @@ import '../test/runner.dart';
 import '../test/watcher.dart';
 
 class TestCommand extends FastFlutterCommand {
-  TestCommand({ bool verboseHelp = false }) {
+  TestCommand({ [ bool verboseHelp = false ] }) {
     requiresPubspecYaml();
     usesPubOption();
     argParser

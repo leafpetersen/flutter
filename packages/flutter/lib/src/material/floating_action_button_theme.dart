@@ -30,12 +30,14 @@ class FloatingActionButtonThemeData extends Diagnosticable {
   /// Creates a theme that can be used for
   /// [ThemeData.floatingActionButtonTheme].
   const FloatingActionButtonThemeData({
+    [
     this.backgroundColor,
     this.foregroundColor,
     this.elevation,
     this.disabledElevation,
     this.highlightElevation,
     this.shape,
+  ]
   });
 
   /// Color to be used for the unselected, enabled [FloatingActionButton]'s
@@ -64,12 +66,14 @@ class FloatingActionButtonThemeData extends Diagnosticable {
   /// Creates a copy of this object with the given fields replaced with the
   /// new values.
   FloatingActionButtonThemeData copyWith({
+    [
     Color backgroundColor,
     Color foregroundColor,
     double elevation,
     double disabledElevation,
     double highlightElevation,
     ShapeBorder shape,
+  ]
   }) {
     return FloatingActionButtonThemeData(
       backgroundColor: backgroundColor ?? this.backgroundColor,

@@ -55,7 +55,7 @@ enum DeviceOrientation {
 @immutable
 class ApplicationSwitcherDescription {
   /// Creates an ApplicationSwitcherDescription.
-  const ApplicationSwitcherDescription({ this.label, this.primaryColor });
+  const ApplicationSwitcherDescription({ [ this.label, this.primaryColor ] });
 
   /// A label and description of the current state of the application.
   final String label;
@@ -86,12 +86,14 @@ enum SystemUiOverlay {
 class SystemUiOverlayStyle {
   /// Creates a new [SystemUiOverlayStyle].
   const SystemUiOverlayStyle({
+    [
     this.systemNavigationBarColor,
     this.systemNavigationBarDividerColor,
     this.systemNavigationBarIconBrightness,
     this.statusBarColor,
     this.statusBarBrightness,
     this.statusBarIconBrightness,
+  ]
   });
 
   /// The color of the system bottom navigation bar.
@@ -163,12 +165,14 @@ class SystemUiOverlayStyle {
 
   /// Creates a copy of this theme with the given fields replaced with new values.
   SystemUiOverlayStyle copyWith({
+    [
     Color systemNavigationBarColor,
     Color systemNavigationBarDividerColor,
     Color statusBarColor,
     Brightness statusBarBrightness,
     Brightness statusBarIconBrightness,
     Brightness systemNavigationBarIconBrightness,
+  ]
   }) {
     return SystemUiOverlayStyle(
       systemNavigationBarColor: systemNavigationBarColor ?? this.systemNavigationBarColor,

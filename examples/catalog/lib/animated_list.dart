@@ -114,9 +114,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
 /// [AnimatedListState.insertItem] and [AnimatedList.removeItem].
 class ListModel<E> {
   ListModel({
-    @required this.listKey,
-    @required this.removedItemBuilder,
+     this.listKey,
+     this.removedItemBuilder,
+    [
     Iterable<E> initialItems,
+  ]
   }) : assert(listKey != null),
        assert(removedItemBuilder != null),
        _items = initialItems?.toList() ?? <E>[];
@@ -153,11 +155,17 @@ class ListModel<E> {
 /// from 0 to 128 as the animation varies from 0.0 to 1.0.
 class CardItem extends StatelessWidget {
   const CardItem({
-    Key key,
-    @required this.animation,
-    this.onTap,
-    @required this.item,
+    [
+    Key key
+    ]
+     this.animation,
+    [
+    this.onTap
+    ]
+     this.item,
+    [
     this.selected = false,
+  ]
   }) : assert(animation != null),
        assert(item != null && item >= 0),
        assert(selected != null),

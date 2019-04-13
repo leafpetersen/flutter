@@ -34,10 +34,12 @@ abstract class InteractiveInkFeature extends InkFeature {
   ///
   /// The [controller] and [referenceBox] arguments must not be null.
   InteractiveInkFeature({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+    [
     Color color,
     VoidCallback onRemoved,
+  ]
   }) : assert(controller != null),
        assert(referenceBox != null),
        _color = color,
@@ -86,17 +88,19 @@ abstract class InteractiveInkFeatureFactory {
   /// Subclasses should override this method to return a new instance of an
   /// [InteractiveInkFeature].
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+     Offset position,
+     Color color,
+     TextDirection textDirection,
+    [
     bool containedInkWell = false,
     RectCallback rectCallback,
     BorderRadius borderRadius,
     ShapeBorder customBorder,
     double radius,
     VoidCallback onRemoved,
+  ]
   });
 }
 
@@ -189,6 +193,7 @@ class InkResponse extends StatefulWidget {
   /// The [containedInkWell], [highlightShape], [enableFeedback], and
   /// [excludeFromSemantics] arguments must not be null.
   const InkResponse({
+    [
     Key key,
     this.child,
     this.onTap,
@@ -207,6 +212,7 @@ class InkResponse extends StatefulWidget {
     this.splashFactory,
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
+  ]
   }) : assert(containedInkWell != null),
        assert(highlightShape != null),
        assert(enableFeedback != null),
@@ -630,6 +636,7 @@ class InkWell extends InkResponse {
   /// The [enableFeedback] and [excludeFromSemantics] arguments must not be
   /// null.
   const InkWell({
+    [
     Key key,
     Widget child,
     GestureTapCallback onTap,
@@ -646,6 +653,7 @@ class InkWell extends InkResponse {
     ShapeBorder customBorder,
     bool enableFeedback = true,
     bool excludeFromSemantics = false,
+  ]
   }) : super(
     key: key,
     child: child,

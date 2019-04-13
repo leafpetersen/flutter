@@ -10,7 +10,7 @@ import 'package:video_player/video_player.dart';
 import 'package:device_info/device_info.dart';
 
 class VideoCard extends StatelessWidget {
-  const VideoCard({ Key key, this.controller, this.title, this.subtitle }) : super(key: key);
+  const VideoCard({ [ Key key, this.controller, this.title, this.subtitle ] }) : super(key: key);
 
   final VideoPlayerController controller;
   final String title;
@@ -201,8 +201,10 @@ class _VideoPlayPauseState extends State<VideoPlayPause> {
 
 class FadeAnimation extends StatefulWidget {
   const FadeAnimation({
+    [
     this.child,
     this.duration = const Duration(milliseconds: 500),
+  ]
   });
 
   final Widget child;
@@ -263,9 +265,11 @@ class _FadeAnimationState extends State<FadeAnimation> with SingleTickerProvider
 
 class ConnectivityOverlay extends StatefulWidget {
   const ConnectivityOverlay({
+    [
     this.child,
     this.connectedCompleter,
     this.scaffoldKey,
+  ]
   });
 
   final Widget child;
@@ -333,7 +337,7 @@ class _ConnectivityOverlayState extends State<ConnectivityOverlay> {
 }
 
 class VideoDemo extends StatefulWidget {
-  const VideoDemo({ Key key }) : super(key: key);
+  const VideoDemo({ [ Key key ] }) : super(key: key);
 
   static const String routeName = '/video';
 

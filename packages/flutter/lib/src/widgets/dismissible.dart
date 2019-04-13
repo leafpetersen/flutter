@@ -81,8 +81,9 @@ class Dismissible extends StatefulWidget {
   /// state of the dismissed item. Using keys causes the widgets to sync
   /// according to their keys and avoids this pitfall.
   const Dismissible({
-    @required Key key,
-    @required this.child,
+     Key key,
+     this.child,
+    [
     this.background,
     this.secondaryBackground,
     this.confirmDismiss,
@@ -94,6 +95,7 @@ class Dismissible extends StatefulWidget {
     this.movementDuration = const Duration(milliseconds: 200),
     this.crossAxisEndOffset = 0.0,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(key != null),
        assert(secondaryBackground != null ? background != null : true),
        assert(dragStartBehavior != null),
@@ -187,8 +189,8 @@ class Dismissible extends StatefulWidget {
 
 class _DismissibleClipper extends CustomClipper<Rect> {
   _DismissibleClipper({
-    @required this.axis,
-    @required this.moveAnimation,
+     this.axis,
+     this.moveAnimation,
   }) : assert(axis != null),
        assert(moveAnimation != null),
        super(reclip: moveAnimation);

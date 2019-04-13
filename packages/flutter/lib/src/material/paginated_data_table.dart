@@ -63,10 +63,15 @@ class PaginatedDataTable extends StatefulWidget {
   /// The [rowsPerPage] and [availableRowsPerPage] must not be null (they
   /// both have defaults, though, so don't have to be specified).
   PaginatedDataTable({
-    Key key,
-    @required this.header,
-    this.actions,
-    @required this.columns,
+    [
+    Key key
+    ]
+     this.header,
+    [
+    this.actions
+    ]
+     this.columns,
+    [
     this.sortColumnIndex,
     this.sortAscending = true,
     this.onSelectAll,
@@ -75,8 +80,9 @@ class PaginatedDataTable extends StatefulWidget {
     this.rowsPerPage = defaultRowsPerPage,
     this.availableRowsPerPage = const <int>[defaultRowsPerPage, defaultRowsPerPage * 2, defaultRowsPerPage * 5, defaultRowsPerPage * 10],
     this.onRowsPerPageChanged,
-    this.dragStartBehavior = DragStartBehavior.start,
-    @required this.source,
+    this.dragStartBehavior = DragStartBehavior.start
+    ]
+     this.source,
   }) : assert(header != null),
        assert(columns != null),
        assert(dragStartBehavior != null),

@@ -44,11 +44,13 @@ _OpenChannel _openChannel = _defaultOpenChannel;
 /// See: https://github.com/dart-lang/sdk/issues/30023
 typedef ReloadSources = Future<void> Function(
   String isolateId, {
+  [
   bool force,
   bool pause,
+]
 });
 
-typedef Restart = Future<void> Function({ bool pause });
+typedef Restart = Future<void> Function({ [ bool pause ] });
 
 typedef CompileExpression = Future<String> Function(
   String isolateId,
@@ -246,9 +248,11 @@ class VMService {
   /// See: https://github.com/dart-lang/sdk/commit/df8bf384eb815cf38450cb50a0f4b62230fba217
   static Future<VMService> connect(
     Uri httpUri, {
+    [
     ReloadSources reloadSources,
     Restart restart,
     CompileExpression compileExpression,
+  ]
   }) async {
     final Uri wsUri = httpUri.replace(scheme: 'ws', path: fs.path.join(httpUri.path, 'ws'));
     final StreamChannel<String> channel = await _openChannel(wsUri);
@@ -359,7 +363,7 @@ class VMService {
   /// Reloads the VM.
   Future<void> getVM() async => await vm.reload();
 
-  Future<void> refreshViews({ bool waitForViews = false }) => vm.refreshViews(waitForViews: waitForViews);
+  Future<void> refreshViews({ [ bool waitForViews = false ] }) => vm.refreshViews(waitForViews: waitForViews);
 }
 
 /// An error that is thrown when constructing/updating a service object.
@@ -838,7 +842,9 @@ class VM extends ServiceObjectOwner {
   /// Invoke the RPC and return the raw response.
   Future<Map<String, dynamic>> invokeRpcRaw(
     String method, {
+    [
     Map<String, dynamic> params = const <String, dynamic>{},
+  ]
   }) async {
     printTrace('Sending to VM service: $method($params)');
     assert(params != null);
@@ -859,7 +865,9 @@ class VM extends ServiceObjectOwner {
   /// Invoke the RPC and return a [ServiceObject] response.
   Future<T> invokeRpc<T extends ServiceObject>(
     String method, {
+    [
     Map<String, dynamic> params = const <String, dynamic>{},
+  ]
   }) async {
     final Map<String, dynamic> response = await invokeRpcRaw(
       method,
@@ -886,8 +894,8 @@ class VM extends ServiceObjectOwner {
   // Write one file into a file system.
   Future<Map<String, dynamic>> writeDevFSFile(
     String fsName, {
-    @required String path,
-    @required List<int> fileContents,
+     String path,
+     List<int> fileContents,
   }) {
     assert(path != null);
     assert(fileContents != null);
@@ -956,7 +964,7 @@ class VM extends ServiceObjectOwner {
     return invokeRpcRaw('_getVMTimeline');
   }
 
-  Future<void> refreshViews({ bool waitForViews = false }) async {
+  Future<void> refreshViews({ [ bool waitForViews = false ] }) async {
     assert(waitForViews != null);
     assert(loaded);
     if (!isFlutterEngine)
@@ -1106,7 +1114,9 @@ class Isolate extends ServiceObjectOwner {
   /// Invoke the RPC and return the raw response.
   Future<Map<String, dynamic>> invokeRpcRaw(
     String method, {
+    [
     Map<String, dynamic> params,
+  ]
   }) {
     // Inject the 'isolateId' parameter.
     if (params == null) {
@@ -1150,9 +1160,11 @@ class Isolate extends ServiceObjectOwner {
   static const int kIsolateReloadBarred = 1005;
 
   Future<Map<String, dynamic>> reloadSources({
+    [
     bool pause = false,
     Uri rootLibUri,
     Uri packagesUri,
+  ]
   }) async {
     try {
       final Map<String, dynamic> arguments = <String, dynamic>{
@@ -1238,7 +1250,9 @@ class Isolate extends ServiceObjectOwner {
   // available, returns null.
   Future<Map<String, dynamic>> invokeFlutterExtensionRpcRaw(
     String method, {
+    [
     Map<String, dynamic> params,
+  ]
   }) async {
     try {
       return await invokeRpcRaw(method, params: params);
@@ -1406,7 +1420,7 @@ class ServiceMap extends ServiceObject implements Map<String, dynamic> {
   void updateAll(dynamic update(String key, dynamic value)) => _map.updateAll(update);
   Map<RK, RV> retype<RK, RV>() => _map.cast<RK, RV>();
   @override
-  dynamic update(String key, dynamic update(dynamic value), { dynamic ifAbsent() }) => _map.update(key, update, ifAbsent: ifAbsent);
+  dynamic update(String key, dynamic update(dynamic value), { [ dynamic ifAbsent() ] }) => _map.update(key, update, ifAbsent: ifAbsent);
 }
 
 /// Peered to an Android/iOS FlutterView widget on a device.

@@ -242,14 +242,18 @@ class TextSelectionOverlay {
   ///
   /// The [context] must not be null and must have an [Overlay] as an ancestor.
   TextSelectionOverlay({
-    @required TextEditingValue value,
-    @required this.context,
-    this.debugRequiredFor,
-    @required this.layerLink,
-    @required this.renderObject,
+     TextEditingValue value,
+     this.context,
+    [
+    this.debugRequiredFor
+    ]
+     this.layerLink,
+     this.renderObject,
+    [
     this.selectionControls,
     this.selectionDelegate,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(value != null),
        assert(context != null),
        _value = value {
@@ -473,15 +477,19 @@ class TextSelectionOverlay {
 /// This widget represents a single draggable text selection handle.
 class _TextSelectionHandleOverlay extends StatefulWidget {
   const _TextSelectionHandleOverlay({
-    Key key,
-    @required this.selection,
-    @required this.position,
-    @required this.layerLink,
-    @required this.renderObject,
-    @required this.onSelectionHandleChanged,
-    @required this.onSelectionHandleTapped,
-    @required this.selectionControls,
+    [
+    Key key
+    ]
+     this.selection,
+     this.position,
+     this.layerLink,
+     this.renderObject,
+     this.onSelectionHandleChanged,
+     this.onSelectionHandleTapped,
+     this.selectionControls,
+    [
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : super(key: key);
 
   final TextSelection selection;
@@ -681,6 +689,7 @@ class TextSelectionGestureDetector extends StatefulWidget {
   /// Multiple callbacks can be called for one sequence of input gesture.
   /// The [child] parameter must not be null.
   const TextSelectionGestureDetector({
+    [
     Key key,
     this.onTapDown,
     this.onForcePressStart,
@@ -694,8 +703,9 @@ class TextSelectionGestureDetector extends StatefulWidget {
     this.onDragSelectionStart,
     this.onDragSelectionUpdate,
     this.onDragSelectionEnd,
-    this.behavior,
-    @required this.child,
+    this.behavior
+    ]
+     this.child,
   }) : assert(child != null),
        super(key: key);
 

@@ -14,9 +14,11 @@ const Key avatarD = Key('D');
 
 Future<void> pumpTestWidget(
   WidgetTester tester, {
+  [
   bool withName = true,
   bool withEmail = true,
   bool withOnDetailsPressedHandler = true,
+]
 }) async {
   await tester.pumpWidget(
     MaterialApp(
@@ -218,12 +220,14 @@ void main() {
 
   testWidgets('UserAccountsDrawerHeader null parameters LTR', (WidgetTester tester) async {
     Widget buildFrame({
+      [
       Widget currentAccountPicture,
       List<Widget> otherAccountsPictures,
       Widget accountName,
       Widget accountEmail,
       VoidCallback onDetailsPressed,
       EdgeInsets margin,
+    ]
     }) {
       return MaterialApp(
         home: Material(
@@ -326,12 +330,14 @@ void main() {
 
   testWidgets('UserAccountsDrawerHeader null parameters RTL', (WidgetTester tester) async {
     Widget buildFrame({
+      [
       Widget currentAccountPicture,
       List<Widget> otherAccountsPictures,
       Widget accountName,
       Widget accountEmail,
       VoidCallback onDetailsPressed,
       EdgeInsets margin,
+    ]
     }) {
       return MaterialApp(
         home: Directionality(

@@ -51,8 +51,11 @@ class Visibility extends StatelessWidget {
   ///
   /// The [maintainAnimation] argument can only be set if [maintainState] is set.
   const Visibility({
-    Key key,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.child,
+    [
     this.replacement = const SizedBox.shrink(),
     this.visible = true,
     this.maintainState = false,
@@ -60,6 +63,7 @@ class Visibility extends StatelessWidget {
     this.maintainSize = false,
     this.maintainSemantics = false,
     this.maintainInteractivity = false,
+  ]
   }) : assert(child != null),
        assert(replacement != null),
        assert(visible != null),

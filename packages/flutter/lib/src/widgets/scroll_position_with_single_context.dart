@@ -49,12 +49,14 @@ class ScrollPositionWithSingleContext extends ScrollPosition implements ScrollAc
   /// saved with [PageStorage] and restored it if this scroll position's scrollable
   /// is recreated.
   ScrollPositionWithSingleContext({
-    @required ScrollPhysics physics,
-    @required ScrollContext context,
+     ScrollPhysics physics,
+     ScrollContext context,
+    [
     double initialPixels = 0.0,
     bool keepScrollOffset = true,
     ScrollPosition oldPosition,
     String debugLabel,
+  ]
   }) : super(
          physics: physics,
          context: context,
@@ -172,8 +174,8 @@ class ScrollPositionWithSingleContext extends ScrollPosition implements ScrollAc
   @override
   Future<void> animateTo(
     double to, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) {
     if (nearEqual(to, pixels, physics.tolerance.distance)) {
       // Skip the animation, go straight to the position as we are already close.

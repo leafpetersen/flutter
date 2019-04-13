@@ -485,9 +485,12 @@ class Chip extends StatelessWidget implements ChipAttributes, DeletableChipAttri
   /// The [label] and [clipBehavior] arguments must not be null.
   /// The [elevation] must be null or non-negative.
   const Chip({
+    [
     Key key,
-    this.avatar,
-    @required this.label,
+    this.avatar
+    ]
+     this.label,
+    [
     this.labelStyle,
     this.labelPadding,
     this.deleteIcon,
@@ -501,6 +504,7 @@ class Chip extends StatelessWidget implements ChipAttributes, DeletableChipAttri
     this.materialTapTargetSize,
     this.elevation,
     this.shadowColor,
+  ]
   }) : assert(label != null),
        assert(clipBehavior != null),
        assert(elevation == null || elevation >= 0.0),
@@ -623,9 +627,12 @@ class InputChip extends StatelessWidget
   /// not be null. The [pressElevation] and [elevation] must be null or
   /// non-negative. Typically, [pressElevation] is greater than [elevation].
   const InputChip({
+    [
     Key key,
-    this.avatar,
-    @required this.label,
+    this.avatar
+    ]
+     this.label,
+    [
     this.labelStyle,
     this.labelPadding,
     this.selected = false,
@@ -649,6 +656,7 @@ class InputChip extends StatelessWidget
     this.shadowColor,
     this.selectedShadowColor,
     this.avatarBorder = const CircleBorder(),
+  ]
   }) : assert(selected != null),
        assert(isEnabled != null),
        assert(label != null),
@@ -807,14 +815,19 @@ class ChoiceChip extends StatelessWidget
   /// The [pressElevation] and [elevation] must be null or non-negative.
   /// Typically, [pressElevation] is greater than [elevation].
   const ChoiceChip({
+    [
     Key key,
-    this.avatar,
-    @required this.label,
+    this.avatar
+    ]
+     this.label,
+    [
     this.labelStyle,
     this.labelPadding,
     this.onSelected,
-    this.pressElevation,
-    @required this.selected,
+    this.pressElevation
+    ]
+     this.selected,
+    [
     this.selectedColor,
     this.disabledColor,
     this.tooltip,
@@ -827,6 +840,7 @@ class ChoiceChip extends StatelessWidget
     this.shadowColor,
     this.selectedShadowColor,
     this.avatarBorder = const CircleBorder(),
+  ]
   }) : assert(selected != null),
        assert(label != null),
        assert(clipBehavior != null),
@@ -1004,13 +1018,18 @@ class FilterChip extends StatelessWidget
   /// The [pressElevation] and [elevation] must be null or non-negative.
   /// Typically, [pressElevation] is greater than [elevation].
   const FilterChip({
+    [
     Key key,
-    this.avatar,
-    @required this.label,
+    this.avatar
+    ]
+     this.label,
+    [
     this.labelStyle,
     this.labelPadding,
-    this.selected = false,
-    @required this.onSelected,
+    this.selected = false
+    ]
+     this.onSelected,
+    [
     this.pressElevation,
     this.disabledColor,
     this.selectedColor,
@@ -1024,6 +1043,7 @@ class FilterChip extends StatelessWidget
     this.shadowColor,
     this.selectedShadowColor,
     this.avatarBorder = const CircleBorder(),
+  ]
   }) : assert(selected != null),
        assert(label != null),
        assert(clipBehavior != null),
@@ -1155,12 +1175,17 @@ class ActionChip extends StatelessWidget implements ChipAttributes, TappableChip
   /// The [pressElevation] and [elevation] must be null or non-negative.
   /// Typically, [pressElevation] is greater than [elevation].
   const ActionChip({
+    [
     Key key,
-    this.avatar,
-    @required this.label,
+    this.avatar
+    ]
+     this.label,
+    [
     this.labelStyle,
-    this.labelPadding,
-    @required this.onPressed,
+    this.labelPadding
+    ]
+     this.onPressed,
+    [
     this.pressElevation,
     this.tooltip,
     this.shape,
@@ -1170,6 +1195,7 @@ class ActionChip extends StatelessWidget implements ChipAttributes, TappableChip
     this.materialTapTargetSize,
     this.elevation,
     this.shadowColor,
+  ]
   }) : assert(label != null),
        assert(
          onPressed != null,
@@ -1278,9 +1304,12 @@ class RawChip extends StatefulWidget
   /// The [pressElevation] and [elevation] must be null or non-negative.
   /// Typically, [pressElevation] is greater than [elevation].
   const RawChip({
+    [
     Key key,
-    this.avatar,
-    @required this.label,
+    this.avatar
+    ]
+     this.label,
+    [
     this.labelStyle,
     this.padding,
     this.labelPadding,
@@ -1306,6 +1335,7 @@ class RawChip extends StatefulWidget
     this.shadowColor,
     this.selectedShadowColor,
     this.avatarBorder = const CircleBorder(),
+  ]
   }) : assert(label != null),
        assert(isEnabled != null),
        assert(clipBehavior != null),
@@ -1718,9 +1748,11 @@ class _RawChipState extends State<RawChip> with TickerProviderStateMixin<RawChip
 /// to trigger the child ink feature without increasing the size of the material.
 class _ChipRedirectingHitDetectionWidget extends SingleChildRenderObjectWidget {
   const _ChipRedirectingHitDetectionWidget({
+    [
     Key key,
     Widget child,
     this.constraints,
+  ]
   }) : super(key: key, child: child);
 
   final BoxConstraints constraints;
@@ -1740,7 +1772,7 @@ class _RenderChipRedirectingHitDetection extends RenderConstrainedBox {
   _RenderChipRedirectingHitDetection(BoxConstraints additionalConstraints) : super(additionalConstraints: additionalConstraints);
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (!size.contains(position))
       return false;
     // Only redirects hit detection which occurs above and below the render object.
@@ -1752,8 +1784,11 @@ class _RenderChipRedirectingHitDetection extends RenderConstrainedBox {
 
 class _ChipRenderWidget extends RenderObjectWidget {
   const _ChipRenderWidget({
-    Key key,
-    @required this.theme,
+    [
+    Key key
+    ]
+     this.theme,
+    [
     this.value,
     this.isEnabled,
     this.checkmarkAnimation,
@@ -1761,6 +1796,7 @@ class _ChipRenderWidget extends RenderObjectWidget {
     this.deleteDrawerAnimation,
     this.enableAnimation,
     this.avatarBorder,
+  ]
   }) : assert(theme != null),
        super(key: key);
 
@@ -1922,15 +1958,15 @@ class _RenderChipElement extends RenderObjectElement {
 
 class _ChipRenderTheme {
   const _ChipRenderTheme({
-    @required this.avatar,
-    @required this.label,
-    @required this.deleteIcon,
-    @required this.brightness,
-    @required this.padding,
-    @required this.labelPadding,
-    @required this.showAvatar,
-    @required this.showCheckmark,
-    @required this.canTapBody,
+     this.avatar,
+     this.label,
+     this.deleteIcon,
+     this.brightness,
+     this.padding,
+     this.labelPadding,
+     this.showAvatar,
+     this.showCheckmark,
+     this.canTapBody,
   });
 
   final Widget avatar;
@@ -1981,8 +2017,9 @@ class _ChipRenderTheme {
 
 class _RenderChip extends RenderBox {
   _RenderChip({
-    @required _ChipRenderTheme theme,
-    @required TextDirection textDirection,
+     _ChipRenderTheme theme,
+     TextDirection textDirection,
+    [
     this.value,
     this.isEnabled,
     this.checkmarkAnimation,
@@ -1990,6 +2027,7 @@ class _RenderChip extends RenderBox {
     this.deleteDrawerAnimation,
     this.enableAnimation,
     this.avatarBorder,
+  ]
   }) : assert(theme != null),
        assert(textDirection != null),
        _theme = theme,
@@ -2258,7 +2296,7 @@ class _RenderChip extends RenderBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (!size.contains(position))
       return false;
     RenderBox hitTestChild;

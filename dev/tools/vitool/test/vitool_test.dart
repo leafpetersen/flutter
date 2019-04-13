@@ -605,7 +605,7 @@ void main() {
 
 // Matches all path commands' points within an error margin.
 class PathMatcher extends Matcher {
-  const PathMatcher(this.actual, {this.margin = 0.0});
+  const PathMatcher(this.actual, {[this.margin = 0.0]});
 
   final SvgPath actual;
   final double margin;

@@ -70,11 +70,13 @@ class ShapeDecoration extends Decoration {
   ///
   /// The [shape] must not be null.
   const ShapeDecoration({
+    [
     this.color,
     this.image,
     this.gradient,
-    this.shadows,
-    @required this.shape,
+    this.shadows
+    ]
+     this.shape,
   }) : assert(!(color != null && gradient != null)),
        assert(shape != null);
 
@@ -270,7 +272,7 @@ class ShapeDecoration extends Decoration {
   }
 
   @override
-  bool hitTest(Size size, Offset position, { TextDirection textDirection }) {
+  bool hitTest(Size size, Offset position, { [ TextDirection textDirection ] }) {
     return shape.getOuterPath(Offset.zero & size, textDirection: textDirection).contains(position);
   }
 

@@ -241,6 +241,7 @@ class FlutterErrorDetailsForPointerEventDispatcher extends FlutterErrorDetails {
   /// The gesture library calls this constructor when catching an exception
   /// that will subsequently be reported using [FlutterError.onError].
   const FlutterErrorDetailsForPointerEventDispatcher({
+    [
     dynamic exception,
     StackTrace stack,
     String library,
@@ -249,6 +250,7 @@ class FlutterErrorDetailsForPointerEventDispatcher extends FlutterErrorDetails {
     this.hitTestEntry,
     InformationCollector informationCollector,
     bool silent = false,
+  ]
   }) : super(
     exception: exception,
     stack: stack,

@@ -271,7 +271,7 @@ class MockDevice extends Mock implements Device {
 }
 
 class TestHotRunnerConfig extends HotRunnerConfig {
-  TestHotRunnerConfig({@required this.successfulSetup});
+  TestHotRunnerConfig({ this.successfulSetup});
   bool successfulSetup;
   bool shutdownHookCalled = false;
 

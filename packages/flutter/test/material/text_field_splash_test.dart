@@ -12,6 +12,7 @@ int cancelCount = 0;
 
 class TestInkSplash extends InkSplash {
   TestInkSplash({
+    [
     MaterialInkController controller,
     RenderBox referenceBox,
     Offset position,
@@ -23,6 +24,7 @@ class TestInkSplash extends InkSplash {
     double radius,
     VoidCallback onRemoved,
     TextDirection textDirection,
+  ]
   }) : super(
     controller: controller,
     referenceBox: referenceBox,
@@ -55,6 +57,7 @@ class TestInkSplashFactory extends InteractiveInkFeatureFactory {
 
   @override
   InteractiveInkFeature create({
+    [
     MaterialInkController controller,
     RenderBox referenceBox,
     Offset position,
@@ -66,6 +69,7 @@ class TestInkSplashFactory extends InteractiveInkFeatureFactory {
     double radius,
     VoidCallback onRemoved,
     TextDirection textDirection,
+  ]
   }) {
     return TestInkSplash(
       controller: controller,

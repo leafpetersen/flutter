@@ -194,9 +194,11 @@ class MockHttpClientResponse extends Stream<List<int>> implements io.HttpClientR
   @override
   StreamSubscription<List<int>> listen(
     void onData(List<int> event), {
+    [
     Function onError,
     void onDone(),
     bool cancelOnError,
+  ]
   }) {
     return Stream<List<int>>.fromFuture(Future<List<int>>.error(const io.SocketException('test')))
       .listen(onData, onError: onError, onDone: onDone, cancelOnError: cancelOnError);

@@ -262,7 +262,7 @@ void main() {
   });
 
   testWidgets('ListView.separated', (WidgetTester tester) async {
-    Widget buildFrame({ int itemCount }) {
+    Widget buildFrame({ [ int itemCount ] }) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: ListView.separated(
@@ -306,7 +306,7 @@ void main() {
   });
 }
 
-void check({ List<int> visible = const <int>[], List<int> hidden = const <int>[] }) {
+void check({ [ List<int> visible = const <int>[], List<int> hidden = const <int>[] ] }) {
   for (int i in visible) {
     expect(find.text('$i'), findsOneWidget);
   }

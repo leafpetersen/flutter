@@ -43,7 +43,7 @@ export 'package:flutter/painting.dart' show
 /// See also:
 ///
 ///  * [ImageProvider], which has an example showing how this might be used.
-ImageConfiguration createLocalImageConfiguration(BuildContext context, { Size size }) {
+ImageConfiguration createLocalImageConfiguration(BuildContext context, { [ Size size ] }) {
   return ImageConfiguration(
     bundle: DefaultAssetBundle.of(context),
     devicePixelRatio: MediaQuery.of(context, nullOk: true)?.devicePixelRatio ?? 1.0,
@@ -76,8 +76,10 @@ ImageConfiguration createLocalImageConfiguration(BuildContext context, { Size si
 Future<void> precacheImage(
   ImageProvider provider,
   BuildContext context, {
+  [
   Size size,
   ImageErrorListener onError,
+]
 }) {
   final ImageConfiguration config = createLocalImageConfiguration(context, size: size);
   final Completer<void> completer = Completer<void>();
@@ -155,8 +157,11 @@ class Image extends StatefulWidget {
   ///
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
   const Image({
-    Key key,
-    @required this.image,
+    [
+    Key key
+    ]
+     this.image,
+    [
     this.semanticLabel,
     this.excludeFromSemantics = false,
     this.width,
@@ -170,6 +175,7 @@ class Image extends StatefulWidget {
     this.matchTextDirection = false,
     this.gaplessPlayback = false,
     this.filterQuality = FilterQuality.low,
+  ]
   }) : assert(image != null),
        assert(alignment != null),
        assert(repeat != null),
@@ -199,6 +205,7 @@ class Image extends StatefulWidget {
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
   Image.network(
     String src, {
+    [
     Key key,
     double scale = 1.0,
     this.semanticLabel,
@@ -215,6 +222,7 @@ class Image extends StatefulWidget {
     this.gaplessPlayback = false,
     this.filterQuality = FilterQuality.low,
     Map<String, String> headers,
+  ]
   }) : image = NetworkImage(src, scale: scale, headers: headers),
        assert(alignment != null),
        assert(repeat != null),
@@ -241,6 +249,7 @@ class Image extends StatefulWidget {
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
   Image.file(
     File file, {
+    [
     Key key,
     double scale = 1.0,
     this.semanticLabel,
@@ -256,6 +265,7 @@ class Image extends StatefulWidget {
     this.matchTextDirection = false,
     this.gaplessPlayback = false,
     this.filterQuality = FilterQuality.low,
+  ]
   }) : image = FileImage(file, scale: scale),
        assert(alignment != null),
        assert(repeat != null),
@@ -390,6 +400,7 @@ class Image extends StatefulWidget {
   ///    Flutter.
   Image.asset(
     String name, {
+    [
     Key key,
     AssetBundle bundle,
     this.semanticLabel,
@@ -407,6 +418,7 @@ class Image extends StatefulWidget {
     this.gaplessPlayback = false,
     String package,
     this.filterQuality = FilterQuality.low,
+  ]
   }) : image = scale != null
          ? ExactAssetImage(name, bundle: bundle, scale: scale, package: package)
          : AssetImage(name, bundle: bundle, package: package),
@@ -432,6 +444,7 @@ class Image extends StatefulWidget {
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
   Image.memory(
     Uint8List bytes, {
+    [
     Key key,
     double scale = 1.0,
     this.semanticLabel,
@@ -447,6 +460,7 @@ class Image extends StatefulWidget {
     this.matchTextDirection = false,
     this.gaplessPlayback = false,
     this.filterQuality = FilterQuality.low,
+  ]
   }) : image = MemoryImage(bytes, scale: scale),
        assert(alignment != null),
        assert(repeat != null),

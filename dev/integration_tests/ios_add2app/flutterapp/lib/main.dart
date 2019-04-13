@@ -56,7 +56,7 @@ Future<String> run(String name) async {
 }
 
 class FlutterView extends StatelessWidget {
-  const FlutterView({@required this.initialRoute});
+  const FlutterView({ this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class FlutterView extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({this.initialRoute});
+  const MyHomePage({[this.initialRoute]});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();

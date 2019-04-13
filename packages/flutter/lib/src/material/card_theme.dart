@@ -32,11 +32,13 @@ class CardTheme extends Diagnosticable {
   ///
   /// The [elevation] must be null or non-negative.
   const CardTheme({
+    [
     this.clipBehavior,
     this.color,
     this.elevation,
     this.margin,
     this.shape,
+  ]
   }) : assert(elevation == null || elevation >= 0.0);
 
   /// Default value for [Card.clipBehavior].
@@ -69,11 +71,13 @@ class CardTheme extends Diagnosticable {
   /// Creates a copy of this object with the given fields replaced with the
   /// new values.
   CardTheme copyWith({
+    [
     Clip clipBehavior,
     Color color,
     double elevation,
     EdgeInsetsGeometry margin,
     ShapeBorder shape,
+  ]
   }) {
     return CardTheme(
       clipBehavior: clipBehavior ?? this.clipBehavior,

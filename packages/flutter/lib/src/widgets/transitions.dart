@@ -90,8 +90,10 @@ abstract class AnimatedWidget extends StatefulWidget {
   ///
   /// The [listenable] argument is required.
   const AnimatedWidget({
-    Key key,
-    @required this.listenable,
+    [
+    Key key
+    ]
+     this.listenable,
   }) : assert(listenable != null),
        super(key: key);
 
@@ -177,11 +179,15 @@ class SlideTransition extends AnimatedWidget {
   ///
   /// The [position] argument must not be null.
   const SlideTransition({
-    Key key,
-    @required Animation<Offset> position,
+    [
+    Key key
+    ]
+     Animation<Offset> position,
+    [
     this.transformHitTests = true,
     this.textDirection,
     this.child,
+  ]
   }) : assert(position != null),
        super(key: key, listenable: position);
 
@@ -251,10 +257,14 @@ class ScaleTransition extends AnimatedWidget {
   /// The [scale] argument must not be null. The [alignment] argument defaults
   /// to [Alignment.center].
   const ScaleTransition({
-    Key key,
-    @required Animation<double> scale,
+    [
+    Key key
+    ]
+     Animation<double> scale,
+    [
     this.alignment = Alignment.center,
     this.child,
+  ]
   }) : assert(scale != null),
        super(key: key, listenable: scale);
 
@@ -305,10 +315,14 @@ class RotationTransition extends AnimatedWidget {
   ///
   /// The [turns] argument must not be null.
   const RotationTransition({
-    Key key,
-    @required Animation<double> turns,
+    [
+    Key key
+    ]
+     Animation<double> turns,
+    [
     this.alignment = Alignment.center,
     this.child,
+  ]
   }) : assert(turns != null),
        super(key: key, listenable: turns);
 
@@ -376,11 +390,15 @@ class SizeTransition extends AnimatedWidget {
   /// defaults to 0.0, which centers the child along the main axis during the
   /// transition.
   const SizeTransition({
+    [
     Key key,
-    this.axis = Axis.vertical,
-    @required Animation<double> sizeFactor,
+    this.axis = Axis.vertical
+    ]
+     Animation<double> sizeFactor,
+    [
     this.axisAlignment = 0.0,
     this.child,
+  ]
   }) : assert(axis != null),
        assert(sizeFactor != null),
        assert(axisAlignment != null),
@@ -451,10 +469,14 @@ class FadeTransition extends SingleChildRenderObjectWidget {
   ///
   /// The [opacity] argument must not be null.
   const FadeTransition({
-    Key key,
-    @required this.opacity,
+    [
+    Key key
+    ]
+     this.opacity,
+    [
     this.alwaysIncludeSemantics = false,
     Widget child,
+  ]
   }) : assert(opacity != null),
        super(key: key, child: child);
 
@@ -510,7 +532,7 @@ class RelativeRectTween extends Tween<RelativeRect> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as [RelativeRect.fill].
-  RelativeRectTween({ RelativeRect begin, RelativeRect end })
+  RelativeRectTween({ [ RelativeRect begin, RelativeRect end ] })
     : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
@@ -545,9 +567,11 @@ class PositionedTransition extends AnimatedWidget {
   ///
   /// The [rect] argument must not be null.
   const PositionedTransition({
-    Key key,
-    @required Animation<RelativeRect> rect,
-    @required this.child,
+    [
+    Key key
+    ]
+     Animation<RelativeRect> rect,
+     this.child,
   }) : assert(rect != null),
        super(key: key, listenable: rect);
 
@@ -597,10 +621,12 @@ class RelativePositionedTransition extends AnimatedWidget {
   /// current value of the [rect] argument assuming that the stack has the given
   /// [size]. Both [rect] and [size] must not be null.
   const RelativePositionedTransition({
-    Key key,
-    @required Animation<Rect> rect,
-    @required this.size,
-    @required this.child,
+    [
+    Key key
+    ]
+     Animation<Rect> rect,
+     this.size,
+     this.child,
   }) : assert(rect != null),
        assert(size != null),
        assert(child != null),
@@ -655,10 +681,14 @@ class DecoratedBoxTransition extends AnimatedWidget {
   ///
   ///  * [new DecoratedBox]
   const DecoratedBoxTransition({
-    Key key,
-    @required this.decoration,
-    this.position = DecorationPosition.background,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.decoration,
+    [
+    this.position = DecorationPosition.background
+    ]
+     this.child,
   }) : assert(decoration != null),
        assert(child != null),
        super(key: key, listenable: decoration);
@@ -711,11 +741,15 @@ class AlignTransition extends AnimatedWidget {
   ///
   ///  * [new Align].
   const AlignTransition({
-    Key key,
-    @required Animation<AlignmentGeometry> alignment,
-    @required this.child,
+    [
+    Key key
+    ]
+     Animation<AlignmentGeometry> alignment,
+     this.child,
+    [
     this.widthFactor,
     this.heightFactor,
+  ]
   }) : assert(alignment != null),
        assert(child != null),
        super(key: key, listenable: alignment);
@@ -756,13 +790,17 @@ class DefaultTextStyleTransition extends AnimatedWidget {
   /// Creates an animated [DefaultTextStyle] whose [TextStyle] animation updates
   /// the widget.
   const DefaultTextStyleTransition({
-    Key key,
-    @required Animation<TextStyle> style,
-    @required this.child,
+    [
+    Key key
+    ]
+     Animation<TextStyle> style,
+     this.child,
+    [
     this.textAlign,
     this.softWrap = true,
     this.overflow = TextOverflow.clip,
     this.maxLines,
+  ]
   }) : assert(style != null),
        assert(child != null),
        super(key: key, listenable: style);
@@ -880,10 +918,14 @@ class AnimatedBuilder extends AnimatedWidget {
   ///
   /// The [animation] and [builder] arguments must not be null.
   const AnimatedBuilder({
-    Key key,
-    @required Listenable animation,
-    @required this.builder,
+    [
+    Key key
+    ]
+     Listenable animation,
+     this.builder,
+    [
     this.child,
+  ]
   }) : assert(animation != null),
        assert(builder != null),
        super(key: key, listenable: animation);

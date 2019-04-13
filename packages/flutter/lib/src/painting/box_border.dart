@@ -83,7 +83,7 @@ abstract class BoxBorder extends ShapeBorder {
   // We override this to tighten the return value, so that callers can assume
   // that we'll return a [BoxBorder].
   @override
-  BoxBorder add(ShapeBorder other, { bool reversed = false }) => null;
+  BoxBorder add(ShapeBorder other, { [ bool reversed = false ] }) => null;
 
   /// Linearly interpolate between two borders.
   ///
@@ -163,14 +163,14 @@ abstract class BoxBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { @required TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, {  TextDirection textDirection }) {
     assert(textDirection != null, 'The textDirection argument to $runtimeType.getInnerPath must not be null.');
     return Path()
       ..addRect(dimensions.resolve(textDirection).deflateRect(rect));
   }
 
   @override
-  Path getOuterPath(Rect rect, { @required TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, {  TextDirection textDirection }) {
     assert(textDirection != null, 'The textDirection argument to $runtimeType.getOuterPath must not be null.');
     return Path()
       ..addRect(rect);
@@ -199,9 +199,11 @@ abstract class BoxBorder extends ShapeBorder {
   void paint(
     Canvas canvas,
     Rect rect, {
+    [
     TextDirection textDirection,
     BoxShape shape = BoxShape.rectangle,
     BorderRadius borderRadius,
+  ]
   });
 
   static void _paintUniformBorderWithRadius(Canvas canvas, Rect rect, BorderSide side, BorderRadius borderRadius) {
@@ -305,10 +307,12 @@ class Border extends BoxBorder {
   ///
   /// The arguments must not be null.
   const Border({
+    [
     this.top = BorderSide.none,
     this.right = BorderSide.none,
     this.bottom = BorderSide.none,
     this.left = BorderSide.none,
+  ]
   }) : assert(top != null),
        assert(right != null),
        assert(bottom != null),
@@ -328,9 +332,11 @@ class Border extends BoxBorder {
   ///
   /// The sides default to black solid borders, one logical pixel wide.
   factory Border.all({
+    [
     Color color = const Color(0xFF000000),
     double width = 1.0,
     BorderStyle style = BorderStyle.solid,
+  ]
   }) {
     final BorderSide side = BorderSide(color: color, width: width, style: style);
     return Border.uniform(side);
@@ -399,7 +405,7 @@ class Border extends BoxBorder {
   }
 
   @override
-  Border add(ShapeBorder other, { bool reversed = false }) {
+  Border add(ShapeBorder other, { [ bool reversed = false ] }) {
     if (other is! Border)
       return null;
     final Border typedOther = other;
@@ -481,9 +487,11 @@ class Border extends BoxBorder {
   void paint(
     Canvas canvas,
     Rect rect, {
+    [
     TextDirection textDirection,
     BoxShape shape = BoxShape.rectangle,
     BorderRadius borderRadius,
+  ]
   }) {
     if (isUniform) {
       switch (top.style) {
@@ -576,10 +584,12 @@ class BorderDirectional extends BoxBorder {
   ///
   /// The arguments must not be null.
   const BorderDirectional({
+    [
     this.top = BorderSide.none,
     this.start = BorderSide.none,
     this.end = BorderSide.none,
     this.bottom = BorderSide.none,
+  ]
   }) : assert(top != null),
        assert(start != null),
        assert(end != null),
@@ -662,7 +672,7 @@ class BorderDirectional extends BoxBorder {
   }
 
   @override
-  BoxBorder add(ShapeBorder other, { bool reversed = false }) {
+  BoxBorder add(ShapeBorder other, { [ bool reversed = false ] }) {
     if (other is BorderDirectional) {
       final BorderDirectional typedOther = other;
       if (BorderSide.canMerge(top, typedOther.top) &&
@@ -776,9 +786,11 @@ class BorderDirectional extends BoxBorder {
   void paint(
     Canvas canvas,
     Rect rect, {
+    [
     TextDirection textDirection,
     BoxShape shape = BoxShape.rectangle,
     BorderRadius borderRadius,
+  ]
   }) {
     if (isUniform) {
       switch (top.style) {

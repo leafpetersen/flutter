@@ -13,6 +13,7 @@ class BuildInfo {
   const BuildInfo(
     this.mode,
     this.flavor, {
+    [
     this.trackWidgetCreation = false,
     this.compilationTraceFilePath,
     this.createBaseline = false,
@@ -28,6 +29,7 @@ class BuildInfo {
     this.fileSystemScheme,
     this.buildNumber,
     this.buildName,
+  ]
   });
 
   final BuildMode mode;

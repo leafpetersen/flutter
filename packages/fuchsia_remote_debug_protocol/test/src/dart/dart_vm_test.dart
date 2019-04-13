@@ -19,7 +19,9 @@ void main() {
     test('null connector', () async {
       Future<json_rpc.Peer> mockServiceFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         return Future<json_rpc.Peer>(() => null);
       }
@@ -33,7 +35,9 @@ void main() {
       final MockPeer peer = MockPeer();
       Future<json_rpc.Peer> mockServiceFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         return Future<json_rpc.Peer>(() => peer);
       }
@@ -92,7 +96,9 @@ void main() {
 
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         when(mockPeer.sendRequest(any, any)).thenAnswer((_) =>
             Future<Map<String, dynamic>>(() => flutterViewCannedResponses));
@@ -150,7 +156,9 @@ void main() {
 
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         when(mockPeer.sendRequest(any, any)).thenAnswer((_) =>
             Future<Map<String, dynamic>>(() => flutterViewCannedResponses));
@@ -200,7 +208,9 @@ void main() {
 
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         when(mockPeer.sendRequest(any, any)).thenAnswer((_) =>
             Future<Map<String, dynamic>>(
@@ -256,7 +266,9 @@ void main() {
 
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         when(mockPeer.sendRequest(any, any)).thenAnswer(
             (_) => Future<Map<String, dynamic>>(() => vmCannedResponse));
@@ -294,7 +306,9 @@ void main() {
 
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         when(mockPeer.sendRequest(any, any)).thenAnswer((_) =>
             Future<Map<String, dynamic>>(
@@ -330,7 +344,9 @@ void main() {
       const Duration timeoutTime = Duration(milliseconds: 100);
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         // Return a command that will never complete.
         when(mockPeer.sendRequest(any, any))

@@ -6,9 +6,13 @@ import 'transformations_demo_color_picker.dart';
 @immutable
 class EditBoardPoint extends StatelessWidget {
   const EditBoardPoint({
-    Key key,
-    @required this.boardPoint,
+    [
+    Key key
+    ]
+     this.boardPoint,
+    [
     this.onColorSelection,
+  ]
   }) : assert(boardPoint != null),
        super(key: key);
 

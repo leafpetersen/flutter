@@ -96,6 +96,7 @@ class CupertinoTextThemeData extends Diagnosticable {
   /// Other [TextStyle] parameters default to default iOS text styles when
   /// unspecified.
   const CupertinoTextThemeData({
+    [
     Color primaryColor,
     Brightness brightness,
     TextStyle textStyle,
@@ -104,6 +105,7 @@ class CupertinoTextThemeData extends Diagnosticable {
     TextStyle navTitleTextStyle,
     TextStyle navLargeTitleTextStyle,
     TextStyle navActionTextStyle,
+  ]
   }) : _primaryColor = primaryColor ?? CupertinoColors.activeBlue,
        _brightness = brightness,
        _textStyle = textStyle,
@@ -158,6 +160,7 @@ class CupertinoTextThemeData extends Diagnosticable {
   /// Returns a copy of the current [CupertinoTextThemeData] instance with
   /// specified overrides.
   CupertinoTextThemeData copyWith({
+    [
     Color primaryColor,
     Brightness brightness,
     TextStyle textStyle,
@@ -166,6 +169,7 @@ class CupertinoTextThemeData extends Diagnosticable {
     TextStyle navTitleTextStyle,
     TextStyle navLargeTitleTextStyle,
     TextStyle navActionTextStyle,
+  ]
   }) {
     return CupertinoTextThemeData(
       primaryColor: primaryColor ?? _primaryColor,

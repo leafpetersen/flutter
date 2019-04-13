@@ -136,8 +136,11 @@ class RenderEditable extends RenderBox {
   /// The [offset] is required and must not be null. You can use [new
   /// ViewportOffset.zero] if you have no need for scrolling.
   RenderEditable({
-    TextSpan text,
-    @required TextDirection textDirection,
+    [
+    TextSpan text
+    ]
+     TextDirection textDirection,
+    [
     TextAlign textAlign = TextAlign.start,
     Color cursorColor,
     Color backgroundCursorColor,
@@ -149,8 +152,10 @@ class RenderEditable extends RenderBox {
     StrutStyle strutStyle,
     Color selectionColor,
     double textScaleFactor = 1.0,
-    TextSelection selection,
-    @required ViewportOffset offset,
+    TextSelection selection
+    ]
+     ViewportOffset offset,
+    [
     this.onSelectionChanged,
     this.onCaretChanged,
     this.ignorePointer = false,
@@ -162,8 +167,9 @@ class RenderEditable extends RenderBox {
     Offset cursorOffset,
     double devicePixelRatio = 1.0,
     bool enableInteractiveSelection,
-    EdgeInsets floatingCursorAddedMargin = const EdgeInsets.fromLTRB(4, 4, 4, 5),
-    @required this.textSelectionDelegate,
+    EdgeInsets floatingCursorAddedMargin = const EdgeInsets.fromLTRB(4, 4, 4, 5)
+    ]
+     this.textSelectionDelegate,
   }) : assert(textAlign != null),
        assert(textDirection != null, 'RenderEditable created without a textDirection.'),
        assert(maxLines == null || maxLines > 0),
@@ -1361,12 +1367,12 @@ class RenderEditable extends RenderBox {
   /// If you have a [TextEditingController], it's generally easier to
   /// programmatically manipulate its `value` or `selection` directly.
   /// {@endtemplate}
-  void selectPosition({ @required SelectionChangedCause cause }) {
+  void selectPosition({  SelectionChangedCause cause }) {
     selectPositionAt(from: _lastTapDownPosition, cause: cause);
   }
 
   /// Select text between the global positions [from] and [to].
-  void selectPositionAt({ @required Offset from, Offset to, @required SelectionChangedCause cause }) {
+  void selectPositionAt({  Offset from, [ Offset to ]  SelectionChangedCause cause }) {
     assert(cause != null);
     assert(from != null);
     _layoutText(constraints.maxWidth);
@@ -1398,7 +1404,7 @@ class RenderEditable extends RenderBox {
   /// Select a word around the location of the last tap down.
   ///
   /// {@macro flutter.rendering.editable.select}
-  void selectWord({ @required SelectionChangedCause cause }) {
+  void selectWord({  SelectionChangedCause cause }) {
     selectWordsInRange(from: _lastTapDownPosition, cause: cause);
   }
 
@@ -1408,7 +1414,7 @@ class RenderEditable extends RenderBox {
   /// beginning and end of a word respectively.
   ///
   /// {@macro flutter.rendering.editable.select}
-  void selectWordsInRange({ @required Offset from, Offset to, @required SelectionChangedCause cause }) {
+  void selectWordsInRange({  Offset from, [ Offset to ]  SelectionChangedCause cause }) {
     assert(cause != null);
     assert(from != null);
     _layoutText(constraints.maxWidth);
@@ -1431,7 +1437,7 @@ class RenderEditable extends RenderBox {
   /// Move the selection to the beginning or end of a word.
   ///
   /// {@macro flutter.rendering.editable.select}
-  void selectWordEdge({ @required SelectionChangedCause cause }) {
+  void selectWordEdge({  SelectionChangedCause cause }) {
     assert(cause != null);
     _layoutText(constraints.maxWidth);
     assert(_lastTapDownPosition != null);
@@ -1549,7 +1555,7 @@ class RenderEditable extends RenderBox {
 
   /// Sets the screen position of the floating cursor and the text position
   /// closest to the cursor.
-  void setFloatingCursor(FloatingCursorDragState state, Offset boundedOffset, TextPosition lastTextPosition, { double resetLerpValue }) {
+  void setFloatingCursor(FloatingCursorDragState state, Offset boundedOffset, TextPosition lastTextPosition, { [ double resetLerpValue ] }) {
     assert(state != null);
     assert(boundedOffset != null);
     assert(lastTextPosition != null);

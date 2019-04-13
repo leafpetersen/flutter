@@ -481,7 +481,7 @@ void main() {
     debugPrintGlobalKeyedWidgetLifecycle = true;
 
     final List<String> log = <String>[];
-    debugPrint = (String message, { int wrapWidth }) {
+    debugPrint = (String message, { [ int wrapWidth ] }) {
       log.add(message);
     };
 

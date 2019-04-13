@@ -15,7 +15,7 @@ class CodeGenerator {
 
   /// Given an [input] string, wraps the text at 80 characters and prepends each
   /// line with the [prefix] string. Use for generated comments.
-  String wrapString(String input, {String prefix = '  /// '}) {
+  String wrapString(String input, {[String prefix = '  /// ']}) {
     final int wrapWidth = 80 - prefix.length;
     final StringBuffer result = StringBuffer();
     final List<String> words = input.split(RegExp(r'\s+'));

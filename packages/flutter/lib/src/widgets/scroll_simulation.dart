@@ -29,12 +29,14 @@ class BouncingScrollSimulation extends Simulation {
   /// for the `spring` description if it is omitted; these defaults assume
   /// that the unit of length is the logical pixel.
   BouncingScrollSimulation({
-    @required double position,
-    @required double velocity,
-    @required this.leadingExtent,
-    @required this.trailingExtent,
-    @required this.spring,
+     double position,
+     double velocity,
+     this.leadingExtent,
+     this.trailingExtent,
+     this.spring,
+    [
     Tolerance tolerance = Tolerance.defaultTolerance,
+  ]
   }) : assert(position != null),
        assert(velocity != null),
        assert(leadingExtent != null),
@@ -141,10 +143,12 @@ class BouncingScrollSimulation extends Simulation {
 class ClampingScrollSimulation extends Simulation {
   /// Creates a scroll physics simulation that matches Android scrolling.
   ClampingScrollSimulation({
-    @required this.position,
-    @required this.velocity,
+     this.position,
+     this.velocity,
+    [
     this.friction = 0.015,
     Tolerance tolerance = Tolerance.defaultTolerance,
+  ]
   }) : assert(_flingVelocityPenetration(0.0) == _initialVelocityPenetration),
        super(tolerance: tolerance) {
     _duration = _flingDuration(velocity);

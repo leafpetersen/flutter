@@ -36,7 +36,7 @@ class KernelCompilerFactory {
   }
 }
 
-typedef CompilerMessageConsumer = void Function(String message, { bool emphasis, TerminalColor color });
+typedef CompilerMessageConsumer = void Function(String message, { [ bool emphasis, TerminalColor color ] });
 
 /// The target model describes the set of core libraries that are availible within
 /// the SDK.
@@ -82,7 +82,7 @@ enum StdoutState { CollectDiagnostic, CollectDependencies }
 
 /// Handles stdin/stdout communication with the frontend server.
 class StdoutHandler {
-  StdoutHandler({this.consumer = printError}) {
+  StdoutHandler({[this.consumer = printError]}) {
     reset();
   }
 
@@ -147,7 +147,7 @@ class StdoutHandler {
 
   // This is needed to get ready to process next compilation result output,
   // with its own boundary key and new completer.
-  void reset({ bool suppressCompilerMessages = false, bool expectSources = true }) {
+  void reset({ [ bool suppressCompilerMessages = false, bool expectSources = true ] }) {
     boundaryKey = null;
     compilerMessageReceived = false;
     compilerOutput = Completer<CompilerOutput>();
@@ -209,14 +209,17 @@ class KernelCompiler {
   const KernelCompiler();
 
   Future<CompilerOutput> compile({
+    [
     String sdkRoot,
     String mainPath,
     String outputFilePath,
     String depFilePath,
     TargetModel targetModel = TargetModel.flutter,
     bool linkPlatformKernelIn = false,
-    bool aot = false,
-    @required bool trackWidgetCreation,
+    bool aot = false
+    ]
+     bool trackWidgetCreation,
+    [
     List<String> extraFrontEndOptions,
     String incrementalCompilerByteStorePath,
     String packagesPath,
@@ -224,6 +227,7 @@ class KernelCompiler {
     String fileSystemScheme,
     bool targetProductVm = false,
     String initializeFromDill,
+  ]
   }) async {
     final String frontendServer = artifacts.getArtifactPath(
       Artifact.frontendServerSnapshotForEngineDartSdk
@@ -413,6 +417,7 @@ class _RejectRequest extends _CompilationRequest {
 class ResidentCompiler {
   ResidentCompiler(
     this._sdkRoot, {
+    [
     bool trackWidgetCreation = false,
     String packagesPath,
     List<String> fileSystemRoots,
@@ -422,6 +427,7 @@ class ResidentCompiler {
     TargetModel targetModel = TargetModel.flutter,
     bool unsafePackageSerialization,
     List<String> experimentalFlags,
+  ]
   }) : assert(_sdkRoot != null),
        _trackWidgetCreation = trackWidgetCreation,
        _packagesPath = packagesPath,
@@ -463,8 +469,10 @@ class ResidentCompiler {
   Future<CompilerOutput> recompile(
     String mainPath,
     List<Uri> invalidatedFiles, {
-    @required String outputPath,
+     String outputPath,
+    [
     String packagesFilePath,
+  ]
   }) async {
     assert (outputPath != null);
     if (!_controller.hasListener) {

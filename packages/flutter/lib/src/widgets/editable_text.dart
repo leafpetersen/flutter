@@ -117,7 +117,7 @@ class TextEditingController extends ValueNotifier<TextEditingValue> {
   ///
   /// This constructor treats a null [text] argument as if it were the empty
   /// string.
-  TextEditingController({ String text })
+  TextEditingController({ [ String text ] })
     : super(text == null ? TextEditingValue.empty : TextEditingValue(text: text));
 
   /// Creates a controller for an editable text field from an initial [TextEditingValue].
@@ -264,15 +264,22 @@ class EditableText extends StatefulWidget {
   /// [textAlign], [dragStartBehavior] and [rendererIgnoresPointer] arguments
   /// must not be null.
   EditableText({
-    Key key,
-    @required this.controller,
-    @required this.focusNode,
+    [
+    Key key
+    ]
+     this.controller,
+     this.focusNode,
+    [
     this.obscureText = false,
-    this.autocorrect = true,
-    @required this.style,
-    StrutStyle strutStyle,
-    @required this.cursorColor,
-    @required this.backgroundCursorColor,
+    this.autocorrect = true
+    ]
+     this.style,
+    [
+    StrutStyle strutStyle
+    ]
+     this.cursorColor,
+     this.backgroundCursorColor,
+    [
     this.textAlign = TextAlign.start,
     this.textDirection,
     this.locale,
@@ -301,6 +308,7 @@ class EditableText extends StatefulWidget {
     this.keyboardAppearance = Brightness.light,
     this.dragStartBehavior = DragStartBehavior.start,
     this.enableInteractiveSelection,
+  ]
   }) : assert(controller != null),
        assert(focusNode != null),
        assert(obscureText != null),
@@ -1270,7 +1278,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
     }
   }
 
-  void _stopCursorTimer({ bool resetCharTicks = true }) {
+  void _stopCursorTimer({ [ bool resetCharTicks = true ] }) {
     _cursorTimer?.cancel();
     _cursorTimer = null;
     _targetCursorVisibility = false;
@@ -1481,6 +1489,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
 
 class _Editable extends LeafRenderObjectWidget {
   const _Editable({
+    [
     Key key,
     this.textSpan,
     this.value,
@@ -1494,8 +1503,10 @@ class _Editable extends LeafRenderObjectWidget {
     this.strutStyle,
     this.selectionColor,
     this.textScaleFactor,
-    this.textAlign,
-    @required this.textDirection,
+    this.textAlign
+    ]
+     this.textDirection,
+    [
     this.locale,
     this.obscureText,
     this.autocorrect,
@@ -1510,6 +1521,7 @@ class _Editable extends LeafRenderObjectWidget {
     this.textSelectionDelegate,
     this.paintCursorAboveText,
     this.devicePixelRatio,
+  ]
   }) : assert(textDirection != null),
        assert(rendererIgnoresPointer != null),
        super(key: key);

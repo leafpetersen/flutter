@@ -17,6 +17,7 @@ import 'vmservice.dart';
 class ColdRunner extends ResidentRunner {
   ColdRunner(
     List<FlutterDevice> devices, {
+    [
     String target,
     DebuggingOptions debuggingOptions,
     bool usesTerminalUI = true,
@@ -26,6 +27,7 @@ class ColdRunner extends ResidentRunner {
     bool saveCompilationTrace = false,
     bool stayResident = true,
     bool ipv6 = false,
+  ]
   }) : super(devices,
              target: target,
              debuggingOptions: debuggingOptions,
@@ -41,10 +43,12 @@ class ColdRunner extends ResidentRunner {
 
   @override
   Future<int> run({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
     String route,
     bool shouldBuild = true,
+  ]
   }) async {
     final bool prebuiltMode = applicationBinary != null;
     if (!prebuiltMode) {
@@ -121,8 +125,10 @@ class ColdRunner extends ResidentRunner {
 
   @override
   Future<int> attach({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
+  ]
   }) async {
     _didAttach = true;
     try {
@@ -172,7 +178,7 @@ class ColdRunner extends ResidentRunner {
   }
 
   @override
-  void printHelp({ @required bool details }) {
+  void printHelp({  bool details }) {
     bool haveDetails = false;
     bool haveAnything = false;
     for (FlutterDevice device in flutterDevices) {

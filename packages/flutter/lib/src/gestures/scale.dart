@@ -34,7 +34,7 @@ class ScaleStartDetails {
   /// Creates details for [GestureScaleStartCallback].
   ///
   /// The [focalPoint] argument must not be null.
-  ScaleStartDetails({ this.focalPoint = Offset.zero })
+  ScaleStartDetails({ [ this.focalPoint = Offset.zero ] })
     : assert(focalPoint != null);
 
   /// The initial focal point of the pointers in contact with the screen.
@@ -53,11 +53,13 @@ class ScaleUpdateDetails {
   /// arguments must not be null. The [scale], [horizontalScale], and [verticalScale]
   /// argument must be greater than or equal to zero.
   ScaleUpdateDetails({
+    [
     this.focalPoint = Offset.zero,
     this.scale = 1.0,
     this.horizontalScale = 1.0,
     this.verticalScale = 1.0,
     this.rotation = 0.0,
+  ]
   }) : assert(focalPoint != null),
        assert(scale != null && scale >= 0.0),
        assert(horizontalScale != null && horizontalScale >= 0.0),
@@ -117,7 +119,7 @@ class ScaleEndDetails {
   /// Creates details for [GestureScaleEndCallback].
   ///
   /// The [velocity] argument must not be null.
-  ScaleEndDetails({ this.velocity = Velocity.zero })
+  ScaleEndDetails({ [ this.velocity = Velocity.zero ] })
     : assert(velocity != null);
 
   /// The velocity of the last pointer to be lifted off of the screen.
@@ -155,10 +157,12 @@ class _LineBetweenPointers{
   /// [pointerEndLocation] and [pointerEndId] must be null. [pointerStartId] and [pointerEndId]
   /// should be different.
   _LineBetweenPointers({
+    [
     this.pointerStartLocation = Offset.zero,
     this.pointerStartId = 0,
     this.pointerEndLocation = Offset.zero,
     this.pointerEndId = 1,
+  ]
   }) : assert(pointerStartLocation != null && pointerEndLocation != null),
        assert(pointerStartId != null && pointerEndId != null),
        assert(pointerStartId != pointerEndId);
@@ -186,8 +190,10 @@ class ScaleGestureRecognizer extends OneSequenceGestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   ScaleGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   /// The pointers in contact with the screen have established a focal point and

@@ -29,8 +29,10 @@ class RoundedRectangleBorder extends ShapeBorder {
   ///
   /// The arguments must not be null.
   const RoundedRectangleBorder({
+    [
     this.side = BorderSide.none,
     this.borderRadius = BorderRadius.zero,
+  ]
   }) : assert(side != null),
        assert(borderRadius != null);
 
@@ -92,19 +94,19 @@ class RoundedRectangleBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(borderRadius.resolve(textDirection).toRRect(rect).deflate(side.width));
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(borderRadius.resolve(textDirection).toRRect(rect));
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;
@@ -142,9 +144,11 @@ class RoundedRectangleBorder extends ShapeBorder {
 
 class _RoundedRectangleToCircleBorder extends ShapeBorder {
   const _RoundedRectangleToCircleBorder({
+    [
     this.side = BorderSide.none,
-    this.borderRadius = BorderRadius.zero,
-    @required this.circleness,
+    this.borderRadius = BorderRadius.zero
+    ]
+     this.circleness,
   }) : assert(side != null),
        assert(borderRadius != null),
        assert(circleness != null);
@@ -252,19 +256,19 @@ class _RoundedRectangleToCircleBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(_adjustBorderRadius(rect, textDirection).toRRect(_adjustRect(rect)).deflate(side.width));
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(_adjustBorderRadius(rect, textDirection).toRRect(_adjustRect(rect)));
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;

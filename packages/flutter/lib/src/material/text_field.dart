@@ -27,12 +27,12 @@ typedef InputCounterWidgetBuilder = Widget Function(
   /// The build context for the TextField
   BuildContext context, {
   /// The length of the string currently in the input.
-  @required int currentLength,
+   int currentLength,
   /// The maximum string length that can be entered into the TextField.
-  @required int maxLength,
+   int maxLength,
   /// Whether or not the TextField is currently focused.  Mainly provided for
   /// the [liveRegion] parameter in the [Semantics] widget for accessibility.
-  @required bool isFocused,
+   bool isFocused,
 });
 
 /// A material design text field.
@@ -132,6 +132,7 @@ class TextField extends StatefulWidget {
   ///  * [maxLength], which discusses the precise meaning of "number of
   ///    characters" and how it may differ from the intuitive meaning.
   const TextField({
+    [
     Key key,
     this.controller,
     this.focusNode,
@@ -165,6 +166,7 @@ class TextField extends StatefulWidget {
     this.enableInteractiveSelection,
     this.onTap,
     this.buildCounter,
+  ]
   }) : assert(textAlign != null),
        assert(autofocus != null),
        assert(obscureText != null),

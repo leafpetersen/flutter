@@ -308,7 +308,7 @@ class _FakeTicker implements Ticker {
   void dispose() { }
 
   @override
-  void scheduleTick({ bool rescheduling = false }) { }
+  void scheduleTick({ [ bool rescheduling = false ] }) { }
 
   @override
   TickerFuture start() {
@@ -316,11 +316,11 @@ class _FakeTicker implements Ticker {
   }
 
   @override
-  void stop({ bool canceled = false }) { }
+  void stop({ [ bool canceled = false ] }) { }
 
   @override
   void unscheduleTick() { }
 
   @override
-  String toString({ bool debugIncludeStack = false }) => super.toString();
+  String toString({ [ bool debugIncludeStack = false ] }) => super.toString();
 }

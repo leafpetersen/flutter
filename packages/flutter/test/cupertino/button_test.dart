@@ -303,7 +303,7 @@ void main() {
   });
 }
 
-Widget boilerplate({ Widget child }) {
+Widget boilerplate({ [ Widget child ] }) {
   return Directionality(
     textDirection: TextDirection.ltr,
     child: Center(child: child),

@@ -54,7 +54,7 @@ typedef TaskCallback<T> = T Function();
 /// at this time, false otherwise.
 ///
 /// See also [defaultSchedulingStrategy].
-typedef SchedulingStrategy = bool Function({ int priority, SchedulerBinding scheduler });
+typedef SchedulingStrategy = bool Function({ [ int priority, SchedulerBinding scheduler ] });
 
 class _TaskEntry<T> {
   _TaskEntry(this.task, this.priority, this.debugLabel, this.flow) {
@@ -89,7 +89,7 @@ class _TaskEntry<T> {
 }
 
 class _FrameCallbackEntry {
-  _FrameCallbackEntry(this.callback, { bool rescheduling = false }) {
+  _FrameCallbackEntry(this.callback, { [ bool rescheduling = false ] }) {
     assert(() {
       if (rescheduling) {
         assert(() {
@@ -321,8 +321,10 @@ mixin SchedulerBinding on BindingBase, ServicesBinding {
   Future<T> scheduleTask<T>(
     TaskCallback<T> task,
     Priority priority, {
+    [
     String debugLabel,
     Flow flow,
+  ]
   }) {
     final bool isFirstTask = _taskQueue.isEmpty;
     final _TaskEntry<T> entry = _TaskEntry<T>(
@@ -442,7 +444,7 @@ mixin SchedulerBinding on BindingBase, ServicesBinding {
   ///
   /// Callbacks registered with this method can be canceled using
   /// [cancelFrameCallbackWithId].
-  int scheduleFrameCallback(FrameCallback callback, { bool rescheduling = false }) {
+  int scheduleFrameCallback(FrameCallback callback, { [ bool rescheduling = false ] }) {
     scheduleFrame();
     _nextFrameCallbackId += 1;
     _transientCallbacks[_nextFrameCallbackId] = _FrameCallbackEntry(callback, rescheduling: rescheduling);
@@ -1035,7 +1037,7 @@ mixin SchedulerBinding on BindingBase, ServicesBinding {
 /// If there are any frame callbacks registered, only runs tasks with
 /// a [Priority] of [Priority.animation] or higher. Otherwise, runs
 /// all tasks.
-bool defaultSchedulingStrategy({ int priority, SchedulerBinding scheduler }) {
+bool defaultSchedulingStrategy({ [ int priority, SchedulerBinding scheduler ] }) {
   if (scheduler.transientCallbackCount > 0)
     return priority >= Priority.animation.value;
   return true;

@@ -65,7 +65,7 @@ class WebDevice extends Device {
   void clearLogs() { }
 
   @override
-  DeviceLogReader getLogReader({ApplicationPackage app}) {
+  DeviceLogReader getLogReader({[ApplicationPackage app]}) {
     return NoOpDeviceLogReader(app.name);
   }
 
@@ -96,6 +96,7 @@ class WebDevice extends Device {
   @override
   Future<LaunchResult> startApp(
     covariant WebApplicationPackage package, {
+    [
     String mainPath,
     String route,
     DebuggingOptions debuggingOptions,
@@ -103,6 +104,7 @@ class WebDevice extends Device {
     bool prebuiltApplication = false,
     bool usesTerminalUi = true,
     bool ipv6 = false,
+  ]
   }) async {
     final Status status = logger.startProgress('Compiling ${package.name} to JavaScript...', timeout: null);
     final int result = await webCompiler.compile(target: mainPath, minify: false, enabledAssertions: true);

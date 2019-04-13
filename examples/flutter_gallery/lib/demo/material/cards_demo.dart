@@ -17,13 +17,15 @@ enum CardDemoType {
 
 class TravelDestination {
   const TravelDestination({
-    @required this.assetName,
-    @required this.assetPackage,
-    @required this.title,
-    @required this.description,
-    @required this.city,
-    @required this.location,
+     this.assetName,
+     this.assetPackage,
+     this.title,
+     this.description,
+     this.city,
+     this.location,
+    [
     this.type = CardDemoType.standard,
+  ]
   }) : assert(assetName != null),
        assert(assetPackage != null),
        assert(title != null),
@@ -70,7 +72,7 @@ const List<TravelDestination> destinations = <TravelDestination>[
 ];
 
 class TravelDestinationItem extends StatelessWidget {
-  const TravelDestinationItem({ Key key, @required this.destination, this.shape })
+  const TravelDestinationItem({ [ Key key ]  this.destination, [ this.shape ] })
     : assert(destination != null),
       super(key: key);
 
@@ -106,7 +108,7 @@ class TravelDestinationItem extends StatelessWidget {
 }
 
 class TappableTravelDestinationItem extends StatelessWidget {
-  const TappableTravelDestinationItem({ Key key, @required this.destination, this.shape })
+  const TappableTravelDestinationItem({ [ Key key ]  this.destination, [ this.shape ] })
     : assert(destination != null),
       super(key: key);
 
@@ -151,7 +153,7 @@ class TappableTravelDestinationItem extends StatelessWidget {
 }
 
 class SelectableTravelDestinationItem extends StatefulWidget {
-  const SelectableTravelDestinationItem({ Key key, @required this.destination, this.shape })
+  const SelectableTravelDestinationItem({ [ Key key ]  this.destination, [ this.shape ] })
     : assert(destination != null),
       super(key: key);
 
@@ -231,8 +233,10 @@ class _SelectableTravelDestinationItemState extends State<SelectableTravelDestin
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
+    [
     Key key,
     this.title,
+  ]
   }) : super(key: key);
 
   final String title;
@@ -250,7 +254,7 @@ class SectionTitle extends StatelessWidget {
 }
 
 class TravelDestinationContent extends StatelessWidget {
-  const TravelDestinationContent({ Key key, @required this.destination })
+  const TravelDestinationContent({ [ Key key ]  this.destination })
     : assert(destination != null),
       super(key: key);
 

@@ -208,7 +208,7 @@ class FocusScopeNode extends Object with DiagnosticableTreeMixin {
     }
   }
 
-  bool _debugUltimatePreviousSiblingOf(FocusScopeNode child, { FocusScopeNode equals }) {
+  bool _debugUltimatePreviousSiblingOf(FocusScopeNode child, { [ FocusScopeNode equals ] }) {
     while (child._previousSibling != null) {
       assert(child._previousSibling != child);
       child = child._previousSibling;
@@ -216,7 +216,7 @@ class FocusScopeNode extends Object with DiagnosticableTreeMixin {
     return child == equals;
   }
 
-  bool _debugUltimateNextSiblingOf(FocusScopeNode child, { FocusScopeNode equals }) {
+  bool _debugUltimateNextSiblingOf(FocusScopeNode child, { [ FocusScopeNode equals ] }) {
     while (child._nextSibling != null) {
       assert(child._nextSibling != child);
       child = child._nextSibling;

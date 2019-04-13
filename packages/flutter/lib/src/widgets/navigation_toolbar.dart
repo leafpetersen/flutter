@@ -26,12 +26,14 @@ class NavigationToolbar extends StatelessWidget {
   /// Creates a widget that lays out its children in a manner suitable for a
   /// toolbar.
   const NavigationToolbar({
+    [
     Key key,
     this.leading,
     this.middle,
     this.trailing,
     this.centerMiddle = true,
     this.middleSpacing = kMiddleSpacing,
+  ]
   }) : assert(centerMiddle != null),
        assert(middleSpacing != null),
        super(key: key);
@@ -92,9 +94,11 @@ enum _ToolbarSlot {
 
 class _ToolbarLayout extends MultiChildLayoutDelegate {
   _ToolbarLayout({
-    this.centerMiddle,
-    @required this.middleSpacing,
-    @required this.textDirection,
+    [
+    this.centerMiddle
+    ]
+     this.middleSpacing,
+     this.textDirection,
   }) : assert(middleSpacing != null),
        assert(textDirection != null);
 

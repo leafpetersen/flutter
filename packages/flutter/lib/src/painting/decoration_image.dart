@@ -39,13 +39,15 @@ class DecorationImage {
   /// The [image], [alignment], [repeat], and [matchTextDirection] arguments
   /// must not be null.
   const DecorationImage({
-    @required this.image,
+     this.image,
+    [
     this.colorFilter,
     this.fit,
     this.alignment = Alignment.center,
     this.centerSlice,
     this.repeat = ImageRepeat.noRepeat,
     this.matchTextDirection = false,
+  ]
   }) : assert(image != null),
        assert(alignment != null),
        assert(repeat != null),
@@ -362,9 +364,10 @@ class DecorationImagePainter {
 ///  * [DecorationImage], which holds a configuration for calling this function.
 ///  * [BoxDecoration], which uses this function to paint a [DecorationImage].
 void paintImage({
-  @required Canvas canvas,
-  @required Rect rect,
-  @required ui.Image image,
+   Canvas canvas,
+   Rect rect,
+   ui.Image image,
+  [
   double scale = 1.0,
   ColorFilter colorFilter,
   BoxFit fit,
@@ -374,6 +377,7 @@ void paintImage({
   bool flipHorizontally = false,
   bool invertColors = false,
   FilterQuality filterQuality = FilterQuality.low,
+]
 }) {
   assert(canvas != null);
   assert(image != null);

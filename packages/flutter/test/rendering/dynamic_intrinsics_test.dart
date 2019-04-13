@@ -31,7 +31,7 @@ class RenderFixedSize extends RenderBox {
 }
 
 class RenderParentSize extends RenderProxyBox {
-  RenderParentSize({ RenderBox child }) : super(child);
+  RenderParentSize({ [ RenderBox child ] }) : super(child);
 
   @override
   bool get sizedByParent => true;
@@ -48,7 +48,7 @@ class RenderParentSize extends RenderProxyBox {
 }
 
 class RenderIntrinsicSize extends RenderProxyBox {
-  RenderIntrinsicSize({ RenderBox child }) : super(child);
+  RenderIntrinsicSize({ [ RenderBox child ] }) : super(child);
 
   @override
   void performLayout() {

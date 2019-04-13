@@ -61,7 +61,7 @@ class EmulatorManager {
   }
 
   /// Return the list of all available emulators.
-  Future<CreateEmulatorResult> createEmulator({ String name }) async {
+  Future<CreateEmulatorResult> createEmulator({ [ String name ] }) async {
     if (name == null || name == '') {
       const String autoName = 'flutter_emulator';
       // Don't use getEmulatorsMatching here, as it will only return one
@@ -277,7 +277,7 @@ abstract class Emulator {
 }
 
 class CreateEmulatorResult {
-  CreateEmulatorResult(this.emulatorName, {this.success, this.output, this.error});
+  CreateEmulatorResult(this.emulatorName, {[this.success, this.output, this.error]});
 
   final bool success;
   final String emulatorName;

@@ -27,7 +27,7 @@ void main() {
 }
 
 class Home extends StatefulWidget {
-  const Home({ Key key }) : super(key: key);
+  const Home({ [ Key key ] }) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -108,7 +108,7 @@ class _HomeState extends State<Home> {
 }
 
 class Fuzzer extends StatefulWidget {
-  const Fuzzer({ Key key, this.seed }) : super(key: key);
+  const Fuzzer({ [ Key key, this.seed ] }) : super(key: key);
 
   final int seed;
 
@@ -525,7 +525,7 @@ class _FuzzerState extends State<Fuzzer> with SingleTickerProviderStateMixin {
 }
 
 class Underlines extends StatefulWidget {
-  const Underlines({ Key key }) : super(key: key);
+  const Underlines({ [ Key key ] }) : super(key: key);
 
   @override
   _UnderlinesState createState() => _UnderlinesState();
@@ -618,7 +618,7 @@ class _UnderlinesState extends State<Underlines> {
 }
 
 class Fallback extends StatefulWidget {
-  const Fallback({ Key key }) : super(key: key);
+  const Fallback({ [ Key key ] }) : super(key: key);
 
   @override
   _FallbackState createState() => _FallbackState();
@@ -707,7 +707,7 @@ class _FallbackState extends State<Fallback> {
 }
 
 class Bidi extends StatefulWidget {
-  const Bidi({ Key key }) : super(key: key);
+  const Bidi({ [ Key key ] }) : super(key: key);
 
   @override
   _BidiState createState() => _BidiState();
@@ -782,7 +782,7 @@ class _BidiState extends State<Bidi> {
 }
 
 class Zalgo extends StatefulWidget {
-  const Zalgo({ Key key, this.seed }) : super(key: key);
+  const Zalgo({ [ Key key, this.seed ] }) : super(key: key);
 
   final int seed;
 
@@ -889,7 +889,7 @@ class _ZalgoState extends State<Zalgo> with SingleTickerProviderStateMixin {
 }
 
 class Painting extends StatefulWidget {
-  const Painting({ Key key, this.seed }) : super(key: key);
+  const Painting({ [ Key key, this.seed ] }) : super(key: key);
 
   final int seed;
 
@@ -1060,7 +1060,7 @@ class _PaintingState extends State<Painting> with SingleTickerProviderStateMixin
   }
 }
 
-String zalgo(math.Random random, int targetLength, { bool includeSpacingCombiningMarks = false, String base }) {
+String zalgo(math.Random random, int targetLength, { [ bool includeSpacingCombiningMarks = false, String base ] }) {
   // The following three tables are derived from UnicodeData.txt:
   //   http://unicode.org/Public/UNIDATA/UnicodeData.txt
   // There are three groups, character classes Mc, Me, and Mn.

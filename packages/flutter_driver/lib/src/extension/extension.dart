@@ -69,7 +69,7 @@ class _DriverBinding extends BindingBase with ServicesBinding, SchedulerBinding,
 /// for tests where exceptions are expected. Defaults to false. Any errors
 /// will still be returned in the `response` field of the result json along
 /// with an `isError` boolean.
-void enableFlutterDriverExtension({ DataHandler handler, bool silenceErrors = false }) {
+void enableFlutterDriverExtension({ [ DataHandler handler, bool silenceErrors = false ] }) {
   assert(WidgetsBinding.instance == null);
   _DriverBinding(handler, silenceErrors);
   assert(WidgetsBinding.instance is _DriverBinding);
@@ -195,7 +195,7 @@ class FlutterDriverExtension {
     }
   }
 
-  Map<String, dynamic> _makeResponse(dynamic response, { bool isError = false }) {
+  Map<String, dynamic> _makeResponse(dynamic response, { [ bool isError = false ] }) {
     return <String, dynamic>{
       'isError': isError,
       'response': response,

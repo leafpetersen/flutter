@@ -284,8 +284,10 @@ class RenderCustomMultiChildLayoutBox extends RenderBox
   ///
   /// The [delegate] argument must not be null.
   RenderCustomMultiChildLayoutBox({
-    List<RenderBox> children,
-    @required MultiChildLayoutDelegate delegate,
+    [
+    List<RenderBox> children
+    ]
+     MultiChildLayoutDelegate delegate,
   }) : assert(delegate != null),
        _delegate = delegate {
     addAll(children);
@@ -362,7 +364,7 @@ class RenderCustomMultiChildLayoutBox extends RenderBox
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return defaultHitTestChildren(result, position: position);
   }
 }

@@ -644,7 +644,7 @@ void main() {
 }
 
 class TestApp extends StatefulWidget {
-  const TestApp({ this.textDirection, this.child });
+  const TestApp({ [ this.textDirection, this.child ] });
   final TextDirection textDirection;
   final Widget child;
   @override

@@ -110,7 +110,7 @@ mixin RenderProxyBoxMixin<T extends RenderBox> on RenderBox, RenderObjectWithChi
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return child?.hitTest(result, position: position) ?? false;
   }
 
@@ -147,15 +147,17 @@ abstract class RenderProxyBoxWithHitTestBehavior extends RenderProxyBox {
   ///
   /// By default, the [behavior] is [HitTestBehavior.deferToChild].
   RenderProxyBoxWithHitTestBehavior({
+    [
     this.behavior = HitTestBehavior.deferToChild,
     RenderBox child,
+  ]
   }) : super(child);
 
   /// How to behave during hit testing.
   HitTestBehavior behavior;
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     bool hitTarget = false;
     if (size.contains(position)) {
       hitTarget = hitTestChildren(result, position: position) || hitTestSelf(position);
@@ -190,8 +192,10 @@ class RenderConstrainedBox extends RenderProxyBox {
   ///
   /// The [additionalConstraints] argument must not be null and must be valid.
   RenderConstrainedBox({
-    RenderBox child,
-    @required BoxConstraints additionalConstraints,
+    [
+    RenderBox child
+    ]
+     BoxConstraints additionalConstraints,
   }) : assert(additionalConstraints != null),
        assert(additionalConstraints.debugAssertIsValid()),
        _additionalConstraints = additionalConstraints,
@@ -303,9 +307,11 @@ class RenderLimitedBox extends RenderProxyBox {
   /// The [maxWidth] and [maxHeight] arguments not be null and must be
   /// non-negative.
   RenderLimitedBox({
+    [
     RenderBox child,
     double maxWidth = double.infinity,
     double maxHeight = double.infinity,
+  ]
   }) : assert(maxWidth != null && maxWidth >= 0.0),
        assert(maxHeight != null && maxHeight >= 0.0),
        _maxWidth = maxWidth,
@@ -392,8 +398,10 @@ class RenderAspectRatio extends RenderProxyBox {
   ///
   /// The [aspectRatio] argument must be a finite, positive value.
   RenderAspectRatio({
-    RenderBox child,
-    @required double aspectRatio,
+    [
+    RenderBox child
+    ]
+     double aspectRatio,
   }) : assert(aspectRatio != null),
        assert(aspectRatio > 0.0),
        assert(aspectRatio.isFinite),
@@ -546,9 +554,11 @@ class RenderIntrinsicWidth extends RenderProxyBox {
   /// If [stepWidth] is non-null it must be > 0.0. Similarly If [stepHeight] is
   /// non-null it must be > 0.0.
   RenderIntrinsicWidth({
+    [
     double stepWidth,
     double stepHeight,
     RenderBox child,
+  ]
   }) : assert(stepWidth == null || stepWidth > 0.0),
        assert(stepHeight == null || stepHeight > 0.0),
        _stepWidth = stepWidth,
@@ -665,7 +675,9 @@ class RenderIntrinsicWidth extends RenderProxyBox {
 class RenderIntrinsicHeight extends RenderProxyBox {
   /// Creates a render object that sizes itself to its child's intrinsic height.
   RenderIntrinsicHeight({
+    [
     RenderBox child,
+  ]
   }) : super(child);
 
   @override
@@ -727,9 +739,11 @@ class RenderOpacity extends RenderProxyBox {
   ///
   /// The [opacity] argument must be between 0.0 and 1.0, inclusive.
   RenderOpacity({
+    [
     double opacity = 1.0,
     bool alwaysIncludeSemantics = false,
     RenderBox child,
+  ]
   }) : assert(opacity != null),
        assert(opacity >= 0.0 && opacity <= 1.0),
        assert(alwaysIncludeSemantics != null),
@@ -823,9 +837,11 @@ class RenderAnimatedOpacity extends RenderProxyBox {
   ///
   /// The [opacity] argument must not be null.
   RenderAnimatedOpacity({
-    @required Animation<double> opacity,
+     Animation<double> opacity,
+    [
     bool alwaysIncludeSemantics = false,
     RenderBox child,
+  ]
   }) : assert(opacity != null),
        assert(alwaysIncludeSemantics != null),
        _alwaysIncludeSemantics = alwaysIncludeSemantics,
@@ -943,9 +959,13 @@ class RenderShaderMask extends RenderProxyBox {
   ///
   /// The [shaderCallback] and [blendMode] arguments must not be null.
   RenderShaderMask({
-    RenderBox child,
-    @required ShaderCallback shaderCallback,
+    [
+    RenderBox child
+    ]
+     ShaderCallback shaderCallback,
+    [
     BlendMode blendMode = BlendMode.modulate,
+  ]
   }) : assert(shaderCallback != null),
        assert(blendMode != null),
        _shaderCallback = shaderCallback,
@@ -1010,7 +1030,7 @@ class RenderBackdropFilter extends RenderProxyBox {
   /// Creates a backdrop filter.
   ///
   /// The [filter] argument must not be null.
-  RenderBackdropFilter({ RenderBox child, @required ui.ImageFilter filter })
+  RenderBackdropFilter({ [ RenderBox child ]  ui.ImageFilter filter })
     : assert(filter != null),
       _filter = filter,
       super(child);
@@ -1069,7 +1089,7 @@ abstract class CustomClipper<T> {
   /// Creates a custom clipper.
   ///
   /// The clipper will update its clip whenever [reclip] notifies its listeners.
-  const CustomClipper({ Listenable reclip }) : _reclip = reclip;
+  const CustomClipper({ [ Listenable reclip ] }) : _reclip = reclip;
 
   final Listenable _reclip;
 
@@ -1119,8 +1139,10 @@ class ShapeBorderClipper extends CustomClipper<Path> {
   /// of "start" and "end" instead of "left" and "right"). It may be null if
   /// the border will not need the text direction to paint itself.
   const ShapeBorderClipper({
-    @required this.shape,
+     this.shape,
+    [
     this.textDirection,
+  ]
   }) : assert(shape != null);
 
   /// The shape border whose outer path this clipper clips to.
@@ -1150,9 +1172,11 @@ class ShapeBorderClipper extends CustomClipper<Path> {
 
 abstract class _RenderCustomClip<T> extends RenderProxyBox {
   _RenderCustomClip({
+    [
     RenderBox child,
     CustomClipper<T> clipper,
     this.clipBehavior = Clip.antiAlias,
+  ]
   }) : _clipper = clipper,
        assert(clipBehavior != null),
        super(child);
@@ -1261,16 +1285,18 @@ class RenderClipRect extends _RenderCustomClip<Rect> {
   ///
   /// The [clipBehavior] cannot be [Clip.none].
   RenderClipRect({
+    [
     RenderBox child,
     CustomClipper<Rect> clipper,
     Clip clipBehavior = Clip.antiAlias,
+  ]
   }) : super(child: child, clipper: clipper, clipBehavior: clipBehavior);
 
   @override
   Rect get _defaultClip => Offset.zero & size;
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (_clipper != null) {
       _updateClip();
       assert(_clip != null);
@@ -1316,10 +1342,12 @@ class RenderClipRRect extends _RenderCustomClip<RRect> {
   ///
   /// The [clipBehavior] cannot be [Clip.none].
   RenderClipRRect({
+    [
     RenderBox child,
     BorderRadius borderRadius = BorderRadius.zero,
     CustomClipper<RRect> clipper,
     Clip clipBehavior = Clip.antiAlias,
+  ]
   }) : assert(clipBehavior != Clip.none),
        _borderRadius = borderRadius,
        super(child: child, clipper: clipper, clipBehavior: clipBehavior) {
@@ -1346,7 +1374,7 @@ class RenderClipRRect extends _RenderCustomClip<RRect> {
   RRect get _defaultClip => _borderRadius.toRRect(Offset.zero & size);
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (_clipper != null) {
       _updateClip();
       assert(_clip != null);
@@ -1390,9 +1418,11 @@ class RenderClipOval extends _RenderCustomClip<Rect> {
   ///
   /// The [clipBehavior] cannot be [Clip.none].
   RenderClipOval({
+    [
     RenderBox child,
     CustomClipper<Rect> clipper,
     Clip clipBehavior = Clip.antiAlias,
+  ]
   }) : assert(clipBehavior != Clip.none),
        super(child: child, clipper: clipper, clipBehavior: clipBehavior);
 
@@ -1411,7 +1441,7 @@ class RenderClipOval extends _RenderCustomClip<Rect> {
   Rect get _defaultClip => Offset.zero & size;
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     _updateClip();
     assert(_clip != null);
     final Offset center = _clip.center;
@@ -1466,9 +1496,11 @@ class RenderClipPath extends _RenderCustomClip<Path> {
   ///
   /// The [clipBehavior] cannot be [Clip.none].
   RenderClipPath({
+    [
     RenderBox child,
     CustomClipper<Path> clipper,
     Clip clipBehavior = Clip.antiAlias,
+  ]
   }) : assert(clipBehavior != Clip.none),
        super(child: child, clipper: clipper, clipBehavior: clipBehavior);
 
@@ -1476,7 +1508,7 @@ class RenderClipPath extends _RenderCustomClip<Path> {
   Path get _defaultClip => Path()..addRect(Offset.zero & size);
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (_clipper != null) {
       _updateClip();
       assert(_clip != null);
@@ -1515,12 +1547,14 @@ abstract class _RenderPhysicalModelBase<T> extends _RenderCustomClip<T> {
   /// The [shape], [elevation], [color], and [shadowColor] must not be null.
   /// Additionally, the [elevation] must be non-negative.
   _RenderPhysicalModelBase({
-    @required RenderBox child,
-    @required double elevation,
-    @required Color color,
-    @required Color shadowColor,
+     RenderBox child,
+     double elevation,
+     Color color,
+     Color shadowColor,
+    [
     Clip clipBehavior = Clip.none,
     CustomClipper<T> clipper,
+  ]
   }) : assert(elevation != null && elevation >= 0.0),
        assert(color != null),
        assert(shadowColor != null),
@@ -1601,13 +1635,17 @@ class RenderPhysicalModel extends _RenderPhysicalModelBase<RRect> {
   /// The [shape], [elevation], [color], and [shadowColor] must not be null.
   /// Additionally, the [elevation] must be non-negative.
   RenderPhysicalModel({
+    [
     RenderBox child,
     BoxShape shape = BoxShape.rectangle,
     Clip clipBehavior = Clip.none,
     BorderRadius borderRadius,
-    double elevation = 0.0,
-    @required Color color,
+    double elevation = 0.0
+    ]
+     Color color,
+    [
     Color shadowColor = const Color(0xFF000000),
+  ]
   }) : assert(shape != null),
        assert(clipBehavior != null),
        assert(elevation != null && elevation >= 0.0),
@@ -1669,7 +1707,7 @@ class RenderPhysicalModel extends _RenderPhysicalModelBase<RRect> {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (_clipper != null) {
       _updateClip();
       assert(_clip != null);
@@ -1741,12 +1779,18 @@ class RenderPhysicalShape extends _RenderPhysicalModelBase<Path> {
   /// The [clipper], [elevation], [color] and [shadowColor] must not be null.
   /// Additionally, the [elevation] must be non-negative.
   RenderPhysicalShape({
-    RenderBox child,
-    @required CustomClipper<Path> clipper,
+    [
+    RenderBox child
+    ]
+     CustomClipper<Path> clipper,
+    [
     Clip clipBehavior = Clip.none,
-    double elevation = 0.0,
-    @required Color color,
+    double elevation = 0.0
+    ]
+     Color color,
+    [
     Color shadowColor = const Color(0xFF000000),
+  ]
   }) : assert(clipper != null),
        assert(elevation != null && elevation >= 0.0),
        assert(color != null),
@@ -1764,7 +1808,7 @@ class RenderPhysicalShape extends _RenderPhysicalModelBase<Path> {
   Path get _defaultClip => Path()..addRect(Offset.zero & size);
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     if (_clipper != null) {
       _updateClip();
       assert(_clip != null);
@@ -1837,10 +1881,12 @@ class RenderDecoratedBox extends RenderProxyBox {
   /// The [ImageConfiguration] will be passed to the decoration (with the size
   /// filled in) to let it resolve images.
   RenderDecoratedBox({
-    @required Decoration decoration,
+     Decoration decoration,
+    [
     DecorationPosition position = DecorationPosition.background,
     ImageConfiguration configuration = ImageConfiguration.empty,
     RenderBox child,
+  ]
   }) : assert(decoration != null),
        assert(position != null),
        assert(configuration != null),
@@ -1964,12 +2010,14 @@ class RenderTransform extends RenderProxyBox {
   ///
   /// The [transform] argument must not be null.
   RenderTransform({
-    @required Matrix4 transform,
+     Matrix4 transform,
+    [
     Offset origin,
     AlignmentGeometry alignment,
     TextDirection textDirection,
     this.transformHitTests = true,
     RenderBox child,
+  ]
   }) : assert(transform != null),
        super(child) {
     this.transform = transform;
@@ -2112,7 +2160,7 @@ class RenderTransform extends RenderProxyBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     // RenderTransform objects don't check if they are
     // themselves hit, because it's confusing to think about
     // how the untransformed size and the child's transformed
@@ -2121,7 +2169,7 @@ class RenderTransform extends RenderProxyBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     if (transformHitTests) {
       final Matrix4 inverse = Matrix4.tryInvert(_effectiveTransform);
       if (inverse == null) {
@@ -2168,10 +2216,12 @@ class RenderFittedBox extends RenderProxyBox {
   ///
   /// The [fit] and [alignment] arguments must not be null.
   RenderFittedBox({
+    [
     BoxFit fit = BoxFit.contain,
     AlignmentGeometry alignment = Alignment.center,
     TextDirection textDirection,
     RenderBox child,
+  ]
   }) : assert(fit != null),
        assert(alignment != null),
        _fit = fit,
@@ -2302,7 +2352,7 @@ class RenderFittedBox extends RenderProxyBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     if (size.isEmpty)
       return false;
     _updatePaintData();
@@ -2349,9 +2399,11 @@ class RenderFractionalTranslation extends RenderProxyBox {
   ///
   /// The [translation] argument must not be null.
   RenderFractionalTranslation({
-    @required Offset translation,
+     Offset translation,
+    [
     this.transformHitTests = true,
     RenderBox child,
+  ]
   }) : assert(translation != null),
        _translation = translation,
        super(child);
@@ -2371,7 +2423,7 @@ class RenderFractionalTranslation extends RenderProxyBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     // RenderFractionalTranslation objects don't check if they are
     // themselves hit, because it's confusing to think about
     // how the untransformed size and the child's transformed
@@ -2388,7 +2440,7 @@ class RenderFractionalTranslation extends RenderProxyBox {
   bool transformHitTests;
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     assert(!debugNeedsLayout);
     if (transformHitTests) {
       position = Offset(
@@ -2465,6 +2517,7 @@ class RenderPointerListener extends RenderProxyBoxWithHitTestBehavior {
   ///
   /// The [behavior] argument defaults to [HitTestBehavior.deferToChild].
   RenderPointerListener({
+    [
     this.onPointerDown,
     this.onPointerMove,
     PointerEnterEventListener onPointerEnter,
@@ -2475,6 +2528,7 @@ class RenderPointerListener extends RenderProxyBoxWithHitTestBehavior {
     this.onPointerSignal,
     HitTestBehavior behavior = HitTestBehavior.deferToChild,
     RenderBox child,
+  ]
   }) : _onPointerEnter = onPointerEnter,
        _onPointerHover = onPointerHover,
        _onPointerExit = onPointerExit,
@@ -2684,7 +2738,7 @@ class RenderPointerListener extends RenderProxyBoxWithHitTestBehavior {
 /// [debugAsymmetricPaintCount] and [debugSymmetricPaintCount] respectively.
 class RenderRepaintBoundary extends RenderProxyBox {
   /// Creates a repaint boundary around [child].
-  RenderRepaintBoundary({ RenderBox child }) : super(child);
+  RenderRepaintBoundary({ [ RenderBox child ] }) : super(child);
 
   @override
   bool get isRepaintBoundary => true;
@@ -2748,7 +2802,7 @@ class RenderRepaintBoundary extends RenderProxyBox {
   ///
   ///  * [OffsetLayer.toImage] for a similar API at the layer level.
   ///  * [dart:ui.Scene.toImage] for more information about the image returned.
-  Future<ui.Image> toImage({ double pixelRatio = 1.0 }) {
+  Future<ui.Image> toImage({ [ double pixelRatio = 1.0 ] }) {
     assert(!debugNeedsPaint);
     return layer.toImage(Offset.zero & size, pixelRatio: pixelRatio);
   }
@@ -2797,7 +2851,7 @@ class RenderRepaintBoundary extends RenderProxyBox {
   }
 
   @override
-  void debugRegisterRepaintBoundaryPaint({ bool includedParent = true, bool includedChild = false }) {
+  void debugRegisterRepaintBoundaryPaint({ [ bool includedParent = true, bool includedChild = false ] }) {
     assert(() {
       if (includedParent && includedChild)
         _debugSymmetricPaintCount += 1;
@@ -2864,9 +2918,11 @@ class RenderIgnorePointer extends RenderProxyBox {
   /// The [ignoring] argument must not be null. If [ignoringSemantics], this
   /// render object will be ignored for semantics if [ignoring] is true.
   RenderIgnorePointer({
+    [
     RenderBox child,
     bool ignoring = true,
     bool ignoringSemantics,
+  ]
   }) : _ignoring = ignoring,
        _ignoringSemantics = ignoringSemantics,
        super(child) {
@@ -2907,7 +2963,7 @@ class RenderIgnorePointer extends RenderProxyBox {
   bool get _effectiveIgnoringSemantics => ignoringSemantics == null ? ignoring : ignoringSemantics;
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     return ignoring ? false : super.hitTest(result, position: position);
   }
 
@@ -2940,8 +2996,10 @@ class RenderIgnorePointer extends RenderProxyBox {
 class RenderOffstage extends RenderProxyBox {
   /// Creates an offstage render object.
   RenderOffstage({
+    [
     bool offstage = true,
     RenderBox child,
+  ]
   }) : assert(offstage != null),
        _offstage = offstage,
        super(child);
@@ -3017,7 +3075,7 @@ class RenderOffstage extends RenderProxyBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     return !offstage && super.hitTest(result, position: position);
   }
 
@@ -3071,9 +3129,11 @@ class RenderAbsorbPointer extends RenderProxyBox {
   ///
   /// The [absorbing] argument must not be null.
   RenderAbsorbPointer({
+    [
     RenderBox child,
     bool absorbing = true,
     bool ignoringSemantics,
+  ]
   }) : assert(absorbing != null),
        _absorbing = absorbing,
        _ignoringSemantics = ignoringSemantics,
@@ -3113,7 +3173,7 @@ class RenderAbsorbPointer extends RenderProxyBox {
   bool get _effectiveIgnoringSemantics => ignoringSemantics == null ? absorbing : ignoringSemantics;
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     return absorbing
         ? size.contains(position)
         : super.hitTest(result, position: position);
@@ -3150,9 +3210,11 @@ class RenderMetaData extends RenderProxyBoxWithHitTestBehavior {
   ///
   /// The [behavior] argument defaults to [HitTestBehavior.deferToChild].
   RenderMetaData({
+    [
     this.metaData,
     HitTestBehavior behavior = HitTestBehavior.deferToChild,
     RenderBox child,
+  ]
   }) : super(behavior: behavior, child: child);
 
   /// Opaque meta data ignored by the render tree
@@ -3172,12 +3234,14 @@ class RenderSemanticsGestureHandler extends RenderProxyBox {
   ///
   /// The [scrollFactor] argument must not be null.
   RenderSemanticsGestureHandler({
+    [
     RenderBox child,
     GestureTapCallback onTap,
     GestureLongPressCallback onLongPress,
     GestureDragUpdateCallback onHorizontalDragUpdate,
     GestureDragUpdateCallback onVerticalDragUpdate,
     this.scrollFactor = 0.8,
+  ]
   }) : assert(scrollFactor != null),
        _onTap = onTap,
        _onLongPress = onLongPress,
@@ -3354,6 +3418,7 @@ class RenderSemanticsAnnotations extends RenderProxyBox {
   ///
   /// If the [label] is not null, the [textDirection] must also not be null.
   RenderSemanticsAnnotations({
+    [
     RenderBox child,
     bool container = false,
     bool explicitChildNodes,
@@ -3401,6 +3466,7 @@ class RenderSemanticsAnnotations extends RenderProxyBox {
     VoidCallback onDidGainAccessibilityFocus,
     VoidCallback onDidLoseAccessibilityFocus,
     Map<CustomSemanticsAction, VoidCallback> customSemanticsActions,
+  ]
   }) : assert(container != null),
        _container = container,
        _explicitChildNodes = explicitChildNodes,
@@ -4373,8 +4439,10 @@ class RenderBlockSemantics extends RenderProxyBox {
   /// Create a render object that blocks semantics for nodes below it in paint
   /// order.
   RenderBlockSemantics({
+    [
     RenderBox child,
     bool blocking = true,
+  ]
   }) : _blocking = blocking,
        super(child);
 
@@ -4412,7 +4480,7 @@ class RenderBlockSemantics extends RenderProxyBox {
 /// and the gesture detector that goes with them.
 class RenderMergeSemantics extends RenderProxyBox {
   /// Creates a render object that merges the semantics from its descendants.
-  RenderMergeSemantics({ RenderBox child }) : super(child);
+  RenderMergeSemantics({ [ RenderBox child ] }) : super(child);
 
   @override
   void describeSemanticsConfiguration(SemanticsConfiguration config) {
@@ -4433,8 +4501,10 @@ class RenderMergeSemantics extends RenderProxyBox {
 class RenderExcludeSemantics extends RenderProxyBox {
   /// Creates a render object that ignores the semantics of its subtree.
   RenderExcludeSemantics({
+    [
     RenderBox child,
     bool excluding = true,
+  ]
   }) : _excluding = excluding,
        super(child) {
     assert(_excluding != null);
@@ -4478,8 +4548,10 @@ class RenderExcludeSemantics extends RenderProxyBox {
 class RenderIndexedSemantics extends RenderProxyBox {
   /// Creates a render object that annotates the child semantics with an index.
   RenderIndexedSemantics({
-    RenderBox child,
-    @required int index,
+    [
+    RenderBox child
+    ]
+     int index,
   }) : assert(index != null),
        _index = index,
        super(child);
@@ -4519,8 +4591,10 @@ class RenderLeaderLayer extends RenderProxyBox {
   ///
   /// The [link] must not be null.
   RenderLeaderLayer({
-    @required LayerLink link,
+     LayerLink link,
+    [
     RenderBox child,
+  ]
   }) : assert(link != null),
        super(child) {
     this.link = link;
@@ -4574,10 +4648,12 @@ class RenderFollowerLayer extends RenderProxyBox {
   ///
   /// The [link] and [offset] arguments must not be null.
   RenderFollowerLayer({
-    @required LayerLink link,
+     LayerLink link,
+    [
     bool showWhenUnlinked = true,
     Offset offset = Offset.zero,
     RenderBox child,
+  ]
   }) : assert(link != null),
        assert(showWhenUnlinked != null),
        assert(offset != null),
@@ -4653,7 +4729,7 @@ class RenderFollowerLayer extends RenderProxyBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     // RenderFollowerLayer objects don't check if they are
     // themselves hit, because it's confusing to think about
     // how the untransformed size and the child's transformed
@@ -4662,7 +4738,7 @@ class RenderFollowerLayer extends RenderProxyBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     final Matrix4 inverse = Matrix4.tryInvert(getCurrentTransform());
     if (inverse == null) {
       // We cannot invert the effective transform. That means the child
@@ -4727,9 +4803,11 @@ class RenderAnnotatedRegion<T> extends RenderProxyBox {
   ///
   /// Neither [value] nor [sized] can be null.
   RenderAnnotatedRegion({
-    @required T value,
-    @required bool sized,
+     T value,
+     bool sized,
+    [
     RenderBox child,
+  ]
   }) : assert(value != null),
        assert(sized != null),
        _value = value,

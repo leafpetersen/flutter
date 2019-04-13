@@ -27,7 +27,9 @@ dynamic _loadYamlFile(String path) {
 /// storing meta data in [services] and the list of jar files in [jars].
 Future<void> parseServiceConfigs(
   List<Map<String, String>> services, {
+  [
   List<File> jars,
+]
 }) async {
   Map<String, Uri> packageMap;
   try {

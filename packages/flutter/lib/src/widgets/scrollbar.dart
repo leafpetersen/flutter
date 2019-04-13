@@ -39,15 +39,17 @@ const double _kMinThumbExtent = 18.0;
 class ScrollbarPainter extends ChangeNotifier implements CustomPainter {
   /// Creates a scrollbar with customizations given by construction arguments.
   ScrollbarPainter({
-    @required this.color,
-    @required this.textDirection,
-    @required this.thickness,
-    @required this.fadeoutOpacityAnimation,
+     this.color,
+     this.textDirection,
+     this.thickness,
+     this.fadeoutOpacityAnimation,
+    [
     this.mainAxisMargin = 0.0,
     this.crossAxisMargin = 0.0,
     this.radius,
     this.minLength = _kMinThumbExtent,
     this.minOverscrollLength = _kMinThumbExtent,
+  ]
   }) : assert(color != null),
        assert(textDirection != null),
        assert(thickness != null),

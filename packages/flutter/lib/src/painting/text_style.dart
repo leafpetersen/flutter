@@ -302,6 +302,7 @@ class TextStyle extends Diagnosticable {
   /// package. It is combined with the `fontFamily` argument to set the
   /// [fontFamily] property.
   const TextStyle({
+    [
     this.inherit = true,
     this.color,
     this.backgroundColor,
@@ -324,6 +325,7 @@ class TextStyle extends Diagnosticable {
     String fontFamily,
     List<String> fontFamilyFallback,
     String package,
+  ]
   }) : fontFamily = package == null ? fontFamily : 'packages/$package/$fontFamily',
        _fontFamilyFallback = fontFamilyFallback,
        _package = package,
@@ -572,6 +574,7 @@ class TextStyle extends Diagnosticable {
   /// [background] specified it will be given preference over any
   /// backgroundColor parameter.
   TextStyle copyWith({
+    [
     bool inherit,
     Color color,
     Color backgroundColor,
@@ -593,6 +596,7 @@ class TextStyle extends Diagnosticable {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
     String debugLabel,
+  ]
   }) {
     assert(color == null || foreground == null, _kColorForegroundWarning);
     assert(backgroundColor == null || background == null, _kColorBackgroundWarning);
@@ -657,6 +661,7 @@ class TextStyle extends Diagnosticable {
   /// will have no effect and if [background] is specified on this object, then
   /// applying [backgroundColor] here will have no effect either.
   TextStyle apply({
+    [
     Color color,
     Color backgroundColor,
     TextDecoration decoration,
@@ -675,6 +680,7 @@ class TextStyle extends Diagnosticable {
     double wordSpacingDelta = 0.0,
     double heightFactor = 1.0,
     double heightDelta = 0.0,
+  ]
   }) {
     assert(fontSizeFactor != null);
     assert(fontSizeDelta != null);
@@ -896,7 +902,7 @@ class TextStyle extends Diagnosticable {
   }
 
   /// The style information for text runs, encoded for use by `dart:ui`.
-  ui.TextStyle getTextStyle({ double textScaleFactor = 1.0 }) {
+  ui.TextStyle getTextStyle({ [ double textScaleFactor = 1.0 ] }) {
     return ui.TextStyle(
       color: color,
       decoration: decoration,
@@ -931,6 +937,7 @@ class TextStyle extends Diagnosticable {
   /// If the font size on this style isn't set, it will default to 14 logical
   /// pixels.
   ui.ParagraphStyle getParagraphStyle({
+    [
     TextAlign textAlign,
     TextDirection textDirection,
     double textScaleFactor = 1.0,
@@ -943,6 +950,7 @@ class TextStyle extends Diagnosticable {
     FontStyle fontStyle,
     double height,
     StrutStyle strutStyle,
+  ]
   }) {
     assert(textScaleFactor != null);
     assert(maxLines == null || maxLines > 0);
@@ -1065,7 +1073,7 @@ class TextStyle extends Diagnosticable {
 
   /// Adds all properties prefixing property names with the optional `prefix`.
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties, { String prefix = '' }) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties, { [ String prefix = '' ] }) {
     super.debugFillProperties(properties);
     if (debugLabel != null)
       properties.add(MessageProperty('${prefix}debugLabel', debugLabel));

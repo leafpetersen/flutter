@@ -12,7 +12,7 @@ import '../rendering/mock_canvas.dart';
 import '../rendering/recording_canvas.dart';
 import '../widgets/semantics_tester.dart';
 
-Widget boilerplate({ Widget child, TextDirection textDirection = TextDirection.ltr }) {
+Widget boilerplate({ [ Widget child, TextDirection textDirection = TextDirection.ltr ] }) {
   return Localizations(
     locale: const Locale('en', 'US'),
     delegates: const <LocalizationsDelegate<dynamic>>[
@@ -29,7 +29,7 @@ Widget boilerplate({ Widget child, TextDirection textDirection = TextDirection.l
 }
 
 class StateMarker extends StatefulWidget {
-  const StateMarker({ Key key, this.child }) : super(key: key);
+  const StateMarker({ [ Key key, this.child ] }) : super(key: key);
 
   final Widget child;
 
@@ -67,11 +67,13 @@ class AlwaysKeepAliveState extends State<AlwaysKeepAliveWidget>
 }
 
 Widget buildFrame({
+  [
   Key tabBarKey,
   List<String> tabs,
   String value,
   bool isScrollable = false,
   Color indicatorColor,
+]
 }) {
   return boilerplate(
     child: DefaultTabController(
@@ -90,7 +92,7 @@ Widget buildFrame({
 typedef TabControllerFrameBuilder = Widget Function(BuildContext context, TabController controller);
 
 class TabControllerFrame extends StatefulWidget {
-  const TabControllerFrame({ this.length, this.initialIndex = 0, this.builder });
+  const TabControllerFrame({ [ this.length, this.initialIndex = 0, this.builder ] });
 
   final int length;
   final int initialIndex;
@@ -125,7 +127,7 @@ class TabControllerFrameState extends State<TabControllerFrame> with SingleTicke
   }
 }
 
-Widget buildLeftRightApp({ List<String> tabs, String value }) {
+Widget buildLeftRightApp({ [ List<String> tabs, String value ] }) {
   return MaterialApp(
     theme: ThemeData(platform: TargetPlatform.android),
     home: DefaultTabController(
@@ -165,7 +167,7 @@ class TabIndicatorRecordingCanvas extends TestRecordingCanvas {
 }
 
 class TestScrollPhysics extends ScrollPhysics {
-  const TestScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const TestScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   TestScrollPhysics applyTo(ScrollPhysics ancestor) {
@@ -1827,8 +1829,10 @@ void main() {
     int tabIndex = -1;
 
     Widget buildFrame({
+      [
       TabController controller,
       List<String> tabs,
+    ]
     }) {
       return boilerplate(
         child: Container(
@@ -2050,7 +2054,7 @@ void main() {
     ];
     final TabController controller = TabController(vsync: const TestVSync(), length: tabs.length);
 
-    Widget buildTestWidget({double width, double height}) {
+    Widget buildTestWidget({[double width, double height]}) {
       return MaterialApp(
         home: Center(
           child: SizedBox(

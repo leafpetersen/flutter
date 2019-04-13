@@ -56,7 +56,7 @@ class InertialMotion {
 
   // Solve the equation of motion to find the position at a given point in time
   // in one dimension.
-  double _getPosition({double r0, double v0, int t, double a}) {
+  double _getPosition({[double r0, double v0, int t, double a]}) {
     // Stop movement when it would otherwise reverse direction.
     final double stopTime = (v0 / a).abs();
     if (t > stopTime) {

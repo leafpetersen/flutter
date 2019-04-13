@@ -34,10 +34,12 @@ class DataColumn {
   ///
   /// The [label] argument must not be null.
   const DataColumn({
-    @required this.label,
+     this.label,
+    [
     this.tooltip,
     this.numeric = false,
     this.onSort,
+  ]
   }) : assert(label != null);
 
   /// The column heading.
@@ -86,10 +88,12 @@ class DataRow {
   ///
   /// The [cells] argument must not be null.
   const DataRow({
+    [
     this.key,
     this.selected = false,
-    this.onSelectChanged,
-    @required this.cells,
+    this.onSelectChanged
+    ]
+     this.cells,
   }) : assert(cells != null);
 
   /// Creates the configuration for a row of a [DataTable], deriving
@@ -97,10 +101,12 @@ class DataRow {
   ///
   /// The [cells] argument must not be null.
   DataRow.byIndex({
+    [
     int index,
     this.selected = false,
-    this.onSelectChanged,
-    @required this.cells,
+    this.onSelectChanged
+    ]
+     this.cells,
   }) : assert(cells != null),
        key = ValueKey<int>(index);
 
@@ -164,9 +170,11 @@ class DataCell {
   /// argument should be set to true.
   const DataCell(
     this.child, {
+    [
     this.placeholder = false,
     this.showEditIcon = false,
     this.onTap,
+  ]
   }) : assert(child != null);
 
   /// A cell that has no content and has zero width and height.
@@ -257,12 +265,16 @@ class DataTable extends StatelessWidget {
   /// the sort order is ascending, this should be true (the default),
   /// otherwise it should be false.
   DataTable({
-    Key key,
-    @required this.columns,
+    [
+    Key key
+    ]
+     this.columns,
+    [
     this.sortColumnIndex,
     this.sortAscending = true,
-    this.onSelectAll,
-    @required this.rows,
+    this.onSelectAll
+    ]
+     this.rows,
   }) : assert(columns != null),
        assert(columns.isNotEmpty),
        assert(sortColumnIndex == null || (sortColumnIndex >= 0 && sortColumnIndex < columns.length)),
@@ -360,10 +372,12 @@ class DataTable extends StatelessWidget {
   static const Color _grey300Opacity = Color(0x1E000000); // Dark theme variant is just a guess.
 
   Widget _buildCheckbox({
+    [
     Color color,
     bool checked,
     VoidCallback onRowTap,
     ValueChanged<bool> onCheckboxChanged,
+  ]
   }) {
     Widget contents = Semantics(
       container: true,
@@ -391,6 +405,7 @@ class DataTable extends StatelessWidget {
   }
 
   Widget _buildHeadingCell({
+    [
     BuildContext context,
     EdgeInsetsGeometry padding,
     Widget label,
@@ -399,6 +414,7 @@ class DataTable extends StatelessWidget {
     VoidCallback onSort,
     bool sorted,
     bool ascending,
+  ]
   }) {
     if (onSort != null) {
       final Widget arrow = _SortArrow(
@@ -447,6 +463,7 @@ class DataTable extends StatelessWidget {
   }
 
   Widget _buildDataCell({
+    [
     BuildContext context,
     EdgeInsetsGeometry padding,
     Widget label,
@@ -455,6 +472,7 @@ class DataTable extends StatelessWidget {
     bool showEditIcon,
     VoidCallback onTap,
     VoidCallback onSelectChanged,
+  ]
   }) {
     final bool isLightTheme = Theme.of(context).brightness == Brightness.light;
     if (showEditIcon) {
@@ -614,12 +632,14 @@ class DataTable extends StatelessWidget {
 class TableRowInkWell extends InkResponse {
   /// Creates an ink well for a table row.
   const TableRowInkWell({
+    [
     Key key,
     Widget child,
     GestureTapCallback onTap,
     GestureTapCallback onDoubleTap,
     GestureLongPressCallback onLongPress,
     ValueChanged<bool> onHighlightChanged,
+  ]
   }) : super(
     key: key,
     child: child,
@@ -668,10 +688,12 @@ class TableRowInkWell extends InkResponse {
 
 class _SortArrow extends StatefulWidget {
   const _SortArrow({
+    [
     Key key,
     this.visible,
     this.down,
     this.duration,
+  ]
   }) : super(key: key);
 
   final bool visible;

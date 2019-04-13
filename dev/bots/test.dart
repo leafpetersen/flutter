@@ -365,9 +365,11 @@ Future<void> _runCoverage() async {
 Future<void> _buildRunnerTest(
   String workingDirectory,
   String flutterRoot, {
+  [
   String testPath,
   bool enableFlutterToolAsserts = false,
   bq.TabledataResourceApi tableData,
+]
 }) async {
   final List<String> args = <String>['run', 'build_runner', 'test', '--', useFlutterTestFormatter ? '-rjson' : '-rcompact', '-j1'];
   if (!hasColor) {
@@ -413,9 +415,11 @@ Future<void> _buildRunnerTest(
 
 Future<void> _pubRunTest(
   String workingDirectory, {
+  [
   String testPath,
   bool enableFlutterToolAsserts = false,
   bq.TabledataResourceApi tableData,
+]
 }) async {
   final List<String> args = <String>['run', 'test', useFlutterTestFormatter ? '-rjson' : '-rcompact', '-j1'];
   if (!hasColor)
@@ -582,9 +586,11 @@ Future<void> _processTestOutput(
 
 class EvalResult {
   EvalResult({
+    [
     this.stdout,
     this.stderr,
     this.exitCode = 0,
+  ]
   });
 
   final String stdout;
@@ -593,6 +599,7 @@ class EvalResult {
 }
 
 Future<void> _runFlutterTest(String workingDirectory, {
+  [
   String script,
   bool expectFailure = false,
   bool printOutput = true,
@@ -601,6 +608,7 @@ Future<void> _runFlutterTest(String workingDirectory, {
   Duration timeout = _kLongTimeout,
   bq.TabledataResourceApi tableData,
   Map<String, String> environment,
+]
 }) async {
   final List<String> args = <String>['test']..addAll(options);
   if (flutterTestArgs != null && flutterTestArgs.isNotEmpty)
@@ -698,7 +706,7 @@ Future<void> _runIntegrationTests() async {
   await _integrationTestsAndroidSdk();
 }
 
-Future<void> _runDevicelabTest(String testName, {Map<String, String> env}) async {
+Future<void> _runDevicelabTest(String testName, {[Map<String, String> env]}) async {
   await runCommand(
     dart,
     <String>['bin/run.dart', '-t', testName],

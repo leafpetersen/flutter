@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'test_widgets.dart';
 
 class TestCustomPainter extends CustomPainter {
-  TestCustomPainter({ this.log, this.name });
+  TestCustomPainter({ [ this.log, this.name ] });
 
   final List<String> log;
   final String name;

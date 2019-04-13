@@ -23,7 +23,7 @@ const String defaultAssetBasePath = '.';
 const String defaultManifestPath = 'pubspec.yaml';
 String get defaultDepfilePath => fs.path.join(getBuildDirectory(), 'snapshot_blob.bin.d');
 
-String getDefaultApplicationKernelPath({ @required bool trackWidgetCreation }) {
+String getDefaultApplicationKernelPath({  bool trackWidgetCreation }) {
   return getKernelPathForTransformerOptions(
     fs.path.join(getBuildDirectory(), 'app.dill'),
     trackWidgetCreation: trackWidgetCreation,
@@ -32,7 +32,7 @@ String getDefaultApplicationKernelPath({ @required bool trackWidgetCreation }) {
 
 String getKernelPathForTransformerOptions(
   String path, {
-  @required bool trackWidgetCreation,
+   bool trackWidgetCreation,
 }) {
   if (trackWidgetCreation) {
     path += '.track.dill';
@@ -48,6 +48,7 @@ const String _kIsolateSnapshotData = 'isolate_snapshot_data';
 const String _kIsolateSnapshotInstr = 'isolate_snapshot_instr';
 
 Future<void> build({
+  [
   TargetPlatform platform,
   BuildMode buildMode,
   String mainPath = defaultMainPath,
@@ -68,6 +69,7 @@ Future<void> build({
   List<String> extraGenSnapshotOptions = const <String>[],
   List<String> fileSystemRoots,
   String fileSystemScheme,
+]
 }) async {
   depfilePath ??= defaultDepfilePath;
   assetDirPath ??= getAssetBuildDirectory();
@@ -164,11 +166,13 @@ Future<void> build({
 }
 
 Future<AssetBundle> buildAssets({
+  [
   String manifestPath,
   String assetDirPath,
   String packagesPath,
   bool includeDefaultFonts = true,
   bool reportLicensedPackages = false,
+]
 }) async {
   assetDirPath ??= getAssetBuildDirectory();
   packagesPath ??= fs.path.absolute(PackageMap.globalPackagesPath);
@@ -189,12 +193,14 @@ Future<AssetBundle> buildAssets({
 }
 
 Future<void> assemble({
+  [
   BuildMode buildMode,
   AssetBundle assetBundle,
   DevFSContent kernelContent,
   String privateKeyPath = defaultPrivateKeyPath,
   String assetDirPath,
   String compilationTraceFilePath,
+]
 }) async {
   assetDirPath ??= getAssetBuildDirectory();
   printTrace('Building bundle');

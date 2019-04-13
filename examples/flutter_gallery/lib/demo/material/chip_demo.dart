@@ -72,9 +72,11 @@ const Map<String, Set<String>> _materialActions = <String, Set<String>>{
 
 class _ChipsTile extends StatelessWidget {
   const _ChipsTile({
+    [
     Key key,
     this.label,
     this.children,
+  ]
   }) : super(key: key);
 
   final String label;

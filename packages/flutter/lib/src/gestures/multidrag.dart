@@ -190,8 +190,10 @@ abstract class MultiDragPointerState {
 abstract class MultiDragGestureRecognizer<T extends MultiDragPointerState> extends GestureRecognizer {
   /// Initialize the object.
   MultiDragGestureRecognizer({
-    @required Object debugOwner,
+     Object debugOwner,
+    [
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   /// Called when this class recognizes the start of a drag gesture.
@@ -338,8 +340,10 @@ class _ImmediatePointerState extends MultiDragPointerState {
 class ImmediateMultiDragGestureRecognizer extends MultiDragGestureRecognizer<_ImmediatePointerState> {
   /// Create a gesture recognizer for tracking multiple pointers at once.
   ImmediateMultiDragGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   @override
@@ -387,8 +391,10 @@ class HorizontalMultiDragGestureRecognizer extends MultiDragGestureRecognizer<_H
   /// Create a gesture recognizer for tracking multiple pointers at once
   /// but only if they first move horizontally.
   HorizontalMultiDragGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   @override
@@ -436,8 +442,10 @@ class VerticalMultiDragGestureRecognizer extends MultiDragGestureRecognizer<_Ver
   /// Create a gesture recognizer for tracking multiple pointers at once
   /// but only if they first move vertically.
   VerticalMultiDragGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   @override
@@ -538,9 +546,11 @@ class DelayedMultiDragGestureRecognizer extends MultiDragGestureRecognizer<_Dela
   /// defaults to [kLongPressTimeout] to match [LongPressGestureRecognizer] but
   /// can be changed for specific behaviors.
   DelayedMultiDragGestureRecognizer({
+    [
     this.delay = kLongPressTimeout,
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : assert(delay != null),
        super(debugOwner: debugOwner, kind: kind);
 

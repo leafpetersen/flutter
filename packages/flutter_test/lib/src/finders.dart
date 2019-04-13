@@ -34,7 +34,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder text(String text, { bool skipOffstage = true }) => _TextFinder(text, skipOffstage: skipOffstage);
+  Finder text(String text, { [ bool skipOffstage = true ] }) => _TextFinder(text, skipOffstage: skipOffstage);
 
   /// Looks for widgets that contain a [Text] descendant with `text`
   /// in it.
@@ -53,7 +53,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder widgetWithText(Type widgetType, String text, { bool skipOffstage = true }) {
+  Finder widgetWithText(Type widgetType, String text, { [ bool skipOffstage = true ] }) {
     return find.ancestor(
       of: find.text(text, skipOffstage: skipOffstage),
       matching: find.byType(widgetType, skipOffstage: skipOffstage),
@@ -70,7 +70,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byKey(Key key, { bool skipOffstage = true }) => _KeyFinder(key, skipOffstage: skipOffstage);
+  Finder byKey(Key key, { [ bool skipOffstage = true ] }) => _KeyFinder(key, skipOffstage: skipOffstage);
 
   /// Finds widgets by searching for widgets with a particular type.
   ///
@@ -88,7 +88,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byType(Type type, { bool skipOffstage = true }) => _WidgetTypeFinder(type, skipOffstage: skipOffstage);
+  Finder byType(Type type, { [ bool skipOffstage = true ] }) => _WidgetTypeFinder(type, skipOffstage: skipOffstage);
 
   /// Finds [Icon] widgets containing icon data equal to the `icon`
   /// argument.
@@ -101,7 +101,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byIcon(IconData icon, { bool skipOffstage = true }) => _WidgetIconFinder(icon, skipOffstage: skipOffstage);
+  Finder byIcon(IconData icon, { [ bool skipOffstage = true ] }) => _WidgetIconFinder(icon, skipOffstage: skipOffstage);
 
   /// Looks for widgets that contain an [Icon] descendant displaying [IconData]
   /// `icon` in it.
@@ -120,7 +120,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder widgetWithIcon(Type widgetType, IconData icon, { bool skipOffstage = true }) {
+  Finder widgetWithIcon(Type widgetType, IconData icon, { [ bool skipOffstage = true ] }) {
     return find.ancestor(
       of: find.byIcon(icon),
       matching: find.byType(widgetType),
@@ -143,7 +143,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byElementType(Type type, { bool skipOffstage = true }) => _ElementTypeFinder(type, skipOffstage: skipOffstage);
+  Finder byElementType(Type type, { [ bool skipOffstage = true ] }) => _ElementTypeFinder(type, skipOffstage: skipOffstage);
 
   /// Finds widgets whose current widget is the instance given by the
   /// argument.
@@ -162,7 +162,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byWidget(Widget widget, { bool skipOffstage = true }) => _WidgetFinder(widget, skipOffstage: skipOffstage);
+  Finder byWidget(Widget widget, { [ bool skipOffstage = true ] }) => _WidgetFinder(widget, skipOffstage: skipOffstage);
 
   /// Finds widgets using a widget [predicate].
   ///
@@ -182,7 +182,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byWidgetPredicate(WidgetPredicate predicate, { String description, bool skipOffstage = true }) {
+  Finder byWidgetPredicate(WidgetPredicate predicate, { [ String description, bool skipOffstage = true ] }) {
     return _WidgetPredicateFinder(predicate, description: description, skipOffstage: skipOffstage);
   }
 
@@ -196,7 +196,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byTooltip(String message, { bool skipOffstage = true }) {
+  Finder byTooltip(String message, { [ bool skipOffstage = true ] }) {
     return byWidgetPredicate(
       (Widget widget) => widget is Tooltip && widget.message == message,
       skipOffstage: skipOffstage,
@@ -224,7 +224,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder byElementPredicate(ElementPredicate predicate, { String description, bool skipOffstage = true }) {
+  Finder byElementPredicate(ElementPredicate predicate, { [ String description, bool skipOffstage = true ] }) {
     return _ElementPredicateFinder(predicate, description: description, skipOffstage: skipOffstage);
   }
 
@@ -244,7 +244,7 @@ class CommonFinders {
   ///
   /// If the [skipOffstage] argument is true (the default), then nodes that are
   /// [Offstage] or that are from inactive [Route]s are skipped.
-  Finder descendant({ Finder of, Finder matching, bool matchRoot = false, bool skipOffstage = true }) {
+  Finder descendant({ [ Finder of, Finder matching, bool matchRoot = false, bool skipOffstage = true ] }) {
     return _DescendantFinder(of, matching, matchRoot: matchRoot, skipOffstage: skipOffstage);
   }
 
@@ -269,7 +269,7 @@ class CommonFinders {
   ///
   /// If the [matchRoot] argument is true then the widget(s) specified by [of]
   /// will be matched along with the ancestors.
-  Finder ancestor({ Finder of, Finder matching, bool matchRoot = false }) {
+  Finder ancestor({ [ Finder of, Finder matching, bool matchRoot = false ] }) {
     return _AncestorFinder(of, matching, matchRoot: matchRoot);
   }
 
@@ -294,7 +294,7 @@ class CommonFinders {
   ///
   /// If the `skipOffstage` argument is true (the default), then this skips
   /// nodes that are [Offstage] or that are from inactive [Route]s.
-  Finder bySemanticsLabel(Pattern label, { bool skipOffstage = true }) {
+  Finder bySemanticsLabel(Pattern label, { [ bool skipOffstage = true ] }) {
     if (WidgetsBinding.instance.pipelineOwner.semanticsOwner == null)
       throw StateError('Semantics are not enabled. '
                        'Make sure to call tester.enableSemantics() before using '
@@ -324,7 +324,7 @@ class CommonFinders {
 abstract class Finder {
   /// Initializes a Finder. Used by subclasses to initialize the [skipOffstage]
   /// property.
-  Finder({ this.skipOffstage = true });
+  Finder({ [ this.skipOffstage = true ] });
 
   /// Describes what the finder is looking for. The description should be
   /// a brief English noun phrase describing the finder's pattern.
@@ -403,7 +403,7 @@ abstract class Finder {
   ///
   /// The [at] parameter specifies the location relative to the size of the
   /// target element where the hit test is performed.
-  Finder hitTestable({ Alignment at = Alignment.center }) => _HitTestableFinder(this, at);
+  Finder hitTestable({ [ Alignment at = Alignment.center ] }) => _HitTestableFinder(this, at);
 
   @override
   String toString() {
@@ -512,7 +512,7 @@ class _HitTestableFinder extends ChainedFinder {
 abstract class MatchFinder extends Finder {
   /// Initializes a predicate-based Finder. Used by subclasses to initialize the
   /// [skipOffstage] property.
-  MatchFinder({ bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  MatchFinder({ [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   /// Returns true if the given element matches the pattern.
   ///
@@ -526,7 +526,7 @@ abstract class MatchFinder extends Finder {
 }
 
 class _TextFinder extends MatchFinder {
-  _TextFinder(this.text, { bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  _TextFinder(this.text, { [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   final String text;
 
@@ -549,7 +549,7 @@ class _TextFinder extends MatchFinder {
 }
 
 class _KeyFinder extends MatchFinder {
-  _KeyFinder(this.key, { bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  _KeyFinder(this.key, { [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   final Key key;
 
@@ -563,7 +563,7 @@ class _KeyFinder extends MatchFinder {
 }
 
 class _WidgetTypeFinder extends MatchFinder {
-  _WidgetTypeFinder(this.widgetType, { bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  _WidgetTypeFinder(this.widgetType, { [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   final Type widgetType;
 
@@ -577,7 +577,7 @@ class _WidgetTypeFinder extends MatchFinder {
 }
 
 class _WidgetIconFinder extends MatchFinder {
-  _WidgetIconFinder(this.icon, { bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  _WidgetIconFinder(this.icon, { [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   final IconData icon;
 
@@ -592,7 +592,7 @@ class _WidgetIconFinder extends MatchFinder {
 }
 
 class _ElementTypeFinder extends MatchFinder {
-  _ElementTypeFinder(this.elementType, { bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  _ElementTypeFinder(this.elementType, { [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   final Type elementType;
 
@@ -606,7 +606,7 @@ class _ElementTypeFinder extends MatchFinder {
 }
 
 class _WidgetFinder extends MatchFinder {
-  _WidgetFinder(this.widget, { bool skipOffstage = true }) : super(skipOffstage: skipOffstage);
+  _WidgetFinder(this.widget, { [ bool skipOffstage = true ] }) : super(skipOffstage: skipOffstage);
 
   final Widget widget;
 
@@ -620,7 +620,7 @@ class _WidgetFinder extends MatchFinder {
 }
 
 class _WidgetPredicateFinder extends MatchFinder {
-  _WidgetPredicateFinder(this.predicate, { String description, bool skipOffstage = true })
+  _WidgetPredicateFinder(this.predicate, { [ String description, bool skipOffstage = true ] })
     : _description = description,
       super(skipOffstage: skipOffstage);
 
@@ -637,7 +637,7 @@ class _WidgetPredicateFinder extends MatchFinder {
 }
 
 class _ElementPredicateFinder extends MatchFinder {
-  _ElementPredicateFinder(this.predicate, { String description, bool skipOffstage = true })
+  _ElementPredicateFinder(this.predicate, { [ String description, bool skipOffstage = true ] })
     : _description = description,
       super(skipOffstage: skipOffstage);
 
@@ -657,8 +657,10 @@ class _DescendantFinder extends Finder {
   _DescendantFinder(
     this.ancestor,
     this.descendant, {
+    [
     this.matchRoot = false,
     bool skipOffstage = true,
+  ]
   }) : super(skipOffstage: skipOffstage);
 
   final Finder ancestor;
@@ -690,7 +692,7 @@ class _DescendantFinder extends Finder {
 }
 
 class _AncestorFinder extends Finder {
-  _AncestorFinder(this.descendant, this.ancestor, { this.matchRoot = false }) : super(skipOffstage: false);
+  _AncestorFinder(this.descendant, this.ancestor, { [ this.matchRoot = false ] }) : super(skipOffstage: false);
 
   final Finder ancestor;
   final Finder descendant;

@@ -123,7 +123,7 @@ abstract class RawKeyEventData {
   /// side of the keyboard. Defaults to checking for the key being down on
   /// either side of the keyboard. If there is only one instance of the key on
   /// the keyboard, then [side] is ignored.
-  bool isModifierPressed(ModifierKey key, { KeyboardSide side = KeyboardSide.any });
+  bool isModifierPressed(ModifierKey key, { [ KeyboardSide side = KeyboardSide.any ] });
 
   /// Returns a [KeyboardSide] enum value that describes which side or sides of
   /// the given keyboard modifier key were pressed at the time of this event.
@@ -237,8 +237,10 @@ abstract class RawKeyEvent {
   /// Initializes fields for subclasses, and provides a const constructor for
   /// const subclasses.
   const RawKeyEvent({
-    @required this.data,
+     this.data,
+    [
     this.character,
+  ]
   });
 
   /// Creates a concrete [RawKeyEvent] class from a message in the form received
@@ -416,8 +418,10 @@ abstract class RawKeyEvent {
 class RawKeyDownEvent extends RawKeyEvent {
   /// Creates a key event that represents the user pressing a key.
   const RawKeyDownEvent({
-    @required RawKeyEventData data,
+     RawKeyEventData data,
+    [
     String character,
+  ]
   }) : super(data: data, character: character);
 }
 
@@ -429,8 +433,10 @@ class RawKeyDownEvent extends RawKeyEvent {
 class RawKeyUpEvent extends RawKeyEvent {
   /// Creates a key event that represents the user releasing a key.
   const RawKeyUpEvent({
-    @required RawKeyEventData data,
+     RawKeyEventData data,
+    [
     String character,
+  ]
   }) : super(data: data, character: character);
 }
 

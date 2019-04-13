@@ -47,7 +47,7 @@ class RunningProcessInfo {
   }
 }
 
-Future<bool> killProcess(int pid, {ProcessManager processManager}) async {
+Future<bool> killProcess(int pid, {[ProcessManager processManager]}) async {
   assert(pid != null, 'Must specify a pid to kill');
   processManager ??= const LocalProcessManager();
   ProcessResult result;
@@ -69,8 +69,10 @@ Future<bool> killProcess(int pid, {ProcessManager processManager}) async {
 }
 
 Stream<RunningProcessInfo> getRunningProcesses({
+  [
   String processName,
   ProcessManager processManager,
+]
 }) {
   processManager ??= const LocalProcessManager();
   if (Platform.isWindows) {

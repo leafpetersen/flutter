@@ -62,7 +62,7 @@ void main() {
   });
 }
 
-Future<Process> _run({@required Device device, @required List<String> command, @required Function(String) stdoutListener}) async {
+Future<Process> _run({ Device device,  List<String> command,  Function(String) stdoutListener}) async {
   final Directory appDir = dir(path.join(flutterDirectory.path, 'dev/integration_tests/named_isolates'));
   Process runner;
   bool observatoryConnected = false;

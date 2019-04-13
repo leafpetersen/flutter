@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 // This is a regression test for https://github.com/flutter/flutter/issues/5588.
 
 class OrderSwitcher extends StatefulWidget {
-  const OrderSwitcher({ Key key, this.a, this.b }) : super(key: key);
+  const OrderSwitcher({ [ Key key, this.a, this.b ] }) : super(key: key);
 
   final Widget a;
   final Widget b;
@@ -57,7 +57,7 @@ class DummyStatefulWidgetState extends State<DummyStatefulWidget> {
 }
 
 class RekeyableDummyStatefulWidgetWrapper extends StatefulWidget {
-  const RekeyableDummyStatefulWidgetWrapper({ this.child, this.initialKey });
+  const RekeyableDummyStatefulWidgetWrapper({ [ this.child, this.initialKey ] });
   final Widget child;
   final GlobalKey initialKey;
   @override

@@ -27,13 +27,17 @@ class DefaultTextStyle extends InheritedWidget {
   /// The [maxLines] property may be null (and indeed defaults to null), but if
   /// it is not null, it must be greater than zero.
   const DefaultTextStyle({
-    Key key,
-    @required this.style,
+    [
+    Key key
+    ]
+     this.style,
+    [
     this.textAlign,
     this.softWrap = true,
     this.overflow = TextOverflow.clip,
-    this.maxLines,
-    @required Widget child,
+    this.maxLines
+    ]
+     Widget child,
   }) : assert(style != null),
        assert(softWrap != null),
        assert(overflow != null),
@@ -71,13 +75,15 @@ class DefaultTextStyle extends InheritedWidget {
   /// See the source below for an example of how to do this (since that's
   /// essentially what this constructor does).
   static Widget merge({
+    [
     Key key,
     TextStyle style,
     TextAlign textAlign,
     bool softWrap,
     TextOverflow overflow,
-    int maxLines,
-    @required Widget child,
+    int maxLines
+    ]
+     Widget child,
   }) {
     assert(child != null);
     return Builder(
@@ -226,6 +232,7 @@ class Text extends StatelessWidget {
   /// The [data] parameter must not be null.
   const Text(
     this.data, {
+    [
     Key key,
     this.style,
     this.strutStyle,
@@ -237,6 +244,7 @@ class Text extends StatelessWidget {
     this.textScaleFactor,
     this.maxLines,
     this.semanticsLabel,
+  ]
   }) : assert(
          data != null,
          'A non-null String must be provided to a Text widget.',
@@ -249,6 +257,7 @@ class Text extends StatelessWidget {
   /// The [textSpan] parameter must not be null.
   const Text.rich(
     this.textSpan, {
+    [
     Key key,
     this.style,
     this.strutStyle,
@@ -260,6 +269,7 @@ class Text extends StatelessWidget {
     this.textScaleFactor,
     this.maxLines,
     this.semanticsLabel,
+  ]
   }) : assert(
          textSpan != null,
          'A non-null TextSpan must be provided to a Text.rich widget.',

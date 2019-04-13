@@ -76,7 +76,7 @@ void main() {
       final List<Map<Symbol, dynamic>> namedArgs = <Map<Symbol, dynamic>>[];
       String flutter;
 
-      Future<Uint8List> fakeHttpReader(Uri url, {Map<String, String> headers}) {
+      Future<Uint8List> fakeHttpReader(Uri url, {[Map<String, String> headers]}) {
         return Future<Uint8List>.value(Uint8List(0));
       }
 

@@ -212,7 +212,7 @@ class SimDevice {
 }
 
 class IOSSimulator extends Device {
-  IOSSimulator(String id, { this.name, this.category }) : super(id);
+  IOSSimulator(String id, { [ this.name, this.category ] }) : super(id);
 
   @override
   final String name;
@@ -292,6 +292,7 @@ class IOSSimulator extends Device {
   @override
   Future<LaunchResult> startApp(
     ApplicationPackage package, {
+    [
     String mainPath,
     String route,
     DebuggingOptions debuggingOptions,
@@ -299,6 +300,7 @@ class IOSSimulator extends Device {
     bool prebuiltApplication = false,
     bool usesTerminalUi = true,
     bool ipv6 = false,
+  ]
   }) async {
     if (!prebuiltApplication) {
       printTrace('Building ${package.name} for $id.');
@@ -433,7 +435,7 @@ class IOSSimulator extends Device {
   }
 
   @override
-  DeviceLogReader getLogReader({ ApplicationPackage app }) {
+  DeviceLogReader getLogReader({ [ ApplicationPackage app ] }) {
     assert(app is IOSApp);
     _logReaders ??= <ApplicationPackage, _IOSSimulatorLogReader>{};
     return _logReaders.putIfAbsent(app, () => _IOSSimulatorLogReader(this, app));
@@ -699,7 +701,7 @@ class _IOSSimulatorDevicePortForwarder extends DevicePortForwarder {
   }
 
   @override
-  Future<int> forward(int devicePort, { int hostPort }) async {
+  Future<int> forward(int devicePort, { [ int hostPort ] }) async {
     if (hostPort == null || hostPort == 0) {
       hostPort = devicePort;
     }

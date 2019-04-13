@@ -16,9 +16,11 @@ class SpringDescription {
   ///
   /// See [mass], [stiffness], and [damping] for the units of the arguments.
   const SpringDescription({
+    [
     this.mass,
     this.stiffness,
     this.damping,
+  ]
   });
 
   /// Creates a spring given the mass (m), stiffness (k), and damping ratio (ζ).
@@ -29,9 +31,11 @@ class SpringDescription {
   /// See [mass] and [stiffness] for the units for those arguments. The damping
   /// ratio is unitless.
   SpringDescription.withDampingRatio({
+    [
     this.mass,
     this.stiffness,
     double ratio = 1.0,
+  ]
   }) : damping = ratio * 2.0 * math.sqrt(mass * stiffness);
 
   /// The mass of the spring (m). The units are arbitrary, but all springs
@@ -92,7 +96,9 @@ class SpringSimulation extends Simulation {
     double start,
     double end,
     double velocity, {
+    [
     Tolerance tolerance = Tolerance.defaultTolerance,
+  ]
   }) : _endPosition = end,
        _solution = _SpringSolution(spring, start - end, velocity),
        super(tolerance: tolerance);
@@ -135,7 +141,9 @@ class ScrollSpringSimulation extends SpringSimulation {
     double start,
     double end,
     double velocity, {
+    [
     Tolerance tolerance = Tolerance.defaultTolerance,
+  ]
   }) : super(spring, start, end, velocity, tolerance: tolerance);
 
   @override

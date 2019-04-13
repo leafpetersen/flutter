@@ -92,9 +92,9 @@ String _timelineStreamsToString(List<TimelineStream> streams) {
 final Logger _log = Logger('FlutterDriver');
 
 Future<T> _warnIfSlow<T>({
-  @required Future<T> future,
-  @required Duration timeout,
-  @required String message,
+   Future<T> future,
+   Duration timeout,
+   String message,
 }) {
   assert(future != null);
   assert(timeout != null);
@@ -136,8 +136,10 @@ class FlutterDriver {
     this._serviceClient,
     this._peer,
     this._appIsolate, {
+    [
     bool printCommunication = false,
     bool logCommunicationToFile = true,
+  ]
   }) : _printCommunication = printCommunication,
        _logCommunicationToFile = logCommunicationToFile,
        _driverId = _nextDriverId++;
@@ -195,11 +197,13 @@ class FlutterDriver {
   /// fail (completing with an error). A timeout can be applied by the caller
   /// using [Future.timeout] if necessary.
   static Future<FlutterDriver> connect({
+    [
     String dartVmServiceUrl,
     bool printCommunication = false,
     bool logCommunicationToFile = true,
     int isolateNumber,
     Pattern fuchsiaModuleTarget,
+  ]
   }) async {
     // If running on a Fuchsia device, connect to the first isolate whose name
     // matches FUCHSIA_MODULE_TARGET.
@@ -443,27 +447,27 @@ class FlutterDriver {
   }
 
   /// Checks the status of the Flutter Driver extension.
-  Future<Health> checkHealth({ Duration timeout }) async {
+  Future<Health> checkHealth({ [ Duration timeout ] }) async {
     return Health.fromJson(await _sendCommand(GetHealth(timeout: timeout)));
   }
 
   /// Returns a dump of the render tree.
-  Future<RenderTree> getRenderTree({ Duration timeout }) async {
+  Future<RenderTree> getRenderTree({ [ Duration timeout ] }) async {
     return RenderTree.fromJson(await _sendCommand(GetRenderTree(timeout: timeout)));
   }
 
   /// Taps at the center of the widget located by [finder].
-  Future<void> tap(SerializableFinder finder, { Duration timeout }) async {
+  Future<void> tap(SerializableFinder finder, { [ Duration timeout ] }) async {
     await _sendCommand(Tap(finder, timeout: timeout));
   }
 
   /// Waits until [finder] locates the target.
-  Future<void> waitFor(SerializableFinder finder, { Duration timeout }) async {
+  Future<void> waitFor(SerializableFinder finder, { [ Duration timeout ] }) async {
     await _sendCommand(WaitFor(finder, timeout: timeout));
   }
 
   /// Waits until [finder] can no longer locate the target.
-  Future<void> waitForAbsent(SerializableFinder finder, { Duration timeout }) async {
+  Future<void> waitForAbsent(SerializableFinder finder, { [ Duration timeout ] }) async {
     await _sendCommand(WaitForAbsent(finder, timeout: timeout));
   }
 
@@ -471,7 +475,7 @@ class FlutterDriver {
   ///
   /// Use this method when you need to wait for the moment when the application
   /// becomes "stable", for example, prior to taking a [screenshot].
-  Future<void> waitUntilNoTransientCallbacks({ Duration timeout }) async {
+  Future<void> waitUntilNoTransientCallbacks({ [ Duration timeout ] }) async {
     await _sendCommand(WaitUntilNoTransientCallbacks(timeout: timeout));
   }
 
@@ -488,7 +492,7 @@ class FlutterDriver {
   ///
   /// The move events are generated at a given [frequency] in Hz (or events per
   /// second). It defaults to 60Hz.
-  Future<void> scroll(SerializableFinder finder, double dx, double dy, Duration duration, { int frequency = 60, Duration timeout }) async {
+  Future<void> scroll(SerializableFinder finder, double dx, double dy, Duration duration, { [ int frequency = 60, Duration timeout ] }) async {
     await _sendCommand(Scroll(finder, dx, dy, duration, frequency, timeout: timeout));
   }
 
@@ -499,7 +503,7 @@ class FlutterDriver {
   /// that lazily creates its children, like [ListView] or [CustomScrollView],
   /// then this method may fail because [finder] doesn't actually exist.
   /// The [scrollUntilVisible] method can be used in this case.
-  Future<void> scrollIntoView(SerializableFinder finder, { double alignment = 0.0, Duration timeout }) async {
+  Future<void> scrollIntoView(SerializableFinder finder, { [ double alignment = 0.0, Duration timeout ] }) async {
     await _sendCommand(ScrollIntoView(finder, alignment: alignment, timeout: timeout));
   }
 
@@ -528,10 +532,12 @@ class FlutterDriver {
   Future<void> scrollUntilVisible(
     SerializableFinder scrollable,
     SerializableFinder item, {
+    [
     double alignment = 0.0,
     double dxScroll = 0.0,
     double dyScroll = 0.0,
     Duration timeout,
+  ]
   }) async {
     assert(scrollable != null);
     assert(item != null);
@@ -556,7 +562,7 @@ class FlutterDriver {
   }
 
   /// Returns the text in the `Text` widget located by [finder].
-  Future<String> getText(SerializableFinder finder, { Duration timeout }) async {
+  Future<String> getText(SerializableFinder finder, { [ Duration timeout ] }) async {
     return GetTextResult.fromJson(await _sendCommand(GetText(finder, timeout: timeout))).text;
   }
 
@@ -592,7 +598,7 @@ class FlutterDriver {
   ///   await driver.waitFor(find.text('World!'));  // verify new text appears
   /// });
   /// ```
-  Future<void> enterText(String text, { Duration timeout }) async {
+  Future<void> enterText(String text, { [ Duration timeout ] }) async {
     await _sendCommand(EnterText(text, timeout: timeout));
   }
 
@@ -609,7 +615,7 @@ class FlutterDriver {
   /// When enabled, the operating system's configured keyboard will not be
   /// invoked when the widget is focused, as the [SystemChannels.textInput]
   /// channel will be mocked out.
-  Future<void> setTextEntryEmulation({ @required bool enabled, Duration timeout }) async {
+  Future<void> setTextEntryEmulation({  bool enabled, [ Duration timeout ] }) async {
     assert(enabled != null);
     await _sendCommand(SetTextEntryEmulation(enabled, timeout: timeout));
   }
@@ -620,7 +626,7 @@ class FlutterDriver {
   /// It's expected that the application has registered a [DataHandler]
   /// callback in [enableFlutterDriverExtension] that can successfully handle
   /// these requests.
-  Future<String> requestData(String message, { Duration timeout }) async {
+  Future<String> requestData(String message, { [ Duration timeout ] }) async {
     return RequestDataResult.fromJson(await _sendCommand(RequestData(message, timeout: timeout))).message;
   }
 
@@ -628,7 +634,7 @@ class FlutterDriver {
   ///
   /// Returns true when the call actually changed the state from on to off or
   /// vice versa.
-  Future<bool> setSemantics(bool enabled, { Duration timeout }) async {
+  Future<bool> setSemantics(bool enabled, { [ Duration timeout ] }) async {
     final SetSemanticsResult result = SetSemanticsResult.fromJson(await _sendCommand(SetSemantics(enabled, timeout: timeout)));
     return result.changedState;
   }
@@ -641,7 +647,7 @@ class FlutterDriver {
   ///
   /// Semantics must be enabled to use this method, either using a platform
   /// specific shell command or [setSemantics].
-  Future<int> getSemanticsId(SerializableFinder finder, { Duration timeout }) async {
+  Future<int> getSemanticsId(SerializableFinder finder, { [ Duration timeout ] }) async {
     final Map<String, dynamic> jsonResponse = await _sendCommand(GetSemanticsId(finder, timeout: timeout));
     final GetSemanticsIdResult result = GetSemanticsIdResult.fromJson(jsonResponse);
     return result.id;
@@ -735,8 +741,10 @@ class FlutterDriver {
   /// operation exceeds the specified timeout; it does not actually cancel the
   /// operation.
   Future<void> startTracing({
+    [
     List<TimelineStream> streams = _defaultStreams,
     Duration timeout = _kUnusuallyLongTimeout,
+  ]
   }) async {
     assert(streams != null && streams.isNotEmpty);
     assert(timeout != null);
@@ -763,7 +771,9 @@ class FlutterDriver {
   /// operation exceeds the specified timeout; it does not actually cancel the
   /// operation.
   Future<Timeline> stopTracingAndDownloadTimeline({
+    [
     Duration timeout = _kUnusuallyLongTimeout,
+  ]
   }) async {
     assert(timeout != null);
     try {
@@ -811,8 +821,10 @@ class FlutterDriver {
   /// running the benchmark in profile mode instead.
   Future<Timeline> traceAction(
     Future<dynamic> action(), {
+    [
     List<TimelineStream> streams = _defaultStreams,
     bool retainPriorEvents = false,
+  ]
   }) async {
     if (!retainPriorEvents) {
       await clearTimeline();
@@ -832,7 +844,9 @@ class FlutterDriver {
   /// operation exceeds the specified timeout; it does not actually cancel the
   /// operation.
   Future<void> clearTimeline({
+    [
     Duration timeout = _kUnusuallyLongTimeout,
+  ]
   }) async {
     assert(timeout != null);
     try {
@@ -866,7 +880,7 @@ class FlutterDriver {
   /// With frame sync disabled, its the responsibility of the test author to
   /// ensure that no action is performed while the app is undergoing a
   /// transition to avoid flakiness.
-  Future<T> runUnsynchronized<T>(Future<T> action(), { Duration timeout }) async {
+  Future<T> runUnsynchronized<T>(Future<T> action(), { [ Duration timeout ] }) async {
     await _sendCommand(SetFrameSync(false, timeout: timeout));
     T result;
     try {

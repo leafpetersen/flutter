@@ -42,7 +42,7 @@ const String kFlutterToolsScriptFileName = 'flutter_tools.dart'; // in //flutter
 const String kFlutterEnginePackageName = 'sky_engine';
 
 class FlutterCommandRunner extends CommandRunner<void> {
-  FlutterCommandRunner({ bool verboseHelp = false }) : super(
+  FlutterCommandRunner({ [ bool verboseHelp = false ] }) : super(
     'flutter',
     'Manage your Flutter app development.\n'
       '\n'

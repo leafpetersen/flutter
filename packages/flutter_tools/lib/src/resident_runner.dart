@@ -30,7 +30,8 @@ import 'vmservice.dart';
 class FlutterDevice {
   FlutterDevice(
     this.device, {
-    @required this.trackWidgetCreation,
+     this.trackWidgetCreation,
+    [
     this.dillOutputPath,
     this.fileSystemRoots,
     this.fileSystemScheme,
@@ -38,6 +39,7 @@ class FlutterDevice {
     TargetModel targetModel = TargetModel.flutter,
     List<String> experimentalFlags,
     ResidentCompiler generator,
+  ]
   }) : assert(trackWidgetCreation != null),
        generator = generator ?? ResidentCompiler(
          artifacts.getArtifactPath(Artifact.flutterPatchedSdkPath),
@@ -51,15 +53,19 @@ class FlutterDevice {
   /// Create a [FlutterDevice] with optional code generation enabled.
   static Future<FlutterDevice> create(
     Device device, {
-    @required bool trackWidgetCreation,
+     bool trackWidgetCreation,
+    [
     String dillOutputPath,
     List<String> fileSystemRoots,
     String fileSystemScheme,
-    String viewFilter,
-    @required String target,
+    String viewFilter
+    ]
+     String target,
+    [
     TargetModel targetModel = TargetModel.flutter,
     List<String> experimentalFlags,
     ResidentCompiler generator,
+  ]
   }) async {
     ResidentCompiler generator;
     final FlutterProject flutterProject = await FlutterProject.current();
@@ -113,9 +119,11 @@ class FlutterDevice {
   /// This ensures that the reload process follows the normal orchestration of
   /// the Flutter Tools and not just the VM internal service.
   Future<void> _connect({
+    [
     ReloadSources reloadSources,
     Restart restart,
     CompileExpression compileExpression,
+  ]
   }) async {
     if (vmServices != null)
       return;
@@ -185,7 +193,9 @@ class FlutterDevice {
   Future<Uri> setupDevFS(
     String fsName,
     Directory rootDirectory, {
+    [
     String packagesFilePath,
+  ]
   }) {
     // One devFS per device. Shared by all running instances.
     devFS = DevFS(
@@ -199,7 +209,9 @@ class FlutterDevice {
 
   List<Future<Map<String, dynamic>>> reloadSources(
     String entryPath, {
+    [
     bool pause = false,
+  ]
   }) {
     final Uri deviceEntryUri = devFS.baseUri.resolveUri(fs.path.toUri(entryPath));
     final Uri devicePackagesUri = devFS.baseUri.resolve('.packages');
@@ -293,7 +305,7 @@ class FlutterDevice {
     }
   }
 
-  Future<String> togglePlatform({ String from }) async {
+  Future<String> togglePlatform({ [ String from ] }) async {
     String to;
     switch (from) {
       case 'iOS':
@@ -330,9 +342,11 @@ class FlutterDevice {
   }
 
   Future<int> runHot({
+    [
     HotRunner hotRunner,
     String route,
     bool shouldBuild,
+  ]
   }) async {
     final bool prebuiltMode = hotRunner.applicationBinary != null;
     final String modeName = hotRunner.debuggingOptions.buildInfo.friendlyModeName;
@@ -386,9 +400,11 @@ class FlutterDevice {
 
 
   Future<int> runCold({
+    [
     ColdRunner coldRunner,
     String route,
     bool shouldBuild = true,
+  ]
   }) async {
     final TargetPlatform targetPlatform = await device.targetPlatform;
     package = await ApplicationPackageFactory.instance.getPackageForPlatform(
@@ -445,6 +461,7 @@ class FlutterDevice {
   }
 
   Future<UpdateFSReport> updateDevFS({
+    [
     String mainPath,
     String target,
     AssetBundle bundle,
@@ -453,8 +470,9 @@ class FlutterDevice {
     bool bundleDirty = false,
     bool fullRestart = false,
     String projectRootPath,
-    String pathToReload,
-    @required List<Uri> invalidatedFiles,
+    String pathToReload
+    ]
+     List<Uri> invalidatedFiles,
   }) async {
     final Status devFSStatus = logger.startProgress(
       'Syncing files to device ${device.name}...',
@@ -497,6 +515,7 @@ class FlutterDevice {
 abstract class ResidentRunner {
   ResidentRunner(
     this.flutterDevices, {
+    [
     this.target,
     this.debuggingOptions,
     this.usesTerminalUI = true,
@@ -505,6 +524,7 @@ abstract class ResidentRunner {
     this.saveCompilationTrace,
     this.stayResident,
     this.ipv6,
+  ]
   }) {
     _mainPath = findMainDartFile(target);
     _projectRootPath = projectRootPath ?? fs.currentDirectory.path;
@@ -528,7 +548,7 @@ abstract class ResidentRunner {
   String get projectRootPath => _projectRootPath;
   String _mainPath;
   String get mainPath => _mainPath;
-  String getReloadPath({ bool fullRestart }) => mainPath + (fullRestart ? '' : '.incremental') + '.dill';
+  String getReloadPath({ [ bool fullRestart ] }) => mainPath + (fullRestart ? '' : '.incremental') + '.dill';
 
   AssetBundle _assetBundle;
   AssetBundle get assetBundle => _assetBundle;
@@ -554,20 +574,24 @@ abstract class ResidentRunner {
   /// Returns the exit code that we should use for the flutter tool process; 0
   /// for success, 1 for user error (e.g. bad arguments), 2 for other failures.
   Future<int> run({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
     String route,
     bool shouldBuild = true,
+  ]
   });
 
   Future<int> attach({
+    [
     Completer<DebugConnectionInfo> connectionInfoCompleter,
     Completer<void> appStartedCompleter,
+  ]
   });
 
   bool get supportsRestart => false;
 
-  Future<OperationResult> restart({ bool fullRestart = false, bool pauseAfterRestart = false, String reason }) {
+  Future<OperationResult> restart({ [ bool fullRestart = false, bool pauseAfterRestart = false, String reason ] }) {
     final String mode = isRunningProfile ? 'profile' :
         isRunningRelease ? 'release' : 'this';
     throw '${fullRestart ? 'Restart' : 'Reload'} is not supported in $mode mode';
@@ -778,9 +802,11 @@ abstract class ResidentRunner {
   // a string as the error object, which will be used by the caller (attach())
   // to display an error message.
   Future<void> connectToServiceProtocol({
+    [
     ReloadSources reloadSources,
     Restart restart,
     CompileExpression compileExpression,
+  ]
   }) async {
     if (!debuggingOptions.debuggingEnabled)
       throw 'The service protocol is not enabled.';
@@ -982,7 +1008,7 @@ abstract class ResidentRunner {
   }
 
   /// Called to print help to the terminal.
-  void printHelp({ @required bool details });
+  void printHelp({  bool details });
 
   void printHelpDetails() {
     if (supportsServiceProtocol) {
@@ -1014,7 +1040,7 @@ abstract class ResidentRunner {
 }
 
 class OperationResult {
-  OperationResult(this.code, this.message, { this.hintMessage, this.hintId });
+  OperationResult(this.code, this.message, { [ this.hintMessage, this.hintId ] });
 
   /// The result of the operation; a non-zero code indicates a failure.
   final int code;
@@ -1066,7 +1092,7 @@ Future<String> getMissingPackageHintForPlatform(TargetPlatform platform) async {
 }
 
 class DebugConnectionInfo {
-  DebugConnectionInfo({ this.httpUri, this.wsUri, this.baseUri });
+  DebugConnectionInfo({ [ this.httpUri, this.wsUri, this.baseUri ] });
 
   // TODO(danrubel): the httpUri field should be removed as part of
   // https://github.com/flutter/flutter/issues/7050

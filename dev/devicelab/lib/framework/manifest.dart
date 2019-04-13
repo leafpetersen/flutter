@@ -28,12 +28,12 @@ class Manifest {
 /// A CI task.
 class ManifestTask {
   ManifestTask._({
-    @required this.name,
-    @required this.description,
-    @required this.stage,
-    @required this.requiredAgentCapabilities,
-    @required this.isFlaky,
-    @required this.timeoutInMinutes,
+     this.name,
+     this.description,
+     this.stage,
+     this.requiredAgentCapabilities,
+     this.isFlaky,
+     this.timeoutInMinutes,
   }) {
     final String taskName = 'task "$name"';
     _checkIsNotBlank(name, 'Task name', taskName);

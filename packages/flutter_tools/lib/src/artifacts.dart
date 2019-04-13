@@ -87,8 +87,8 @@ String _artifactToFileName(Artifact artifact, [ TargetPlatform platform, BuildMo
 
 class EngineBuildPaths {
   const EngineBuildPaths({
-    @required this.targetEngine,
-    @required this.hostEngine,
+     this.targetEngine,
+     this.hostEngine,
   }) : assert(targetEngine != null),
        assert(hostEngine != null);
 
@@ -342,11 +342,13 @@ class OverrideArtifacts implements Artifacts {
   ///
   /// [parent] must be provided.
   OverrideArtifacts({
-    @required this.parent,
+     this.parent,
+    [
     this.frontendServer,
     this.engineDartBinary,
     this.platformKernelDill,
     this.flutterPatchedSdk,
+  ]
   }) : assert(parent != null);
 
   final Artifacts parent;

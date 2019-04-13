@@ -46,7 +46,7 @@ class SecondWidgetState extends State<SecondWidget> {
 typedef ExceptionCallback = void Function(dynamic exception);
 
 class ThirdWidget extends StatelessWidget {
-  const ThirdWidget({ this.targetKey, this.onException });
+  const ThirdWidget({ [ this.targetKey, this.onException ] });
 
   final Key targetKey;
   final ExceptionCallback onException;
@@ -68,7 +68,7 @@ class ThirdWidget extends StatelessWidget {
 }
 
 class OnTapPage extends StatelessWidget {
-  const OnTapPage({ Key key, this.id, this.onTap }) : super(key: key);
+  const OnTapPage({ [ Key key, this.id, this.onTap ] }) : super(key: key);
 
   final String id;
   final VoidCallback onTap;
@@ -120,7 +120,7 @@ class TestObserver extends NavigatorObserver {
   }
 
   @override
-  void didReplace({ Route<dynamic> oldRoute, Route<dynamic> newRoute }) {
+  void didReplace({ [ Route<dynamic> oldRoute, Route<dynamic> newRoute ] }) {
     if (onReplaced != null)
       onReplaced(newRoute, oldRoute);
   }

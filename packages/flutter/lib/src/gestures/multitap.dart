@@ -36,7 +36,7 @@ typedef GestureMultiTapCancelCallback = void Function(int pointer);
 /// CountdownZoned tracks whether the specified duration has elapsed since
 /// creation, honoring [Zone].
 class _CountdownZoned {
-  _CountdownZoned({ @required Duration duration })
+  _CountdownZoned({  Duration duration })
        : assert(duration != null) {
     _timer = Timer(duration, _onTimeout);
   }
@@ -55,9 +55,11 @@ class _CountdownZoned {
 /// larger gesture.
 class _TapTracker {
   _TapTracker({
-    @required PointerDownEvent event,
-    this.entry,
-    @required Duration doubleTapMinTime,
+     PointerDownEvent event,
+    [
+    this.entry
+    ]
+     Duration doubleTapMinTime,
   }) : assert(doubleTapMinTime != null),
        assert(event != null),
        pointer = event.pointer,
@@ -102,8 +104,10 @@ class DoubleTapGestureRecognizer extends GestureRecognizer {
   ///
   /// {@macro flutter.gestures.gestureRecognizer.kind}
   DoubleTapGestureRecognizer({
+    [
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   // Implementation notes:
@@ -270,9 +274,11 @@ class DoubleTapGestureRecognizer extends GestureRecognizer {
 class _TapGesture extends _TapTracker {
 
   _TapGesture({
+    [
     this.gestureRecognizer,
     PointerEvent event,
     Duration longTapDelay,
+  ]
   }) : _lastPosition = event.position,
        super(
     event: event,
@@ -359,9 +365,11 @@ class MultiTapGestureRecognizer extends GestureRecognizer {
   /// The [longTapDelay] defaults to [Duration.zero], which means
   /// [onLongTapDown] is called immediately after [onTapDown].
   MultiTapGestureRecognizer({
+    [
     this.longTapDelay = Duration.zero,
     Object debugOwner,
     PointerDeviceKind kind,
+  ]
   }) : super(debugOwner: debugOwner, kind: kind);
 
   /// A pointer that might cause a tap has contacted the screen at a particular

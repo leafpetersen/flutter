@@ -41,11 +41,13 @@ abstract class ScrollMetrics {
   /// is useful to examine hypothetical situations, for example "would applying
   /// this delta unmodified take the position [outOfRange]?".
   ScrollMetrics copyWith({
+    [
     double minScrollExtent,
     double maxScrollExtent,
     double pixels,
     double viewportDimension,
     AxisDirection axisDirection,
+  ]
   }) {
     return FixedScrollMetrics(
       minScrollExtent: minScrollExtent ?? this.minScrollExtent,
@@ -118,11 +120,11 @@ abstract class ScrollMetrics {
 class FixedScrollMetrics extends ScrollMetrics {
   /// Creates an immutable snapshot of values associated with a [Scrollable] viewport.
   FixedScrollMetrics({
-    @required this.minScrollExtent,
-    @required this.maxScrollExtent,
-    @required this.pixels,
-    @required this.viewportDimension,
-    @required this.axisDirection,
+     this.minScrollExtent,
+     this.maxScrollExtent,
+     this.pixels,
+     this.viewportDimension,
+     this.axisDirection,
   });
 
   @override

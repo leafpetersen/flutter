@@ -22,6 +22,7 @@ import 'watcher.dart';
 /// Runs tests using package:test and the Flutter engine.
 Future<int> runTests(
   List<String> testFiles, {
+  [
   Directory workDir,
   List<String> names = const <String>[],
   List<String> plainNames = const <String>[],
@@ -33,10 +34,13 @@ Future<int> runTests(
   Map<String, String> precompiledDillFiles,
   bool trackWidgetCreation = false,
   bool updateGoldens = false,
-  TestWatcher watcher,
-  @required int concurrency,
+  TestWatcher watcher
+  ]
+   int concurrency,
+  [
   FlutterProject flutterProject,
   String icudtlPath,
+]
 }) async {
   // Compute the command-line arguments for package:test.
   final List<String> testArgs = <String>[];

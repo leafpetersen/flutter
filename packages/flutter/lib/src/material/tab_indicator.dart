@@ -20,8 +20,10 @@ class UnderlineTabIndicator extends Decoration {
   ///
   /// The [borderSide] and [insets] arguments must not be null.
   const UnderlineTabIndicator({
+    [
     this.borderSide = const BorderSide(width: 2.0, color: Colors.white),
     this.insets = EdgeInsets.zero,
+  ]
   }) : assert(borderSide != null),
        assert(insets != null);
 

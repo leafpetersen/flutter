@@ -17,9 +17,11 @@ class IconTheme extends InheritedWidget {
   ///
   /// Both [data] and [child] arguments must not be null.
   const IconTheme({
-    Key key,
-    @required this.data,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.data,
+     Widget child,
   }) : assert(data != null),
        assert(child != null),
        super(key: key, child: child);
@@ -29,9 +31,11 @@ class IconTheme extends InheritedWidget {
   ///
   /// The [data] and [child] arguments must not be null.
   static Widget merge({
-    Key key,
-    @required IconThemeData data,
-    @required Widget child,
+    [
+    Key key
+    ]
+     IconThemeData data,
+     Widget child,
   }) {
     return Builder(
       builder: (BuildContext context) {

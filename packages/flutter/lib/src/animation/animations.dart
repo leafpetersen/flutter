@@ -371,9 +371,11 @@ class CurvedAnimation extends Animation<double> with AnimationWithParentMixin<do
   ///
   /// The parent and curve arguments must not be null.
   CurvedAnimation({
-    @required this.parent,
-    @required this.curve,
+     this.parent,
+     this.curve,
+    [
     this.reverseCurve,
+  ]
   }) : assert(parent != null),
        assert(curve != null) {
     _updateCurveDirection(parent.status);
@@ -492,7 +494,7 @@ class TrainHoppingAnimation extends Animation<double>
   /// The current train argument must not be null but the next train argument
   /// can be null. If the next train is null, then this object will just proxy
   /// the first animation and never hop.
-  TrainHoppingAnimation(this._currentTrain, this._nextTrain, { this.onSwitchedTrain })
+  TrainHoppingAnimation(this._currentTrain, this._nextTrain, { [ this.onSwitchedTrain ] })
       : assert(_currentTrain != null) {
     if (_nextTrain != null) {
       if (_currentTrain.value == _nextTrain.value) {
@@ -613,8 +615,8 @@ abstract class CompoundAnimation<T> extends Animation<T>
   /// Creates a CompoundAnimation. Both arguments must be non-null. Either can
   /// be a CompoundAnimation itself to combine multiple animations.
   CompoundAnimation({
-    @required this.first,
-    @required this.next,
+     this.first,
+     this.next,
   }) : assert(first != null),
        assert(next != null);
 
@@ -684,8 +686,10 @@ abstract class CompoundAnimation<T> extends Animation<T>
 class AnimationMean extends CompoundAnimation<double> {
   /// Creates an animation that tracks the mean of two other animations.
   AnimationMean({
+    [
     Animation<double> left,
     Animation<double> right,
+  ]
   }) : super(first: left, next: right);
 
   @override

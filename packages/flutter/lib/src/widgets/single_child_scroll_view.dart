@@ -196,6 +196,7 @@ import 'scrollable.dart';
 class SingleChildScrollView extends StatelessWidget {
   /// Creates a box in which a single widget can be scrolled.
   const SingleChildScrollView({
+    [
     Key key,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
@@ -205,6 +206,7 @@ class SingleChildScrollView extends StatelessWidget {
     this.controller,
     this.child,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(scrollDirection != null),
        assert(dragStartBehavior != null),
        assert(!(controller != null && primary == true),
@@ -310,10 +312,12 @@ class SingleChildScrollView extends StatelessWidget {
 
 class _SingleChildViewport extends SingleChildRenderObjectWidget {
   const _SingleChildViewport({
+    [
     Key key,
     this.axisDirection = AxisDirection.down,
     this.offset,
     Widget child,
+  ]
   }) : assert(axisDirection != null),
        super(key: key, child: child);
 
@@ -339,10 +343,14 @@ class _SingleChildViewport extends SingleChildRenderObjectWidget {
 
 class _RenderSingleChildViewport extends RenderBox with RenderObjectWithChildMixin<RenderBox> implements RenderAbstractViewport {
   _RenderSingleChildViewport({
-    AxisDirection axisDirection = AxisDirection.down,
-    @required ViewportOffset offset,
+    [
+    AxisDirection axisDirection = AxisDirection.down
+    ]
+     ViewportOffset offset,
+    [
     double cacheExtent = RenderAbstractViewport.defaultCacheExtent,
     RenderBox child,
+  ]
   }) : assert(axisDirection != null),
        assert(offset != null),
        assert(cacheExtent != null),
@@ -555,7 +563,7 @@ class _RenderSingleChildViewport extends RenderBox with RenderObjectWithChildMix
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     if (child != null) {
       final Offset transformed = position + -_paintOffset;
       return child.hitTest(result, position: transformed);
@@ -564,7 +572,7 @@ class _RenderSingleChildViewport extends RenderBox with RenderObjectWithChildMix
   }
 
   @override
-  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { Rect rect }) {
+  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { [ Rect rect ] }) {
     rect ??= target.paintBounds;
     if (target is! RenderBox)
       return RevealedOffset(offset: offset.pixels, rect: rect);
@@ -609,10 +617,12 @@ class _RenderSingleChildViewport extends RenderBox with RenderObjectWithChildMix
 
   @override
   void showOnScreen({
+    [
     RenderObject descendant,
     Rect rect,
     Duration duration = Duration.zero,
     Curve curve = Curves.ease,
+  ]
   }) {
     if (!offset.allowImplicitScrolling) {
       return super.showOnScreen(

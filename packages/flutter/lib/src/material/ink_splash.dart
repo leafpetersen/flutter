@@ -47,17 +47,19 @@ class _InkSplashFactory extends InteractiveInkFeatureFactory {
 
   @override
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+     Offset position,
+     Color color,
+     TextDirection textDirection,
+    [
     bool containedInkWell = false,
     RectCallback rectCallback,
     BorderRadius borderRadius,
     ShapeBorder customBorder,
     double radius,
     VoidCallback onRemoved,
+  ]
   }) {
     return InkSplash(
       controller: controller,
@@ -112,9 +114,10 @@ class InkSplash extends InteractiveInkFeature {
   ///
   /// When the splash is removed, `onRemoved` will be called.
   InkSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required TextDirection textDirection,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+     TextDirection textDirection,
+    [
     Offset position,
     Color color,
     bool containedInkWell = false,
@@ -123,6 +126,7 @@ class InkSplash extends InteractiveInkFeature {
     ShapeBorder customBorder,
     double radius,
     VoidCallback onRemoved,
+  ]
   }) : assert(textDirection != null),
        _position = position,
        _borderRadius = borderRadius ?? BorderRadius.zero,

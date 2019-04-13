@@ -40,12 +40,14 @@ abstract class ProgressIndicator extends StatefulWidget {
   /// for determinate progress indicators to indicate how much progress has been made.
   /// {@endtemplate}
   const ProgressIndicator({
+    [
     Key key,
     this.value,
     this.backgroundColor,
     this.valueColor,
     this.semanticsLabel,
     this.semanticsValue,
+  ]
   }) : super(key: key);
 
   /// If non-null, the value of this progress indicator.
@@ -102,8 +104,8 @@ abstract class ProgressIndicator extends StatefulWidget {
   }
 
   Widget _buildSemanticsWrapper({
-    @required BuildContext context,
-    @required Widget child,
+     BuildContext context,
+     Widget child,
   }) {
     String expandedSemanticsValue = semanticsValue;
     if (value != null) {
@@ -119,11 +121,13 @@ abstract class ProgressIndicator extends StatefulWidget {
 
 class _LinearProgressIndicatorPainter extends CustomPainter {
   const _LinearProgressIndicatorPainter({
+    [
     this.backgroundColor,
     this.valueColor,
     this.value,
-    this.animationValue,
-    @required this.textDirection,
+    this.animationValue
+    ]
+     this.textDirection,
   }) : assert(textDirection != null);
 
   final Color backgroundColor;
@@ -232,12 +236,14 @@ class LinearProgressIndicator extends ProgressIndicator {
   ///
   /// {@macro flutter.material.progressIndicator.parameters}
   const LinearProgressIndicator({
+    [
     Key key,
     double value,
     Color backgroundColor,
     Animation<Color> valueColor,
     String semanticsLabel,
     String semanticsValue,
+  ]
   }) : super(
          key: key,
          value: value,
@@ -319,6 +325,7 @@ class _LinearProgressIndicatorState extends State<LinearProgressIndicator> with 
 
 class _CircularProgressIndicatorPainter extends CustomPainter {
   _CircularProgressIndicatorPainter({
+    [
     this.backgroundColor,
     this.valueColor,
     this.value,
@@ -327,6 +334,7 @@ class _CircularProgressIndicatorPainter extends CustomPainter {
     this.stepValue,
     this.rotationValue,
     this.strokeWidth,
+  ]
   }) : arcStart = value != null
          ? _startAngle
          : _startAngle + tailValue * 3 / 2 * math.pi + rotationValue * math.pi * 1.7 - stepValue * 0.8 * math.pi,
@@ -413,6 +421,7 @@ class CircularProgressIndicator extends ProgressIndicator {
   ///
   /// {@macro flutter.material.progressIndicator.parameters}
   const CircularProgressIndicator({
+    [
     Key key,
     double value,
     Color backgroundColor,
@@ -420,6 +429,7 @@ class CircularProgressIndicator extends ProgressIndicator {
     this.strokeWidth = 4.0,
     String semanticsLabel,
     String semanticsValue,
+  ]
   }) : super(
          key: key,
          value: value,
@@ -531,6 +541,7 @@ class _CircularProgressIndicatorState extends State<CircularProgressIndicator> w
 
 class _RefreshProgressIndicatorPainter extends _CircularProgressIndicatorPainter {
   _RefreshProgressIndicatorPainter({
+    [
     Color valueColor,
     double value,
     double headValue,
@@ -539,6 +550,7 @@ class _RefreshProgressIndicatorPainter extends _CircularProgressIndicatorPainter
     double rotationValue,
     double strokeWidth,
     this.arrowheadScale,
+  ]
   }) : super(
     valueColor: valueColor,
     value: value,
@@ -607,6 +619,7 @@ class RefreshProgressIndicator extends CircularProgressIndicator {
   ///
   /// {@macro flutter.material.progressIndicator.parameters}
   const RefreshProgressIndicator({
+    [
     Key key,
     double value,
     Color backgroundColor,
@@ -614,6 +627,7 @@ class RefreshProgressIndicator extends CircularProgressIndicator {
     double strokeWidth = 2.0, // Different default than CircularProgressIndicator.
     String semanticsLabel,
     String semanticsValue,
+  ]
   }) : super(
     key: key,
     value: value,

@@ -109,9 +109,12 @@ class Slider extends StatefulWidget {
   /// [inactiveColor] properties, although more fine-grained control of the
   /// appearance is achieved using a [SliderThemeData].
   const Slider({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.onChangeStart,
     this.onChangeEnd,
     this.min = 0.0,
@@ -121,6 +124,7 @@ class Slider extends StatefulWidget {
     this.activeColor,
     this.inactiveColor,
     this.semanticFormatterCallback,
+  ]
   }) : assert(value != null),
        assert(min != null),
        assert(max != null),
@@ -467,6 +471,7 @@ class _SliderState extends State<Slider> with TickerProviderStateMixin {
 
 class _SliderRenderObjectWidget extends LeafRenderObjectWidget {
   const _SliderRenderObjectWidget({
+    [
     Key key,
     this.value,
     this.divisions,
@@ -478,6 +483,7 @@ class _SliderRenderObjectWidget extends LeafRenderObjectWidget {
     this.onChangeEnd,
     this.state,
     this.semanticFormatterCallback,
+  ]
   }) : super(key: key);
 
   final double value;
@@ -532,7 +538,8 @@ class _SliderRenderObjectWidget extends LeafRenderObjectWidget {
 
 class _RenderSlider extends RenderBox {
   _RenderSlider({
-    @required double value,
+     double value,
+    [
     int divisions,
     String label,
     SliderThemeData sliderTheme,
@@ -542,9 +549,10 @@ class _RenderSlider extends RenderBox {
     ValueChanged<double> onChanged,
     SemanticFormatterCallback semanticFormatterCallback,
     this.onChangeStart,
-    this.onChangeEnd,
-    @required _SliderState state,
-    @required TextDirection textDirection,
+    this.onChangeEnd
+    ]
+     _SliderState state,
+     TextDirection textDirection,
   }) : assert(value != null && value >= 0.0 && value <= 1.0),
        assert(state != null),
        assert(textDirection != null),

@@ -260,9 +260,9 @@ class Xcode {
 //
 // TODO(cbracken): remove when https://github.com/flutter/flutter/issues/20685 is fixed.
 Future<void> setXcodeWorkspaceBuildSystem({
-  @required Directory workspaceDirectory,
-  @required File workspaceSettings,
-  @required bool modern,
+   Directory workspaceDirectory,
+   File workspaceSettings,
+   bool modern,
 }) async {
   // If this isn't a workspace, we're not using CocoaPods and can use the new
   // build system.
@@ -290,6 +290,7 @@ Future<void> setXcodeWorkspaceBuildSystem({
 }
 
 Future<XcodeBuildResult> buildXcodeProject({
+  [
   BuildableIOSApp app,
   BuildInfo buildInfo,
   String targetOverride,
@@ -297,6 +298,7 @@ Future<XcodeBuildResult> buildXcodeProject({
   IOSArch activeArch,
   bool codesign = true,
   bool usesTerminalUi = true,
+]
 }) async {
   if (!await upgradePbxProjWithFlutterAssets(app.project))
     return XcodeBuildResult(success: false);
@@ -626,11 +628,13 @@ Future<void> diagnoseXcodeBuildFailure(XcodeBuildResult result) async {
 
 class XcodeBuildResult {
   XcodeBuildResult({
-    @required this.success,
+     this.success,
+    [
     this.output,
     this.stdout,
     this.stderr,
     this.xcodeBuildExecution,
+  ]
   });
 
   final bool success;
@@ -644,10 +648,10 @@ class XcodeBuildResult {
 /// Describes an invocation of a Xcode build command.
 class XcodeBuildExecution {
   XcodeBuildExecution({
-    @required this.buildCommands,
-    @required this.appDirectory,
-    @required this.buildForPhysicalDevice,
-    @required this.buildSettings,
+     this.buildCommands,
+     this.appDirectory,
+     this.buildForPhysicalDevice,
+     this.buildSettings,
   });
 
   /// The original list of Xcode build commands used to produce this build result.

@@ -74,11 +74,13 @@ class PlatformViewsService {
   /// The `id, `viewType, and `layoutDirection` parameters must not be null.
   /// If `creationParams` is non null then `cretaionParamsCodec` must not be null.
   static AndroidViewController initAndroidView({
-    @required int id,
-    @required String viewType,
-    @required TextDirection layoutDirection,
+     int id,
+     String viewType,
+     TextDirection layoutDirection,
+    [
     dynamic creationParams,
     MessageCodec<dynamic> creationParamsCodec,
+  ]
   }) {
     assert(id != null);
     assert(viewType != null);
@@ -105,11 +107,13 @@ class PlatformViewsService {
   /// The `id, `viewType, and `layoutDirection` parameters must not be null.
   /// If `creationParams` is non null then `cretaionParamsCodec` must not be null.
   static Future<UiKitViewController> initUiKitView({
-    @required int id,
-    @required String viewType,
-    @required TextDirection layoutDirection,
+     int id,
+     String viewType,
+     TextDirection layoutDirection,
+    [
     dynamic creationParams,
     MessageCodec<dynamic> creationParamsCodec,
+  ]
   }) async {
     assert(id != null);
     assert(viewType != null);
@@ -142,8 +146,8 @@ class AndroidPointerProperties {
   ///
   /// All parameters must not be null.
   const AndroidPointerProperties({
-    @required this.id,
-    @required this.toolType,
+     this.id,
+     this.toolType,
   }) : assert(id != null),
        assert(toolType != null);
 
@@ -185,15 +189,15 @@ class AndroidPointerCoords {
   ///
   /// All parameters must not be null.
   const AndroidPointerCoords({
-    @required this.orientation,
-    @required this.pressure,
-    @required this.size,
-    @required this.toolMajor,
-    @required this.toolMinor,
-    @required this.touchMajor,
-    @required this.touchMinor,
-    @required this.x,
-    @required this.y,
+     this.orientation,
+     this.pressure,
+     this.size,
+     this.toolMajor,
+     this.toolMinor,
+     this.touchMajor,
+     this.touchMinor,
+     this.x,
+     this.y,
   }) : assert(orientation != null),
        assert(pressure != null),
        assert(size != null),
@@ -267,20 +271,20 @@ class AndroidMotionEvent {
   ///
   /// All parameters must not be null.
   AndroidMotionEvent({
-    @required this.downTime,
-    @required this.eventTime,
-    @required this.action,
-    @required this.pointerCount,
-    @required this.pointerProperties,
-    @required this.pointerCoords,
-    @required this.metaState,
-    @required this.buttonState,
-    @required this.xPrecision,
-    @required this.yPrecision,
-    @required this.deviceId,
-    @required this.edgeFlags,
-    @required this.source,
-    @required this.flags,
+     this.downTime,
+     this.eventTime,
+     this.action,
+     this.pointerCount,
+     this.pointerProperties,
+     this.pointerCoords,
+     this.metaState,
+     this.buttonState,
+     this.xPrecision,
+     this.yPrecision,
+     this.deviceId,
+     this.edgeFlags,
+     this.source,
+     this.flags,
   }) : assert(downTime != null),
        assert(eventTime != null),
        assert(action != null),

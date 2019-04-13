@@ -49,6 +49,7 @@ class BottomAppBar extends StatefulWidget {
   /// If the corresponding [BottomAppBarTheme] property is null, then the default
   /// specified in the property's documentation will be used.
   const BottomAppBar({
+    [
     Key key,
     this.color,
     this.elevation,
@@ -56,6 +57,7 @@ class BottomAppBar extends StatefulWidget {
     this.clipBehavior = Clip.none,
     this.notchMargin = 4.0,
     this.child,
+  ]
   }) : assert(clipBehavior != null),
        assert(elevation == null || elevation >= 0.0),
        assert(notchMargin != null),
@@ -142,9 +144,9 @@ class _BottomAppBarState extends State<BottomAppBar> {
 
 class _BottomAppBarClipper extends CustomClipper<Path> {
   const _BottomAppBarClipper({
-    @required this.geometry,
-    @required this.shape,
-    @required this.notchMargin,
+     this.geometry,
+     this.shape,
+     this.notchMargin,
   }) : assert(geometry != null),
        assert(shape != null),
        assert(notchMargin != null),

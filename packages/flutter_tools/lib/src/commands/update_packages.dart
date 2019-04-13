@@ -26,7 +26,7 @@ const Map<String, String> _kManuallyPinnedDependencies = <String, String>{
 };
 
 class UpdatePackagesCommand extends FlutterCommand {
-  UpdatePackagesCommand({ this.hidden = false }) {
+  UpdatePackagesCommand({ [ this.hidden = false ] }) {
     argParser
       ..addFlag(
         'force-upgrade',
@@ -336,9 +336,9 @@ class UpdatePackagesCommand extends FlutterCommand {
   }
 
   void showDependencyPaths({
-    @required String from,
-    @required String to,
-    @required PubDependencyTree tree,
+     String from,
+     String to,
+     PubDependencyTree tree,
   }) {
     if (!tree.contains(from))
       throwToolExit('Package $from not found in the dependency tree.');
@@ -382,8 +382,8 @@ class UpdatePackagesCommand extends FlutterCommand {
 
 class _DependencyLink {
   _DependencyLink({
-    @required this.from,
-    @required this.to,
+     this.from,
+     this.to,
   });
 
   final _DependencyLink from;
@@ -841,7 +841,7 @@ class PubspecChecksum extends PubspecLine {
 
 /// A header, e.g. "dependencies:".
 class PubspecHeader extends PubspecLine {
-  PubspecHeader(String line, this.section, { this.name, this.value }) : super(line);
+  PubspecHeader(String line, this.section, { [ this.name, this.value ] }) : super(line);
 
   /// The section of the pubspec where the parse [line] appears.
   final Section section;
@@ -918,14 +918,16 @@ class PubspecDependency extends PubspecLine {
     String line,
     this.name,
     this.suffix, {
-    @required this.isTransitive,
+     this.isTransitive,
+    [
     DependencyKind kind,
     this.version,
     this.sourcePath,
+  ]
   }) : _kind = kind,
        super(line);
 
-  static PubspecDependency parse(String line, { @required String filename }) {
+  static PubspecDependency parse(String line, {  String filename }) {
     // We recognize any line that:
     //  * starts with exactly two spaces, no more or less
     //  * has some content, then a colon
@@ -1027,7 +1029,7 @@ class PubspecDependency extends PubspecLine {
   /// We throw if we couldn't parse this line.
   /// We return true if we parsed it and stored the line in lockLine.
   /// We return false if we parsed it but want to forget the whole thing.
-  bool parseLock(String line, String pubspecPath, { @required bool lockIsOverride }) {
+  bool parseLock(String line, String pubspecPath, {  bool lockIsOverride }) {
     assert(lockIsOverride != null);
     assert(kind == DependencyKind.unknown);
     if (line.startsWith(_pathPrefix)) {
@@ -1201,8 +1203,8 @@ class PubDependencyTree {
   /// excluding any listen in `seen`.
   Iterable<String> getTransitiveDependenciesFor(
     String package, {
-    @required Set<String> seen,
-    @required Set<String> exclude,
+     Set<String> seen,
+     Set<String> exclude,
   }) sync* {
     assert(seen != null);
     assert(exclude != null);

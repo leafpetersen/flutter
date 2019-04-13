@@ -93,6 +93,7 @@ class CodeGeneratingKernelCompiler implements KernelCompiler {
 
   @override
   Future<CompilerOutput> compile({
+    [
     String mainPath,
     String outputFilePath,
     bool linkPlatformKernelIn = false,
@@ -109,6 +110,7 @@ class CodeGeneratingKernelCompiler implements KernelCompiler {
     String depFilePath,
     TargetModel targetModel = TargetModel.flutter,
     String initializeFromDill,
+  ]
   }) async {
     if (fileSystemRoots != null || fileSystemScheme != null || depFilePath != null || targetModel != null || sdkRoot != null || packagesPath != null) {
       printTrace('fileSystemRoots, fileSystemScheme, depFilePath, targetModel,'
@@ -163,13 +165,15 @@ class CodeGeneratingResidentCompiler implements ResidentCompiler {
   /// compiler will only be initialized with the correct configuration for
   /// codegen mode.
   static Future<ResidentCompiler> create({
-    @required FlutterProject flutterProject,
+     FlutterProject flutterProject,
+    [
     bool trackWidgetCreation = false,
     CompilerMessageConsumer compilerMessageConsumer = printError,
     bool unsafePackageSerialization = false,
     String outputPath,
     String initializeFromDill,
     bool runCold = false,
+  ]
   }) async {
     codeGenerator.updatePackages(flutterProject);
     final ResidentCompiler residentCompiler = ResidentCompiler(
@@ -214,7 +218,7 @@ class CodeGeneratingResidentCompiler implements ResidentCompiler {
   }
 
   @override
-  Future<CompilerOutput> recompile(String mainPath, List<Uri> invalidatedFiles, {String outputPath, String packagesFilePath}) async {
+  Future<CompilerOutput> recompile(String mainPath, List<Uri> invalidatedFiles, {[String outputPath, String packagesFilePath]}) async {
     if (_codegenDaemon.lastStatus != CodegenStatus.Succeeded && _codegenDaemon.lastStatus != CodegenStatus.Failed) {
       await _codegenDaemon.buildResults.firstWhere((CodegenStatus status) {
         return status == CodegenStatus.Succeeded || status == CodegenStatus.Failed;

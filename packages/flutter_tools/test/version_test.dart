@@ -422,6 +422,7 @@ void _expectVersionMessage(String message) {
 void fakeData(
   ProcessManager pm,
   Cache cache, {
+  [
   DateTime localCommitDate,
   DateTime remoteCommitDate,
   VersionCheckStamp stamp,
@@ -430,6 +431,7 @@ void fakeData(
   bool expectSetStamp = false,
   bool expectServerPing = false,
   String channel = 'master',
+]
 }) {
   ProcessResult success(String standardOutput) {
     return ProcessResult(1, 0, standardOutput, '');

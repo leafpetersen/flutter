@@ -36,7 +36,7 @@ enum TestStep {
   testPassed,
 }
 
-Future<int> runTest({bool coverage = false}) async {
+Future<int> runTest({[bool coverage = false]}) async {
   final Stopwatch clock = Stopwatch()..start();
   final List<String> arguments = <String>[
     'test',

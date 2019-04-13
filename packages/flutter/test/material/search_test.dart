@@ -480,7 +480,7 @@ void main() {
   });
 
   group('contributes semantics', () {
-    TestSemantics buildExpected({ String routeName }) {
+    TestSemantics buildExpected({ [ String routeName ] }) {
       return TestSemantics.root(
         children: <TestSemantics>[
           TestSemantics(
@@ -585,10 +585,12 @@ void main() {
 
 class TestHomePage extends StatelessWidget {
   const TestHomePage({
+    [
     this.results,
     this.delegate,
     this.passInInitialQuery = false,
     this.initialQuery,
+  ]
   });
 
   final List<String> results;
@@ -636,9 +638,11 @@ class TestHomePage extends StatelessWidget {
 class _TestSearchDelegate extends SearchDelegate<String> {
 
   _TestSearchDelegate({
+    [
     this.suggestions = 'Suggestions',
     this.result = 'Result',
     this.actions = const <Widget>[],
+  ]
   });
 
   final String suggestions;

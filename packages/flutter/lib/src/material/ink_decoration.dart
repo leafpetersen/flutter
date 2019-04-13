@@ -116,6 +116,7 @@ class Ink extends StatefulWidget {
   /// `decoration`, you can pass the color as the `color` argument to the
   /// `BoxDecoration`.
   Ink({
+    [
     Key key,
     this.padding,
     Color color,
@@ -123,6 +124,7 @@ class Ink extends StatefulWidget {
     this.width,
     this.height,
     this.child,
+  ]
   }) : assert(padding == null || padding.isNonNegative),
        assert(decoration == null || decoration.debugAssertIsValid()),
        assert(color == null || decoration == null,
@@ -146,9 +148,12 @@ class Ink extends StatefulWidget {
   ///
   /// See [paintImage] for a description of the meaning of these arguments.
   Ink.image({
+    [
     Key key,
-    this.padding,
-    @required ImageProvider image,
+    this.padding
+    ]
+     ImageProvider image,
+    [
     ColorFilter colorFilter,
     BoxFit fit,
     AlignmentGeometry alignment = Alignment.center,
@@ -158,6 +163,7 @@ class Ink extends StatefulWidget {
     this.width,
     this.height,
     this.child,
+  ]
   }) : assert(padding == null || padding.isNonNegative),
        assert(image != null),
        assert(alignment != null),
@@ -295,11 +301,13 @@ class _InkState extends State<Ink> {
 class InkDecoration extends InkFeature {
   /// Draws a decoration on a [Material].
   InkDecoration({
-    @required Decoration decoration,
-    @required ImageConfiguration configuration,
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
+     Decoration decoration,
+     ImageConfiguration configuration,
+     MaterialInkController controller,
+     RenderBox referenceBox,
+    [
     VoidCallback onRemoved,
+  ]
   }) : assert(configuration != null),
        _configuration = configuration,
        super(controller: controller, referenceBox: referenceBox, onRemoved: onRemoved) {

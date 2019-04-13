@@ -19,8 +19,10 @@ import 'package:flutter_gallery/demo/shrine/supplemental/product_card.dart';
 
 class TwoProductCardColumn extends StatelessWidget {
   const TwoProductCardColumn({
-    @required this.bottom,
+     this.bottom,
+    [
     this.top,
+  ]
   }) : assert(bottom != null);
 
   final Product bottom, top;
@@ -67,7 +69,7 @@ class TwoProductCardColumn extends StatelessWidget {
 }
 
 class OneProductCardColumn extends StatelessWidget {
-  const OneProductCardColumn({this.product});
+  const OneProductCardColumn({[this.product]});
 
   final Product product;
 

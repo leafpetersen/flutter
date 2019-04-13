@@ -41,10 +41,12 @@ class MaterialPageRoute<T> extends PageRoute<T> {
   /// The values of [builder], [maintainState], and [fullScreenDialog] must not
   /// be null.
   MaterialPageRoute({
-    @required this.builder,
+     this.builder,
+    [
     RouteSettings settings,
     this.maintainState = true,
     bool fullscreenDialog = false,
+  ]
   }) : assert(builder != null),
        assert(maintainState != null),
        assert(fullscreenDialog != null),

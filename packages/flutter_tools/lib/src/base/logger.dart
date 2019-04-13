@@ -74,12 +74,14 @@ abstract class Logger {
   /// `outputPreferences.wrapText` setting.
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   });
 
   /// Display normal output of the command. This should be used for things like
@@ -112,12 +114,14 @@ abstract class Logger {
   /// `outputPreferences.wrapText` setting.
   void printStatus(
     String message, {
+    [
     bool emphasis,
     TerminalColor color,
     bool newline,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   });
 
   /// Use this for verbose tracing output. Users can turn this output on in order
@@ -141,10 +145,12 @@ abstract class Logger {
   /// between the `message` and the progress indicator, if any.
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   });
 }
 
@@ -157,12 +163,14 @@ class StdoutLogger extends Logger {
   @override
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _status?.pause();
     message ??= '';
@@ -179,12 +187,14 @@ class StdoutLogger extends Logger {
   @override
   void printStatus(
     String message, {
+    [
     bool emphasis,
     TerminalColor color,
     bool newline,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _status?.pause();
     message ??= '';
@@ -210,10 +220,12 @@ class StdoutLogger extends Logger {
   @override
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   }) {
     assert(progressIndicatorPadding != null);
     if (_status != null) {
@@ -281,12 +293,14 @@ class BufferLogger extends Logger {
   @override
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _error.writeln(terminal.color(
       wrapText(message, indent: indent, hangingIndent: hangingIndent, shouldWrap: wrap),
@@ -297,12 +311,14 @@ class BufferLogger extends Logger {
   @override
   void printStatus(
     String message, {
+    [
     bool emphasis,
     TerminalColor color,
     bool newline,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     if (newline != false)
       _status.writeln(wrapText(message, indent: indent, hangingIndent: hangingIndent, shouldWrap: wrap));
@@ -316,10 +332,12 @@ class BufferLogger extends Logger {
   @override
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   }) {
     assert(progressIndicatorPadding != null);
     printStatus(message);
@@ -349,12 +367,14 @@ class VerboseLogger extends Logger {
   @override
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _emit(
       _LogType.error,
@@ -366,12 +386,14 @@ class VerboseLogger extends Logger {
   @override
   void printStatus(
     String message, {
+    [
     bool emphasis,
     TerminalColor color,
     bool newline,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _emit(_LogType.status, wrapText(message, indent: indent, hangingIndent: hangingIndent, shouldWrap: wrap));
   }
@@ -384,10 +406,12 @@ class VerboseLogger extends Logger {
   @override
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   }) {
     assert(progressIndicatorPadding != null);
     printStatus(message);
@@ -468,14 +492,16 @@ typedef SlowWarningCallback = String Function();
 /// Generally, consider `logger.startProgress` instead of directly creating
 /// a [Status] or one of its subclasses.
 abstract class Status {
-  Status({ @required this.timeout, this.onFinish });
+  Status({  this.timeout, [ this.onFinish ] });
 
   /// A [SilentStatus] or an [AnsiSpinner] (depending on whether the
   /// terminal is fancy enough), already started.
   factory Status.withSpinner({
-    @required Duration timeout,
+     Duration timeout,
+    [
     VoidCallback onFinish,
     SlowWarningCallback slowWarningCallback,
+  ]
   }) {
     if (terminal.supportsColor)
       return AnsiSpinner(timeout: timeout, onFinish: onFinish, slowWarningCallback: slowWarningCallback)..start();
@@ -533,8 +559,10 @@ abstract class Status {
 /// A [SilentStatus] shows nothing.
 class SilentStatus extends Status {
   SilentStatus({
-    @required Duration timeout,
+     Duration timeout,
+    [
     VoidCallback onFinish,
+  ]
   }) : super(timeout: timeout, onFinish: onFinish);
 }
 
@@ -542,10 +570,14 @@ class SilentStatus extends Status {
 /// [onFinish]. On [stop], will additionally print out summary information.
 class SummaryStatus extends Status {
   SummaryStatus({
-    this.message = '',
-    @required Duration timeout,
+    [
+    this.message = ''
+    ]
+     Duration timeout,
+    [
     this.padding = kDefaultStatusPadding,
     VoidCallback onFinish,
+  ]
   }) : assert(message != null),
        assert(padding != null),
        super(timeout: timeout, onFinish: onFinish);
@@ -612,9 +644,11 @@ class SummaryStatus extends Status {
 /// continues otherwise unabated).
 class AnsiSpinner extends Status {
   AnsiSpinner({
-    @required Duration timeout,
+     Duration timeout,
+    [
     VoidCallback onFinish,
     this.slowWarningCallback,
+  ]
   }) : super(timeout: timeout, onFinish: onFinish);
 
   final String _backspaceChar = '\b';
@@ -717,11 +751,15 @@ const int _kTimePadding = 8; // should fit "99,999ms"
 /// additionally print out summary information.
 class AnsiStatus extends AnsiSpinner {
   AnsiStatus({
-    this.message = '',
-    @required Duration timeout,
+    [
+    this.message = ''
+    ]
+     Duration timeout,
+    [
     this.multilineOutput = false,
     this.padding = kDefaultStatusPadding,
     VoidCallback onFinish,
+  ]
   }) : assert(message != null),
        assert(multilineOutput != null),
        assert(padding != null),

@@ -224,11 +224,15 @@ class DefaultWidgetsLocalizations implements WidgetsLocalizations {
 
 class _LocalizationsScope extends InheritedWidget {
   const _LocalizationsScope({
-    Key key,
-    @required this.locale,
-    @required this.localizationsState,
-    @required this.typeToResources,
+    [
+    Key key
+    ]
+     this.locale,
+     this.localizationsState,
+     this.typeToResources,
+    [
     Widget child,
+  ]
   }) : assert(localizationsState != null),
        assert(typeToResources != null),
        super(key: key, child: child);
@@ -336,10 +340,14 @@ class _LocalizationsScope extends InheritedWidget {
 class Localizations extends StatefulWidget {
   /// Create a widget from which localizations (like translated strings) can be obtained.
   Localizations({
-    Key key,
-    @required this.locale,
-    @required this.delegates,
+    [
+    Key key
+    ]
+     this.locale,
+     this.delegates,
+    [
     this.child,
+  ]
   }) : assert(locale != null),
        assert(delegates != null),
        assert(delegates.any((LocalizationsDelegate<dynamic> delegate) => delegate is LocalizationsDelegate<WidgetsLocalizations>)),
@@ -373,11 +381,15 @@ class Localizations extends StatefulWidget {
   /// entire app, specify [WidgetsApp.locale] or [WidgetsApp.localizationsDelegates]
   /// (or specify the same parameters for [MaterialApp]).
   factory Localizations.override({
-    Key key,
-    @required BuildContext context,
+    [
+    Key key
+    ]
+     BuildContext context,
+    [
     Locale locale,
     List<LocalizationsDelegate<dynamic>> delegates,
     Widget child,
+  ]
   }) {
     final List<LocalizationsDelegate<dynamic>> mergedDelegates = Localizations._delegatesOf(context);
     if (delegates != null)
@@ -408,7 +420,7 @@ class Localizations extends StatefulWidget {
   /// If no [Localizations] widget is in scope then the [Localizations.localeOf]
   /// method will throw an exception, unless the `nullOk` argument is set to
   /// true, in which case it returns null.
-  static Locale localeOf(BuildContext context, { bool nullOk = false }) {
+  static Locale localeOf(BuildContext context, { [ bool nullOk = false ] }) {
     assert(context != null);
     assert(nullOk != null);
     final _LocalizationsScope scope = context.inheritFromWidgetOfExactType(_LocalizationsScope);

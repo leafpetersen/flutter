@@ -30,11 +30,13 @@ import 'theme.dart';
 class DialogTheme extends Diagnosticable {
   /// Creates a dialog theme that can be used for [ThemeData.dialogTheme].
   const DialogTheme({
+    [
     this.backgroundColor,
     this.elevation,
     this.shape,
     this.titleTextStyle,
     this.contentTextStyle,
+  ]
   });
 
   /// Default value for [Dialog.backgroundColor].
@@ -64,11 +66,13 @@ class DialogTheme extends Diagnosticable {
   /// Creates a copy of this object but with the given fields replaced with the
   /// new values.
   DialogTheme copyWith({
+    [
     Color backgroundColor,
     double elevation,
     ShapeBorder shape,
     TextStyle titleTextStyle,
     TextStyle contentTextStyle,
+  ]
   }) {
     return DialogTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,

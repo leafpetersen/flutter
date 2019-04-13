@@ -39,7 +39,7 @@ abstract class RenderSliverPersistentHeader extends RenderSliver with RenderObje
   /// viewport.
   ///
   /// This is an abstract class; this constructor only initializes the [child].
-  RenderSliverPersistentHeader({ RenderBox child }) {
+  RenderSliverPersistentHeader({ [ RenderBox child ] }) {
     this.child = child;
   }
 
@@ -117,7 +117,7 @@ abstract class RenderSliverPersistentHeader extends RenderSliver with RenderObje
   ///
   /// The `overlapsContent` argument is passed to [updateChild].
   @protected
-  void layoutChild(double scrollOffset, double maxExtent, { bool overlapsContent = false }) {
+  void layoutChild(double scrollOffset, double maxExtent, { [ bool overlapsContent = false ] }) {
     assert(maxExtent != null);
     final double shrinkOffset = math.min(scrollOffset, maxExtent);
     if (_needsUpdateChild || _lastShrinkOffset != shrinkOffset || _lastOverlapsContent != overlapsContent) {
@@ -169,7 +169,7 @@ abstract class RenderSliverPersistentHeader extends RenderSliver with RenderObje
   double childMainAxisPosition(covariant RenderObject child) => super.childMainAxisPosition(child);
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTestChildren(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) {
     assert(geometry.hitTestExtent > 0.0);
     if (child != null)
       return hitTestBoxChild(result, child, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition);
@@ -245,7 +245,9 @@ abstract class RenderSliverScrollingPersistentHeader extends RenderSliverPersist
   /// Creates a sliver that shrinks when it hits the start of the viewport, then
   /// scrolls off.
   RenderSliverScrollingPersistentHeader({
+    [
     RenderBox child,
+  ]
   }) : super(child: child);
 
   // Distance from our leading edge to the child's leading edge, in the axis
@@ -283,7 +285,9 @@ abstract class RenderSliverPinnedPersistentHeader extends RenderSliverPersistent
   /// Creates a sliver that shrinks when it hits the start of the viewport, then
   /// stays pinned there.
   RenderSliverPinnedPersistentHeader({
+    [
     RenderBox child,
+  ]
   }) : super(child: child);
 
   @override
@@ -323,9 +327,11 @@ class FloatingHeaderSnapConfiguration {
   /// Creates an object that specifies how a floating header is to be "snapped"
   /// (animated) into or out of view.
   FloatingHeaderSnapConfiguration({
-    @required this.vsync,
+     this.vsync,
+    [
     this.curve = Curves.ease,
     this.duration = const Duration(milliseconds: 300),
+  ]
   }) : assert(vsync != null),
        assert(curve != null),
        assert(duration != null);
@@ -354,8 +360,10 @@ abstract class RenderSliverFloatingPersistentHeader extends RenderSliverPersiste
   /// scrolls off, and comes back immediately when the user reverses the scroll
   /// direction.
   RenderSliverFloatingPersistentHeader({
+    [
     RenderBox child,
     FloatingHeaderSnapConfiguration snapConfiguration,
+  ]
   }) : _snapConfiguration = snapConfiguration,
        super(child: child);
 
@@ -510,8 +518,10 @@ abstract class RenderSliverFloatingPinnedPersistentHeader extends RenderSliverFl
   /// stays pinned there, and grows immediately when the user reverses the
   /// scroll direction.
   RenderSliverFloatingPinnedPersistentHeader({
+    [
     RenderBox child,
     FloatingHeaderSnapConfiguration snapConfiguration,
+  ]
   }) : super(child: child, snapConfiguration: snapConfiguration);
 
   @override

@@ -51,12 +51,16 @@ class Radio<T> extends StatefulWidget {
   ///   selected.
   /// * [onChanged] is called when the user selects this radio button.
   const Radio({
-    Key key,
-    @required this.value,
-    @required this.groupValue,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.groupValue,
+     this.onChanged,
+    [
     this.activeColor,
     this.materialTapTargetSize,
+  ]
   }) : super(key: key);
 
   /// The value represented by this radio button.
@@ -150,13 +154,17 @@ class _RadioState<T> extends State<Radio<T>> with TickerProviderStateMixin {
 
 class _RadioRenderObjectWidget extends LeafRenderObjectWidget {
   const _RadioRenderObjectWidget({
-    Key key,
-    @required this.selected,
-    @required this.activeColor,
-    @required this.inactiveColor,
-    @required this.additionalConstraints,
-    this.onChanged,
-    @required this.vsync,
+    [
+    Key key
+    ]
+     this.selected,
+     this.activeColor,
+     this.inactiveColor,
+     this.additionalConstraints,
+    [
+    this.onChanged
+    ]
+     this.vsync,
   }) : assert(selected != null),
        assert(activeColor != null),
        assert(inactiveColor != null),
@@ -194,12 +202,14 @@ class _RadioRenderObjectWidget extends LeafRenderObjectWidget {
 
 class _RenderRadio extends RenderToggleable {
   _RenderRadio({
+    [
     bool value,
     Color activeColor,
     Color inactiveColor,
     ValueChanged<bool> onChanged,
-    BoxConstraints additionalConstraints,
-    @required TickerProvider vsync,
+    BoxConstraints additionalConstraints
+    ]
+     TickerProvider vsync,
   }) : super(
          value: value,
          tristate: false,

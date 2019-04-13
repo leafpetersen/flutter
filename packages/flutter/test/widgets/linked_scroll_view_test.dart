@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class LinkedScrollController extends ScrollController {
-  LinkedScrollController({ this.before, this.after });
+  LinkedScrollController({ [ this.before, this.after ] });
 
   LinkedScrollController before;
   LinkedScrollController after;
@@ -107,10 +107,12 @@ class LinkedScrollController extends ScrollController {
 class LinkedScrollPosition extends ScrollPositionWithSingleContext {
   LinkedScrollPosition(
     this.owner, {
+    [
     ScrollPhysics physics,
     ScrollContext context,
     double initialPixels,
     ScrollPosition oldPosition,
+  ]
   }) : assert(owner != null),
        super(
          physics: physics,

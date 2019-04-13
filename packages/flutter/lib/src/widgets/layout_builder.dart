@@ -35,8 +35,10 @@ class LayoutBuilder extends RenderObjectWidget {
   ///
   /// The [builder] argument must not be null.
   const LayoutBuilder({
-    Key key,
-    @required this.builder,
+    [
+    Key key
+    ]
+     this.builder,
   }) : assert(builder != null),
        super(key: key);
 
@@ -151,7 +153,9 @@ class _LayoutBuilderElement extends RenderObjectElement {
 
 class _RenderLayoutBuilder extends RenderBox with RenderObjectWithChildMixin<RenderBox> {
   _RenderLayoutBuilder({
+    [
     LayoutCallback<BoxConstraints> callback,
+  ]
   }) : _callback = callback;
 
   LayoutCallback<BoxConstraints> get callback => _callback;
@@ -214,7 +218,7 @@ class _RenderLayoutBuilder extends RenderBox with RenderObjectWithChildMixin<Ren
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return child?.hitTest(result, position: position) ?? false;
   }
 

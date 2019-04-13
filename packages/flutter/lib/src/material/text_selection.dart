@@ -21,11 +21,13 @@ const double _kToolbarScreenPadding = 8.0;
 /// Manages a copy/paste text selection toolbar.
 class _TextSelectionToolbar extends StatelessWidget {
   const _TextSelectionToolbar({
+    [
     Key key,
     this.handleCut,
     this.handleCopy,
     this.handlePaste,
     this.handleSelectAll,
+  ]
   }) : super(key: key);
 
   final VoidCallback handleCut;
@@ -106,7 +108,7 @@ class _TextSelectionToolbarLayout extends SingleChildLayoutDelegate {
 
 /// Draws a single text selection handle which points up and to the left.
 class _TextSelectionHandlePainter extends CustomPainter {
-  _TextSelectionHandlePainter({ this.color });
+  _TextSelectionHandlePainter({ [ this.color ] });
 
   final Color color;
 

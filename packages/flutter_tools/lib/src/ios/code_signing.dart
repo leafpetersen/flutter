@@ -93,8 +93,10 @@ final RegExp _certificateOrganizationalUnitExtractionPattern = RegExp(r'OU=([a-z
 /// Will return null if none are found, if the user cancels or if the Xcode
 /// project has a development team set in the project's build settings.
 Future<Map<String, String>> getCodeSigningIdentityDevelopmentTeam({
+  [
   BuildableIOSApp iosApp,
   bool usesTerminalUi = true,
+]
 }) async {
   final Map<String, String> buildSettings = iosApp.project.buildSettings;
   if (buildSettings == null)

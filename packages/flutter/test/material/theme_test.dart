@@ -721,11 +721,11 @@ class _TextStyleProxy implements TextStyle {
   List<Shadow> get shadows => _delegate.shadows;
 
   @override
-  String toString({ DiagnosticLevel minLevel = DiagnosticLevel.debug }) =>
+  String toString({ [ DiagnosticLevel minLevel = DiagnosticLevel.debug ] }) =>
       super.toString();
 
   @override
-  DiagnosticsNode toDiagnosticsNode({ String name, DiagnosticsTreeStyle style }) {
+  DiagnosticsNode toDiagnosticsNode({ [ String name, DiagnosticsTreeStyle style ] }) {
     throw UnimplementedError();
   }
 
@@ -736,6 +736,7 @@ class _TextStyleProxy implements TextStyle {
 
   @override
   TextStyle apply({
+    [
     Color color,
     Color backgroundColor,
     TextDecoration decoration,
@@ -754,6 +755,7 @@ class _TextStyleProxy implements TextStyle {
     double wordSpacingDelta = 0.0,
     double heightFactor = 1.0,
     double heightDelta = 0.0,
+  ]
   }) {
     throw UnimplementedError();
   }
@@ -765,6 +767,7 @@ class _TextStyleProxy implements TextStyle {
 
   @override
   TextStyle copyWith({
+    [
     bool inherit,
     Color color,
     Color backgroundColor,
@@ -786,17 +789,19 @@ class _TextStyleProxy implements TextStyle {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
     String debugLabel,
+  ]
   }) {
     throw UnimplementedError();
   }
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties, { String prefix = '' }) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties, { [ String prefix = '' ] }) {
     throw UnimplementedError();
   }
 
   @override
   ui.ParagraphStyle getParagraphStyle({
+    [
     TextAlign textAlign,
     TextDirection textDirection,
     double textScaleFactor = 1.0,
@@ -809,12 +814,13 @@ class _TextStyleProxy implements TextStyle {
     FontStyle fontStyle,
     double height,
     StrutStyle strutStyle,
+  ]
   }) {
     throw UnimplementedError();
   }
 
   @override
-  ui.TextStyle getTextStyle({ double textScaleFactor = 1.0 }) {
+  ui.TextStyle getTextStyle({ [ double textScaleFactor = 1.0 ] }) {
     throw UnimplementedError();
   }
 

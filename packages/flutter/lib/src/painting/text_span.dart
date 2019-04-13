@@ -54,11 +54,13 @@ class TextSpan extends DiagnosticableTree {
   /// For the object to be useful, at least one of [text] or
   /// [children] should be set.
   const TextSpan({
+    [
     this.style,
     this.text,
     this.children,
     this.recognizer,
     this.semanticsLabel,
+  ]
   });
 
   /// The style to apply to the [text] and the [children].
@@ -177,7 +179,7 @@ class TextSpan extends DiagnosticableTree {
   /// Rather than using this directly, it's simpler to use the
   /// [TextPainter] class to paint [TextSpan] objects onto [Canvas]
   /// objects.
-  void build(ui.ParagraphBuilder builder, { double textScaleFactor = 1.0 }) {
+  void build(ui.ParagraphBuilder builder, { [ double textScaleFactor = 1.0 ] }) {
     assert(debugAssertIsValid());
     final bool hasStyle = style != null;
     if (hasStyle)
@@ -237,7 +239,7 @@ class TextSpan extends DiagnosticableTree {
   /// Styles are not honored in this process. If `includeSemanticsLabels` is
   /// true, then the text returned will include the [semanticsLabel]s instead of
   /// the text contents when they are present.
-  String toPlainText({bool includeSemanticsLabels = true}) {
+  String toPlainText({[bool includeSemanticsLabels = true]}) {
     assert(debugAssertIsValid());
     final StringBuffer buffer = StringBuffer();
     visitTextSpan((TextSpan span) {

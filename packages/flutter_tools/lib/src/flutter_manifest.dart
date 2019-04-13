@@ -248,7 +248,7 @@ class Font {
 }
 
 class FontAsset {
-  FontAsset(this.assetUri, {this.weight, this.style})
+  FontAsset(this.assetUri, {[this.weight, this.style]})
     : assert(assetUri != null);
 
   final Uri assetUri;

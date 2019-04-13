@@ -11,7 +11,7 @@ final BoxDecoration kBoxDecorationB = BoxDecoration(border: nonconst(null));
 final BoxDecoration kBoxDecorationC = BoxDecoration(border: nonconst(null));
 
 class TestWidget extends StatelessWidget {
-  const TestWidget({ this.child });
+  const TestWidget({ [ this.child ] });
 
   final Widget child;
 
@@ -20,7 +20,7 @@ class TestWidget extends StatelessWidget {
 }
 
 class TestOrientedBox extends SingleChildRenderObjectWidget {
-  const TestOrientedBox({ Key key, Widget child }) : super(key: key, child: child);
+  const TestOrientedBox({ [ Key key, Widget child ] }) : super(key: key, child: child);
 
   Decoration _getDecoration(BuildContext context) {
     final Orientation orientation = MediaQuery.of(context).orientation;

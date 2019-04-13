@@ -99,8 +99,10 @@ class DriverTest {
   DriverTest(
     this.testDirectory,
     this.testTarget, {
+      [
       this.extraOptions = const <String>[],
       this.environment =  const <String, String>{},
+    ]
     }
   );
 

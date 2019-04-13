@@ -21,9 +21,11 @@ class RawKeyEventDataFuchsia extends RawKeyEventData {
   ///
   /// The [hidUsage], [codePoint], and [modifiers] arguments must not be null.
   const RawKeyEventDataFuchsia({
+    [
     this.hidUsage = 0,
     this.codePoint = 0,
     this.modifiers = 0,
+  ]
   }) : assert(hidUsage != null),
        assert(codePoint != null),
        assert(modifiers != null);
@@ -111,7 +113,7 @@ class RawKeyEventDataFuchsia extends RawKeyEventData {
   }
 
   @override
-  bool isModifierPressed(ModifierKey key, { KeyboardSide side = KeyboardSide.any }) {
+  bool isModifierPressed(ModifierKey key, { [ KeyboardSide side = KeyboardSide.any ] }) {
     assert(side != null);
     switch (key) {
       case ModifierKey.controlModifier:

@@ -29,11 +29,13 @@ class TestStepResult {
     this.name,
     this.description,
     this.status, {
+    [
     this.messageSent = nothing,
     this.messageEcho = nothing,
     this.messageReceived = nothing,
     this.replyEcho = nothing,
     this.error = nothing,
+  ]
   });
 
   factory TestStepResult.fromSnapshot(AsyncSnapshot<TestStepResult> snapshot) {

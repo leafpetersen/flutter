@@ -25,7 +25,9 @@ const Color _kTransparent = Color(0x00000000);
 abstract class OverlayRoute<T> extends Route<T> {
   /// Creates a route that knows how to interact with an [Overlay].
   OverlayRoute({
+    [
     RouteSettings settings,
+  ]
   }) : super(settings: settings);
 
   /// Subclasses should override this getter to return the builders for the overlay.
@@ -78,7 +80,9 @@ abstract class OverlayRoute<T> extends Route<T> {
 abstract class TransitionRoute<T> extends OverlayRoute<T> {
   /// Creates a route that animates itself when it is pushed or popped.
   TransitionRoute({
+    [
     RouteSettings settings,
+  ]
   }) : super(settings: settings);
 
   /// This future completes only once the transition itself has finished, after
@@ -321,7 +325,7 @@ abstract class TransitionRoute<T> extends OverlayRoute<T> {
 /// An entry in the history of a [LocalHistoryRoute].
 class LocalHistoryEntry {
   /// Creates an entry in the history of a [LocalHistoryRoute].
-  LocalHistoryEntry({ this.onRemove });
+  LocalHistoryEntry({ [ this.onRemove ] });
 
   /// Called when this entry is removed from the history of its associated [LocalHistoryRoute].
   final VoidCallback onRemove;
@@ -531,11 +535,13 @@ mixin LocalHistoryRoute<T> on Route<T> {
 
 class _ModalScopeStatus extends InheritedWidget {
   const _ModalScopeStatus({
-    Key key,
-    @required this.isCurrent,
-    @required this.canPop,
-    @required this.route,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.isCurrent,
+     this.canPop,
+     this.route,
+     Widget child,
   }) : assert(isCurrent != null),
        assert(canPop != null),
        assert(route != null),
@@ -563,8 +569,10 @@ class _ModalScopeStatus extends InheritedWidget {
 
 class _ModalScope<T> extends StatefulWidget {
   const _ModalScope({
+    [
     Key key,
     this.route,
+  ]
   }) : super(key: key);
 
   final ModalRoute<T> route;
@@ -676,7 +684,9 @@ class _ModalScopeState<T> extends State<_ModalScope<T>> {
 abstract class ModalRoute<T> extends TransitionRoute<T> with LocalHistoryRoute<T> {
   /// Creates a route that blocks interaction with previous routes.
   ModalRoute({
+    [
     RouteSettings settings,
+  ]
   }) : super(settings: settings);
 
   // The API for general users of this class
@@ -1269,7 +1279,9 @@ abstract class ModalRoute<T> extends TransitionRoute<T> with LocalHistoryRoute<T
 abstract class PopupRoute<T> extends ModalRoute<T> {
   /// Initializes the [PopupRoute].
   PopupRoute({
+    [
     RouteSettings settings,
+  ]
   }) : super(settings: settings);
 
   @override
@@ -1438,13 +1450,15 @@ abstract class RouteAware {
 
 class _DialogRoute<T> extends PopupRoute<T> {
   _DialogRoute({
-    @required RoutePageBuilder pageBuilder,
+     RoutePageBuilder pageBuilder,
+    [
     bool barrierDismissible = true,
     String barrierLabel,
     Color barrierColor = const Color(0x80000000),
     Duration transitionDuration = const Duration(milliseconds: 200),
     RouteTransitionsBuilder transitionBuilder,
     RouteSettings settings,
+  ]
   }) : assert(barrierDismissible != null),
        _pageBuilder = pageBuilder,
        _barrierDismissible = barrierDismissible,
@@ -1545,13 +1559,15 @@ class _DialogRoute<T> extends PopupRoute<T> {
 ///  * [showDialog], which displays a Material-style dialog.
 ///  * [showCupertinoDialog], which displays an iOS-style dialog.
 Future<T> showGeneralDialog<T>({
-  @required BuildContext context,
-  @required RoutePageBuilder pageBuilder,
+   BuildContext context,
+   RoutePageBuilder pageBuilder,
+  [
   bool barrierDismissible,
   String barrierLabel,
   Color barrierColor,
   Duration transitionDuration,
   RouteTransitionsBuilder transitionBuilder,
+]
 }) {
   assert(pageBuilder != null);
   assert(!barrierDismissible || barrierLabel != null);

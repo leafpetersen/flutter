@@ -47,7 +47,7 @@ abstract class RenderSliverBoxChildManager {
   /// If this method does not create a child for a given `index` greater than or
   /// equal to zero, then [computeMaxScrollOffset] must be able to return a
   /// precise value.
-  void createChild(int index, { @required RenderBox after });
+  void createChild(int index, {  RenderBox after });
 
   /// Remove the given child from the child list.
   ///
@@ -67,10 +67,12 @@ abstract class RenderSliverBoxChildManager {
   /// index.
   double estimateMaxScrollOffset(
     SliverConstraints constraints, {
+    [
     int firstIndex,
     int lastIndex,
     double leadingScrollOffset,
     double trailingScrollOffset,
+  ]
   });
 
   /// Called to obtain a precise measure of the total number of children.
@@ -191,7 +193,7 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
   ///
   /// The [childManager] argument must not be null.
   RenderSliverMultiBoxAdaptor({
-    @required RenderSliverBoxChildManager childManager,
+     RenderSliverBoxChildManager childManager,
   }) : assert(childManager != null),
        _childManager = childManager;
 
@@ -225,7 +227,7 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
   bool _debugAssertChildListLocked() => childManager.debugAssertChildListLocked();
 
   @override
-  void insert(RenderBox child, { RenderBox after }) {
+  void insert(RenderBox child, { [ RenderBox after ] }) {
     assert(!_keepAliveBucket.containsValue(child));
     super.insert(child, after: after);
     assert(firstChild != null);
@@ -260,7 +262,7 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
     _keepAliveBucket.clear();
   }
 
-  void _createOrObtainChild(int index, { RenderBox after }) {
+  void _createOrObtainChild(int index, { [ RenderBox after ] }) {
     invokeLayoutCallback<SliverConstraints>((SliverConstraints constraints) {
       assert(constraints == this.constraints);
       if (_keepAliveBucket.containsKey(index)) {
@@ -342,7 +344,7 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
   /// that call either, except for the one that is created and returned by
   /// `createChild`.
   @protected
-  bool addInitialChild({ int index = 0, double layoutOffset = 0.0 }) {
+  bool addInitialChild({ [ int index = 0, double layoutOffset = 0.0 ] }) {
     assert(_debugAssertChildListLocked());
     assert(firstChild == null);
     _createOrObtainChild(index, after: null);
@@ -373,7 +375,9 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
   @protected
   RenderBox insertAndLayoutLeadingChild(
     BoxConstraints childConstraints, {
+    [
     bool parentUsesSize = false,
+  ]
   }) {
     assert(_debugAssertChildListLocked());
     final int index = indexOf(firstChild) - 1;
@@ -401,8 +405,10 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
   @protected
   RenderBox insertAndLayoutChild(
     BoxConstraints childConstraints, {
-    @required RenderBox after,
+     RenderBox after,
+    [
     bool parentUsesSize = false,
+  ]
   }) {
     assert(_debugAssertChildListLocked());
     assert(after != null);
@@ -478,7 +484,7 @@ abstract class RenderSliverMultiBoxAdaptor extends RenderSliver
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required double mainAxisPosition, @required double crossAxisPosition }) {
+  bool hitTestChildren(HitTestResult result, {  double mainAxisPosition,  double crossAxisPosition }) {
     RenderBox child = lastChild;
     while (child != null) {
       if (hitTestBoxChild(result, child, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition))

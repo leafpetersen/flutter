@@ -338,9 +338,11 @@ class _DevFSHttpWriter {
 // Basic statistics for DevFS update operation.
 class UpdateFSReport {
   UpdateFSReport({
+    [
     bool success = false,
     int invalidatedSourcesCount = 0,
     int syncedBytes = 0,
+  ]
   }) {
     _success = success;
     _invalidatedSourcesCount = invalidatedSourcesCount;
@@ -370,7 +372,9 @@ class DevFS {
     VMService serviceProtocol,
     this.fsName,
     this.rootDirectory, {
+    [
     String packagesFilePath,
+  ]
   }) : _operations = ServiceProtocolDevFSOperations(serviceProtocol),
        _httpWriter = _DevFSHttpWriter(fsName, serviceProtocol),
        _packagesFilePath = packagesFilePath ?? fs.path.join(rootDirectory.path, kPackagesFileName);
@@ -379,7 +383,9 @@ class DevFS {
     this._operations,
     this.fsName,
     this.rootDirectory, {
+    [
     String packagesFilePath,
+  ]
   }) : _httpWriter = null,
        _packagesFilePath = packagesFilePath ?? fs.path.join(rootDirectory.path, kPackagesFileName);
 
@@ -431,18 +437,24 @@ class DevFS {
   ///
   /// Returns the number of bytes synced.
   Future<UpdateFSReport> update({
-    @required String mainPath,
+     String mainPath,
+    [
     String target,
     AssetBundle bundle,
     DateTime firstBuildTime,
-    bool bundleFirstUpload = false,
-    @required ResidentCompiler generator,
-    String dillOutputPath,
-    @required bool trackWidgetCreation,
+    bool bundleFirstUpload = false
+    ]
+     ResidentCompiler generator,
+    [
+    String dillOutputPath
+    ]
+     bool trackWidgetCreation,
+    [
     bool fullRestart = false,
-    String projectRootPath,
-    @required String pathToReload,
-    @required List<Uri> invalidatedFiles,
+    String projectRootPath
+    ]
+     String pathToReload,
+     List<Uri> invalidatedFiles,
   }) async {
     assert(trackWidgetCreation != null);
     assert(generator != null);

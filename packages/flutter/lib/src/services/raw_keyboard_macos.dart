@@ -22,10 +22,12 @@ class RawKeyEventDataMacOs extends RawKeyEventData {
   /// The [characters], [charactersIgnoringModifiers], and [modifiers], arguments
   /// must not be null.
   const RawKeyEventDataMacOs({
+    [
     this.characters = '',
     this.charactersIgnoringModifiers = '',
     this.keyCode = 0,
     this.modifiers = 0,
+  ]
   }) : assert(characters != null),
        assert(charactersIgnoringModifiers != null),
        assert(keyCode != null),
@@ -136,7 +138,7 @@ class RawKeyEventDataMacOs extends RawKeyEventData {
   }
 
   @override
-  bool isModifierPressed(ModifierKey key, {KeyboardSide side = KeyboardSide.any}) {
+  bool isModifierPressed(ModifierKey key, {[KeyboardSide side = KeyboardSide.any]}) {
     final int independentModifier = modifiers & deviceIndependentMask;
     switch (key) {
       case ModifierKey.controlModifier:

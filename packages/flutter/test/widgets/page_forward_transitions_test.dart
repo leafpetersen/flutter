@@ -8,10 +8,12 @@ import 'package:flutter/rendering.dart';
 
 class TestTransition extends AnimatedWidget {
   const TestTransition({
+    [
     Key key,
     this.childFirstHalf,
     this.childSecondHalf,
     Animation<double> animation,
+  ]
   }) : super(key: key, listenable: animation);
 
   final Widget childFirstHalf;
@@ -27,7 +29,7 @@ class TestTransition extends AnimatedWidget {
 }
 
 class TestRoute<T> extends PageRoute<T> {
-  TestRoute({ this.child, RouteSettings settings, this.barrierColor }) : super(settings: settings);
+  TestRoute({ [ this.child, RouteSettings settings, this.barrierColor ] }) : super(settings: settings);
 
   final Widget child;
 
@@ -57,7 +59,7 @@ void main() {
 
     final GlobalKey insideKey = GlobalKey();
 
-    String state({ bool skipOffstage = true }) {
+    String state({ [ bool skipOffstage = true ] }) {
       String result = '';
       if (tester.any(find.text('A', skipOffstage: skipOffstage)))
         result += 'A';

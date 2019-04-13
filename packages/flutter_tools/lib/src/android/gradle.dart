@@ -250,9 +250,11 @@ distributionUrl=https\\://services.gradle.org/distributions/gradle-$gradleVersio
 /// If [requireAndroidSdk] is true (the default) and no Android SDK is found,
 /// this will fail with a [ToolExit].
 void updateLocalProperties({
-  @required FlutterProject project,
+   FlutterProject project,
+  [
   BuildInfo buildInfo,
   bool requireAndroidSdk = true,
+]
 }) {
   if (requireAndroidSdk) {
     _exitIfNoAndroidSdk();
@@ -318,10 +320,10 @@ void _exitIfNoAndroidSdk() {
 }
 
 Future<void> buildGradleProject({
-  @required FlutterProject project,
-  @required BuildInfo buildInfo,
-  @required String target,
-  @required bool isBuildingBundle,
+   FlutterProject project,
+   BuildInfo buildInfo,
+   String target,
+   bool isBuildingBundle,
 }) async {
   // Update the local.properties file with the build mode, version name and code.
   // FlutterPlugin v1 reads local.properties to determine build mode. Plugin v2

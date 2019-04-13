@@ -120,6 +120,7 @@ class FlutterErrorDetailsForPointerRouter extends FlutterErrorDetails {
   /// The gestures library calls this constructor when catching an exception
   /// that will subsequently be reported using [FlutterError.onError].
   const FlutterErrorDetailsForPointerRouter({
+    [
     dynamic exception,
     StackTrace stack,
     String library,
@@ -129,6 +130,7 @@ class FlutterErrorDetailsForPointerRouter extends FlutterErrorDetails {
     this.event,
     InformationCollector informationCollector,
     bool silent = false,
+  ]
   }) : super(
     exception: exception,
     stack: stack,

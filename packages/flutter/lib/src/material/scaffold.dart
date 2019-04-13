@@ -62,14 +62,14 @@ class ScaffoldPrelayoutGeometry {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
   const ScaffoldPrelayoutGeometry({
-    @required this.bottomSheetSize,
-    @required this.contentBottom,
-    @required this.contentTop,
-    @required this.floatingActionButtonSize,
-    @required this.minInsets,
-    @required this.scaffoldSize,
-    @required this.snackBarSize,
-    @required this.textDirection,
+     this.bottomSheetSize,
+     this.contentBottom,
+     this.contentTop,
+     this.floatingActionButtonSize,
+     this.minInsets,
+     this.scaffoldSize,
+     this.snackBarSize,
+     this.textDirection,
   });
 
   /// The [Size] of [Scaffold.floatingActionButton].
@@ -192,8 +192,10 @@ class _TransitionSnapshotFabLocation extends FloatingActionButtonLocation {
 class ScaffoldGeometry {
   /// Create an object that describes the geometry of a [Scaffold].
   const ScaffoldGeometry({
+    [
     this.bottomNavigationBarTop,
     this.floatingActionButtonArea,
+  ]
   });
 
   /// The distance from the [Scaffold]'s top edge to the top edge of the
@@ -228,8 +230,10 @@ class ScaffoldGeometry {
   /// Creates a copy of this [ScaffoldGeometry] but with the given fields replaced with
   /// the new values.
   ScaffoldGeometry copyWith({
+    [
     double bottomNavigationBarTop,
     Rect floatingActionButtonArea,
+  ]
   }) {
     return ScaffoldGeometry(
       bottomNavigationBarTop: bottomNavigationBarTop ?? this.bottomNavigationBarTop,
@@ -262,9 +266,11 @@ class _ScaffoldGeometryNotifier extends ChangeNotifier implements ValueListenabl
   }
 
   void _updateWith({
+    [
     double bottomNavigationBarTop,
     Rect floatingActionButtonArea,
     double floatingActionButtonScale,
+  ]
   }) {
     this.floatingActionButtonScale = floatingActionButtonScale ?? this.floatingActionButtonScale;
     geometry = geometry.copyWith(
@@ -286,11 +292,13 @@ class _ScaffoldGeometryNotifier extends ChangeNotifier implements ValueListenabl
 // then _BodyBuilder will assert.
 class _BodyBoxConstraints extends BoxConstraints {
   const _BodyBoxConstraints({
+    [
     double minWidth = 0.0,
     double maxWidth = double.infinity,
     double minHeight = 0.0,
-    double maxHeight = double.infinity,
-    @required this.bottomWidgetsHeight,
+    double maxHeight = double.infinity
+    ]
+     this.bottomWidgetsHeight,
   }) : assert(bottomWidgetsHeight != null),
        assert(bottomWidgetsHeight >= 0),
        super(minWidth: minWidth, maxWidth: maxWidth, minHeight: minHeight, maxHeight: maxHeight);
@@ -322,7 +330,7 @@ class _BodyBoxConstraints extends BoxConstraints {
 // The bottom widgets' height is passed along via the _BodyBoxConstraints parameter.
 // The constraints parameter is constructed in_ScaffoldLayout.performLayout().
 class _BodyBuilder extends StatelessWidget {
-  const _BodyBuilder({ Key key, this.body }) : super(key: key);
+  const _BodyBuilder({ [ Key key, this.body ] }) : super(key: key);
 
   final Widget body;
 
@@ -347,15 +355,15 @@ class _BodyBuilder extends StatelessWidget {
 
 class _ScaffoldLayout extends MultiChildLayoutDelegate {
   _ScaffoldLayout({
-    @required this.minInsets,
-    @required this.textDirection,
-    @required this.geometryNotifier,
+     this.minInsets,
+     this.textDirection,
+     this.geometryNotifier,
     // for floating action button
-    @required this.previousFloatingActionButtonLocation,
-    @required this.currentFloatingActionButtonLocation,
-    @required this.floatingActionButtonMoveAnimationProgress,
-    @required this.floatingActionButtonMotionAnimator,
-    @required this.extendBody,
+     this.previousFloatingActionButtonLocation,
+     this.currentFloatingActionButtonLocation,
+     this.floatingActionButtonMoveAnimationProgress,
+     this.floatingActionButtonMotionAnimator,
+     this.extendBody,
   }) : assert(minInsets != null),
        assert(textDirection != null),
        assert(geometryNotifier != null),
@@ -529,11 +537,13 @@ class _ScaffoldLayout extends MultiChildLayoutDelegate {
 ///   when its [FloatingActionButtonLocation] is updated.
 class _FloatingActionButtonTransition extends StatefulWidget {
   const _FloatingActionButtonTransition({
-    Key key,
-    @required this.child,
-    @required this.fabMoveAnimation,
-    @required this.fabMotionAnimator,
-    @required this.geometryNotifier,
+    [
+    Key key
+    ]
+     this.child,
+     this.fabMoveAnimation,
+     this.fabMotionAnimator,
+     this.geometryNotifier,
   }) : assert(fabMoveAnimation != null),
        assert(fabMotionAnimator != null),
        super(key: key);
@@ -860,6 +870,7 @@ class _FloatingActionButtonTransitionState extends State<_FloatingActionButtonTr
 class Scaffold extends StatefulWidget {
   /// Creates a visual scaffold for material design widgets.
   const Scaffold({
+    [
     Key key,
     this.appBar,
     this.body,
@@ -877,6 +888,7 @@ class Scaffold extends StatefulWidget {
     this.primary = true,
     this.drawerDragStartBehavior = DragStartBehavior.start,
     this.extendBody = false,
+  ]
   }) : assert(primary != null),
        assert(extendBody != null),
        assert(drawerDragStartBehavior != null),
@@ -1146,7 +1158,7 @@ class Scaffold extends StatefulWidget {
   ///
   /// If there is no [Scaffold] in scope, then this will throw an exception.
   /// To return null if there is no [Scaffold], then pass `nullOk: true`.
-  static ScaffoldState of(BuildContext context, { bool nullOk = false }) {
+  static ScaffoldState of(BuildContext context, { [ bool nullOk = false ] }) {
     assert(nullOk != null);
     assert(context != null);
     final ScaffoldState result = context.ancestorStateOfType(const TypeMatcher<ScaffoldState>());
@@ -1228,7 +1240,7 @@ class Scaffold extends StatefulWidget {
   ///
   ///  * [Scaffold.of], which provides access to the [ScaffoldState] object as a
   ///    whole, from which you can show snackbars, bottom sheets, and so forth.
-  static bool hasDrawer(BuildContext context, { bool registerForUpdates = true }) {
+  static bool hasDrawer(BuildContext context, { [ bool registerForUpdates = true ] }) {
     assert(registerForUpdates != null);
     assert(context != null);
     if (registerForUpdates) {
@@ -1401,7 +1413,7 @@ class ScaffoldState extends State<Scaffold> with TickerProviderStateMixin {
   ///
   /// The removed snack bar does not run its normal exit animation. If there are
   /// any queued snack bars, they begin their entrance animation immediately.
-  void removeCurrentSnackBar({ SnackBarClosedReason reason = SnackBarClosedReason.remove }) {
+  void removeCurrentSnackBar({ [ SnackBarClosedReason reason = SnackBarClosedReason.remove ] }) {
     assert(reason != null);
     if (_snackBars.isEmpty)
       return;
@@ -1416,7 +1428,7 @@ class ScaffoldState extends State<Scaffold> with TickerProviderStateMixin {
   /// Removes the current [SnackBar] by running its normal exit animation.
   ///
   /// The closed completer is called after the animation is complete.
-  void hideCurrentSnackBar({ SnackBarClosedReason reason = SnackBarClosedReason.hide }) {
+  void hideCurrentSnackBar({ [ SnackBarClosedReason reason = SnackBarClosedReason.hide ] }) {
     assert(reason != null);
     if (_snackBars.isEmpty || _snackBarController.status == AnimationStatus.dismissed)
       return;
@@ -1695,11 +1707,13 @@ class ScaffoldState extends State<Scaffold> with TickerProviderStateMixin {
     List<LayoutId> children,
     Widget child,
     Object childId, {
-    @required bool removeLeftPadding,
-    @required bool removeTopPadding,
-    @required bool removeRightPadding,
-    @required bool removeBottomPadding,
+     bool removeLeftPadding,
+     bool removeTopPadding,
+     bool removeRightPadding,
+     bool removeBottomPadding,
+    [
     bool removeBottomInset = false,
+  ]
   }) {
     MediaQueryData data = MediaQuery.of(context).removePadding(
       removeLeft: removeLeftPadding,
@@ -2002,12 +2016,14 @@ class ScaffoldFeatureController<T extends Widget, U> {
 
 class _PersistentBottomSheet extends StatefulWidget {
   const _PersistentBottomSheet({
+    [
     Key key,
     this.animationController,
     this.enableDrag = true,
     this.onClosing,
     this.onDismissed,
     this.builder,
+  ]
   }) : super(key: key);
 
   final AnimationController animationController; // we control it, but it must be disposed by whoever created it
@@ -2090,9 +2106,9 @@ class PersistentBottomSheetController<T> extends ScaffoldFeatureController<_Pers
 
 class _ScaffoldScope extends InheritedWidget {
   const _ScaffoldScope({
-    @required this.hasDrawer,
-    @required this.geometryNotifier,
-    @required Widget child,
+     this.hasDrawer,
+     this.geometryNotifier,
+     Widget child,
   }) : assert(hasDrawer != null),
        super(child: child);
 

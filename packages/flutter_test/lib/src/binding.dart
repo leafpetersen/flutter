@@ -234,7 +234,9 @@ abstract class TestWidgetsFlutterBinding extends BindingBase
   /// details. The value is ignored by the [LiveTestWidgetsFlutterBinding].
   Future<T> runAsync<T>(
     Future<T> callback(), {
+    [
     Duration additionalTime = const Duration(milliseconds: 1000),
+  ]
   });
 
   /// Artificially calls dispatchLocalesChanged on the Widget binding,
@@ -324,7 +326,9 @@ abstract class TestWidgetsFlutterBinding extends BindingBase
   void dispatchEvent(
     PointerEvent event,
     HitTestResult hitTestResult, {
+    [
     TestBindingEventSource source = TestBindingEventSource.device,
+  ]
   }) {
     assert(source == TestBindingEventSource.test);
     super.dispatchEvent(event, hitTestResult);
@@ -416,7 +420,7 @@ abstract class TestWidgetsFlutterBinding extends BindingBase
   /// The `description` is used by the [LiveTestWidgetsFlutterBinding] to
   /// show a label on the screen during the test. The description comes from
   /// the value passed to [testWidgets]. It must not be null.
-  Future<void> runTest(Future<void> testBody(), VoidCallback invariantTester, { String description = '' });
+  Future<void> runTest(Future<void> testBody(), VoidCallback invariantTester, { [ String description = '' ] });
 
   /// This is called during test execution before and after the body has been
   /// executed.
@@ -460,7 +464,9 @@ abstract class TestWidgetsFlutterBinding extends BindingBase
     Future<void> testBody(),
     VoidCallback invariantTester,
     String description, {
+    [
     Future<void> timeout,
+  ]
   }) {
     assert(description != null);
     assert(inTest);
@@ -744,7 +750,9 @@ class AutomatedTestWidgetsFlutterBinding extends TestWidgetsFlutterBinding {
   @override
   Future<T> runAsync<T>(
     Future<T> callback(), {
+    [
     Duration additionalTime = const Duration(milliseconds: 1000),
+  ]
   }) {
     assert(additionalTime != null);
     assert(() {
@@ -897,8 +905,10 @@ class AutomatedTestWidgetsFlutterBinding extends TestWidgetsFlutterBinding {
   Future<void> runTest(
     Future<void> testBody(),
     VoidCallback invariantTester, {
+    [
     String description = '',
     Duration timeout = const Duration(seconds: 2),
+  ]
   }) {
     assert(description != null);
     assert(!inTest);
@@ -1208,7 +1218,9 @@ class LiveTestWidgetsFlutterBinding extends TestWidgetsFlutterBinding {
   void dispatchEvent(
     PointerEvent event,
     HitTestResult hitTestResult, {
+    [
     TestBindingEventSource source = TestBindingEventSource.device,
+  ]
   }) {
     switch (source) {
       case TestBindingEventSource.test:
@@ -1254,7 +1266,9 @@ class LiveTestWidgetsFlutterBinding extends TestWidgetsFlutterBinding {
   @override
   Future<T> runAsync<T>(
     Future<T> callback(), {
+    [
     Duration additionalTime = const Duration(milliseconds: 1000),
+  ]
   }) async {
     assert(() {
       if (!_runningAsyncTasks)
@@ -1284,7 +1298,7 @@ class LiveTestWidgetsFlutterBinding extends TestWidgetsFlutterBinding {
   }
 
   @override
-  Future<void> runTest(Future<void> testBody(), VoidCallback invariantTester, { String description = '' }) async {
+  Future<void> runTest(Future<void> testBody(), VoidCallback invariantTester, { [ String description = '' ] }) async {
     assert(description != null);
     assert(!inTest);
     _inTest = true;
@@ -1347,8 +1361,10 @@ class TestViewConfiguration extends ViewConfiguration {
   ///
   /// If a [window] instance is not provided it defaults to [ui.window].
   factory TestViewConfiguration({
+    [
     Size size = _kDefaultTestViewportSize,
     ui.Window window,
+  ]
   }) {
     return TestViewConfiguration._(size, window ?? ui.window);
   }
@@ -1418,9 +1434,11 @@ class _LiveTestPointerRecord {
 
 class _LiveTestRenderView extends RenderView {
   _LiveTestRenderView({
+    [
     ViewConfiguration configuration,
-    this.onNeedPaint,
-    @required ui.Window window,
+    this.onNeedPaint
+    ]
+     ui.Window window,
   }) : super(configuration: configuration, window: window);
 
   @override
@@ -1452,7 +1470,7 @@ class _LiveTestRenderView extends RenderView {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Offset position }) {
+  bool hitTest(HitTestResult result, { [ Offset position ] }) {
     final Matrix4 transform = configuration.toHitTestMatrix();
     final double det = transform.invert();
     assert(det != 0.0);
@@ -1549,7 +1567,7 @@ class _MockHttpClient implements HttpClient {
   set badCertificateCallback(bool Function(X509Certificate cert, String host, int port) callback) { }
 
   @override
-  void close({ bool force = false }) { }
+  void close({ [ bool force = false ] }) { }
 
   @override
   Future<HttpClientRequest> delete(String host, int port, String path) {
@@ -1708,7 +1726,7 @@ class _MockHttpResponse extends Stream<List<int>> implements HttpClientResponse 
   bool get isRedirect => false;
 
   @override
-  StreamSubscription<List<int>> listen(void Function(List<int> event) onData, { Function onError, void Function() onDone, bool cancelOnError }) {
+  StreamSubscription<List<int>> listen(void Function(List<int> event) onData, { [ Function onError, void Function() onDone, bool cancelOnError ] }) {
     return const Stream<List<int>>.empty().listen(onData, onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
 

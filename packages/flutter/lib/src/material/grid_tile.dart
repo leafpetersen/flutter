@@ -21,10 +21,12 @@ class GridTile extends StatelessWidget {
   ///
   /// Must have a child. Does not typically have both a header and a footer.
   const GridTile({
+    [
     Key key,
     this.header,
-    this.footer,
-    @required this.child,
+    this.footer
+    ]
+     this.child,
   }) : assert(child != null),
        super(key: key);
 

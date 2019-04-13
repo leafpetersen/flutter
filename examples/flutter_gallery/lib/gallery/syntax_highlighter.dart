@@ -7,6 +7,7 @@ import 'package:string_scanner/string_scanner.dart';
 
 class SyntaxHighlighterStyle {
   SyntaxHighlighterStyle({
+    [
     this.baseStyle,
     this.numberStyle,
     this.commentStyle,
@@ -15,6 +16,7 @@ class SyntaxHighlighterStyle {
     this.punctuationStyle,
     this.classStyle,
     this.constantStyle,
+  ]
   });
 
   static SyntaxHighlighterStyle lightThemeStyle() {

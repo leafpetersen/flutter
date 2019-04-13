@@ -81,9 +81,12 @@ class CheckboxListTile extends StatelessWidget {
   /// * [onChanged], which is called when the value of the checkbox should
   ///   change. It can be set to null to disable the checkbox.
   const CheckboxListTile({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.activeColor,
     this.title,
     this.subtitle,
@@ -92,6 +95,7 @@ class CheckboxListTile extends StatelessWidget {
     this.secondary,
     this.selected = false,
     this.controlAffinity = ListTileControlAffinity.platform,
+  ]
   }) : assert(value != null),
        assert(isThreeLine != null),
        assert(!isThreeLine || subtitle != null),

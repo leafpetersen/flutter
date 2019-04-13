@@ -112,6 +112,7 @@ abstract class PointerEvent extends Diagnosticable {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
   const PointerEvent({
+    [
     this.timeStamp = Duration.zero,
     this.pointer = 0,
     this.kind = PointerDeviceKind.touch,
@@ -135,6 +136,7 @@ abstract class PointerEvent extends Diagnosticable {
     this.tilt = 0.0,
     this.platformData = 0,
     this.synthesized = false,
+  ]
   });
 
   /// Time of event dispatch, relative to an arbitrary timeline.
@@ -349,6 +351,7 @@ class PointerAddedEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerAddedEvent({
+    [
     Duration timeStamp = Duration.zero,
     PointerDeviceKind kind = PointerDeviceKind.touch,
     int device = 0,
@@ -363,6 +366,7 @@ class PointerAddedEvent extends PointerEvent {
     double radiusMax = 0.0,
     double orientation = 0.0,
     double tilt = 0.0,
+  ]
   }) : super(
          timeStamp: timeStamp,
          kind: kind,
@@ -390,6 +394,7 @@ class PointerRemovedEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerRemovedEvent({
+    [
     Duration timeStamp = Duration.zero,
     PointerDeviceKind kind = PointerDeviceKind.touch,
     int device = 0,
@@ -400,6 +405,7 @@ class PointerRemovedEvent extends PointerEvent {
     double distanceMax = 0.0,
     double radiusMin = 0.0,
     double radiusMax = 0.0,
+  ]
   }) : super(
          timeStamp: timeStamp,
          kind: kind,
@@ -430,6 +436,7 @@ class PointerHoverEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerHoverEvent({
+    [
     Duration timeStamp = Duration.zero,
     PointerDeviceKind kind = PointerDeviceKind.touch,
     int device = 0,
@@ -450,6 +457,7 @@ class PointerHoverEvent extends PointerEvent {
     double orientation = 0.0,
     double tilt = 0.0,
     bool synthesized = false,
+  ]
   }) : super(
          timeStamp: timeStamp,
          kind: kind,
@@ -490,6 +498,7 @@ class PointerEnterEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerEnterEvent({
+    [
     Duration timeStamp = Duration.zero,
     PointerDeviceKind kind = PointerDeviceKind.touch,
     int device = 0,
@@ -510,6 +519,7 @@ class PointerEnterEvent extends PointerEvent {
     double orientation = 0.0,
     double tilt = 0.0,
     bool synthesized = false,
+  ]
   }) : super(
          timeStamp: timeStamp,
          kind: kind,
@@ -583,6 +593,7 @@ class PointerExitEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerExitEvent({
+    [
     Duration timeStamp = Duration.zero,
     PointerDeviceKind kind = PointerDeviceKind.touch,
     int device = 0,
@@ -603,6 +614,7 @@ class PointerExitEvent extends PointerEvent {
     double orientation = 0.0,
     double tilt = 0.0,
     bool synthesized = false,
+  ]
   }) : super(
          timeStamp: timeStamp,
          kind: kind,
@@ -667,6 +679,7 @@ class PointerDownEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerDownEvent({
+    [
     Duration timeStamp = Duration.zero,
     int pointer = 0,
     PointerDeviceKind kind = PointerDeviceKind.touch,
@@ -685,6 +698,7 @@ class PointerDownEvent extends PointerEvent {
     double radiusMax = 0.0,
     double orientation = 0.0,
     double tilt = 0.0,
+  ]
   }) : super(
          timeStamp: timeStamp,
          pointer: pointer,
@@ -721,6 +735,7 @@ class PointerMoveEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerMoveEvent({
+    [
     Duration timeStamp = Duration.zero,
     int pointer = 0,
     PointerDeviceKind kind = PointerDeviceKind.touch,
@@ -742,6 +757,7 @@ class PointerMoveEvent extends PointerEvent {
     double tilt = 0.0,
     int platformData = 0,
     bool synthesized = false,
+  ]
   }) : super(
          timeStamp: timeStamp,
          pointer: pointer,
@@ -775,6 +791,7 @@ class PointerUpEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerUpEvent({
+    [
     Duration timeStamp = Duration.zero,
     int pointer = 0,
     PointerDeviceKind kind = PointerDeviceKind.touch,
@@ -794,6 +811,7 @@ class PointerUpEvent extends PointerEvent {
     double radiusMax = 0.0,
     double orientation = 0.0,
     double tilt = 0.0,
+  ]
   }) : super(
          timeStamp: timeStamp,
          pointer: pointer,
@@ -827,11 +845,13 @@ abstract class PointerSignalEvent extends PointerEvent {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
   const PointerSignalEvent({
+    [
     Duration timeStamp = Duration.zero,
     int pointer = 0,
     PointerDeviceKind kind = PointerDeviceKind.mouse,
     int device = 0,
     Offset position = Offset.zero,
+  ]
   }) : super(
          timeStamp: timeStamp,
          pointer: pointer,
@@ -850,11 +870,13 @@ class PointerScrollEvent extends PointerSignalEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerScrollEvent({
+    [
     Duration timeStamp = Duration.zero,
     PointerDeviceKind kind = PointerDeviceKind.mouse,
     int device = 0,
     Offset position = Offset.zero,
     this.scrollDelta = Offset.zero,
+  ]
   }) : assert(timeStamp != null),
        assert(kind != null),
        assert(device != null),
@@ -883,6 +905,7 @@ class PointerCancelEvent extends PointerEvent {
   ///
   /// All of the arguments must be non-null.
   const PointerCancelEvent({
+    [
     Duration timeStamp = Duration.zero,
     int pointer = 0,
     PointerDeviceKind kind = PointerDeviceKind.touch,
@@ -902,6 +925,7 @@ class PointerCancelEvent extends PointerEvent {
     double radiusMax = 0.0,
     double orientation = 0.0,
     double tilt = 0.0,
+  ]
   }) : super(
          timeStamp: timeStamp,
          pointer: pointer,

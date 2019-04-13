@@ -112,8 +112,10 @@ void diffMaps(
   Map<String, dynamic> expected,
   Map<String, dynamic> actual,
   StringBuffer diffBuffer, {
+  [
   List<String> excludeKeys = const <String>[],
   String messagePrefix = '',
+]
 }) {
   const IterableEquality<String> eq = IterableEquality<String>();
   if (!eq.equals(expected.keys, actual.keys)) {

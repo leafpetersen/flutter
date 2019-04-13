@@ -866,7 +866,7 @@ void main() {
 }
 
 class TestImageProvider extends ImageProvider<TestImageProvider> {
-  TestImageProvider({ImageStreamCompleter streamCompleter}) {
+  TestImageProvider({[ImageStreamCompleter streamCompleter]}) {
     _streamCompleter = streamCompleter
       ?? OneFrameImageStreamCompleter(_completer.future);
   }
@@ -905,7 +905,7 @@ class TestImageStreamCompleter extends ImageStreamCompleter {
   final Map<ImageListener, ImageErrorListener> listeners = <ImageListener, ImageErrorListener>{};
 
   @override
-  void addListener(ImageListener listener, { ImageErrorListener onError }) {
+  void addListener(ImageListener listener, { [ ImageErrorListener onError ] }) {
     listeners[listener] = onError;
   }
 
@@ -926,7 +926,7 @@ class TestImage implements ui.Image {
   void dispose() { }
 
   @override
-  Future<ByteData> toByteData({ ui.ImageByteFormat format = ui.ImageByteFormat.rawRgba }) async {
+  Future<ByteData> toByteData({ [ ui.ImageByteFormat format = ui.ImageByteFormat.rawRgba ] }) async {
     throw UnsupportedError('Cannot encode test image');
   }
 

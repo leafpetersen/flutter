@@ -166,7 +166,7 @@ class FlutterProject {
   String get rootPath => path.join(parent.path, name);
   String get androidPath => path.join(rootPath, 'android');
 
-  Future<void> addCustomBuildType(String name, {String initWith}) async {
+  Future<void> addCustomBuildType(String name, {[String initWith]}) async {
     final File buildScript = File(
       path.join(androidPath, 'app', 'build.gradle'),
     );
@@ -209,11 +209,11 @@ android {
     await buildScript.writeAsString((await buildScript.readAsString()).replaceAll('buildTypes', 'builTypes'));
   }
 
-  Future<void> runGradleTask(String task, {List<String> options}) async {
+  Future<void> runGradleTask(String task, {[List<String> options]}) async {
     return _runGradleTask(workingDirectory: androidPath, task: task, options: options);
   }
 
-  Future<ProcessResult> resultOfGradleTask(String task, {List<String> options}) {
+  Future<ProcessResult> resultOfGradleTask(String task, {[List<String> options]}) {
     return _resultOfGradleTask(workingDirectory: androidPath, task: task, options: options);
   }
 
@@ -244,14 +244,14 @@ class FlutterPluginProject {
   String get exampleAndroidPath => path.join(examplePath, 'android');
   String get debugApkPath => path.join(examplePath, 'build', 'app', 'outputs', 'apk', 'debug', 'app-debug.apk');
 
-  Future<void> runGradleTask(String task, {List<String> options}) async {
+  Future<void> runGradleTask(String task, {[List<String> options]}) async {
     return _runGradleTask(workingDirectory: exampleAndroidPath, task: task, options: options);
   }
 
   bool get hasDebugApk => File(debugApkPath).existsSync();
 }
 
-Future<void> _runGradleTask({String workingDirectory, String task, List<String> options}) async {
+Future<void> _runGradleTask({[String workingDirectory, String task, List<String> options]}) async {
   final ProcessResult result = await _resultOfGradleTask(
       workingDirectory: workingDirectory,
       task: task,
@@ -266,8 +266,8 @@ Future<void> _runGradleTask({String workingDirectory, String task, List<String> 
     throw 'Gradle exited with error';
 }
 
-Future<ProcessResult> _resultOfGradleTask({String workingDirectory, String task,
-    List<String> options}) {
+Future<ProcessResult> _resultOfGradleTask({[String workingDirectory, String task,
+    List<String> options]}) {
   final List<String> args = <String>['app:$task'];
   if (options != null) {
     args.addAll(options);

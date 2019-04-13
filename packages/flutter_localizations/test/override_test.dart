@@ -28,8 +28,10 @@ class FooMaterialLocalizations extends MaterialLocalizationEn {
 
 class FooMaterialLocalizationsDelegate extends LocalizationsDelegate<MaterialLocalizations> {
   const FooMaterialLocalizationsDelegate({
+    [
     this.supportedLanguage = 'en',
     this.backButtonTooltip = 'foo',
+  ]
   });
 
   final String supportedLanguage;
@@ -50,6 +52,7 @@ class FooMaterialLocalizationsDelegate extends LocalizationsDelegate<MaterialLoc
 }
 
 Widget buildFrame({
+  [
   Locale locale,
   Iterable<LocalizationsDelegate<dynamic>> delegates = GlobalMaterialLocalizations.delegates,
   WidgetBuilder buildContent,
@@ -58,6 +61,7 @@ Widget buildFrame({
     Locale('en', 'US'),
     Locale('es', 'ES'),
   ],
+]
 }) {
   return MaterialApp(
     color: const Color(0xFFFFFFFF),

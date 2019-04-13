@@ -10,9 +10,11 @@ class Tolerance {
   ///
   /// The arguments should all be positive values.
   const Tolerance({
+    [
     this.distance = _epsilonDefault,
     this.time = _epsilonDefault,
     this.velocity = _epsilonDefault,
+  ]
   });
 
   static const double _epsilonDefault = 1e-3;

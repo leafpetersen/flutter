@@ -31,9 +31,11 @@ String flutterFrameworkDir(BuildMode mode) {
 /// targetOverride: Optional parameter, if null or unspecified the default value
 /// from xcode_backend.sh is used 'lib/main.dart'.
 Future<void> updateGeneratedXcodeProperties({
-  @required FlutterProject project,
-  @required BuildInfo buildInfo,
+   FlutterProject project,
+   BuildInfo buildInfo,
+  [
   String targetOverride,
+]
 }) async {
   final StringBuffer localsBuffer = StringBuffer();
 

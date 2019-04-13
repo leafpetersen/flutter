@@ -32,9 +32,9 @@ class IOSDeploy {
   /// Installs and runs the specified app bundle using ios-deploy, then returns
   /// the exit code.
   Future<int> runApp({
-    @required String deviceId,
-    @required String bundlePath,
-    @required List<String> launchArguments,
+     String deviceId,
+     String bundlePath,
+     List<String> launchArguments,
   }) async {
     final List<String> launchCommand = <String>[
       '/usr/bin/env',
@@ -111,7 +111,7 @@ class IOSDevices extends PollingDeviceDiscovery {
 }
 
 class IOSDevice extends Device {
-  IOSDevice(String id, { this.name, String sdkVersion })
+  IOSDevice(String id, { [ this.name, String sdkVersion ] })
       : _sdkVersion = sdkVersion,
         super(id) {
     _installerPath = _checkForCommand('ideviceinstaller');
@@ -230,6 +230,7 @@ class IOSDevice extends Device {
   @override
   Future<LaunchResult> startApp(
     ApplicationPackage package, {
+    [
     String mainPath,
     String route,
     DebuggingOptions debuggingOptions,
@@ -237,6 +238,7 @@ class IOSDevice extends Device {
     bool prebuiltApplication = false,
     bool usesTerminalUi = true,
     bool ipv6 = false,
+  ]
   }) async {
     if (!prebuiltApplication) {
       // TODO(chinmaygarde): Use mainPath, route.
@@ -380,7 +382,7 @@ class IOSDevice extends Device {
   Future<String> get sdkNameAndVersion async => 'iOS $_sdkVersion';
 
   @override
-  DeviceLogReader getLogReader({ ApplicationPackage app }) {
+  DeviceLogReader getLogReader({ [ ApplicationPackage app ] }) {
     _logReaders ??= <ApplicationPackage, _IOSDeviceLogReader>{};
     return _logReaders.putIfAbsent(app, () => _IOSDeviceLogReader(this, app));
   }
@@ -556,7 +558,7 @@ class _IOSDevicePortForwarder extends DevicePortForwarder {
   static const Duration _kiProxyPortForwardTimeout = Duration(seconds: 1);
 
   @override
-  Future<int> forward(int devicePort, { int hostPort }) async {
+  Future<int> forward(int devicePort, { [ int hostPort ] }) async {
     final bool autoselect = hostPort == null || hostPort == 0;
     if (autoselect)
       hostPort = 1024;

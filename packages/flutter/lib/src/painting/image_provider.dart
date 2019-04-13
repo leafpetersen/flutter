@@ -31,12 +31,14 @@ class ImageConfiguration {
   /// All the arguments are optional. Configuration information is merely
   /// advisory and best-effort.
   const ImageConfiguration({
+    [
     this.bundle,
     this.devicePixelRatio,
     this.locale,
     this.textDirection,
     this.size,
     this.platform,
+  ]
   });
 
   /// Creates an object holding the configuration information for an [ImageProvider].
@@ -44,12 +46,14 @@ class ImageConfiguration {
   /// All the arguments are optional. Configuration information is merely
   /// advisory and best-effort.
   ImageConfiguration copyWith({
+    [
     AssetBundle bundle,
     double devicePixelRatio,
     Locale locale,
     TextDirection textDirection,
     Size size,
     String platform,
+  ]
   }) {
     return ImageConfiguration(
       bundle: bundle ?? this.bundle,
@@ -359,7 +363,7 @@ abstract class ImageProvider<T> {
   /// }
   /// ```
   /// {@end-tool}
-  Future<bool> evict({ ImageCache cache, ImageConfiguration configuration = ImageConfiguration.empty }) async {
+  Future<bool> evict({ [ ImageCache cache, ImageConfiguration configuration = ImageConfiguration.empty ] }) async {
     cache ??= imageCache;
     final T key = await obtainKey(configuration);
     return cache.evict(key);
@@ -395,9 +399,9 @@ class AssetBundleImageKey {
   ///
   /// The arguments must not be null.
   const AssetBundleImageKey({
-    @required this.bundle,
-    @required this.name,
-    @required this.scale,
+     this.bundle,
+     this.name,
+     this.scale,
   }) : assert(bundle != null),
        assert(name != null),
        assert(scale != null);
@@ -482,7 +486,7 @@ class NetworkImage extends ImageProvider<NetworkImage> {
   /// Creates an object that fetches the image at the given URL.
   ///
   /// The arguments must not be null.
-  const NetworkImage(this.url, { this.scale = 1.0, this.headers })
+  const NetworkImage(this.url, { [ this.scale = 1.0, this.headers ] })
     : assert(url != null),
       assert(scale != null);
 
@@ -559,7 +563,7 @@ class FileImage extends ImageProvider<FileImage> {
   /// Creates an object that decodes a [File] as an image.
   ///
   /// The arguments must not be null.
-  const FileImage(this.file, { this.scale = 1.0 })
+  const FileImage(this.file, { [ this.scale = 1.0 ] })
     : assert(file != null),
       assert(scale != null);
 
@@ -627,7 +631,7 @@ class MemoryImage extends ImageProvider<MemoryImage> {
   /// Creates an object that decodes a [Uint8List] buffer as an image.
   ///
   /// The arguments must not be null.
-  const MemoryImage(this.bytes, { this.scale = 1.0 })
+  const MemoryImage(this.bytes, { [ this.scale = 1.0 ] })
     : assert(bytes != null),
       assert(scale != null);
 
@@ -754,9 +758,11 @@ class ExactAssetImage extends AssetBundleImageProvider {
   /// itself for details.
   const ExactAssetImage(
     this.assetName, {
+    [
     this.scale = 1.0,
     this.bundle,
     this.package,
+  ]
   }) : assert(assetName != null),
        assert(scale != null);
 
@@ -815,11 +821,13 @@ class _ErrorImageCompleter extends ImageStreamCompleter {
   _ErrorImageCompleter();
 
   void setError({
+    [
     String context,
     dynamic exception,
     StackTrace stack,
     InformationCollector informationCollector,
     bool silent = false,
+  ]
   }) {
     reportError(
       context: context,

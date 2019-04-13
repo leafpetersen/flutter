@@ -22,7 +22,9 @@ class FrictionSimulation extends Simulation {
     double drag,
     double position,
     double velocity, {
+    [
     Tolerance tolerance = Tolerance.defaultTolerance,
+  ]
   }) : _drag = drag,
        _dragLog = math.log(drag),
        _x = position,

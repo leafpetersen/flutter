@@ -9,7 +9,7 @@ import 'package:flutter/widgets.dart';
 import 'test_widgets.dart';
 
 class TestParentData {
-  TestParentData({ this.top, this.right, this.bottom, this.left });
+  TestParentData({ [ this.top, this.right, this.bottom, this.left ] });
 
   final double top;
   final double right;

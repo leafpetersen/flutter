@@ -91,11 +91,15 @@ class CupertinoTabScaffold extends StatefulWidget {
   ///
   /// The [tabBar] and [tabBuilder] arguments must not be null.
   const CupertinoTabScaffold({
-    Key key,
-    @required this.tabBar,
-    @required this.tabBuilder,
+    [
+    Key key
+    ]
+     this.tabBar,
+     this.tabBuilder,
+    [
     this.backgroundColor,
     this.resizeToAvoidBottomInset = true,
+  ]
   }) : assert(tabBar != null),
        assert(tabBuilder != null),
        super(key: key);
@@ -273,9 +277,9 @@ class _CupertinoTabScaffoldState extends State<CupertinoTabScaffold> {
 /// at a time and on stage. Off stage tabs' animations are stopped.
 class _TabSwitchingView extends StatefulWidget {
   const _TabSwitchingView({
-    @required this.currentTabIndex,
-    @required this.tabNumber,
-    @required this.tabBuilder,
+     this.currentTabIndex,
+     this.tabNumber,
+     this.tabBuilder,
   }) : assert(currentTabIndex != null),
        assert(tabNumber != null && tabNumber > 0),
        assert(tabBuilder != null);

@@ -32,9 +32,11 @@ void main() {
   // requests [serializedActionName] when attaching to the platform's input
   // system.
   Future<void> _desiredKeyboardActionIsRequested({
+    [
     WidgetTester tester,
     TextInputAction action,
     String serializedActionName,
+  ]
   }) async {
     await tester.pumpWidget(
       MediaQuery(
@@ -2086,10 +2088,12 @@ class MockTextSelectionControls extends Mock implements TextSelectionControls {}
 
 class CustomStyleEditableText extends EditableText {
   CustomStyleEditableText({
+    [
     TextEditingController controller,
     Color cursorColor,
     FocusNode focusNode,
     TextStyle style,
+  ]
   }) : super(
           controller: controller,
           cursorColor: cursorColor,

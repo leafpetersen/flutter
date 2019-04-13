@@ -15,10 +15,12 @@ const String _kGalleryAssetsPackage = 'flutter_gallery_assets';
 
 class SectionDetail {
   const SectionDetail({
+    [
     this.title,
     this.subtitle,
     this.imageAsset,
     this.imageAssetPackage,
+  ]
   });
   final String title;
   final String subtitle;
@@ -28,12 +30,14 @@ class SectionDetail {
 
 class Section {
   const Section({
+    [
     this.title,
     this.backgroundAsset,
     this.backgroundAssetPackage,
     this.leftColor,
     this.rightColor,
     this.details,
+  ]
   });
   final String title;
   final String backgroundAsset;

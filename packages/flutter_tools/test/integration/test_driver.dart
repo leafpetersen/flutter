@@ -37,7 +37,9 @@ const Duration quitTimeout = Duration(seconds: 10);
 abstract class FlutterTestDriver {
   FlutterTestDriver(
     this._projectFolder, {
+    [
     String logPrefix,
+  ]
   }) : _logPrefix = logPrefix != null ? '$logPrefix: ' : '';
 
   final Directory _projectFolder;
@@ -59,7 +61,7 @@ abstract class FlutterTestDriver {
   bool get hasExited => _hasExited;
 
   String lastTime = '';
-  void _debugPrint(String message, { String topic = '' }) {
+  void _debugPrint(String message, { [ String topic = '' ] }) {
     const int maxLength = 2500;
     final String truncatedMessage = message.length > maxLength ? message.substring(0, maxLength) + '...' : message;
     final String line = '${topic.padRight(10)} $truncatedMessage';
@@ -77,9 +79,11 @@ abstract class FlutterTestDriver {
 
   Future<void> _setupProcess(
     List<String> arguments, {
+    [
     String script,
     bool withDebugger = false,
     File pidFile,
+  ]
   }) async {
     final String flutterBin = fs.path.join(getFlutterRoot(), 'bin', 'flutter');
     if (withDebugger)
@@ -120,7 +124,7 @@ abstract class FlutterTestDriver {
     _stderr.stream.listen((String message) => _debugPrint(message, topic: '<=stderr='));
   }
 
-  Future<void> connectToVmService({ bool pauseOnExceptions = false }) async {
+  Future<void> connectToVmService({ [ bool pauseOnExceptions = false ] }) async {
     _vmService = await vmServiceConnectUri('$_vmServiceWsUri');
     _vmService.onSend.listen((String s) => _debugPrint(s, topic: '=vm=>'));
     _vmService.onReceive.listen((String s) => _debugPrint(s, topic: '<=vm='));
@@ -240,18 +244,18 @@ abstract class FlutterTestDriver {
     );
   }
 
-  Future<Isolate> resume({ bool waitForNextPause = false }) => _resume(null, waitForNextPause);
-  Future<Isolate> stepOver({ bool waitForNextPause = true }) => _resume(StepOption.kOver, waitForNextPause);
-  Future<Isolate> stepOverAsync({ bool waitForNextPause = true }) => _resume(StepOption.kOverAsyncSuspension, waitForNextPause);
-  Future<Isolate> stepInto({ bool waitForNextPause = true }) => _resume(StepOption.kInto, waitForNextPause);
-  Future<Isolate> stepOut({ bool waitForNextPause = true }) => _resume(StepOption.kOut, waitForNextPause);
+  Future<Isolate> resume({ [ bool waitForNextPause = false ] }) => _resume(null, waitForNextPause);
+  Future<Isolate> stepOver({ [ bool waitForNextPause = true ] }) => _resume(StepOption.kOver, waitForNextPause);
+  Future<Isolate> stepOverAsync({ [ bool waitForNextPause = true ] }) => _resume(StepOption.kOverAsyncSuspension, waitForNextPause);
+  Future<Isolate> stepInto({ [ bool waitForNextPause = true ] }) => _resume(StepOption.kInto, waitForNextPause);
+  Future<Isolate> stepOut({ [ bool waitForNextPause = true ] }) => _resume(StepOption.kOut, waitForNextPause);
 
   Future<bool> isAtAsyncSuspension() async {
     final Isolate isolate = await _getFlutterIsolate();
     return isolate.pauseEvent.atAsyncSuspension == true;
   }
 
-  Future<Isolate> stepOverOrOverAsyncSuspension({ bool waitForNextPause = true }) async {
+  Future<Isolate> stepOverOrOverAsyncSuspension({ [ bool waitForNextPause = true ] }) async {
     if (await isAtAsyncSuspension())
       return await stepOverAsync(waitForNextPause: waitForNextPause);
     return await stepOver(waitForNextPause: waitForNextPause);
@@ -312,10 +316,12 @@ abstract class FlutterTestDriver {
   }
 
   Future<Map<String, dynamic>> _waitFor({
+    [
     String event,
     int id,
     Duration timeout = defaultTimeout,
     bool ignoreAppStopEvent = false,
+  ]
   }) async {
     assert(timeout != null);
     assert(event != null || id != null);
@@ -356,8 +362,10 @@ abstract class FlutterTestDriver {
 
   Future<T> _timeoutWithMessages<T>(
     Future<T> Function() callback, {
-    @required String task,
+     String task,
+    [
     Duration timeout = defaultTimeout,
+  ]
   }) {
     assert(task != null);
     assert(timeout != null);
@@ -403,16 +411,20 @@ abstract class FlutterTestDriver {
 class FlutterRunTestDriver extends FlutterTestDriver {
   FlutterRunTestDriver(
     Directory projectFolder, {
+    [
     String logPrefix,
+  ]
   }) : super(projectFolder, logPrefix: logPrefix);
 
   String _currentRunningAppId;
 
   Future<void> run({
+    [
     bool withDebugger = false,
     bool startPaused = false,
     bool pauseOnExceptions = false,
     File pidFile,
+  ]
   }) async {
     await _setupProcess(
       <String>[
@@ -430,10 +442,12 @@ class FlutterRunTestDriver extends FlutterTestDriver {
 
   Future<void> attach(
     int port, {
+    [
     bool withDebugger = false,
     bool startPaused = false,
     bool pauseOnExceptions = false,
     File pidFile,
+  ]
   }) async {
     await _setupProcess(
       <String>[
@@ -454,11 +468,13 @@ class FlutterRunTestDriver extends FlutterTestDriver {
   @override
   Future<void> _setupProcess(
     List<String> args, {
+    [
     String script,
     bool withDebugger = false,
     bool startPaused = false,
     bool pauseOnExceptions = false,
     File pidFile,
+  ]
   }) async {
     assert(!startPaused || withDebugger);
     await super._setupProcess(
@@ -492,10 +508,10 @@ class FlutterRunTestDriver extends FlutterTestDriver {
     _currentRunningAppId = (await started)['params']['appId'];
   }
 
-  Future<void> hotRestart({ bool pause = false }) => _restart(fullRestart: true, pause: pause);
+  Future<void> hotRestart({ [ bool pause = false ] }) => _restart(fullRestart: true, pause: pause);
   Future<void> hotReload() => _restart(fullRestart: false);
 
-  Future<void> _restart({ bool fullRestart = false, bool pause = false }) async {
+  Future<void> _restart({ [ bool fullRestart = false, bool pause = false ] }) async {
     if (_currentRunningAppId == null)
       throw Exception('App has not started yet');
 
@@ -592,15 +608,17 @@ class FlutterRunTestDriver extends FlutterTestDriver {
 }
 
 class FlutterTestTestDriver extends FlutterTestDriver {
-  FlutterTestTestDriver(Directory _projectFolder, {String logPrefix})
+  FlutterTestTestDriver(Directory _projectFolder, {[String logPrefix]})
     : super(_projectFolder, logPrefix: logPrefix);
 
   Future<void> test({
+    [
     String testFile = 'test/test.dart',
     bool withDebugger = false,
     bool pauseOnExceptions = false,
     File pidFile,
     Future<void> Function() beforeStart,
+  ]
   }) async {
     await _setupProcess(<String>[
         'test',
@@ -613,11 +631,13 @@ class FlutterTestTestDriver extends FlutterTestDriver {
   @override
   Future<void> _setupProcess(
     List<String> args, {
+    [
     String script,
     bool withDebugger = false,
     bool pauseOnExceptions = false,
     File pidFile,
     Future<void> Function() beforeStart,
+  ]
   }) async {
     await super._setupProcess(
       args,
@@ -646,7 +666,9 @@ class FlutterTestTestDriver extends FlutterTestDriver {
   }
 
   Future<Map<String, dynamic>> _waitForJson({
+    [
     Duration timeout,
+  ]
   }) async {
     return _timeoutWithMessages<Map<String, dynamic>>(
       () => _stdout.stream.map<Map<String, dynamic>>(_parseJsonResponse).first,

@@ -28,6 +28,7 @@ class LoggingThumbShape extends SliderComponentShape {
   void paint(
       PaintingContext context,
       Offset thumbCenter, {
+      [
       Animation<double> activationAnimation,
       Animation<double> enableAnimation,
       bool isEnabled,
@@ -38,6 +39,7 @@ class LoggingThumbShape extends SliderComponentShape {
       SliderThemeData sliderTheme,
       TextDirection textDirection,
       double value,
+    ]
     }) {
     log.add(thumbCenter);
     final Paint thumbPaint = Paint()..color = Colors.red;
@@ -550,10 +552,12 @@ void main() {
     final SliderThemeData sliderTheme = theme.sliderTheme;
     double value = 0.45;
     Widget buildApp({
+      [
       Color activeColor,
       Color inactiveColor,
       int divisions,
       bool enabled = true,
+    ]
     }) {
       final ValueChanged<double> onChanged = !enabled
         ? null
@@ -886,9 +890,11 @@ void main() {
     double value = 0.0;
 
     Widget buildSlider({
+      [
       double textScaleFactor,
       bool isDiscrete = true,
       ShowValueIndicator show = ShowValueIndicator.onlyForDiscrete,
+    ]
     }) {
       return Directionality(
         textDirection: TextDirection.ltr,
@@ -980,7 +986,9 @@ void main() {
 
   testWidgets('Tick marks are skipped when they are too dense', (WidgetTester tester) async {
     Widget buildSlider({
+      [
       int divisions,
+    ]
     }) {
       return Directionality(
         textDirection: TextDirection.ltr,
@@ -1305,7 +1313,7 @@ void main() {
     );
     SliderThemeData theme = baseTheme.sliderTheme;
     double value = 0.45;
-    Widget buildApp({ SliderThemeData sliderTheme, int divisions, bool enabled = true }) {
+    Widget buildApp({ [ SliderThemeData sliderTheme, int divisions, bool enabled = true ] }) {
       final ValueChanged<double> onChanged = enabled ? (double d) => value = d : null;
       return Directionality(
         textDirection: TextDirection.ltr,
@@ -1332,10 +1340,12 @@ void main() {
     }
 
     Future<void> expectValueIndicator({
+      [
       bool isVisible,
       SliderThemeData theme,
       int divisions,
       bool enabled = true,
+    ]
     }) async {
       // Discrete enabled widget.
       await tester.pumpWidget(buildApp(sliderTheme: theme, divisions: divisions, enabled: enabled));

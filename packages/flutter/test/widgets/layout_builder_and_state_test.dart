@@ -8,8 +8,10 @@ import 'test_widgets.dart';
 
 class StatefulWrapper extends StatefulWidget {
   const StatefulWrapper({
+    [
     Key key,
     this.child,
+  ]
   }) : super(key: key);
 
   final Widget child;
@@ -35,8 +37,10 @@ class StatefulWrapperState extends State<StatefulWrapper> {
 
 class Wrapper extends StatelessWidget {
   const Wrapper({
+    [
     Key key,
     this.child,
+  ]
   }) : super(key: key);
 
   final Widget child;

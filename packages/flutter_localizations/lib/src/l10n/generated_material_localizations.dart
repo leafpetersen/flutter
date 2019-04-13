@@ -27,13 +27,15 @@ class MaterialLocalizationAr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationAr({
-    String localeName = 'ar',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ar'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -231,13 +233,15 @@ class MaterialLocalizationBg extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationBg({
-    String localeName = 'bg',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'bg'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -435,13 +439,15 @@ class MaterialLocalizationBs extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationBs({
-    String localeName = 'bs',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'bs'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -639,13 +645,15 @@ class MaterialLocalizationCa extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationCa({
-    String localeName = 'ca',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ca'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -843,13 +851,15 @@ class MaterialLocalizationCs extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationCs({
-    String localeName = 'cs',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'cs'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1047,13 +1057,15 @@ class MaterialLocalizationDa extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationDa({
-    String localeName = 'da',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'da'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1251,13 +1263,15 @@ class MaterialLocalizationDe extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationDe({
-    String localeName = 'de',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'de'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1455,13 +1469,15 @@ class MaterialLocalizationDeCh extends MaterialLocalizationDe {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationDeCh({
-    String localeName = 'de_CH',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'de_CH'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1485,13 +1501,15 @@ class MaterialLocalizationEl extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEl({
-    String localeName = 'el',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'el'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1689,13 +1707,15 @@ class MaterialLocalizationEn extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEn({
-    String localeName = 'en',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1893,13 +1913,15 @@ class MaterialLocalizationEnAu extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnAu({
-    String localeName = 'en_AU',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_AU'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1935,13 +1957,15 @@ class MaterialLocalizationEnCa extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnCa({
-    String localeName = 'en_CA',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_CA'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -1977,13 +2001,15 @@ class MaterialLocalizationEnGb extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnGb({
-    String localeName = 'en_GB',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_GB'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2022,13 +2048,15 @@ class MaterialLocalizationEnIe extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnIe({
-    String localeName = 'en_IE',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_IE'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2067,13 +2095,15 @@ class MaterialLocalizationEnIn extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnIn({
-    String localeName = 'en_IN',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_IN'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2109,13 +2139,15 @@ class MaterialLocalizationEnSg extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnSg({
-    String localeName = 'en_SG',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_SG'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2151,13 +2183,15 @@ class MaterialLocalizationEnZa extends MaterialLocalizationEn {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEnZa({
-    String localeName = 'en_ZA',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'en_ZA'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2196,13 +2230,15 @@ class MaterialLocalizationEs extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEs({
-    String localeName = 'es',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2400,13 +2436,15 @@ class MaterialLocalizationEs419 extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEs419({
-    String localeName = 'es_419',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_419'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2481,13 +2519,15 @@ class MaterialLocalizationEsAr extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsAr({
-    String localeName = 'es_AR',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_AR'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2562,13 +2602,15 @@ class MaterialLocalizationEsBo extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsBo({
-    String localeName = 'es_BO',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_BO'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2643,13 +2685,15 @@ class MaterialLocalizationEsCl extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsCl({
-    String localeName = 'es_CL',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_CL'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2724,13 +2768,15 @@ class MaterialLocalizationEsCo extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsCo({
-    String localeName = 'es_CO',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_CO'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2805,13 +2851,15 @@ class MaterialLocalizationEsCr extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsCr({
-    String localeName = 'es_CR',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_CR'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2886,13 +2934,15 @@ class MaterialLocalizationEsDo extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsDo({
-    String localeName = 'es_DO',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_DO'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -2967,13 +3017,15 @@ class MaterialLocalizationEsEc extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsEc({
-    String localeName = 'es_EC',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_EC'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3048,13 +3100,15 @@ class MaterialLocalizationEsGt extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsGt({
-    String localeName = 'es_GT',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_GT'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3129,13 +3183,15 @@ class MaterialLocalizationEsHn extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsHn({
-    String localeName = 'es_HN',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_HN'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3210,13 +3266,15 @@ class MaterialLocalizationEsMx extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsMx({
-    String localeName = 'es_MX',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_MX'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3291,13 +3349,15 @@ class MaterialLocalizationEsNi extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsNi({
-    String localeName = 'es_NI',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_NI'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3372,13 +3432,15 @@ class MaterialLocalizationEsPa extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsPa({
-    String localeName = 'es_PA',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_PA'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3453,13 +3515,15 @@ class MaterialLocalizationEsPe extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsPe({
-    String localeName = 'es_PE',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_PE'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3534,13 +3598,15 @@ class MaterialLocalizationEsPr extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsPr({
-    String localeName = 'es_PR',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_PR'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3615,13 +3681,15 @@ class MaterialLocalizationEsPy extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsPy({
-    String localeName = 'es_PY',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_PY'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3696,13 +3764,15 @@ class MaterialLocalizationEsSv extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsSv({
-    String localeName = 'es_SV',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_SV'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3777,13 +3847,15 @@ class MaterialLocalizationEsUs extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsUs({
-    String localeName = 'es_US',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_US'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3861,13 +3933,15 @@ class MaterialLocalizationEsUy extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsUy({
-    String localeName = 'es_UY',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_UY'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -3942,13 +4016,15 @@ class MaterialLocalizationEsVe extends MaterialLocalizationEs {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEsVe({
-    String localeName = 'es_VE',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'es_VE'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -4023,13 +4099,15 @@ class MaterialLocalizationEt extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationEt({
-    String localeName = 'et',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'et'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -4227,13 +4305,15 @@ class MaterialLocalizationFa extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationFa({
-    String localeName = 'fa',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'fa'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -4431,13 +4511,15 @@ class MaterialLocalizationFi extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationFi({
-    String localeName = 'fi',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'fi'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -4635,13 +4717,15 @@ class MaterialLocalizationFil extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationFil({
-    String localeName = 'fil',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'fil'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -4839,13 +4923,15 @@ class MaterialLocalizationFr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationFr({
-    String localeName = 'fr',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'fr'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -5043,13 +5129,15 @@ class MaterialLocalizationFrCa extends MaterialLocalizationFr {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationFrCa({
-    String localeName = 'fr_CA',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'fr_CA'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -5070,13 +5158,15 @@ class MaterialLocalizationGl extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationGl({
-    String localeName = 'gl',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'gl'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -5274,13 +5364,15 @@ class MaterialLocalizationGsw extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationGsw({
-    String localeName = 'gsw',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'gsw'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -5478,13 +5570,15 @@ class MaterialLocalizationHe extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationHe({
-    String localeName = 'he',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'he'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -5682,13 +5776,15 @@ class MaterialLocalizationHi extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationHi({
-    String localeName = 'hi',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'hi'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -5886,13 +5982,15 @@ class MaterialLocalizationHr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationHr({
-    String localeName = 'hr',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'hr'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -6090,13 +6188,15 @@ class MaterialLocalizationHu extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationHu({
-    String localeName = 'hu',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'hu'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -6294,13 +6394,15 @@ class MaterialLocalizationHy extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationHy({
-    String localeName = 'hy',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'hy'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -6498,13 +6600,15 @@ class MaterialLocalizationId extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationId({
-    String localeName = 'id',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'id'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -6702,13 +6806,15 @@ class MaterialLocalizationIt extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationIt({
-    String localeName = 'it',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'it'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -6906,13 +7012,15 @@ class MaterialLocalizationJa extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationJa({
-    String localeName = 'ja',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ja'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -7110,13 +7218,15 @@ class MaterialLocalizationKm extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationKm({
-    String localeName = 'km',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'km'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -7314,13 +7424,15 @@ class MaterialLocalizationKo extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationKo({
-    String localeName = 'ko',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ko'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -7518,13 +7630,15 @@ class MaterialLocalizationLt extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationLt({
-    String localeName = 'lt',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'lt'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -7722,13 +7836,15 @@ class MaterialLocalizationLv extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationLv({
-    String localeName = 'lv',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'lv'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -7926,13 +8042,15 @@ class MaterialLocalizationMn extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationMn({
-    String localeName = 'mn',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'mn'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -8130,13 +8248,15 @@ class MaterialLocalizationMr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationMr({
-    String localeName = 'mr',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'mr'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -8334,13 +8454,15 @@ class MaterialLocalizationMs extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationMs({
-    String localeName = 'ms',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ms'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -8538,13 +8660,15 @@ class MaterialLocalizationNb extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationNb({
-    String localeName = 'nb',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'nb'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -8742,13 +8866,15 @@ class MaterialLocalizationNl extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationNl({
-    String localeName = 'nl',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'nl'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -8946,13 +9072,15 @@ class MaterialLocalizationPl extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationPl({
-    String localeName = 'pl',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'pl'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -9150,13 +9278,15 @@ class MaterialLocalizationPs extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationPs({
-    String localeName = 'ps',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ps'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -9354,13 +9484,15 @@ class MaterialLocalizationPt extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationPt({
-    String localeName = 'pt',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'pt'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -9558,13 +9690,15 @@ class MaterialLocalizationPtPt extends MaterialLocalizationPt {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationPtPt({
-    String localeName = 'pt_PT',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'pt_PT'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -9642,13 +9776,15 @@ class MaterialLocalizationRo extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationRo({
-    String localeName = 'ro',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ro'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -9846,13 +9982,15 @@ class MaterialLocalizationRu extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationRu({
-    String localeName = 'ru',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ru'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -10050,13 +10188,15 @@ class MaterialLocalizationSk extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSk({
-    String localeName = 'sk',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sk'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -10254,13 +10394,15 @@ class MaterialLocalizationSl extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSl({
-    String localeName = 'sl',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sl'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -10458,13 +10600,15 @@ class MaterialLocalizationSr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSr({
-    String localeName = 'sr',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sr'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -10662,13 +10806,15 @@ class MaterialLocalizationSrCyrl extends MaterialLocalizationSr {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSrCyrl({
-    String localeName = 'sr_Cyrl',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sr_Cyrl'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -10686,13 +10832,15 @@ class MaterialLocalizationSrLatn extends MaterialLocalizationSr {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSrLatn({
-    String localeName = 'sr_Latn',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sr_Latn'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -10866,13 +11014,15 @@ class MaterialLocalizationSv extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSv({
-    String localeName = 'sv',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sv'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -11070,13 +11220,15 @@ class MaterialLocalizationSw extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationSw({
-    String localeName = 'sw',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'sw'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -11274,13 +11426,15 @@ class MaterialLocalizationTa extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationTa({
-    String localeName = 'ta',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ta'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -11478,13 +11632,15 @@ class MaterialLocalizationTh extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationTh({
-    String localeName = 'th',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'th'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -11682,13 +11838,15 @@ class MaterialLocalizationTl extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationTl({
-    String localeName = 'tl',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'tl'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -11886,13 +12044,15 @@ class MaterialLocalizationTr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationTr({
-    String localeName = 'tr',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'tr'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -12090,13 +12250,15 @@ class MaterialLocalizationUk extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationUk({
-    String localeName = 'uk',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'uk'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -12294,13 +12456,15 @@ class MaterialLocalizationUr extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationUr({
-    String localeName = 'ur',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'ur'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -12498,13 +12662,15 @@ class MaterialLocalizationVi extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationVi({
-    String localeName = 'vi',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'vi'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -12702,13 +12868,15 @@ class MaterialLocalizationZh extends GlobalMaterialLocalizations {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationZh({
-    String localeName = 'zh',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'zh'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -12906,13 +13074,15 @@ class MaterialLocalizationZhHans extends MaterialLocalizationZh {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationZhHans({
-    String localeName = 'zh_Hans',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'zh_Hans'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -12930,13 +13100,15 @@ class MaterialLocalizationZhHant extends MaterialLocalizationZh {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationZhHant({
-    String localeName = 'zh_Hant',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'zh_Hant'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -13092,13 +13264,15 @@ class MaterialLocalizationZhHantHk extends MaterialLocalizationZhHant {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationZhHantHk({
-    String localeName = 'zh_Hant_HK',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'zh_Hant_HK'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,
@@ -13116,13 +13290,15 @@ class MaterialLocalizationZhHantTw extends MaterialLocalizationZhHant {
   ///
   /// For details on the meaning of the arguments, see [GlobalMaterialLocalizations].
   const MaterialLocalizationZhHantTw({
-    String localeName = 'zh_Hant_TW',
-    @required intl.DateFormat fullYearFormat,
-    @required intl.DateFormat mediumDateFormat,
-    @required intl.DateFormat longDateFormat,
-    @required intl.DateFormat yearMonthFormat,
-    @required intl.NumberFormat decimalFormat,
-    @required intl.NumberFormat twoDigitZeroPaddedFormat,
+    [
+    String localeName = 'zh_Hant_TW'
+    ]
+     intl.DateFormat fullYearFormat,
+     intl.DateFormat mediumDateFormat,
+     intl.DateFormat longDateFormat,
+     intl.DateFormat yearMonthFormat,
+     intl.NumberFormat decimalFormat,
+     intl.NumberFormat twoDigitZeroPaddedFormat,
   }) : super(
     localeName: localeName,
     fullYearFormat: fullYearFormat,

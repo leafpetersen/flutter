@@ -61,7 +61,7 @@ const double _kMenuScreenPadding = 8.0;
 abstract class PopupMenuEntry<T> extends StatefulWidget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const PopupMenuEntry({ Key key }) : super(key: key);
+  const PopupMenuEntry({ [ Key key ] }) : super(key: key);
 
   /// The amount of vertical space occupied by this entry.
   ///
@@ -101,7 +101,7 @@ class PopupMenuDivider extends PopupMenuEntry<Null> {
   /// Creates a horizontal divider for a popup menu.
   ///
   /// By default, the divider has a height of 16 logical pixels.
-  const PopupMenuDivider({ Key key, this.height = _kMenuDividerHeight }) : super(key: key);
+  const PopupMenuDivider({ [ Key key, this.height = _kMenuDividerHeight ] }) : super(key: key);
 
   /// The height of the divider entry.
   ///
@@ -167,11 +167,13 @@ class PopupMenuItem<T> extends PopupMenuEntry<T> {
   ///
   /// The `height` and `enabled` arguments must not be null.
   const PopupMenuItem({
+    [
     Key key,
     this.value,
     this.enabled = true,
-    this.height = _kMenuItemHeight,
-    @required this.child,
+    this.height = _kMenuItemHeight
+    ]
+     this.child,
   }) : assert(enabled != null),
        assert(height != null),
        super(key: key);
@@ -346,11 +348,13 @@ class CheckedPopupMenuItem<T> extends PopupMenuItem<T> {
   ///
   /// The `checked` and `enabled` arguments must not be null.
   const CheckedPopupMenuItem({
+    [
     Key key,
     T value,
     this.checked = false,
     bool enabled = true,
     Widget child,
+  ]
   }) : assert(checked != null),
        super(
     key: key,
@@ -421,9 +425,11 @@ class _CheckedPopupMenuItemState<T> extends PopupMenuItemState<T, CheckedPopupMe
 
 class _PopupMenu<T> extends StatelessWidget {
   const _PopupMenu({
+    [
     Key key,
     this.route,
     this.semanticLabel,
+  ]
   }) : super(key: key);
 
   final _PopupMenuRoute<T> route;
@@ -584,6 +590,7 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
 
 class _PopupMenuRoute<T> extends PopupRoute<T> {
   _PopupMenuRoute({
+    [
     this.position,
     this.items,
     this.initialValue,
@@ -591,6 +598,7 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
     this.theme,
     this.barrierLabel,
     this.semanticLabel,
+  ]
   });
 
   final RelativeRect position;
@@ -711,12 +719,14 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
 ///  * [SemanticsConfiguration.namesRoute], for a description of edge triggered
 ///    semantics.
 Future<T> showMenu<T>({
-  @required BuildContext context,
-  @required RelativeRect position,
-  @required List<PopupMenuEntry<T>> items,
+   BuildContext context,
+   RelativeRect position,
+   List<PopupMenuEntry<T>> items,
+  [
   T initialValue,
   double elevation = 8.0,
   String semanticLabel,
+]
 }) {
   assert(context != null);
   assert(position != null);
@@ -818,8 +828,11 @@ class PopupMenuButton<T> extends StatefulWidget {
   ///
   /// The [itemBuilder] argument must not be null.
   const PopupMenuButton({
-    Key key,
-    @required this.itemBuilder,
+    [
+    Key key
+    ]
+     this.itemBuilder,
+    [
     this.initialValue,
     this.onSelected,
     this.onCanceled,
@@ -829,6 +842,7 @@ class PopupMenuButton<T> extends StatefulWidget {
     this.child,
     this.icon,
     this.offset = Offset.zero,
+  ]
   }) : assert(itemBuilder != null),
        assert(offset != null),
        assert(!(child != null && icon != null)), // fails if passed both parameters

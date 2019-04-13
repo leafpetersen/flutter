@@ -35,7 +35,9 @@ class Tracing {
 
   /// Stops tracing; optionally wait for first frame.
   Future<Map<String, dynamic>> stopTracingAndDownloadTimeline({
+    [
     bool awaitFirstFrame = false,
+  ]
   }) async {
     if (awaitFirstFrame) {
       final Status status = logger.startProgress(
@@ -74,7 +76,7 @@ class Tracing {
 
 /// Download the startup trace information from the given observatory client and
 /// store it to build/start_up_info.json.
-Future<void> downloadStartupTrace(VMService observatory, { bool awaitFirstFrame = true }) async {
+Future<void> downloadStartupTrace(VMService observatory, { [ bool awaitFirstFrame = true ] }) async {
   final String traceInfoFilePath = fs.path.join(getBuildDirectory(), 'start_up_info.json');
   final File traceInfoFile = fs.file(traceInfoFilePath);
 

@@ -457,7 +457,9 @@ void main() {
 
 Future<Map<String, dynamic>> makeMockResponse(
   Map<String, dynamic> response, {
+  [
   bool isError = false,
+]
 }) {
   return Future<Map<String, dynamic>>.value(<String, dynamic>{
     'isError': isError,

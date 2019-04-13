@@ -416,7 +416,7 @@ class RenderingFlutterBinding extends BindingBase with GestureBinding, ServicesB
   ///
   /// The `root` render box is attached directly to the [renderView] and is
   /// given constraints that require it to fill the window.
-  RenderingFlutterBinding({ RenderBox root }) {
+  RenderingFlutterBinding({ [ RenderBox root ] }) {
     assert(renderView != null);
     renderView.child = root;
   }

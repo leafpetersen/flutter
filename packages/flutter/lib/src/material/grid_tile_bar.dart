@@ -23,12 +23,14 @@ class GridTileBar extends StatelessWidget {
   ///
   /// Typically used to with [GridTile].
   const GridTileBar({
+    [
     Key key,
     this.backgroundColor,
     this.leading,
     this.title,
     this.subtitle,
     this.trailing,
+  ]
   }) : super(key: key);
 
   /// The color to paint behind the child widgets.

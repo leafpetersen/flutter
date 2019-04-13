@@ -19,7 +19,7 @@ class TapDownDetails {
   /// Creates details for a [GestureTapDownCallback].
   ///
   /// The [globalPosition] argument must not be null.
-  TapDownDetails({ this.globalPosition = Offset.zero })
+  TapDownDetails({ [ this.globalPosition = Offset.zero ] })
     : assert(globalPosition != null);
 
   /// The global position at which the pointer contacted the screen.
@@ -48,7 +48,7 @@ class TapUpDetails {
   /// Creates details for a [GestureTapUpCallback].
   ///
   /// The [globalPosition] argument must not be null.
-  TapUpDetails({ this.globalPosition = Offset.zero })
+  TapUpDetails({ [ this.globalPosition = Offset.zero ] })
     : assert(globalPosition != null);
 
   /// The global position at which the pointer contacted the screen.
@@ -110,7 +110,7 @@ typedef GestureTapCancelCallback = void Function();
 ///  * [MultiTapGestureRecognizer]
 class TapGestureRecognizer extends PrimaryPointerGestureRecognizer {
   /// Creates a tap gesture recognizer.
-  TapGestureRecognizer({ Object debugOwner }) : super(deadline: kPressTimeout, debugOwner: debugOwner);
+  TapGestureRecognizer({ [ Object debugOwner ] }) : super(deadline: kPressTimeout, debugOwner: debugOwner);
 
   /// A pointer that might cause a tap has contacted the screen at a particular
   /// location.

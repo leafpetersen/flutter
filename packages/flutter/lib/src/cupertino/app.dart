@@ -67,6 +67,7 @@ class CupertinoApp extends StatefulWidget {
   ///
   /// The boolean arguments, [routes], and [navigatorObservers], must not be null.
   const CupertinoApp({
+    [
     Key key,
     this.navigatorKey,
     this.home,
@@ -90,6 +91,7 @@ class CupertinoApp extends StatefulWidget {
     this.checkerboardOffscreenLayers = false,
     this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
+  ]
   }) : assert(routes != null),
        assert(navigatorObservers != null),
        assert(title != null),

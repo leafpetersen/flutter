@@ -108,6 +108,7 @@ class RenderWrap extends RenderBox with ContainerRenderObjectMixin<RenderBox, Wr
   /// By default, the wrap layout is horizontal and both the children and the
   /// runs are aligned to the start.
   RenderWrap({
+    [
     List<RenderBox> children,
     Axis direction = Axis.horizontal,
     WrapAlignment alignment = WrapAlignment.start,
@@ -117,6 +118,7 @@ class RenderWrap extends RenderBox with ContainerRenderObjectMixin<RenderBox, Wr
     WrapCrossAlignment crossAxisAlignment = WrapCrossAlignment.start,
     TextDirection textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
+  ]
   }) : assert(direction != null),
        assert(alignment != null),
        assert(spacing != null),
@@ -748,7 +750,7 @@ class RenderWrap extends RenderBox with ContainerRenderObjectMixin<RenderBox, Wr
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return defaultHitTestChildren(result, position: position);
   }
 

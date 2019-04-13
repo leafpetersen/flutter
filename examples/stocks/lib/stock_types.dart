@@ -9,16 +9,16 @@ enum BackupMode { enabled, disabled }
 
 class StockConfiguration {
   StockConfiguration({
-    @required this.stockMode,
-    @required this.backupMode,
-    @required this.debugShowGrid,
-    @required this.debugShowSizes,
-    @required this.debugShowBaselines,
-    @required this.debugShowLayers,
-    @required this.debugShowPointers,
-    @required this.debugShowRainbow,
-    @required this.showPerformanceOverlay,
-    @required this.showSemanticsDebugger,
+     this.stockMode,
+     this.backupMode,
+     this.debugShowGrid,
+     this.debugShowSizes,
+     this.debugShowBaselines,
+     this.debugShowLayers,
+     this.debugShowPointers,
+     this.debugShowRainbow,
+     this.showPerformanceOverlay,
+     this.showSemanticsDebugger,
   }) : assert(stockMode != null),
        assert(backupMode != null),
        assert(debugShowGrid != null),
@@ -42,6 +42,7 @@ class StockConfiguration {
   final bool showSemanticsDebugger;
 
   StockConfiguration copyWith({
+    [
     StockMode stockMode,
     BackupMode backupMode,
     bool debugShowGrid,
@@ -52,6 +53,7 @@ class StockConfiguration {
     bool debugShowRainbow,
     bool showPerformanceOverlay,
     bool showSemanticsDebugger,
+  ]
   }) {
     return StockConfiguration(
       stockMode: stockMode ?? this.stockMode,

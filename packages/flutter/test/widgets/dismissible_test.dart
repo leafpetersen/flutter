@@ -16,9 +16,11 @@ Widget background;
 const double crossAxisEndOffset = 0.5;
 
 Widget buildTest({
+  [
   double startToEndThreshold,
   TextDirection textDirection = TextDirection.ltr,
   Future<bool> Function(BuildContext context, DismissDirection direction) confirmDismiss,
+]
 }) {
   return Directionality(
     textDirection: textDirection,
@@ -71,9 +73,9 @@ Widget buildTest({
   );
 }
 
-typedef DismissMethod = Future<void> Function(WidgetTester tester, Finder finder, { @required AxisDirection gestureDirection });
+typedef DismissMethod = Future<void> Function(WidgetTester tester, Finder finder, {  AxisDirection gestureDirection });
 
-Future<void> dismissElement(WidgetTester tester, Finder finder, { @required AxisDirection gestureDirection }) async {
+Future<void> dismissElement(WidgetTester tester, Finder finder, {  AxisDirection gestureDirection }) async {
   Offset downLocation;
   Offset upLocation;
   switch (gestureDirection) {
@@ -108,7 +110,7 @@ Future<void> dismissElement(WidgetTester tester, Finder finder, { @required Axis
   await gesture.up();
 }
 
-Future<void> flingElement(WidgetTester tester, Finder finder, { @required AxisDirection gestureDirection, double initialOffsetFactor = 0.0 }) async {
+Future<void> flingElement(WidgetTester tester, Finder finder, {  AxisDirection gestureDirection, [ double initialOffsetFactor = 0.0 ] }) async {
   Offset delta;
   switch (gestureDirection) {
     case AxisDirection.left:
@@ -129,7 +131,7 @@ Future<void> flingElement(WidgetTester tester, Finder finder, { @required AxisDi
   await tester.fling(finder, delta, 1000.0, initialOffset: delta * initialOffsetFactor);
 }
 
-Future<void> flingElementFromZero(WidgetTester tester, Finder finder, { @required AxisDirection gestureDirection }) async {
+Future<void> flingElementFromZero(WidgetTester tester, Finder finder, {  AxisDirection gestureDirection }) async {
   // This is a special case where we drag in one direction, then fling back so
   // that at the point of release, we're at exactly the point at which we
   // started, but with velocity. This is needed to check a boundary condition
@@ -140,8 +142,10 @@ Future<void> flingElementFromZero(WidgetTester tester, Finder finder, { @require
 Future<void> dismissItem(
   WidgetTester tester,
   int item, {
-  @required AxisDirection gestureDirection,
+   AxisDirection gestureDirection,
+  [
   DismissMethod mechanism = dismissElement,
+]
 }) async {
   assert(gestureDirection != null);
   final Finder itemFinder = find.text(item.toString());
@@ -159,8 +163,10 @@ Future<void> dismissItem(
 Future<void> checkFlingItemBeforeMovementEnd(
   WidgetTester tester,
   int item, {
-  @required AxisDirection gestureDirection,
+   AxisDirection gestureDirection,
+  [
   DismissMethod mechanism = rollbackElement,
+]
 }) async {
   assert(gestureDirection != null);
   final Finder itemFinder = find.text(item.toString());
@@ -175,8 +181,10 @@ Future<void> checkFlingItemBeforeMovementEnd(
 Future<void> checkFlingItemAfterMovement(
   WidgetTester tester,
   int item, {
-  @required AxisDirection gestureDirection,
+   AxisDirection gestureDirection,
+  [
   DismissMethod mechanism = rollbackElement,
+]
 }) async {
   assert(gestureDirection != null);
   final Finder itemFinder = find.text(item.toString());
@@ -188,7 +196,7 @@ Future<void> checkFlingItemAfterMovement(
   await tester.pump(const Duration(milliseconds: 300));
 }
 
-Future<void> rollbackElement(WidgetTester tester, Finder finder, { @required AxisDirection gestureDirection, double initialOffsetFactor = 0.0 }) async {
+Future<void> rollbackElement(WidgetTester tester, Finder finder, {  AxisDirection gestureDirection, [ double initialOffsetFactor = 0.0 ] }) async {
   Offset delta;
   switch (gestureDirection) {
     case AxisDirection.left:

@@ -365,7 +365,7 @@ void main() {
   });
 }
 
-Future<void> _pumpTextWidget({ WidgetTester tester, String text, TextOverflow overflow }) {
+Future<void> _pumpTextWidget({ [ WidgetTester tester, String text, TextOverflow overflow ] }) {
   return tester.pumpWidget(
     Directionality(
       textDirection: TextDirection.ltr,

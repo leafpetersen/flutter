@@ -195,12 +195,14 @@ class MockProcessManager extends Mock implements ProcessManager {
   @override
   ProcessResult runSync(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     Encoding stdoutEncoding = systemEncoding,
     Encoding stderrEncoding = systemEncoding,
+  ]
   }) {
     final String program = command[0];
     final List<String> args = command.sublist(1);

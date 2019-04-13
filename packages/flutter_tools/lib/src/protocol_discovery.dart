@@ -14,18 +14,22 @@ class ProtocolDiscovery {
   ProtocolDiscovery._(
     this.logReader,
     this.serviceName, {
+    [
     this.portForwarder,
     this.hostPort,
     this.ipv6,
+  ]
   }) : assert(logReader != null) {
     _deviceLogSubscription = logReader.logLines.listen(_handleLine);
   }
 
   factory ProtocolDiscovery.observatory(
     DeviceLogReader logReader, {
+    [
     DevicePortForwarder portForwarder,
     int hostPort,
     bool ipv6 = false,
+  ]
   }) {
     const String kObservatoryService = 'Observatory';
     return ProtocolDiscovery._(

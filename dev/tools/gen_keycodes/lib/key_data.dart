@@ -261,19 +261,25 @@ class Key {
   ///
   /// The [usbHidCode] and [chromiumName] parameters must not be null.
   Key({
+    [
     String enumName,
-    this.name,
-    @required this.usbHidCode,
+    this.name
+    ]
+     this.usbHidCode,
+    [
     this.linuxScanCode,
     this.xKbScanCode,
     this.windowsScanCode,
-    this.macOsScanCode,
-    @required this.chromiumName,
+    this.macOsScanCode
+    ]
+     this.chromiumName,
+    [
     this.androidKeyNames,
     this.androidScanCodes,
     this.androidKeyCodes,
     this.glfwKeyNames,
     this.glfwKeyCodes,
+  ]
   })  : assert(usbHidCode != null),
         assert(chromiumName != null),
         _constantName = enumName;

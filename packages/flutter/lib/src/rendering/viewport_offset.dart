@@ -178,8 +178,8 @@ abstract class ViewportOffset extends ChangeNotifier {
   /// animation, use [jumpTo].
   Future<void> animateTo(
     double to, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   });
 
   /// Calls [jumpTo] if duration is null or [Duration.zero], otherwise
@@ -191,9 +191,11 @@ abstract class ViewportOffset extends ChangeNotifier {
   /// underscroll.
   Future<void> moveTo(
     double to, {
+    [
     Duration duration,
     Curve curve,
     bool clamp,
+  ]
   }) {
     assert(to != null);
     if (duration == null || duration == Duration.zero) {
@@ -277,8 +279,8 @@ class _FixedViewportOffset extends ViewportOffset {
   @override
   Future<void> animateTo(
     double to, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) async { }
 
   @override

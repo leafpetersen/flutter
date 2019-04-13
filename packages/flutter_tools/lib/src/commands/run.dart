@@ -22,7 +22,7 @@ import 'daemon.dart';
 
 abstract class RunCommandBase extends FlutterCommand with DeviceBasedDevelopmentArtifacts {
   // Used by run and drive commands.
-  RunCommandBase({ bool verboseHelp = false }) {
+  RunCommandBase({ [ bool verboseHelp = false ] }) {
     addBuildModeFlags(defaultToRelease: false, verboseHelp: verboseHelp);
     addDynamicModeFlags(verboseHelp: verboseHelp);
     addDynamicPatchingFlags(verboseHelp: verboseHelp);
@@ -69,7 +69,7 @@ abstract class RunCommandBase extends FlutterCommand with DeviceBasedDevelopment
 }
 
 class RunCommand extends RunCommandBase {
-  RunCommand({ bool verboseHelp = false }) : super(verboseHelp: verboseHelp) {
+  RunCommand({ [ bool verboseHelp = false ] }) : super(verboseHelp: verboseHelp) {
     requiresPubspecYaml();
     usesFilesystemOptions(hide: !verboseHelp);
 

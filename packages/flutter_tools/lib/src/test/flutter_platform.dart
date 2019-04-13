@@ -78,7 +78,8 @@ final Map<InternetAddressType, InternetAddress> _kHosts = <InternetAddressType, 
 /// (that is, one Dart file with a `*_test.dart` file name and a single `void
 /// main()`), you can set an observatory port explicitly.
 void installHook({
-  @required String shellPath,
+   String shellPath,
+  [
   TestWatcher watcher,
   bool enableObservatory = false,
   bool machine = false,
@@ -93,6 +94,7 @@ void installHook({
   Uri projectRootDirectory,
   FlutterProject flutterProject,
   String icudtlPath,
+]
 }) {
   assert(enableObservatory || (!startPaused && observatoryPort == null));
   hack.registerPlatformPlugin(
@@ -133,10 +135,12 @@ void installHook({
 /// The [updateGoldens] argument will set the [autoUpdateGoldens] global
 /// variable in the [flutter_test] package before invoking the test.
 String generateTestBootstrap({
-  @required Uri testUrl,
-  @required InternetAddress host,
+   Uri testUrl,
+   InternetAddress host,
+  [
   File testConfigFile,
   bool updateGoldens = false,
+]
 }) {
   assert(testUrl != null);
   assert(host != null);
@@ -248,7 +252,7 @@ class _Compiler {
     printTrace('Compiler will use the following file as its incremental dill file: ${outputDill.path}');
 
     bool suppressOutput = false;
-    void reportCompilerMessage(String message, {bool emphasis, TerminalColor color}) {
+    void reportCompilerMessage(String message, {[bool emphasis, TerminalColor color]}) {
       if (suppressOutput) {
         return;
       }
@@ -378,7 +382,8 @@ class _Compiler {
 
 class _FlutterPlatform extends PlatformPlugin {
   _FlutterPlatform({
-    @required this.shellPath,
+     this.shellPath,
+    [
     this.watcher,
     this.enableObservatory,
     this.machine,
@@ -393,6 +398,7 @@ class _FlutterPlatform extends PlatformPlugin {
     this.projectRootDirectory,
     this.flutterProject,
     this.icudtlPath,
+  ]
   }) : assert(shellPath != null);
 
   final String shellPath;
@@ -856,7 +862,9 @@ class _FlutterPlatform extends PlatformPlugin {
   }
 
   String _generateTestMain({
+    [
     Uri testUrl,
+  ]
   }) {
     assert(testUrl.scheme == 'file');
     File testConfigFile;
@@ -925,11 +933,13 @@ class _FlutterPlatform extends PlatformPlugin {
   Future<Process> _startProcess(
     String executable,
     String testPath, {
+    [
     String packages,
     bool enableObservatory = false,
     bool startPaused = false,
     int observatoryPort,
     int serverPort,
+  ]
   }) {
     assert(executable != null); // Please provide the path to the shell in the SKY_SHELL environment variable.
     assert(!startPaused || enableObservatory);
@@ -982,8 +992,10 @@ class _FlutterPlatform extends PlatformPlugin {
 
   void _pipeStandardStreamsToConsole(
     Process process, {
+    [
     void startTimeoutTimer(),
     void reportObservatoryUri(Uri uri),
+  ]
   }) {
     const String observatoryString = 'Observatory listening on ';
     for (Stream<List<int>> stream in <Stream<List<int>>>[

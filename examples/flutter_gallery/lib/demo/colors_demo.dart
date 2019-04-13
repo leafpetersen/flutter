@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 const double kColorItemHeight = 48.0;
 
 class Palette {
-  Palette({ this.name, this.primary, this.accent, this.threshold = 900});
+  Palette({ [ this.name, this.primary, this.accent, this.threshold = 900]});
 
   final String name;
   final MaterialColor primary;
@@ -42,10 +42,14 @@ final List<Palette> allPalettes = <Palette>[
 
 class ColorItem extends StatelessWidget {
   const ColorItem({
-    Key key,
-    @required this.index,
-    @required this.color,
+    [
+    Key key
+    ]
+     this.index,
+     this.color,
+    [
     this.prefix = '',
+  ]
   }) : assert(index != null),
        assert(color != null),
        assert(prefix != null),
@@ -84,8 +88,10 @@ class ColorItem extends StatelessWidget {
 
 class PaletteTabView extends StatelessWidget {
   PaletteTabView({
-    Key key,
-    @required this.colors,
+    [
+    Key key
+    ]
+     this.colors,
   }) : assert(colors != null && colors.isValid),
        super(key: key);
 

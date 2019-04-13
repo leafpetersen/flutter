@@ -42,7 +42,7 @@ class SamplePageState extends State<SamplePage> {
 int willPopCount = 0;
 
 class SampleForm extends StatelessWidget {
-  const SampleForm({ Key key, this.callback }) : super(key: key);
+  const SampleForm({ [ Key key, this.callback ] }) : super(key: key);
 
   final WillPopCallback callback;
 
@@ -65,7 +65,7 @@ class SampleForm extends StatelessWidget {
 
 // Expose the protected hasScopedWillPopCallback getter
 class TestPageRoute<T> extends MaterialPageRoute<T> {
-  TestPageRoute({ WidgetBuilder builder })
+  TestPageRoute({ [ WidgetBuilder builder ] })
     : super(builder: builder, maintainState: true);
 
   bool get hasCallback => super.hasScopedWillPopCallback;

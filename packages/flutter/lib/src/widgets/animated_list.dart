@@ -47,8 +47,11 @@ class _ActiveItem implements Comparable<_ActiveItem> {
 class AnimatedList extends StatefulWidget {
   /// Creates a scrolling container that animates items when they are inserted or removed.
   const AnimatedList({
-    Key key,
-    @required this.itemBuilder,
+    [
+    Key key
+    ]
+     this.itemBuilder,
+    [
     this.initialItemCount = 0,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
@@ -57,6 +60,7 @@ class AnimatedList extends StatefulWidget {
     this.physics,
     this.shrinkWrap = false,
     this.padding,
+  ]
   }) : assert(itemBuilder != null),
        assert(initialItemCount != null && initialItemCount >= 0),
        super(key: key);
@@ -160,7 +164,7 @@ class AnimatedList extends StatefulWidget {
   /// ```dart
   /// AnimatedListState animatedList = AnimatedList.of(context);
   /// ```
-  static AnimatedListState of(BuildContext context, { bool nullOk = false }) {
+  static AnimatedListState of(BuildContext context, { [ bool nullOk = false ] }) {
     assert(context != null);
     assert(nullOk != null);
     final AnimatedListState result = context.ancestorStateOfType(const TypeMatcher<AnimatedListState>());
@@ -271,7 +275,7 @@ class AnimatedListState extends State<AnimatedList> with TickerProviderStateMixi
   /// This method's semantics are the same as Dart's [List.insert] method:
   /// it increases the length of the list by one and shifts all items at or
   /// after [index] towards the end of the list.
-  void insertItem(int index, { Duration duration = _kDuration }) {
+  void insertItem(int index, { [ Duration duration = _kDuration ] }) {
     assert(index != null && index >= 0);
     assert(duration != null);
 
@@ -314,7 +318,7 @@ class AnimatedListState extends State<AnimatedList> with TickerProviderStateMixi
   /// This method's semantics are the same as Dart's [List.remove] method:
   /// it decreases the length of the list by one and shifts all items at or
   /// before [index] towards the beginning of the list.
-  void removeItem(int index, AnimatedListRemovedItemBuilder builder, { Duration duration = _kDuration }) {
+  void removeItem(int index, AnimatedListRemovedItemBuilder builder, { [ Duration duration = _kDuration ] }) {
     assert(index != null && index >= 0);
     assert(builder != null);
     assert(duration != null);

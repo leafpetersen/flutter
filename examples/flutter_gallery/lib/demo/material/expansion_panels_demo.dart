@@ -18,10 +18,12 @@ typedef ValueToString<T> = String Function(T value);
 
 class DualHeaderWithHint extends StatelessWidget {
   const DualHeaderWithHint({
+    [
     this.name,
     this.value,
     this.hint,
     this.showHint,
+  ]
   });
 
   final String name;
@@ -80,10 +82,12 @@ class DualHeaderWithHint extends StatelessWidget {
 
 class CollapsibleBody extends StatelessWidget {
   const CollapsibleBody({
+    [
     this.margin = EdgeInsets.zero,
     this.child,
     this.onSave,
     this.onCancel,
+  ]
   });
 
   final EdgeInsets margin;
@@ -146,11 +150,13 @@ class CollapsibleBody extends StatelessWidget {
 
 class DemoItem<T> {
   DemoItem({
+    [
     this.name,
     this.value,
     this.hint,
     this.builder,
     this.valueToString,
+  ]
   }) : textController = TextEditingController(text: valueToString(value));
 
   final String name;

@@ -127,10 +127,12 @@ class AppContext {
   /// name. This is useful for debugging purposes and is analogous to naming a
   /// thread in Java.
   Future<V> run<V>({
-    @required FutureOr<V> body(),
+     FutureOr<V> body(),
+    [
     String name,
     Map<Type, Generator> overrides,
     Map<Type, Generator> fallbacks,
+  ]
   }) async {
     final AppContext child = AppContext._(
       this,

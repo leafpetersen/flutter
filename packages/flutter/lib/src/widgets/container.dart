@@ -59,10 +59,14 @@ class DecoratedBox extends SingleChildRenderObjectWidget {
   /// The [decoration] and [position] arguments must not be null. By default the
   /// decoration paints behind the child.
   const DecoratedBox({
-    Key key,
-    @required this.decoration,
+    [
+    Key key
+    ]
+     this.decoration,
+    [
     this.position = DecorationPosition.background,
     Widget child,
+  ]
   }) : assert(decoration != null),
        assert(position != null),
        super(key: key, child: child);
@@ -252,6 +256,7 @@ class Container extends StatelessWidget {
   /// `decoration`, you can pass the color as the `color` argument to the
   /// `BoxDecoration`.
   Container({
+    [
     Key key,
     this.alignment,
     this.padding,
@@ -264,6 +269,7 @@ class Container extends StatelessWidget {
     this.margin,
     this.transform,
     this.child,
+  ]
   }) : assert(margin == null || margin.isNonNegative),
        assert(padding == null || padding.isNonNegative),
        assert(decoration == null || decoration.debugAssertIsValid()),

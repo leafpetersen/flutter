@@ -95,7 +95,9 @@ class BlacklistingTextInputFormatter extends TextInputFormatter {
   /// The [blacklistedPattern] must not be null.
   BlacklistingTextInputFormatter(
     this.blacklistedPattern, {
+    [
     this.replacementString = '',
+  ]
   }) : assert(blacklistedPattern != null);
 
   /// A [Pattern] to match and replace incoming [TextEditingValue]s.

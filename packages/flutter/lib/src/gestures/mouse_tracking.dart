@@ -32,7 +32,7 @@ typedef PointerHoverEventListener = void Function(PointerHoverEvent event);
 class MouseTrackerAnnotation {
   /// Creates an annotation that can be used to find layers interested in mouse
   /// movements.
-  const MouseTrackerAnnotation({this.onEnter, this.onHover, this.onExit});
+  const MouseTrackerAnnotation({[this.onEnter, this.onHover, this.onExit]});
 
   /// Triggered when a pointer has entered the bounding box of the annotated
   /// layer.

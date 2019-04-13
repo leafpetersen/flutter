@@ -17,10 +17,12 @@ import 'package:flutter/material.dart';
 /// Users that do not use a screen reader will just see a regular dropdown menu.
 class AdjustableDropdownListTile extends StatelessWidget {
   const AdjustableDropdownListTile({
+    [
     this.label,
     this.value,
     this.items,
     this.onChanged,
+  ]
   });
 
   final String label;

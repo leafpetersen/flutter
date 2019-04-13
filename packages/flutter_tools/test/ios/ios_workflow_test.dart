@@ -361,8 +361,10 @@ final ProcessResult exitsHappy = ProcessResult(
 
 class MockIMobileDevice extends IMobileDevice {
   MockIMobileDevice({
+    [
     this.isInstalled = true,
     bool isWorking = true,
+  ]
   }) : isWorking = Future<bool>.value(isWorking);
 
   @override
@@ -379,10 +381,12 @@ class MockProcessResult extends Mock implements ProcessResult {}
 
 class IOSWorkflowTestTarget extends IOSValidator {
   IOSWorkflowTestTarget({
+    [
     this.hasHomebrew = true,
     bool hasIosDeploy = true,
     String iosDeployVersionText = '1.9.4',
     bool hasIDeviceInstaller = true,
+  ]
   }) : hasIosDeploy = Future<bool>.value(hasIosDeploy),
        iosDeployVersionText = Future<String>.value(iosDeployVersionText),
        hasIDeviceInstaller = Future<bool>.value(hasIDeviceInstaller);
@@ -402,7 +406,9 @@ class IOSWorkflowTestTarget extends IOSValidator {
 
 class CocoaPodsTestTarget extends CocoaPodsValidator {
   CocoaPodsTestTarget({
+    [
     this.hasHomebrew = true,
+  ]
   });
 
   @override

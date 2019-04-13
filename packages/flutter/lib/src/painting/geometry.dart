@@ -39,12 +39,14 @@ import 'basic_types.dart';
 ///
 /// The arguments must not be null.
 Offset positionDependentBox({
-  @required Size size,
-  @required Size childSize,
-  @required Offset target,
-  @required bool preferBelow,
+   Size size,
+   Size childSize,
+   Offset target,
+   bool preferBelow,
+  [
   double verticalOffset = 0.0,
   double margin = 10.0,
+]
 }) {
   assert(size != null);
   assert(childSize != null);

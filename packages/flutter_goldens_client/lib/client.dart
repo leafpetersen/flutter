@@ -22,9 +22,11 @@ const String _kFlutterRootKey = 'FLUTTER_ROOT';
 class GoldensClient {
   /// Create a handle to a local clone of the goldens repository.
   GoldensClient({
+    [
     this.fs = const LocalFileSystem(),
     this.platform = const LocalPlatform(),
     this.process = const LocalProcessManager(),
+  ]
   });
 
   /// The file system to use for storing the local clone of the repository.
@@ -148,7 +150,9 @@ class GoldensClient {
 
   Future<void> _runCommands(
     List<String> commands, {
+    [
     Directory workingDirectory,
+  ]
   }) async {
     for (String command in commands) {
       final List<String> parts = command.split(' ');

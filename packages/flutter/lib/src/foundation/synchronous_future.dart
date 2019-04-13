@@ -31,10 +31,10 @@ class SynchronousFuture<T> implements Future<T> {
   }
 
   @override
-  Future<T> catchError(Function onError, { bool test(dynamic error) }) => Completer<T>().future;
+  Future<T> catchError(Function onError, { [ bool test(dynamic error) ] }) => Completer<T>().future;
 
   @override
-  Future<E> then<E>(dynamic f(T value), { Function onError }) {
+  Future<E> then<E>(dynamic f(T value), { [ Function onError ] }) {
     final dynamic result = f(_value);
     if (result is Future<E>)
       return result;
@@ -42,7 +42,7 @@ class SynchronousFuture<T> implements Future<T> {
   }
 
   @override
-  Future<T> timeout(Duration timeLimit, { dynamic onTimeout() }) {
+  Future<T> timeout(Duration timeLimit, { [ dynamic onTimeout() ] }) {
     return Future<T>.value(_value).timeout(timeLimit, onTimeout: onTimeout);
   }
 

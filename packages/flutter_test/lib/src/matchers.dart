@@ -218,7 +218,7 @@ Matcher isInstanceOf<T>() => test_package.TypeMatcher<T>();
 ///    required and not named.
 ///  * [inInclusiveRange], which matches if the argument is in a specified
 ///    range.
-Matcher moreOrLessEquals(double value, { double epsilon = 1e-10 }) {
+Matcher moreOrLessEquals(double value, { [ double epsilon = 1e-10 ] }) {
   return _MoreOrLessEquals(value, epsilon);
 }
 
@@ -243,7 +243,7 @@ Matcher equalsIgnoringHashCodes(String value) {
 /// method [name] and [arguments].
 ///
 /// Arguments checking implements deep equality for [List] and [Map] types.
-Matcher isMethodCall(String name, { @required dynamic arguments }) {
+Matcher isMethodCall(String name, {  dynamic arguments }) {
   return _IsMethodCall(name, arguments);
 }
 
@@ -256,7 +256,7 @@ Matcher isMethodCall(String name, { @required dynamic arguments }) {
 /// When using this matcher you typically want to use a rectangle larger than
 /// the area you expect to paint in for [areaToCompare] to catch errors where
 /// the path draws outside the expected area.
-Matcher coversSameAreaAs(Path expectedPath, { @required Rect areaToCompare, int sampleSize = 20 })
+Matcher coversSameAreaAs(Path expectedPath, {  Rect areaToCompare, [ int sampleSize = 20 ] })
   => _CoversSameAreaAs(expectedPath, areaToCompare: areaToCompare, sampleSize: sampleSize);
 
 /// Asserts that a [Finder], [Future<ui.Image>], or [ui.Image] matches the
@@ -354,6 +354,7 @@ AsyncMatcher matchesReferenceImage(ui.Image image) {
 ///
 ///   * [WidgetTester.getSemantics], the tester method which retrieves semantics.
 Matcher matchesSemantics({
+  [
   String label,
   String hint,
   String value,
@@ -411,6 +412,7 @@ Matcher matchesSemantics({
   String onLongPressHint,
   List<CustomSemanticsAction> customActions,
   List<Matcher> children,
+]
 }) {
   final List<SemanticsFlag> flags = <SemanticsFlag>[];
   if (hasCheckedState)
@@ -1006,9 +1008,11 @@ double _sizeDistance(Size a, Size b) {
 ///    [double]s and has an optional `epsilon` parameter.
 ///  * [closeTo], which specializes in numbers only.
 Matcher within<T>({
-  @required num distance,
-  @required T from,
+   num distance,
+   T from,
+  [
   DistanceFunction<T> distanceFunction,
+]
 }) {
   distanceFunction ??= _kStandardDistanceFunctions[from.runtimeType];
 
@@ -1150,14 +1154,14 @@ const Matcher hasNoImmediateClip = _MatchAnythingExceptClip();
 /// Asserts that a [Finder] locates a single object whose root RenderObject
 /// is a [RenderClipRRect] with no clipper set, and border radius equals to
 /// [borderRadius], or an equivalent [RenderClipPath].
-Matcher clipsWithBoundingRRect({ @required BorderRadius borderRadius }) {
+Matcher clipsWithBoundingRRect({  BorderRadius borderRadius }) {
   return _ClipsWithBoundingRRect(borderRadius: borderRadius);
 }
 
 /// Asserts that a [Finder] locates a single object whose root RenderObject
 /// is a [RenderClipPath] with a [ShapeBorderClipper] that clips to
 /// [shape].
-Matcher clipsWithShapeBorder({ @required ShapeBorder shape }) {
+Matcher clipsWithShapeBorder({  ShapeBorder shape }) {
   return _ClipsWithShapeBorder(shape: shape);
 }
 
@@ -1179,9 +1183,11 @@ Matcher clipsWithShapeBorder({ @required ShapeBorder shape }) {
 ///    - If [elevation] is non null asserts that [RenderPhysicalModel.elevation] is equal to
 ///   [elevation].
 Matcher rendersOnPhysicalModel({
+  [
   BoxShape shape,
   BorderRadius borderRadius,
   double elevation,
+]
 }) {
   return _RendersOnPhysicalModel(
     shape: shape,
@@ -1196,8 +1202,10 @@ Matcher rendersOnPhysicalModel({
 /// If [elevation] is non null asserts that [RenderPhysicalShape.elevation] is
 /// equal to [elevation].
 Matcher rendersOnPhysicalShape({
+  [
   ShapeBorder shape,
   double elevation,
+]
 }) {
   return _RendersOnPhysicalShape(
     shape: shape,
@@ -1276,9 +1284,11 @@ abstract class _MatchRenderObject<M extends RenderObject, T extends RenderObject
 
 class _RendersOnPhysicalModel extends _MatchRenderObject<RenderPhysicalShape, RenderPhysicalModel> {
   const _RendersOnPhysicalModel({
+    [
     this.shape,
     this.borderRadius,
     this.elevation,
+  ]
   });
 
   final BoxShape shape;
@@ -1360,8 +1370,10 @@ class _RendersOnPhysicalModel extends _MatchRenderObject<RenderPhysicalShape, Re
 
 class _RendersOnPhysicalShape extends _MatchRenderObject<RenderPhysicalShape, RenderPhysicalModel> {
   const _RendersOnPhysicalShape({
+    [
     this.shape,
     this.elevation,
+  ]
   });
 
   final ShapeBorder shape;
@@ -1425,7 +1437,7 @@ class _ClipsWithBoundingRect extends _MatchRenderObject<RenderClipPath, RenderCl
 }
 
 class _ClipsWithBoundingRRect extends _MatchRenderObject<RenderClipPath, RenderClipRRect> {
-  const _ClipsWithBoundingRRect({@required this.borderRadius});
+  const _ClipsWithBoundingRRect({ this.borderRadius});
 
   final BorderRadius borderRadius;
 
@@ -1460,7 +1472,7 @@ class _ClipsWithBoundingRRect extends _MatchRenderObject<RenderClipPath, RenderC
 }
 
 class _ClipsWithShapeBorder extends _MatchRenderObject<RenderClipPath, RenderClipRRect> {
-  const _ClipsWithShapeBorder({@required this.shape});
+  const _ClipsWithShapeBorder({ this.shape});
 
   final ShapeBorder shape;
 
@@ -1488,8 +1500,10 @@ class _ClipsWithShapeBorder extends _MatchRenderObject<RenderClipPath, RenderCli
 class _CoversSameAreaAs extends Matcher {
   _CoversSameAreaAs(
     this.expectedPath, {
-    @required this.areaToCompare,
+     this.areaToCompare,
+    [
     this.sampleSize = 20,
+  ]
   }) : maxHorizontalNoise = areaToCompare.width / sampleSize,
        maxVerticalNoise = areaToCompare.height / sampleSize {
     // Use a fixed random seed to make sure tests are deterministic.
@@ -1690,6 +1704,7 @@ class _MatchesGoldenFile extends AsyncMatcher {
 
 class _MatchesSemanticsData extends Matcher {
   _MatchesSemanticsData({
+    [
     this.label,
     this.value,
     this.increasedValue,
@@ -1706,6 +1721,7 @@ class _MatchesSemanticsData extends Matcher {
     this.customActions,
     this.hintOverrides,
     this.children,
+  ]
   });
 
   final String label;

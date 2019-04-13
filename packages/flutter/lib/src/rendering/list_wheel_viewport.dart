@@ -42,7 +42,7 @@ abstract class ListWheelChildManager {
   /// nothing.
   ///
   /// It is possible to create children with negative indices.
-  void createChild(int index, { @required RenderBox after });
+  void createChild(int index, {  RenderBox after });
 
   /// Removes the child element corresponding with the given RenderBox.
   void removeChild(RenderBox child);
@@ -133,17 +133,21 @@ class RenderListWheelViewport
   ///
   /// All arguments must not be null. Optional arguments have reasonable defaults.
   RenderListWheelViewport({
-    @required this.childManager,
-    @required ViewportOffset offset,
+     this.childManager,
+     ViewportOffset offset,
+    [
     double diameterRatio = defaultDiameterRatio,
     double perspective = defaultPerspective,
     double offAxisFraction = 0.0,
     bool useMagnifier = false,
-    double magnification = 1.0,
-    @required double itemExtent,
+    double magnification = 1.0
+    ]
+     double itemExtent,
+    [
     bool clipToSize = true,
     bool renderChildrenOutsideViewport = false,
     List<RenderBox> children,
+  ]
   }) : assert(childManager != null),
        assert(offset != null),
        assert(diameterRatio != null),
@@ -572,7 +576,7 @@ class RenderListWheelViewport
   /// Returns the scroll offset of the child with the given index.
   double indexToScrollOffset(int index) => index * itemExtent;
 
-  void _createChild(int index, { RenderBox after }) {
+  void _createChild(int index, { [ RenderBox after ] }) {
     invokeLayoutCallback<BoxConstraints>((BoxConstraints constraints) {
       assert(constraints == this.constraints);
       childManager.createChild(index, after: after);
@@ -947,12 +951,12 @@ class RenderListWheelViewport
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     return false;
   }
 
   @override
-  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { Rect rect }) {
+  RevealedOffset getOffsetToReveal(RenderObject target, double alignment, { [ Rect rect ] }) {
     // `target` is only fully revealed when in the selected/center position. Therefore,
     // this method always returns the offset that shows `target` in the center position,
     // which is the same offset for all `alignment` values.
@@ -976,10 +980,12 @@ class RenderListWheelViewport
 
   @override
   void showOnScreen({
+    [
     RenderObject descendant,
     Rect rect,
     Duration duration = Duration.zero,
     Curve curve = Curves.ease,
+  ]
   }) {
     if (descendant != null) {
       // Shows the descendant in the selected/center position.

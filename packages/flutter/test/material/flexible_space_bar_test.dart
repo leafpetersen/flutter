@@ -201,7 +201,9 @@ void main() {
 class TestDelegate extends SliverPersistentHeaderDelegate {
 
   const TestDelegate({
+    [
     this.settings,
+  ]
   });
 
   final FlexibleSpaceBarSettings settings;

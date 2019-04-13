@@ -68,9 +68,11 @@ class ExpansionPanel {
   ///
   /// The [headerBuilder], [body], and [isExpanded] arguments must not be null.
   ExpansionPanel({
-    @required this.headerBuilder,
-    @required this.body,
+     this.headerBuilder,
+     this.body,
+    [
     this.isExpanded = false,
+  ]
   }) : assert(headerBuilder != null),
        assert(body != null),
        assert(isExpanded != null);
@@ -106,9 +108,9 @@ class ExpansionPanelRadio extends ExpansionPanel {
   /// A unique [value] must be passed into the constructor. The
   /// [headerBuilder], [body], [value] must not be null.
   ExpansionPanelRadio({
-    @required this.value,
-    @required ExpansionPanelHeaderBuilder headerBuilder,
-    @required Widget body,
+     this.value,
+     ExpansionPanelHeaderBuilder headerBuilder,
+     Widget body,
   }) : assert(value != null),
        super(body: body, headerBuilder: headerBuilder);
 
@@ -203,10 +205,12 @@ class ExpansionPanelList extends StatefulWidget {
   ///
   /// The [children] and [animationDuration] arguments must not be null.
   const ExpansionPanelList({
+    [
     Key key,
     this.children = const <ExpansionPanel>[],
     this.expansionCallback,
     this.animationDuration = kThemeAnimationDuration,
+  ]
   }) : assert(children != null),
        assert(animationDuration != null),
        _allowOnlyOnePanelOpen = false,
@@ -290,11 +294,13 @@ class ExpansionPanelList extends StatefulWidget {
   /// ```
   /// {@end-tool}
   const ExpansionPanelList.radio({
+    [
     Key key,
     this.children = const <ExpansionPanelRadio>[],
     this.expansionCallback,
     this.animationDuration = kThemeAnimationDuration,
     this.initialOpenPanelValue,
+  ]
   }) : assert(children != null),
        assert(animationDuration != null),
        _allowOnlyOnePanelOpen = true,

@@ -47,7 +47,7 @@ class TestWindow implements Window {
   /// Constructs a [TestWindow] that defers all behavior to the given [window] unless
   /// explicitly overidden for test purposes.
   TestWindow({
-    @required Window window,
+     Window window,
   }) : _window = window;
 
   /// The [Window] that is wrapped by this [TestWindow].

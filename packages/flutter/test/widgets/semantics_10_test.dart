@@ -34,7 +34,7 @@ void main() {
   });
 }
 
-Widget buildTestWidgets({ bool excludeSemantics, String label, bool isSemanticsBoundary }) {
+Widget buildTestWidgets({ [ bool excludeSemantics, String label, bool isSemanticsBoundary ] }) {
   return Directionality(
     textDirection: TextDirection.ltr,
     child: Semantics(
@@ -63,10 +63,12 @@ Widget buildTestWidgets({ bool excludeSemantics, String label, bool isSemanticsB
 
 class TestWidget extends SingleChildRenderObjectWidget {
   const TestWidget({
+    [
     Key key,
     Widget child,
     this.label,
     this.isSemanticBoundary,
+  ]
   }) : super(key: key, child: child);
 
   final String label;

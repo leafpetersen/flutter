@@ -97,7 +97,7 @@ abstract class InheritedModel<T> extends InheritedWidget {
   /// Creates an inherited widget that supports dependencies qualified by
   /// "aspects", i.e. a descendant widget can indicate that it should
   /// only be rebuilt if a specific aspect of the model changes.
-  const InheritedModel({ Key key, Widget child }) : super(key: key, child: child);
+  const InheritedModel({ [ Key key, Widget child ] }) : super(key: key, child: child);
 
   @override
   InheritedModelElement<T> createElement() => InheritedModelElement<T>(this);
@@ -157,7 +157,7 @@ abstract class InheritedModel<T> extends InheritedWidget {
   /// `context.inheritFromWidgetOfExactType(T)`.
   ///
   /// If no ancestor of type T exists, null is returned.
-  static T inheritFrom<T extends InheritedModel<Object>>(BuildContext context, { Object aspect }) {
+  static T inheritFrom<T extends InheritedModel<Object>>(BuildContext context, { [ Object aspect ] }) {
     if (aspect == null)
       return context.inheritFromWidgetOfExactType(T);
 

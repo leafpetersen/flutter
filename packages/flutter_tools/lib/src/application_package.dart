@@ -30,7 +30,9 @@ class ApplicationPackageFactory {
 
   Future<ApplicationPackage> getPackageForPlatform(
     TargetPlatform platform, {
+    [
     File applicationBinary,
+  ]
   }) async {
     switch (platform) {
       case TargetPlatform.android_arm:
@@ -66,7 +68,7 @@ class ApplicationPackageFactory {
 }
 
 abstract class ApplicationPackage {
-  ApplicationPackage({ @required this.id })
+  ApplicationPackage({  this.id })
     : assert(id != null);
 
   /// Package ID from the Android Manifest or equivalent.
@@ -84,10 +86,12 @@ abstract class ApplicationPackage {
 
 class AndroidApk extends ApplicationPackage {
   AndroidApk({
-    String id,
-    @required this.file,
-    @required this.versionCode,
-    @required this.launchActivity,
+    [
+    String id
+    ]
+     this.file,
+     this.versionCode,
+     this.launchActivity,
   }) : assert(file != null),
        assert(launchActivity != null),
        super(id: id);
@@ -235,7 +239,7 @@ bool _isBundleDirectory(FileSystemEntity entity) =>
     entity is Directory && entity.path.endsWith('.app');
 
 abstract class IOSApp extends ApplicationPackage {
-  IOSApp({@required String projectBundleId}) : super(id: projectBundleId);
+  IOSApp({ String projectBundleId}) : super(id: projectBundleId);
 
   /// Creates a new IOSApp from an existing app bundle or IPA.
   factory IOSApp.fromPrebuiltApp(FileSystemEntity applicationBinary) {
@@ -332,9 +336,11 @@ class BuildableIOSApp extends IOSApp {
 
 class PrebuiltIOSApp extends IOSApp {
   PrebuiltIOSApp({
+    [
     this.bundleDir,
-    this.bundleName,
-    @required String projectBundleId,
+    this.bundleName
+    ]
+     String projectBundleId,
   }) : super(projectBundleId: projectBundleId);
 
   final Directory bundleDir;
@@ -353,7 +359,7 @@ class PrebuiltIOSApp extends IOSApp {
 }
 
 class ApplicationPackageStore {
-  ApplicationPackageStore({ this.android, this.iOS });
+  ApplicationPackageStore({ [ this.android, this.iOS ] });
 
   AndroidApk android;
   IOSApp iOS;

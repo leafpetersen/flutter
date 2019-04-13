@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class _GesturePainter extends CustomPainter {
   const _GesturePainter({
+    [
     this.zoom,
     this.offset,
     this.swatch,
@@ -14,6 +15,7 @@ class _GesturePainter extends CustomPainter {
     this.tapEnabled,
     this.doubleTapEnabled,
     this.longPressEnabled,
+  ]
   });
 
   final double zoom;

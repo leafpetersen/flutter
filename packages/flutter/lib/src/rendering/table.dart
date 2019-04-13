@@ -91,7 +91,7 @@ class IntrinsicColumnWidth extends TableColumnWidth {
   /// Creates a column width based on intrinsic sizing.
   ///
   /// This sizing algorithm is very expensive.
-  const IntrinsicColumnWidth({ double flex }) : _flex = flex;
+  const IntrinsicColumnWidth({ [ double flex ] }) : _flex = flex;
 
   @override
   double minIntrinsicWidth(Iterable<RenderBox> cells, double containerWidth) {
@@ -358,17 +358,21 @@ class RenderTable extends RenderBox {
   ///  * [defaultColumnWidth] must not be null.
   ///  * [configuration] must not be null (but has a default value).
   RenderTable({
+    [
     int columns,
     int rows,
     Map<int, TableColumnWidth> columnWidths,
-    TableColumnWidth defaultColumnWidth = const FlexColumnWidth(1.0),
-    @required TextDirection textDirection,
+    TableColumnWidth defaultColumnWidth = const FlexColumnWidth(1.0)
+    ]
+     TextDirection textDirection,
+    [
     TableBorder border,
     List<Decoration> rowDecorations,
     ImageConfiguration configuration = ImageConfiguration.empty,
     TableCellVerticalAlignment defaultVerticalAlignment = TableCellVerticalAlignment.top,
     TextBaseline textBaseline,
     List<List<RenderBox>> children,
+  ]
   }) : assert(columns == null || columns >= 0),
        assert(rows == null || rows >= 0),
        assert(rows == null || children == null),
@@ -1104,7 +1108,7 @@ class RenderTable extends RenderBox {
   }
 
   @override
-  bool hitTestChildren(HitTestResult result, { Offset position }) {
+  bool hitTestChildren(HitTestResult result, { [ Offset position ] }) {
     assert(_children.length == rows * columns);
     for (int index = _children.length - 1; index >= 0; index -= 1) {
       final RenderBox child = _children[index];

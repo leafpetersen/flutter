@@ -4,7 +4,7 @@
 
 class Version implements Comparable<Version> {
   /// Creates a new [Version] object.
-  factory Version(int major, int minor, int patch, {String text}) {
+  factory Version(int major, int minor, int patch, {[String text]}) {
     if (text == null) {
       text = major == null ? '0' : '$major';
       if (minor != null)

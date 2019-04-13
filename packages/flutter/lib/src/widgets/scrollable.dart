@@ -75,14 +75,18 @@ class Scrollable extends StatefulWidget {
   ///
   /// The [axisDirection] and [viewportBuilder] arguments must not be null.
   const Scrollable({
+    [
     Key key,
     this.axisDirection = AxisDirection.down,
     this.controller,
-    this.physics,
-    @required this.viewportBuilder,
+    this.physics
+    ]
+     this.viewportBuilder,
+    [
     this.excludeFromSemantics = false,
     this.semanticChildCount,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(axisDirection != null),
        assert(dragStartBehavior != null),
        assert(viewportBuilder != null),
@@ -234,9 +238,11 @@ class Scrollable extends StatefulWidget {
   /// given context visible.
   static Future<void> ensureVisible(
     BuildContext context, {
+    [
     double alignment = 0.0,
     Duration duration = Duration.zero,
     Curve curve = Curves.ease,
+  ]
   }) {
     final List<Future<void>> futures = <Future<void>>[];
 
@@ -264,10 +270,12 @@ class Scrollable extends StatefulWidget {
 // ScrollableState.build() always rebuilds its _ScrollableScope.
 class _ScrollableScope extends InheritedWidget {
   const _ScrollableScope({
-    Key key,
-    @required this.scrollable,
-    @required this.position,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.scrollable,
+     this.position,
+     Widget child,
   }) : assert(scrollable != null),
        assert(child != null),
        super(key: key, child: child);
@@ -624,11 +632,15 @@ class ScrollableState extends State<Scrollable> with TickerProviderStateMixin
 /// scrollable children.
 class _ScrollSemantics extends SingleChildRenderObjectWidget {
   const _ScrollSemantics({
-    Key key,
-    @required this.position,
-    @required this.allowImplicitScrolling,
-    @required this.semanticChildCount,
+    [
+    Key key
+    ]
+     this.position,
+     this.allowImplicitScrolling,
+     this.semanticChildCount,
+    [
     Widget child,
+  ]
   }) : assert(position != null),
        super(key: key, child: child);
 
@@ -656,10 +668,12 @@ class _ScrollSemantics extends SingleChildRenderObjectWidget {
 
 class _RenderScrollSemantics extends RenderProxyBox {
   _RenderScrollSemantics({
-    @required ScrollPosition position,
-    @required bool allowImplicitScrolling,
-    @required int semanticChildCount,
+     ScrollPosition position,
+     bool allowImplicitScrolling,
+     int semanticChildCount,
+    [
     RenderBox child,
+  ]
   }) : _position = position,
        _allowImplicitScrolling = allowImplicitScrolling,
        _semanticChildCount = semanticChildCount,

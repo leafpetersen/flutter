@@ -45,9 +45,11 @@ class SshCommandRunner {
   /// IPv4 nor IPv6. When connecting to a link local address (`fe80::` is
   /// usually at the start of the address), an interface should be supplied.
   SshCommandRunner({
+    [
     this.address,
     this.interface = '',
     this.sshConfigPath,
+  ]
   }) : _processManager = const LocalProcessManager() {
     validateAddress(address);
   }
@@ -56,9 +58,11 @@ class SshCommandRunner {
   @visibleForTesting
   SshCommandRunner.withProcessManager(
     this._processManager, {
+    [
     this.address,
     this.interface = '',
     this.sshConfigPath,
+  ]
   }) {
     validateAddress(address);
   }

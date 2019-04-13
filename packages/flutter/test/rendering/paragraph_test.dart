@@ -102,7 +102,7 @@ void main() {
       softWrap: true,
     );
 
-    void relayoutWith({ int maxLines, bool softWrap, TextOverflow overflow }) {
+    void relayoutWith({ [ int maxLines, bool softWrap, TextOverflow overflow ] }) {
       paragraph
         ..maxLines = maxLines
         ..softWrap = softWrap

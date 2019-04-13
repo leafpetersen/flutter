@@ -30,8 +30,8 @@ class TestServiceExtensionsBinding extends BindingBase
 
   @override
   void registerServiceExtension({
-    @required String name,
-    @required ServiceExtensionCallback callback,
+     String name,
+     ServiceExtensionCallback callback,
   }) {
     expect(extensions.containsKey(name), isFalse);
     extensions[name] = callback;
@@ -137,7 +137,7 @@ void main() {
     expect(binding.frameScheduled, isFalse);
 
     expect(debugPrint, equals(debugPrintThrottled));
-    debugPrint = (String message, { int wrapWidth }) {
+    debugPrint = (String message, { [ int wrapWidth ] }) {
       console.add(message);
     };
   });

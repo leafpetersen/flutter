@@ -85,6 +85,7 @@ class MaterialApp extends StatefulWidget {
   ///
   /// The boolean arguments, [routes], and [navigatorObservers], must not be null.
   const MaterialApp({
+    [
     Key key,
     this.navigatorKey,
     this.home,
@@ -110,6 +111,7 @@ class MaterialApp extends StatefulWidget {
     this.checkerboardOffscreenLayers = false,
     this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
+  ]
   }) : assert(routes != null),
        assert(navigatorObservers != null),
        assert(title != null),

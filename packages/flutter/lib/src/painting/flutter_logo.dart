@@ -43,11 +43,13 @@ class FlutterLogoDecoration extends Decoration {
   /// The [lightColor], [darkColor], [textColor], [style], and [margin]
   /// arguments must not be null.
   const FlutterLogoDecoration({
+    [
     this.lightColor = const Color(0xFF42A5F5), // Colors.blue[400]
     this.darkColor = const Color(0xFF0D47A1), // Colors.blue[900]
     this.textColor = const Color(0xFF616161),
     this.style = FlutterLogoStyle.markOnly,
     this.margin = EdgeInsets.zero,
+  ]
   }) : assert(lightColor != null),
        assert(darkColor != null),
        assert(textColor != null),
@@ -197,7 +199,7 @@ class FlutterLogoDecoration extends Decoration {
 
   @override
   // TODO(ianh): better hit testing
-  bool hitTest(Size size, Offset position, { TextDirection textDirection }) => true;
+  bool hitTest(Size size, Offset position, { [ TextDirection textDirection ] }) => true;
 
   @override
   BoxPainter createBoxPainter([ VoidCallback onChanged ]) {

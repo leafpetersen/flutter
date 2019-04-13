@@ -159,11 +159,13 @@ class MockProcessManager implements ProcessManager {
   @override
   Future<Process> start(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     ProcessStartMode mode = ProcessStartMode.normal,
+  ]
   }) {
     lastPubEnvironment = environment['PUB_ENVIRONMENT'];
     lastPubCache = environment['PUB_CACHE'];
@@ -200,7 +202,7 @@ class MockStream<T> implements Stream<T> {
   Stream<T> where(bool test(T event)) => MockStream<T>();
 
   @override
-  StreamSubscription<T> listen(void onData(T event), { Function onError, void onDone(), bool cancelOnError }) {
+  StreamSubscription<T> listen(void onData(T event), { [ Function onError, void onDone(), bool cancelOnError ] }) {
     return MockStreamSubscription<T>();
   }
 
@@ -236,7 +238,7 @@ class MockFileSystem extends ForwardingFileSystem {
 
 class MockFile implements File {
   @override
-  Future<RandomAccessFile> open({ FileMode mode = FileMode.read }) async {
+  Future<RandomAccessFile> open({ [ FileMode mode = FileMode.read ] }) async {
     return MockRandomAccessFile();
   }
 

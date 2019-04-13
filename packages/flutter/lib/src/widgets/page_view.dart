@@ -41,9 +41,11 @@ class PageController extends ScrollController {
   ///
   /// The [initialPage], [keepPage], and [viewportFraction] arguments must not be null.
   PageController({
+    [
     this.initialPage = 0,
     this.keepPage = true,
     this.viewportFraction = 1.0,
+  ]
   }) : assert(initialPage != null),
        assert(keepPage != null),
        assert(viewportFraction != null),
@@ -114,8 +116,8 @@ class PageController extends ScrollController {
   /// The `duration` and `curve` arguments must not be null.
   Future<void> animateToPage(
     int page, {
-    @required Duration duration,
-    @required Curve curve,
+     Duration duration,
+     Curve curve,
   }) {
     final _PagePosition position = this.position;
     return position.animateTo(
@@ -140,7 +142,7 @@ class PageController extends ScrollController {
   /// The returned [Future] resolves when the animation completes.
   ///
   /// The `duration` and `curve` arguments must not be null.
-  Future<void> nextPage({ @required Duration duration, @required Curve curve }) {
+  Future<void> nextPage({  Duration duration,  Curve curve }) {
     return animateToPage(page.round() + 1, duration: duration, curve: curve);
   }
 
@@ -150,7 +152,7 @@ class PageController extends ScrollController {
   /// The returned [Future] resolves when the animation completes.
   ///
   /// The `duration` and `curve` arguments must not be null.
-  Future<void> previousPage({ @required Duration duration, @required Curve curve }) {
+  Future<void> previousPage({  Duration duration,  Curve curve }) {
     return animateToPage(page.round() - 1, duration: duration, curve: curve);
   }
 
@@ -181,12 +183,12 @@ class PageController extends ScrollController {
 class PageMetrics extends FixedScrollMetrics {
   /// Creates an immutable snapshot of values associated with a [PageView].
   PageMetrics({
-    @required double minScrollExtent,
-    @required double maxScrollExtent,
-    @required double pixels,
-    @required double viewportDimension,
-    @required AxisDirection axisDirection,
-    @required this.viewportFraction,
+     double minScrollExtent,
+     double maxScrollExtent,
+     double pixels,
+     double viewportDimension,
+     AxisDirection axisDirection,
+     this.viewportFraction,
   }) : super(
          minScrollExtent: minScrollExtent,
          maxScrollExtent: maxScrollExtent,
@@ -197,12 +199,14 @@ class PageMetrics extends FixedScrollMetrics {
 
   @override
   PageMetrics copyWith({
+    [
     double minScrollExtent,
     double maxScrollExtent,
     double pixels,
     double viewportDimension,
     AxisDirection axisDirection,
     double viewportFraction,
+  ]
   }) {
     return PageMetrics(
       minScrollExtent: minScrollExtent ?? this.minScrollExtent,
@@ -228,12 +232,14 @@ class PageMetrics extends FixedScrollMetrics {
 
 class _PagePosition extends ScrollPositionWithSingleContext implements PageMetrics {
   _PagePosition({
+    [
     ScrollPhysics physics,
     ScrollContext context,
     this.initialPage = 0,
     bool keepPage = true,
     double viewportFraction = 1.0,
     ScrollPosition oldPosition,
+  ]
   }) : assert(initialPage != null),
        assert(keepPage != null),
        assert(viewportFraction != null),
@@ -304,12 +310,14 @@ class _PagePosition extends ScrollPositionWithSingleContext implements PageMetri
 
   @override
   PageMetrics copyWith({
+    [
     double minScrollExtent,
     double maxScrollExtent,
     double pixels,
     double viewportDimension,
     AxisDirection axisDirection,
     double viewportFraction,
+  ]
   }) {
     return PageMetrics(
       minScrollExtent: minScrollExtent ?? this.minScrollExtent,
@@ -333,7 +341,7 @@ class _PagePosition extends ScrollPositionWithSingleContext implements PageMetri
 ///  * [PageView.physics], which can override the physics used by a page view.
 class PageScrollPhysics extends ScrollPhysics {
   /// Creates physics for a [PageView].
-  const PageScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
+  const PageScrollPhysics({ [ ScrollPhysics parent ] }) : super(parent: parent);
 
   @override
   PageScrollPhysics applyTo(ScrollPhysics ancestor) {
@@ -419,6 +427,7 @@ class PageView extends StatefulWidget {
   /// child that could possibly be displayed in the page view, instead of just
   /// those children that are actually visible.
   PageView({
+    [
     Key key,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
@@ -428,6 +437,7 @@ class PageView extends StatefulWidget {
     this.onPageChanged,
     List<Widget> children = const <Widget>[],
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : controller = controller ?? _defaultPageController,
        childrenDelegate = SliverChildListDelegate(children),
        super(key: key);
@@ -445,16 +455,20 @@ class PageView extends StatefulWidget {
   /// [itemBuilder] will be called only with indices greater than or equal to
   /// zero and less than [itemCount].
   PageView.builder({
+    [
     Key key,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
     PageController controller,
     this.physics,
     this.pageSnapping = true,
-    this.onPageChanged,
-    @required IndexedWidgetBuilder itemBuilder,
+    this.onPageChanged
+    ]
+     IndexedWidgetBuilder itemBuilder,
+    [
     int itemCount,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : controller = controller ?? _defaultPageController,
        childrenDelegate = SliverChildBuilderDelegate(itemBuilder, childCount: itemCount),
        super(key: key);
@@ -462,15 +476,19 @@ class PageView extends StatefulWidget {
   /// Creates a scrollable list that works page by page with a custom child
   /// model.
   PageView.custom({
+    [
     Key key,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
     PageController controller,
     this.physics,
     this.pageSnapping = true,
-    this.onPageChanged,
-    @required this.childrenDelegate,
+    this.onPageChanged
+    ]
+     this.childrenDelegate,
+    [
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(childrenDelegate != null),
        controller = controller ?? _defaultPageController,
        super(key: key);

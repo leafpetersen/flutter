@@ -18,7 +18,7 @@ import 'package:flutter/widgets.dart';
 /// are also cached.
 Iterable<Element> collectAllElementsFrom(
   Element rootElement, {
-  @required bool skipOffstage,
+   bool skipOffstage,
 }) {
   return CachingIterable<Element>(_DepthFirstChildIterator(rootElement, skipOffstage));
 }

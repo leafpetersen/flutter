@@ -63,11 +63,13 @@ const double _kDatePickerLandscapeHeight = _kMaxDayPickerHeight + _kDialogAction
 // Shows the selected date in large font and toggles between year and day mode
 class _DatePickerHeader extends StatelessWidget {
   const _DatePickerHeader({
-    Key key,
-    @required this.selectedDate,
-    @required this.mode,
-    @required this.onModeChanged,
-    @required this.orientation,
+    [
+    Key key
+    ]
+     this.selectedDate,
+     this.mode,
+     this.onModeChanged,
+     this.orientation,
   }) : assert(selectedDate != null),
        assert(mode != null),
        assert(orientation != null),
@@ -172,10 +174,12 @@ class _DatePickerHeader extends StatelessWidget {
 
 class _DateHeaderButton extends StatelessWidget {
   const _DateHeaderButton({
+    [
     Key key,
     this.onTap,
     this.color,
     this.child,
+  ]
   }) : super(key: key);
 
   final VoidCallback onTap;
@@ -246,15 +250,19 @@ class DayPicker extends StatelessWidget {
   ///
   /// Rarely used directly. Instead, typically used as part of a [MonthPicker].
   DayPicker({
-    Key key,
-    @required this.selectedDate,
-    @required this.currentDate,
-    @required this.onChanged,
-    @required this.firstDate,
-    @required this.lastDate,
-    @required this.displayedMonth,
+    [
+    Key key
+    ]
+     this.selectedDate,
+     this.currentDate,
+     this.onChanged,
+     this.firstDate,
+     this.lastDate,
+     this.displayedMonth,
+    [
     this.selectableDayPredicate,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(selectedDate != null),
        assert(currentDate != null),
        assert(onChanged != null),
@@ -521,13 +529,17 @@ class MonthPicker extends StatefulWidget {
   /// Rarely used directly. Instead, typically used as part of the dialog shown
   /// by [showDatePicker].
   MonthPicker({
-    Key key,
-    @required this.selectedDate,
-    @required this.onChanged,
-    @required this.firstDate,
-    @required this.lastDate,
+    [
+    Key key
+    ]
+     this.selectedDate,
+     this.onChanged,
+     this.firstDate,
+     this.lastDate,
+    [
     this.selectableDayPredicate,
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(selectedDate != null),
        assert(onChanged != null),
        assert(!firstDate.isAfter(lastDate)),
@@ -785,12 +797,16 @@ class YearPicker extends StatefulWidget {
   /// Rarely used directly. Instead, typically used as part of the dialog shown
   /// by [showDatePicker].
   YearPicker({
-    Key key,
-    @required this.selectedDate,
-    @required this.onChanged,
-    @required this.firstDate,
-    @required this.lastDate,
+    [
+    Key key
+    ]
+     this.selectedDate,
+     this.onChanged,
+     this.firstDate,
+     this.lastDate,
+    [
     this.dragStartBehavior = DragStartBehavior.start,
+  ]
   }) : assert(selectedDate != null),
        assert(onChanged != null),
        assert(!firstDate.isAfter(lastDate)),
@@ -865,12 +881,14 @@ class _YearPickerState extends State<YearPicker> {
 
 class _DatePickerDialog extends StatefulWidget {
   const _DatePickerDialog({
+    [
     Key key,
     this.initialDate,
     this.firstDate,
     this.lastDate,
     this.selectableDayPredicate,
     this.initialDatePickerMode,
+  ]
   }) : super(key: key);
 
   final DateTime initialDate;
@@ -1149,15 +1167,17 @@ typedef SelectableDayPredicate = bool Function(DateTime day);
 ///  * [YearPicker], which displays a scrollable list of years to allow picking
 ///    a year.
 Future<DateTime> showDatePicker({
-  @required BuildContext context,
-  @required DateTime initialDate,
-  @required DateTime firstDate,
-  @required DateTime lastDate,
+   BuildContext context,
+   DateTime initialDate,
+   DateTime firstDate,
+   DateTime lastDate,
+  [
   SelectableDayPredicate selectableDayPredicate,
   DatePickerMode initialDatePickerMode = DatePickerMode.day,
   Locale locale,
   TextDirection textDirection,
   TransitionBuilder builder,
+]
 }) async {
   assert(initialDate != null);
   assert(firstDate != null);

@@ -308,12 +308,14 @@ class SliverChildBuilderDelegate extends SliverChildDelegate {
   /// null.
   const SliverChildBuilderDelegate(
     this.builder, {
+    [
     this.childCount,
     this.addAutomaticKeepAlives = true,
     this.addRepaintBoundaries = true,
     this.addSemanticIndexes = true,
     this.semanticIndexCallback = _kDefaultSemanticIndexCallback,
     this.semanticIndexOffset = 0,
+  ]
   }) : assert(builder != null),
        assert(addAutomaticKeepAlives != null),
        assert(addRepaintBoundaries != null),
@@ -480,11 +482,13 @@ class SliverChildListDelegate extends SliverChildDelegate {
   /// null.
   const SliverChildListDelegate(
     this.children, {
+    [
     this.addAutomaticKeepAlives = true,
     this.addRepaintBoundaries = true,
     this.addSemanticIndexes = true,
     this.semanticIndexCallback = _kDefaultSemanticIndexCallback,
     this.semanticIndexOffset = 0,
+  ]
   }) : assert(children != null),
        assert(addAutomaticKeepAlives != null),
        assert(addRepaintBoundaries != null),
@@ -576,7 +580,9 @@ class SliverChildListDelegate extends SliverChildDelegate {
 abstract class SliverWithKeepAliveWidget extends RenderObjectWidget {
   /// Initializes fields for subclasses.
   const SliverWithKeepAliveWidget({
+    [
     Key key,
+  ]
   }) : super(key : key);
 
   @override
@@ -589,8 +595,10 @@ abstract class SliverWithKeepAliveWidget extends RenderObjectWidget {
 abstract class SliverMultiBoxAdaptorWidget extends SliverWithKeepAliveWidget {
   /// Initializes fields for subclasses.
   const SliverMultiBoxAdaptorWidget({
-    Key key,
-    @required this.delegate,
+    [
+    Key key
+    ]
+     this.delegate,
   }) : assert(delegate != null),
        super(key: key);
 
@@ -676,8 +684,10 @@ abstract class SliverMultiBoxAdaptorWidget extends SliverWithKeepAliveWidget {
 class SliverList extends SliverMultiBoxAdaptorWidget {
   /// Creates a sliver that places box children in a linear array.
   const SliverList({
-    Key key,
-    @required SliverChildDelegate delegate,
+    [
+    Key key
+    ]
+     SliverChildDelegate delegate,
   }) : super(key: key, delegate: delegate);
 
   @override
@@ -735,9 +745,11 @@ class SliverFixedExtentList extends SliverMultiBoxAdaptorWidget {
   /// Creates a sliver that places box children with the same main axis extent
   /// in a linear array.
   const SliverFixedExtentList({
-    Key key,
-    @required SliverChildDelegate delegate,
-    @required this.itemExtent,
+    [
+    Key key
+    ]
+     SliverChildDelegate delegate,
+     this.itemExtent,
   }) : super(key: key, delegate: delegate);
 
   /// The extent the children are forced to have in the main axis.
@@ -807,9 +819,11 @@ class SliverGrid extends SliverMultiBoxAdaptorWidget {
   /// Creates a sliver that places multiple box children in a two dimensional
   /// arrangement.
   const SliverGrid({
-    Key key,
-    @required SliverChildDelegate delegate,
-    @required this.gridDelegate,
+    [
+    Key key
+    ]
+     SliverChildDelegate delegate,
+     this.gridDelegate,
   }) : super(key: key, delegate: delegate);
 
   /// Creates a sliver that places multiple box children in a two dimensional
@@ -822,12 +836,16 @@ class SliverGrid extends SliverMultiBoxAdaptorWidget {
   ///
   ///  * [new GridView.count], the equivalent constructor for [GridView] widgets.
   SliverGrid.count({
-    Key key,
-    @required int crossAxisCount,
+    [
+    Key key
+    ]
+     int crossAxisCount,
+    [
     double mainAxisSpacing = 0.0,
     double crossAxisSpacing = 0.0,
     double childAspectRatio = 1.0,
     List<Widget> children = const <Widget>[],
+  ]
   }) : gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
          crossAxisCount: crossAxisCount,
          mainAxisSpacing: mainAxisSpacing,
@@ -846,12 +864,16 @@ class SliverGrid extends SliverMultiBoxAdaptorWidget {
   ///
   ///  * [new GridView.extent], the equivalent constructor for [GridView] widgets.
   SliverGrid.extent({
-    Key key,
-    @required double maxCrossAxisExtent,
+    [
+    Key key
+    ]
+     double maxCrossAxisExtent,
+    [
     double mainAxisSpacing = 0.0,
     double crossAxisSpacing = 0.0,
     double childAspectRatio = 1.0,
     List<Widget> children = const <Widget>[],
+  ]
   }) : gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
          maxCrossAxisExtent: maxCrossAxisExtent,
          mainAxisSpacing: mainAxisSpacing,
@@ -910,9 +932,13 @@ class SliverGrid extends SliverMultiBoxAdaptorWidget {
 class SliverFillViewport extends SliverMultiBoxAdaptorWidget {
   /// Creates a sliver whose box children that each fill the viewport.
   const SliverFillViewport({
-    Key key,
-    @required SliverChildDelegate delegate,
+    [
+    Key key
+    ]
+     SliverChildDelegate delegate,
+    [
     this.viewportFraction = 1.0,
+  ]
   }) : assert(viewportFraction != null),
        assert(viewportFraction > 0.0),
        super(key: key, delegate: delegate);
@@ -1007,7 +1033,7 @@ class SliverMultiBoxAdaptorElement extends RenderObjectElement implements Render
   }
 
   @override
-  void createChild(int index, { @required RenderBox after }) {
+  void createChild(int index, {  RenderBox after }) {
     assert(_currentlyUpdatingChildIndex == null);
     owner.buildScope(this, () {
       final bool insertFirst = after == null;
@@ -1087,10 +1113,12 @@ class SliverMultiBoxAdaptorElement extends RenderObjectElement implements Render
   @override
   double estimateMaxScrollOffset(
     SliverConstraints constraints, {
+    [
     int firstIndex,
     int lastIndex,
     double leadingScrollOffset,
     double trailingScrollOffset,
+  ]
   }) {
     final int childCount = this.childCount;
     if (childCount == null)
@@ -1220,8 +1248,10 @@ class SliverMultiBoxAdaptorElement extends RenderObjectElement implements Render
 class SliverFillRemaining extends SingleChildRenderObjectWidget {
   /// Creates a sliver that fills the remaining space in the viewport.
   const SliverFillRemaining({
+    [
     Key key,
     Widget child,
+  ]
   }) : super(key: key, child: child);
 
   @override
@@ -1253,9 +1283,11 @@ class KeepAlive extends ParentDataWidget<SliverWithKeepAliveWidget> {
   ///
   /// The [child] and [keepAlive] arguments must not be null.
   const KeepAlive({
-    Key key,
-    @required this.keepAlive,
-    @required Widget child,
+    [
+    Key key
+    ]
+     this.keepAlive,
+     Widget child,
   }) : assert(child != null),
        assert(keepAlive != null),
        super(key: key, child: child);

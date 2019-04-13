@@ -58,7 +58,7 @@ class HitTestResult {
   ///
   /// If the [path] argument is null, the [path] field will be initialized with
   /// and empty list.
-  HitTestResult({ List<HitTestEntry> path })
+  HitTestResult({ [ List<HitTestEntry> path ] })
     : _path = path ?? <HitTestEntry>[];
 
   /// An unmodifiable list of [HitTestEntry] objects recorded during the hit test.

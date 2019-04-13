@@ -53,7 +53,7 @@ class _InputBorderGap extends ChangeNotifier {
 
 // Used to interpolate between two InputBorders.
 class _InputBorderTween extends Tween<InputBorder> {
-  _InputBorderTween({InputBorder begin, InputBorder end}) : super(begin: begin, end: end);
+  _InputBorderTween({[InputBorder begin, InputBorder end]}) : super(begin: begin, end: end);
 
   @override
   InputBorder lerp(double t) => ShapeBorder.lerp(begin, end, t);
@@ -62,6 +62,7 @@ class _InputBorderTween extends Tween<InputBorder> {
 // Passes the _InputBorderGap parameters along to an InputBorder's paint method.
 class _InputBorderPainter extends CustomPainter {
   _InputBorderPainter({
+    [
     Listenable repaint,
     this.borderAnimation,
     this.border,
@@ -69,6 +70,7 @@ class _InputBorderPainter extends CustomPainter {
     this.gap,
     this.textDirection,
     this.fillColor,
+  ]
   }) : super(repaint: repaint);
 
   final Animation<double> borderAnimation;
@@ -118,12 +120,16 @@ class _InputBorderPainter extends CustomPainter {
 // _InputBorder's paint method.
 class _BorderContainer extends StatefulWidget {
   const _BorderContainer({
-    Key key,
-    @required this.border,
-    @required this.gap,
-    @required this.gapAnimation,
-    @required this.fillColor,
+    [
+    Key key
+    ]
+     this.border,
+     this.gap,
+     this.gapAnimation,
+     this.fillColor,
+    [
     this.child,
+  ]
   }) : assert(border != null),
        assert(gap != null),
        assert(fillColor != null),
@@ -202,9 +208,11 @@ class _BorderContainerState extends State<_BorderContainer> with SingleTickerPro
 // when the errorText first appears.
 class _Shaker extends AnimatedWidget {
   const _Shaker({
+    [
     Key key,
     Animation<double> animation,
     this.child,
+  ]
   }) : super(key: key, listenable: animation);
 
   final Widget child;
@@ -236,6 +244,7 @@ class _Shaker extends AnimatedWidget {
 // slides upwards a little when it first appears.
 class _HelperError extends StatefulWidget {
   const _HelperError({
+    [
     Key key,
     this.textAlign,
     this.helperText,
@@ -243,6 +252,7 @@ class _HelperError extends StatefulWidget {
     this.errorText,
     this.errorStyle,
     this.errorMaxLines,
+  ]
   }) : super(key: key);
 
   final TextAlign textAlign;
@@ -432,10 +442,11 @@ enum _DecorationSlot {
 // An analog of InputDecoration for the _Decorator widget.
 class _Decoration {
   const _Decoration({
-    @required this.contentPadding,
-    @required this.isCollapsed,
-    @required this.floatingLabelHeight,
-    @required this.floatingLabelProgress,
+     this.contentPadding,
+     this.isCollapsed,
+     this.floatingLabelHeight,
+     this.floatingLabelProgress,
+    [
     this.border,
     this.borderGap,
     this.icon,
@@ -450,6 +461,7 @@ class _Decoration {
     this.counter,
     this.container,
     this.alignLabelWithHint,
+  ]
   }) : assert(contentPadding != null),
        assert(isCollapsed != null),
        assert(floatingLabelHeight != null),
@@ -529,12 +541,14 @@ class _Decoration {
 // all of the renderer children of a _RenderDecoration.
 class _RenderDecorationLayout {
   const _RenderDecorationLayout({
+    [
     this.boxToBaseline,
     this.inputBaseline, // for InputBorderType.underline
     this.outlineBaseline, // for InputBorderType.outline
     this.subtextBaseline,
     this.containerHeight,
     this.subtextHeight,
+  ]
   });
 
   final Map<RenderBox, double> boxToBaseline;
@@ -548,11 +562,11 @@ class _RenderDecorationLayout {
 // The workhorse: layout and paint a _Decorator widget's _Decoration.
 class _RenderDecoration extends RenderBox {
   _RenderDecoration({
-    @required _Decoration decoration,
-    @required TextDirection textDirection,
-    @required TextBaseline textBaseline,
-    @required bool isFocused,
-    @required bool expands,
+     _Decoration decoration,
+     TextDirection textDirection,
+     TextBaseline textBaseline,
+     bool isFocused,
+     bool expands,
   }) : assert(decoration != null),
        assert(textDirection != null),
        assert(textBaseline != null),
@@ -1276,7 +1290,7 @@ class _RenderDecoration extends RenderBox {
   bool hitTestSelf(Offset position) => true;
 
   @override
-  bool hitTestChildren(HitTestResult result, { @required Offset position }) {
+  bool hitTestChildren(HitTestResult result, {  Offset position }) {
     assert(position != null);
     for (RenderBox child in _children) {
       // TODO(hansmuller): label must be handled specially since we've transformed it
@@ -1448,12 +1462,14 @@ class _RenderDecorationElement extends RenderObjectElement {
 
 class _Decorator extends RenderObjectWidget {
   const _Decorator({
-    Key key,
-    @required this.decoration,
-    @required this.textDirection,
-    @required this.textBaseline,
-    @required this.isFocused,
-    @required this.expands,
+    [
+    Key key
+    ]
+     this.decoration,
+     this.textDirection,
+     this.textBaseline,
+     this.isFocused,
+     this.expands,
   }) : assert(decoration != null),
        assert(textDirection != null),
        assert(textBaseline != null),
@@ -1493,10 +1509,12 @@ class _Decorator extends RenderObjectWidget {
 
 class _AffixText extends StatelessWidget {
   const _AffixText({
+    [
     this.labelIsFloating,
     this.text,
     this.style,
     this.child,
+  ]
   });
 
   final bool labelIsFloating;
@@ -1544,6 +1562,7 @@ class InputDecorator extends StatefulWidget {
   ///
   /// The [isFocused] and [isEmpty] arguments must not be null.
   const InputDecorator({
+    [
     Key key,
     this.decoration,
     this.baseStyle,
@@ -1552,6 +1571,7 @@ class InputDecorator extends StatefulWidget {
     this.expands = false,
     this.isEmpty = false,
     this.child,
+  ]
   }) : assert(isFocused != null),
        assert(isEmpty != null),
        super(key: key);
@@ -2067,6 +2087,7 @@ class InputDecoration {
   ///
   /// Similarly, only one of [suffix] and [suffixText] can be specified.
   const InputDecoration({
+    [
     this.icon,
     this.labelText,
     this.labelStyle,
@@ -2103,6 +2124,7 @@ class InputDecoration {
     this.enabled = true,
     this.semanticCounterText,
     this.alignLabelWithHint,
+  ]
   }) : assert(enabled != null),
        assert(!(prefix != null && prefixText != null), 'Declaring both prefix and prefixText is not supported.'),
        assert(!(suffix != null && suffixText != null), 'Declaring both suffix and suffixText is not supported.'),
@@ -2114,13 +2136,15 @@ class InputDecoration {
   ///
   /// Sets the [isCollapsed] property to true.
   const InputDecoration.collapsed({
-    @required this.hintText,
+     this.hintText,
+    [
     this.hasFloatingPlaceholder = true,
     this.hintStyle,
     this.filled = false,
     this.fillColor,
     this.border = InputBorder.none,
     this.enabled = true,
+  ]
   }) : assert(enabled != null),
        icon = null,
        labelText = null,
@@ -2656,6 +2680,7 @@ class InputDecoration {
   ///
   /// Always sets [isCollapsed] to false.
   InputDecoration copyWith({
+    [
     Widget icon,
     String labelText,
     TextStyle labelStyle,
@@ -2692,6 +2717,7 @@ class InputDecoration {
     bool enabled,
     String semanticCounterText,
     bool alignLabelWithHint,
+  ]
   }) {
     return InputDecoration(
       icon: icon ?? this.icon,
@@ -2954,6 +2980,7 @@ class InputDecorationTheme extends Diagnosticable {
   /// The values of [isDense], [isCollapsed], [filled], and [border] must
   /// not be null.
   const InputDecorationTheme({
+    [
     this.labelStyle,
     this.helperStyle,
     this.hintStyle,
@@ -2975,6 +3002,7 @@ class InputDecorationTheme extends Diagnosticable {
     this.enabledBorder,
     this.border,
     this.alignLabelWithHint = false,
+  ]
   }) : assert(isDense != null),
        assert(isCollapsed != null),
        assert(filled != null),

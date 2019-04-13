@@ -81,9 +81,9 @@ class CrashReportSender {
   ///
   /// The report is populated from data in [error] and [stackTrace].
   Future<void> sendReport({
-    @required dynamic error,
-    @required StackTrace stackTrace,
-    @required String getFlutterVersion(),
+     dynamic error,
+     StackTrace stackTrace,
+     String getFlutterVersion(),
   }) async {
     try {
       if (_usage.suppressAnalytics)

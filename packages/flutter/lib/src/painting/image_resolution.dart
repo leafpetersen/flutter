@@ -130,8 +130,10 @@ class AssetImage extends AssetBundleImageProvider {
   /// documentation for the [AssetImage] class itself for details.
   const AssetImage(
     this.assetName, {
+    [
     this.bundle,
     this.package,
+  ]
   }) : assert(assetName != null);
 
   /// The name of the main asset from the set of images to choose from. See the

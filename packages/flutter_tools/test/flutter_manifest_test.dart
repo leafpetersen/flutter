@@ -385,10 +385,12 @@ flutter:
     });
 
     Future<void> checkManifestVersion({
+      [
       String manifest,
       String expectedAppVersion,
       String expectedBuildName,
       String expectedBuildNumber,
+    ]
     }) async {
       final FlutterManifest flutterManifest = await FlutterManifest.createFromString(manifest);
       expect(flutterManifest.appVersion, expectedAppVersion);

@@ -334,7 +334,7 @@ void main() {
   });
 }
 
-Widget wrap({ Widget child }) {
+Widget wrap({ [ Widget child ] }) {
   return Directionality(
     textDirection: TextDirection.ltr,
     child: Material(

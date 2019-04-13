@@ -21,9 +21,11 @@ class IconData {
   /// is included in a package. This is used when selecting the font.
   const IconData(
     this.codePoint, {
+    [
     this.fontFamily,
     this.fontPackage,
     this.matchTextDirection = false,
+  ]
   });
 
   /// The Unicode code point at which this icon is stored in the icon font.

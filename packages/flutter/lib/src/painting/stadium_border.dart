@@ -26,7 +26,7 @@ class StadiumBorder extends ShapeBorder {
   /// Create a stadium border.
   ///
   /// The [side] argument must not be null.
-  const StadiumBorder({this.side = BorderSide.none}) : assert(side != null);
+  const StadiumBorder({[this.side = BorderSide.none]}) : assert(side != null);
 
   /// The style of this border.
   final BorderSide side;
@@ -82,21 +82,21 @@ class StadiumBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     final Radius radius = Radius.circular(rect.shortestSide / 2.0);
     return Path()
       ..addRRect(RRect.fromRectAndRadius(rect, radius).deflate(side.width));
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     final Radius radius = Radius.circular(rect.shortestSide / 2.0);
     return Path()
       ..addRRect(RRect.fromRectAndRadius(rect, radius));
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;
@@ -129,8 +129,10 @@ class StadiumBorder extends ShapeBorder {
 // Class to help with transitioning to/from a CircleBorder.
 class _StadiumToCircleBorder extends ShapeBorder {
   const _StadiumToCircleBorder({
+    [
     this.side = BorderSide.none,
     this.circleness = 0.0,
+  ]
   }) : assert(side != null),
        assert(circleness != null);
 
@@ -226,19 +228,19 @@ class _StadiumToCircleBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(_adjustBorderRadius(rect).toRRect(_adjustRect(rect)).deflate(side.width));
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(_adjustBorderRadius(rect).toRRect(_adjustRect(rect)));
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;
@@ -278,9 +280,11 @@ class _StadiumToCircleBorder extends ShapeBorder {
 // Class to help with transitioning to/from a RoundedRectBorder.
 class _StadiumToRoundedRectangleBorder extends ShapeBorder {
   const _StadiumToRoundedRectangleBorder({
+    [
     this.side = BorderSide.none,
     this.borderRadius = BorderRadius.zero,
     this.rectness = 0.0,
+  ]
   }) : assert(side != null),
        assert(borderRadius != null),
        assert(rectness != null);
@@ -368,19 +372,19 @@ class _StadiumToRoundedRectangleBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection textDirection }) {
+  Path getInnerPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(_adjustBorderRadius(rect).toRRect(rect).deflate(side.width));
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection textDirection }) {
+  Path getOuterPath(Rect rect, { [ TextDirection textDirection ] }) {
     return Path()
       ..addRRect(_adjustBorderRadius(rect).toRRect(rect));
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection textDirection }) {
+  void paint(Canvas canvas, Rect rect, { [ TextDirection textDirection ] }) {
     switch (side.style) {
       case BorderStyle.none:
         break;

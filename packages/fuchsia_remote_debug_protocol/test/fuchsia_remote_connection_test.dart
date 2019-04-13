@@ -94,7 +94,9 @@ void main() {
       uriConnections = <Uri>[];
       Future<json_rpc.Peer> mockVmConnectionFunction(
         Uri uri, {
+        [
         Duration timeout,
+      ]
       }) {
         return Future<json_rpc.Peer>(() async {
           final MockPeer mp = MockPeer();

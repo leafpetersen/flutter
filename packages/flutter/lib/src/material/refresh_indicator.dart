@@ -93,15 +93,21 @@ class RefreshIndicator extends StatefulWidget {
   /// An empty string may be passed to avoid having anything read by screen reading software.
   /// The [semanticsValue] may be used to specify progress on the widget.
   const RefreshIndicator({
-    Key key,
-    @required this.child,
-    this.displacement = 40.0,
-    @required this.onRefresh,
+    [
+    Key key
+    ]
+     this.child,
+    [
+    this.displacement = 40.0
+    ]
+     this.onRefresh,
+    [
     this.color,
     this.backgroundColor,
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.semanticsLabel,
     this.semanticsValue,
+  ]
   }) : assert(child != null),
        assert(onRefresh != null),
        assert(notificationPredicate != null),
@@ -395,7 +401,7 @@ class RefreshIndicatorState extends State<RefreshIndicator> with TickerProviderS
   /// When initiated in this manner, the refresh indicator is independent of any
   /// actual scroll view. It defaults to showing the indicator at the top. To
   /// show it at the bottom, set `atTop` to false.
-  Future<void> show({ bool atTop = true }) {
+  Future<void> show({ [ bool atTop = true ] }) {
     if (_mode != _RefreshIndicatorMode.refresh &&
         _mode != _RefreshIndicatorMode.snap) {
       if (_mode == null)

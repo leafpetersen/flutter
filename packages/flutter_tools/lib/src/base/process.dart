@@ -109,9 +109,11 @@ Map<String, String> _environment(bool allowReentrantFlutter, [ Map<String, Strin
 /// directory. Completes when the process has been started.
 Future<Process> runCommand(
   List<String> cmd, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
   Map<String, String> environment,
+]
 }) {
   _traceCommand(cmd, workingDirectory: workingDirectory);
   return processManager.start(
@@ -131,6 +133,7 @@ Future<Process> runCommand(
 /// to [mapFunction] for further processing.
 Future<int> runCommandAndStreamOutput(
   List<String> cmd, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
   String prefix = '',
@@ -138,6 +141,7 @@ Future<int> runCommandAndStreamOutput(
   RegExp filter,
   StringConverter mapFunction,
   Map<String, String> environment,
+]
 }) async {
   final Process process = await runCommand(
     cmd,
@@ -191,9 +195,11 @@ Future<int> runCommandAndStreamOutput(
 /// the exit code of the child process.
 Future<int> runInteractively(
   List<String> command, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
   Map<String, String> environment,
+]
 }) async {
   final Process process = await runCommand(
     command,
@@ -224,9 +230,11 @@ Future<Process> runDetached(List<String> cmd) {
 
 Future<RunResult> runAsync(
   List<String> cmd, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
   Map<String, String> environment,
+]
 }) async {
   _traceCommand(cmd, workingDirectory: workingDirectory);
   final ProcessResult results = await processManager.run(
@@ -241,9 +249,11 @@ Future<RunResult> runAsync(
 
 Future<RunResult> runCheckedAsync(
   List<String> cmd, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
   Map<String, String> environment,
+]
 }) async {
   final RunResult result = await runAsync(
     cmd,
@@ -281,10 +291,12 @@ Future<bool> exitsHappyAsync(List<String> cli) async {
 /// Throws an error if cmd exits with a non-zero value.
 String runCheckedSync(
   List<String> cmd, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
   bool hideStdout = false,
   Map<String, String> environment,
+]
 }) {
   return _runWithLoggingSync(
     cmd,
@@ -300,8 +312,10 @@ String runCheckedSync(
 /// Run cmd and return stdout.
 String runSync(
   List<String> cmd, {
+  [
   String workingDirectory,
   bool allowReentrantFlutter = false,
+]
 }) {
   return _runWithLoggingSync(
     cmd,
@@ -310,7 +324,7 @@ String runSync(
   );
 }
 
-void _traceCommand(List<String> args, { String workingDirectory }) {
+void _traceCommand(List<String> args, { [ String workingDirectory ] }) {
   final String argsText = args.join(' ');
   if (workingDirectory == null) {
     printTrace('executing: $argsText');
@@ -321,6 +335,7 @@ void _traceCommand(List<String> args, { String workingDirectory }) {
 
 String _runWithLoggingSync(
   List<String> cmd, {
+  [
   bool checked = false,
   bool noisyErrors = false,
   bool throwStandardErrorOnError = false,
@@ -328,6 +343,7 @@ String _runWithLoggingSync(
   bool allowReentrantFlutter = false,
   bool hideStdout = false,
   Map<String, String> environment,
+]
 }) {
   _traceCommand(cmd, workingDirectory: workingDirectory);
   final ProcessResult results = processManager.runSync(
@@ -364,7 +380,7 @@ String _runWithLoggingSync(
 }
 
 class ProcessExit implements Exception {
-  ProcessExit(this.exitCode, {this.immediate = false});
+  ProcessExit(this.exitCode, {[this.immediate = false]});
 
   final bool immediate;
   final int exitCode;

@@ -933,7 +933,9 @@ Future<void> _createProject(
   Directory dir,
   List<String> createArgs,
   List<String> expectedPaths, {
+  [
   List<String> unexpectedPaths = const <String>[],
+]
 }) async {
   Cache.flutterRoot = '../..';
   final CreateCommand command = CreateCommand();
@@ -966,7 +968,9 @@ Future<void> _createAndAnalyzeProject(
   Directory dir,
   List<String> createArgs,
   List<String> expectedPaths, {
+  [
   List<String> unexpectedPaths = const <String>[],
+]
 }) async {
   await _createProject(dir, createArgs, expectedPaths, unexpectedPaths: unexpectedPaths);
   await _analyzeProject(dir.path);
@@ -995,7 +999,7 @@ Future<void> _analyzeProject(String workingDir) async {
   expect(exec.exitCode, 0);
 }
 
-Future<void> _runFlutterTest(Directory workingDir, { String target }) async {
+Future<void> _runFlutterTest(Directory workingDir, { [ String target ] }) async {
   final String flutterToolsPath = fs.path.absolute(fs.path.join(
     'bin',
     'flutter_tools.dart',
@@ -1043,11 +1047,13 @@ class LoggingProcessManager extends LocalProcessManager {
   @override
   Future<Process> start(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     ProcessStartMode mode = ProcessStartMode.normal,
+  ]
   }) {
     commands.add(command);
     return super.start(
@@ -1062,7 +1068,7 @@ class LoggingProcessManager extends LocalProcessManager {
 }
 
 class MockHttpClient implements HttpClient {
-  MockHttpClient(this.statusCode, {this.result});
+  MockHttpClient(this.statusCode, {[this.result]});
 
   final int statusCode;
   final String result;
@@ -1079,7 +1085,7 @@ class MockHttpClient implements HttpClient {
 }
 
 class MockHttpClientRequest implements HttpClientRequest {
-  MockHttpClientRequest(this.statusCode, {this.result});
+  MockHttpClientRequest(this.statusCode, {[this.result]});
 
   final int statusCode;
   final String result;
@@ -1096,7 +1102,7 @@ class MockHttpClientRequest implements HttpClientRequest {
 }
 
 class MockHttpClientResponse extends Stream<List<int>> implements HttpClientResponse {
-  MockHttpClientResponse(this.statusCode, {this.result});
+  MockHttpClientResponse(this.statusCode, {[this.result]});
 
   @override
   final int statusCode;
@@ -1109,9 +1115,11 @@ class MockHttpClientResponse extends Stream<List<int>> implements HttpClientResp
   @override
   StreamSubscription<List<int>> listen(
     void onData(List<int> event), {
+    [
     Function onError,
     void onDone(),
     bool cancelOnError,
+  ]
   }) {
     return Stream<List<int>>.fromIterable(<List<int>>[result.codeUnits])
       .listen(onData, onError: onError, onDone: onDone, cancelOnError: cancelOnError);

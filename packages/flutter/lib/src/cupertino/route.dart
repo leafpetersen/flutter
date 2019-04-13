@@ -98,11 +98,13 @@ class CupertinoPageRoute<T> extends PageRoute<T> {
   /// The [builder], [maintainState], and [fullscreenDialog] arguments must not
   /// be null.
   CupertinoPageRoute({
-    @required this.builder,
+     this.builder,
+    [
     this.title,
     RouteSettings settings,
     this.maintainState = true,
     bool fullscreenDialog = false,
+  ]
   }) : assert(builder != null),
        assert(maintainState != null),
        assert(fullscreenDialog != null),
@@ -350,11 +352,13 @@ class CupertinoPageTransition extends StatelessWidget {
   ///  * `linearTransition` is whether to perform primary transition linearly.
   ///    Used to precisely track back gesture drags.
   CupertinoPageTransition({
-    Key key,
-    @required Animation<double> primaryRouteAnimation,
-    @required Animation<double> secondaryRouteAnimation,
-    @required this.child,
-    @required bool linearTransition,
+    [
+    Key key
+    ]
+     Animation<double> primaryRouteAnimation,
+     Animation<double> secondaryRouteAnimation,
+     this.child,
+     bool linearTransition,
   }) : assert(linearTransition != null),
        _primaryPositionAnimation =
            (linearTransition
@@ -426,9 +430,11 @@ class CupertinoPageTransition extends StatelessWidget {
 class CupertinoFullscreenDialogTransition extends StatelessWidget {
   /// Creates an iOS-style transition used for summoning fullscreen dialogs.
   CupertinoFullscreenDialogTransition({
-    Key key,
-    @required Animation<double> animation,
-    @required this.child,
+    [
+    Key key
+    ]
+     Animation<double> animation,
+     this.child,
   }) : _positionAnimation = CurvedAnimation(
          parent: animation,
          curve: Curves.linearToEaseOut,
@@ -465,10 +471,12 @@ class CupertinoFullscreenDialogTransition extends StatelessWidget {
 /// detector is associated.
 class _CupertinoBackGestureDetector<T> extends StatefulWidget {
   const _CupertinoBackGestureDetector({
-    Key key,
-    @required this.enabledCallback,
-    @required this.onStartPopGesture,
-    @required this.child,
+    [
+    Key key
+    ]
+     this.enabledCallback,
+     this.onStartPopGesture,
+     this.child,
   }) : assert(enabledCallback != null),
        assert(onStartPopGesture != null),
        assert(child != null),
@@ -592,9 +600,9 @@ class _CupertinoBackGestureController<T> {
   ///
   /// The [navigator] and [controller] arguments must not be null.
   _CupertinoBackGestureController({
-    @required this.route,
-    @required this.controller,
-    @required this.onEnded,
+     this.route,
+     this.controller,
+     this.onEnded,
   }) : assert(route != null), assert(controller != null), assert(onEnded != null) {
     route.navigator.didStartUserGesture();
   }
@@ -683,7 +691,7 @@ class _CupertinoBackGestureController<T> {
 // end edge of the gradient's box (which will be the edge adjacent to the start
 // edge of the actual box we're supposed to paint in).
 class _CupertinoEdgeShadowDecoration extends Decoration {
-  const _CupertinoEdgeShadowDecoration({ this.edgeGradient });
+  const _CupertinoEdgeShadowDecoration({ [ this.edgeGradient ] });
 
   // An edge shadow decoration where the shadow is null. This is used
   // for interpolating from no shadow.
@@ -800,9 +808,11 @@ class _CupertinoEdgeShadowPainter extends BoxPainter {
 
 class _CupertinoModalPopupRoute<T> extends PopupRoute<T> {
   _CupertinoModalPopupRoute({
+    [
     this.builder,
     this.barrierLabel,
     RouteSettings settings,
+  ]
   }) : super(settings: settings);
 
   final WidgetBuilder builder;
@@ -886,8 +896,8 @@ class _CupertinoModalPopupRoute<T> extends PopupRoute<T> {
 ///    argument to [showCupertinoModalPopup].
 ///  * <https://developer.apple.com/design/human-interface-guidelines/ios/views/action-sheets/>
 Future<T> showCupertinoModalPopup<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
+   BuildContext context,
+   WidgetBuilder builder,
 }) {
   return Navigator.of(context, rootNavigator: true).push(
     _CupertinoModalPopupRoute<T>(
@@ -954,8 +964,8 @@ Widget _buildCupertinoDialogTransitions(BuildContext context, Animation<double> 
 ///  * [showGeneralDialog], which allows for customization of the dialog popup.
 ///  * <https://developer.apple.com/ios/human-interface-guidelines/views/alerts/>
 Future<T> showCupertinoDialog<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
+   BuildContext context,
+   WidgetBuilder builder,
 }) {
   assert(builder != null);
   return showGeneralDialog(

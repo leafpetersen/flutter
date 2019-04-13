@@ -215,12 +215,14 @@ void assertContains(String text, List<String> patterns) {
 }
 
 Future<void> runCommand({
+  [
   FlutterCommand command,
   List<String> arguments,
   List<String> statusTextContains,
   List<String> errorTextContains,
   bool toolExit = false,
   String exitMessageContains,
+]
 }) async {
   try {
     arguments.insert(0, '--flutter-root=${Cache.flutterRoot}');

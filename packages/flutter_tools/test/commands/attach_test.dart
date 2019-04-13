@@ -555,12 +555,14 @@ class StreamLogger extends Logger {
   @override
   void printError(
     String message, {
+    [
     StackTrace stackTrace,
     bool emphasis,
     TerminalColor color,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _log('[stderr] $message');
   }
@@ -568,12 +570,14 @@ class StreamLogger extends Logger {
   @override
   void printStatus(
     String message, {
+    [
     bool emphasis,
     TerminalColor color,
     bool newline,
     int indent,
     int hangingIndent,
     bool wrap,
+  ]
   }) {
     _log('[stdout] $message');
   }
@@ -586,10 +590,12 @@ class StreamLogger extends Logger {
   @override
   Status startProgress(
     String message, {
-    @required Duration timeout,
+     Duration timeout,
+    [
     String progressId,
     bool multilineOutput = false,
     int progressIndicatorPadding = kDefaultStatusPadding,
+  ]
   }) {
     _log('[progress] $message');
     return SilentStatus(timeout: timeout)..start();

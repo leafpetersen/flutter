@@ -69,7 +69,7 @@ class Animation {
 
 /// Represents the animation of a single path.
 class PathAnimation {
-  const PathAnimation(this.commands, {@required this.opacities});
+  const PathAnimation(this.commands, { this.opacities});
 
   factory PathAnimation.fromFrameData(List<FrameData> frames, int pathIdx) {
     if (frames.isEmpty)
@@ -286,7 +286,7 @@ class FrameData {
 
 /// Represents an SVG path element.
 class SvgPath {
-  const SvgPath(this.id, this.commands, {this.opacity = 1.0});
+  const SvgPath(this.id, this.commands, {[this.opacity = 1.0]});
 
   final String id;
   final List<SvgPathCommand> commands;
@@ -445,7 +445,7 @@ List<Point<double>> _vector3ArrayToPoints(List<double> vector) {
 class _Transform {
 
   /// Constructs a new _Transform, default arguments create a no-op transform.
-  _Transform({Matrix3 transformMatrix, this.opacity = 1.0}) :
+  _Transform({[Matrix3 transformMatrix, this.opacity = 1.0]}) :
       transformMatrix = transformMatrix ?? Matrix3.identity();
 
   final Matrix3 transformMatrix;

@@ -111,9 +111,11 @@ void expectLog(List<CommandArgs> log) {
 }
 
 CommandArgs cmd({
+  [
   String command,
   List<String> arguments,
   Map<String, String> environment,
+]
 }) {
   return CommandArgs(
     command: command,
@@ -125,7 +127,7 @@ CommandArgs cmd({
 typedef ExitErrorFactory = dynamic Function();
 
 class CommandArgs {
-  CommandArgs({ this.command, this.arguments, this.environment });
+  CommandArgs({ [ this.command, this.arguments, this.environment ] });
 
   final String command;
   final List<String> arguments;
@@ -158,7 +160,7 @@ class CommandArgs {
 }
 
 class FakeDevice extends AndroidDevice {
-  FakeDevice({String deviceId}) : super(deviceId: deviceId);
+  FakeDevice({[String deviceId]}) : super(deviceId: deviceId);
 
   static String output = '';
   static ExitErrorFactory exitErrorFactory = () => null;
@@ -182,7 +184,7 @@ class FakeDevice extends AndroidDevice {
   }
 
   @override
-  Future<String> shellEval(String command, List<String> arguments, { Map<String, String> environment }) async {
+  Future<String> shellEval(String command, List<String> arguments, { [ Map<String, String> environment ] }) async {
     commandLog.add(CommandArgs(
       command: command,
       arguments: arguments,
@@ -192,7 +194,7 @@ class FakeDevice extends AndroidDevice {
   }
 
   @override
-  Future<void> shellExec(String command, List<String> arguments, { Map<String, String> environment }) async {
+  Future<void> shellExec(String command, List<String> arguments, { [ Map<String, String> environment ] }) async {
     commandLog.add(CommandArgs(
       command: command,
       arguments: arguments,

@@ -77,9 +77,12 @@ class FadeInImage extends StatefulWidget {
   /// If [excludeFromSemantics] is true, then [placeholderSemanticLabel] and
   /// [imageSemanticLabel] will be ignored.
   const FadeInImage({
-    Key key,
-    @required this.placeholder,
-    @required this.image,
+    [
+    Key key
+    ]
+     this.placeholder,
+     this.image,
+    [
     this.excludeFromSemantics = false,
     this.imageSemanticLabel,
     this.placeholderSemanticLabel,
@@ -93,6 +96,7 @@ class FadeInImage extends StatefulWidget {
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.matchTextDirection = false,
+  ]
   }) : assert(placeholder != null),
        assert(image != null),
        assert(fadeOutDuration != null),
@@ -126,9 +130,12 @@ class FadeInImage extends StatefulWidget {
   ///  * [new Image.network], which has more details about loading images from
   ///    the network.
   FadeInImage.memoryNetwork({
-    Key key,
-    @required Uint8List placeholder,
-    @required String image,
+    [
+    Key key
+    ]
+     Uint8List placeholder,
+     String image,
+    [
     double placeholderScale = 1.0,
     double imageScale = 1.0,
     this.excludeFromSemantics = false,
@@ -144,6 +151,7 @@ class FadeInImage extends StatefulWidget {
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.matchTextDirection = false,
+  ]
   }) : assert(placeholder != null),
        assert(image != null),
        assert(placeholderScale != null),
@@ -184,9 +192,12 @@ class FadeInImage extends StatefulWidget {
   ///  * [new Image.network], which has more details about loading images from
   ///    the network.
   FadeInImage.assetNetwork({
-    Key key,
-    @required String placeholder,
-    @required String image,
+    [
+    Key key
+    ]
+     String placeholder,
+     String image,
+    [
     AssetBundle bundle,
     double placeholderScale,
     double imageScale = 1.0,
@@ -203,6 +214,7 @@ class FadeInImage extends StatefulWidget {
     this.alignment = Alignment.center,
     this.repeat = ImageRepeat.noRepeat,
     this.matchTextDirection = false,
+  ]
   }) : assert(placeholder != null),
        assert(image != null),
        placeholder = placeholderScale != null
@@ -353,8 +365,8 @@ typedef _ImageProviderResolverListener = void Function();
 
 class _ImageProviderResolver {
   _ImageProviderResolver({
-    @required this.state,
-    @required this.listener,
+     this.state,
+     this.listener,
   });
 
   final _FadeInImageState state;

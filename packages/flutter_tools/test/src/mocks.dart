@@ -40,6 +40,7 @@ class MockApplicationPackageStore extends ApplicationPackageStore {
 /// An SDK installation with several SDK levels (19, 22, 23).
 class MockAndroidSdk extends Mock implements AndroidSdk {
   static Directory createSdkDirectory({
+    [
     bool withAndroidN = false,
     String withNdkDir,
     int ndkVersion = 16,
@@ -47,6 +48,7 @@ class MockAndroidSdk extends Mock implements AndroidSdk {
     bool withSdkManager = true,
     bool withPlatformTools = true,
     bool withBuildTools = true,
+  ]
   }) {
     final Directory dir = fs.systemTempDirectory.createTempSync('flutter_mock_android_sdk.');
     final String exe = platform.isWindows ? '.exe' : '';
@@ -114,7 +116,7 @@ Pkg.Revision = $ndkVersion.1.5063045
     return dir;
   }
 
-  static void _createSdkFile(Directory dir, String filePath, { String contents }) {
+  static void _createSdkFile(Directory dir, String filePath, { [ String contents ] }) {
     final File file = dir.childFile(filePath);
     file.createSync(recursive: true);
     if (contents != null) {
@@ -144,16 +146,18 @@ class MockProcessManager implements ProcessManager {
   List<String> commands;
 
   @override
-  bool canRun(dynamic command, { String workingDirectory }) => succeed;
+  bool canRun(dynamic command, { [ String workingDirectory ] }) => succeed;
 
   @override
   Future<Process> start(
     List<dynamic> command, {
+    [
     String workingDirectory,
     Map<String, String> environment,
     bool includeParentEnvironment = true,
     bool runInShell = false,
     ProcessStartMode mode = ProcessStartMode.normal,
+  ]
   }) {
     if (!succeed) {
       final String executable = command[0];
@@ -172,11 +176,13 @@ class MockProcessManager implements ProcessManager {
 /// A process that exits successfully with no output and ignores all input.
 class MockProcess extends Mock implements Process {
   MockProcess({
+    [
     this.pid = 1,
     Future<int> exitCode,
     Stream<List<int>> stdin,
     this.stdout = const Stream<List<int>>.empty(),
     this.stderr = const Stream<List<int>>.empty(),
+  ]
   }) : exitCode = exitCode ?? Future<int>.value(0),
        stdin = stdin ?? MemoryIOSink();
 
@@ -487,7 +493,7 @@ class MockResidentCompiler extends BasicMock implements ResidentCompiler {
     return null;
   }
   @override
-  Future<CompilerOutput> recompile(String mainPath, List<Uri> invalidatedFiles, { String outputPath, String packagesFilePath }) async {
+  Future<CompilerOutput> recompile(String mainPath, List<Uri> invalidatedFiles, { [ String outputPath, String packagesFilePath ] }) async {
     fs.file(outputPath).createSync(recursive: true);
     fs.file(outputPath).writeAsStringSync('compiled_kernel_output');
     return CompilerOutput(outputPath, 0, <Uri>[]);

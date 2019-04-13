@@ -10,7 +10,7 @@ import 'package:test/test.dart' hide TypeMatcher, isInstanceOf;
 void macroPerfTest(
     String testName,
     String routeName,
-    {Duration pageDelay, Duration duration = const Duration(seconds: 3)}) {
+    {[Duration pageDelay, Duration duration = const Duration(seconds: 3)]}) {
   test(testName, () async {
     final FlutterDriver driver = await FlutterDriver.connect();
 

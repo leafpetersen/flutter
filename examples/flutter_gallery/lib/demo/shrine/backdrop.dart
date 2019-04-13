@@ -24,9 +24,11 @@ const double _kPeakVelocityProgress = 0.379146;
 
 class _FrontLayer extends StatelessWidget {
   const _FrontLayer({
+    [
     Key key,
     this.onTap,
     this.child,
+  ]
   }) : super(key: key);
 
   final VoidCallback onTap;
@@ -61,11 +63,13 @@ class _FrontLayer extends StatelessWidget {
 
 class _BackdropTitle extends AnimatedWidget {
   const _BackdropTitle({
+    [
     Key key,
     Listenable listenable,
-    this.onPress,
-    @required this.frontTitle,
-    @required this.backTitle,
+    this.onPress
+    ]
+     this.frontTitle,
+     this.backTitle,
   }) : assert(frontTitle != null),
        assert(backTitle != null),
        super(key: key, listenable: listenable);
@@ -152,11 +156,11 @@ class _BackdropTitle extends AnimatedWidget {
 /// front or back layer is showing.
 class Backdrop extends StatefulWidget {
   const Backdrop({
-    @required this.frontLayer,
-    @required this.backLayer,
-    @required this.frontTitle,
-    @required this.backTitle,
-    @required this.controller,
+     this.frontLayer,
+     this.backLayer,
+     this.frontTitle,
+     this.backTitle,
+     this.controller,
   }) : assert(frontLayer != null),
        assert(backLayer != null),
        assert(frontTitle != null),

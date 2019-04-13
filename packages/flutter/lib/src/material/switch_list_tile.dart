@@ -77,9 +77,12 @@ class SwitchListTile extends StatelessWidget {
   /// * [value] determines whether this switch is on or off.
   /// * [onChanged] is called when the user toggles the switch on or off.
   const SwitchListTile({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.activeColor,
     this.activeTrackColor,
     this.inactiveThumbColor,
@@ -92,6 +95,7 @@ class SwitchListTile extends StatelessWidget {
     this.dense,
     this.secondary,
     this.selected = false,
+  ]
   }) : _switchListTileType = _SwitchListTileType.material,
        assert(value != null),
        assert(isThreeLine != null),
@@ -108,9 +112,12 @@ class SwitchListTile extends StatelessWidget {
   /// ignored: [activeTrackColor], [inactiveThumbColor], [inactiveTrackColor],
   /// [activeThumbImage], [inactiveThumbImage], [materialTapTargetSize].
   const SwitchListTile.adaptive({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    [
+    Key key
+    ]
+     this.value,
+     this.onChanged,
+    [
     this.activeColor,
     this.activeTrackColor,
     this.inactiveThumbColor,
@@ -123,6 +130,7 @@ class SwitchListTile extends StatelessWidget {
     this.dense,
     this.secondary,
     this.selected = false,
+  ]
   }) : _switchListTileType = _SwitchListTileType.adaptive,
        assert(value != null),
        assert(isThreeLine != null),

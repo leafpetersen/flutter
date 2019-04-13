@@ -323,9 +323,11 @@ class TextureLayer extends Layer {
   /// identified by [textureId], if [freeze] is true new texture frames will not be
   /// populated to the texture.
   TextureLayer({
-    @required this.rect,
-    @required this.textureId,
+     this.rect,
+     this.textureId,
+    [
     this.freeze = false,
+  ]
   }) : assert(rect != null),
        assert(textureId != null);
 
@@ -368,8 +370,8 @@ class PlatformViewLayer extends Layer {
   ///
   /// The `rect` and `viewId` parameters must not be null.
   PlatformViewLayer({
-    @required this.rect,
-    @required this.viewId,
+     this.rect,
+     this.viewId,
   }) : assert(rect != null),
        assert(viewId != null);
 
@@ -404,11 +406,11 @@ class PlatformViewLayer extends Layer {
 class PerformanceOverlayLayer extends Layer {
   /// Creates a layer that displays a performance overlay.
   PerformanceOverlayLayer({
-    @required Rect overlayRect,
-    @required this.optionsMask,
-    @required this.rasterizerThreshold,
-    @required this.checkerboardRasterCacheImages,
-    @required this.checkerboardOffscreenLayers,
+     Rect overlayRect,
+     this.optionsMask,
+     this.rasterizerThreshold,
+     this.checkerboardRasterCacheImages,
+     this.checkerboardOffscreenLayers,
   }) : _overlayRect = overlayRect;
 
   /// The rectangle in this layer's coordinate system that the overlay should occupy.
@@ -484,7 +486,7 @@ class ContainerLayer extends Layer {
   Layer get lastChild => _lastChild;
   Layer _lastChild;
 
-  bool _debugUltimatePreviousSiblingOf(Layer child, { Layer equals }) {
+  bool _debugUltimatePreviousSiblingOf(Layer child, { [ Layer equals ] }) {
     assert(child.attached == attached);
     while (child.previousSibling != null) {
       assert(child.previousSibling != child);
@@ -494,7 +496,7 @@ class ContainerLayer extends Layer {
     return child == equals;
   }
 
-  bool _debugUltimateNextSiblingOf(Layer child, { Layer equals }) {
+  bool _debugUltimateNextSiblingOf(Layer child, { [ Layer equals ] }) {
     assert(child.attached == attached);
     while (child._nextSibling != null) {
       assert(child._nextSibling != child);
@@ -823,7 +825,7 @@ class OffsetLayer extends ContainerLayer {
   ///
   /// By default, [offset] is zero. It must be non-null before the compositing
   /// phase of the pipeline.
-  OffsetLayer({ Offset offset = Offset.zero }) : _offset = offset;
+  OffsetLayer({ [ Offset offset = Offset.zero ] }) : _offset = offset;
 
   /// Offset from parent in the parent's coordinate system.
   ///
@@ -916,7 +918,7 @@ class OffsetLayer extends ContainerLayer {
   ///
   ///  * [RenderRepaintBoundary.toImage] for a similar API at the render object level.
   ///  * [dart:ui.Scene.toImage] for more information about the image returned.
-  Future<ui.Image> toImage(Rect bounds, { double pixelRatio = 1.0 }) async {
+  Future<ui.Image> toImage(Rect bounds, { [ double pixelRatio = 1.0 ] }) async {
     assert(bounds != null);
     assert(pixelRatio != null);
     final ui.SceneBuilder builder = ui.SceneBuilder();
@@ -952,8 +954,10 @@ class ClipRectLayer extends ContainerLayer {
   /// The [clipRect] property must be non-null before the compositing phase of
   /// the pipeline.
   ClipRectLayer({
-    @required Rect clipRect,
+     Rect clipRect,
+    [
     Clip clipBehavior = Clip.hardEdge,
+  ]
   }) : _clipRect = clipRect,
        _clipBehavior = clipBehavior,
        assert(clipBehavior != null),
@@ -1028,8 +1032,10 @@ class ClipRRectLayer extends ContainerLayer {
   /// The [clipRRect] property must be non-null before the compositing phase of
   /// the pipeline.
   ClipRRectLayer({
-    @required RRect clipRRect,
+     RRect clipRRect,
+    [
     Clip clipBehavior = Clip.antiAlias,
+  ]
   }) : _clipRRect = clipRRect,
        _clipBehavior = clipBehavior,
        assert(clipBehavior != null),
@@ -1100,8 +1106,10 @@ class ClipPathLayer extends ContainerLayer {
   /// The [clipPath] property must be non-null before the compositing phase of
   /// the pipeline.
   ClipPathLayer({
-    @required Path clipPath,
+     Path clipPath,
+    [
     Clip clipBehavior = Clip.antiAlias,
+  ]
   }) : _clipPath = clipPath,
        _clipBehavior = clipBehavior,
        assert(clipBehavior != null),
@@ -1165,7 +1173,7 @@ class TransformLayer extends OffsetLayer {
   ///
   /// The [transform] and [offset] properties must be non-null before the
   /// compositing phase of the pipeline.
-  TransformLayer({ Matrix4 transform, Offset offset = Offset.zero })
+  TransformLayer({ [ Matrix4 transform, Offset offset = Offset.zero ] })
     : _transform = transform,
       super(offset: offset);
 
@@ -1248,8 +1256,10 @@ class OpacityLayer extends ContainerLayer {
   /// The [alpha] property must be non-null before the compositing phase of
   /// the pipeline.
   OpacityLayer({
-    @required int alpha,
+     int alpha,
+    [
     Offset offset = Offset.zero,
+  ]
   }) : _alpha = alpha,
        _offset = offset;
 
@@ -1309,9 +1319,9 @@ class ShaderMaskLayer extends ContainerLayer {
   /// The [shader], [maskRect], and [blendMode] properties must be non-null
   /// before the compositing phase of the pipeline.
   ShaderMaskLayer({
-    @required Shader shader,
-    @required Rect maskRect,
-    @required BlendMode blendMode,
+     Shader shader,
+     Rect maskRect,
+     BlendMode blendMode,
   }) : _shader = shader,
        _maskRect = maskRect,
        _blendMode = blendMode;
@@ -1378,7 +1388,7 @@ class BackdropFilterLayer extends ContainerLayer {
   ///
   /// The [filter] property must be non-null before the compositing phase of the
   /// pipeline.
-  BackdropFilterLayer({ @required ui.ImageFilter filter }) : _filter = filter;
+  BackdropFilterLayer({  ui.ImageFilter filter }) : _filter = filter;
 
   /// The filter to apply to the existing contents of the scene.
   ///
@@ -1417,11 +1427,13 @@ class PhysicalModelLayer extends ContainerLayer {
   ///
   /// The [clipPath], [elevation], and [color] arguments must not be null.
   PhysicalModelLayer({
-    @required Path clipPath,
-    Clip clipBehavior = Clip.none,
-    @required double elevation,
-    @required Color color,
-    @required Color shadowColor,
+     Path clipPath,
+    [
+    Clip clipBehavior = Clip.none
+    ]
+     double elevation,
+     Color color,
+     Color shadowColor,
   }) : assert(clipPath != null),
        assert(clipBehavior != null),
        assert(elevation != null),
@@ -1581,7 +1593,7 @@ class LeaderLayer extends ContainerLayer {
   ///
   /// The [offset] property must be non-null before the compositing phase of the
   /// pipeline.
-  LeaderLayer({ @required this.link, this.offset = Offset.zero }) : assert(link != null);
+  LeaderLayer({  this.link, [ this.offset = Offset.zero ] }) : assert(link != null);
 
   /// The object with which this layer should register.
   ///
@@ -1682,10 +1694,12 @@ class FollowerLayer extends ContainerLayer {
   /// The [unlinkedOffset], [linkedOffset], and [showWhenUnlinked] properties
   /// must be non-null before the compositing phase of the pipeline.
   FollowerLayer({
-    @required this.link,
+     this.link,
+    [
     this.showWhenUnlinked = true,
     this.unlinkedOffset = Offset.zero,
     this.linkedOffset = Offset.zero,
+  ]
   }) : assert(link != null);
 
   /// The link to the [LeaderLayer].
@@ -1904,7 +1918,7 @@ class AnnotatedRegionLayer<T> extends ContainerLayer {
   /// by the [size] and [offset] if provided.
   ///
   /// The [value] provided cannot be null.
-  AnnotatedRegionLayer(this.value, {this.size, Offset offset})
+  AnnotatedRegionLayer(this.value, {[this.size, Offset offset]})
       : offset = offset ?? Offset.zero,
         assert(value != null);
 

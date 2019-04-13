@@ -22,11 +22,13 @@ enum _OverflowSide {
 // the indicators.
 class _OverflowRegionData {
   const _OverflowRegionData({
+    [
     this.rect,
     this.label = '',
     this.labelOffset = Offset.zero,
     this.rotation = 0.0,
     this.side,
+  ]
   });
 
   final Rect rect;
@@ -259,7 +261,9 @@ mixin DebugOverflowIndicatorMixin on RenderObject {
     Offset offset,
     Rect containerRect,
     Rect childRect, {
+    [
     String overflowHints,
+  ]
   }) {
     final RelativeRect overflow = RelativeRect.fromRect(containerRect, childRect);
 
